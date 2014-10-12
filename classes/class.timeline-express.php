@@ -33,13 +33,16 @@ if(!class_exists("timelineExpressBase"))
 			 *	These are called when the plugin is initialized/deactivated/uninstalled
 			 */
 			public function activate() {
+					// need to refresh re-write rules on activation
+					// you currently get 404 error...
+					
 					// redirect the user on plugin activation
 					// to the timeline express welcome page
 					add_option('timeline_express_do_activation_redirect', true);
 				}
 
 			public function deactivate() {
-					// nothing to see here
+					// need to clear our re-write rules on deactivate
 				}
 
 			public function uninstall() {
@@ -130,7 +133,7 @@ if(!class_exists("timelineExpressBase"))
 					add_filter( 'views_edit-te_announcements' , array( &$this , 'append_donate_button_on_edit_page' ) );
 					// add a tinymce button that generates our shortcode for the user
 					add_action( 'admin_head', array( &$this , 'timeline_express_add_tinymce' ) );
-					
+										
 				}
 				
 			// enqueue metabox for the announcement cpt
@@ -754,14 +757,14 @@ if(!class_exists("timelineExpressBase"))
 															if ( $this->timeline_express_optionVal['read-more-visibility'] == 0 ) {
 																$elipses = '';
 															} else {
-																$elipses = '...';
+																$elipses =  __( '...' , 'timeline-express' ) ;
 															}
 															// set up the readmore button
 															if ( $this->timeline_express_optionVal['read-more-visibility'] == 0 ) {
 																$elipses = '';
 																$read_more_button = '';
 															} else {
-																$elipses = '...';
+																$elipses =  __( '...' , 'timeline-express' );
 																// $read_more_button = '<a href="' . get_the_permalink() . '" class="cd-read-more btn btn-primary">Read more</a>';
 																$read_more_button = '<a href="' . get_the_permalink() . '" class="cd-read-more btn btn-primary">Read more</a>';
 															}
@@ -774,7 +777,7 @@ if(!class_exists("timelineExpressBase"))
 															$elipses = '';
 															$read_more_button = '';
 														} else {
-															$elipses = '...';
+															$elipses = __( '...' , 'timeline-express' );
 															$read_more_button = '<a href="' . get_the_permalink() . '" class="cd-read-more btn btn-primary">Read more</a>';
 														}
 													?>
