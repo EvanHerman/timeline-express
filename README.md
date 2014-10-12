@@ -16,10 +16,8 @@ Timeline express allows you to create a vertical animated and responsive timelin
 * Easy to use shortcode to place the timeline wherever your heart desires ( `[timeline-express]` )
 * TinyMCE button to generate the shortcode
 * Highly extensible
+* Translatable
 
-
-###### To Do:
-* flush re-write/permalinks on activation - 404'ing until you re-save the permalink
 
 ### Installation
 

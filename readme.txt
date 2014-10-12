@@ -1,4 +1,4 @@
-=== Easy MailChimp Forms ===
+=== Timeline Express ===
 Contributors: eherman24
 Donate link: http://www.evan-herman.com/contact/
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
@@ -26,6 +26,7 @@ Timeline express allows you to create a vertical animated timeline of announceme
 * Easy to use shortcode to place the timeline wherever your heart desires ( `[timeline-express]` )
 * TinyMCE button to generate the shortcode
 * Highly extensible
+* Translatable
 
 == Installation ==
 

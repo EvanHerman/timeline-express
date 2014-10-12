@@ -498,16 +498,23 @@ if(!class_exists("timelineExpressBase"))
 							// grab the attached image
 							$announcement_image = esc_url( get_post_meta( $post->ID , 'announcement_image' , true ) );
 							$announcement_date = get_post_meta( $post->ID , 'announcement_date' , true );
+							$referer = $_SERVER['HTTP_REFERER'];
 							if ( $announcement_image != '' ) {
 								$announcement_image_id = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $announcement_image )); 
 								$announcement_header_image = wp_get_attachment_image_src( $announcement_image_id[0] , 'timeline-express-announcement-header');
 								$custom_content = '<img class="announcement-banner-image" src="' . esc_url ( $announcement_header_image[0] ) . '" alt="' . get_the_title( $post->ID ) . '">';
 								$custom_content .= '<strong class="timeline-express-single-page-announcement-date">Announcement Date : ' . date( 'M j , Y' , $announcement_date ) . '</strong>';
 								$custom_content .= $content;
+								if ( $referer != '' ) {	
+									$custom_content .= '<a href="' . $referer . '" class="return-to-timeline"><i class="fa fa-chevron-left"></i> ' . __( 'Back' , 'timeline-express' ) . '</a>';
+								}
 								return $custom_content;
 							} else {	
 								$custom_content = '<strong class="timeline-express-single-page-announcement-date">Announcement Date : ' . date( 'M j , Y' , $announcement_date ) . '</strong>';
 								$custom_content .= $content;
+								if ( $referer != '' ) {	
+									$custom_content .= '<a href="' . $referer . '" class="return-to-timeline"><i class="fa fa-chevron-left"></i> ' . __( 'Back' , 'timeline-express' ) . '</a>';
+								}
 								return $custom_content;
 							}
 						} else {
@@ -882,7 +889,10 @@ if(!class_exists("timelineExpressBase"))
 				}
 				
 			/**
-			 * Future update function to add missing options etc.
+			 * This update needs to pull in all of the custom form
+			 * data for each of the lists, unfortunately it has to replace
+			 * just about all of the data with the new schema. We also
+			 * add in the flavor key (for table/div usage)
 			 *
 			 * 1.0.0 => 1.0.1
 			private function runUpdateTasks_1_0_1() {
