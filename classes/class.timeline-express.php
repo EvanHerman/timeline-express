@@ -889,10 +889,7 @@ if(!class_exists("timelineExpressBase"))
 				}
 				
 			/**
-			 * This update needs to pull in all of the custom form
-			 * data for each of the lists, unfortunately it has to replace
-			 * just about all of the data with the new schema. We also
-			 * add in the flavor key (for table/div usage)
+			 * Future update function to add missing options etc.
 			 *
 			 * 1.0.0 => 1.0.1
 			private function runUpdateTasks_1_0_1() {
