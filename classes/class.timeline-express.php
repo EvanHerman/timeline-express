@@ -32,17 +32,15 @@ if(!class_exists("timelineExpressBase"))
 			 *	ACTIONS
 			 *	These are called when the plugin is initialized/deactivated/uninstalled
 			 */
-			public function activate() {
-					// need to refresh re-write rules on activation
-					// you currently get 404 error...
-					
+			public function activate() {				
 					// redirect the user on plugin activation
 					// to the timeline express welcome page
 					add_option('timeline_express_do_activation_redirect', true);
 				}
 
 			public function deactivate() {
-					// need to clear our re-write rules on deactivate
+					// clear our re-write rules on deactivate
+					delete_option('post_type_rules_flased_te-announcements');
 				}
 
 			public function uninstall() {
@@ -53,13 +51,13 @@ if(!class_exists("timelineExpressBase"))
 						// check if the user wants to remove all announcemnts
 						// and do so, if set
 					if ( $delete_cpt_option == '1' ) {	
-						// delete all created announcement posts on uninstallation
+							// delete all created announcement posts on uninstallation
 							global $wpdb; // Must have this or else! 
 							// set the posts table
 							$posts_table = $wpdb->posts;
 							// query for our cpt
 							$wpdb->query("DELETE FROM " . $posts_table . " WHERE post_type = 'te_announcements'"); 
-					}
+						}
 					// Step #2
 						// delete options on plugin uninstall
 						// after we check the 'delete-announcement-posts-on-uninstallation' setting
@@ -193,6 +191,13 @@ if(!class_exists("timelineExpressBase"))
 					register_post_type( 'te_announcements', $timeline_express_args );
 					// end release cycle cpt
 
+					// flush the re-write/permalinks
+					$set = get_option('post_type_rules_flased_te-announcements');
+					if ($set !== true){
+						   flush_rewrite_rules(false);
+						   update_option('post_type_rules_flased_te-announcements',true);
+						}
+					
 				}
 				// end announcement CPT creation
 
@@ -877,10 +882,7 @@ if(!class_exists("timelineExpressBase"))
 				}
 				
 			/**
-			 * This update needs to pull in all of the custom form
-			 * data for each of the lists, unfortunately it has to replace
-			 * just about all of the data with the new schema. We also
-			 * add in the flavor key (for table/div usage)
+			 * Future update function to add missing options etc.
 			 *
 			 * 1.0.0 => 1.0.1
 			private function runUpdateTasks_1_0_1() {
