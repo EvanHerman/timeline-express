@@ -1,0 +1,517 @@
+/*******************************************/
+/*	Timeline Express Settings Styles */
+/******************************************/
+
+/* Red Button Style - Settings Page*/
+.wp-core-ui .timeline-express-red-button {
+	background-color: #9B2124;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#C5292E), to(#9B2124));
+	background-image: -webkit-linear-gradient(top, #C5292E, #9B2124);
+	background-image:    -moz-linear-gradient(top, #C5292E, #9B2124);
+	background-image:     -ms-linear-gradient(top, #C5292E, #9B2124);
+	background-image:      -o-linear-gradient(top, #C5292E, #9B2124);
+	background-image:   linear-gradient(to bottom, #C5292E, #9B2124);
+	border-color: #9B2124;
+	border-bottom-color: #8D1F21;
+	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,0.5);
+ 	box-shadow: inset 0 1px 0 rgba(120,200,230,0.5);
+ 	color: #fff;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+	margin-left: 2em;
+	width:150px;
+	text-align:center;
+}
+
+.wp-core-ui .timeline-express-red-button.hover,
+.wp-core-ui .timeline-express-red-button:hover,
+.wp-core-ui .timeline-express-red-button.focus,
+.wp-core-ui .timeline-express-red-button:focus {
+	background-color: #B72629;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#D22E30), to(#9B2124));
+	background-image: -webkit-linear-gradient(top, #D22E30, #9B2124);
+	background-image:    -moz-linear-gradient(top, #D22E30, #9B2124);
+	background-image:     -ms-linear-gradient(top, #D22E30, #9B2124);
+	background-image:      -o-linear-gradient(top, #D22E30, #9B2124);
+	background-image:   linear-gradient(to bottom, #D22E30, #9B2124);
+	border-color: #7F1C1F;
+	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,0.6);
+ 	box-shadow: inset 0 1px 0 rgba(120,200,230,0.6);
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+}
+
+.wp-core-ui .timeline-express-red-button.focus,
+.wp-core-ui .timeline-express-red-button:focus {
+	border-color: #500F0E;
+	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,0.6), 1px 1px 2px rgba(0,0,0,0.4);
+	box-shadow: inset 0 1px 0 rgba(120,200,230,0.6), 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.wp-core-ui .timeline-express-red-button.active,
+.wp-core-ui .timeline-express-red-button.active:hover,
+.wp-core-ui .timeline-express-red-button.active:focus,
+.wp-core-ui .timeline-express-red-button:active {
+	background: #7F1C1F;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#9B2124), to(#B72629));
+	background-image: -webkit-linear-gradient(top, #9B2124, #B72629);
+	background-image:    -moz-linear-gradient(top, #9B2124, #B72629);
+	background-image:     -ms-linear-gradient(top, #9B2124, #B72629);
+	background-image:      -o-linear-gradient(top, #9B2124, #B72629);
+	background-image:   linear-gradient(to bottom, #9B2124, #B72629);
+	border-color: #601312 #AE2426 #AE2426 #AE2426;
+	color: rgba(255,255,255,0.95);
+	-webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+ 	box-shadow: inset 0 1px 0 rgba(0,0,0,0.1);
+	text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+}
+
+.wp-core-ui .timeline-express-red-button[disabled],
+.wp-core-ui .timeline-express-red-button:disabled,
+.wp-core-ui .timeline-express-red-button-disabled {
+	color: #E79496 !important;
+	background: #BA292B !important;
+	border-color: #7F1C1F !important;
+	-webkit-box-shadow: none !important;
+	box-shadow:         none !important;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.1) !important;
+	cursor: default;
+}
+
+/* Icon */
+#timeline-express-icon {
+	background: transparent url('../images/timeline-express-icon.png') no-repeat 0 0;
+	display:block;
+	float:left;
+	padding: 0 0 0 .5em;
+	height:  75px;
+	width: 75px;
+	background-size: contain;
+	margin-bottom: .5em;
+}
+
+/* Settings Page Header */
+.wrap #timeline-express-page-header {
+	padding-top:0;
+	margin: 1em 0 0 0;
+	font-size: 25px;
+	line-height: 3;
+}
+
+.wrap .nav-tab-wrapper {
+	padding-top:2.5em;
+}
+
+.wrap .account-nav-tab {
+	padding-top:0;
+}
+
+.random-length-text {
+	opacity: .5;
+}
+
+#timeline_express_review_this_plugin_container .fa-paypal {
+	display: block;
+	width: 100%;
+	font-size: 16px;
+	padding-top: 4px;
+	margin: 0 auto !important;
+	color: #253b80;
+}
+
+/* Settings Page Top Container */
+/* Houses links to leave us a review, links to Evan Herman's Website etc. */
+.wrap #timeline_express_review_this_plugin_container {
+	padding:.5em;
+	border:1px dashed lightgrey;
+	float: right;
+	margin-top: .75em;
+}
+
+#timeline_express_review_this_plugin_container {
+	display:inline-block;
+}
+	
+#timeline_express_review_this_plugin_container a, #timeline_express_review_this_plugin_container a:hover {
+	color: #333;
+}
+	#timeline_express_review_this_plugin_container div, #timeline_express_review_this_plugin_container span, #timeline_express_review_this_plugin_container .timeline_express_header_logo {
+		float:left;
+		margin: 0 .5em;
+		text-align:center;
+	}
+		#timeline_express_review_this_plugin_container div.dashicons {
+			margin: 0 5px;
+		}
+		#timeline_express_review_this_plugin_container div.dashicons-plus-alt {
+			display:block;
+			width:100%;
+			margin: 0 auto;
+			color: rgb(163, 195, 184);
+		}
+		
+.timeline-express-form {
+	margin-bottom: 3em;
+}
+
+	.timeline-express-form th {
+		font-weight: bold;
+	}
+
+.timeline-express-settings-description {
+	padding-bottom: 2em !important;
+	color: #A7A7A7;
+	font-style: italic;
+	font-size: 10px;
+}
+	
+
+.wp-admin .active-parent-button, .wp-admin .active-parent-button:hover  {
+	color: red;
+}
+
+.delete-no:after {
+	content: " no, save my announcements from being deleted. I'll need them again!"
+}
+.delete-no:hover {
+	cursor: pointer;
+}
+.delete-yes:after {
+	content: " yes, delete all of the announcement posts. they are dead to me."
+}
+.delete-yes:hover {
+	cursor: pointer;
+}
+
+/** Color Picker **/
+.wp-picker-holder {
+	position:absolute;
+	z-index: 99999999;
+}
+
+/* No events message wp_editor */
+#no-events-message_ifr {
+	max-height: 100px;
+}
+
+/* No Events Found In Table - text */
+.wp-list-table .no-items .colspanchange {
+	text-align: center;
+	height: 115px;
+	line-height: 8;
+	font-style: italic;
+}
+
+/* Column Widths */
+.wp-list-table #color, .wp-list-table #icon {
+	width: 65px;
+	text-align: center;
+	padding-left: 1em;
+}
+
+.wp-list-table #announcement_date {
+	width: 215px;
+}
+
+.wp-list-table #image, .wp-list-table .column-image {
+	width: 250px;
+	text-align:center;
+}
+
+.no-image-used-text {
+	line-height: 4.7
+}
+
+.wp-list-table #past_announcement, .wp-list-table .past_announcement {
+	width: 150px;
+	text-align:center;
+}
+
+/* Edit Timeline Express Announcement Styles */
+
+	/* Announcement Color Box */
+	.wp-list-table .announcement_color_box {
+		display:block;
+		width: 15px;
+		height: 15px;
+		border: 1px solid rgba(128, 128, 128, 0.22);
+		padding: .5em;
+		text-align: center;
+		margin: 0 auto;
+		margin-top: 11px;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		border-radius: 50%;
+	}
+	/* Announcement Icon */
+	.wp-list-table .edit-announcement-icon {
+		font-size: 25px !important;
+		line-height: 2.5 !important;
+		display: block;
+		text-align: center;
+	}
+	/* Announcement Date */
+	.wp-list-table #announcement_date {
+		line-height: 1.5;
+		padding-left: 2.5em;
+	}
+	.wp-list-table .announcement_date {
+		line-height: 4.5 !important;
+		text-align: center;
+	}
+	/* Past Announcement Icon */
+	.wp-list-table .dashicon-past-announcement {
+		font-size: 30px !important;
+		line-height: 2.1 !important;
+	}
+
+/** Admin Break Points **/
+
+@media only screen and (max-width: 1175px) {
+		
+}
+
+.dashicons-star-filled {color:#FEBE12;}
+
+#timeline_express_reset_plugin_settings .dashicons-dismiss {
+	float: left;
+	margin-top: .5em;
+	padding: .5em 1em 1em .5em;
+	color: rgb(241, 83, 83);
+}
+
+
+
+/*************************************************
+*
+*	Timeline Express Welcome Page Styles
+*
+*************************************************/
+body.admin_page_timeline-express-welcome .timeline-express-image {
+	
+background: -moz-linear-gradient(top, rgba(206,220,231,.7) 0%, rgba(89,106,114,.7) 100%);
+background-image: url( '../images/welcome/background.png' );
+}
+body.admin_page_timeline-express-welcome .timeline-screenshot {
+	padding: 1.5em;
+	padding-bottom: 0;
+}
+
+body.admin_page_timeline-express-welcome .font-awesome-background {
+	padding-top:3em;
+	margin-top:1.5em;
+	background-image: url( '../images/welcome/Font-Awesome-Cheatsheet.png' );
+	background-size: cover;
+	height:250px;
+	text-align:center;
+	line-height: 8;
+}
+
+body.admin_page_timeline-express-welcome .intuitive-post-creation {
+	padding-top:3em;
+	margin-top:1.5em;
+	background-image: url( '../images/welcome/intuitive-creation-screen.jpg' );
+	background-size: contain;
+	height:665px;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+}
+
+body.admin_page_timeline-express-welcome .admin-manage-announcements {
+	padding-top:3em;
+	margin-top:1.5em;
+	background-image: url( '../images/welcome/manage-announcements.jpg' );
+	background-size: contain;
+	height:665px;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+}
+
+body.admin_page_timeline-express-welcome .customize-your-timeline {
+	padding-top:4%;
+	margin-top:1.5em;
+	background-image: url( '../images/welcome/customize-your-timeline.jpg' );
+	background-size: contain;
+	height:665px;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+}
+
+/* fade slider */
+body.admin_page_timeline-express-welcome .slides {
+    height:665px;
+    overflow:hidden;
+    position:relative;
+    width:100%;
+	padding: 4% 0 4% 0;
+}
+
+body.admin_page_timeline-express-welcome .slides ul {
+    list-style:none;
+    position:relative;
+}
+
+/* keyframes #anim_slides */
+@-webkit-keyframes anim_slides {
+    0% {
+        opacity:0;
+    }
+    6% {
+        opacity:1;
+    }
+    24% {
+        opacity:1;
+    }
+    30% {
+        opacity:0;
+    }
+    100% {
+        opacity:0;
+    }
+}
+@-moz-keyframes anim_slides {
+    0% {
+        opacity:0;
+    }
+    6% {
+        opacity:1;
+    }
+    24% {
+        opacity:1;
+    }
+    30% {
+        opacity:0;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+body.admin_page_timeline-express-welcome .slides ul li {
+	width: 100%;
+	
+    opacity:0;
+    position:absolute;
+    top:0;
+
+    /* css3 animation */
+    -webkit-animation-name: anim_slides;
+    -webkit-animation-duration: 18.0s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: normal;
+    -webkit-animation-delay: 0;
+    -webkit-animation-play-state: running;
+    -webkit-animation-fill-mode: forwards;
+
+    -moz-animation-name: anim_slides;
+    -moz-animation-duration: 18.0s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: normal;
+    -moz-animation-delay: 0;
+    -moz-animation-play-state: running;
+    -moz-animation-fill-mode: forwards;
+}
+
+/* css3 delays */
+body.admin_page_timeline-express-welcome .slides ul  li:nth-child(2), body.admin_page_timeline-express-welcome .slides ul  li:nth-child(2) h2.promo-text {
+    -webkit-animation-delay: 6.0s;
+    -moz-animation-delay: 6.0s;
+}
+body.admin_page_timeline-express-welcome .slides ul  li:nth-child(3), body.admin_page_timeline-express-welcome .slides ul  li:nth-child(3) h2.promo-text {
+    -webkit-animation-delay: 12.0s;
+    -moz-animation-delay: 12.0s;
+}
+body.admin_page_timeline-express-welcome .slides ul li img {
+    display:block;
+}
+
+/* keyframes #anim_titles */
+@-webkit-keyframes anim_titles {
+    0% {
+        left:5%;
+        opacity:0;
+    }
+    5% {
+        left:5%;
+        opacity:1;
+    }
+    20% {
+        left:5%;
+        opacity:1;
+    }
+    25% {
+        left:5%;
+        opacity:0;
+    }
+    100% {
+        left:5%;
+        opacity:0;
+    }
+}
+@-moz-keyframes anim_titles {
+    0% {
+        left:5%;
+        opacity:0;
+    }
+    5% {
+        left:5%;
+        opacity:1;
+    }
+    20% {
+        left:5%;
+        opacity:1;
+    }
+    25% {
+        left:5%;
+        opacity:0;
+    }
+    100% {
+        left:5%;
+        opacity:0;
+    }
+}
+
+body.admin_page_timeline-express-welcome .slides ul li h2.promo-text {
+    background-color:#000000;
+    border-radius:10px 10px 10px 10px;
+    box-shadow:0 0 3px #FFFFFF inset;
+    color:#FFFFFF;
+    font-size:18px;
+    margin:0 auto;
+    padding:10px;
+    position:absolute;
+    top:-35px;
+    width:350px;
+	text-align:center;
+
+    /* css3 animation */
+    -webkit-animation-name: anim_titles;
+    -webkit-animation-duration: 18.0s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: normal;
+    -webkit-animation-delay: 0;
+    -webkit-animation-play-state: running;
+    -webkit-animation-fill-mode: forwards;
+
+    -moz-animation-name: anim_titles;
+    -moz-animation-duration: 18.0s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: normal;
+    -moz-animation-delay: 0;
+    -moz-animation-play-state: running;
+    -moz-animation-fill-mode: forwards;
+}
+
+
+.dashicons-heart {
+	background: -webkit-linear-gradient(top, #ff8cf7, #e2a5e0);
+	background: linear-gradient(top, #ff8cf7, #e2a5e0);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/** End Timeline Express Admin Styles */
