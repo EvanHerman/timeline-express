@@ -35,8 +35,8 @@
 </style>
 		
 <section class="te-button-container">
-	<a class="button-secondary" href="http://www.wordpress.org/support/timeline-express/" targer="_blank"><?php _e( 'Help!' , 'timeline-express' ); ?></a>
-	<a class="button-secondary" href="http://www.wordpress.org/support/review/" targer="_blank"><?php _e( 'Review' , 'timeline-express' ); ?></a>
+	<a class="button-secondary" href="https://wordpress.org/support/plugin/timeline-express" target="_blank"><?php _e( 'Help!' , 'timeline-express' ); ?></a>
+	<a class="button-secondary" href="https://wordpress.org/support/view/plugin-reviews/timeline-express" target="_blank"><?php _e( 'Review' , 'timeline-express' ); ?></a>
 	<a class="button-secondary" href="http://www.evan-herman.com/contact/?contact-name=<?php echo $current_user_name; ?>&contact-reason=I want to make a donation for all your hard work" target="_blank"><?php _e( 'Donate' , 'timeline-express' ); ?></a>	
 <br />
 <br />
@@ -47,4 +47,4 @@
 <a href="http://www.evan-herman.com/feed/" title="RSS Feed" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/rss_icon.png" alt="Evan Herman - RSS Feed" border="0" height="24" width="24"></a>
 </section>
 
-<em style="display:block;font-size:12px; text-align:center;margin:.5em 0;"><?php _e( 'this plugin was made with' , 'timeline-express' ); ?><div class="dashicons dashicons-heart"></div>, <?php _e( 'by' , 'timeline-express' ); ?> <a href="http://www.evan-herman.com" target="_blank">Evan Herman</a></em>
+<em style="display:block;font-size:12px; text-align:center;margin:.5em 0;"><?php _e( 'this plugin was made with ' , 'timeline-express' ); ?><div class="dashicons dashicons-heart" style="line-height:1.2;"></div>, <?php _e( 'by' , 'timeline-express' ); ?> <a href="http://www.evan-herman.com" target="_blank">Evan Herman</a></em>

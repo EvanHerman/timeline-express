@@ -144,8 +144,8 @@ if(!class_exists("timelineExpressBase"))
 			// Register Announcement Custom Post Type
 			public function timeline_express_generate_announcement_post_type() {
 								
-					// Register our Release Cycle Custom Post Type
-						// used to easily manage the release cycle on the site
+					// Register our Announcement Custom Post Type
+						// used to easily manage the announcements on the site
 					$timeline_express_labels = array(
 						'name'                => 'Timeline Express',
 						'singular_name'       => 'Announcement', // menu item at the top New > Announcement
@@ -157,9 +157,9 @@ if(!class_exists("timelineExpressBase"))
 						'add_new'             => 'New Announcement',
 						'edit_item'           => 'Edit Announcement',
 						'update_item'         => 'Update Announcement',
-						'search_items'        => 'Search Release Cycle Announcements',
+						'search_items'        => 'Search Announcements',
 						'not_found'           => 'No Timeline Express Announcements Found',
-						'not_found_in_trash'  => 'No Release Cycle Announcements in Trash',
+						'not_found_in_trash'  => 'No Timeline Express Announcements in Trash',
 					);
 					$timeline_express_rewrite = array(
 						'slug'                => 'announcement',
@@ -169,7 +169,7 @@ if(!class_exists("timelineExpressBase"))
 					);
 					$timeline_express_args = array(
 						'label'               => 'timeline-express-announcement',
-						'description'         => 'Post type for adding YouTube plus release cycle announcements to the site',
+						'description'         => 'Post type for adding timeline express announcements to the site',
 						'labels'              => $timeline_express_labels,
 						'supports'            => array( 'title', 'editor' ),
 						'taxonomies'          => array(),
@@ -262,11 +262,11 @@ if(!class_exists("timelineExpressBase"))
 					
 					$meta_boxes['about_the_author'] = array(
 						'id'         => 'about_the_author',
-						'title'      => __( 'Information', 'timeline-express' ),
+						'title'      => __( 'About', 'timeline-express' ),
 						'pages'      => array( 'te_announcements', ), // Post type
 						'context'    => 'side',
 						'priority'   => 'low',
-						'show_names' => true, // Show field names on the left
+						'show_names' => false, // Show field names on the left
 						// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
 						'fields'     => array(
 							array(

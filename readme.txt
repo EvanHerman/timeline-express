@@ -1,13 +1,13 @@
 === Timeline Express ===
 Contributors: eherman24
-Donate link: http://www.evan-herman.com/contact/
+Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 
-Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
+Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
 
 == Description ==
 
@@ -55,7 +55,7 @@ the newly created 'timeline-express' directory in your theme. Timeline express w
 it to your hearts desire without fear of losing any changes in future updates!
 
 = Can I create more than one timeline? =
-At the moment no, but I will consider adding that into a futre update if people show enough interest.
+At the moment no, but I will consider adding that into a future update if people show enough interest.
 
 = At what width are the breakpoints set? =
 Breakpoints are set at 822px. The timeline will shift/re-adjust automatically using masonry based on the height of each announcement container.
@@ -98,17 +98,20 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Screenshots ==
 
-1. Full vertical Timeline Express
-2. Timeline Express responsive (mobile version)
-3. Creating a new announcement. Select an announcement color, an icon an announcement date and set an image.
-4. All announcements on the Edit Announcements page
-5. Timeline Express settings page
+1. Timeline Express announcement post creation screen
+2. Timeline Express announcement management on the 'Edit Announcements' page
+3. Timeline Express sample timeline with multiple icons/colors
+4. Timeline Express responsive (mobile version)
+5. Timeline Express full settings page
 
 == Changelog ==
-= 1.0.0 =
+= 1.0.1 =
+* Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
+
+= 1.0 =
 * Initial Release to the wordpress respository
 
 == Upgrade Notice ==
 
-= 1.0.0 =
+= 1.0 =
 * Initial Release to the wordpress respository

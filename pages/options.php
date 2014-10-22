@@ -147,7 +147,7 @@ function toggle_delete_checkbox() {
 			</strong>
 		</span>
 	</a>
-	<a href="https://evan-herman.com/support" target="_blank" title="Timeline Express Support">
+	<a href="https://wordpress.org/support/plugin/timeline-express" target="_blank" title="Timeline Express Support">
 		<span class="timeline_express_need_support">
 			<strong>
 				<?php _e( 'Need Help?', 'plugin-boilerplate' ); ?> <br />

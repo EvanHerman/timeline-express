@@ -27,7 +27,10 @@ jQuery(document).ready(function(){
 		});
 	});
 	
-	jQuery( '#cd-timeline' ).masonry({itemSelector : '.cd-timeline-block',});
+	var $masonryContainer = jQuery( '#cd-timeline' );
+	$masonryContainer.imagesLoaded( function() {
+		$masonryContainer.masonry({itemSelector : '.cd-timeline-block',});
+	});
 	
 	var entry_content_width = jQuery( '#cd-timeline' ).parents('div').css('width');
 	var width = jQuery(window).width() + parseInt(17);
