@@ -1,4 +1,4 @@
-Timeline Express v1.0.1
+Timeline Express v1.0
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -15,6 +15,7 @@ Timeline express allows you to create a vertical animated and responsive timelin
 * Delete announcements on uninstallation (so no orphan posts are hanging around in your database)
 * Easy to use shortcode to place the timeline wherever your heart desires ( `[timeline-express]` )
 * TinyMCE button to generate the shortcode
+* Specify Ascending vs Descending display order
 * Highly extensible
 * Translatable
 
@@ -89,6 +90,10 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+###### 1.0.2
+* Add display order setting to specify ascending or descending order of announcements in the timeline
+* Fixed "cannot access settings page" when clicking on the settings tab when on the settings page already
+
 ###### 1.0.1 
 * Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
 
@@ -96,8 +101,12 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Initial Release to the wordpress respository
 
 ### Upgrade Notice
-###### 1.0
-* Initial Release to the wordpress respository
+###### 1.0.2
+* Add display order setting to specify ascending or descending order of announcements in the timeline
+* Fixed "cannot access settings page" when clicking on the settings tab when on the settings page already
 
 ###### 1.0.1 
 * Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
+
+###### 1.0
+* Initial Release to the wordpress respository

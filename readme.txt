@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -25,6 +25,7 @@ Timeline express allows you to create a vertical animated timeline of announceme
 * Delete announcements on uninstallation (so no orphan posts are hanging around in your database)
 * Easy to use shortcode to place the timeline wherever your heart desires ( `[timeline-express]` )
 * TinyMCE button to generate the shortcode
+* Specify Ascending vs Descending display order
 * Highly extensible
 * Translatable
 
@@ -105,6 +106,10 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 5. Timeline Express full settings page
 
 == Changelog ==
+= 1.0.2 = 
+* Add a display order setting to set Ascending or Descending display order for announcements in the timeline
+* Fixed "cannot access settings page" when clicking on the settings tab when on the settings page already
+
 = 1.0.1 =
 * Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
 
@@ -112,6 +117,10 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Initial Release to the wordpress respository
 
 == Upgrade Notice ==
+= 1.0.2 =
+* Add display order setting to specify ascending or descending order of announcements in the timeline
+* Fixed "cannot access settings page" when clicking on the settings tab when on the settings page already
+
 = 1.0.1 =
 * Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
 

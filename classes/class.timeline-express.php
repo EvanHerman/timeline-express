@@ -407,6 +407,7 @@ if(!class_exists("timelineExpressBase"))
 						'date-visibility'	=> '1',
 						'default-announcement-icon' => "fa-exclamation-triangle",
 						'announcement-time-frame' => "0",
+						'announcement-display-order' => 'ASC',
 						'no-events-message' => "No announcements found",
 						'announcement-bg-color' => "#EFEFEF",
 						'announcement-box-shadow-color' => "#B9C5CD",
@@ -540,6 +541,7 @@ if(!class_exists("timelineExpressBase"))
 								$this->timeline_express_optionVal['date-visibility']	= $fd['date-visibility'];
 								$this->timeline_express_optionVal['default-announcement-icon']	= $fd['default-announcement-icon'];
 								$this->timeline_express_optionVal['announcement-time-frame']	= $fd['announcement-time-frame'];
+								$this->timeline_express_optionVal['announcement-display-order']	= $fd['announcement-display-order'];
 								$this->timeline_express_optionVal['no-events-message']	= stripslashes( $fd['no-events-message'] );
 								$this->timeline_express_optionVal['announcement-bg-color']	= stripslashes( $fd['announcement-bg-color'] );
 								$this->timeline_express_optionVal['announcement-box-shadow-color']	= $fd['announcement-box-shadow-color'];
@@ -643,6 +645,7 @@ if(!class_exists("timelineExpressBase"))
 						$content_background = $this->timeline_express_optionVal['announcement-bg-color'];
 						$content_shadow = $this->timeline_express_optionVal['announcement-box-shadow-color'];
 						$background_line_color = $this->timeline_express_optionVal['announcement-background-line-color'];
+						$display_order = $this->timeline_express_optionVal['announcement-display-order'];
 						
 						$current_date = strtotime( date( 'm/d/Y' ) );
 									
@@ -671,7 +674,7 @@ if(!class_exists("timelineExpressBase"))
 									'post_type' => 'te_announcements',
 									'meta_key'   => 'announcement_date',
 									'orderby'    => 'meta_value_num',
-									'order'      => 'ASC',
+									'order'      => $display_order,
 									'posts_per_page' => -1,
 								);
 							} else { 
@@ -681,7 +684,7 @@ if(!class_exists("timelineExpressBase"))
 									'post_type' => 'te_announcements',
 									'meta_key'   => 'announcement_date',
 									'orderby'    => 'meta_value_num',
-									'order'      => 'ASC',
+									'order'      => $display_order,
 									'posts_per_page' => -1,
 									'meta_query' => array(
 										array(
@@ -823,9 +826,9 @@ if(!class_exists("timelineExpressBase"))
 			public function addAdministrationMenu() {
 					// Sub Items
 						// Settings Page
-						add_submenu_page('options-general.php', __('Timeline Express Settings','timeline-express-text-domain'), __('Timline Express','timeline-express-text-domain'), 'manage_options', 'timeline-express-settings', array(&$this, 'generateOptionsPage'));
+						add_submenu_page('options-general.php', __('Timeline Express Settings','timeline-express'), __('Timline Express','timeline-express'), 'manage_options', 'timeline-express-settings', array(&$this, 'generateOptionsPage'));
 						// Welcome Page
-						add_submenu_page('options.php', __('Timeline Express Welcome','timeline-express-text-domain'), __('Timeline Express Welcome','timeline-express-text-domain'), 'manage_options', 'timeline-express-welcome', array(&$this, 'generateWelcomePage'));
+						add_submenu_page('options.php', __('Timeline Express Welcome','timeline-express'), __('Timeline Express Welcome','timeline-express'), 'manage_options', 'timeline-express-welcome', array(&$this, 'generateWelcomePage'));
 				}
 
 
@@ -857,6 +860,7 @@ if(!class_exists("timelineExpressBase"))
 					$this->timeline_express_optionVal['date-visibility']	= '1';
 					$this->timeline_express_optionVal['default-announcement-icon'] = "fa-exclamation-triangle";
 					$this->timeline_express_optionVal['announcement-time-frame'] = "0";
+					$this->timeline_express_optionVal['announcement-display-order'] = "ASC";
 					$this->timeline_express_optionVal['no-events-message'] = "No announcements found";
 					$this->timeline_express_optionVal['announcement-bg-color'] = "#EFEFEF";
 					$this->timeline_express_optionVal['announcement-box-shadow-color'] = "#B9C5CD";	
@@ -889,13 +893,18 @@ if(!class_exists("timelineExpressBase"))
 				}
 				
 			/**
-			 * Future update function to add missing options etc.
+			 * Update function to add missing options etc.
+			 * runUpdateTasks_(old version number)
+			 * remember to update version number here
+			 * and add any missing options!
 			 *
-			 * 1.0.0 => 1.0.1
-			private function runUpdateTasks_1_0_1() {
-					
-				}
+			 * 1.0.1 => 1.0.2
 			*/
+			private function runUpdateTasks_1_0_1() {
+					$this->timeline_express_optionVal['announcement-display-order'] = 'ASC';
+					$this->timeline_express_optionVal['version'] = '1.0.2';
+				}
+			
 			
 		} // end class timelineExpressBase
 	} // end if class exists check
