@@ -1,4 +1,4 @@
-Timeline Express v1.0
+Timeline Express v1.0.1
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -96,6 +96,8 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Initial Release to the wordpress respository
 
 ### Upgrade Notice
-
 ###### 1.0
 * Initial Release to the wordpress respository
+
+###### 1.0.1 
+* Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline

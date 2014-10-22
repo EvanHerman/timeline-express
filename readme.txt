@@ -112,6 +112,8 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Initial Release to the wordpress respository
 
 == Upgrade Notice ==
+= 1.0.1 =
+* Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
 
 = 1.0 =
 * Initial Release to the wordpress respository
