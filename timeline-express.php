@@ -4,7 +4,7 @@
 Plugin Name: Timeline Express
 Plugin URI: http://www.evan-herman.com
 Description: Create a beautiful vertical, CSS3 animated and responsive timeline in minutes flat without writing code.
-Version: 1.0.2
+Version: 1.0.3
 Author: Evan Herman
 Author URI: http://www.evan-herman.com
 License: GPL2
