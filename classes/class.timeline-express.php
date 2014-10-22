@@ -942,7 +942,7 @@ if(!class_exists("timelineExpressBase"))
 				}
 				
 			private function runUpdateTasks_1_0_2() {
-					$this->timeline_express_optionVal['announcement-display-order'] = isset( $this->timeline_express_optionVal['announcement-display-order'] ) : $this->timeline_express_optionVal['announcement-display-order'] ? 'ASC'; // check if the user this setting previously set up
+					$this->timeline_express_optionVal['announcement-display-order'] = isset( $this->timeline_express_optionVal['announcement-display-order'] ) ? $this->timeline_express_optionVal['announcement-display-order'] : 'ASC'; // check if the user this setting previously set up
 					$this->timeline_express_optionVal['version'] = '1.0.3';
 				}
 			
