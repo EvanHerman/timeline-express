@@ -1,4 +1,4 @@
-Timeline Express v1.0
+Timeline Express v1.0.2
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
