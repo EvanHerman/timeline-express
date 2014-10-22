@@ -784,7 +784,7 @@ if(!class_exists("timelineExpressBase"))
 																$read_more_button = '<a href="' . get_the_permalink() . '" class="cd-read-more btn btn-primary">Read more</a>';
 															}
 														?>
-														<span class="the-excerpt"><?php echo apply_filters( 'the_content' , wp_trim_words( get_the_content() , $trim_array[$random_trim] , $elipses ) ); ?></span>
+														<span class="the-excerpt"><?php echo apply_filters( 'the_content' , $this->te_wp_trim_words_retain_formatting( get_the_content() , $trim_array[$random_trim] , $elipses ) ); ?></span>
 														<?php
 													} else {
 														$trim_length = $this->timeline_express_optionVal['excerpt-trim-length'];
@@ -796,7 +796,7 @@ if(!class_exists("timelineExpressBase"))
 															$read_more_button = '<a href="' . get_the_permalink() . '" class="cd-read-more btn btn-primary">Read more</a>';
 														}
 													?>
-														<span class="the-excerpt"><?php echo apply_filters( 'the_content' , wp_trim_words( get_the_content() , $trim_length , $elipses ) ); ?></span>
+														<span class="the-excerpt"><?php echo apply_filters( 'the_content' , $this->te_wp_trim_words_retain_formatting( get_the_content() , $trim_length , $elipses ) ); ?></span>
 													<?php
 													}
 													?>
@@ -819,6 +819,42 @@ if(!class_exists("timelineExpressBase"))
 					$shortcode = ob_get_contents();
 					ob_end_clean();
 					return $shortcode;
+				}
+				
+				/* Adapt WordPress core wp_trim_words to retain formatting */
+				function te_wp_trim_words_retain_formatting( $text, $num_words = 55, $more = null ) {
+					if ( null === $more )
+						$more = __( '&hellip;' );
+					$original_text = $text;
+					/* translators: If your word count is based on single characters (East Asian characters),
+					   enter 'characters'. Otherwise, enter 'words'. Do not translate into your own language. */
+					if ( 'characters' == _x( 'words', 'word count: words or characters?' ) && preg_match( '/^utf\-?8$/i', get_option( 'blog_charset' ) ) ) {
+						$text = trim( preg_replace( "/[\n\r\t ]+/", ' ', $text ), ' ' );
+						preg_match_all( '/./u', $text, $words_array );
+						$words_array = array_slice( $words_array[0], 0, $num_words + 1 );
+						$sep = '';
+					} else {
+						$words_array = preg_split( "/[\n\r\t ]+/", $text, $num_words + 1, PREG_SPLIT_NO_EMPTY );
+						$sep = ' ';
+					}
+					if ( count( $words_array ) > $num_words ) {
+						array_pop( $words_array );
+						$text = implode( $sep, $words_array );
+						$text = $text . $more;
+					} else {
+						$text = implode( $sep, $words_array );
+					}
+					/**
+					 * Filter the text content after words have been trimmed.
+					 *
+					 * @since 3.3.0
+					 *
+					 * @param string $text          The trimmed text.
+					 * @param int    $num_words     The number of words to trim the text to. Default 5.
+					 * @param string $more          An optional string to append to the end of the trimmed text, e.g. &hellip;.
+					 * @param string $original_text The text before it was trimmed.
+					 */
+					return apply_filters( 'wp_trim_words', $text, $num_words, $more, $original_text );
 				}
 
 			/***** ADMINISTRATION MENUS
@@ -903,6 +939,11 @@ if(!class_exists("timelineExpressBase"))
 			private function runUpdateTasks_1_0_1() {
 					$this->timeline_express_optionVal['announcement-display-order'] = 'ASC';
 					$this->timeline_express_optionVal['version'] = '1.0.2';
+				}
+				
+			private function runUpdateTasks_1_0_2() {
+					$this->timeline_express_optionVal['announcement-display-order'] = isset( $this->timeline_express_optionVal['announcement-display-order'] ) : $this->timeline_express_optionVal['announcement-display-order'] ? 'ASC'; // check if the user this setting previously set up
+					$this->timeline_express_optionVal['version'] = '1.0.3';
 				}
 			
 			

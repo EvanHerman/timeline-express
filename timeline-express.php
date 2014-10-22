@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 /** Configuration **/
 if(!defined('TIMELINE_EXPRESS_DEBUG'))						define('TIMELINE_EXPRESS_DEBUG',		         false);
-if(!defined('TIMELINE_EXPRESS_VERSION_CURRENT'))				define('TIMELINE_EXPRESS_VERSION_CURRENT',	'1.0.2');
+if(!defined('TIMELINE_EXPRESS_VERSION_CURRENT'))				define('TIMELINE_EXPRESS_VERSION_CURRENT',	'1.0.3');
 if(!defined('TIMELINE_EXPRESS_REQ_PHP'))						define('TIMELINE_EXPRESS_REQ_PHP',			'5.0');
 if(!defined('TIMELINE_EXPRESS_AUTHOR'))						define('TIMELINE_EXPRESS_AUTHOR',				'Evan Herman');
 if(!defined('TIMELINE_EXPRESS_SITE'))							define('TIMELINE_EXPRESS_SITE',				site_url().'/');
