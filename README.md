@@ -118,17 +118,3 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 ###### 1.0
 * Initial Release to the wordpress respository
-
-### Upgrade Notice
-###### 1.0.3
-* Included new function to retain formatting in the announcement excerpt in the timeline (te_wp_trim_words_retain_formatting())
-
-###### 1.0.2
-* Add display order setting to specify ascending or descending order of announcements in the timeline
-* Fixed "cannot access settings page" when clicking on the settings tab when on the settings page already
-
-###### 1.0.1 
-* Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
-
-###### 1.0
-* Initial Release to the wordpress respository
