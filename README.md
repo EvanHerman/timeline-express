@@ -1,4 +1,4 @@
-Timeline Express v1.0.5
+Timeline Express v1.0.6
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -96,6 +96,9 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+###### 1.0.6 
+* Repaired fatal error thrown on activation for sites running older versions of PHP
+
 ###### 1.0.5
 * Change priority argument on register post type function, which caused conflicts with other custom post types on certain sites
 

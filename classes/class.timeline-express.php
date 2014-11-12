@@ -11,8 +11,8 @@ if(!class_exists("timelineExpressBase"))
 			/**
 			 *	Variables
 			 */
-			public	$sessName	    	= 'timeline_express_session';
-			public	$timeline_express_optionVal			= false;
+			public	$sessName = 'timeline_express_session';
+			public	$timeline_express_optionVal = false;
 
 			/**
 			 *	Construct
@@ -97,11 +97,7 @@ if(!class_exists("timelineExpressBase"))
 					$this->timeline_express_runUpdateCheck();
 
 					// Move all "advanced" metaboxes above the default editor
-					add_action('edit_form_after_title', function() {
-						global $post, $wp_meta_boxes;
-						do_meta_boxes(get_current_screen(), 'advanced', $post);
-						unset($wp_meta_boxes[get_post_type($post)]['advanced']);
-					});
+					add_action('edit_form_after_title', array( &$this , 'timeline_express_rearrange_metaboxes' ) , 999 );
 					
 					// initialize the Metabox class
 					add_action( 'init', array( &$this, 'timeline_express_initialize_cmb_meta_boxes' ) , 9998 );
@@ -134,6 +130,13 @@ if(!class_exists("timelineExpressBase"))
 										
 				}
 				
+			// move the metaboxes around on the announcement creation page
+			public function timeline_express_rearrange_metaboxes() {
+				global $post, $wp_meta_boxes;
+				do_meta_boxes(get_current_screen(), 'advanced', $post);
+				unset($wp_meta_boxes[get_post_type($post)]['advanced']);
+			}
+			
 			// enqueue metabox for the announcement cpt
 			public function timeline_express_initialize_cmb_meta_boxes() {
 					if ( !class_exists( 'timeline_express_MetaBoxes' ) ) {
@@ -956,5 +959,4 @@ if(!class_exists("timelineExpressBase"))
 // Author : Evan Herman
 // Contact : http://www.Evan-Herman.com/contact/
 **************************************/
-
 ?>
