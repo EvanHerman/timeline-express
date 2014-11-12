@@ -106,7 +106,7 @@ if(!class_exists("timelineExpressBase"))
 					// initialize the Metabox class
 					add_action( 'init', array( &$this, 'timeline_express_initialize_cmb_meta_boxes' ) , 9998 );
 					// Announcement CPT
-					add_action( 'init', array( &$this , 'timeline_express_generate_announcement_post_type' ), 0 );
+					add_action( 'init', array( &$this , 'timeline_express_generate_announcement_post_type' ), 999 );
 					// change announcement CPT title
 					add_filter( 'enter_title_here', array( &$this , 'change_default_announcement_title' ) );	
 					// enqueue announcement metaboxes

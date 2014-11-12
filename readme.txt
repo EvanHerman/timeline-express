@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -114,6 +114,9 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
+= 1.0.5 = 
+* Change priority argument on register post type function, which caused conflicts with other custom post types on certain sites
+
 = 1.0.4 = 
 * Chinese language translation now included (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 * Removed some un-necessary styles (timeline title/content font-size+font-family declerations)
@@ -132,6 +135,9 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 Chinese language translation now included
 
 == Upgrade Notice ==
+= 1.0.5 = 
+We have changed the priority parameter on the custom post type register function, which was causing conflicts on certain user sites.
+
 = 1.0.4
 We have now included chinese language translation (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>. We have also made a few adjustments to the style declerations of the timeline content and title on the front end.
 

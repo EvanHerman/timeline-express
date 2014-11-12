@@ -1,4 +1,4 @@
-Timeline Express v1.0.4
+Timeline Express v1.0.5
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -96,6 +96,9 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+###### 1.0.5
+* Change priority argument on register post type function, which caused conflicts with other custom post types on certain sites
+
 ###### 1.0.4 
 * Chinese language translation now included (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 * Removed title and content style declerations for font-size and font-family styles
