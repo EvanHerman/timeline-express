@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -28,6 +28,13 @@ Timeline express allows you to create a vertical animated timeline of announceme
 * Specify Ascending vs Descending display order
 * Highly extensible
 * Translatable
+
+**Translated**
+
+Timeline express comes ready for translation. I would love to get things translated to as many languages as possible. At the moment the following translations are available for Timeline Express
+
+* English
+* Chinese (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 
 == Installation ==
 
@@ -106,6 +113,11 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 5. Timeline Express full settings page
 
 == Changelog ==
+
+= 1.0.4 = 
+* Chinese language translation now included (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
+* Removed some un-necessary styles (timeline title/content font-size+font-family declerations)
+
 = 1.0.3 = 
 * Included new function to retain formatting in the announcement excerpt in the timeline (`te_wp_trim_words_retain_formatting()`)
 
@@ -117,9 +129,12 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
 
 = 1.0 =
-* Initial Release to the wordpress respository
+Chinese language translation now included
 
 == Upgrade Notice ==
+= 1.0.4
+We have now included chinese language translation (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>. We have also made a few adjustments to the style declerations of the timeline content and title on the front end.
+
 = 1.0.3 = 
 * Included new function to retain formatting in the announcement excerpt in the timeline (te_wp_trim_words_retain_formatting())
 

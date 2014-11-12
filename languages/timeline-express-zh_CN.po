@@ -1,0 +1,783 @@
+# Copyright (C) 2014 Timeline Express
+# This file is distributed under the same license as the Timeline Express package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Timeline Express 1.0.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/timeline-express\n"
+"POT-Creation-Date: 2014-10-23 21:44:38+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-10-23 17:19-0700\n"
+"Last-Translator: Vahi Chen <vahichen@gmail.com>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.6.10\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
+
+#: classes/class.timeline-express.php:218
+msgid "Announcement Info."
+msgstr "公告信息"
+
+#: classes/class.timeline-express.php:226
+msgid "Announcement Color"
+msgstr "公告颜色"
+
+#: classes/class.timeline-express.php:227
+msgid "select the color for this announcement."
+msgstr "为此公告选择颜色。"
+
+#: classes/class.timeline-express.php:235
+msgid "Font Awesome Unicode"
+msgstr "Font Awesome 代码"
+
+#: classes/class.timeline-express.php:236
+msgid ""
+"enter the font-awesome class name in the box above. This is used for the "
+"icon associated with the announcement. <a href=\"http://fortawesome.github."
+"io/Font-Awesome/cheatsheet/\" target=\"_blank\">cheat sheet</a> Example : "
+"\"fa-times-circle\" "
+msgstr ""
+"输入font-awesome的类名，用以和日志相关联的图标的显示。<a href=\"http://"
+"fortawesome.github.io/Font-Awesome/cheatsheet/\" target=\"_blank\">速查表</"
+"a> 例如：\"fa-times-circle\""
+
+#: classes/class.timeline-express.php:244
+msgid "Announcement Date"
+msgstr "公告日期"
+
+#: classes/class.timeline-express.php:245
+msgid ""
+"enter the date of the announcement. the announcements will appear in "
+"chronological order according to this date. "
+msgstr "输入公告的日期。公告会以此日期作为时间排序依据。"
+
+#: classes/class.timeline-express.php:253
+msgid "Announcement Image"
+msgstr "公告图片"
+
+#: classes/class.timeline-express.php:254
+msgid ""
+"select a banner image for this announcement (optional). (recommended 650px "
+"wide or larger)  "
+msgstr "为此公告选择一条公告（可选）。（推荐宽度650px或更大）"
+
+#: classes/class.timeline-express.php:265
+msgid "About"
+msgstr "关于"
+
+#: classes/class.timeline-express.php:292
+msgid "Enter Announcement Title"
+msgstr "输入公告标题"
+
+#: classes/class.timeline-express.php:300
+msgctxt "column name"
+msgid "Announcement Name"
+msgstr "公告名称"
+
+#: classes/class.timeline-express.php:301
+msgctxt "column name"
+msgid "Color"
+msgstr "颜色"
+
+#: classes/class.timeline-express.php:302
+msgctxt "column name"
+msgid "Icon"
+msgstr "图标"
+
+#: classes/class.timeline-express.php:303
+msgctxt "column name"
+msgid "Announcement Date"
+msgstr "公告日期"
+
+#: classes/class.timeline-express.php:304
+msgctxt "column name"
+msgid "Image"
+msgstr "图像"
+
+#: classes/class.timeline-express.php:305
+msgctxt "column name"
+msgid "Announcment Past?"
+msgstr "公告过期？"
+
+#: classes/class.timeline-express.php:510
+#: classes/class.timeline-express.php:517
+msgid "Back"
+msgstr "返回"
+
+#: classes/class.timeline-express.php:775
+#: classes/class.timeline-express.php:782
+#: classes/class.timeline-express.php:795
+msgid "..."
+msgstr "..."
+
+#: classes/class.timeline-express.php:827
+msgid "&hellip;"
+msgstr "&hellip;"
+
+#. translators: If your word count is based on single characters (East Asian
+#. characters),
+#. enter 'characters'. Otherwise, enter 'words'. Do not translate into
+#. your own language.
+#: classes/class.timeline-express.php:831
+msgctxt "word count: words or characters?"
+msgid "words"
+msgstr "字数"
+
+#: classes/class.timeline-express.php:865 pages/options.php:179
+msgid "Timeline Express Settings"
+msgstr "时间线速递 设置"
+
+#: classes/class.timeline-express.php:865
+msgid "Timline Express"
+msgstr "时间线速度"
+
+#: classes/class.timeline-express.php:867
+msgid "Timeline Express Welcome"
+msgstr "欢迎来到 时间线速递"
+
+#: lib/metabox/about-template.php:38
+msgid "Help!"
+msgstr "帮助！"
+
+#: lib/metabox/about-template.php:39
+msgid "Review"
+msgstr "评论"
+
+#: lib/metabox/about-template.php:40
+msgid "Donate"
+msgstr "捐赠"
+
+#: lib/metabox/about-template.php:50
+msgid "this plugin was made with "
+msgstr "此插件的设计源于"
+
+#: lib/metabox/about-template.php:50 pages/welcome.php:98
+msgid "by"
+msgstr "作者"
+
+#: lib/metabox/example-functions.php:25
+msgid "Test Metabox"
+msgstr "测试Metabox"
+
+#: lib/metabox/example-functions.php:33 lib/metabox/example-functions.php:254
+msgid "Test Text"
+msgstr "测试文本"
+
+#: lib/metabox/example-functions.php:34 lib/metabox/example-functions.php:42
+#: lib/metabox/example-functions.php:49 lib/metabox/example-functions.php:56
+#: lib/metabox/example-functions.php:64 lib/metabox/example-functions.php:71
+#: lib/metabox/example-functions.php:83 lib/metabox/example-functions.php:89
+#: lib/metabox/example-functions.php:96 lib/metabox/example-functions.php:102
+#: lib/metabox/example-functions.php:108 lib/metabox/example-functions.php:116
+#: lib/metabox/example-functions.php:123 lib/metabox/example-functions.php:129
+#: lib/metabox/example-functions.php:135 lib/metabox/example-functions.php:147
+#: lib/metabox/example-functions.php:158 lib/metabox/example-functions.php:169
+#: lib/metabox/example-functions.php:180 lib/metabox/example-functions.php:187
+#: lib/metabox/example-functions.php:194 lib/metabox/example-functions.php:201
+#: lib/metabox/example-functions.php:207 lib/metabox/example-functions.php:218
+#: lib/metabox/example-functions.php:255 lib/metabox/example-functions.php:274
+#: lib/metabox/example-functions.php:281 lib/metabox/example-functions.php:288
+#: lib/metabox/example-functions.php:294 lib/metabox/example-functions.php:300
+#: lib/metabox/example-functions.php:306 lib/metabox/example-functions.php:312
+msgid "field description (optional)"
+msgstr "域描述（可选）"
+
+#: lib/metabox/example-functions.php:41
+msgid "Test Text Small"
+msgstr "测试文本 小"
+
+#: lib/metabox/example-functions.php:48
+msgid "Test Text Medium"
+msgstr "测试文本 中"
+
+#: lib/metabox/example-functions.php:55
+msgid "Website URL"
+msgstr "网站 URL"
+
+#: lib/metabox/example-functions.php:63
+msgid "Test Text Email"
+msgstr "测试文本邮件"
+
+#: lib/metabox/example-functions.php:70
+msgid "Test Time"
+msgstr "测试时间"
+
+#: lib/metabox/example-functions.php:76 lib/metabox/example-functions.php:77
+msgid "Time zone"
+msgstr "时区"
+
+#: lib/metabox/example-functions.php:82
+msgid "Test Date Picker"
+msgstr "测试日期选择器"
+
+#: lib/metabox/example-functions.php:88
+msgid "Test Date Picker (UNIX timestamp)"
+msgstr "测试日期选择器（UNIX时间戳）"
+
+#: lib/metabox/example-functions.php:95
+msgid "Test Date/Time Picker Combo (UNIX timestamp)"
+msgstr "测试日期/时间组合选择器（UNIX时间戳）"
+
+#: lib/metabox/example-functions.php:101
+msgid "Test Date/Time Picker/Time zone Combo (serialized DateTime object)"
+msgstr "测试日期/时间/时区组合（DateTime对象的序列化）"
+
+#: lib/metabox/example-functions.php:107
+msgid "Test Money"
+msgstr "测试钱"
+
+#: lib/metabox/example-functions.php:115
+msgid "Test Color Picker"
+msgstr "测试颜色拾取器"
+
+#: lib/metabox/example-functions.php:122
+msgid "Test Text Area"
+msgstr "测试文本域"
+
+#: lib/metabox/example-functions.php:128
+msgid "Test Text Area Small"
+msgstr "测试文本域 小"
+
+#: lib/metabox/example-functions.php:134
+msgid "Test Text Area for Code"
+msgstr "测试代码文本域"
+
+#: lib/metabox/example-functions.php:140
+msgid "Test Title Weeeee"
+msgstr "测试标题 Weeeee"
+
+#: lib/metabox/example-functions.php:141
+msgid "This is a title description"
+msgstr "这是标题描述"
+
+#: lib/metabox/example-functions.php:146
+msgid "Test Select"
+msgstr "测试选择"
+
+#: lib/metabox/example-functions.php:151 lib/metabox/example-functions.php:162
+#: lib/metabox/example-functions.php:173
+msgid "Option One"
+msgstr "开关一"
+
+#: lib/metabox/example-functions.php:152 lib/metabox/example-functions.php:163
+#: lib/metabox/example-functions.php:174
+msgid "Option Two"
+msgstr "开关二"
+
+#: lib/metabox/example-functions.php:153 lib/metabox/example-functions.php:164
+#: lib/metabox/example-functions.php:175
+msgid "Option Three"
+msgstr "开关三"
+
+#: lib/metabox/example-functions.php:157
+msgid "Test Radio inline"
+msgstr "测试内嵌单选按钮"
+
+#: lib/metabox/example-functions.php:168
+msgid "Test Radio"
+msgstr "测试单选按钮"
+
+#: lib/metabox/example-functions.php:179
+msgid "Test Taxonomy Radio"
+msgstr "测试分组单选"
+
+#: lib/metabox/example-functions.php:186
+msgid "Test Taxonomy Select"
+msgstr "测试分组选择"
+
+#: lib/metabox/example-functions.php:193
+msgid "Test Taxonomy Multi Checkbox"
+msgstr "测试分组勾选框"
+
+#: lib/metabox/example-functions.php:200
+msgid "Test Checkbox"
+msgstr "测试多选框"
+
+#: lib/metabox/example-functions.php:206
+msgid "Test Multi Checkbox"
+msgstr "测试多个多选框"
+
+#: lib/metabox/example-functions.php:211
+msgid "Check One"
+msgstr "多选框一"
+
+#: lib/metabox/example-functions.php:212
+msgid "Check Two"
+msgstr "多选框二"
+
+#: lib/metabox/example-functions.php:213
+msgid "Check Three"
+msgstr "多选框三"
+
+#: lib/metabox/example-functions.php:217
+msgid "Test wysiwyg"
+msgstr "测试wysiwyg"
+
+#: lib/metabox/example-functions.php:224
+msgid "Test Image"
+msgstr "测试图像"
+
+#: lib/metabox/example-functions.php:225
+msgid "Upload an image or enter a URL."
+msgstr "上传一张图像或者输入图像URL。"
+
+#: lib/metabox/example-functions.php:230
+msgid "Multiple Files"
+msgstr "多个文件"
+
+#: lib/metabox/example-functions.php:231
+msgid "Upload or add multiple images/attachments."
+msgstr "上传或添加多个图像/附件。"
+
+#: lib/metabox/example-functions.php:236
+msgid "oEmbed"
+msgstr "oEmbed"
+
+#: lib/metabox/example-functions.php:237
+msgid ""
+"Enter a youtube, twitter, or instagram URL. Supports services listed at <a "
+"href=\"http://codex.wordpress.org/Embeds\">http://codex.wordpress.org/"
+"Embeds</a>."
+msgstr ""
+"输入Youtube、Twitter、Instagram的地址。支持的服务列表清单在 <a href=\"http://"
+"codex.wordpress.org/Embeds\">http://codex.wordpress.org/Embeds</a>。"
+
+#: lib/metabox/example-functions.php:246
+msgid "About Page Metabox"
+msgstr "关于页面Metabox"
+
+#: lib/metabox/example-functions.php:267
+msgid "User Profile Metabox"
+msgstr "用户信息Metabox"
+
+#: lib/metabox/example-functions.php:273
+msgid "Extra Info"
+msgstr "额外信息"
+
+#: lib/metabox/example-functions.php:280
+msgid "Avatar"
+msgstr "头像"
+
+#: lib/metabox/example-functions.php:287
+msgid "Facebook URL"
+msgstr "Facebook地址"
+
+#: lib/metabox/example-functions.php:293
+msgid "Twitter URL"
+msgstr "Twitter地址"
+
+#: lib/metabox/example-functions.php:299
+msgid "Google+ URL"
+msgstr "Google+地址"
+
+#: lib/metabox/example-functions.php:305
+msgid "Linkedin URL"
+msgstr "Linkedin地址"
+
+#: lib/metabox/example-functions.php:311
+msgid "User Field"
+msgstr "用户域"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_ajax.php:47
+msgid "Please Try Again"
+msgstr "请重试"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_ajax.php:118
+msgid "Remove Embed"
+msgstr "移除内前对象"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_ajax.php:121
+msgid "No oEmbed Results Found for %s. View more info at"
+msgstr "没有找到 %s 的oEmbed结果。详见"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:139
+msgid "Add Row"
+msgstr "添加行"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:167
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:463
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:506
+msgid "Remove"
+msgstr "移除"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:441
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:479
+msgid "Add or Upload File"
+msgstr "添加或上传文件"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:452
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:498
+msgid "Remove Image"
+msgstr "移除图像"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:463
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:506
+msgid "File:"
+msgstr "文件："
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:463
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:506
+msgid "Download"
+msgstr "下载"
+
+#: lib/metabox/init.php:207
+msgid "Clear"
+msgstr "清除"
+
+#: lib/metabox/init.php:208
+msgid "Default"
+msgstr "默认"
+
+#: lib/metabox/init.php:209
+msgid "Select Color"
+msgstr "选择颜色"
+
+#: lib/metabox/init.php:210
+msgid "Current Color"
+msgstr "当前颜色"
+
+#: lib/metabox/init.php:936
+msgid "Save"
+msgstr "保存"
+
+#: pages/options.php:27
+msgid "The options were saved successfully!"
+msgstr "已成功保存设置！"
+
+#: pages/options.php:30
+msgid "The options could not be saved (or you did not change them)."
+msgstr "无法保存设置（或许没有进行任何改动）。"
+
+#: pages/options.php:45
+msgid ""
+"Are you sure you want to revert 'Timeline Express' settings? This cannot be "
+"undone."
+msgstr "确定要重置‘时间线速度’设置？此操作不可恢复。"
+
+#: pages/options.php:58
+msgid "Timeline Express settings have successfully been reset"
+msgstr "时间线速递设置已被成功重置。"
+
+#: pages/options.php:144
+msgid "Please Consider"
+msgstr "请考虑"
+
+#: pages/options.php:145
+msgid "Making a Donation"
+msgstr "捐赠"
+
+#: pages/options.php:153
+msgid "Need Help?"
+msgstr "需要帮助？"
+
+#: pages/options.php:154
+msgid "Get Support Now!"
+msgstr "现在获取帮助！"
+
+#: pages/options.php:162
+msgid "Loving the plugin?"
+msgstr "喜欢这个插件？"
+
+#: pages/options.php:163
+msgid "Leave us a nice review"
+msgstr "给我们一个中肯的评论"
+
+#. Plugin Name of the plugin/theme
+#: pages/options.php:175
+msgid "Timeline Express"
+msgstr "时间线速递"
+
+#: pages/options.php:193
+msgid "Timeline Title"
+msgstr "时间线标题"
+
+#: pages/options.php:197
+msgid "Left"
+msgstr "居左"
+
+#: pages/options.php:198
+msgid "Center"
+msgstr "居中"
+
+#: pages/options.php:199
+msgid "Right"
+msgstr "居右"
+
+#: pages/options.php:202
+msgid "H1"
+msgstr "一级标题"
+
+#: pages/options.php:203
+msgid "H2"
+msgstr "二级标题"
+
+#: pages/options.php:204
+msgid "H3"
+msgstr "三级标题"
+
+#: pages/options.php:205
+msgid "H4"
+msgstr "四级标题"
+
+#: pages/options.php:213
+msgid ""
+"Enter the title for the time line // Select the alignment // Select the font "
+"size"
+msgstr "输入时间线的标题 // 选择对齐方式 // 选择字体大小"
+
+#: pages/options.php:218
+msgid "Time Frame"
+msgstr "时间期限"
+
+#: pages/options.php:221
+msgid "Future Events"
+msgstr "未来事件"
+
+#: pages/options.php:222
+msgid "All Events (past+future)"
+msgstr "所有事件（过去+未来）"
+
+#: pages/options.php:223
+msgid "Past Events"
+msgstr "过去事件"
+
+#: pages/options.php:231
+msgid "Select the time frame to query events from."
+msgstr "选择事件的查询时间期限"
+
+#: pages/options.php:236
+msgid "Display Order"
+msgstr "显示顺序"
+
+#: pages/options.php:239
+msgid "Ascending"
+msgstr "升序"
+
+#: pages/options.php:240
+msgid "Descending"
+msgstr "降序"
+
+#: pages/options.php:248
+msgid ""
+"Select the order you would like the announcements to display. Ascending : "
+"Chronological order by announcement date. Descending : Reverse chronological "
+"order by announcement date."
+msgstr ""
+"选择公告显示的顺序。升序：按公告的年代顺序排序。降序：按公告的年代顺序的倒叙"
+"排序。"
+
+#: pages/options.php:253
+msgid "Announcement Exceprt Length"
+msgstr "公告摘要长度"
+
+#: pages/options.php:262
+msgid ""
+"set the length of the excerpt for each announcement. ( min=25;max=200 eg: 50 "
+"= 50 characters )"
+msgstr "设置每条公告的摘要长度。（最小=25；最大=200 例：50 即50个字符）"
+
+#: pages/options.php:267
+msgid "Date Visibility"
+msgstr "日期可见性"
+
+#: pages/options.php:270 pages/options.php:287
+msgid "Visible"
+msgstr "可见"
+
+#: pages/options.php:271 pages/options.php:288
+msgid "Hidden"
+msgstr "不可见"
+
+#: pages/options.php:279
+msgid "toggle the visibility of the date next to the icon."
+msgstr "切换仅次于图标下面的日期的可见性。"
+
+#: pages/options.php:284
+msgid "Read More Visibility"
+msgstr "“阅读更多”可见性"
+
+#: pages/options.php:296
+msgid ""
+"toggle the visibility of the read more button. hide to prevent users from "
+"viewing the full announcement."
+msgstr "切换“阅读更多”按钮的可见性。隐藏以防止用户查看完整公告。"
+
+#: pages/options.php:301
+msgid "Default Icon"
+msgstr "默认图标"
+
+#: pages/options.php:310
+msgid ""
+"Enter the font-awesome class name that you would like to use a default icon "
+"for new events. ie: fa-clock-alt"
+msgstr "输入新建事件默认使用的font-awesome图标的名称。例如：fa-clock-alt"
+
+#: pages/options.php:315
+msgid "Default Announcement Color"
+msgstr "默认公告颜色"
+
+#: pages/options.php:324
+msgid ""
+"Select the default color for all new events. Note : this setting can be "
+"overwritten"
+msgstr "选择新建事件的默认颜色。注意：此设置可以被覆盖。"
+
+#: pages/options.php:329
+msgid "Announcement Container Background"
+msgstr "公告容器背景"
+
+#: pages/options.php:338
+msgid "Select the background color of the announcement container."
+msgstr "选择公告容器的背景颜色。"
+
+#: pages/options.php:343
+msgid "Announcement Shadow Color"
+msgstr "公告阴影颜色"
+
+#: pages/options.php:352
+msgid "Select the shadow color for the announcement container."
+msgstr "选择公告容器的阴影颜色。"
+
+#: pages/options.php:357
+msgid "Background Line Color"
+msgstr "背景线条颜色"
+
+#: pages/options.php:366
+msgid "Select the color of the line in the background of the timeline."
+msgstr "选择时间线背景的线条颜色。"
+
+#: pages/options.php:371
+msgid "No Events Message"
+msgstr "无事件消息"
+
+#: pages/options.php:380
+msgid "This is the message that will display when no announcements are found."
+msgstr "当没有公告的时候会显示此消息。"
+
+#: pages/options.php:385
+msgid "Delete Announcements On Uninstall?"
+msgstr "卸载时删除公告？"
+
+#: pages/options.php:394
+msgid ""
+"select this to delete all announcement posts from the data base on plugin "
+"uninstallation. this can not be undone, once they are deleted they are gone "
+"forever. If you want to keep them, export your announcements before "
+"uninstalling."
+msgstr ""
+"勾选此选项，将在卸载此插件的时候同时删除数据库中所有的公告记录。此操作不能被"
+"撤销，一旦被删除，将不可恢复。如果想要保留它们的话，在卸载前需导出你的公告。"
+
+#: pages/options.php:399
+msgid "Save Settings"
+msgstr "保存设置"
+
+#: pages/options.php:399
+msgid "Reset Plugin Settings"
+msgstr "重置插件设置"
+
+#: pages/welcome.php:42
+msgid "Welcome to Timeline Express"
+msgstr "欢迎来到 时间线速递"
+
+#: pages/welcome.php:45
+msgid ""
+"Thanks for installing Timeline Express. We know you're going to find this "
+"free plugin super helpful and easy to use! To get started, hover over "
+"'Timeline Express', in the admin menu, and click"
+msgstr ""
+"感谢安装时间线速递。我们知道你一定会发现它很简单实用！那就从单击管理菜单上"
+"的“时间线速度”开始吧。"
+
+#: pages/welcome.php:45
+msgid "'New Announcement'"
+msgstr "‘新建公告’"
+
+#: pages/welcome.php:45
+msgid " to start adding announcements your timeline!"
+msgstr "为你的时间线添加公告"
+
+#: pages/welcome.php:47
+msgid "or head over to the"
+msgstr "或者前往"
+
+#: pages/welcome.php:47
+msgid "Settings Page"
+msgstr "设置页面"
+
+#: pages/welcome.php:47
+msgid "to customize and style your form"
+msgstr "进行页面的自定义和设计"
+
+#: pages/welcome.php:56
+msgid "Create a Beautiful Timeline In Minutes"
+msgstr "快速创建一个美丽的时间线"
+
+#: pages/welcome.php:57
+msgid ""
+"Create a vertical and responsive, CSS3 animated timeline fast...without ever "
+"writing a single line of code."
+msgstr ""
+"快速创建一个垂直的、自适应的、基于CSS3的时间线，而不需要写任何一行代码。"
+
+#: pages/welcome.php:60
+msgid "Font Awesome Included"
+msgstr "内嵌Font Awesome"
+
+#: pages/welcome.php:61
+msgid ""
+"Hundreds of icons to choose from to make your announcements really stand out!"
+msgstr "上百个供选择的图标让你的公告别具一格。"
+
+#: pages/welcome.php:70
+msgid "Intuitive Custom Post Creation Screen"
+msgstr "直观灵活的创建界面"
+
+#: pages/welcome.php:74
+msgid "Manange Announcements Easily"
+msgstr "方便管理公告"
+
+#: pages/welcome.php:78
+msgid "Stylize The Timeline"
+msgstr "风格化时间线"
+
+#: pages/welcome.php:86
+msgid "Timeline Express // Sample Timeline"
+msgstr "时间线速度 // "
+
+#: pages/welcome.php:98
+msgid "this free plugin was made with"
+msgstr "此插件的设计源于"
+
+#: pages/welcome.php:98
+msgid "Please consider making a"
+msgstr "请考虑一下"
+
+#: pages/welcome.php:98
+msgid "donation"
+msgstr "捐赠"
+
+#: pages/welcome.php:98
+msgid "if you need support in any way."
+msgstr "如果你需要任何形式的帮助。"
+
+#: pages/welcome.php:102
+msgid "Keep Up With Me Elsewhere "
+msgstr "和我保持联系"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.evan-herman.com"
+msgstr "http://www.evan-herman.com"
+
+#. Description of the plugin/theme
+msgid ""
+"Create a beautiful vertical, CSS3 animated and responsive timeline in "
+"minutes flat without writing code."
+msgstr ""
+"快速创建一个垂直的、自适应的、基于CSS3的时间线，而不需要写任何一行代码。"
+
+#. Author of the plugin/theme
+msgid "Evan Herman"
+msgstr "Evan Herman"

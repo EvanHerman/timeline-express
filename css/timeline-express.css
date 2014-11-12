@@ -174,7 +174,6 @@
     border-radius: .25em;
     padding: 1em;
     box-shadow: 0 3px 0 #B9C5CD;
-    font-family: "Open Sans", sans-serif;
 }
 .cd-timeline-content:after {
     content: "";
@@ -188,12 +187,6 @@
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto;
-}
-.cd-timeline-title-container h2 {
-    color: #303e49;
-}
-.cd-timeline-title {
-    font-size: 25px!important;
 }
 .cd-timeline-content .cd-date, .cd-timeline-content .cd-read-more {
     display: inline-block;
@@ -415,7 +408,6 @@
 }
 .more-to-come {
     margin: 10em 0 0;
-    font-family: "Open Sans";
     padding: 1em 0;
     font-weight: 200;
     color: rgba(100, 100, 100, .46);

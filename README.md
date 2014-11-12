@@ -1,4 +1,4 @@
-Timeline Express v1.0.3
+Timeline Express v1.0.4
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -19,6 +19,12 @@ Timeline express allows you to create a vertical animated and responsive timelin
 * Highly extensible
 * Translatable
 
+**Translated**
+
+Timeline express comes ready for translation. I would love to get things translated to as many languages as possible. At the moment the following translations are available for Timeline Express
+
+* English
+* Chinese (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 
 ### Installation
 
@@ -90,6 +96,10 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+###### 1.0.4 
+* Chinese language translation now included (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
+* Removed title and content style declerations for font-size and font-family styles
+
 ###### 1.0.3
 * Included new function to retain formatting in the announcement excerpt in the timeline (te_wp_trim_words_retain_formatting())
 
