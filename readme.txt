@@ -153,7 +153,7 @@ We have fixed a fatal error that was being thrown on activation for site running
 We have changed the priority parameter on the custom post type register function, which was causing conflicts on certain user sites.
 
 = 1.0.4
-We have now included Chinese language translation (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>. We have also made a few adjustments to the style decelerations of the timeline content and title on the front end.
+We have now included Chinese language translation (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>. We have also made a few adjustments to the style declarations of the timeline content and title on the front end.
 
 = 1.0.3 = 
 * Included new function to retain formatting in the announcement excerpt in the timeline (te_wp_trim_words_retain_formatting())
