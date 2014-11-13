@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -35,6 +35,9 @@ Timeline express comes ready for translation. I would love to get things transla
 
 * English
 * Chinese (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
+* Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
+
+<em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please get in touch about how you can help translate things so users around the world can benefit from this plugin.</em>
 
 == Installation ==
 
@@ -74,7 +77,6 @@ The text-domain for all gettext functions is `timeline-express`.
 If you enjoy this plugin and want to contribute, I'm always looking for people to help translate the plugin into any of the following languages, credit will be given where credit is due :
 
 * Arabic
-* Chinese
 * English
 * French
 * German
@@ -86,7 +88,6 @@ If you enjoy this plugin and want to contribute, I'm always looking for people t
 * Japanese
 * Korean
 * Persian
-* Portuguese (Brazilian)
 * Portuguese (European)
 * Romanian
 * Russian
@@ -114,8 +115,11 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
+= 1.0.7 - November 13th, 2014 =
+* Enhancement: Portuguese language translation now included (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
+
 = 1.0.6 = 
-* Repaired fatal error thrown on activation for sites running older versions of PHP
+* Fixed fatal error thrown on activation for sites running older versions of PHP
 
 = 1.0.5 = 
 * Change priority argument on register post type function, which caused conflicts with other custom post types on certain sites
@@ -135,9 +139,13 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
 
 = 1.0 =
-Chinese language translation now included
+* Initial Release to the WordPress repository
 
 == Upgrade Notice ==
+
+= 1.0.7 - November 13th, 2014 = 
+We have now included Portuguese language translation (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>.
+
 = 1.0.6 = 
 We have fixed a fatal error that was being thrown on activation for site running older versions of PHP.
 
@@ -145,7 +153,7 @@ We have fixed a fatal error that was being thrown on activation for site running
 We have changed the priority parameter on the custom post type register function, which was causing conflicts on certain user sites.
 
 = 1.0.4
-We have now included chinese language translation (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>. We have also made a few adjustments to the style declerations of the timeline content and title on the front end.
+We have now included Chinese language translation (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>. We have also made a few adjustments to the style decelerations of the timeline content and title on the front end.
 
 = 1.0.3 = 
 * Included new function to retain formatting in the announcement excerpt in the timeline (te_wp_trim_words_retain_formatting())
@@ -158,4 +166,4 @@ We have now included chinese language translation (zh_CN) - thanks goes to <a hr
 * Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
 
 = 1.0 =
-* Initial Release to the wordpress respository
+* Initial Release to the WordPress repository

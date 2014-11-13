@@ -1,4 +1,4 @@
-Timeline Express v1.0.6
+Timeline Express v1.0.7
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -25,6 +25,7 @@ Timeline express comes ready for translation. I would love to get things transla
 
 * English
 * Chinese (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
+* Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 
 ### Installation
 
@@ -64,7 +65,6 @@ The text-domain for all gettext functions is `timeline-express`.
 If you enjoy this plugin and want to contribute, I'm always looking for people to help translate the plugin into any of the following languages, credit will be given where credit is due :
 
 * Arabic
-* Chinese
 * English
 * French
 * German
@@ -76,7 +76,6 @@ If you enjoy this plugin and want to contribute, I'm always looking for people t
 * Japanese
 * Korean
 * Persian
-* Portuguese (Brazilian)
 * Portuguese (European)
 * Romanian
 * Russian
@@ -96,6 +95,9 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+###### 1.0.7 - November 13th, 2014
+* Enhancement: Portuguese language translation now included (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
+
 ###### 1.0.6 
 * Repaired fatal error thrown on activation for sites running older versions of PHP
 
