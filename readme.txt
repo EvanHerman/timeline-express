@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.0
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -15,6 +15,7 @@ Timeline express allows you to create a vertical animated timeline of announceme
 
 **Features**
 
+* Load a custom template for single announcements (new)
 * Hundreds of Font awesome icons included. Specify a different icon for each announcement
 * CSS3 animations on scroll
 * Set the color of the announcement
@@ -38,6 +39,28 @@ Timeline express comes ready for translation. I would love to get things transla
 * Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please get in touch about how you can help translate things so users around the world can benefit from this plugin.</em>
+
+**Custom Filter - Load Your Own Single Announcement Template File (New v1.0.8)**
+By default all single announcements will try and load a single.php template file. If that can't be found, we've done our best to implement a template for you. If your unhappy with the template file we've provided you have two options. Your first option is to copy over the single-announcement-template directory contained within the plugin into your active themes root. This will trigger the plugin to load that file instead. You can then customize this file to your hearts content without fear of losing any of your changes in the next update.
+
+Your next option is to use our new filter for loading your own custom template file. If for whatever reason you've designed or developed your own single.php file which you would rather use, or you just want to use your themes page.php template instead, you can use the provided filter to change the loaded template. Here is an example ( you want to drop this code into your active theme's functions.php file ) :
+
+Example:
+<code>
+// By default Timeline Express uses single.php for announcements
+// you can load page.php instead
+// just change page.php to whatever your template file is named
+// keep in mind, this is looking in your active themes root for the template
+function custom_timeline_express_template_file( $template_file ) {
+	$template_file = 'page.php';
+	return $template_file;
+}
+add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_template_file' , 10 );
+</code>
+
+<br />
+<br />
+<strong>While the plugins I develop are free, maintaining and supporting them is hard work. If you find this plugin useful, or it helps in anyway, please consider making a <a href="http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work">donation</a> for its continued development.</strong>
 
 == Installation ==
 
@@ -115,6 +138,14 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
+= 1.0.8 - November 17th, 2014 =
+* Updated: Single announcement template file, which was causing issues for some users on specific themes
+* Feature: Added a new filter to allow users to load custom template files
+* Feature: Added auto update feature for Timeline Express
+* Fixed: Issue where links in the excerpt and 'read more' links couldn't be clicked due to overlapping masonry elements
+* Fixed: Missing image on welcome page
+* Fixed: Minor issues on welcome page including some links
+
 = 1.0.7 - November 13th, 2014 =
 * Enhancement: Portuguese language translation now included (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 
@@ -142,6 +173,8 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Initial Release to the WordPress repository
 
 == Upgrade Notice ==
+= 1.0.8 - November 17th, 2014 =
+Added a new filter to allow users to load custom template files, updated the single announcement template file, and fixed a few styling issues
 
 = 1.0.7 - November 13th, 2014 = 
 We have now included Portuguese language translation (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>.

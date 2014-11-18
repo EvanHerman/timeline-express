@@ -237,10 +237,14 @@
     float: left;
     width: 100%;
     margin: 1em 0;
+	position: relative;
+	z-index: 999;
 }
 .cd-timeline-content .cd-date, .cd-timeline-content .cd-read-more {
     font-size: 14px;
     font-size: .875rem;
+	position: relative;
+	z-index: 999;
 }
 }@media only screen and (min-width:822px) {
     .cd-timeline-content {

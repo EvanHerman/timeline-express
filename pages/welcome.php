@@ -101,7 +101,7 @@ jQuery(document).ready(function() {
 		<div class="social-media-buttons" style="height:40px;">
 			<strong style="display:inline-block;float:left;margin-top:10px;font-size:16px;"><?php _e( 'Keep Up With Me Elsewhere ' , 'timeline-express' ); ?>:</strong>
 			<span style="display:inline-block;width:115px; margin-left:15px;margin-top:5px;">
-				<a href="http://facebook.com/yikesinc" title="WordPress" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/wordpress-icon.png" style="border: 0px none;" alt="Evan Herman - WordPress Profile" height="24" width="24"></a> 
+				<a href="https://profiles.wordpress.org/eherman24#content-plugins" title="WordPress" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/wordpress-icon.png" style="border: 0px none;" alt="Evan Herman - WordPress Profile" height="24" width="24"></a> 
 				<a href="http://twitter.com/evanmherman" title="Twitter" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/twitter.png" style="border: 0px none;" alt="Evan Herman - Twitter Profile" height="24" width="24"></a> 
 				<a href="https://www.linkedin.com/profile/view?id=46246110" title="Linkedin" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/linkedin.png" alt="Evan Herman - LinkedIn Profile" border="0" height="24" width="24"></a>
 				<a href="http://www.evan-herman.com/feed/" title="RSS Feed" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/rss_icon.png" alt="Evan Herman - RSS Feed" border="0" height="24" width="24"></a>

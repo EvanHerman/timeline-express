@@ -4,7 +4,7 @@
 Plugin Name: Timeline Express
 Plugin URI: http://www.evan-herman.com
 Description: Create a beautiful vertical, CSS3 animated and responsive timeline in minutes flat without writing code.
-Version: 1.0.7
+Version: 1.0.8
 Author: Evan Herman
 Author URI: http://www.evan-herman.com
 License: GPL2
@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 /** Configuration **/
 if(!defined('TIMELINE_EXPRESS_DEBUG'))						define('TIMELINE_EXPRESS_DEBUG',		         false);
-if(!defined('TIMELINE_EXPRESS_VERSION_CURRENT'))				define('TIMELINE_EXPRESS_VERSION_CURRENT',	'1.0.7');
+if(!defined('TIMELINE_EXPRESS_VERSION_CURRENT'))				define('TIMELINE_EXPRESS_VERSION_CURRENT',	'1.0.8');
 if(!defined('TIMELINE_EXPRESS_REQ_PHP'))						define('TIMELINE_EXPRESS_REQ_PHP',			'5.0');
 if(!defined('TIMELINE_EXPRESS_AUTHOR'))						define('TIMELINE_EXPRESS_AUTHOR',				'Evan Herman');
 if(!defined('TIMELINE_EXPRESS_SITE'))							define('TIMELINE_EXPRESS_SITE',				site_url().'/');

@@ -127,9 +127,22 @@ if(!class_exists("timelineExpressBase"))
 					add_filter( 'views_edit-te_announcements' , array( &$this , 'append_donate_button_on_edit_page' ) );
 					// add a tinymce button that generates our shortcode for the user
 					add_action( 'admin_head', array( &$this , 'timeline_express_add_tinymce' ) );
-										
+					// filter to keep our plugin auto updated :) , we want all users on the most recent version (the best we can) new @v1.0.8					
+					add_filter( 'auto_update_plugin', array( &$this , 'include_timeline_express_in_auto_updates' ), 10, 2 );					
 				}
-				
+			
+			/* 
+			*	include_timeline_express_in_auto_updates();
+			*
+			*	Keep this plugin automatically updated!
+			*	new since @v1.0.8
+			*/
+			function include_timeline_express_in_auto_updates( $update, $item ) {
+				return ( in_array( $item->slug, array(
+					'timeline-express',
+				) ) );
+			}
+			
 			// move the metaboxes around on the announcement creation page
 			public function timeline_express_rearrange_metaboxes() {
 				global $post, $wp_meta_boxes;

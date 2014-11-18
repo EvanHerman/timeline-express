@@ -1,10 +1,11 @@
-Timeline Express v1.0.7
+Timeline Express v1.0.8 
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
 
 **Features**
 
+* Load a custom template for single announcements (new)
 * Hundreds of Font awesome icons included. Specify a different icon for each announcement
 * CSS3 animations on scroll
 * Set the color of the announcement
@@ -19,6 +20,7 @@ Timeline express allows you to create a vertical animated and responsive timelin
 * Highly extensible
 * Translatable
 
+
 **Translated**
 
 Timeline express comes ready for translation. I would love to get things translated to as many languages as possible. At the moment the following translations are available for Timeline Express
@@ -26,6 +28,26 @@ Timeline express comes ready for translation. I would love to get things transla
 * English
 * Chinese (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 * Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
+
+
+**Custom Filter - Load Your Own Single Announcement Template File (New v1.0.8)**
+By default all single announcements will try and load a single.php template file. If that can't be found, we've done our best to implement a template for you. If your unhappy with the template file we've provided you have two options. Your first option is to copy over the single-announcement-template directory contained within the plugin into your active themes root. This will trigger the plugin to load that file instead. You can then customize this file to your hearts content without fear of losing any of your changes in the next update.
+
+Your next option is to use our new filter for loading your own custom template file. If for whatever reason you've designed or developed your own single.php file which you would rather use, or you just want to use your themes page.php template instead, you can use the provided filter to change the loaded template. Here is an example ( you want to drop this code into your active theme's functions.php file ) :
+
+Example:
+<code>
+// By default Timeline Express uses single.php for announcements
+// you can load page.php instead
+// just change page.php to whatever your template file is named
+// keep in mind, this is looking in your active themes root for the template
+function custom_timeline_express_template_file( $template_file ) {
+	$template_file = 'page.php';
+	return $template_file;
+}
+add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_template_file' , 10 );
+</code>
+
 
 ### Installation
 
@@ -95,6 +117,15 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+###### 1.0.8 - November 17th, 2014
+= 1.0.8 - November 17th, 2014 =
+* Feature: Added a new filter to allow users to load custom template files
+* Feature: Added auto update feature for Timeline Express
+* Updated: Single announcement template file, which was causing issues for some users on specific themes
+* Fixed: Issue where links in the excerpt and 'read more' links couldn't be clicked due to overlapping masonry elements
+* Fixed: Missing image on welcome page
+* Fixed: Minor issues on welcome page including some links
+
 ###### 1.0.7 - November 13th, 2014
 * Enhancement: Portuguese language translation now included (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 
