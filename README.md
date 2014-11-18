@@ -118,7 +118,6 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 ### Changelog
 ###### 1.0.8 - November 17th, 2014
-= 1.0.8 - November 17th, 2014 =
 * Feature: Added a new filter to allow users to load custom template files
 * Feature: Added auto update feature for Timeline Express
 * Updated: Single announcement template file, which was causing issues for some users on specific themes
