@@ -726,7 +726,7 @@ if(!class_exists("timelineExpressBase"))
 									#cd-timeline::before {
 										background: <?php if ( $background_line_color == '' ) { echo 'transparent'; } else { echo $background_line_color. '!important'; } ?>;
 									}
-									@media only screen and (max-width: 822px) {
+									@media only screen and (max-width: 821px) {
 										  .cd-timeline-content::before {
 												border-left-color: transparent;
 												border-right-color: <?php if ( $content_background == '' ) { echo 'transparent'; } else { echo $content_background. '!important'; } ?>;
@@ -884,7 +884,7 @@ if(!class_exists("timelineExpressBase"))
 			public function addAdministrationMenu() {
 					// Sub Items
 						// Settings Page
-						add_submenu_page('options-general.php', __('Timeline Express Settings','timeline-express'), __('Timline Express','timeline-express'), 'manage_options', 'timeline-express-settings', array(&$this, 'generateOptionsPage'));
+						add_submenu_page('options-general.php', __('Timeline Express Settings','timeline-express'), __('Timeline Express','timeline-express'), 'manage_options', 'timeline-express-settings', array(&$this, 'generateOptionsPage'));
 						// Welcome Page
 						add_submenu_page('options.php', __('Timeline Express Welcome','timeline-express'), __('Timeline Express Welcome','timeline-express'), 'manage_options', 'timeline-express-welcome', array(&$this, 'generateWelcomePage'));
 				}

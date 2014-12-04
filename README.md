@@ -1,4 +1,4 @@
-Timeline Express v1.1
+Timeline Express v1.1.1
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -10,7 +10,7 @@ Timeline express allows you to create a vertical animated and responsive timelin
 * Hundreds of Font awesome icons included. Specify a different icon for each announcement
 * CSS3 animations on scroll
 * Set the color of the announcement
-* Specify the length to trim each announcemnt, or randomize it
+* Specify the length to trim each announcemnt, or randomize it!
 * Hide the date of the announcement
 * Hide the 'read more' button for each announcement
 * Specify an image to display for each announcement
@@ -169,6 +169,11 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.1 - December 4th, 2014
+* Fixed: Minor styling issues with the mobile timeline icon size/margins
+* Fixed: Minor styling issues with the mobile timeline announcement arrow appearing 1px to soon
+* Fixed: Typo of 'Timeline Express' in the admin settings menu
 
 ###### 1.1 - December 3rd, 2014
 * Fixed: Fixed styles when timeline is inside posts (fixed icon size, duplicate images)

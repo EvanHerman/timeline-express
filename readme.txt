@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.0.1
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -186,6 +186,11 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
+= 1.1.1 - December 4th, 2014 =
+* Fixed: Minor styling issues with the mobile timeline icon size/margins
+* Fixed: Minor styling issues with the mobile timeline announcement arrow appearing 1px to soon
+* Fixed: Typo of 'Timeline Express' in the admin settings menu
+
 = 1.1 - December 3rd, 2014 =
 * Fixed: Fixed styles when timeline is inside posts (fixed icon size, duplicate images)
 * Fixed: Fixed a few enqueue functions
@@ -235,7 +240,12 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Initial Release to the WordPress repository
 
 == Upgrade Notice ==
-= 1.0.9 - December 3rd, 2014 =
+= 1.1.1 - December 4th, 2014 =
+* Fixed: Minor styling issues with the mobile timeline icon size/margins
+* Fixed: Minor styling issues with the mobile timeline announcement arrow appearing 1px to soon
+* Fixed: Typo of 'Timeline Express' in the admin settings menu
+
+= 1.1 - December 3rd, 2014 =
 We've updated some of the styles packaged with Timeline Express, added a new custom image size for announcements (you may need to regererate your images) multiple style issues when the timeline is used inside posts.
 
 = 1.0.9 - November 19th, 2014 =

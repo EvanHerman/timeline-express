@@ -424,16 +424,16 @@
 }
 #cd-timeline span.fa {
     color: #fff;
-    font-size: 25px;
+    font-size: 28px;
     display: block;
     text-align: center;
-    margin-top: 18px;
+    margin-top: 17px;
 }
 .cd-timeline-icon-link {
     color: #fff!important;
 }
 @media only screen and (max-width:821px) {
-    .page .cd-timeline-block span.fa {
+    #cd-timeline span.fa {
 		color: #fff;
 		font-size: 18px;
 		display: block;
