@@ -422,7 +422,7 @@
     border: none;
     -webkit-box-shadow: none;
 }
-.page .cd-timeline-block span.fa {
+#cd-timeline span.fa {
     color: #fff;
     font-size: 25px;
     display: block;
@@ -454,5 +454,11 @@
     width: 30%}
 .timeline-date-left {
     width: 100%;
-    float: left!important;
+    float: left !important;
+}
+
+
+/* Single Post Styles */
+.single-post .announcement-banner-image, .single-post .timeline-express-single-page-announcement-date, .single-post .return-to-timeline  {
+	display: none;
 }

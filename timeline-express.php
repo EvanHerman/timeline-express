@@ -4,7 +4,7 @@
 Plugin Name: Timeline Express
 Plugin URI: http://www.evan-herman.com
 Description: Create a beautiful vertical, CSS3 animated and responsive timeline in minutes flat without writing code.
-Version: 1.0.8
+Version: 1.1
 Author: Evan Herman
 Author URI: http://www.evan-herman.com
 License: GPL2
@@ -28,19 +28,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #_________________________________________________ CONSTANTS
 
 /** Configuration **/
-if(!defined('TIMELINE_EXPRESS_DEBUG'))						define('TIMELINE_EXPRESS_DEBUG',		         false);
-if(!defined('TIMELINE_EXPRESS_VERSION_CURRENT'))				define('TIMELINE_EXPRESS_VERSION_CURRENT',	'1.0.8');
-if(!defined('TIMELINE_EXPRESS_REQ_PHP'))						define('TIMELINE_EXPRESS_REQ_PHP',			'5.0');
-if(!defined('TIMELINE_EXPRESS_AUTHOR'))						define('TIMELINE_EXPRESS_AUTHOR',				'Evan Herman');
-if(!defined('TIMELINE_EXPRESS_SITE'))							define('TIMELINE_EXPRESS_SITE',				site_url().'/');
-if(!defined('TIMELINE_EXPRESS_PREFIX'))						define('TIMELINE_EXPRESS_PREFIX',				'timeline_express_');
-if(!defined('TIMELINE_EXPRESS_PATH'))							define('TIMELINE_EXPRESS_PATH',				ABSPATH.'wp-content/plugins/timeline-express/');
+if(!defined('TIMELINE_EXPRESS_VERSION_CURRENT'))				define('TIMELINE_EXPRESS_VERSION_CURRENT',	'1.1');
+if(!defined('TIMELINE_EXPRESS_PATH'))							define('TIMELINE_EXPRESS_PATH',				plugin_dir_path( __FILE__ ));
 if(!defined('TIMELINE_EXPRESS_URL'))							define('TIMELINE_EXPRESS_URL',				plugins_url('timeline-express/'));
 if(!defined('TIMELINE_EXPRESS_URL_WP'))						define('TIMELINE_EXPRESS_URL_WP',				get_bloginfo('url'));
 if(!defined('TIMELINE_EXPRESS_URL_WP_ADM'))					define('TIMELINE_EXPRESS_URL_WP_ADM',			TIMELINE_EXPRESS_URL_WP.'/wp-admin/');
 
 /** Database Tables **/
-if(!defined('TIMELINE_EXPRESS_OPTION'))						define('TIMELINE_EXPRESS_OPTION',				TIMELINE_EXPRESS_PREFIX.'storage');
+if(!defined('TIMELINE_EXPRESS_OPTION'))						define('TIMELINE_EXPRESS_OPTION', 'timeline_express_storage');
 
 // Conditional check for SSL enabled site
 if(!defined('TIMELINE_EXPRESS_URL_WP_AJAX')) {
@@ -50,8 +45,6 @@ if(!defined('TIMELINE_EXPRESS_URL_WP_AJAX')) {
 		define('TIMELINE_EXPRESS_URL_WP_AJAX', admin_url('admin-ajax.php', 'http'));
 	}
 }
-if(!defined('TIMELINE_EXPRESS_URL_CURRENT'))					define('TIMELINE_EXPRESS_URL_CURRENT',		$_SERVER['REQUEST_URI']);
-
 
 /** Localization **/
 // include translated files
@@ -60,17 +53,14 @@ function timeline_express_text_domain_init() {
 }
 add_action('init', 'timeline_express_text_domain_init');
 
-/** Initial Configuration **/
-if(TIMELINE_EXPRESS_DEBUG) error_reporting(E_ALL ^ E_NOTICE);
-
 /** Include Required Plugin Files **/
-// main boilerplate class file
+// main timeline express class file
 require_once TIMELINE_EXPRESS_PATH.'classes/class.timeline-express.php';
 // ajax functions
 require_once TIMELINE_EXPRESS_PATH.'lib/lib.ajax.php';
 
 /** Initialize the plugin's base class **/
-$timelineExpressBase	= new timelineExpressBase();
+$timelineExpressBase = new timelineExpressBase();
 
 /** Activation Hooks **/
 register_activation_hook(__FILE__,		array(&$timelineExpressBase, 'activate'));

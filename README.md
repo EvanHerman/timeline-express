@@ -1,4 +1,4 @@
-Timeline Express v1.0.8 
+Timeline Express v1.1
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -6,6 +6,7 @@ Timeline express allows you to create a vertical animated and responsive timelin
 **Features**
 
 * Load a custom template for single announcements (new)
+* Localized date formatting for international users (new)
 * Hundreds of Font awesome icons included. Specify a different icon for each announcement
 * CSS3 animations on scroll
 * Set the color of the announcement
@@ -20,17 +21,64 @@ Timeline express allows you to create a vertical animated and responsive timelin
 * Highly extensible
 * Translatable
 
-
 **Translated**
 
-Timeline express comes ready for translation. I would love to get things translated to as many languages as possible. At the moment the following translations are available for Timeline Express
+Timeline express comes ready for translation. I would love to get things translated into as many languages as possible. At the moment the following translations are available for Timeline Express :
 
 * English
 * Chinese (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 * Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
+* Polish (pl_PL) - thanks goes to Kanios
+
+<em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
+
+**Hooks + Filters**
+
+**Setup a custom date format for front end display (New v1.0.9)**
+
+New in version 1.0.9 is the localization of dates on the front end. The date format is now controlled by your date settings inside of 'General > Settings'.
+
+If, for one reason or another, you'd like to specify a different date format than provided by WordPress core you can use the provided filter `timeline_express_custom_date_format`.
+
+The one parameter you need to pass into your function is $date_format, which is (as it sounds) the format of the date.
+
+Some formatting examples:
+
+* `m.d.Y` - 11.19.2014
+* `d-m-y` - 11-19-14
+* `d M y` - 19 Nov 2014
+* `D j/n/Y` - Wed 11/19/2014
+* `l jS \of\ F` - Wednesday 19th of November
+
+Example:
+<code>
+function custom_te_date_format( $date_format ) {
+	$date_format = "M d , Y"; // will print the date as Nov 19 , 2014
+	return $date_format;
+}
+add_filter( 'timeline_express_custom_date_format' , 'custom_te_date_format' , 10 );
+</code>
+
+* d - Numeric representation of a day, with leading zeros 01 through 31.
+* m - Numeric representation of a month, with leading zeros 01 through 12.
+* y - Numeric representation of a year, two digits.
+
+* D - Textual representation of a day, three letters Mon through Sun.
+* j - Numeric representation of a day, without leading zeros 1 through 31.
+* n - Numeric representation of a month, without leading zeros 1 through 12.
+* Y - Numeric representation of a year, four digits.
+
+* S - English ordinal suffix for the day of the month. Consist of 2 characters st, nd, rd or th.
+* F - Textual representation of a month, January through December.
+
+* M - Textual representation of a month, three letters Jan through Dec.
 
 
-**Custom Filter - Load Your Own Single Announcement Template File (New v1.0.8)**
+<em>[view more date formatting parameters](http://php.net/manual/en/function.date.php)</em>
+
+
+**Load Your Own Single Announcement Template File (New v1.0.8)**
+
 By default all single announcements will try and load a single.php template file. If that can't be found, we've done our best to implement a template for you. If your unhappy with the template file we've provided you have two options. Your first option is to copy over the single-announcement-template directory contained within the plugin into your active themes root. This will trigger the plugin to load that file instead. You can then customize this file to your hearts content without fear of losing any of your changes in the next update.
 
 Your next option is to use our new filter for loading your own custom template file. If for whatever reason you've designed or developed your own single.php file which you would rather use, or you just want to use your themes page.php template instead, you can use the provided filter to change the loaded template. Here is an example ( you want to drop this code into your active theme's functions.php file ) :
@@ -47,6 +95,10 @@ function custom_timeline_express_template_file( $template_file ) {
 }
 add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_template_file' , 10 );
 </code>
+
+<br />
+<br />
+<strong>While the plugins I develop are free, maintaining and supporting them is hard work. If you find this plugin useful, or it helps in anyway, please consider making a <a href="http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work">donation</a> for its continued development.</strong>
 
 
 ### Installation
@@ -117,6 +169,21 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1 - December 3rd, 2014
+* Fixed: Fixed styles when timeline is inside posts (fixed icon size, duplicate images)
+* Fixed: Fixed a few enqueue functions
+* Enhancement: Polish language translation now included (pl_PL) - thanks goes to Kanios
+* Enhancement: Enqueued new styles on single announcement posts to style the announcement pages a bit better
+* Enhancement: Added new custom image size, to unify announcement images on the timeline ('timeline-express')
+* Enhancement: Added new function `timeline_express_get_image_id()` to get attachment image IDs by URL
+* Enhancement: Stripped out a lot of un-needed code
+
+###### 1.0.9 - November 19th, 2014
+* Updated: Localized date format displayed on the front end as requested by our international users ( format now takes on what you have in 'General > Settings' )
+* Updated: Fixed styling issue on date picker arrows
+* Feature: Added new filter to allow users to specify a custom date format (`timeline_express_custom_date_format`)
+
 ###### 1.0.8 - November 17th, 2014
 * Feature: Added a new filter to allow users to load custom template files
 * Feature: Added auto update feature for Timeline Express

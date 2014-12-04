@@ -74,7 +74,10 @@ if(!class_exists("timelineExpressBase"))
 					if( !is_array( @$_SESSION[$this->sessName] ) ) {
 						$_SESSION[$this->sessName]	= array();
 					 }
-															
+						
+					// Register a new custom image size
+					add_image_size( 'timeline-express', '350' , '120', true );
+						
 					// Add the CSS/JS files - Dashboard
 					add_action( 'admin_enqueue_scripts' , array( &$this , 'addStyles' ) );
 					add_action( 'admin_enqueue_scripts' , array( &$this , 'addScripts' ) );
@@ -372,37 +375,32 @@ if(!class_exists("timelineExpressBase"))
 			
 			// Make sortable columns function
 			public function make_sortable_timeline_express_column( $columns ) {
-				$columns['announcement_date'] = 'announcement_date';
- 
-				//To make a column 'un-sortable' remove it from the array
-				//unset($columns['date']);
-			 
-				return $columns;
-			}
+					$columns['announcement_date'] = 'announcement_date';
+					return $columns;
+				}
 			
 			// Custom Column Sorting
 			function te_announcements_pre_get_posts( $query ) {
-			   
-			   /**
-				* We only want our code to run in the main WP query
-				* AND if an orderby query variable is designated.
-				*/
-			   if ( $query->is_main_query() && ( $orderby = $query->get( 'orderby' ) ) ) {
+				   /**
+					* We only want our code to run in the main WP query
+					* AND if an orderby query variable is designated.
+					*/
+				   if ( $query->is_main_query() && ( $orderby = $query->get( 'orderby' ) ) ) {
 
-				  switch( $orderby ) {
+					  switch( $orderby ) {
 
-					 // If we're ordering by 'announcement_date'
-					 case 'announcement_date':
-						// set our query's meta_key, which is used for custom fields
-						$query->set( 'meta_key', 'announcement_date' );
-						$query->set( 'orderby', 'meta_value meta_value_num' );
-						break;
+						 // If we're ordering by 'announcement_date'
+						 case 'announcement_date':
+							// set our query's meta_key, which is used for custom fields
+							$query->set( 'meta_key', 'announcement_date' );
+							$query->set( 'orderby', 'meta_value meta_value_num' );
+							break;
 
-				  }
+					  }
 
-			   }
+				   }
 
-			}
+				}
 			
 			// register our shortcodes
 			public function timeline_express_createShortcodes() {
@@ -513,11 +511,11 @@ if(!class_exists("timelineExpressBase"))
 						if ( is_single() && $post->post_type == 'te_announcements') {
 							global $wpdb;
 							// grab the attached image
-							$announcement_image = esc_url( get_post_meta( $post->ID , 'announcement_image' , true ) );
+							$announcement_image = get_post_meta( $post->ID , 'announcement_image' , true );
 							$announcement_date = get_post_meta( $post->ID , 'announcement_date' , true );
 							$referer = $_SERVER['HTTP_REFERER'];
 							if ( $announcement_image != '' ) {
-								$announcement_image_id = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $announcement_image )); 
+								$announcement_image_id = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", esc_url( $announcement_image) ) ); 
 								$announcement_header_image = wp_get_attachment_image_src( $announcement_image_id[0] , 'timeline-express-announcement-header');
 								$custom_content = '<img class="announcement-banner-image" src="' . esc_url ( $announcement_header_image[0] ) . '" alt="' . get_the_title( $post->ID ) . '">';
 								$custom_content .= '<strong class="timeline-express-single-page-announcement-date">Announcement Date : ' . date( 'M j , Y' , $announcement_date ) . '</strong>';
@@ -585,9 +583,7 @@ if(!class_exists("timelineExpressBase"))
 
 					if ( in_array( $screen->base , $print_styles_on_screen_array ) || in_array( $screen->id, array( 'edit-te_announcements' ) ) ) {
 						// Register Styles
-						wp_register_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'css/timeline-express-settings.min.css' , array(), '1.0.0', 'all');
-						// Enqueue Styles
-						wp_enqueue_style('timeline-express-css-base');		
+						wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'css/timeline-express-settings.min.css' , array(), '1.0.0', 'all');	
 						// enqueue font awesome for use in column display
 						wp_enqueue_style( 'prefix-font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' , array() , '4.2.0' );					
 					}
@@ -633,10 +629,8 @@ if(!class_exists("timelineExpressBase"))
 
 			// add styles to the front end
 			public function addStyles_frontend() {
-					// Register Styles
-					wp_register_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . 'css/timeline-express.min.css' , array() , '' , 'all' );
 					// Enqueue Styles
-					wp_enqueue_style( 'timeline-express-base' );	
+					wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . 'css/timeline-express.min.css' , array() , '' , 'all' );
 					// enqueue font awesome for use in the timeline
 					wp_enqueue_style( 'prefix-font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' , array() , '4.2.0' );
 				}
@@ -770,11 +764,16 @@ if(!class_exists("timelineExpressBase"))
 													<!-- title -->
 													<span class="cd-timeline-title-container"><h2 class="cd-timeline-item-title"><?php the_title();?></h2><?php if ( $this->timeline_express_optionVal['date-visibility'] == 1 ) { ?>
 														<!-- release date -->
-														<span class="timeline-date"><?php echo date( 'M j , Y' , get_post_meta( $post->ID , 'announcement_date' , true ) ); ?></span>
+														<!-- now localized, for international date formats based on the 'date_format' option -->
+														<span class="timeline-date"><?php echo date_i18n( apply_filters( 'timeline_express_custom_date_format' , get_option( 'date_format' ) ) , get_post_meta( $post->ID , 'announcement_date' , true ) ); ?></span>
 													<?php } ?></span>
-													<?php if ( $announcement_image != '' ) { ?>
-														<img src="<?php echo $announcement_image; ?>" class="cd-timeline-announcement-image">
-													<?php }											
+													<?php
+													// display our image, if it exists
+													if ( $announcement_image != '' ) { 
+														$attachment_id = $this->timeline_express_get_image_id( $announcement_image ); 
+														$timeline_announcement_image = wp_get_attachment_image_src($attachment_id, 'timeline-express');
+														echo '<img src="' . $timeline_announcement_image[0] . '" alt="Announcement Image" >';
+													}											
 													// excerpt random length
 													if( $this->timeline_express_optionVal['excerpt-random-length'] == 1 ) {
 														// lets trim it at some random value, 
@@ -872,6 +871,13 @@ if(!class_exists("timelineExpressBase"))
 					 */
 					return apply_filters( 'wp_trim_words', $text, $num_words, $more, $original_text );
 				}
+				
+				// retrieves the attachment ID from the file URL
+				public function timeline_express_get_image_id($image_url) {
+						global $wpdb;
+						$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
+							return $attachment[0]; 
+					}
 
 			/***** ADMINISTRATION MENUS
 			 ****************************************************************************************************/

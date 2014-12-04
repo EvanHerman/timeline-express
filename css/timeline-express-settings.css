@@ -123,7 +123,6 @@
 /* Houses links to leave us a review, links to Evan Herman's Website etc. */
 .wrap #timeline_express_review_this_plugin_container {
 	padding:.5em;
-	border:1px dashed lightgrey;
 	float: right;
 	margin-top: .75em;
 }

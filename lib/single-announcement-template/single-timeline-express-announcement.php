@@ -6,7 +6,9 @@
  * This page template requires Timeline Express to be installed
  */
 
-
+	// enqueue styles to make the single page look a bit better
+	wp_enqueue_style( 'timeline-express-single-page', TIMELINE_EXPRESS_URL . 'css/timeline-express-single-page.css' , array() , '' , 'all' );
+ 
 	// check for a single.php template file first...
 	// timeline_express_custom_template filter
 	// to allow users to specify their own template files ( if they want to use different ones )

@@ -75,7 +75,7 @@ jQuery(document).ready(function() {
 					</li>
 					<li>
 						<div class="customize-your-timeline"></div>
-						<h2 class="promo-text"><?php _e( 'Stylize The Timeline' , 'timeline-express' ); ?></h2>
+						<h2 class="promo-text"><?php _e( 'Style The Timeline' , 'timeline-express' ); ?></h2>
 					</li>
 				</ul>
 			</div>
