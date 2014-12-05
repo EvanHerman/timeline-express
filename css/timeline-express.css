@@ -33,8 +33,7 @@
     background: #d7e4ed;
 }
 .announcement-banner-image {
-    margin-bottom: 1em;
-    width: 100%}
+    max-width: 100%}
 .timeline-express-single-page-announcement-date {
     display: block;
     margin-bottom: 1em;

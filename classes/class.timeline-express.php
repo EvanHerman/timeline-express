@@ -772,7 +772,7 @@ if(!class_exists("timelineExpressBase"))
 													if ( $announcement_image != '' ) { 
 														$attachment_id = $this->timeline_express_get_image_id( $announcement_image ); 
 														$timeline_announcement_image = wp_get_attachment_image_src($attachment_id, 'timeline-express');
-														echo '<img src="' . $timeline_announcement_image[0] . '" alt="Announcement Image" >';
+														echo '<img src="' . $timeline_announcement_image[0] . '" alt="Announcement Image" class="announcement-banner-image" >';
 													}											
 													// excerpt random length
 													if( $this->timeline_express_optionVal['excerpt-random-length'] == 1 ) {
