@@ -264,7 +264,7 @@ if(!class_exists("timelineExpressBase"))
 								'desc' => __( 'enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
 								'id'   => $prefix . 'date',
 								'type' => 'text_date_timestamp',
-								'std' => date( 'm/d/Y'),
+								'std' => date( 'm/d/Y' ),
 								// 'repeatable' => true,
 								// 'on_front' => false, // Optionally designate a field to wp-admin only
 							),
@@ -657,8 +657,14 @@ if(!class_exists("timelineExpressBase"))
 						$background_line_color = $this->timeline_express_optionVal['announcement-background-line-color'];
 						$display_order = $this->timeline_express_optionVal['announcement-display-order'];
 						
-						$current_date = strtotime( date( 'm/d/Y' ) );
-									
+						// set the timezone
+						date_default_timezone_set( get_option('timezone_string') );
+						
+						// set the current date, with our offset
+						$offset = get_option('gmt_offset');					
+						$current_date = strtotime( 'today ' . $offset );
+						
+						// decide how to compare our $current_date to $announcement_start_date meta
 						$compare = $this->timeline_express_optionVal['announcement-time-frame'];
 										
 							switch( $compare ) {
@@ -671,7 +677,7 @@ if(!class_exists("timelineExpressBase"))
 								break;
 										
 								case '2':
-									$compare_sign = '<=';
+									$compare_sign = '<';
 								break;
 							}
 										
@@ -685,11 +691,11 @@ if(!class_exists("timelineExpressBase"))
 									'meta_key'   => 'announcement_date',
 									'orderby'    => 'meta_value_num',
 									'order'      => $display_order,
-									'posts_per_page' => -1,
+									'posts_per_page' => -1
 								);
 							} else { 
 								// else we only want to query what we
-								// have specified;;
+								// have specified
 								$announcement_args = array(
 									'post_type' => 'te_announcements',
 									'meta_key'   => 'announcement_date',
@@ -700,7 +706,8 @@ if(!class_exists("timelineExpressBase"))
 										array(
 											'key'     => 'announcement_date',
 											'value'   => $current_date,
-											'compare' => $compare_sign,
+											'type' => 'NUMERIC',
+											'compare' => $compare_sign
 										),
 									),
 								);
@@ -708,6 +715,8 @@ if(!class_exists("timelineExpressBase"))
 							// end setting up query args
 										
 							$announcement_query = new WP_Query( $announcement_args );
+							
+							// print_r($announcement_args);
 																
 							if ( $announcement_query->have_posts() ) {
 								?>
@@ -743,7 +752,6 @@ if(!class_exists("timelineExpressBase"))
 								while( $announcement_query->have_posts() ) {
 									$announcement_query->the_post();
 									global $post;
-										
 									$announcement_image = esc_url( get_post_meta( $post->ID , 'announcement_image' , true ) );						
 										?>
 											<div class="cd-timeline-block">
@@ -830,7 +838,7 @@ if(!class_exists("timelineExpressBase"))
 							?>
 								<h2><?php echo $this->timeline_express_optionVal['no-events-message']; ?></h2>
 							<?php			
-							}
+							}		
 					$shortcode = ob_get_contents();
 					ob_end_clean();
 					return $shortcode;

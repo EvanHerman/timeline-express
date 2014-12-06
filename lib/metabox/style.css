@@ -293,7 +293,7 @@ div.time-picker li.selected { background: #0063CE; color: #fff; }
  .cmb_element .ui-datepicker .ui-datepicker-next { right:2px; }
  .cmb_element .ui-datepicker .ui-datepicker-prev-hover { left:1px; }
  .cmb_element .ui-datepicker .ui-datepicker-next-hover { right:1px; }
- .cmb_element .ui-datepicker .ui-datepicker-prev span, .cmb_element .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; margin-left: -8px; margin-top: -8px;  }
+ .cmb_element .ui-datepicker .ui-datepicker-prev span, .cmb_element .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; margin-left: 5px; margin-top: 5px;  }
  .cmb_element .ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
  .cmb_element .ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
  .cmb_element .ui-datepicker select.ui-datepicker-month-year {width: 100%;}
