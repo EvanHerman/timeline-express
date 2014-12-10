@@ -38,7 +38,7 @@ Timeline express comes ready for translation. I would love to get things transla
 
 Users can now alter the 'Read More' button text using the provided gettext filter and the 'timeline-express' text domain.
 
-Example:
+<strong>Example:</strong>
 
 ```<php>
 // alter 'Read more' to say 'View Announcement'
@@ -63,15 +63,15 @@ Parameters :
 
 $button_classes = default button classes assigned to the 'Read More' button
 
-Example:
+<strong>Example:</strong>
 
-`
+```<php>
 // add a custom class to the timeline express readmore link
 function timeline_express_custom_readmore_class( $button_classes ) {
 	return $button_classes . 'custom-class-name';
 }
 add_filter( 'timeline-express-read-more-class' , 'timeline_express_custom_readmore_class' );
-`
+```
 
 This example would print the following 'Read More' button HTML onto the page :
 
@@ -93,15 +93,15 @@ Some formatting examples:
 * `D j/n/Y` - Wed 11/19/2014
 * `l jS \of\ F` - Wednesday 19th of November
 
-Example:
+<strong>Example:</strong>
 
-<code>
+```<php>
 function custom_te_date_format( $date_format ) {
 	$date_format = "M d , Y"; // will print the date as Nov 19 , 2014
 	return $date_format;
 }
 add_filter( 'timeline_express_custom_date_format' , 'custom_te_date_format' , 10 );
-</code>
+```
 
 * d - Numeric representation of a day, with leading zeros 01 through 31.
 * m - Numeric representation of a month, with leading zeros 01 through 12.
@@ -127,9 +127,9 @@ By default all single announcements will try and load a single.php template file
 
 Your next option is to use our new filter for loading your own custom template file. If for whatever reason you've designed or developed your own single.php file which you would rather use, or you just want to use your themes page.php template instead, you can use the provided filter to change the loaded template. Here is an example ( you want to drop this code into your active theme's functions.php file ) :
 
-Example:
+<strong>Example:</strong>
 
-<code>
+```<php>
 // By default Timeline Express uses single.php for announcements
 // you can load page.php instead
 // just change page.php to whatever your template file is named
@@ -139,7 +139,7 @@ function custom_timeline_express_template_file( $template_file ) {
 	return $template_file;
 }
 add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_template_file' , 10 );
-</code>
+```
 
 <br />
 <br />
