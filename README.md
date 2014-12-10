@@ -65,13 +65,13 @@ $button_classes = default button classes assigned to the 'Read More' button
 
 Example:
 
-<code>
+`
 // add a custom class to the timeline express readmore link
 function timeline_express_custom_readmore_class( $button_classes ) {
 	return $button_classes . 'custom-class-name';
 }
 add_filter( 'timeline-express-read-more-class' , 'timeline_express_custom_readmore_class' );
-</code>
+`
 
 This example would print the following 'Read More' button HTML onto the page :
 
