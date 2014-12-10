@@ -40,7 +40,7 @@ Users can now alter the 'Read More' button text using the provided gettext filte
 
 Example:
 
-<code>
+```<php>
 // alter 'Read more' to say 'View Announcement'
 function timeline_express_change_readmore_text( $translated_text, $untranslated_text, $domain ) {
     switch( $untranslated_text ) {
@@ -51,7 +51,7 @@ function timeline_express_change_readmore_text( $translated_text, $untranslated_
    return $translated_text;
 }
 add_filter('gettext', 'timeline_express_change_readmore_text', 20, 3);
-</code>
+```
 
 This example would alter 'Read more' to say 'View Announcement'.
 
