@@ -39,6 +39,7 @@ Timeline express comes ready for translation. I would love to get things transla
 Users can now alter the 'Read More' button text using the provided gettext filter and the 'timeline-express' text domain.
 
 Example:
+
 <code>
 // alter 'Read more' to say 'View Announcement'
 function timeline_express_change_readmore_text( $translated_text, $untranslated_text, $domain ) {
@@ -63,6 +64,7 @@ Parameters :
 $button_classes = default button classes assigned to the 'Read More' button
 
 Example:
+
 <code>
 // add a custom class to the timeline express readmore link
 function timeline_express_custom_readmore_class( $button_classes ) {
@@ -92,6 +94,7 @@ Some formatting examples:
 * `l jS \of\ F` - Wednesday 19th of November
 
 Example:
+
 <code>
 function custom_te_date_format( $date_format ) {
 	$date_format = "M d , Y"; // will print the date as Nov 19 , 2014
@@ -125,6 +128,7 @@ By default all single announcements will try and load a single.php template file
 Your next option is to use our new filter for loading your own custom template file. If for whatever reason you've designed or developed your own single.php file which you would rather use, or you just want to use your themes page.php template instead, you can use the provided filter to change the loaded template. Here is an example ( you want to drop this code into your active theme's functions.php file ) :
 
 Example:
+
 <code>
 // By default Timeline Express uses single.php for announcements
 // you can load page.php instead
