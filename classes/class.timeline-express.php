@@ -752,7 +752,8 @@ if(!class_exists("timelineExpressBase"))
 								while( $announcement_query->have_posts() ) {
 									$announcement_query->the_post();
 									global $post;
-									$announcement_image = esc_url( get_post_meta( $post->ID , 'announcement_image' , true ) );						
+									$announcement_image = esc_url( get_post_meta( $post->ID , 'announcement_image' , true ) );
+									$button_classes = 'cd-read-more btn btn-primary ';
 										?>
 											<div class="cd-timeline-block">
 												<!-- icon -->
@@ -804,7 +805,7 @@ if(!class_exists("timelineExpressBase"))
 															} else {
 																$elipses =  __( '...' , 'timeline-express' );
 																// $read_more_button = '<a href="' . get_the_permalink() . '" class="cd-read-more btn btn-primary">Read more</a>';
-																$read_more_button = '<a href="' . get_the_permalink() . '" class="cd-read-more btn btn-primary">Read more</a>';
+																$read_more_button = '<a href="' . get_the_permalink() . '" class="' . apply_filters( "timeline-express-read-more-class" , $button_classes ) . '">' . __( 'Read more' , 'timeline-express' ) . '</a>';
 															}
 														?>
 														<span class="the-excerpt"><?php echo apply_filters( 'the_content' , $this->te_wp_trim_words_retain_formatting( get_the_content() , $trim_array[$random_trim] , $elipses ) ); ?></span>
@@ -816,7 +817,7 @@ if(!class_exists("timelineExpressBase"))
 															$read_more_button = '';
 														} else {
 															$elipses = __( '...' , 'timeline-express' );
-															$read_more_button = '<a href="' . get_the_permalink() . '" class="cd-read-more btn btn-primary">Read more</a>';
+															$read_more_button = '<a href="' . get_the_permalink() . '" class="' . apply_filters( "timeline-express-read-more-class" , $button_classes ) . '">' . __( 'Read more' , 'timeline-express' ) . '</a>';
 														}
 													?>
 														<span class="the-excerpt"><?php echo apply_filters( 'the_content' , $this->te_wp_trim_words_retain_formatting( get_the_content() , $trim_length , $elipses ) ); ?></span>

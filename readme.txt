@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.0.1
-Stable tag: 1.1.3
+Stable tag: 1.1.3.1
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -43,6 +43,47 @@ Timeline express comes ready for translation. I would love to get things transla
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
 **Hooks + Filters**
+
+**Alter the 'Read More' button text (New v1.1.3.1)**
+
+Users can now alter the 'Read More' button text using the provided gettext filter and the 'timeline-express' text domain.
+
+Example:
+<code>
+// alter 'Read more' to say 'View Announcement'
+function timeline_express_change_readmore_text( $translated_text, $untranslated_text, $domain ) {
+    switch( $untranslated_text ) {
+        case 'Read more':
+          $translated_text = __( 'View Announcement','timeline-express' );
+        break;
+     }
+   return $translated_text;
+}
+add_filter('gettext', 'timeline_express_change_readmore_text', 20, 3);
+</code>
+
+This example would alter 'Read more' to say 'View Announcement'.
+
+**Add custom classes to the 'Read More' button (New v1.1.3.1)**
+
+Users can now add custom classes to the 'Read More' announcement button. This allows for greater control in fitting the Timeline into your currently active theme.
+
+Parameters :
+
+$button_classes = default button classes assigned to the 'Read More' button
+
+Example:
+<code>
+// add a custom class to the timeline express readmore link
+function timeline_express_custom_readmore_class( $button_classes ) {
+	return $button_classes . 'custom-class-name';
+}
+add_filter( 'timeline-express-read-more-class' , 'timeline_express_custom_readmore_class' );
+</code>
+
+This example would print the following 'Read More' button HTML onto the page :
+
+`<a href="http://site.com/link-to-announcement" class="cd-read-more btn btn-primary custom-class-name">Read more</a>`
 
 **Setup a custom date format for front end display (New v1.0.9)**
 
@@ -186,6 +227,10 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
+= 1.1.3.1 - December 10th, 2014 =
+* Enhancement: Added new filter `timeline-express-read-more-class` which allows users to add custom classes to the 'Read More' button
+* Enhancement: Wrapped 'Read More' in gettext filter, to allow for text to be altered
+
 = 1.1.3 - December 6th, 2014 =
 * Fixed: Weird query issue with timeline announcements not  displaying at proper times
 * Fixed: Styling issue with announcement date picker calendar arrow
@@ -248,6 +293,9 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Initial Release to the WordPress repository
 
 == Upgrade Notice ==
+= 1.1.3.1 - December 10th, 2014 =
+* Enhancement: Added new filter `timeline-express-read-more-class` which allows users to add custom classes to the 'Read More' button
+* Enhancement: Wrapped 'Read More' in gettext filter, to allow for text to be altered
 
 = 1.1.3 - December 6th, 2014
 * Fixed: Weird query issue with timeline announcements not  displaying at proper times
