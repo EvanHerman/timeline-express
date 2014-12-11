@@ -1,4 +1,4 @@
-Timeline Express v1.1.3.1
+Timeline Express v1.1.3.2
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -29,17 +29,17 @@ Timeline express comes ready for translation. I would love to get things transla
 * Chinese (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 * Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 * Polish (pl_PL) - thanks goes to Kanios
+* Dutch (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
 **Hooks + Filters**
 
-**Alter the 'Read More' button text (New v1.1.3.1)**
+*Alter the 'Read More' button text (New v1.1.3.1)**
 
 Users can now alter the 'Read More' button text using the provided gettext filter and the 'timeline-express' text domain.
 
-<strong>Example:</strong>
-
+Example:
 ```<php>
 // alter 'Read more' to say 'View Announcement'
 function timeline_express_change_readmore_text( $translated_text, $untranslated_text, $domain ) {
@@ -63,8 +63,7 @@ Parameters :
 
 $button_classes = default button classes assigned to the 'Read More' button
 
-<strong>Example:</strong>
-
+Example:
 ```<php>
 // add a custom class to the timeline express readmore link
 function timeline_express_custom_readmore_class( $button_classes ) {
@@ -93,8 +92,7 @@ Some formatting examples:
 * `D j/n/Y` - Wed 11/19/2014
 * `l jS \of\ F` - Wednesday 19th of November
 
-<strong>Example:</strong>
-
+Example:
 ```<php>
 function custom_te_date_format( $date_format ) {
 	$date_format = "M d , Y"; // will print the date as Nov 19 , 2014
@@ -127,8 +125,7 @@ By default all single announcements will try and load a single.php template file
 
 Your next option is to use our new filter for loading your own custom template file. If for whatever reason you've designed or developed your own single.php file which you would rather use, or you just want to use your themes page.php template instead, you can use the provided filter to change the loaded template. Here is an example ( you want to drop this code into your active theme's functions.php file ) :
 
-<strong>Example:</strong>
-
+Example:
 ```<php>
 // By default Timeline Express uses single.php for announcements
 // you can load page.php instead
@@ -215,16 +212,15 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 ### Changelog
 
+###### 1.1.3.2 - December 11th, 2014
+* Enhancement: Added Dutch language translation (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>
+* Fixed: A few typos throughout the plugin
+
 ###### 1.1.3.1 - December 10th, 2014
 * Enhancement: Added new filter `timeline-express-read-more-class` which allows users to add custom classes to the 'Read More' button
 * Enhancement: Wrapped 'Read More' in gettext filter, to allow for text to be altered
 
 ###### 1.1.3 - December 6th, 2014
-* Fixed: Weird query issue with timeline announcements not  displaying at proper times
-* Fixed: Styling issue with announcement date picker calendar arrow
-* Fixed: Removed all line-breaks and hyphens from the timeline titles
-
-###### 1.1.2 - December 6th, 2014
 * Fixed: Weird query issue with timeline announcements not  displaying at proper times
 * Fixed: Styling issue with announcement date picker calendar arrow
 * Fixed: Removed all line-breaks and hyphens from the timeline titles
