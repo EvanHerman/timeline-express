@@ -80,14 +80,13 @@
 
 /* Icon */
 #timeline-express-icon {
-	background: transparent url('../images/timeline-express-icon.png') no-repeat 0 0;
+	background: transparent url('../images/timeline-express-logo-128.png') no-repeat 0 0;
 	display:block;
 	float:left;
 	padding: 0 0 0 .5em;
-	height:  75px;
-	width: 75px;
+	height:  128px;
+	width: 128px;
 	background-size: contain;
-	margin-bottom: .5em;
 }
 
 /* Settings Page Header */
@@ -265,10 +264,6 @@
 	}
 
 /** Admin Break Points **/
-
-@media only screen and (max-width: 1175px) {
-		
-}
 
 .dashicons-star-filled {color:#FEBE12;}
 
@@ -512,5 +507,125 @@ body.admin_page_timeline-express-welcome .slides ul li h2.promo-text {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
+
+
+/* Version 1.1.4 , support page styles */
+#timeline-express-support-page-wrap {
+	padding: 2em;
+}
+
+.te_announcements_page_timeline-express-settings .wrap {
+	padding: 0 2em;
+}
+
+#timeline-express-support-page-wrap hr {
+	margin: 1.5em 0;
+}
+
+#timeline-express-support-page-header {
+	display: inline-block;
+	width: 100%;
+}
+
+#timeline-express-support-page-header img.te-logo {
+	max-width: 128px;
+	min-width: 90px;
+	width: 20%;
+	float: left;
+}
+
+#timeline-express-support-page-header .support-subhead  {
+	display: block;
+	margin: 2em 0 0 1em;
+	float: left;
+	width: 44%;
+}
+
+#timeline-express-support-page-wrap #timeline_express_license_key {
+	width: 25%;
+	min-width: 400px;
+}
+
+/* Valid license Check mark */
+.timeline-express-valid-license {
+	color: rgba(144, 214, 125, 0.68);
+	font-size: 28px;
+}
+
+/* Purchase support license button */
+.purchase-support-license {
+	margin-left: -.5em !important;
+}
+
+/* Timeline Express Support License Forms Page */
+.timeline-express-license-buttons {
+	display: block;
+	width: 100%;
+	margin-top: 2em;
+}
+
+/* Invalid License Error */
+.timeline-express-invalid-license-error {
+	color: rgba(225, 47, 47, 0.73);
+}
+
+/* Premium Support Contact Form */
+#premium-support-contact-form {
+	float: left;
+	width: 33%;
+	min-width: 300px;
+}
+	#premium-support-contact-form form {
+		width: 100%;
+	}
+	#premium-support-contact-form form input, #premium-support-contact-form form textarea, #premium-support-contact-form form label {
+		width: 100%;
+	}
+	#premium-support-contact-form form textarea {
+		resize: vertical;
+	}
+	#premium-support-contact-form form input[type="submit"], #premium-support-contact-form form label {
+		margin-top: 1em;
+		display: block;
+	}
+
+/* License Expiring Soon Message */
+.license-expiring-soon {
+	font-size: 11px;
+	color: rgb(243, 75, 75);
+	display: block;
+}
+	
+	
+/* Break Points */	
+@media only screen and (max-width: 1081px) {
+		#timeline_express_license_key {
+			min-width: 90% !important;
+			width: 90% !important;
+		}
+		#premium-support-contact-form form input, #premium-support-contact-form form textarea, #premium-support-contact-form form label {
+			width: 100%;
+		}
+		#premium-support-contact-form {
+			margin: 2em 0 0 0;
+			float: left;
+			width: 100%;
+		}
+		#timeline-express-support-page-wrap table.widefat.fixed {
+			max-width: 100% !important;
+		}
+		#timeline-express-support-page-header .support-subhead {
+			width: auto;
+		}
+		#timeline-express-support-page-header .te-logo {
+			min-width: 140px !important;
+			float: none !important;
+			display: block;
+			margin: 0 auto;
+		}
+		#timeline-express-support-page-header .support-subhead h1 {
+			line-height: 1.2;
+		}	
+}	
 
 /** End Timeline Express Admin Styles */

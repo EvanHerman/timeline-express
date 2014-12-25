@@ -4,7 +4,7 @@
 Plugin Name: Timeline Express
 Plugin URI: http://www.evan-herman.com
 Description: Create a beautiful vertical, CSS3 animated and responsive timeline in minutes flat without writing code.
-Version: 1.1.3.2
+Version: 1.1.4
 Author: Evan Herman
 Author URI: http://www.evan-herman.com
 License: GPL2
@@ -28,11 +28,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #_________________________________________________ CONSTANTS
 
 /** Configuration **/
-if(!defined('TIMELINE_EXPRESS_VERSION_CURRENT'))				define('TIMELINE_EXPRESS_VERSION_CURRENT',	'1.1.3.2');
+if(!defined('TIMELINE_EXPRESS_VERSION_CURRENT'))				define('TIMELINE_EXPRESS_VERSION_CURRENT',	'1.1.4');
 if(!defined('TIMELINE_EXPRESS_PATH'))							define('TIMELINE_EXPRESS_PATH',				plugin_dir_path( __FILE__ ));
 if(!defined('TIMELINE_EXPRESS_URL'))							define('TIMELINE_EXPRESS_URL',				plugins_url('timeline-express/'));
 if(!defined('TIMELINE_EXPRESS_URL_WP'))						define('TIMELINE_EXPRESS_URL_WP',				get_bloginfo('url'));
 if(!defined('TIMELINE_EXPRESS_URL_WP_ADM'))					define('TIMELINE_EXPRESS_URL_WP_ADM',			TIMELINE_EXPRESS_URL_WP.'/wp-admin/');
+
+/* Define Support Constants */
+if(!defined('EH_DEV_SHOP_URL')) define( 'EH_DEV_SHOP_URL', 'http://www.evan-herman.com' );
+if(!defined('EH_DEV_SHOP_SUPPORT_PRODUCT_NAME')) define( 'EH_DEV_SHOP_SUPPORT_PRODUCT_NAME', 'timeline-express' ); 		
 
 /** Database Tables **/
 if(!defined('TIMELINE_EXPRESS_OPTION'))						define('TIMELINE_EXPRESS_OPTION', 'timeline_express_storage');
@@ -63,6 +67,10 @@ require_once TIMELINE_EXPRESS_PATH.'lib/lib.ajax.php';
 $timelineExpressBase = new timelineExpressBase();
 
 /** Activation Hooks **/
-register_activation_hook(__FILE__,		array(&$timelineExpressBase, 'activate'));
-register_deactivation_hook(__FILE__,	array(&$timelineExpressBase, 'deactivate'));
-register_uninstall_hook(__FILE__,		array('timelineExpressBase', 'uninstall'));
+register_activation_hook( __FILE__ ,		array( &$timelineExpressBase, 'activate') );
+register_deactivation_hook( __FILE__ ,	array( &$timelineExpressBase, 'deactivate') );
+// register_uninstall_hook( __FILE__ ,		array( &$timelineExpressBase, 'uninstall') );
+
+/* Daily Cron Job to check license */
+register_activation_hook( __FILE__ , array( &$timelineExpressBase , 'schedule_timeline_express_support_cron' ) );
+	

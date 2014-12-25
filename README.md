@@ -1,4 +1,4 @@
-Timeline Express v1.1.3.2
+Timeline Express v1.1.4
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -35,7 +35,25 @@ Timeline express comes ready for translation. I would love to get things transla
 
 **Hooks + Filters**
 
-*Alter the 'Read More' button text (New v1.1.3.1)**
+*Customize the 'announcement' slug (New v1.1.4)*
+
+Users can now define their own slug for announcement posts using the provided filter `'timeline-express-slug'`. This alters the URL structure of the announcement, possibly for SEO purposes. You would enter the following code into your active themes functions.php file.
+
+After you enter the code into the functions.php file, you'll want to refresh your permalinks. You can do so by going to 'Settings > Permalinks' and simply clicking save. That will prevent the 404 page you may see upon altering the slug.
+
+Example:
+```<php>
+// alter '/announcement/' to be '/event/'
+function timeline_express_change_announcement_slug( $slug ) {
+    $slug = 'event';
+    return $slug;
+}
+add_filter('timeline-express-slug', 'timeline_express_change_announcement_slug' );
+```
+
+This example would change the default `/announcement/` slug, to `/event/`.
+
+*Alter the 'Read More' button text (New v1.1.3.2)**
 
 Users can now alter the 'Read More' button text using the provided gettext filter and the 'timeline-express' text domain.
 
@@ -211,6 +229,13 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.4 - December 24th, 2014
+* Enhancement: Implemented premium support licensing. Any issues that require immediate response, or custom code should purchase a support license.
+* Enhancement: Moved settings/support below Timeline Express parent menu item
+* Fixed: Errors thrown when announcement images aren't set
+* Fixed: Display error where announcements displayed a different date on the backend vs frontend
+* Enhancement: Added a new filter to customize the announcement slug (possibly for SEO purposes) (timeline-express-slug , check documentation for examples)
 
 ###### 1.1.3.2 - December 11th, 2014
 * Enhancement: Added Dutch language translation (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>

@@ -71,7 +71,7 @@ jQuery(document).ready(function() {
 					</li>
 					<li>
 						<div class="admin-manage-announcements"></div>
-						<h2 class="promo-text"><?php _e( 'Manange Announcements Easily' , 'timeline-express' ); ?></h2>
+						<h2 class="promo-text"><?php _e( 'Manage Announcements Easily' , 'timeline-express' ); ?></h2>
 					</li>
 					<li>
 						<div class="customize-your-timeline"></div>

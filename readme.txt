@@ -3,8 +3,8 @@ Contributors: eherman24
 Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
-Tested up to: 4.0.1
-Stable tag: 1.1.3.2
+Tested up to: 4.1
+Stable tag: 1.1.4
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -39,11 +39,28 @@ Timeline express comes ready for translation. I would love to get things transla
 * Chinese (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 * Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 * Polish (pl_PL) - thanks goes to Kanios
-* Dutch (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
 **Hooks + Filters**
+
+**Customize the 'announcement' slug (New v1.1.4)**
+
+Users can now define their own slug for announcement posts using the provided filter `'timeline-express-slug'`. This alters the URL structure of the announcement, possibly for SEO purposes. You would enter the following code into your active themes functions.php file.
+
+After you enter the code into the functions.php file, you'll want to refresh your permalinks. You can do so by going to 'Settings > Permalinks' and simply clicking save. That will prevent the 404 page you may see upon altering the slug.
+
+Example:
+<code>
+// alter '/announcement/' to be '/event/'
+function timeline_express_change_announcement_slug( $slug ) {
+    $slug = 'event';
+    return $slug;
+}
+add_filter('timeline-express-slug', 'timeline_express_change_announcement_slug' );
+</code>
+
+This example would change the default `/announcement/` slug, to `/event/`.
 
 **Alter the 'Read More' button text (New v1.1.3.1)**
 
@@ -228,6 +245,12 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
+= 1.1.4 - December 24th, 2014 =
+* Enhancement: Implemented premium support licensing. Any issues that require immediate response, or custom code should purchase a support license.
+* Enhancement: Moved settings/support below Timeline Express parent menu item
+* Fixed: Errors thrown when announcement images aren't set
+* Fixed: Display error where announcements displayed a different date on the backend vs frontend
+
 = 1.1.3.2 - December 11th, 2014 =
 * Enhancement: Added Dutch language translation (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>
 * Fixed: A few typos throughout the plugin
@@ -298,6 +321,13 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Initial Release to the WordPress repository
 
 == Upgrade Notice ==
+
+= 1.1.4 - December 24th, 2014 =
+* Enhancement: Implemented premium support licensing. Any issues that require immediate response, or custom code should purchase a support license.
+* Enhancement: Moved settings/support below Timeline Express parent menu item
+* Fixed: Errors thrown when announcement images aren't set
+* Fixed: Display error where announcements displayed a different date on the backend vs frontend
+
 = 1.1.3.2 - December 11th, 2014 =
 * Enhancement: Added Dutch language translation (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>
 * Fixed: A few typos throughout the plugin

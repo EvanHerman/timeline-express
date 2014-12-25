@@ -41,6 +41,7 @@ if(!class_exists("timelineExpressBase"))
 			public function deactivate() {
 					// clear our re-write rules on deactivate
 					delete_option('post_type_rules_flased_te-announcements');
+					wp_clear_scheduled_hook( 'timeline_express_support_license_check' );
 				}
 
 			public function uninstall() {
@@ -62,6 +63,8 @@ if(!class_exists("timelineExpressBase"))
 						// delete options on plugin uninstall
 						// after we check the 'delete-announcement-posts-on-uninstallation' setting
 							delete_option( TIMELINE_EXPRESS_OPTION );	
+							delete_option( 'timeline_express_license_status' );
+							delete_option( 'timeline_express_license_key' );
 				}
 
 			/***** INITIAL SETUP
@@ -132,8 +135,165 @@ if(!class_exists("timelineExpressBase"))
 					add_action( 'admin_head', array( &$this , 'timeline_express_add_tinymce' ) );
 					// filter to keep our plugin auto updated :) , we want all users on the most recent version (the best we can) new @v1.0.8					
 					add_filter( 'auto_update_plugin', array( &$this , 'include_timeline_express_in_auto_updates' ), 10, 2 );					
+					// register timeline express license setting
+					add_action('admin_init', array( &$this , 'timeline_express_register_settings' ) );
+					// Remote activation function
+					add_action('admin_init', array( &$this , 'timeline_express_activate_license' ) );
+					// Remove deactivation function 
+					add_action('admin_init', array( &$this , 'timeline_express_deactivate_license' ) );
+					// Cross check the validity of our supportl icense , twice a day
+					add_action('timeline_express_support_license_check', array( &$this , 'crosscheck_support_license' ) );
 				}
 			
+			/*
+			* schedule_timeline_express_support_cron()
+			* Setup our twice daily transient, to cross check the API key ( if set )
+			* since @v1.1.4
+			*/
+			public function schedule_timeline_express_support_cron() {
+					wp_schedule_event( current_time( 'timestamp' ), 'twicedaily', 'timeline_express_support_license_check');
+				}
+				
+			/*
+			* crosscheck_support_license()
+			* API Request to cross check the license, and update the option based on the result
+			* since @v1.1.4
+			*/
+			public function crosscheck_support_license() {
+					// only run if the user has a valid license installed
+					if ( get_option( 'timeline_express_license_status' ) !== false && get_option( 'timeline_express_license_status' ) == 'valid' ) {
+						// api parameters, cross checking the license
+							$api_params = array( 
+								'edd_action'=> 'check_license', 
+								'license' 	=> trim( get_option( 'timeline_express_license_key' ) ), 
+								'item_name' => urlencode( EH_DEV_SHOP_SUPPORT_PRODUCT_NAME ), // the name of our product
+								'url'       => home_url()
+							);
+							// Call the custom API.
+							$response = wp_remote_get( add_query_arg( $api_params, EH_DEV_SHOP_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+							
+							// decode the license data
+							$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+							// check license status
+							if ( $license_data->license != 'valid' ) {
+								update_option( 'timeline_express_license_status', $license_data->license );
+								update_option( 'timeline_express_license_data', $license_data );
+							}
+					}	
+				}
+			
+			/*
+			* timeline_express_activate_license()
+			* Remote Support License Activation
+			* since @v1.1.4
+			*/
+			public function timeline_express_activate_license() {
+						
+					// listen for our activate button to be clicked
+					if( isset( $_POST['timeline_express_license_activate'] ) ) {
+											
+						// run a quick security check 
+						if( ! check_admin_referer( 'timeline_express_nonce', 'timeline_express_nonce' ) ) 	
+							return; // get out if we didn't click the Activate button
+
+						// retrieve the license from the database
+						$license = trim( get_option( 'timeline_express_license_key' ) );
+							
+						// data to send in our API request
+						$api_params = array( 
+							'edd_action'=> 'activate_license', 
+							'license' 	=> $license, 
+							'item_name' => urlencode( EH_DEV_SHOP_SUPPORT_PRODUCT_NAME ), // the name of our product
+							'url'       => home_url()
+						);
+						
+						// Call the custom API.
+						$response = wp_remote_get( add_query_arg( $api_params, EH_DEV_SHOP_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+
+						// make sure the response came back okay
+						if ( is_wp_error( $response ) )
+							return false;
+
+						// decode the license data
+						$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+						
+						// $license_data->license returns "valid" or "invalid"
+						update_option( 'timeline_express_license_status', $license_data->license );
+						update_option( 'timeline_express_license_data', $license_data );
+
+					}
+				} // end remote activation
+		
+
+			/*
+			* timeline_express_deactivate_license()
+			* Remote Support License De-activation
+			* since @v1.1.4
+			*/
+			public function timeline_express_deactivate_license() {
+
+					// listen for our activate button to be clicked
+					if( isset( $_POST['timeline_express_license_deactivate'] ) ) {
+
+						// run a quick security check 
+						if( ! check_admin_referer( 'timeline_express_nonce', 'timeline_express_nonce' ) ) 	
+							return; // get out if we didn't click the Activate button
+
+						// retrieve the license from the database
+						$license = trim( get_option( 'timeline_express_license_key' ) );
+							
+
+						// data to send in our API request
+						$api_params = array( 
+							'edd_action'=> 'deactivate_license', 
+							'license' 	=> $license, 
+							'item_name' => urlencode( EH_DEV_SHOP_SUPPORT_PRODUCT_NAME ), // the name of our product
+							'url'       => home_url()
+						);
+						
+						// Call the custom API.
+						$response = wp_remote_get( add_query_arg( $api_params, EH_DEV_SHOP_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+
+						// make sure the response came back okay
+						if ( is_wp_error( $response ) )
+							return false;
+
+						// decode the license data
+						$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+						
+						// $license_data->license returns either "deactivated" or "failed"
+						if( $license_data->license == 'deactivated' )
+							delete_option( 'timeline_express_license_status' );
+
+					}
+				} // end remove deactivation
+				
+				
+			/*
+			* timeline_express_register_settings()
+			* Register a setting for support license users
+			* since @v1.1.4
+			*/
+			function timeline_express_register_settings() {
+					// creates our settings in the options table
+					register_setting('timeline_express_license', 'timeline_express_license_key', array( &$this , 'timeline_express_sanitize_license' ) );
+				}
+			
+			
+			/*
+			* timeline_express_sanitize_license()
+			* save license key function
+			* since @v1.1.4
+			*/
+			function timeline_express_sanitize_license( $new ) {
+					$old = get_option( 'timeline_express_license_key' );
+					if( $old && $old != $new ) {
+						delete_option( 'timeline_express_license_status' ); // new license has been entered, so must reactivate
+					}
+					return $new;
+				}	
+			
+				
 			/* 
 			*	include_timeline_express_in_auto_updates();
 			*
@@ -166,29 +326,29 @@ if(!class_exists("timelineExpressBase"))
 					// Register our Announcement Custom Post Type
 						// used to easily manage the announcements on the site
 					$timeline_express_labels = array(
-						'name'                => 'Timeline Express',
-						'singular_name'       => 'Announcement', // menu item at the top New > Announcement
-						'menu_name'           => 'Timeline Express', // menu name
-						'parent_item_colon'   => 'Timeline Express:',
-						'all_items'           => 'All Announcements',
-						'view_item'           => 'View Announcement',
-						'add_new_item'        => 'New Announcement',
-						'add_new'             => 'New Announcement',
-						'edit_item'           => 'Edit Announcement',
-						'update_item'         => 'Update Announcement',
-						'search_items'        => 'Search Announcements',
-						'not_found'           => 'No Timeline Express Announcements Found',
-						'not_found_in_trash'  => 'No Timeline Express Announcements in Trash',
+						'name'                => __( 'Timeline Express Announcements' , 'timeline-express' ),
+						'singular_name'       =>  __( 'Announcement' , 'timeline-express' ), // menu item at the top New > Announcement
+						'menu_name'           =>  __( 'Timeline Express' , 'timeline-express' ), // menu name
+						'parent_item_colon'   =>  __( 'Timeline Express:' , 'timeline-express' ),
+						'all_items'           =>  __( 'All Announcements' , 'timeline-express' ),
+						'view_item'           =>  __( 'View Announcement' , 'timeline-express' ),
+						'add_new_item'        =>  __( 'New Announcement' , 'timeline-express' ),
+						'add_new'             =>  __( 'New Announcement' , 'timeline-express' ),
+						'edit_item'           =>  __( 'Edit Announcement' , 'timeline-express' ),
+						'update_item'         =>  __( 'Update Announcement' , 'timeline-express' ),
+						'search_items'        =>  __( 'Search Announcements' , 'timeline-express' ),
+						'not_found'           =>  __( 'No Timeline Express Announcements Found' , 'timeline-express' ),
+						'not_found_in_trash'  =>  __( 'No Timeline Express Announcements in Trash' , 'timeline-express' ),
 					);
 					$timeline_express_rewrite = array(
-						'slug'                => 'announcement',
+						'slug'                =>  apply_filters( 'timeline-express-slug' , 'announcement' ),
 						'with_front'          => false,
 						'pages'               => true,
 						'feeds'               => true,
 					);
 					$timeline_express_args = array(
 						'label'               => 'timeline-express-announcement',
-						'description'         => 'Post type for adding timeline express announcements to the site',
+						'description'         => __( 'Post type for adding timeline express announcements to the site' , 'timeline-express' ),
 						'labels'              => $timeline_express_labels,
 						'supports'            => array( 'title', 'editor' ),
 						'taxonomies'          => array(),
@@ -516,8 +676,11 @@ if(!class_exists("timelineExpressBase"))
 							$referer = $_SERVER['HTTP_REFERER'];
 							if ( $announcement_image != '' ) {
 								$announcement_image_id = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", esc_url( $announcement_image) ) ); 
-								$announcement_header_image = wp_get_attachment_image_src( $announcement_image_id[0] , 'timeline-express-announcement-header');
-								$custom_content = '<img class="announcement-banner-image" src="' . esc_url ( $announcement_header_image[0] ) . '" alt="' . get_the_title( $post->ID ) . '">';
+								$custom_content  = '';								
+								if ( $announcement_image_id ) {
+									$announcement_header_image = wp_get_attachment_image_src( $announcement_image_id[0] , 'timeline-express-announcement-header');
+									$custom_content .= '<img class="announcement-banner-image" src="' . esc_url ( $announcement_header_image[0] ) . '" alt="' . get_the_title( $post->ID ) . '">';
+								}
 								$custom_content .= '<strong class="timeline-express-single-page-announcement-date">Announcement Date : ' . date( 'M j , Y' , $announcement_date ) . '</strong>';
 								$custom_content .= $content;
 								if ( $referer != '' ) {	
@@ -579,7 +742,7 @@ if(!class_exists("timelineExpressBase"))
 			public function addStyles() {
 					
 					$screen = get_current_screen();
-					$print_styles_on_screen_array = array( 'settings_page_timeline-express-settings' , 'admin_page_timeline-express-welcome' );
+					$print_styles_on_screen_array = array( 'te_announcements_page_timeline-express-settings' , 'admin_page_timeline-express-welcome' , 'te_announcements_page_timeline-express-support' );
 
 					if ( in_array( $screen->base , $print_styles_on_screen_array ) || in_array( $screen->id, array( 'edit-te_announcements' ) ) ) {
 						// Register Styles
@@ -594,7 +757,7 @@ if(!class_exists("timelineExpressBase"))
 			public function addScripts() {
 					$screen = get_current_screen();
 					global $post;
-					if ( in_array( $screen->base , array('settings_page_timeline-express-settings') ) || $screen->post_type == 'te_announcements' ) {					
+					if ( in_array( $screen->base , array('te_announcements_page_timeline-express-settings') ) || $screen->post_type == 'te_announcements' ) {					
 						// enqueue the admin scripts here
 						// Add the color picker css file       
 							// used to select colors on the settings page
@@ -752,7 +915,7 @@ if(!class_exists("timelineExpressBase"))
 								while( $announcement_query->have_posts() ) {
 									$announcement_query->the_post();
 									global $post;
-									$announcement_image = esc_url( get_post_meta( $post->ID , 'announcement_image' , true ) );
+									$announcement_image = esc_url( get_post_meta( $post->ID , 'announcement_image' , true ) );	
 									$button_classes = 'cd-read-more btn btn-primary ';
 										?>
 											<div class="cd-timeline-block">
@@ -804,7 +967,6 @@ if(!class_exists("timelineExpressBase"))
 																$read_more_button = '';
 															} else {
 																$elipses =  __( '...' , 'timeline-express' );
-																// $read_more_button = '<a href="' . get_the_permalink() . '" class="cd-read-more btn btn-primary">Read more</a>';
 																$read_more_button = '<a href="' . get_the_permalink() . '" class="' . apply_filters( "timeline-express-read-more-class" , $button_classes ) . '">' . __( 'Read more' , 'timeline-express' ) . '</a>';
 															}
 														?>
@@ -849,7 +1011,7 @@ if(!class_exists("timelineExpressBase"))
 				function te_wp_trim_words_retain_formatting( $text, $num_words = 55, $more = null ) {
 					if ( null === $more )
 						$more = __( '&hellip;' );
-					$original_text = $text;
+						$original_text = $text;
 					/* translators: If your word count is based on single characters (East Asian characters),
 					   enter 'characters'. Otherwise, enter 'words'. Do not translate into your own language. */
 					if ( 'characters' == _x( 'words', 'word count: words or characters?' ) && preg_match( '/^utf\-?8$/i', get_option( 'blog_charset' ) ) ) {
@@ -893,9 +1055,11 @@ if(!class_exists("timelineExpressBase"))
 			public function addAdministrationMenu() {
 					// Sub Items
 						// Settings Page
-						add_submenu_page('options-general.php', __('Timeline Express Settings','timeline-express'), __('Timeline Express','timeline-express'), 'manage_options', 'timeline-express-settings', array(&$this, 'generateOptionsPage'));
+						add_submenu_page('edit.php?post_type=te_announcements', __('Timeline Express Settings','timeline-express'), __('Settings','timeline-express'), 'manage_options', 'timeline-express-settings', array(&$this, 'generateOptionsPage'));
 						// Welcome Page
 						add_submenu_page('options.php', __('Timeline Express Welcome','timeline-express'), __('Timeline Express Welcome','timeline-express'), 'manage_options', 'timeline-express-welcome', array(&$this, 'generateWelcomePage'));
+						// Support Page
+						add_submenu_page('edit.php?post_type=te_announcements', __('Support','timeline-express'), __('Support','timeline-express'), 'manage_options', 'timeline-express-support', array(&$this, 'generateSupportPage'));
 				}
 
 
@@ -909,6 +1073,9 @@ if(!class_exists("timelineExpressBase"))
 				}	
 			public function generateWelcomePage() {	
 					require_once TIMELINE_EXPRESS_PATH . 'pages/welcome.php'; // include our welcome page
+				}	
+			public function generateSupportPage() {	
+					require_once TIMELINE_EXPRESS_PATH . 'pages/support.php'; // include our welcome page
 				}		
 
 				
