@@ -529,8 +529,6 @@ class timeline_express_MetaBoxes {
 					$new = is_email( $new ) ? $new : '';
 					break;
 				case 'text_date_timestamp':
-					// set the timezone, to acurately store the date ( in unix timestamp format )
-					date_default_timezone_set( get_option('timezone_string') );
 					$new = strtotime( $new );
 					break;
 				case 'file':

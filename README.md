@@ -1,4 +1,4 @@
-Timeline Express v1.1.4
+Timeline Express v1.1.4.1
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -229,6 +229,10 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.4.1 - January 2nd, 2015
+* Fixed: Issue with date storing different on backend vs front end
+* Fixed: Settings link on the Timeline Express welcome page
 
 ###### 1.1.4 - December 24th, 2014
 * Enhancement: Implemented premium support licensing. Any issues that require immediate response, or custom code should purchase a support license.

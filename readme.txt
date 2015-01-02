@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.1.4
+Stable tag: 1.1.4.1
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -245,8 +245,13 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
+= 1.1.4.1 - January 2nd, 2015 =
+* Fixed: Issue with date storing different on backend vs front end
+* Fixed: Settings link on the Timeline Express welcome page
+
 = 1.1.4 - December 24th, 2014 =
 * Enhancement: Implemented premium support licensing. Any issues that require immediate response, or custom code should purchase a support license.
+* Enhancement: Added a new filter to customize the announcement slug (possibly for SEO purposes) (timeline-express-slug , check documentation for examples)
 * Enhancement: Moved settings/support below Timeline Express parent menu item
 * Fixed: Errors thrown when announcement images aren't set
 * Fixed: Display error where announcements displayed a different date on the backend vs frontend
@@ -324,6 +329,7 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 = 1.1.4 - December 24th, 2014 =
 * Enhancement: Implemented premium support licensing. Any issues that require immediate response, or custom code should purchase a support license.
+* Enhancement: Added a new filter to customize the announcement slug (possibly for SEO purposes) (timeline-express-slug , check documentation for examples)
 * Enhancement: Moved settings/support below Timeline Express parent menu item
 * Fixed: Errors thrown when announcement images aren't set
 * Fixed: Display error where announcements displayed a different date on the backend vs frontend

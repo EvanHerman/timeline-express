@@ -44,7 +44,7 @@ jQuery(document).ready(function() {
 								
 			<p style="font-size:20px;"><?php _e( "Thanks for installing Timeline Express. We know you're going to find this free plugin super helpful and easy to use! To get started, hover over 'Timeline Express', in the admin menu, and click" , "timeline-express" ); ?> <a href="<?php echo admin_url(); ?>post-new.php?post_type=te_announcements"><?php _e( "'New Announcement'" , "timeline-express" ); ?></a><?php _e( " to start adding announcements your timeline!" , "timeline-express" ); ?></p>
 				
-			<p style="font-size:20px;"><?php _e( 'or head over to the' , 'timeline-express' ); ?> <a class="button-secondary" href="<?php echo admin_url(); ?>options-general.php?page=timeline-express-settings"><?php _e( "Settings Page" , "timeline-express" ); ?></a> <?php _e( 'to customize and style your form' , 'timeline-express' ); ?></p>
+			<p style="font-size:20px;"><?php _e( 'or head over to the' , 'timeline-express' ); ?> <a class="button-secondary" href="<?php echo admin_url(); ?>edit.php?post_type=te_announcements&page=timeline-express-settings"><?php _e( "Settings Page" , "timeline-express" ); ?></a> <?php _e( 'to customize and style your form' , 'timeline-express' ); ?></p>
 				
 		</div>
 		
