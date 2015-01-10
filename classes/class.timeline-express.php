@@ -907,9 +907,6 @@ if(!class_exists("timelineExpressBase"))
 						$background_line_color = $this->timeline_express_optionVal['announcement-background-line-color'];
 						$display_order = $this->timeline_express_optionVal['announcement-display-order'];
 						
-						// set the timezone
-						date_default_timezone_set( get_option('timezone_string') );
-						
 						// set the current date, with our offset
 						$offset = get_option('gmt_offset');					
 						$current_date = strtotime( 'today ' . $offset );
