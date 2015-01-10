@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.1.5
+Stable tag: 1.1.5.1
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -44,7 +44,7 @@ Timeline express comes ready for translation. I would love to get things transla
 
 **Hooks + Filters**
 
-** Define your own custom fields to use in Announcement posts (New v1.1.5)**
+**Define your own custom fields to use in Announcement posts (New v1.1.5)**
 
 Users can now add custom fields to Timeline Express announcement posts. This allows for greater control over the announcements and the front end display. Using this hook in conjunction with a custom single announcement template will give you the greatest control.
 
@@ -283,6 +283,9 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
+=1.1.5.1 - January 10th, 2015 =
+Fixed: Data saving incorrectly to the database, causing errors to be thrown on front and back end
+
 = 1.1.5 - January 10th, 2015 =
 Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).
 Fixed: CMB class file causing conflicts with other plugins, and removed the old version
@@ -369,6 +372,9 @@ Fixed: Adjusted a few styles on the announcement post page
 * Initial Release to the WordPress repository
 
 == Upgrade Notice ==
+
+=1.1.5.1 - January 10th, 2015 =
+Fixed: Data saving incorrectly to the database, causing errors to be thrown on front and back end
 
 = 1.1.5 - January 10th, 2015 =
 Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).

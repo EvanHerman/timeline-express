@@ -149,6 +149,9 @@ if(!class_exists("timelineExpressBase"))
 					add_action( 'cmb_render_te_about_metabox', array($this,'cmb_render_te_about_metabox'), 10, 2 );
 					// add custom hook to allow users to add there own fields
 					add_action('the_action_hook', array( $this, 'the_action_callback' ) );
+					// custom vlaidation for our new custom field
+					 //Validate new metabox type
+					add_filter( 'cmb_validate_te_date_time_stamp_custom', array( $this, 'cmb_validate_te_date_time_stamp_custom' ) , 10, 2 );
 				}
 			
 			/*
@@ -164,11 +167,11 @@ if(!class_exists("timelineExpressBase"))
 					.cmb_id_announcement_image td .cmb_upload_button { height: 32px !important; }
 				</style>
 				<?php
-				if( $meta && isset( $meta['date'] ) ){
-					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '[date]" id="', $field['id'], '_date" value="', '' !== $meta ? $meta['date'] : $field['default'], '" />';
+				if( $meta && isset( $meta ) ){
+					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field['default'], '" />';
 					echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
 				} else{
-					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '[date]" id="', $field['id'], '_date" value="' . date('m/d/Y' ) .'" />';
+					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="' . date('m/d/Y' ) .'" />';
 					echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
 				}				
 			}
@@ -179,15 +182,15 @@ if(!class_exists("timelineExpressBase"))
 			* since @v1.1.5
 			*/
 			function cmb_validate_te_date_time_stamp_custom( $value, $new ) {
-				if(isset($new['date']) && $new['date'] != ''){
-					return strtotime( $new['date'] );
+				if( isset( $new ) && $new != '' ){
+					return strtotime( $new );
 				}
 				return '-1';
 			}
 			
 			
 			 /*
-			* cmb_validate_te_date_time_stamp_custom()
+			* cmb_render_te_about_metabox()
 			* render the data contained in our custom about metabox
 			* since @v1.1.5
 			*/
