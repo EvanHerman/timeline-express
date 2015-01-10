@@ -268,6 +268,11 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 ### Changelog
 
+###### 1.1.5 - January 10th, 2015
+* Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).
+* Fixed: CMB class file causing conflicts with other plugins, and removed the old version
+* Fixed: Adjusted a few styles on the announcement post page
+
 ###### 1.1.4.1 - January 2nd, 2015
 * Fixed: Issue with date storing different on backend vs front end
 * Fixed: Settings link on the Timeline Express welcome page
