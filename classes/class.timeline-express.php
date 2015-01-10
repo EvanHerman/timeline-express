@@ -143,7 +143,58 @@ if(!class_exists("timelineExpressBase"))
 					add_action('admin_init', array( &$this , 'timeline_express_deactivate_license' ) );
 					// Cross check the validity of our supportl icense , twice a day
 					add_action('timeline_express_support_license_check', array( &$this , 'crosscheck_support_license' ) );
+					// render new custom timeline express date time
+					add_action( 'cmb_render_te_date_time_stamp_custom', array($this,'cmb_render_te_date_time_stamp_custom'), 10, 2 );
+					// render new custom timeline express about metabox
+					add_action( 'cmb_render_te_about_metabox', array($this,'cmb_render_te_about_metabox'), 10, 2 );
+					// add custom hook to allow users to add there own fields
+					add_action('the_action_hook', array( $this, 'the_action_callback' ) );
 				}
+			
+			/*
+			* cmb_render_te_date_time_stamp_custom()
+			* render our custom date time stamp field (allows for a default to be set)
+			* since @v1.1.5
+			*/
+			function cmb_render_te_date_time_stamp_custom( $field, $meta ) {
+				?>
+				<style>
+					#ui-datepicker-div { z-index: 99999 !important; }
+					#wpbody-content { overflow: hidden !important; }
+					.cmb_id_announcement_image td .cmb_upload_button { height: 32px !important; }
+				</style>
+				<?php
+				if( $meta && isset( $meta['date'] ) ){
+					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '[date]" id="', $field['id'], '_date" value="', '' !== $meta ? $meta['date'] : $field['default'], '" />';
+					echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
+				} else{
+					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '[date]" id="', $field['id'], '_date" value="' . date('m/d/Y' ) .'" />';
+					echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
+				}				
+			}
+
+			/*
+			* cmb_validate_te_date_time_stamp_custom()
+			* save our custom date time stamp
+			* since @v1.1.5
+			*/
+			function cmb_validate_te_date_time_stamp_custom( $value, $new ) {
+				if(isset($new['date']) && $new['date'] != ''){
+					return strtotime( $new['date'] );
+				}
+				return '-1';
+			}
+			
+			
+			 /*
+			* cmb_validate_te_date_time_stamp_custom()
+			* render the data contained in our custom about metabox
+			* since @v1.1.5
+			*/
+			function cmb_render_te_about_metabox( $field, $meta ) {
+				require_once TIMELINE_EXPRESS_PATH . 'lib/about-metabox-template.php';
+			}
+			
 			
 			/*
 			* schedule_timeline_express_support_cron()
@@ -293,7 +344,6 @@ if(!class_exists("timelineExpressBase"))
 					return $new;
 				}	
 			
-				
 			/* 
 			*	include_timeline_express_in_auto_updates();
 			*
@@ -315,11 +365,11 @@ if(!class_exists("timelineExpressBase"))
 			
 			// enqueue metabox for the announcement cpt
 			public function timeline_express_initialize_cmb_meta_boxes() {
-					if ( !class_exists( 'timeline_express_MetaBoxes' ) ) {
-						require_once TIMELINE_EXPRESS_PATH.'lib/metabox/init.php';
-					}
-				}	
-
+				if ( ! class_exists( 'cmb_Meta_Box' ) ){
+					require_once( TIMELINE_EXPRESS_PATH . 'lib/cmb_metaboxes/init.php' );
+				}
+			}	
+				
 			// Register Announcement Custom Post Type
 			public function timeline_express_generate_announcement_post_type() {
 								
@@ -388,34 +438,35 @@ if(!class_exists("timelineExpressBase"))
 			 * @return array
 			 */
 			public function cmb_timeline_announcement_metaboxes( array $meta_boxes ) {
-
+	
 					// Start with an underscore to hide fields from custom fields list
 					$prefix = 'announcement_';
-
-					$meta_boxes['announcement_info'] = array(
-						'id'         => 'announcement_info',
-						'title'      => __( 'Announcement Info.', 'timeline-express' ),
-						'pages'      => array( 'te_announcements', ), // Post type
-						'context'    => 'advanced',
-						'priority'   => 'high',
-						'show_names' => true, // Show field names on the left
-						// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
-						'fields'     => array(
-							array(
+					
+					// setup an empty field type for users to customize
+					$custom_field = array(
+						'name' => __( '', 'timeline-express' ),
+						'desc' => __( '', 'timeline-express' ),
+						'id'   => '',
+						'type' => '',
+					);
+					
+					// set up our array of fields
+					$field_array = array(
+						array(
 								'name' => __( 'Announcement Color', 'timeline-express' ),
 								'desc' => __( 'select the color for this announcement.', 'timeline-express' ),
 								'id'   => $prefix . 'color',
 								'type' => 'colorpicker',
-								'std'  => $this->timeline_express_optionVal['default-announcement-color'],
+								'default'  => $this->timeline_express_optionVal['default-announcement-color'],
 								// 'repeatable' => true,
 								// 'on_front' => false, // Optionally designate a field to wp-admin only
 							),
 							array(
-								'name' => __( 'Font Awesome Unicode', 'timeline-express' ),
+								'name' => __( 'Font Awesome Class', 'timeline-express' ),
 								'desc' => __( 'enter the font-awesome class name in the box above. This is used for the icon associated with the announcement. <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">cheat sheet</a> Example : "fa-times-circle" ', 'timeline-express' ),
 								'id'   => $prefix . 'icon',
 								'type' => 'text_medium',
-								'std' => trim( $this->timeline_express_optionVal['default-announcement-icon'] ),
+								'default' => trim( $this->timeline_express_optionVal['default-announcement-icon'] ),
 								// 'repeatable' => true,
 								// 'on_front' => false, // Optionally designate a field to wp-admin only
 							),
@@ -423,8 +474,8 @@ if(!class_exists("timelineExpressBase"))
 								'name' => __( 'Announcement Date', 'timeline-express' ),
 								'desc' => __( 'enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
 								'id'   => $prefix . 'date',
-								'type' => 'text_date_timestamp',
-								'std' => date( 'm/d/Y' ),
+								'type' => 'te_date_time_stamp_custom',
+								 'default' => date( 'm/d/Y' ), 
 								// 'repeatable' => true,
 								// 'on_front' => false, // Optionally designate a field to wp-admin only
 							),
@@ -436,7 +487,28 @@ if(!class_exists("timelineExpressBase"))
 								// 'repeatable' => true,
 								// 'on_front' => false, // Optionally designate a field to wp-admin only
 							),
-						),
+					);
+					
+					//Filter here is to allow extra fields to be added
+					// loop to add fields to our array
+					$custom_fields = apply_filters( 'timeline_express_custom_fields', $custom_field );
+					$i = 0;
+					foreach( $custom_fields as $user_defined_field ) {
+						if( $custom_fields[$i]['name'] != '' ) {
+							$field_array[] = $custom_fields[$i];
+						}
+						$i++;
+					}
+					
+					$meta_boxes['announcement_info'] = array(
+						'id'         => 'announcement_info',
+						'title'      => __( 'Announcement Info.', 'timeline-express' ),
+						'pages'      => array( 'te_announcements', ), // Post type
+						'context'    => 'advanced',
+						'priority'   => 'high',
+						'show_names' => true, // Show field names on the left
+						// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
+						'fields'     => $field_array
 					);
 					
 					$meta_boxes['about_the_author'] = array(
@@ -452,18 +524,30 @@ if(!class_exists("timelineExpressBase"))
 								 'name' => __( '', 'timeline-express' ),
 								 'desc' => __( '', 'timeline-express' ),
 								 'id'   => $prefix . 'about',
-								 'type' => 'custom_about_the_author_callback',
+								// 'type' => 'custom_about_the_author_callback',
+								 'type' => 'te_about_metabox',
 							),
 						),
 					);
 						
 					// Add other metaboxes as needed
 					return $meta_boxes;
-					
+			
 				}
 				// End metabox definitions	
 				
-				
+			function the_action_callback() {
+				$field = array(
+								'name' => __( 'Announcement Image', 'timeline-express' ),
+								'desc' => __( 'select a banner image for this announcement (optional). (recommended 650px wide or larger)  ', 'timeline-express' ),
+								'id'   => $prefix . 'image',
+								'type' => 'file',
+								// 'repeatable' => true,
+								// 'on_front' => false, // Optionally designate a field to wp-admin only
+							);
+					return $field;
+			}
+
 			/* Change Testimonial Title */
 			public function change_default_announcement_title( $title ){
 					$screen = get_current_screen();

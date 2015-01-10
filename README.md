@@ -1,4 +1,4 @@
-Timeline Express v1.1.4.1
+Timeline Express v1.1.5
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -35,7 +35,45 @@ Timeline express comes ready for translation. I would love to get things transla
 
 **Hooks + Filters**
 
-*Customize the 'announcement' slug (New v1.1.4)*
+**Define your own custom fields to use in Announcement posts (New v1.1.5)**
+
+Users can now add custom fields to Timeline Express announcement posts. This allows for greater control over the announcements and the front end display. Using this hook in conjunction with a custom single announcement template will give you the greatest control.
+
+Example:
+```<php>
+function add_custom_timeline_express_field( $custom_fields ) {
+	$custom_fields = array(
+		array(
+			'name' => __( 'Example Text Field', 'timeline-express' ),
+			'desc' => __( 'this is an example user defined text field.', 'timeline-express' ),
+			'id'   => 'announcement_user_defined_text',
+			'type' => 'text_medium',
+		),
+		array(
+			'name' => __( 'Example WYSIWYG', 'timeline-express' ),
+			'desc' => __( 'this is an example wysiwyg field.', 'timeline-express' ),
+			'id'   => 'announcement_user_defined_wysiwyg',
+			'type' => 'wysiwyg',
+		),
+		array(
+			'name' => __( 'Example Email Field', 'timeline-express' ),
+			'desc' => __( 'this is an example user defined email field.', 'timeline-express' ),
+			'id'   => 'announcement_user_defined_money',
+			'type' => 'text_email',
+		)
+	);
+	return $custom_fields;
+}
+add_filter( 'timeline_express_custom_fields' , 'add_custom_timeline_express_field' );
+```
+
+This example would add 3 new fields below the 'Announcement Image' field on the announcement post. 
+
+The first field is a simple text field. The second field is an example WYSIWYG, and the third is an email field.
+
+Note: You can add as many fields as you would like, and display them on the front end using the <a href="http://codex.wordpress.org/Function_Reference/get_post_meta" target="_blank" title="WordPress Codex: get_post_meta()">get_post_meta()</a> function.
+
+**Customize the 'announcement' slug (New v1.1.4)**
 
 Users can now define their own slug for announcement posts using the provided filter `'timeline-express-slug'`. This alters the URL structure of the announcement, possibly for SEO purposes. You would enter the following code into your active themes functions.php file.
 

@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.1.4.1
+Stable tag: 1.1.5
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -43,6 +43,44 @@ Timeline express comes ready for translation. I would love to get things transla
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
 **Hooks + Filters**
+
+** Define your own custom fields to use in Announcement posts (New v1.1.5)**
+
+Users can now add custom fields to Timeline Express announcement posts. This allows for greater control over the announcements and the front end display. Using this hook in conjunction with a custom single announcement template will give you the greatest control.
+
+Example:
+<code>
+function add_custom_timeline_express_field( $custom_fields ) {
+	$custom_fields = array(
+		array(
+			'name' => __( 'Example Text Field', 'timeline-express' ),
+			'desc' => __( 'this is an example user defined text field.', 'timeline-express' ),
+			'id'   => 'announcement_user_defined_text',
+			'type' => 'text_medium',
+		),
+		array(
+			'name' => __( 'Example WYSIWYG', 'timeline-express' ),
+			'desc' => __( 'this is an example wysiwyg field.', 'timeline-express' ),
+			'id'   => 'announcement_user_defined_wysiwyg',
+			'type' => 'wysiwyg',
+		),
+		array(
+			'name' => __( 'Example Email Field', 'timeline-express' ),
+			'desc' => __( 'this is an example user defined email field.', 'timeline-express' ),
+			'id'   => 'announcement_user_defined_money',
+			'type' => 'text_email',
+		)
+	);
+	return $custom_fields;
+}
+add_filter( 'timeline_express_custom_fields' , 'add_custom_timeline_express_field' );
+</code>
+
+This example would add 3 new fields below the 'Announcement Image' field on the announcement post. 
+
+The first field is a simple text field. The second field is an example WYSIWYG, and the third is an email field.
+
+Note: You can add as many fields as you would like, and display them on the front end using the <a href="http://codex.wordpress.org/Function_Reference/get_post_meta" target="_blank" title="WordPress Codex: get_post_meta()">get_post_meta()</a> function.
 
 **Customize the 'announcement' slug (New v1.1.4)**
 
@@ -245,6 +283,11 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
+= 1.1.5 - January 10th, 2015 =
+Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).
+Fixed: CMB class file causing conflicts with other plugins, and removed the old version
+Fixed: Adjusted a few styles on the announcement post page
+
 = 1.1.4.1 - January 2nd, 2015 =
 * Fixed: Issue with date storing different on backend vs front end
 * Fixed: Settings link on the Timeline Express welcome page
@@ -326,6 +369,15 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 * Initial Release to the WordPress repository
 
 == Upgrade Notice ==
+
+= 1.1.5 - January 10th, 2015 =
+Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).
+Fixed: CMB class file causing conflicts with other plugins, and removed the old version
+Fixed: Adjusted a few styles on the announcement post page
+
+= 1.1.4.1 - January 2nd, 2015 =
+Fixed: Issue with date storing different on backend vs front end
+Fixed: Settings link on the Timeline Express welcome page
 
 = 1.1.4 - December 24th, 2014 =
 * Enhancement: Implemented premium support licensing. Any issues that require immediate response, or custom code should purchase a support license.
