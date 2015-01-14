@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.1.5.1
+Stable tag: 1.1.5.2
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -283,7 +283,11 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 == Changelog ==
 
-=1.1.5.1 - January 10th, 2015 =
+= 1.1.5.2 - January 13th, 2015 =
+Fixed: Errors thrown from new user fields hook, when no custom fields are defined by the user
+Fixed: Incorrect date format for new announcements
+
+= 1.1.5.1 - January 10th, 2015 =
 Fixed: Data saving incorrectly to the database, causing errors to be thrown on front and back end
 
 = 1.1.5 - January 10th, 2015 =
@@ -373,7 +377,11 @@ Fixed: Adjusted a few styles on the announcement post page
 
 == Upgrade Notice ==
 
-=1.1.5.1 - January 10th, 2015 =
+= 1.1.5.2 - January 10th, 2015 =
+Fixed: Errors thrown from new user fields hook, when no custom fields are defined by the user
+Fixed: Incorrect date format for new announcements
+
+= 1.1.5.1 - January 10th, 2015 =
 Fixed: Data saving incorrectly to the database, causing errors to be thrown on front and back end
 
 = 1.1.5 - January 10th, 2015 =

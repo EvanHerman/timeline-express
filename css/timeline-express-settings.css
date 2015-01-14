@@ -207,7 +207,7 @@
 	padding-left: 1em;
 }
 
-.wp-list-table #announcement_date {
+.wp-list-table #announcement_date, .wp-list-table .column-announcement_date {
 	width: 215px;
 }
 
@@ -220,7 +220,7 @@
 	line-height: 4.7
 }
 
-.wp-list-table #past_announcement, .wp-list-table .past_announcement {
+.wp-list-table #past_announcement {
 	width: 150px;
 	text-align:center;
 }
@@ -249,7 +249,8 @@
 		text-align: center;
 	}
 	/* Announcement Date */
-	.wp-list-table #announcement_date {
+	.wp-list-table #announcement_date, 
+	th.manage-column.column-announcement_date.sortable.desc {
 		line-height: 1.5;
 		padding-left: 2.5em;
 	}

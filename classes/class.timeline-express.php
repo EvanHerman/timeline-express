@@ -168,7 +168,7 @@ if(!class_exists("timelineExpressBase"))
 				</style>
 				<?php
 				if( $meta && isset( $meta ) ){
-					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field['default'], '" />';
+					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , strtotime( $meta ) ) : $field['default'], '" />';
 					echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
 				} else{
 					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="' . date('m/d/Y' ) .'" />';
@@ -446,12 +446,7 @@ if(!class_exists("timelineExpressBase"))
 					$prefix = 'announcement_';
 					
 					// setup an empty field type for users to customize
-					$custom_field = array(
-						'name' => __( '', 'timeline-express' ),
-						'desc' => __( '', 'timeline-express' ),
-						'id'   => '',
-						'type' => '',
-					);
+					$custom_field = array();
 					
 					// set up our array of fields
 					$field_array = array(
@@ -496,11 +491,14 @@ if(!class_exists("timelineExpressBase"))
 					// loop to add fields to our array
 					$custom_fields = apply_filters( 'timeline_express_custom_fields', $custom_field );
 					$i = 0;
-					foreach( $custom_fields as $user_defined_field ) {
-						if( $custom_fields[$i]['name'] != '' ) {
-							$field_array[] = $custom_fields[$i];
+					// first, check if any custom fields are defined...
+					if( !empty( $custom_fields ) ) {
+						foreach( $custom_fields as $user_defined_field ) {
+							if( $custom_fields[$i]['name'] != '' ) {
+								$field_array[] = $custom_fields[$i];
+							}
+							$i++;
 						}
-						$i++;
 					}
 					
 					$meta_boxes['announcement_info'] = array(
@@ -906,7 +904,7 @@ if(!class_exists("timelineExpressBase"))
 						$content_shadow = $this->timeline_express_optionVal['announcement-box-shadow-color'];
 						$background_line_color = $this->timeline_express_optionVal['announcement-background-line-color'];
 						$display_order = $this->timeline_express_optionVal['announcement-display-order'];
-						
+												
 						// set the current date, with our offset
 						$offset = get_option('gmt_offset');					
 						$current_date = strtotime( 'today ' . $offset );
