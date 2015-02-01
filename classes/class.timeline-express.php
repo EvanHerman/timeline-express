@@ -121,6 +121,8 @@ if(!class_exists("timelineExpressBase"))
 					add_filter( 'manage_edit-te_announcements_sortable_columns', array( &$this ,  'make_sortable_timeline_express_column' ) );
 					// custom sort function
 					add_action( 'pre_get_posts', array( &$this , 'te_announcements_pre_get_posts' ) , 1 );
+					// custom sort orderby 'announcement_date'
+					add_filter( 'request', array( &$this , 'announcement_date_column_orderby' ) );
 					// register custom image size for the edit page
 					add_image_size( 'timeline-express-thumbnail', 150, 60, true );
 					// register custom image size for the single announcement page
@@ -147,8 +149,6 @@ if(!class_exists("timelineExpressBase"))
 					add_action( 'cmb_render_te_date_time_stamp_custom', array($this,'cmb_render_te_date_time_stamp_custom'), 10, 2 );
 					// render new custom timeline express about metabox
 					add_action( 'cmb_render_te_about_metabox', array($this,'cmb_render_te_about_metabox'), 10, 2 );
-					// add custom hook to allow users to add there own fields
-					add_action('the_action_hook', array( $this, 'the_action_callback' ) );
 					// custom vlaidation for our new custom field
 					 //Validate new metabox type
 					add_filter( 'cmb_validate_te_date_time_stamp_custom', array( $this, 'cmb_validate_te_date_time_stamp_custom' ) , 10, 2 );
@@ -168,7 +168,7 @@ if(!class_exists("timelineExpressBase"))
 				</style>
 				<?php
 				if( $meta && isset( $meta ) ){
-					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , strtotime( $meta ) ) : $field['default'], '" />';
+					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field['default'], '" />';
 					echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
 				} else{
 					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="' . date('m/d/Y' ) .'" />';
@@ -473,7 +473,7 @@ if(!class_exists("timelineExpressBase"))
 								'desc' => __( 'enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
 								'id'   => $prefix . 'date',
 								'type' => 'te_date_time_stamp_custom',
-								 'default' => date( 'm/d/Y' ), 
+								'default' => strtotime( date( 'm/d/Y' ) ), 
 								// 'repeatable' => true,
 								// 'on_front' => false, // Optionally designate a field to wp-admin only
 							),
@@ -537,18 +537,6 @@ if(!class_exists("timelineExpressBase"))
 				}
 				// End metabox definitions	
 				
-			function the_action_callback() {
-				$field = array(
-								'name' => __( 'Announcement Image', 'timeline-express' ),
-								'desc' => __( 'select a banner image for this announcement (optional). (recommended 650px wide or larger)  ', 'timeline-express' ),
-								'id'   => $prefix . 'image',
-								'type' => 'file',
-								// 'repeatable' => true,
-								// 'on_front' => false, // Optionally designate a field to wp-admin only
-							);
-					return $field;
-			}
-
 			/* Change Testimonial Title */
 			public function change_default_announcement_title( $title ){
 					$screen = get_current_screen();
@@ -561,12 +549,12 @@ if(!class_exists("timelineExpressBase"))
 			/* Add Custom Columns to Announcement page */
 			public function add_new_timeline_express_columns($timeline_express_columns) {
 					$timeline_express_announcement_columns['cb'] = '<input type="checkbox" />';
-					$timeline_express_announcement_columns['title'] = _x('Announcement Name', 'column name');
-					$timeline_express_announcement_columns['color'] = _x('Color', 'column name');
-					$timeline_express_announcement_columns['icon'] = _x('Icon', 'column name');
-					$timeline_express_announcement_columns['announcement_date'] = _x('Announcement Date', 'column name');
-					$timeline_express_announcement_columns['image'] = _x('Image', 'column name');
-					$timeline_express_announcement_columns['past_announcement'] = _x('Announcment Past?', 'column name');
+					$timeline_express_announcement_columns['title'] = _x('Announcement Name', 'timeline-express');
+					$timeline_express_announcement_columns['color'] = _x('Color', 'timeline-express');
+					$timeline_express_announcement_columns['icon'] = _x('Icon', 'timeline-express');
+					$timeline_express_announcement_columns['announcement_date'] = _x('Announcement Date', 'timeline-express');
+					$timeline_express_announcement_columns['image'] = _x('Image', 'timeline-express');
+					$timeline_express_announcement_columns['past_announcement'] = _x('Announcment Past?', 'timeline-express');
 					return $timeline_express_announcement_columns;
 				}
 		
@@ -638,7 +626,7 @@ if(!class_exists("timelineExpressBase"))
 						 case 'announcement_date':
 							// set our query's meta_key, which is used for custom fields
 							$query->set( 'meta_key', 'announcement_date' );
-							$query->set( 'orderby', 'meta_value meta_value_num' );
+							$query->set( 'orderby', 'meta_value_num' );
 							break;
 
 					  }
@@ -646,6 +634,16 @@ if(!class_exists("timelineExpressBase"))
 				   }
 
 				}
+			
+			function announcement_date_column_orderby( $vars ) {
+				if ( isset( $vars['orderby'] ) && 'announcement_date' == $vars['orderby'] ) {
+					$vars = array_merge( $vars, array(
+						'meta_key' => 'announcement_date',
+						'orderby' => 'meta_value_num'
+					) );
+				}
+				return $vars;
+			}
 			
 			// register our shortcodes
 			public function timeline_express_createShortcodes() {
@@ -766,7 +764,7 @@ if(!class_exists("timelineExpressBase"))
 									$announcement_header_image = wp_get_attachment_image_src( $announcement_image_id[0] , 'timeline-express-announcement-header');
 									$custom_content .= '<img class="announcement-banner-image" src="' . esc_url ( $announcement_header_image[0] ) . '" alt="' . get_the_title( $post->ID ) . '">';
 								}
-								$custom_content .= '<strong class="timeline-express-single-page-announcement-date">Announcement Date : ' . date( 'M j , Y' , $announcement_date ) . '</strong>';
+								$custom_content .= '<strong class="timeline-express-single-page-announcement-date">' . __( 'Announcement Date' , 'timeline-express' ) . ' : ' . date( 'M j , Y' , $announcement_date ) . '</strong>';
 								$custom_content .= $content;
 								if ( $referer != '' ) {	
 									$custom_content .= '<a href="' . $referer . '" class="return-to-timeline"><i class="fa fa-chevron-left"></i> ' . __( 'Back' , 'timeline-express' ) . '</a>';
@@ -1025,7 +1023,7 @@ if(!class_exists("timelineExpressBase"))
 													// display our image, if it exists
 													if ( $announcement_image != '' ) { 
 														$attachment_id = $this->timeline_express_get_image_id( $announcement_image ); 
-														$timeline_announcement_image = wp_get_attachment_image_src($attachment_id, 'timeline-express');
+														$timeline_announcement_image = wp_get_attachment_image_src( $attachment_id, apply_filters( 'timeline-express-announcement-img-size' , 'timeline-express' ) );
 														echo '<img src="' . $timeline_announcement_image[0] . '" alt="Announcement Image" class="announcement-banner-image" >';
 													}											
 													// excerpt random length

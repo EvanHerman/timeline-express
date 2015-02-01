@@ -35,6 +35,19 @@ Timeline express comes ready for translation. I would love to get things transla
 
 **Hooks + Filters**
 
+**Use Alternate Image Size For Announcements (New v1.1.5.5)**
+
+By default Timeline Express generates a custom image size to use within the timeline. If you would like to use another image size, you can use the following filter.
+
+Example:
+<code>
+function change_timeline_express_announcement_image_size( $image_size ) {
+	$image_size = 'full';
+	return $image_size;
+}
+add_filter( 'timeline-express-announcement-img-size' , 'change_timeline_express_announcement_image_size' );
+</code>
+
 **Define your own custom fields to use in Announcement posts (New v1.1.5)**
 
 Users can now add custom fields to Timeline Express announcement posts. This allows for greater control over the announcements and the front end display. Using this hook in conjunction with a custom single announcement template will give you the greatest control.
