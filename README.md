@@ -7,7 +7,7 @@ Timeline express allows you to create a vertical animated and responsive timelin
 
 * Load a custom template for single announcements (new)
 * Localized date formatting for international users (new)
-* Hundreds of Font awesome icons included. Specify a different icon for each announcement
+* Hundreds of Font awesome icons included. Specify a different icon for each announcement 
 * CSS3 animations on scroll
 * Set the color of the announcement
 * Specify the length to trim each announcemnt, or randomize it!
