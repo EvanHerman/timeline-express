@@ -30,6 +30,7 @@ jQuery(document).ready(function(){
 	var $masonryContainer = jQuery( '#cd-timeline' );
 	$masonryContainer.imagesLoaded( function() {
 		$masonryContainer.masonry({itemSelector : '.cd-timeline-block',});
+		jQuery( '#cd-timeline' ).fadeTo( 600 , 1 );
 	});
 	
 	var entry_content_width = jQuery( '#cd-timeline' ).parents('div').css('width');

@@ -1,4 +1,4 @@
-/* Timeline Express Minified Styles 1.1.4 */
+/* Timeline Express Minified Styles 1.1.5.7 */
 /*	By Evan Herman (http://www.evan-herman.com */
 /* -------------------------------------------------- */
 .cd-container {
@@ -22,6 +22,17 @@
     padding: 2em 0;
     margin-top: 2em;
     margin-bottom: 3em;
+	/* @since v1.1.5.7 */
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	/* IE 5-7 */
+	filter: alpha(opacity=0);
+	/* Netscape */
+	-moz-opacity: 0;
+	/* Safari 1.x */
+	-khtml-opacity: 0;
+	/* Good browsers */
+	opacity: 0;
 }
 #cd-timeline::before {
     content: '';

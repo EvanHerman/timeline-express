@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.1.5.6
+Stable tag: 1.1.5.7
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -301,6 +301,10 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Changelog ==
 
+= 1.1.5.7 - February 5th, 2015 =
+* Enhancement: Added a dropdown to select the font awesome icon
+* Enhancement: Fadded in the timeline after everything has initialized, to prevent seeing a messed up Timeline layout
+
 = 1.1.5.6 - February 5th, 2015 =
 * Fixed: Issue with the excerpt being truncated and throwing off entire timeline layout (issue occured when truncate happened mid html tag , which left a tag open)
 * Fixed: Wrapped missing text in text domain
@@ -409,6 +413,11 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 * Initial Release to the WordPress repository
 
 == Upgrade Notice ==
+
+= 1.1.5.7 - February 5th, 2015 =
+* Message From The Author: Sorry for multiple updates on the same day. I was feeling ambitious and rolled out one patch to fix an issue and another with some new features. Enjoy :)
+* Enhancement: Added a dropdown to select the font awesome icon
+* Enhancement: Fadded in the timeline after everything has initialized, to prevent seeing a messed up Timeline layout
 
 = 1.1.5.6 - February 5th, 2015 =
 * Fixed: Issue with the excerpt being truncated and throwing off entire timeline layout (issue occured when truncate happened mid html tag , which left a tag open)

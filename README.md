@@ -1,4 +1,4 @@
-Timeline Express v1.1.5.6
+Timeline Express v1.1.5.7
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -280,6 +280,11 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.5.7 - February 5th, 2015
+* Message From The Author: Sorry for multiple updates on the same day. I was feeling ambitious and rolled out one patch to fix an issue and another with some new features. Enjoy :)
+* Enhancement: Added a dropdown to select the font awesome icon
+* Enhancement: Fadded in the timeline after everything has initialized, to prevent seeing a messed up Timeline layout
 
 ###### 1.1.5.6 - February 5th, 2015 
 * Fixed: Issue with the excerpt being truncated and throwing off entire timeline layout (issue occured when truncate happened mid html tag , which left a tag open)

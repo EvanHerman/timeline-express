@@ -152,6 +152,10 @@ if(!class_exists("timelineExpressBase"))
 					// custom vlaidation for our new custom field
 					 //Validate new metabox type
 					add_filter( 'cmb_validate_te_date_time_stamp_custom', array( $this, 'cmb_validate_te_date_time_stamp_custom' ) , 10, 2 );
+					// render new custom timeline express about metabox
+					add_action( 'cmb_render_te_bootstrap_dropdown', array( $this, 'cmb_render_te_bootstrap_dropdown' ), 10, 2 );
+					// validate the new custom timeline express about metabox
+					add_filter( 'cmb_validate_te_bootstrap_dropdown', array( $this, 'cmb_validate_te_bootstrap_dropdown' ) , 10, 2);
 				}
 			
 			/*
@@ -160,21 +164,21 @@ if(!class_exists("timelineExpressBase"))
 			* since @v1.1.5
 			*/
 			function cmb_render_te_date_time_stamp_custom( $field, $meta ) {
-				?>
-				<style>
-					#ui-datepicker-div { z-index: 99999 !important; }
-					#wpbody-content { overflow: hidden !important; }
-					.cmb_id_announcement_image td .cmb_upload_button { height: 32px !important; }
-				</style>
-				<?php
-				if( $meta && isset( $meta ) ){
-					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field['default'], '" />';
-					echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
-				} else{
-					echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="' . date('m/d/Y' ) .'" />';
-					echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
-				}				
-			}
+					?>
+					<style>
+						#ui-datepicker-div { z-index: 99999 !important; }
+						#wpbody-content { overflow: hidden !important; }
+						.cmb_id_announcement_image td .cmb_upload_button { height: 32px !important; }
+					</style>
+					<?php
+					if( $meta && isset( $meta ) ){
+						echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field['default'], '" />';
+						echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
+					} else{
+						echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="' . date('m/d/Y' ) .'" />';
+						echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
+					}				
+				}
 
 			/*
 			* cmb_validate_te_date_time_stamp_custom()
@@ -182,11 +186,11 @@ if(!class_exists("timelineExpressBase"))
 			* since @v1.1.5
 			*/
 			function cmb_validate_te_date_time_stamp_custom( $value, $new ) {
-				if( isset( $new ) && $new != '' ){
-					return strtotime( $new );
+					if( isset( $new ) && $new != '' ){
+						return strtotime( $new );
+					}
+					return '-1';
 				}
-				return '-1';
-			}
 			
 			
 			 /*
@@ -195,10 +199,31 @@ if(!class_exists("timelineExpressBase"))
 			* since @v1.1.5
 			*/
 			function cmb_render_te_about_metabox( $field, $meta ) {
-				require_once TIMELINE_EXPRESS_PATH . 'lib/about-metabox-template.php';
-			}
+					require_once TIMELINE_EXPRESS_PATH . 'lib/about-metabox-template.php';
+				}
 			
+			 /*
+			* cmb_render_te_bootstrap_dropdown()
+			* render the custom bootstrap dropdown
+			* since @v1.1.5.7
+			*/
+			function cmb_render_te_bootstrap_dropdown( $field, $meta ) {
+					// pass in the field object and meta data
+					$this->timeline_express_build_bootstrap_dropdown( $field, $meta );
+				}
 			
+			/*
+			* cmb_validate_te_date_time_stamp_custom()
+			* save our custom date time stamp
+			* since @v1.1.5
+			*/
+			function cmb_validate_te_bootstrap_dropdown( $value, $new ) {
+					if( isset( $new ) && $new != '' ){
+						return 'fa-'.trim($new);
+					}
+					return '-1';
+				}	
+				
 			/*
 			* schedule_timeline_express_support_cron()
 			* Setup our twice daily transient, to cross check the API key ( if set )
@@ -218,10 +243,10 @@ if(!class_exists("timelineExpressBase"))
 					if ( get_option( 'timeline_express_license_status' ) !== false && get_option( 'timeline_express_license_status' ) == 'valid' ) {
 						// api parameters, cross checking the license
 							$api_params = array( 
-								'edd_action'=> 'check_license', 
-								'license' 	=> trim( get_option( 'timeline_express_license_key' ) ), 
+								'edd_action' => 'check_license', 
+								'license' => trim( get_option( 'timeline_express_license_key' ) ), 
 								'item_name' => urlencode( EH_DEV_SHOP_SUPPORT_PRODUCT_NAME ), // the name of our product
-								'url'       => home_url()
+								'url' => home_url()
 							);
 							// Call the custom API.
 							$response = wp_remote_get( add_query_arg( $api_params, EH_DEV_SHOP_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
@@ -463,7 +488,7 @@ if(!class_exists("timelineExpressBase"))
 								'name' => __( 'Font Awesome Class', 'timeline-express' ),
 								'desc' => __( 'enter the font-awesome class name in the box above. This is used for the icon associated with the announcement. <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">cheat sheet</a> Example : "fa-times-circle" ', 'timeline-express' ),
 								'id'   => $prefix . 'icon',
-								'type' => 'text_medium',
+								'type' => 'te_bootstrap_dropdown',
 								'default' => trim( $this->timeline_express_optionVal['default-announcement-icon'] ),
 								// 'repeatable' => true,
 								// 'on_front' => false, // Optionally designate a field to wp-admin only
@@ -827,7 +852,7 @@ if(!class_exists("timelineExpressBase"))
 					$screen = get_current_screen();
 					$print_styles_on_screen_array = array( 'te_announcements_page_timeline-express-settings' , 'admin_page_timeline-express-welcome' , 'te_announcements_page_timeline-express-support' );
 
-					if ( in_array( $screen->base , $print_styles_on_screen_array ) || in_array( $screen->id, array( 'edit-te_announcements' ) ) ) {
+					if ( in_array( $screen->base , $print_styles_on_screen_array ) || $screen->post_type == 'te_announcements' ) {
 						// Register Styles
 						wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'css/timeline-express-settings.min.css' , array(), '1.0.0', 'all');	
 						// enqueue font awesome for use in column display
@@ -1206,6 +1231,79 @@ if(!class_exists("timelineExpressBase"))
 							return $attachment[0]; 
 					}
 
+					
+				// Build a dropdown for our bootstrap icons
+				// @since v1.1.5.7
+				public function timeline_express_build_bootstrap_dropdown( $field, $meta ) {
+						
+						// get the icons out of the css file
+						$response = wp_remote_get( 'http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css' );
+						
+						// splot the response body, and store the icon classes in a variable
+						$split_dat_response = explode( 'icons */' , $response['body'] );
+						
+						// empty array for icon array
+						$bootstrap_icon_array = array();
+						
+						// replace the unecessary stuff
+						$data = str_replace( ';' , '' , str_replace( ':before' , '' , str_replace( '}' , '' , str_replace( 'content' , '' , str_replace( '{' , '' , $split_dat_response[1] ) ) ) ) );
+						$icon_data = explode( '.fa-' , $data );
+						$i = 1;
+								
+						foreach( array_slice($icon_data,1) as $key => $value) {
+							$split_icon = explode( ':' , $value );
+							if( isset( $split_icon[1] ) ) {
+								$bootstrap_icon_array[] = array( trim( 'fa-' . $split_icon[0] ) => trim( $split_icon[0] ) );
+							}
+							$i++;
+						}
+							
+						$flat_bootstrap_icon_array = array();
+						foreach($bootstrap_icon_array as $array) {
+							foreach($array as $k=>$v) {
+							   $flat_bootstrap_icon_array[$k] = $v;
+							}
+						}
+						
+						wp_enqueue_script( 'bootstrap-select' , TIMELINE_EXPRESS_URL . 'js/bootstrap-select.js' , array( 'jquery' ) , 'all' );
+						wp_enqueue_script( 'bootstrap-min' , 'http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' );
+						wp_enqueue_style('bootstrap-select-style' ,  TIMELINE_EXPRESS_URL . 'css/bootstrap-select.min.css' );
+						?>	
+						<script>
+						jQuery( document ).ready( function() {
+							jQuery('.selectpicker').selectpicker({
+								style: 'btn-info',
+								size: 6
+							});
+						});
+						</script>
+						<style>
+							.dropdown-toggle { background: transparent !important; border: 1px solid rgb(201, 201, 201) !important; } 
+							.dropdown-toggle .caret { border-top-color: #333 !important; }
+							.ui-datepicker-prev:hover, .ui-datepicker-next:hover { cursor: pointer; }
+						</style> 
+						<!-- start the font awesome icon select -->
+						<select class="selectpicker" name="<?php echo $field['id']; ?>" id="<?php echo $field['id']; ?>">
+							
+							<?php
+								/* sort the bootstrap icons alphabetically */
+								sort( $flat_bootstrap_icon_array );
+								foreach( $flat_bootstrap_icon_array as $icon ) {
+							?>
+							
+							<option class="fa" data-icon="fa-<?php echo $icon; ?>" <?php selected( 'fa-'.$icon , $meta ); ?>><?php echo $icon; ?></option>
+							
+							<?php
+								}
+							?>
+							
+						</select>
+						<!-- end select -->
+						
+						<?php
+						echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
+					}	
+					
 			/***** ADMINISTRATION MENUS
 			 ****************************************************************************************************/
 			public function addAdministrationMenu() {
