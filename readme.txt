@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.1.5.5
+Stable tag: 1.1.5.6
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -301,28 +301,32 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Changelog ==
 
+= 1.1.5.6 - February 5th, 2015 =
+* Fixed: Issue with the excerpt being truncated and throwing off entire timeline layout (issue occured when truncate happened mid html tag , which left a tag open)
+* Fixed: Wrapped missing text in text domain
+
 = 1.1.5.5 - February 1st, 2015 =
-Fixed: Wrapped admin column headers in get text filter
-Fixed: Sort orders by announcement date
-Enhancement: Added filter to define custom image size for announcement image
+* Fixed: Wrapped admin column headers in get text filter
+* Fixed: Sort orders by announcement date
+* Enhancement: Added filter to define custom image size for announcement image
 
 = 1.1.5.4 - January 19th, 2015 =
-Fixed: Remove unnecessary filter in the main class file
+* Fixed: Remove unnecessary filter in the main class file
 
 = 1.1.5.3 - January 16th, 2015 =
-Fixed: Fixed incorrect date save format
+* Fixed: Fixed incorrect date save format
 
 = 1.1.5.2 - January 13th, 2015 =
-Fixed: Errors thrown from new user fields hook, when no custom fields are defined by the user
-Fixed: Incorrect date format for new announcements
+* Fixed: Errors thrown from new user fields hook, when no custom fields are defined by the user
+* Fixed: Incorrect date format for new announcements
 
 = 1.1.5.1 - January 10th, 2015 =
-Fixed: Data saving incorrectly to the database, causing errors to be thrown on front and back end
+* Fixed: Data saving incorrectly to the database, causing errors to be thrown on front and back end
 
 = 1.1.5 - January 10th, 2015 =
-Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).
-Fixed: CMB class file causing conflicts with other plugins, and removed the old version
-Fixed: Adjusted a few styles on the announcement post page
+* Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).
+* Fixed: CMB class file causing conflicts with other plugins, and removed the old version
+* Fixed: Adjusted a few styles on the announcement post page
 
 = 1.1.4.1 - January 2nd, 2015 =
 * Fixed: Issue with date storing different on backend vs front end
@@ -406,32 +410,36 @@ Fixed: Adjusted a few styles on the announcement post page
 
 == Upgrade Notice ==
 
+= 1.1.5.6 - February 5th, 2015 =
+* Fixed: Issue with the excerpt being truncated and throwing off entire timeline layout (issue occured when truncate happened mid html tag , which left a tag open)
+* Fixed: Wrapped missing text in text domain
+
 = 1.1.5.5 - February 1st, 2015 =
-Fixed: Wrapped admin column headers in get text filter
-Fixed: Sort orders by announcement date
-Enhancement: Added filter to define custom image size for announcement image (see <a href="https://wordpress.org/plugins/timeline-express/other_notes/">documentation</a>)
+* Fixed: Wrapped admin column headers in get text filter
+* Fixed: Sort orders by announcement date
+* Enhancement: Added filter to define custom image size for announcement image (see <a href="https://wordpress.org/plugins/timeline-express/other_notes/">documentation</a>)
 
 = 1.1.5.4 - January 19th, 2015 =
-Fixed: Remove unecessary filter in the main class file
+* Fixed: Remove unecessary filter in the main class file
 
 = 1.1.5.3 - January 16th, 2015 =
-Fixed: Fixed incorrect date save format
+* Fixed: Fixed incorrect date save format
 
 = 1.1.5.2 - January 10th, 2015 =
-Fixed: Errors thrown from new user fields hook, when no custom fields are defined by the user
-Fixed: Incorrect date format for new announcements
+* Fixed: Errors thrown from new user fields hook, when no custom fields are defined by the user
+* Fixed: Incorrect date format for new announcements
 
 = 1.1.5.1 - January 10th, 2015 =
-Fixed: Data saving incorrectly to the database, causing errors to be thrown on front and back end
+* Fixed: Data saving incorrectly to the database, causing errors to be thrown on front and back end
 
 = 1.1.5 - January 10th, 2015 =
-Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).
-Fixed: CMB class file causing conflicts with other plugins, and removed the old version
-Fixed: Adjusted a few styles on the announcement post page
+* Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).
+* Fixed: CMB class file causing conflicts with other plugins, and removed the old version
+* Fixed: Adjusted a few styles on the announcement post page
 
 = 1.1.4.1 - January 2nd, 2015 =
-Fixed: Issue with date storing different on backend vs front end
-Fixed: Settings link on the Timeline Express welcome page
+* Fixed: Issue with date storing different on backend vs front end
+* Fixed: Settings link on the Timeline Express welcome page
 
 = 1.1.4 - December 24th, 2014 =
 * Enhancement: Implemented premium support licensing. Any issues that require immediate response, or custom code should purchase a support license.

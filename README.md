@@ -1,4 +1,4 @@
-Timeline Express v1.1.5.2  
+Timeline Express v1.1.5.6
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -280,6 +280,21 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.5.6 - February 5th, 2015 
+* Fixed: Issue with the excerpt being truncated and throwing off entire timeline layout (issue occured when truncate happened mid html tag , which left a tag open)
+* Fixed: Wrapped missing text in text domain
+
+###### 1.1.5.5 - February 1st, 2015
+* Fixed: Wrapped admin column headers in get text filter
+* Fixed: Sort orders by announcement date
+* Enhancement: Added filter to define custom image size for announcement image
+
+###### 1.1.5.4 - January 19th, 2015
+* Fixed: Remove unnecessary filter in the main class file
+
+###### 1.1.5.3 - January 16th, 2015
+* Fixed: Fixed incorrect date save format
 
 ###### 1.1.5.2 - January 10th, 2015 
 Fixed: Errors thrown from new user fields hook, when no custom fields are defined by the user
