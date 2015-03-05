@@ -416,7 +416,11 @@ if(!class_exists("timelineExpressBase"))
 			public function timeline_express_generate_announcement_post_type() {
 					
 					$this->timeline_express_optionVal = get_option( TIMELINE_EXPRESS_OPTION );
-					$announcements_public = $this->timeline_express_optionVal['announcement-appear-in-searches'];
+					if( isset( $this->timeline_express_optionVal['announcement-appear-in-searches'] ) ) {
+						$announcements_public = $this->timeline_express_optionVal['announcement-appear-in-searches'];
+					} else {
+						$announcements_public = 'true';
+					}
 					
 					// toggle public search visibility of the announcements
 					// @since v1.1.5.8
