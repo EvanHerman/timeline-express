@@ -36,6 +36,7 @@ if(!class_exists("timelineExpressBase"))
 					// redirect the user on plugin activation
 					// to the timeline express welcome page
 					add_option('timeline_express_do_activation_redirect', true);
+					$this->addMissingOptions();
 				}
 
 			public function deactivate() {
@@ -157,6 +158,19 @@ if(!class_exists("timelineExpressBase"))
 					// validate the new custom timeline express about metabox
 					add_filter( 'cmb_validate_te_bootstrap_dropdown', array( $this, 'cmb_validate_te_bootstrap_dropdown' ) , 10, 2);
 				}
+			
+			function addMissingOptions() {
+				// store the option temporarily
+				$this->timeline_express_optionVal = get_option( TIMELINE_EXPRESS_OPTION );
+				// add new option announcement-appear-in-searches 
+				// ( toggle display of announcements in searches )
+				// @since v1.1.5.8
+				if( !isset( $this->timeline_express_optionVal['announcement-appear-in-searches'] ) ) {
+					$this->timeline_express_optionVal['announcement-appear-in-searches'] = 'true';
+				}
+				// update the options
+				update_option( TIMELINE_EXPRESS_OPTION , $this->timeline_express_optionVal );
+			}
 			
 			/*
 			* cmb_render_te_date_time_stamp_custom()
@@ -400,7 +414,18 @@ if(!class_exists("timelineExpressBase"))
 				
 			// Register Announcement Custom Post Type
 			public function timeline_express_generate_announcement_post_type() {
-								
+					
+					$this->timeline_express_optionVal = get_option( TIMELINE_EXPRESS_OPTION );
+					$announcements_public = $this->timeline_express_optionVal['announcement-appear-in-searches'];
+					
+					// toggle public search visibility of the announcements
+					// @since v1.1.5.8
+					if( $announcements_public == 'false' ) {
+						$announcements_public = false;
+					} else {
+						$announcements_public = true;
+					}
+					
 					// Register our Announcement Custom Post Type
 						// used to easily manage the announcements on the site
 					$timeline_express_labels = array(
@@ -431,7 +456,7 @@ if(!class_exists("timelineExpressBase"))
 						'supports'            => array( 'title', 'editor' ),
 						'taxonomies'          => array(),
 						'hierarchical'        => true,
-						'public'              => true,
+						'public'              => $announcements_public, // toggled via setitngs page - @since v1.1.5.8
 						'show_ui'             => true,
 						'show_in_menu'        => true,
 						'show_in_nav_menus'   => true,
@@ -440,8 +465,6 @@ if(!class_exists("timelineExpressBase"))
 						'menu_icon' 			=> TIMELINE_EXPRESS_URL . '/images/timeline-express-menu-icon.png',
 						'can_export'          => true,
 						'has_archive'         => true,
-						'exclude_from_search' => false,
-						'publicly_queryable'  => true,
 						'rewrite'             => $timeline_express_rewrite,
 						'capability_type'     => 'page',
 					);
@@ -485,11 +508,11 @@ if(!class_exists("timelineExpressBase"))
 								// 'on_front' => false, // Optionally designate a field to wp-admin only
 							),
 							array(
-								'name' => __( 'Font Awesome Class', 'timeline-express' ),
-								'desc' => __( 'enter the font-awesome class name in the box above. This is used for the icon associated with the announcement. <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">cheat sheet</a> Example : "fa-times-circle" ', 'timeline-express' ),
+								'name' => __( 'Announcement Icon', 'timeline-express' ),
+								'desc' => __( 'select an icon from the drop down above. This is used for the icon associated with the announcement.', 'timeline-express' ),
 								'id'   => $prefix . 'icon',
 								'type' => 'te_bootstrap_dropdown',
-								'default' => trim( $this->timeline_express_optionVal['default-announcement-icon'] ),
+								'default' => 'fa-'.str_replace( 'fa-' , '' , $this->timeline_express_optionVal['default-announcement-icon'] ),
 								// 'repeatable' => true,
 								// 'on_front' => false, // Optionally designate a field to wp-admin only
 							),
@@ -832,6 +855,7 @@ if(!class_exists("timelineExpressBase"))
 								$this->timeline_express_optionVal['announcement-box-shadow-color']	= $fd['announcement-box-shadow-color'];
 								$this->timeline_express_optionVal['announcement-background-line-color']	= $fd['announcement-background-line-color'];
 								$this->timeline_express_optionVal['delete-announcement-posts-on-uninstallation'] = isset( $fd['delete-announcement-posts-on-uninstallation'] ) ? '1' : '0';
+								$this->timeline_express_optionVal['announcement-appear-in-searches'] = $fd['announcement-appear-in-searches'];
 							return update_option( TIMELINE_EXPRESS_OPTION, $this->timeline_express_optionVal );		
 						}
 					return false;
@@ -856,7 +880,7 @@ if(!class_exists("timelineExpressBase"))
 						// Register Styles
 						wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'css/timeline-express-settings.min.css' , array(), '1.0.0', 'all');	
 						// enqueue font awesome for use in column display
-						wp_enqueue_style( 'prefix-font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' , array() , '4.2.0' );					
+						wp_enqueue_style( 'prefix-font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' , array() , '4.3.0' );					
 					}
 							
 				}
@@ -1237,7 +1261,7 @@ if(!class_exists("timelineExpressBase"))
 				public function timeline_express_build_bootstrap_dropdown( $field, $meta ) {
 						
 						// get the icons out of the css file
-						$response = wp_remote_get( 'http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css' );
+						$response = wp_remote_get( 'http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css' );
 						
 						// splot the response body, and store the icon classes in a variable
 						$split_dat_response = explode( 'icons */' , $response['body'] );
@@ -1282,6 +1306,7 @@ if(!class_exists("timelineExpressBase"))
 							.dropdown-toggle .caret { border-top-color: #333 !important; }
 							.ui-datepicker-prev:hover, .ui-datepicker-next:hover { cursor: pointer; }
 						</style> 
+						
 						<!-- start the font awesome icon select -->
 						<select class="selectpicker" name="<?php echo $field['id']; ?>" id="<?php echo $field['id']; ?>">
 							
@@ -1354,6 +1379,7 @@ if(!class_exists("timelineExpressBase"))
 					$this->timeline_express_optionVal['announcement-box-shadow-color'] = "#B9C5CD";	
 					$this->timeline_express_optionVal['announcement-background-line-color'] = '#D7E4ED';
 					$this->timeline_express_optionVal['delete-announcement-posts-on-uninstallation'] = '0';
+					$this->timeline_express_optionVal['announcement-appear-in-searches'] = 'true';
 					return update_option( TIMELINE_EXPRESS_OPTION, $this->timeline_express_optionVal );	
 				}
 			 

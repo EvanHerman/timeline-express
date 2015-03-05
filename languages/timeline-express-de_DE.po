@@ -1,0 +1,811 @@
+# Copyright (C) 2014 Timeline Express
+# This file is distributed under the same license as the Timeline Express package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Timeline Express 1.0.9\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/timeline-express\n"
+"POT-Creation-Date: 2014-11-19 17:43:58+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-02-17 22:29+0100\n"
+"Last-Translator: MiXiM <mixim@mixim.de>\n"
+"Language-Team: MiXiM <mixim@mixim.de>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: classes/class.timeline-express.php:234
+msgid "Announcement Info."
+msgstr "Titel der Ankündigungen"
+
+#: classes/class.timeline-express.php:242
+msgid "Announcement Color"
+msgstr "Farbe für Ankündigungen"
+
+#: classes/class.timeline-express.php:243
+msgid "select the color for this announcement."
+msgstr "Farbe für diese Ankündigung"
+
+#: classes/class.timeline-express.php:251
+msgid "Font Awesome Unicode"
+msgstr "Font Awesome Unicode"
+
+#: classes/class.timeline-express.php:252
+msgid ""
+"enter the font-awesome class name in the box above. This is used for the "
+"icon associated with the announcement. <a href=\"http://fortawesome.github."
+"io/Font-Awesome/cheatsheet/\" target=\"_blank\">cheat sheet</a> Example : "
+"\"fa-times-circle\" "
+msgstr ""
+"Font-Awesome Class Name. Dieser bestimmt den Icon der Ankündigung. <a href="
+"\"http://fortawesome.github.io/Font-Awesome/cheatsheet/\" target=\"_blank"
+"\">Vorschau</a> Default: \"fa-times-circle\" "
+
+#: classes/class.timeline-express.php:260
+msgid "Announcement Date"
+msgstr "Datum der Ankündigung"
+
+#: classes/class.timeline-express.php:261
+msgid ""
+"enter the date of the announcement. the announcements will appear in "
+"chronological order according to this date. "
+msgstr ""
+"Trage das Datum (Format: MM/DD/JJJJ) der Ankündigung ein. Die Ankündigungen "
+"erscheinen in chronologischer Reihenfolge dieser Datumseinträge."
+
+#: classes/class.timeline-express.php:269
+msgid "Announcement Image"
+msgstr "Bild für diese Ankündigung"
+
+#: classes/class.timeline-express.php:270
+msgid ""
+"select a banner image for this announcement (optional). (recommended 650px "
+"wide or larger)  "
+msgstr ""
+"Wähle ein Bild für diese Ankündigung (optional). (Empfohlene Breite: 650px "
+"oder mehr)"
+
+#: classes/class.timeline-express.php:281
+msgid "About"
+msgstr "Über Timeline Express"
+
+#: classes/class.timeline-express.php:308
+msgid "Enter Announcement Title"
+msgstr "Trage den Titel der Ankündigung ein"
+
+#: classes/class.timeline-express.php:316
+msgctxt "column name"
+msgid "Announcement Name"
+msgstr "Name de Ankündigung"
+
+#: classes/class.timeline-express.php:317
+msgctxt "column name"
+msgid "Color"
+msgstr "Farbe"
+
+#: classes/class.timeline-express.php:318
+msgctxt "column name"
+msgid "Icon"
+msgstr "Icon"
+
+#: classes/class.timeline-express.php:319
+msgctxt "column name"
+msgid "Announcement Date"
+msgstr "Datum der Ankündigung"
+
+#: classes/class.timeline-express.php:320
+msgctxt "column name"
+msgid "Image"
+msgstr "Bild"
+
+#: classes/class.timeline-express.php:321
+msgctxt "column name"
+msgid "Announcment Past?"
+msgstr "Ankündigung History?"
+
+#: classes/class.timeline-express.php:526
+#: classes/class.timeline-express.php:533
+msgid "Back"
+msgstr "Zurück"
+
+#: classes/class.timeline-express.php:792
+#: classes/class.timeline-express.php:799
+#: classes/class.timeline-express.php:812
+msgid "..."
+msgstr "..."
+
+#: classes/class.timeline-express.php:844
+msgid "&hellip;"
+msgstr "&hellip;"
+
+#. translators: If your word count is based on single characters (East Asian
+#. characters),
+#. enter 'characters'. Otherwise, enter 'words'. Do not translate into
+#. your own language.
+#: classes/class.timeline-express.php:848
+msgctxt "word count: words or characters?"
+msgid "words"
+msgstr "words"
+
+#: classes/class.timeline-express.php:882 pages/options.php:179
+msgid "Timeline Express Settings"
+msgstr "Timeline Express - Einstellungen"
+
+#: classes/class.timeline-express.php:882
+msgid "Timline Express"
+msgstr "Timline Express"
+
+#: classes/class.timeline-express.php:884
+msgid "Timeline Express Welcome"
+msgstr "Timeline Express - Willkommen"
+
+#: lib/metabox/about-template.php:38
+msgid "Help!"
+msgstr "Hilfe!"
+
+#: lib/metabox/about-template.php:39
+msgid "Review"
+msgstr "Beurteilung"
+
+#: lib/metabox/about-template.php:40
+msgid "Donate"
+msgstr "Spende"
+
+#: lib/metabox/about-template.php:50
+msgid "this plugin was made with "
+msgstr "dieses Plugin wurde ersttellt mit"
+
+#: lib/metabox/about-template.php:50 pages/welcome.php:98
+msgid "by"
+msgstr "von"
+
+#: lib/metabox/example-functions.php:25
+msgid "Test Metabox"
+msgstr "Test Metabox"
+
+#: lib/metabox/example-functions.php:33 lib/metabox/example-functions.php:254
+msgid "Test Text"
+msgstr "Test Text"
+
+#: lib/metabox/example-functions.php:34 lib/metabox/example-functions.php:42
+#: lib/metabox/example-functions.php:49 lib/metabox/example-functions.php:56
+#: lib/metabox/example-functions.php:64 lib/metabox/example-functions.php:71
+#: lib/metabox/example-functions.php:83 lib/metabox/example-functions.php:89
+#: lib/metabox/example-functions.php:96 lib/metabox/example-functions.php:102
+#: lib/metabox/example-functions.php:108 lib/metabox/example-functions.php:116
+#: lib/metabox/example-functions.php:123 lib/metabox/example-functions.php:129
+#: lib/metabox/example-functions.php:135 lib/metabox/example-functions.php:147
+#: lib/metabox/example-functions.php:158 lib/metabox/example-functions.php:169
+#: lib/metabox/example-functions.php:180 lib/metabox/example-functions.php:187
+#: lib/metabox/example-functions.php:194 lib/metabox/example-functions.php:201
+#: lib/metabox/example-functions.php:207 lib/metabox/example-functions.php:218
+#: lib/metabox/example-functions.php:255 lib/metabox/example-functions.php:274
+#: lib/metabox/example-functions.php:281 lib/metabox/example-functions.php:288
+#: lib/metabox/example-functions.php:294 lib/metabox/example-functions.php:300
+#: lib/metabox/example-functions.php:306 lib/metabox/example-functions.php:312
+msgid "field description (optional)"
+msgstr "Feldbeschreibung (optional)"
+
+#: lib/metabox/example-functions.php:41
+msgid "Test Text Small"
+msgstr "Teste die kleine Textgröße"
+
+#: lib/metabox/example-functions.php:48
+msgid "Test Text Medium"
+msgstr "Teste die mittlere Textgröße"
+
+#: lib/metabox/example-functions.php:55
+msgid "Website URL"
+msgstr "Website URL"
+
+#: lib/metabox/example-functions.php:63
+msgid "Test Text Email"
+msgstr "Teste die eMail Textgröße"
+
+#: lib/metabox/example-functions.php:70
+msgid "Test Time"
+msgstr "Teste die Zeit"
+
+#: lib/metabox/example-functions.php:76 lib/metabox/example-functions.php:77
+msgid "Time zone"
+msgstr "Zeitzone"
+
+#: lib/metabox/example-functions.php:82
+msgid "Test Date Picker"
+msgstr "Teste die Datumsauswahl"
+
+#: lib/metabox/example-functions.php:88
+msgid "Test Date Picker (UNIX timestamp)"
+msgstr "Teste die Datumsauswahl (UNIX Zeitstempel)"
+
+#: lib/metabox/example-functions.php:95
+msgid "Test Date/Time Picker Combo (UNIX timestamp)"
+msgstr "Teste die Datums-/Zeitauswahl (UNIX Zeitstempel)"
+
+#: lib/metabox/example-functions.php:101
+msgid "Test Date/Time Picker/Time zone Combo (serialized DateTime object)"
+msgstr ""
+"Teste die Datums-/Zeit-/Zeitzonen-Auswahl (serialisiertes Datum-/Zeit Objekt)"
+
+#: lib/metabox/example-functions.php:107
+msgid "Test Money"
+msgstr "Teste die Währungseinstellung"
+
+#: lib/metabox/example-functions.php:115
+msgid "Test Color Picker"
+msgstr "Testedie Farbauswal"
+
+#: lib/metabox/example-functions.php:122
+msgid "Test Text Area"
+msgstr "Teste das Text-Eingabefeld"
+
+#: lib/metabox/example-functions.php:128
+msgid "Test Text Area Small"
+msgstr "Teste das kleine Text-Eingabefeld"
+
+#: lib/metabox/example-functions.php:134
+msgid "Test Text Area for Code"
+msgstr "Teste das Text-Eingabefeld für Code"
+
+#: lib/metabox/example-functions.php:140
+msgid "Test Title Weeeee"
+msgstr "Teste den Titel Weeeee"
+
+#: lib/metabox/example-functions.php:141
+msgid "This is a title description"
+msgstr "Das ist die Titelbeschreibung"
+
+#: lib/metabox/example-functions.php:146
+msgid "Test Select"
+msgstr "Teste dasAuswahlfeld"
+
+#: lib/metabox/example-functions.php:151 lib/metabox/example-functions.php:162
+#: lib/metabox/example-functions.php:173
+msgid "Option One"
+msgstr "Option eins"
+
+#: lib/metabox/example-functions.php:152 lib/metabox/example-functions.php:163
+#: lib/metabox/example-functions.php:174
+msgid "Option Two"
+msgstr "Option zwei"
+
+#: lib/metabox/example-functions.php:153 lib/metabox/example-functions.php:164
+#: lib/metabox/example-functions.php:175
+msgid "Option Three"
+msgstr "Option drei"
+
+#: lib/metabox/example-functions.php:157
+msgid "Test Radio inline"
+msgstr "Teste Radio-Button (inline)"
+
+#: lib/metabox/example-functions.php:168
+msgid "Test Radio"
+msgstr "Teste den Radio-Button"
+
+#: lib/metabox/example-functions.php:179
+msgid "Test Taxonomy Radio"
+msgstr "Teste den Taxonomy-Radio-Button"
+
+#: lib/metabox/example-functions.php:186
+msgid "Test Taxonomy Select"
+msgstr "Teste das Taxonomy-Auswahlfeld"
+
+#: lib/metabox/example-functions.php:193
+msgid "Test Taxonomy Multi Checkbox"
+msgstr "Teste die Taxonomy Multi-Checkbox-"
+
+#: lib/metabox/example-functions.php:200
+msgid "Test Checkbox"
+msgstr "Teste die Checkbox"
+
+#: lib/metabox/example-functions.php:206
+msgid "Test Multi Checkbox"
+msgstr "Teste die Multi-Checkbox"
+
+#: lib/metabox/example-functions.php:211
+msgid "Check One"
+msgstr "Auswahl eins"
+
+#: lib/metabox/example-functions.php:212
+msgid "Check Two"
+msgstr "Auswahl zwei"
+
+#: lib/metabox/example-functions.php:213
+msgid "Check Three"
+msgstr "Auswahl drei"
+
+#: lib/metabox/example-functions.php:217
+msgid "Test wysiwyg"
+msgstr "Teste Wysiwyg"
+
+#: lib/metabox/example-functions.php:224
+msgid "Test Image"
+msgstr "Teste das Bild"
+
+#: lib/metabox/example-functions.php:225
+msgid "Upload an image or enter a URL."
+msgstr "Lade ein Bild hoch oder gib eine Bild-URL ein"
+
+#: lib/metabox/example-functions.php:230
+msgid "Multiple Files"
+msgstr "Mehrere Dateien"
+
+#: lib/metabox/example-functions.php:231
+msgid "Upload or add multiple images/attachments."
+msgstr "Mehrere Bilder/Anhänge hochladen bzw. hinzufügen"
+
+#: lib/metabox/example-functions.php:236
+msgid "oEmbed"
+msgstr "oEmbed"
+
+#: lib/metabox/example-functions.php:237
+msgid ""
+"Enter a youtube, twitter, or instagram URL. Supports services listed at <a "
+"href=\"http://codex.wordpress.org/Embeds\">http://codex.wordpress.org/"
+"Embeds</a>."
+msgstr ""
+"Trage eine YouTube-, Twitter- of Instagram-URL ein. Unterstützte Services "
+"sind unter <a href=\"http://codex.wordpress.org/Embeds\">http://codex."
+"wordpress.org/Embeds</a> zu finden."
+
+#: lib/metabox/example-functions.php:246
+msgid "About Page Metabox"
+msgstr "Über die Metabox-Seite"
+
+#: lib/metabox/example-functions.php:267
+msgid "User Profile Metabox"
+msgstr "Benutzer-Profil Metabox"
+
+#: lib/metabox/example-functions.php:273
+msgid "Extra Info"
+msgstr "Extra Information"
+
+#: lib/metabox/example-functions.php:280
+msgid "Avatar"
+msgstr "Avatar"
+
+#: lib/metabox/example-functions.php:287
+msgid "Facebook URL"
+msgstr "Facebook URL"
+
+#: lib/metabox/example-functions.php:293
+msgid "Twitter URL"
+msgstr "Twitter URL"
+
+#: lib/metabox/example-functions.php:299
+msgid "Google+ URL"
+msgstr "Google+ URL"
+
+#: lib/metabox/example-functions.php:305
+msgid "Linkedin URL"
+msgstr "Linkedin URL"
+
+#: lib/metabox/example-functions.php:311
+msgid "User Field"
+msgstr "Benutzerfeld"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_ajax.php:47
+msgid "Please Try Again"
+msgstr "Bitte nochmals versucen"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_ajax.php:118
+msgid "Remove Embed"
+msgstr "Entferne Einbettung"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_ajax.php:121
+msgid "No oEmbed Results Found for %s. View more info at"
+msgstr "Keine oEmbed Resultate gefunden für %s. Mehr Informationen unter"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:139
+msgid "Add Row"
+msgstr "Zeile hinzufügen"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:167
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:463
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:506
+msgid "Remove"
+msgstr "Entfernen"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:441
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:479
+msgid "Add or Upload File"
+msgstr "Hinzufügen/Hochladen einer Datei"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:452
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:498
+msgid "Remove Image"
+msgstr "Entferne Bild"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:463
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:506
+msgid "File:"
+msgstr "Datei:"
+
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:463
+#: lib/metabox/helpers/timeline_express_MetaBox_types.php:506
+msgid "Download"
+msgstr "Download"
+
+#: lib/metabox/init.php:207
+msgid "Clear"
+msgstr "Löschen"
+
+#: lib/metabox/init.php:208
+msgid "Default"
+msgstr "Standard"
+
+#: lib/metabox/init.php:209
+msgid "Select Color"
+msgstr "Wähle Farbe"
+
+#: lib/metabox/init.php:210
+msgid "Current Color"
+msgstr "Aktuelle Farbe"
+
+#: lib/metabox/init.php:936
+msgid "Save"
+msgstr "Speichern"
+
+#: pages/options.php:27
+msgid "The options were saved successfully!"
+msgstr "Die Einstellungen wurden gespeichert!"
+
+#: pages/options.php:30
+msgid "The options could not be saved (or you did not change them)."
+msgstr ""
+"Die Einstellungen wurden nicht gespeichert (oder es wurden keine Änderungen "
+"gemacht)"
+
+#: pages/options.php:45
+msgid ""
+"Are you sure you want to revert 'Timeline Express' settings? This cannot be "
+"undone."
+msgstr ""
+"Sollen die 'Timeline Express' Einstellungen wirklich zurückgesetzt werden? "
+"Diese Aktion kann nicht rückgängig gemacht werden."
+
+#: pages/options.php:58
+msgid "Timeline Express settings have successfully been reset"
+msgstr "Die Timeline Express Einstellungen wurden erfogreich zurückgesetzt"
+
+#: pages/options.php:144
+msgid "Please Consider"
+msgstr "Bitte beachten"
+
+#: pages/options.php:145
+msgid "Making a Donation"
+msgstr "Spenden"
+
+#: pages/options.php:153
+msgid "Need Help?"
+msgstr "Hilfe benötigt?"
+
+#: pages/options.php:154
+msgid "Get Support Now!"
+msgstr "Sofortige Unterstützung!"
+
+#: pages/options.php:162
+msgid "Loving the plugin?"
+msgstr "Magst du das Plugin?"
+
+#: pages/options.php:163
+msgid "Leave us a nice review"
+msgstr "Gib eine kurze Bewertung ab"
+
+#. Plugin Name of the plugin/theme
+#: pages/options.php:175
+msgid "Timeline Express"
+msgstr "Timeline Express"
+
+#: pages/options.php:193
+msgid "Timeline Title"
+msgstr "Titel der Timeline"
+
+#: pages/options.php:197
+msgid "Left"
+msgstr "Links"
+
+#: pages/options.php:198
+msgid "Center"
+msgstr "Mitte"
+
+#: pages/options.php:199
+msgid "Right"
+msgstr "Rechts"
+
+#: pages/options.php:202
+msgid "H1"
+msgstr "H1"
+
+#: pages/options.php:203
+msgid "H2"
+msgstr "H2"
+
+#: pages/options.php:204
+msgid "H3"
+msgstr "H3"
+
+#: pages/options.php:205
+msgid "H4"
+msgstr "H4"
+
+#: pages/options.php:213
+msgid ""
+"Enter the title for the time line // Select the alignment // Select the font "
+"size"
+msgstr ""
+"Wähle den Timeline-Titel // Wähle die Ausrichtung // Wähle die Text-Größe."
+
+#: pages/options.php:218
+msgid "Time Frame"
+msgstr "Zeitspanne"
+
+#: pages/options.php:221
+msgid "Future Events"
+msgstr "Zukünftige Ankündigungen"
+
+#: pages/options.php:222
+msgid "All Events (past+future)"
+msgstr "Alle Ankündigungen (vergangene + zukünftige)"
+
+#: pages/options.php:223
+msgid "Past Events"
+msgstr "Vergangene Ankündigungen"
+
+#: pages/options.php:231
+msgid "Select the time frame to query events from."
+msgstr "Wähle die Zeitspanne für die Auswahl der Ankündigungen."
+
+#: pages/options.php:236
+msgid "Display Order"
+msgstr "Anzeige-Sortierung"
+
+#: pages/options.php:239
+msgid "Ascending"
+msgstr "Aufsteigend"
+
+#: pages/options.php:240
+msgid "Descending"
+msgstr "Absteigend"
+
+#: pages/options.php:248
+msgid ""
+"Select the order you would like the announcements to display. Ascending : "
+"Chronological order by announcement date. Descending : Reverse chronological "
+"order by announcement date."
+msgstr ""
+"Wähle die Reihenfolge in der die Ankündigungen angezeigt werden sollen. "
+"Aufsteigend: Chronologisch auf Basis des Ankündigung-Datum. Absteigend: "
+"Umgekehrt chronologisch auf Basis des Ankündigung-Datum."
+
+#: pages/options.php:253
+msgid "Announcement Exceprt Length"
+msgstr "Länge der Ankündigung-Kurzform"
+
+#: pages/options.php:262
+msgid ""
+"set the length of the excerpt for each announcement. ( min=25;max=200 eg: 50 "
+"= 50 characters )"
+msgstr ""
+"Trage die Länge für jede Ankündigung-Kurzform ein (min=25 ; max=200 zB.: 50 "
+"= 50 Zeichen)."
+
+#: pages/options.php:267
+msgid "Date Visibility"
+msgstr "Datum sichtbar"
+
+#: pages/options.php:270 pages/options.php:287
+msgid "Visible"
+msgstr "Sichtbar"
+
+#: pages/options.php:271 pages/options.php:288
+msgid "Hidden"
+msgstr "Verborgen"
+
+#: pages/options.php:279
+msgid "toggle the visibility of the date next to the icon."
+msgstr "Sichtbarkeit des Datum neben dem Icon umschalten."
+
+#: pages/options.php:284
+msgid "Read More Visibility"
+msgstr "Mehr zur Sichtbarkeit"
+
+#: pages/options.php:296
+msgid ""
+"toggle the visibility of the read more button. hide to prevent users from "
+"viewing the full announcement."
+msgstr ""
+"Sichtbarkeit des 'Mehr...'-Button. Ausschalten um die Seite mit dem "
+"vollständigen Text der Ankündigung zu verbergen. "
+
+#: pages/options.php:301
+msgid "Default Icon"
+msgstr "Standard Icon"
+
+#: pages/options.php:310
+msgid ""
+"Enter the font-awesome class name that you would like to use a default icon "
+"for new events. ie: fa-clock-alt"
+msgstr ""
+"Font-Awasome Class-Name der als Default-Icon für neue Ankündigungen genutzt "
+"werden soll, zB.: fa-clock-alt"
+
+#: pages/options.php:315
+msgid "Default Announcement Color"
+msgstr "Standard Farbe neuer Ankündigungen"
+
+#: pages/options.php:324
+msgid ""
+"Select the default color for all new events. Note : this setting can be "
+"overwritten"
+msgstr ""
+"Standard-Farbe für alle neuen Ankündigungen. Beachte: diese Einstellung kann "
+"überschrieben werden."
+
+#: pages/options.php:329
+msgid "Announcement Container Background"
+msgstr "Hintergrundfarbe des Ankündigung-Container"
+
+#: pages/options.php:338
+msgid "Select the background color of the announcement container."
+msgstr "Wähle die Hintergrundfarbe des Ankündigung-Container."
+
+#: pages/options.php:343
+msgid "Announcement Shadow Color"
+msgstr "Schattenfarbe des Ankündigung-Container"
+
+#: pages/options.php:352
+msgid "Select the shadow color for the announcement container."
+msgstr "Wähle die Schattenfarbe des Ankündigung-Container."
+
+#: pages/options.php:357
+msgid "Background Line Color"
+msgstr "Hintergrund Linien-Farbe"
+
+#: pages/options.php:366
+msgid "Select the color of the line in the background of the timeline."
+msgstr "Wähle die Linien-Farbe im Hintergrund der Timeline."
+
+#: pages/options.php:371
+msgid "No Events Message"
+msgstr "Text für 'Kein Event'"
+
+#: pages/options.php:380
+msgid "This is the message that will display when no announcements are found."
+msgstr "Dies ist der Text wenn keine Ankündigung gefunden werden kann."
+
+#: pages/options.php:385
+msgid "Delete Announcements On Uninstall?"
+msgstr "Alle Ankündigungen löschen nach der Deinstallation?"
+
+#: pages/options.php:394
+msgid ""
+"select this to delete all announcement posts from the data base on plugin "
+"uninstallation. this can not be undone, once they are deleted they are gone "
+"forever. If you want to keep them, export your announcements before "
+"uninstalling."
+msgstr ""
+"Mit dieser Option werden alle Ankündigungen aus der Datenbank gelöscht, wenn "
+"das Timeline Express Plugin deinstalliert wird. Das Löschen aus der "
+"Datenbank kann nicht rückgängig gemacht werden. Die Ankündigungen können vor "
+"der Deinstallation exportiert und gesichert werden."
+
+#: pages/options.php:399
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
+
+#: pages/options.php:399
+msgid "Reset Plugin Settings"
+msgstr "Plugin-Einstellungen zurücksetzen"
+
+#: pages/welcome.php:42
+msgid "Welcome to Timeline Express"
+msgstr "Willkommen zum Timeline Express Plugin"
+
+#: pages/welcome.php:45
+msgid ""
+"Thanks for installing Timeline Express. We know you're going to find this "
+"free plugin super helpful and easy to use! To get started, hover over "
+"'Timeline Express', in the admin menu, and click"
+msgstr ""
+"Vielen Dank für die Installation des Timeline Express Plugin. Wir sind "
+"sicher, daß dieses Plugin hilfreich und einfach zu handhaben sein wird. Zum "
+"Start, klicke mit der Maus auf 'Timeline Express' im Admin-Menu"
+
+#: pages/welcome.php:45
+msgid "'New Announcement'"
+msgstr "'Neue Ankündigung'"
+
+#: pages/welcome.php:45
+msgid " to start adding announcements your timeline!"
+msgstr "Zum Beginn füge Ankündigungen deiner Timeline hinzu!"
+
+#: pages/welcome.php:47
+msgid "or head over to the"
+msgstr "oder gehe zu"
+
+#: pages/welcome.php:47
+msgid "Settings Page"
+msgstr "Einstellungen"
+
+#: pages/welcome.php:47
+msgid "to customize and style your form"
+msgstr "um die Formulare und den Stil anzupassen"
+
+#: pages/welcome.php:56
+msgid "Create a Beautiful Timeline In Minutes"
+msgstr "Erstelle eine schöne und ansprechende Timeline in wenigen Minuten"
+
+#: pages/welcome.php:57
+msgid ""
+"Create a vertical and responsive, CSS3 animated timeline fast...without ever "
+"writing a single line of code."
+msgstr ""
+"Erstelle schnell und einfach eine vertikale und responsive, CSS3 animierte "
+"Timeline .... ohne eine einzige Zeile Code zu schreiben."
+
+#: pages/welcome.php:60
+msgid "Font Awesome Included"
+msgstr "Inclusive Font Awesome"
+
+#: pages/welcome.php:61
+msgid ""
+"Hundreds of icons to choose from to make your announcements really stand out!"
+msgstr ""
+"Wähle aus hunderten von Icons um deine Ankündigungen auffallend und "
+"einzigartig zu gestalten!"
+
+#: pages/welcome.php:70
+msgid "Intuitive Custom Post Creation Screen"
+msgstr "Intuitive konfigurierbare Nachbearbeitungsseite"
+
+#: pages/welcome.php:74
+msgid "Manange Announcements Easily"
+msgstr "Manage deine Ankündigungen einfach"
+
+#: pages/welcome.php:78
+msgid "Stylize The Timeline"
+msgstr "Passe den Style deiner Timeline an"
+
+#: pages/welcome.php:86
+msgid "Timeline Express // Sample Timeline"
+msgstr "Timeline Express // Beispiel Zeitleiste"
+
+#: pages/welcome.php:98
+msgid "this free plugin was made with"
+msgstr "dieses freie Plugin wurde erstellt mit"
+
+#: pages/welcome.php:98
+msgid "Please consider making a"
+msgstr "Bitte überdenken Sie eine "
+
+#: pages/welcome.php:98
+msgid "donation"
+msgstr "Spende"
+
+#: pages/welcome.php:98
+msgid "if you need support in any way."
+msgstr "wenn Du Unterstützung benötigst."
+
+#: pages/welcome.php:102
+msgid "Keep Up With Me Elsewhere "
+msgstr "Nimm Kontakt mit mir auf"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.evan-herman.com"
+msgstr "http://www.evan-herman.com"
+
+#. Description of the plugin/theme
+msgid ""
+"Create a beautiful vertical, CSS3 animated and responsive timeline in "
+"minutes flat without writing code."
+msgstr ""
+"Erstelle schnell und einfach eine vertikale und responsive, CSS3 animierte "
+"Timeline, ohne eine einzige Zeile Code zu schreiben."
+
+#. Author of the plugin/theme
+msgid "Evan Herman"
+msgstr "Evan Herman"

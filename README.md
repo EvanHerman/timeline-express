@@ -1,12 +1,12 @@
-Timeline Express v1.1.5.7
+Timeline Express v1.1.5.8
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
 
 **Features**
 
-* Load a custom template for single announcements (new)
-* Localized date formatting for international users (new)
+* Load a custom template for single announcements
+* Localized date formatting for international users
 * Hundreds of Font awesome icons included. Specify a different icon for each announcement 
 * CSS3 animations on scroll
 * Set the color of the announcement
@@ -30,6 +30,7 @@ Timeline express comes ready for translation. I would love to get things transla
 * Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 * Polish (pl_PL) - thanks goes to Kanios
 * Dutch (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>
+* German (de_DE) - thanks goes to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
@@ -252,7 +253,6 @@ If you enjoy this plugin and want to contribute, I'm always looking for people t
 * Arabic
 * English
 * French
-* German
 * Greek
 * Hebrew
 * Hindi
@@ -280,6 +280,12 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.5.8 - March 5th, 2015
+* Enhancement: Upgraded font-awesome to 4.3.0
+* Enhancement: Added icon select dropdown on the settings page, to better mirror the post/page edit screens
+* Enhancement: Added new setting to toggle Timeline posts from appearing in search queries on the front end (defaults to true) 
+* Enhancement: Packaged German translation - thanks to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
 
 ###### 1.1.5.7 - February 5th, 2015
 * Message From The Author: Sorry for multiple updates on the same day. I was feeling ambitious and rolled out one patch to fix an issue and another with some new features. Enjoy :)

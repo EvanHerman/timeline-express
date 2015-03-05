@@ -130,9 +130,6 @@ function toggle_delete_checkbox() {
 		'textarea_name' => 'no-events-message',
 		'drag_drop_upload' => true
 	);
-	
-	// used to dictate the active tab
-	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'settings';
 ?>
 <div class="wrap">
 
@@ -178,9 +175,6 @@ function toggle_delete_checkbox() {
 	<hr style="margin-top:4em;"/>
 	
 	<div class="timeline-express-status" id="timeline-express-status"></div>
-	
-<?php if ( $active_tab == 'settings' ) { ?>
-	
 	
 	<form method="post" name="timeline-express-form" id="timeline-express-form">
 		<table class="form-table timeline-express-form">
@@ -298,14 +292,17 @@ function toggle_delete_checkbox() {
 				<!-- Default Announcement Icon -->
 					<th scope="row"><label for="default-announcement-icon"><?php _e('Default Icon','timeline-express'); ?></label></th>
 					<td>
-						<input name="default-announcement-icon" type="text" id="default-announcement-icon" value="<?php echo $this->timeline_express_optionVal['default-announcement-icon']; ?>" class="regular-text" />
+						<?php 
+							// display our dropdown, pass in the ID, and empty desc.
+							echo $this->timeline_express_build_bootstrap_dropdown( array( 'id' => 'default-announcement-icon' , 'desc' => '' ) , 'fa-'.$this->timeline_express_optionVal['default-announcement-icon'] ); 
+						?>
 					</td>
 				</tr>
 				<tr>
 					<td></td>
 					<!-- Default Announcement Icon Description -->
 					<td class="timeline-express-settings-description">
-						<?php _e('Enter the font-awesome class name that you would like to use a default icon for new events. ie: fa-clock-alt','timeline-express'); ?> <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank" style="font-size:12px;font-style:em;">cheat sheet</a>
+						<?php _e('Select the font-awesome class name that you would like to use a default icon for new events in the dropdown above.','timeline-express'); ?> <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank" style="font-size:12px;font-style:em;">cheat sheet</a>
 					</td>
 				</tr>
 				<tr valign="top">
@@ -379,7 +376,24 @@ function toggle_delete_checkbox() {
 					</td>
 				</tr>
 				<tr valign="top">
-					<!-- Background Line Color -->
+					<!-- Publicly Query Timeline Announcements Checkbox -->
+					<th scope="row"><label for="delete-announcement-posts-on-uninstallation"><?php _e('Announcements Appear In Searches','timeline-express'); ?></label></th>
+					<td>
+						<select name="announcement-appear-in-searches" id="announcement-appear-in-searches" class="regular-text" />
+							<option value="true"<?php echo ($this->timeline_express_optionVal['announcement-appear-in-searches'] === 'true' ? ' selected' : ''); ?>><?php _e('True','timeline-express'); ?></option>
+							<option value="false"<?php echo ($this->timeline_express_optionVal['announcement-appear-in-searches'] === 'false' ? ' selected' : ''); ?>><?php _e('False','timeline-express'); ?></option>
+						</select>					
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<!-- Delete Announcements On Uninstall Checkbox Description -->
+					<td class="timeline-express-settings-description">
+						<?php _e('Set to true to display announcements in site searches. False will disable announcements from appearing in site searchs.','timeline-express'); ?>
+					</td>
+				</tr>
+				<tr valign="top">
+					<!-- Delete Announcements On Uninstall Checkbox -->
 					<th scope="row"><label for="delete-announcement-posts-on-uninstallation"><?php _e('Delete Announcements On Uninstall?','timeline-express'); ?></label></th>
 					<td>
 						<input type="checkbox" name="delete-announcement-posts-on-uninstallation" onclick="toggleDeleteCheckClass();" <?php checked( $this->timeline_express_optionVal['delete-announcement-posts-on-uninstallation'] , '1' ); ?> value="1" /><span class="<?php if( $this->timeline_express_optionVal['delete-announcement-posts-on-uninstallation'] == '0' ) { ?> delete-no <?php } else { ?> delete-yes <?php } ?>" onclick="toggle_delete_checkbox();"></span>
@@ -387,7 +401,7 @@ function toggle_delete_checkbox() {
 				</tr>
 				<tr>
 					<td></td>
-					<!-- Background Line Color Description -->
+					<!-- Delete Announcements On Uninstall Checkbox Description -->
 					<td class="timeline-express-settings-description">
 						<?php _e('Select this to delete all announcement posts from the data base on plugin uninstallation. this can not be undone, once they are deleted they are gone forever. If you want to keep them, export your announcements before uninstalling.','timeline-express'); ?>
 					</td>
@@ -401,7 +415,5 @@ function toggle_delete_checkbox() {
 		</table>
 	</form>
 
-	<?php } ?>
-	
 </div>
 <!-- end Timeline Express settings page -->

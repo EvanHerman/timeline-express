@@ -3,8 +3,8 @@ Contributors: eherman24
 Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
-Tested up to: 4.1
-Stable tag: 1.1.5.7
+Tested up to: 4.1.1
+Stable tag: 1.1.5.8
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -39,6 +39,7 @@ Timeline express comes ready for translation. I would love to get things transla
 * Chinese (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 * Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 * Polish (pl_PL) - thanks goes to Kanios
+* German (de_DE) - thanks goes to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
@@ -87,7 +88,6 @@ If you enjoy this plugin and want to contribute, I'm always looking for people t
 * Arabic
 * English
 * French
-* German
 * Greek
 * Hebrew
 * Hindi
@@ -301,6 +301,12 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Changelog ==
 
+= 1.1.5.8 - March 5th, 2015 =
+* Enhancement: Upgraded font-awesome to 4.3.0
+* Enhancement: Added icon select dropdown on the settings page, to better mirror the post/page edit screens
+* Enhancement: Added new setting to toggle Timeline posts from appearing in search queries on the front end (defaults to true) 
+* Enhancement: Packaged German translation - thanks to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
+
 = 1.1.5.7 - February 5th, 2015 =
 * Enhancement: Added a dropdown to select the font awesome icon
 * Enhancement: Fadded in the timeline after everything has initialized, to prevent seeing a messed up Timeline layout
@@ -413,6 +419,12 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 * Initial Release to the WordPress repository
 
 == Upgrade Notice ==
+
+= 1.1.5.8 - March 5th, 2015 =
+* Enhancement: Upgraded font-awesome to 4.3.0
+* Enhancement: Added icon select dropdown on the settings page, to better mirror the post/page edit screens
+* Enhancement: Added new setting to toggle Timeline posts from appearing in search queries on the front end (defaults to true) 
+* Enhancement: Packaged German translation - thanks to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
 
 = 1.1.5.7 - February 5th, 2015 =
 * Message From The Author: Sorry for multiple updates on the same day. I was feeling ambitious and rolled out one patch to fix an issue and another with some new features. Enjoy :)
