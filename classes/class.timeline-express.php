@@ -113,7 +113,7 @@ if(!class_exists("timelineExpressBase"))
 					// change announcement CPT title
 					add_filter( 'enter_title_here', array( &$this , 'change_default_announcement_title' ) );	
 					// enqueue announcement metaboxes
-					add_filter( 'cmb_meta_boxes', array( &$this , 'cmb_timeline_announcement_metaboxes' ) );
+					add_filter( 'cmb_meta_boxes', array( &$this , 'cmb_timeline_announcement_metaboxes' ), 9999 );
 					// add custom columns to the timeline express announcement cpt
 					add_filter('manage_edit-te_announcements_columns', array( &$this, 'add_new_timeline_express_columns' ) );
 					// generate the content for each column

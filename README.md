@@ -1,4 +1,4 @@
-Timeline Express v1.1.5.8
+Timeline Express v1.1.5.9
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -280,6 +280,9 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.5.9 - March 6th, 2015 
+* Enhancement: Added a priority to the metabox initialization, which caused conflicts with other plugins using the same class
 
 ###### 1.1.5.8 - March 5th, 2015
 * Enhancement: Upgraded font-awesome to 4.3.0
