@@ -377,7 +377,7 @@ function toggle_delete_checkbox() {
 				</tr>
 				<tr valign="top">
 					<!-- Publicly Query Timeline Announcements Checkbox -->
-					<th scope="row"><label for="delete-announcement-posts-on-uninstallation"><?php _e('Announcements Appear In Searches','timeline-express'); ?></label></th>
+					<th scope="row"><label for="delete-announcement-posts-on-uninstallation"><?php _e('Exclude Announcements from Site Searches','timeline-express'); ?></label></th>
 					<td>
 						<select name="announcement-appear-in-searches" id="announcement-appear-in-searches" class="regular-text" />
 							<option value="true"<?php echo ($this->timeline_express_optionVal['announcement-appear-in-searches'] === 'true' ? ' selected' : ''); ?>><?php _e('True','timeline-express'); ?></option>
@@ -389,7 +389,7 @@ function toggle_delete_checkbox() {
 					<td></td>
 					<!-- Delete Announcements On Uninstall Checkbox Description -->
 					<td class="timeline-express-settings-description">
-						<?php _e('Set to true to display announcements in site searches. False will disable announcements from appearing in site searchs.','timeline-express'); ?>
+						<?php _e('Set to true to exclude announcements from all site searches. False will include announcements in site searches.','timeline-express'); ?>
 					</td>
 				</tr>
 				<tr valign="top">

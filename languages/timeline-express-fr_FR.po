@@ -1,0 +1,844 @@
+# Copyright (C) 2015 Timeline Express
+# This file is distributed under the same license as the Timeline Express package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Timeline Express 1.1.6.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/timeline-express\n"
+"POT-Creation-Date: 2015-03-22 21:23:33+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-03-22 23:56+0100\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Last-Translator: LAMBERT Julien <julien.lambert67@gmail.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"X-Generator: Poedit 1.7.5\n"
+
+#: classes/class.timeline-express.php:436
+msgid "Timeline Express Announcements"
+msgstr "Annonces Timeline Express"
+
+#: classes/class.timeline-express.php:437
+msgid "Announcement"
+msgstr "Annonce"
+
+#. Plugin Name of the plugin/theme
+#: classes/class.timeline-express.php:438
+msgid "Timeline Express"
+msgstr "Timeline Express"
+
+#: classes/class.timeline-express.php:439
+msgid "Timeline Express:"
+msgstr "Timeline Express:"
+
+#: classes/class.timeline-express.php:440
+msgid "All Announcements"
+msgstr "Toutes des Annonces"
+
+#: classes/class.timeline-express.php:441
+msgid "View Announcement"
+msgstr "Voir l'Annonce"
+
+#: classes/class.timeline-express.php:442 classes/class.timeline-express.php:443
+msgid "New Announcement"
+msgstr "Nouvelle Annonce"
+
+#: classes/class.timeline-express.php:444
+msgid "Edit Announcement"
+msgstr "Editer l'Annonce"
+
+#: classes/class.timeline-express.php:445
+msgid "Update Announcement"
+msgstr "Mettre à jour l'Annonce"
+
+#: classes/class.timeline-express.php:446
+msgid "Search Announcements"
+msgstr "Chercher des Annonces"
+
+#: classes/class.timeline-express.php:447
+msgid "No Timeline Express Announcements Found"
+msgstr "Acune Annonce Timeline Express trouvée"
+
+#: classes/class.timeline-express.php:448
+msgid "No Timeline Express Announcements in Trash"
+msgstr "Aucune Annonce Timeline Express à la corbeille"
+
+#: classes/class.timeline-express.php:458
+msgid "Post type for adding timeline express announcements to the site"
+msgstr "Type Poster pour l'ajout d'annonces Timeline Express au site"
+
+#: classes/class.timeline-express.php:508
+msgid "Announcement Color"
+msgstr "Couleur de l'Annonce"
+
+#: classes/class.timeline-express.php:509
+msgid "select the color for this announcement."
+msgstr "choisissez la couleur de cette annonce."
+
+#: classes/class.timeline-express.php:517
+msgid "Announcement Icon"
+msgstr "Icone de l'Annonce"
+
+#: classes/class.timeline-express.php:518
+msgid ""
+"select an icon from the drop down above. This is used for the icon associated "
+"with the announcement."
+msgstr ""
+"sélectionnez une icône dans le menu déroulant ci-dessus. Ell sera utilisée "
+"comme l'icône associée à l'annonce."
+
+#: classes/class.timeline-express.php:526 classes/class.timeline-express.php:821
+#: classes/class.timeline-express.php:828
+msgid "Announcement Date"
+msgstr "Date de l'Annonce"
+
+#: classes/class.timeline-express.php:527
+msgid ""
+"enter the date of the announcement. the announcements will appear in "
+"chronological order according to this date. "
+msgstr ""
+"entrez la date de l'annonce. les publications apparaîtront dans l'ordre "
+"chronologique selon cette date."
+
+#: classes/class.timeline-express.php:535
+msgid "Announcement Image"
+msgstr "Image de l'Annonce"
+
+#: classes/class.timeline-express.php:536
+msgid ""
+"select a banner image for this announcement (optional). (recommended 650px wide "
+"or larger)  "
+msgstr ""
+"sélectionner une image de bannière pour cette annonce (en option). (recommandé "
+"650px de large ou plus)"
+
+#: classes/class.timeline-express.php:560
+msgid "Announcement Info."
+msgstr "Info sur l'Annonce"
+
+#: classes/class.timeline-express.php:571
+msgid "About"
+msgstr "A propos"
+
+#: classes/class.timeline-express.php:598
+msgid "Enter Announcement Title"
+msgstr "Entrez le titre de l'Annonce"
+
+#: classes/class.timeline-express.php:606
+msgctxt "timeline-express"
+msgid "Announcement Name"
+msgstr "Nom de l'Annonce"
+
+#: classes/class.timeline-express.php:607
+msgctxt "timeline-express"
+msgid "Color"
+msgstr "Couleur"
+
+#: classes/class.timeline-express.php:608
+msgctxt "timeline-express"
+msgid "Icon"
+msgstr "Icone"
+
+#: classes/class.timeline-express.php:609
+msgctxt "timeline-express"
+msgid "Announcement Date"
+msgstr "Date de l'Annonce"
+
+#: classes/class.timeline-express.php:610
+msgctxt "timeline-express"
+msgid "Image"
+msgstr "Image"
+
+#: classes/class.timeline-express.php:611
+msgctxt "timeline-express"
+msgid "Announcment Past?"
+msgstr "Annonce passée?"
+
+#: classes/class.timeline-express.php:824 classes/class.timeline-express.php:831
+msgid "Back"
+msgstr "Retour"
+
+#: classes/class.timeline-express.php:1097
+#: classes/class.timeline-express.php:1104
+#: classes/class.timeline-express.php:1118
+msgid "..."
+msgstr "..."
+
+#: classes/class.timeline-express.php:1105
+#: classes/class.timeline-express.php:1119
+msgid "Read more"
+msgstr "Lire la suite"
+
+#: classes/class.timeline-express.php:1347 pages/options.php:171
+msgid "Timeline Express Settings"
+msgstr "Paramêtres Timeline Express"
+
+#: classes/class.timeline-express.php:1347
+msgid "Settings"
+msgstr "Paramêtres"
+
+#: classes/class.timeline-express.php:1349
+msgid "Timeline Express Welcome"
+msgstr "Bienvenue "
+
+#: classes/class.timeline-express.php:1351
+msgid "Support"
+msgstr "Support"
+
+#: lib/about-metabox-template.php:38
+msgid "Help!"
+msgstr "Aide!"
+
+#: lib/about-metabox-template.php:39
+msgid "Review"
+msgstr "Revue"
+
+#: lib/about-metabox-template.php:40
+msgid "Donate"
+msgstr "Faire un Don"
+
+#: lib/about-metabox-template.php:50
+msgid "this plugin was made with "
+msgstr "ce plugin a été fait avec"
+
+#: lib/about-metabox-template.php:50 pages/welcome.php:98
+msgid "by"
+msgstr "par"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_ajax.php:47
+msgid "Please Try Again"
+msgstr "Merci d'essayer à nouveau"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_ajax.php:131
+msgid "Remove Embed"
+msgstr "Retirer l'intégration"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_ajax.php:134
+msgid "No oEmbed Results Found for %s. View more info at"
+msgstr "Aucun résultat d'intégration trouvé pour %s. Voir plus d'info sur"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_field.php:459
+msgid "Add Group"
+msgstr "Ajouter un groupe"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_field.php:460
+msgid "Remove Group"
+msgstr "Supprimer un groupe"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:250
+msgid "Add Row"
+msgstr "Ajouter une rangée"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:306
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:706
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:768
+msgid "Remove"
+msgstr "Supprimer"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:601
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:635
+msgid "No terms"
+msgstr "Aucun termes"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:674
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:728
+msgid "Add or Upload File"
+msgstr "Ajouter ou Charger un fichier"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:695
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:760
+msgid "Remove Image"
+msgstr "Supprimer l'image"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:706
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:768
+msgid "File:"
+msgstr "Fichier:"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:706
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:768
+msgid "Download"
+msgstr "Télécharger"
+
+#: lib/cmb_metaboxes/init.php:258
+msgid "Clear"
+msgstr "Effacer"
+
+#: lib/cmb_metaboxes/init.php:259
+msgid "Default"
+msgstr "Défaut"
+
+#: lib/cmb_metaboxes/init.php:260
+msgid "Select Color"
+msgstr "Choisissez la couleur"
+
+#: lib/cmb_metaboxes/init.php:261
+msgid "Current Color"
+msgstr "Couleur actuelle"
+
+#: lib/cmb_metaboxes/init.php:288
+msgid "Select / Deselect All"
+msgstr "Sélectionner / Désélectionner tout"
+
+#: lib/cmb_metaboxes/init.php:1177
+msgid "Save"
+msgstr "Sauver"
+
+#: lib/support-contact-form.php:9
+msgid ""
+"If you need support, please fill out the following form. I will get back to you "
+"with some support as soon as possible."
+msgstr ""
+"Si vous avez besoin d'aide, merci de remplir le formulaire ci-dessous. Je "
+"reviens vers  vous dès que possible."
+
+#: lib/support-contact-form.php:10
+msgid "note: support requests are limitd to one per hour, to help reduce spam."
+msgstr ""
+"note: les demandes d'aide sont limitées à une par heure, pour aider à réduire "
+"les spam."
+
+#: lib/support-contact-form.php:13
+msgid "Your name"
+msgstr "Votre nom"
+
+#: lib/support-contact-form.php:15
+msgid "Your message"
+msgstr "Votre message"
+
+#: lib/support-contact-form.php:16
+msgid "please describe your issue in as much detail as possible"
+msgstr "merci de décrire votre problème avec autant de détails que possible"
+
+#: lib/support-contact-form.php:37
+msgid "There was an error sending your request"
+msgstr "Il y a eu une erreur lors de l'envoi de votre demande"
+
+#: lib/support-contact-form.php:38
+msgid "If the error persists, please contact me directly for support at"
+msgstr "Si l'erreur persiste, merci de me contacter directement sur"
+
+#: lib/support-contact-form.php:42
+msgid ""
+"Support request successfully sent. I will be in touch regarding your issue "
+"shortly."
+msgstr ""
+"Demande d'aide envoyée avec succès. Je reviens vers  vous dès que possible."
+
+#: pages/options.php:27
+msgid "The options were saved successfully!"
+msgstr "Les options ont été sauvegardées avec succès!"
+
+#: pages/options.php:30
+msgid "The options could not be saved (or you did not change them)."
+msgstr ""
+"Les options n'ont pas pu être sauvegardées (ou vous ne les avez pas à changées)."
+
+#: pages/options.php:45
+msgid ""
+"Are you sure you want to revert 'Timeline Express' settings? This cannot be "
+"undone."
+msgstr ""
+"Etes-vous sûr que vous voulez réinitialiser les paramètres de  'Timeline "
+"Express? Cela ne pourra pas être annulée."
+
+#: pages/options.php:58
+msgid "Timeline Express settings have successfully been reset"
+msgstr "Les paramêtres de Timeline Express ont été réinitialisés avec succès"
+
+#: pages/options.php:141
+msgid "Please Consider"
+msgstr "Merci de considérer"
+
+#: pages/options.php:142
+msgid "Making a Donation"
+msgstr "Faire un don"
+
+#: pages/options.php:150
+msgid "Need Help?"
+msgstr "Besoin d'aide?"
+
+#: pages/options.php:151
+msgid "Get Support Now!"
+msgstr "Demander de l'aide maintenant!"
+
+#: pages/options.php:159
+msgid "Loving the plugin?"
+msgstr "Vous aimez ce plugin?"
+
+#: pages/options.php:160
+msgid "Leave us a nice review"
+msgstr "Merci de nous laisser un bon avis"
+
+# not sure
+#: pages/options.php:172
+msgid ""
+"make adjustments to your timeline here, ranging from style to display options"
+msgstr ""
+"faire des ajustements à votre calendrier ici, allez sur le style pour afficher "
+"les options"
+
+#: pages/options.php:185
+msgid "Timeline Title"
+msgstr "Titre Timeline"
+
+#: pages/options.php:189
+msgid "Left"
+msgstr "Gauche"
+
+#: pages/options.php:190
+msgid "Center"
+msgstr "Centre"
+
+#: pages/options.php:191
+msgid "Right"
+msgstr "Droite"
+
+#: pages/options.php:194
+msgid "H1"
+msgstr "H1"
+
+#: pages/options.php:195
+msgid "H2"
+msgstr "H2"
+
+#: pages/options.php:196
+msgid "H3"
+msgstr "H3"
+
+#: pages/options.php:197
+msgid "H4"
+msgstr "H4"
+
+#: pages/options.php:205
+msgid ""
+"Enter the title for the time line // Select the alignment // Select the font "
+"size"
+msgstr ""
+"Entrez le titre de la Timeline // Sélectionnez l'alignement // Sélection de la "
+"taille de la police"
+
+#: pages/options.php:210
+msgid "Time Frame"
+msgstr "Délai"
+
+#: pages/options.php:213
+msgid "Future Events"
+msgstr "Evènements futurs"
+
+#: pages/options.php:214
+msgid "All Events (past+future)"
+msgstr "Tout les évènements (passé+futur)"
+
+#: pages/options.php:215
+msgid "Past Events"
+msgstr "Evènements passés"
+
+#: pages/options.php:223
+msgid "Select the time frame to query events from."
+msgstr "Selectionnez le délai pour récupérer les évènements."
+
+#: pages/options.php:228
+msgid "Display Order"
+msgstr "Ordre d'affichage"
+
+#: pages/options.php:231
+msgid "Ascending"
+msgstr "Ascendant"
+
+#: pages/options.php:232
+msgid "Descending"
+msgstr "Descendant"
+
+#: pages/options.php:240
+msgid ""
+"Select the order you would like the announcements to display. Ascending : "
+"Chronological order by announcement date. Descending : Reverse chronological "
+"order by announcement date."
+msgstr ""
+"Sélectionnez l'ordre que vous souhaitez pour afficher les annonces. Croissant: "
+"Ordre chronologique par date de l'annonce. Décroissant: Inverser l'ordre "
+"chronologique par date de l'annonce."
+
+#: pages/options.php:245
+msgid "Announcement Excerpt Length"
+msgstr "Longueur de l'extrait de l'Annonce"
+
+#: pages/options.php:254
+msgid ""
+"Set the length of the excerpt for each announcement. ( min=25;max=500 eg: 50 = "
+"50 characters )"
+msgstr ""
+"Réglez la longueur de l'extrait pour chaque annonce. (Min = 25; max = 500 par "
+"exemple: 50 = 50 caractères)"
+
+#: pages/options.php:259
+msgid "Date Visibility"
+msgstr "Date de visibilité"
+
+#: pages/options.php:262 pages/options.php:279
+msgid "Visible"
+msgstr "Visible"
+
+#: pages/options.php:263 pages/options.php:280
+msgid "Hidden"
+msgstr "Caché"
+
+#: pages/options.php:271
+msgid "Toggle the visibility of the date next to the icon."
+msgstr "Basculer la visibilité de la date à côté de l'icône."
+
+#: pages/options.php:276
+msgid "Read More Visibility"
+msgstr "Visibilité de \"Lire la suite\""
+
+#: pages/options.php:288
+msgid ""
+"Toggle the visibility of the read more button. Hide to prevent users from "
+"viewing the full announcement."
+msgstr ""
+"Basculer la visibilité du bouton lire la suite. Cacher pour empêcher les "
+"utilisateurs d'afficher l'annonce complète."
+
+#: pages/options.php:293
+msgid "Default Icon"
+msgstr "Icone par défaut"
+
+#: pages/options.php:305
+msgid ""
+"Select the font-awesome class name that you would like to use a default icon "
+"for new events in the dropdown above."
+msgstr ""
+"Sélectionnez le nom de la classe font-awesome que vous souhaitez utiliser comme "
+"icône par défaut pour les nouveaux événements dans la liste déroulante ci-"
+"dessus."
+
+#: pages/options.php:310
+msgid "Default Announcement Color"
+msgstr "Couleur de l'annonce par défaut"
+
+#: pages/options.php:319
+msgid ""
+"Select the default color for all new events. Note : this setting can be "
+"overwritten"
+msgstr ""
+"Sélectionnez la couleur par défaut pour tous les nouveaux événements. Remarque: "
+"ce paramètre peut être écrasé"
+
+#: pages/options.php:324
+msgid "Announcement Container Background"
+msgstr "Couleur de fond du conteneur d'annonce"
+
+#: pages/options.php:333
+msgid "Select the background color of the announcement container."
+msgstr "Sélectionnez la couleur de fond du conteneur d'annonce."
+
+#: pages/options.php:338
+msgid "Announcement Shadow Color"
+msgstr "Couleur de l'ombre de l'annonce"
+
+#: pages/options.php:347
+msgid "Select the shadow color for the announcement container."
+msgstr "Selectionnez la couleur de l'ombre pour le conteneur d'annonce."
+
+#: pages/options.php:352
+msgid "Background Line Color"
+msgstr "Couleur de fond de la Timeline"
+
+#: pages/options.php:361
+msgid "Select the color of the line in the background of the timeline."
+msgstr "Selectionnez la couleur de fond de la Timeline."
+
+#: pages/options.php:366
+msgid "No Announcements Message"
+msgstr "Aucun message dans l'annonce"
+
+#: pages/options.php:375
+msgid "This is the message that will display when no announcements are found."
+msgstr "Ceci est le message qui s'affiche lorsqu'aucune annonce n'est trouvée."
+
+#: pages/options.php:380
+msgid "Exclude Announcements from Site Searches"
+msgstr "Exclure les annonces des recherches sur le site"
+
+#: pages/options.php:383
+msgid "True"
+msgstr "Vrai"
+
+#: pages/options.php:384
+msgid "False"
+msgstr "Faux"
+
+#: pages/options.php:392
+msgid ""
+"Set to true to exclude announcements from all site searches. False will include "
+"announcements in site searches."
+msgstr ""
+"Définir à vrai pour exclure les annonces de toutes les recherches sur le site. "
+"Faux ajoutera les annonces dans les recherches du site."
+
+#: pages/options.php:397
+msgid "Delete Announcements On Uninstall?"
+msgstr "Supprimer les annonces lors de la désinstallation?"
+
+#: pages/options.php:406
+msgid ""
+"Select this to delete all announcement posts from the data base on plugin "
+"uninstallation. this can not be undone, once they are deleted they are gone "
+"forever. If you want to keep them, export your announcements before "
+"uninstalling."
+msgstr ""
+"Sélectionnez cette option pour supprimer tous les messages d'annonce de la base "
+"de données lors de la désinstallation du plugin. Cela ne pourra pas être "
+"annulé, une fois qu'elles seront supprimées, elles auront disparu à jamais. Si "
+"vous souhaitez les conserver, exporter vos annonces avant de désinstaller."
+
+#: pages/options.php:411
+msgid "Save Settings"
+msgstr "Sauver les paramêtres"
+
+#: pages/options.php:411
+msgid "Reset Plugin Settings"
+msgstr "Réinitialiser les paramêtres"
+
+#: pages/support.php:26
+msgid "Timeline Express Support"
+msgstr "Aide Timeline Express"
+
+#: pages/support.php:29
+msgid "Thank you for purchasing a support license!"
+msgstr "Merci d'avoir acheté une licence d'aide!"
+
+#: pages/support.php:30
+msgid ""
+"If you run into any issues, or need support, feel free to submit a support "
+"ticket via the contact form below."
+msgstr ""
+"Si vous rencontrez des problèmes ou besoin d'aide, n'hésitez pas à soumettre un "
+"ticket de support via le formulaire de contact ci-dessous."
+
+#: pages/support.php:33
+msgid "Have a support request? Please consider "
+msgstr "Vous avez une demande d'aide? S'il vous plait envisagez"
+
+#: pages/support.php:34
+msgid "purchasing "
+msgstr "d'acheter"
+
+#: pages/support.php:35
+msgid "a support license."
+msgstr "une licence d'aide."
+
+#: pages/support.php:37
+msgid ""
+"Your purchase will go towards the continued development and support of Timeline "
+"Express, so the plugin will continue to thrive and improve."
+msgstr ""
+"Votre achat permettra le développement continue et le soutien de Timeline "
+"express, de sorte que le plugin continue à prospérer et à s'améliorer."
+
+#: pages/support.php:73
+msgid "Support License Key"
+msgstr "Clé de licence"
+
+#: pages/support.php:77
+msgid "Support license key"
+msgstr "Clé de licence"
+
+#: pages/support.php:80
+msgid "Valid and Active License"
+msgstr "Valider et Activer la licence"
+
+#: pages/support.php:83 pages/support.php:88 pages/support.php:98
+msgid "Purchase a License"
+msgstr "Acheter une licence"
+
+#: pages/support.php:85
+msgid ""
+"There was an error with your license. It appears that your license key has been "
+msgstr ""
+"Il y a une erreur avec votre licence. Il semble que votre clé de licence soit"
+
+#: pages/support.php:85
+msgid "Please get in contact with support at "
+msgstr "Merci d'entrer en contact avec le support sur"
+
+#: pages/support.php:85
+msgid "EH Dev. Shop"
+msgstr "EH Dev. Shop"
+
+#: pages/support.php:85
+msgid " to resolve the issue"
+msgstr "pour résoudre le problème"
+
+#: pages/support.php:90
+msgid ""
+"Sorry this license key appears to be invalid. Please purchase a valid license "
+"key."
+msgstr ""
+"Désolé cette clé de licence semble être invalide. Merci d'acheter une clé de "
+"licence valide."
+
+#: pages/support.php:92
+msgid "Renew your Timeline Express license"
+msgstr "Renouveler votre licence Timeline Express"
+
+#: pages/support.php:93
+msgid "Renew Your License"
+msgstr "Renouveler votre licence"
+
+#: pages/support.php:95
+msgid ""
+"Oops, it looks like your license has expired. Please consider renewing your "
+"license for another year to continue receiving support."
+msgstr ""
+"Oups, il semble que votre licence a expiré. Merci d'envisager de renouveler "
+"votre licence pour une autre année et continuer à recevoir un soutien."
+
+#: pages/support.php:116
+msgid "Deactivate License"
+msgstr "Desactiver le licence"
+
+#: pages/support.php:120
+msgid "Activate License"
+msgstr "Activer la licence"
+
+#: pages/support.php:141
+msgid "License Info."
+msgstr "Info de la licence."
+
+#: pages/support.php:149
+msgid "License Holder"
+msgstr "Titulaire de la licence"
+
+#: pages/support.php:154
+msgid "Sites Active/Limit"
+msgstr "Sites actifs/limite"
+
+#: pages/support.php:159
+msgid "License Expires"
+msgstr "Expiration de la licence"
+
+#: pages/support.php:168
+msgid "Premium Support Ticketing"
+msgstr "Etablir un ticket sur le Support Premium"
+
+#: pages/support.php:174
+msgid ""
+"It looks like you have recently sent us a support request. We limit the number "
+"of support requests to 1 per hour, to avoid spam. Sorry for the inconvinience, "
+"and thank you for understanding."
+msgstr ""
+"Il semble que vous avez récemment envoyé une demande de support. Nous limitons "
+"le nombre de demandes de soutien à une par heure, pour éviter le spam. Désolé "
+"pour le désagrément, et vous remercions de votre compréhension."
+
+#: pages/welcome.php:42
+msgid "Welcome to Timeline Express"
+msgstr "Bienvenue sur Timeline Express"
+
+#: pages/welcome.php:45
+msgid ""
+"Thanks for installing Timeline Express. We know you're going to find this free "
+"plugin super helpful and easy to use! To get started, hover over 'Timeline "
+"Express', in the admin menu, and click"
+msgstr ""
+"Merci d'avoir installé Timeline Express. Nous savons que vous allez trouver ce "
+"plugin gratuit super pratique et facile à utiliser! Pour commencer, survolez "
+"'Timeline Express', dans le menu d'administration, puis cliquez sur"
+
+#: pages/welcome.php:45
+msgid "'New Announcement'"
+msgstr "'Nouvelle Annonce'"
+
+#: pages/welcome.php:45
+msgid " to start adding announcements your timeline!"
+msgstr "pour ajouter des annonces à votre timeline!"
+
+#: pages/welcome.php:47
+msgid "or head over to the"
+msgstr "ou survolez"
+
+#: pages/welcome.php:47
+msgid "Settings Page"
+msgstr "Page des paramêtres"
+
+#: pages/welcome.php:47
+msgid "to customize and style your form"
+msgstr "pour personnaliser votre formulaire"
+
+#: pages/welcome.php:56
+msgid "Create a Beautiful Timeline In Minutes"
+msgstr "Créez une superbe Timeline en quelques minutes"
+
+#: pages/welcome.php:57
+msgid ""
+"Create a vertical and responsive, CSS3 animated timeline fast...without ever "
+"writing a single line of code."
+msgstr ""
+"Créez une Timeline verticale et responsive, animée en CSS3... sans aucune ligne "
+"de code à écrire."
+
+#: pages/welcome.php:60
+msgid "Font Awesome Included"
+msgstr "Inclue les Font-Awesome"
+
+#: pages/welcome.php:61
+msgid ""
+"Hundreds of icons to choose from to make your announcements really stand out!"
+msgstr ""
+"Des centaines d'icônes à choisir pour que vos annonces se démarquent vraiment!"
+
+#: pages/welcome.php:70
+msgid "Intuitive Custom Post Creation Screen"
+msgstr "Ecran de création intuitif"
+
+#: pages/welcome.php:74
+msgid "Manage Announcements Easily"
+msgstr "Gestion facile des Annonces"
+
+#: pages/welcome.php:78
+msgid "Style The Timeline"
+msgstr "Stylisation de la Timeline"
+
+#: pages/welcome.php:86
+msgid "Timeline Express // Sample Timeline"
+msgstr "Timeline Express // Exemple de Timeline"
+
+#: pages/welcome.php:98
+msgid "this free plugin was made with"
+msgstr "ce plugin gratuit a été réalisé avec"
+
+#: pages/welcome.php:98
+msgid "Please consider making a"
+msgstr "Merci d'envisager de faire un"
+
+#: pages/welcome.php:98
+msgid "donation"
+msgstr "don"
+
+#: pages/welcome.php:98
+msgid "if you need support in any way."
+msgstr "si vous avez besoin d'aide."
+
+#: pages/welcome.php:102
+msgid "Keep Up With Me Elsewhere "
+msgstr "Restez avec moi ailleurs"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.evan-herman.com"
+msgstr "http://www.evan-herman.com"
+
+#. Description of the plugin/theme
+msgid ""
+"Create a beautiful vertical, CSS3 animated and responsive timeline in minutes "
+"flat without writing code."
+msgstr ""
+"Créez en quelques minutes une superbe Timeline verticale, responsive et animée "
+"en CSS3, sans écrire une seule ligne de code."
+
+#. Author of the plugin/theme
+msgid "Evan Herman"
+msgstr "Evan Herman"

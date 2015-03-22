@@ -168,8 +168,8 @@ if(!class_exists("timelineExpressBase"))
 				if( !isset( $this->timeline_express_optionVal['announcement-appear-in-searches'] ) ) {
 					$this->timeline_express_optionVal['announcement-appear-in-searches'] = 'true';
 				}
-				// update the options
-				update_option( TIMELINE_EXPRESS_OPTION , $this->timeline_express_optionVal );
+				// update the options -> breaks previous users settings....
+				// update_option( TIMELINE_EXPRESS_OPTION , $this->timeline_express_optionVal );
 			}
 			
 			/*
@@ -460,7 +460,7 @@ if(!class_exists("timelineExpressBase"))
 						'supports'            => array( 'title', 'editor' ),
 						'taxonomies'          => array(),
 						'hierarchical'        => true,
-						'public'              => $announcements_public, // toggled via setitngs page - @since v1.1.5.8
+						'public'              => true,
 						'show_ui'             => true,
 						'show_in_menu'        => true,
 						'show_in_nav_menus'   => true,
@@ -469,6 +469,8 @@ if(!class_exists("timelineExpressBase"))
 						'menu_icon' 			=> TIMELINE_EXPRESS_URL . '/images/timeline-express-menu-icon.png',
 						'can_export'          => true,
 						'has_archive'         => true,
+						'exclude_from_search' =>  $announcements_public, // toggled via setitngs page - @since v1.1.5.8,
+						'publicly_queryable'  => true,
 						'rewrite'             => $timeline_express_rewrite,
 						'capability_type'     => 'page',
 					);
@@ -606,7 +608,7 @@ if(!class_exists("timelineExpressBase"))
 					$timeline_express_announcement_columns['icon'] = _x('Icon', 'timeline-express');
 					$timeline_express_announcement_columns['announcement_date'] = _x('Announcement Date', 'timeline-express');
 					$timeline_express_announcement_columns['image'] = _x('Image', 'timeline-express');
-					$timeline_express_announcement_columns['past_announcement'] = _x('Announcment Past?', 'timeline-express');
+					$timeline_express_announcement_columns['past_announcement'] = _x('Announcement Past?', 'timeline-express');
 					return $timeline_express_announcement_columns;
 				}
 		
@@ -1267,6 +1269,10 @@ if(!class_exists("timelineExpressBase"))
 						// get the icons out of the css file
 						$response = wp_remote_get( 'http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css' );
 						
+						if( is_wp_error( $response ) ) {
+							wp_die( $resposne->get_error_message() , $response->title , array( 'back_link' => true ) );
+						}
+
 						// splot the response body, and store the icon classes in a variable
 						$split_dat_response = explode( 'icons */' , $response['body'] );
 						

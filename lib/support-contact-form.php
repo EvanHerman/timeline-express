@@ -7,7 +7,7 @@ if ( isset( $_REQUEST['action'] ) ) {
 if ( !isset( $action ) )    /* display the contact form */  { 
     ?> 
 	<p><?php _e( 'If you need support, please fill out the following form. I will get back to you with some support as soon as possible.' , 'timeline-express' ); ?></p>
-	<p><em><?php _e( 'note: support requests are limitd to one per hour, to help reduce spam.' , 'timeline-express' ); ?></em></p>
+	<p><em><?php _e( 'note: support requests are limited to one per hour, to help reduce spam.' , 'timeline-express' ); ?></em></p>
     <form  action="" method="POST" enctype="multipart/form-data"> 
 		<input type="hidden" name="action" value="submit">
 		<label for="name"><?php _e( 'Your name' , 'timeline-express' ); ?>: <br />

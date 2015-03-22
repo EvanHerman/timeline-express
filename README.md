@@ -1,4 +1,4 @@
-Timeline Express v1.1.5.9
+Timeline Express v1.1.6.4
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -31,6 +31,7 @@ Timeline express comes ready for translation. I would love to get things transla
 * Polish (pl_PL) - thanks goes to Kanios
 * Dutch (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>
 * German (de_DE) - thanks goes to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
+* French (fr_FR) - thanks goes to Julien Lambert
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
@@ -252,7 +253,6 @@ If you enjoy this plugin and want to contribute, I'm always looking for people t
 
 * Arabic
 * English
-* French
 * Greek
 * Hebrew
 * Hindi
@@ -280,6 +280,22 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.6.4 - March 23rd, 2015
+* Enhancement: Packaged French translation - thanks goes to Julien Lambert
+* Enhancement: Fixed a few typos in the plugin
+
+###### 1.1.6.3 - March 22nd, 2015
+* Enhancement: Added wp_error class to catch errors thrown by `wp_remote_get()` when building the bootstrap dropdown.
+
+###### 1.1.6.2 - March 18th, 2015
+* Enhancement: Removed `add_option();` call which was breaking previously stored options on activation
+
+###### 1.1.6.1 - March 10th, 2015
+* Enhancement: Altered new option label to be 'Exclude Announcements from Site Searches' (settings were reversed (true excluded while false included) )
+
+###### 1.1.6 - March 9th, 2015
+* Enhancement: Fixed 404 issue on announcement posts when 'Include Announcement in Site Searches' was set to 'false'.
 
 ###### 1.1.5.9 - March 6th, 2015 
 * Enhancement: Added a priority to the metabox initialization, which caused conflicts with other plugins using the same class
