@@ -1,4 +1,4 @@
-/* Timeline Express Minified Styles 1.1.5.7 */
+/* Timeline Express Minified Styles 1.1.6.5 */
 /*	By Evan Herman (http://www.evan-herman.com */
 /* -------------------------------------------------- */
 .cd-container {
@@ -16,6 +16,9 @@
     max-width: 100%;
     display: block;
     margin: 1em auto;
+}
+.cd-timeline-block:nth-child(2) {
+	margin-top: 11.5em;
 }
 #cd-timeline {
     position: relative;
@@ -60,6 +63,7 @@
 }
 }.cd-timeline-block {
     margin: 25px 0;
+	width: 50%;
 }
 .cd-timeline-block:after {
     content: "";
@@ -74,8 +78,7 @@
 }
 @media only screen and (min-width:822px) {
     .cd-timeline-block {
-    width: 100%;
-    margin: -3.5em 0;
+    width: 50%;
 }
 .cd-timeline-block:first-child {
     margin-top: 0;
@@ -86,7 +89,6 @@
 }.cd-timeline-img {
     position: absolute;
     top: 0;
-    left: 0;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -184,6 +186,7 @@
     border-radius: .25em;
     padding: 1em;
     box-shadow: 0 3px 0 #B9C5CD;
+	width: 65%;
 }
 .cd-timeline-content:after {
     content: "";
@@ -252,7 +255,7 @@
     .cd-timeline-content {
     margin-left: 0;
     padding: 1.6em;
-    width: 39%;
+    width: 75%;
     background: #EFEFEF;
 }
 .cd-timeline-content::before {
@@ -304,7 +307,7 @@
     animation: cd-bounce-2 .6s;
 }
 }@media only screen and (min-width:822px) {
-    .cssanimations .cd-timeline-block: nth-child(even) .cd-timeline-content.bounce-in {
+    .cssanimations .cd-timeline-block:nth-child(even) .cd-timeline-content.bounce-in {
     -webkit-animation: cd-bounce-2-inverse .6s;
     -moz-animation: cd-bounce-2-inverse .6s;
     animation: cd-bounce-2-inverse .6s;
@@ -433,7 +436,12 @@
 }
 .cd-timeline-icon-link {
     color: #fff!important;
+	position: absolute;
 }
+.cd-timeline-block:nth-child(odd) .cd-timeline-icon-link {
+	right: 0;
+}
+
 @media only screen and (max-width:821px) {
     #cd-timeline span.fa {
 		color: #fff;
@@ -447,13 +455,22 @@
 		position: relative;
 		z-index: 99999;
 	}
+	.cd-timeline-block:nth-child(odd) .cd-timeline-icon-link, .cd-timeline-block:nth-child(even) {
+		left: 0 !important;
+	}
+	.cd-timeline-block {
+		width: 100% !important;
+	}
+	.cd-timeline-block:nth-child(2) {
+		margin: 25px 0 !important;
+	}
 }
 .timeline-width100 {
     width: 100%}
-.timeline-width34 {
-    width: 34%}
-.timeline-width30 {
-    width: 30%}
+.timeline-width65 {
+    width: 65%}
+.timeline-width60 {
+    width: 60%}
 .timeline-date-left {
     width: 100%;
     float: left !important;

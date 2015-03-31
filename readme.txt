@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.1.1
-Stable tag: 1.1.6.4
+Stable tag: 1.1.6.5
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -40,7 +40,7 @@ Timeline express comes ready for translation. I would love to get things transla
 * Portuguese (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 * Polish (pl_PL) - thanks goes to Kanios
 * German (de_DE) - thanks goes to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
-* French (fr_FR) - thanks goes to Julien Lambert
+* French (fr_FR) - thanks goes to <a href="http://troisplus-et-aeliin-cosplay.fr/" target=_blank">Julien Lambert</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
@@ -301,8 +301,11 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Changelog ==
 
+= 1.1.6.5 - March 31st, 2015 =
+* Enhancement: re-wrote part of the CSS file, to allow for native masonry layouts (uniform spacing between containers)
+
 = 1.1.6.4 - March 23rd, 2015 =
-* Enhancement: Packaged French translation - thanks goes to Julien Lambert
+* Enhancement: Packaged French translation - thanks goes to <a href="http://troisplus-et-aeliin-cosplay.fr/" target=_blank">Julien Lambert</a>
 * Enhancement: Fixed a few typos in the plugin
 
 = 1.1.6.3 - March 22nd, 2015 =
@@ -439,8 +442,12 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Upgrade Notice ==
 
+= 1.1.6.5 - March 31st, 2015 =
+* Enhancement: re-wrote part of the CSS file, to allow for native masonry layouts (uniform spacing between containers)
+
 = 1.1.6.4 - March 23rd, 2015 =
-* Enhancement: Packaged French translation - thanks goes to Julien Lambert
+* Enhancement: Packaged French translation - thanks goes to <a href="http://troisplus-et-aeliin-cosplay.fr/" target=_blank">Julien Lambert</a>
+* Enhancement: Fixed a few typos in the plugin
 
 = 1.1.6.3 - March 22nd, 2015 =
 * Enhancement: Added wp_error class to catch errors thrown by `wp_remote_get()` when building the bootstrap dropdown.

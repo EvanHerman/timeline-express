@@ -960,7 +960,7 @@ if(!class_exists("timelineExpressBase"))
 												
 						// set the current date, with our offset
 						$offset = get_option('gmt_offset');					
-						$current_date = strtotime( 'today ' . $offset );
+						$current_date = strtotime( 'today +' . $offset );
 						
 						// decide how to compare our $current_date to $announcement_start_date meta
 						$compare = $this->timeline_express_optionVal['announcement-time-frame'];
@@ -1266,11 +1266,17 @@ if(!class_exists("timelineExpressBase"))
 				// @since v1.1.5.7
 				public function timeline_express_build_bootstrap_dropdown( $field, $meta ) {
 						
+						if( is_ssl() ) {
+							$http = 'http:';
+						} else {
+							$http = 'https:';
+						}
 						// get the icons out of the css file
-						$response = wp_remote_get( 'http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css' );
+						// based on https or http...
+						$response = wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css' );
 						
 						if( is_wp_error( $response ) ) {
-							wp_die( $resposne->get_error_message() , $response->title , array( 'back_link' => true ) );
+							wp_die( $response->get_error_message() , __( 'Error' , 'timeline-express' ) , array( 'back_link' => true ) );
 						}
 
 						// splot the response body, and store the icon classes in a variable

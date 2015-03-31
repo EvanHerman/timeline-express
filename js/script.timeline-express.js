@@ -39,16 +39,16 @@ jQuery(document).ready(function(){
 
 	// medium content width (twenty thirteen)
 	if ( width <= 822 && ( entry_content_width.replace( 'px' , '' ) <= '475' && entry_content_width.replace( 'px' , '' ) <= '800' ) ) {
-		jQuery( '.cd-timeline-content' ).removeClass( 'timeline-width34' );
+		jQuery( '.cd-timeline-content' ).removeClass( 'timeline-width65' );
 	} else if ( width >= 822 && ( entry_content_width.replace( 'px' , '' ) >= '475' && entry_content_width.replace( 'px' , '' ) <= '800' ) ) {
-		jQuery( '.cd-timeline-content' ).addClass( 'timeline-width34' );
+		jQuery( '.cd-timeline-content' ).addClass( 'timeline-width65' );
 	}
 	
 	// narrow content widths (twenty fourteen)
 	if ( width <= 822 && entry_content_width.replace( 'px' , '' ) <= '475' ) {
-		jQuery( '.cd-timeline-content' ).removeClass( 'timeline-width30' );
+		jQuery( '.cd-timeline-content' ).removeClass( 'timeline-width60' );
 	} else if ( width >= 822 && entry_content_width.replace( 'px' , '' ) <= '475' ) {
-		jQuery( '.cd-timeline-content' ).addClass( 'timeline-width30' );
+		jQuery( '.cd-timeline-content' ).addClass( 'timeline-width60' );
 	}
 	
 	// if the content is narrow (twenty thirteen)
@@ -64,7 +64,7 @@ jQuery(document).ready(function(){
 		var timeline_content_width = jQuery( '.cd-timeline-content' ).css('width');
 				
 		if ( width >= '822' && entry_content_width.replace( 'px' , '' ) <= '475' ) {	
-			jQuery( '.cd-timeline-content' ).addClass( 'timeline-width30' );
+			jQuery( '.cd-timeline-content' ).addClass( 'timeline-width60' );
 		}
 		
 		if ( width >= '822' && timeline_content_width.replace( 'px' , '' ) < 262 ) {
@@ -76,7 +76,7 @@ jQuery(document).ready(function(){
 		if ( ( width < '822' ) ) {
 			
 			jQuery( '#cd-timeline' ).masonry('reload');
-			jQuery( '.cd-timeline-content' ).removeClass( 'timeline-width30' ).removeClass( 'timeline-width34' );
+			jQuery( '.cd-timeline-content' ).removeClass( 'timeline-width60' ).removeClass( 'timeline-width65' );
 			
 		
 		}
