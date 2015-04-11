@@ -960,7 +960,7 @@ if(!class_exists("timelineExpressBase"))
 												
 						// set the current date, with our offset
 						$offset = get_option('gmt_offset');					
-						$current_date = strtotime( 'today +' . $offset );
+						$current_date = strtotime( 'today ' . $offset );
 						
 						// decide how to compare our $current_date to $announcement_start_date meta
 						$compare = $this->timeline_express_optionVal['announcement-time-frame'];
@@ -1343,7 +1343,7 @@ if(!class_exists("timelineExpressBase"))
 						
 						<?php
 						echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
-					}	
+					}		
 					
 			/***** ADMINISTRATION MENUS
 			 ****************************************************************************************************/
