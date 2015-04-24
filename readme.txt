@@ -3,7 +3,7 @@ Contributors: eherman24
 Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
-Tested up to: 4.1.1
+Tested up to: 4.2
 Stable tag: 1.1.6.6
 License: GPLv2 or later
 
@@ -12,6 +12,9 @@ Timeline express allows you to create a beautiful vertical animated and responsi
 == Description ==
 
 Timeline express allows you to create a vertical animated timeline of announcement posts , without writing a single line of code. You simply create the 'announcement' posts, set the announcement date and publish. The timeline will populate automatically in chronological order, based on the announcement date. Easily limit the announcements displayed to Upcoming announcements, past announcements or simply display all of them.
+
+
+<a href="http://www.evan-herman.com/wordpress/plugins/timeline-express-demo/" title="View the demo">View the Timeline Express Demo</a>
 
 **Features**
 
@@ -31,6 +34,16 @@ Timeline express allows you to create a vertical animated timeline of announceme
 * Highly extensible
 * Translatable
 
+><strong>Pro Features</strong>
+
+> - Setup multiple Timelines and assign announcements to any or all of the timelines.
+> - Assign categories to announcements.
+> - All new sorting features. Sort timelines by categories or by timeline.
+> - Display categories on single announcement templates.
+> - Priority support, code snippets provided when needed etc.
+
+><a href="http://www.evan-herman.com/wordpress-plugin/timeline-express/" title="Upgrade Now!">Get the premium version now!</a>
+
 **Translated**
 
 Timeline express comes ready for translation. I would love to get things translated into as many languages as possible. At the moment the following translations are available for Timeline Express :
@@ -43,6 +56,8 @@ Timeline express comes ready for translation. I would love to get things transla
 * French (fr_FR) - thanks goes to <a href="http://troisplus-et-aeliin-cosplay.fr/" target="_blank">Julien Lambert</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
+
+<a href="http://www.evan-herman.com/wordpress/plugins/timeline-express-demo/" title="View the demo">View the Timeline Express Demo</a>
 
 Looking for some advancedd documentation? Check out the <a href="https://wordpress.org/plugins/timeline-express/other_notes/">other notes</a> section.
 <br />
@@ -62,6 +77,17 @@ Looking for some advancedd documentation? Check out the <a href="https://wordpre
 
 == Frequently Asked Questions ==
 
+= Is there some demo I can checkout? I want to see how the plugin appears on the front end of a WordPress site before I install it. =
+
+You can check out the demo we've setup for users displaying two seperate timelines with filtering enabled.
+
+<a href="http://www.evan-herman.com/wordpress/plugins/timeline-express-demo/" title="View the demo">View the Timeline Express Demo</a>
+
+= Can I filter announcements by posts/ Can I create multiple timelines? =
+Not in the free version, but with our pro verson you can create numerous timelines and assign posts to a single timeline or all timelines. Also with the pro version you can easily filter announcements by categories on the front end.
+
+<a href="http://www.evan-herman.com/wordpress/plugins/timeline-express-demo/" title="View the demo">View the Timeline Express Pro Demo</a>
+
 = How do I use this plugin? =
 Begin by simply installing the plugin. Once the plugin has been installed, go ahead and begin creating announcement posts. You'll find a new menu item just below 'Posts'.
 After you have a substantial number of announcements set up, you're ready to display the timeline on the front end of your site.
@@ -76,7 +102,10 @@ the newly created 'timeline-express' directory in your theme. Timeline express w
 it to your hearts desire without fear of losing any changes in future updates!
 
 = Can I create more than one timeline? =
-At the moment no, but I will consider adding that into a future update if people show enough interest.
+The free version limits you to one timeline. With the <a href="http://www.evan-herman.com/wordpress-plugin/timeline-express/" title="Timeline Express Pro">pro version</a>, you can create unlimited number of timelines and even assign categories to your announcements.
+
+= Can I assign categories to my announcements? =
+You can assign categories and filter your timelines by category with the <a href="http://www.evan-herman.com/wordpress-plugin/timeline-express/" title="Timeline Express Pro">pro version</a> only.
 
 = At what width are the breakpoints set? =
 Breakpoints are set at 822px. The timeline will shift/re-adjust automatically using masonry based on the height of each announcement container.

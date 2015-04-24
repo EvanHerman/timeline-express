@@ -1,4 +1,4 @@
-Timeline Express v1.1.6.5
+Timeline Express v1.1.6.6
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -283,6 +283,8 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 ###### 1.1.6.5 - March 31st, 2015
 * Enhancement: re-wrote part of the CSS file, to allow for native masonry layouts (uniform spacing between containers)
+* Enhancement: Added `is_ssl()` check to determine if font awesome should be loaded over https or not.
+* Fixed: Fixed WP_Response error when font-awesome icons are unavailable using `wp_remote_get();`
 
 ###### 1.1.6.4 - March 23rd, 2015
 * Enhancement: Packaged French translation - thanks goes to Julien Lambert
