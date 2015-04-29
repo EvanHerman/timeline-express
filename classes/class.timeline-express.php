@@ -1314,7 +1314,7 @@ if(!class_exists("timelineExpressBase"))
 						}
 						
 						wp_enqueue_script( 'bootstrap-select' , TIMELINE_EXPRESS_URL . 'js/bootstrap-select.js' , array( 'jquery' ) , 'all' );
-						wp_enqueue_script( 'bootstrap-min' , 'http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' );
+						wp_enqueue_script( 'bootstrap-min' , '//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' );
 						wp_enqueue_style('bootstrap-select-style' ,  TIMELINE_EXPRESS_URL . 'css/bootstrap-select.min.css' );
 						?>	
 						<script>
