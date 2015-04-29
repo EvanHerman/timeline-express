@@ -466,7 +466,7 @@ if(!class_exists("timelineExpressBase"))
 						'show_in_nav_menus'   => true,
 						'show_in_admin_bar'   => true,
 						'menu_position'       => 5,
-						'menu_icon' 			=> TIMELINE_EXPRESS_URL . '/images/timeline-express-menu-icon.png',
+						'menu_icon' 			=> TIMELINE_EXPRESS_URL . 'images/timeline-express-menu-icon.png',
 						'can_export'          => true,
 						'has_archive'         => true,
 						'exclude_from_search' =>  $announcements_public, // toggled via setitngs page - @since v1.1.5.8,
