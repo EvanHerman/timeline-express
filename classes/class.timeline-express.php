@@ -466,7 +466,7 @@ if(!class_exists("timelineExpressBase"))
 						'show_in_nav_menus'   => true,
 						'show_in_admin_bar'   => true,
 						'menu_position'       => 5,
-						'menu_icon' 			=> TIMELINE_EXPRESS_URL . '/images/timeline-express-menu-icon.png',
+						'menu_icon' 			=> TIMELINE_EXPRESS_URL . 'images/timeline-express-menu-icon.png',
 						'can_export'          => true,
 						'has_archive'         => true,
 						'exclude_from_search' =>  $announcements_public, // toggled via setitngs page - @since v1.1.5.8,
@@ -1055,17 +1055,25 @@ if(!class_exists("timelineExpressBase"))
 										?>
 											<div class="cd-timeline-block">
 												<!-- icon -->
-												<?php if ( $this->timeline_express_optionVal['read-more-visibility'] != 0 ) { ?>
-													<a class="cd-timeline-icon-link" href="<?php echo get_the_permalink( $post->ID ); ?>">
+												<?php
+												// allow an override of the default Font Awesome icon
+												$custom_icon_html = apply_filters( 'timeline-express-custom-icon-html', '', $post, $this->timeline_express_optionVal );
+												if ( ! empty( $custom_icon_html) ) {
+													echo $custom_icon_html;
+												} else {
+													?>
+													<?php if ( $this->timeline_express_optionVal['read-more-visibility'] != 0 ) { ?>
+														<a class="cd-timeline-icon-link" href="<?php echo get_the_permalink( $post->ID ); ?>">
+															<div class="cd-timeline-img cd-picture" style="background:<?php echo get_post_meta( $post->ID , 'announcement_color' , true ); ?>;">
+																<span class="fa <?php echo get_post_meta( $post->ID , 'announcement_icon' , true ); ?>" title="<?php echo get_the_title( $post->ID ); ?>"></span>
+															</div> <!-- cd-timeline-img -->
+														</a>
+													<?php } else { ?>
 														<div class="cd-timeline-img cd-picture" style="background:<?php echo get_post_meta( $post->ID , 'announcement_color' , true ); ?>;">
 															<span class="fa <?php echo get_post_meta( $post->ID , 'announcement_icon' , true ); ?>" title="<?php echo get_the_title( $post->ID ); ?>"></span>
 														</div> <!-- cd-timeline-img -->
-													</a>
-												<?php } else { ?>
-													<div class="cd-timeline-img cd-picture" style="background:<?php echo get_post_meta( $post->ID , 'announcement_color' , true ); ?>;">
-														<span class="fa <?php echo get_post_meta( $post->ID , 'announcement_icon' , true ); ?>" title="<?php echo get_the_title( $post->ID ); ?>"></span>
-													</div> <!-- cd-timeline-img -->
-												<?php } ?>
+													<?php } ?>
+												<?php } // endif for $custom_icon_html check ?>
 												<!-- content/date/etc. -->
 												<div class="cd-timeline-content" style="background:<?php if ( $content_background == '' ) { echo 'transparent'; } else { echo $content_background; } ?>;box-shadow: 0 3px 0 <?php if ( $content_shadow == '' ) { echo 'transparent'; } else { echo $content_shadow; } ?>;">
 													<!-- title -->
@@ -1306,7 +1314,7 @@ if(!class_exists("timelineExpressBase"))
 						}
 						
 						wp_enqueue_script( 'bootstrap-select' , TIMELINE_EXPRESS_URL . 'js/bootstrap-select.js' , array( 'jquery' ) , 'all' );
-						wp_enqueue_script( 'bootstrap-min' , 'http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' );
+						wp_enqueue_script( 'bootstrap-min' , '//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' );
 						wp_enqueue_style('bootstrap-select-style' ,  TIMELINE_EXPRESS_URL . 'css/bootstrap-select.min.css' );
 						?>	
 						<script>
