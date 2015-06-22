@@ -1,4 +1,4 @@
-Timeline Express v1.1.6.6
+Timeline Express v1.1.6.9
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -32,10 +32,19 @@ Timeline express comes ready for translation. I would love to get things transla
 * Dutch (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>
 * German (de_DE) - thanks goes to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
 * French (fr_FR) - thanks goes to Julien Lambert
+* Hungarian (hu_HU) - thanks goes to <a href="http://www.keszites.com/" target="_blank">Zsolt</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
 **Hooks + Filters**
+
+**Use Custom Images Instead of Font Awesome Icons (New v1.1.6.7)**
+
+Users can now use the custom announcement image in place of the font awesome icons by using the following filter. Props to Pete Nelson for the pull request in making this possible
+
+timeline-express-custom-icon-html
+
+Example: https://gist.github.com/EvanHerman/6bbc8de82f34b4cb3c5c
 
 **Use Alternate Image Size For Announcements (New v1.1.5.5)**
 
@@ -280,6 +289,20 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.6.9 - June 22nd, 2015 
+* Remove !important declarations on frontend
+* Adjusted announcement images to be 100% width
+* Included hungarian translation - props <a href="" target="_blank">Zsolt</a>
+
+###### 1.1.6.8 - May 5th, 2015
+* Fixed incorrect version of font awesome enqueued on front end
+
+###### 1.1.6.7 - May 4th, 2015
+* Added new filter to allow for custom images to be used in place of font awesome icons (Props Pete Nelson)
+
+######1.1.6.6 - April 1st, 2015
+* Enhancement: reverted to older styles (v1.1.6.4 stylesheet)
 
 ###### 1.1.6.5 - March 31st, 2015
 * Enhancement: re-wrote part of the CSS file, to allow for native masonry layouts (uniform spacing between containers)

@@ -3,8 +3,8 @@ Contributors: eherman24
 Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
-Tested up to: 4.2
-Stable tag: 1.1.6.6
+Tested up to: 4.2.2
+Stable tag: 1.1.6.9
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -54,6 +54,7 @@ Timeline express comes ready for translation. I would love to get things transla
 * Polish (pl_PL) - thanks goes to Kanios
 * German (de_DE) - thanks goes to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
 * French (fr_FR) - thanks goes to <a href="http://troisplus-et-aeliin-cosplay.fr/" target="_blank">Julien Lambert</a>
+* Italian (it_IT) - thanks goes to <a href="http://evalosapeva.com/" target="_blank">Eva Filoramo</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
@@ -121,7 +122,6 @@ If you enjoy this plugin and want to contribute, I'm always looking for people t
 * Hebrew
 * Hindi
 * Hong Kong
-* Italian
 * Japanese
 * Korean
 * Persian
@@ -147,6 +147,14 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 <strong>Developer Documentation</strong>
 
 **Hooks + Filters**
+
+**Use Custom Images Instead of Font Awesome Icons (New v1.1.6.7)**
+
+Users can now use the custom announcement image in place of the font awesome icons by using the following filter. Huge thanks to <a href="https://petenelson.com/">Pete Nelson</a> for the pull request and making this possible and available for everyone.
+
+Filter - timeline-express-custom-icon-html
+
+Usage Example: https://gist.github.com/EvanHerman/6bbc8de82f34b4cb3c5c
 
 **Use Alternate Image Size For Announcements (New v1.1.5.5)**
 
@@ -330,6 +338,17 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Changelog ==
 
+= 1.1.6.9 - June 22nd, 2015 =
+* Remove !important declarations on frontend
+* Adjusted announcement images to be 100% width
+* Included hungarian translation - props <a href="" target="_blank">Zsolt</a>
+
+= 1.1.6.8 - May 5th, 2015 =
+* Fixed incorrect version of font awesome enqueued on front end
+
+= 1.1.6.7 - May 4th, 2015 =
+* Added new filter to allow for custom images to be used in place of font awesome icons (Props Pete Nelson)
+
 = 1.1.6.6 - April 1st, 2015 =
 * Enhancement: reverted to older styles (v1.1.6.4 stylesheet)
 
@@ -474,6 +493,15 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 * Initial Release to the WordPress repository
 
 == Upgrade Notice ==
+
+= 1.1.6.8 - May 5th, 2015 =
+* Fixed incorrect version of font awesome enqueued on front end
+
+= 1.1.6.7 - May 4th, 2015 =
+* Added new filter to allow for custom images to be used in place of font awesome icons (Props Pete Nelson)
+
+= 1.1.6.6 - April 1st, 2015 =
+* Enhancement: reverted to older styles (v1.1.6.4 stylesheet)
 
 = 1.1.6.5 - March 31st, 2015 =
 * Enhancement: re-wrote part of the CSS file, to allow for native masonry layouts (uniform spacing between containers)

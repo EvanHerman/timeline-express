@@ -13,7 +13,7 @@
 }
 .cd-timeline-announcement-image {
     box-shadow: none!important;
-    max-width: 100%;
+    width: 100%;
     display: block;
     margin: 1em auto;
 }
@@ -44,7 +44,7 @@
     background: #d7e4ed;
 }
 .announcement-banner-image {
-    max-width: 100%}
+    width: 100%}
 .timeline-express-single-page-announcement-date {
     display: block;
     margin-bottom: 1em;

@@ -41,10 +41,10 @@
 <br />
 <br />
 <!-- social media buttons -->
-<a href="https://profiles.wordpress.org/eherman24#content-plugins" title="WordPress" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/wordpress-icon.png" style="border: 0px none;" alt="Evan Herman - WordPress Profile" height="24" width="24"></a> 
-<a href="http://twitter.com/evanmherman" title="Twitter" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/twitter.png" style="border: 0px none;" alt="Evan Herman - Twitter Profile" height="24" width="24"></a> 
-<a href="https://www.linkedin.com/profile/view?id=46246110" title="Linkedin" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/linkedin.png" alt="Evan Herman - LinkedIn Profile" border="0" height="24" width="24"></a>
-<a href="http://www.evan-herman.com/feed/" title="RSS Feed" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>/images/rss_icon.png" alt="Evan Herman - RSS Feed" border="0" height="24" width="24"></a>
+<a href="https://profiles.wordpress.org/eherman24#content-plugins" title="WordPress" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>images/wordpress-icon.png" style="border: 0px none;" alt="Evan Herman - WordPress Profile" height="24" width="24"></a> 
+<a href="http://twitter.com/evanmherman" title="Twitter" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>images/twitter.png" style="border: 0px none;" alt="Evan Herman - Twitter Profile" height="24" width="24"></a> 
+<a href="https://www.linkedin.com/profile/view?id=46246110" title="Linkedin" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>images/linkedin.png" alt="Evan Herman - LinkedIn Profile" border="0" height="24" width="24"></a>
+<a href="http://www.evan-herman.com/feed/" title="RSS Feed" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>images/rss_icon.png" alt="Evan Herman - RSS Feed" border="0" height="24" width="24"></a>
 </section>
 
 <em style="display:block;font-size:12px; text-align:center;margin:.5em 0;"><?php _e( 'this plugin was made with ' , 'timeline-express' ); ?><div class="dashicons dashicons-heart" style="line-height:1.2;"></div>, <?php _e( 'by' , 'timeline-express' ); ?> <a href="http://www.evan-herman.com" target="_blank">Evan Herman</a></em>
