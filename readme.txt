@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.1.6.9
+Stable tag: 1.1.7
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -338,10 +338,12 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Changelog ==
 
+= 1.1.7 - July 10th, 2015 =
+* Included hungarian translation - props <a href="http://www.keszites.com/" target="_blank">Zsolt</a>
+
 = 1.1.6.9 - June 22nd, 2015 =
 * Remove !important declarations on frontend
 * Adjusted announcement images to be 100% width
-* Included hungarian translation - props <a href="" target="_blank">Zsolt</a>
 
 = 1.1.6.8 - May 5th, 2015 =
 * Fixed incorrect version of font awesome enqueued on front end
@@ -494,134 +496,4 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Upgrade Notice ==
 
-= 1.1.6.8 - May 5th, 2015 =
-* Fixed incorrect version of font awesome enqueued on front end
-
-= 1.1.6.7 - May 4th, 2015 =
-* Added new filter to allow for custom images to be used in place of font awesome icons (Props Pete Nelson)
-
-= 1.1.6.6 - April 1st, 2015 =
-* Enhancement: reverted to older styles (v1.1.6.4 stylesheet)
-
-= 1.1.6.5 - March 31st, 2015 =
-* Enhancement: re-wrote part of the CSS file, to allow for native masonry layouts (uniform spacing between containers)
-
-= 1.1.6.4 - March 23rd, 2015 =
-* Enhancement: Packaged French translation - thanks goes to <a href="http://troisplus-et-aeliin-cosplay.fr/" target="_blank">Julien Lambert</a>
-* Enhancement: Fixed a few typos in the plugin
-
-= 1.1.6.3 - March 22nd, 2015 =
-* Enhancement: Added wp_error class to catch errors thrown by `wp_remote_get()` when building the bootstrap dropdown.
-
-= 1.1.6.2 - March 18th, 2015 =
-* Enhancement: Removed `add_option();` call which was breaking previously stored options on activation
-
-= 1.1.6 - March 9th, 2015 =
-* Enhancement: Fixed 404 issue on announcement posts when 'Include Announcement in Site Searches' was set to 'false'.
-
-= 1.1.5.9 - March 6th, 2015 =
-* Enhancement: Added a priority to the metabox initialization, which caused conflicts with other plugins using the same class
-
-= 1.1.5.8 - March 5th, 2015 =
-* Enhancement: Upgraded font-awesome to 4.3.0
-* Enhancement: Added icon select dropdown on the settings page, to better mirror the post/page edit screens
-* Enhancement: Added new setting to toggle Timeline posts from appearing in search queries on the front end (defaults to true) 
-* Enhancement: Packaged German translation - thanks to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
-
-= 1.1.5.7 - February 5th, 2015 =
-* Message From The Author: Sorry for multiple updates on the same day. I was feeling ambitious and rolled out one patch to fix an issue and another with some new features. Enjoy :)
-* Enhancement: Added a dropdown to select the font awesome icon
-* Enhancement: Fadded in the timeline after everything has initialized, to prevent seeing a messed up Timeline layout
-
-= 1.1.5.6 - February 5th, 2015 =
-* Fixed: Issue with the excerpt being truncated and throwing off entire timeline layout (issue occured when truncate happened mid html tag , which left a tag open)
-* Fixed: Wrapped missing text in text domain
-
-= 1.1.5.5 - February 1st, 2015 =
-* Fixed: Wrapped admin column headers in get text filter
-* Fixed: Sort orders by announcement date
-* Enhancement: Added filter to define custom image size for announcement image (see <a href="https://wordpress.org/plugins/timeline-express/other_notes/">documentation</a>)
-
-= 1.1.5.4 - January 19th, 2015 =
-* Fixed: Remove unecessary filter in the main class file
-
-= 1.1.5.3 - January 16th, 2015 =
-* Fixed: Fixed incorrect date save format
-
-= 1.1.5.2 - January 10th, 2015 =
-* Fixed: Errors thrown from new user fields hook, when no custom fields are defined by the user
-* Fixed: Incorrect date format for new announcements
-
-= 1.1.5.1 - January 10th, 2015 =
-* Fixed: Data saving incorrectly to the database, causing errors to be thrown on front and back end
-
-= 1.1.5 - January 10th, 2015 =
-* Enhancement: Added new filter ( `timeline_express_custom_fields` ) which allows users to define their own custom fields to use on Timeline Announcement posts (see readme for example).
-* Fixed: CMB class file causing conflicts with other plugins, and removed the old version
-* Fixed: Adjusted a few styles on the announcement post page
-
-= 1.1.4.1 - January 2nd, 2015 =
-* Fixed: Issue with date storing different on backend vs front end
-* Fixed: Settings link on the Timeline Express welcome page
-
-= 1.1.4 - December 24th, 2014 =
-* Enhancement: Implemented premium support licensing. Any issues that require immediate response, or custom code should purchase a support license.
-* Enhancement: Added a new filter to customize the announcement slug (possibly for SEO purposes) (timeline-express-slug , check documentation for examples)
-* Enhancement: Moved settings/support below Timeline Express parent menu item
-* Fixed: Errors thrown when announcement images aren't set
-* Fixed: Display error where announcements displayed a different date on the backend vs frontend
-
-= 1.1.3.2 - December 11th, 2014 =
-* Enhancement: Added Dutch language translation (nl_NL)  - thanks goes to <a href="http://www.kasteelschaesberg.info/wpress/" target="_blank">Kees Hessels</a>
-* Fixed: A few typos throughout the plugin
-
-= 1.1.3.1 - December 10th, 2014 =
-* Enhancement: Added new filter `timeline-express-read-more-class` which allows users to add custom classes to the 'Read More' button
-* Enhancement: Wrapped 'Read More' in gettext filter, to allow for text to be altered
-
-= 1.1.3 - December 6th, 2014
-* Fixed: Weird query issue with timeline announcements not  displaying at proper times
-* Fixed: Styling issue with announcement date picker calendar arrow
-* Fixed: Removed all line-breaks and hyphens from the timeline titles
-
-= 1.1.2 - December 5th, 2014 =
-* Fixed: Minor styling issues with announcement images extending outside the announcement container (added new class to the image .announcement-banner-image)
-
-= 1.1.1 - December 4th, 2014 =
-* Fixed: Minor styling issues with the mobile timeline icon size/margins
-* Fixed: Minor styling issues with the mobile timeline announcement arrow appearing 1px to soon
-* Fixed: Typo of 'Timeline Express' in the admin settings menu
-
-= 1.1 - December 3rd, 2014 =
-We've updated some of the styles packaged with Timeline Express, added a new custom image size for announcements (you may need to regererate your images) multiple style issues when the timeline is used inside posts.
-
-= 1.0.9 - November 19th, 2014 =
-Localized date formats based on 'General > Settings', and added a custom filter to allow users to alter the date format however they see fit.
-
-= 1.0.8 - November 17th, 2014 =
-Added a new filter to allow users to load custom template files, updated the single announcement template file, and fixed a few styling issues
-
-= 1.0.7 - November 13th, 2014 = 
-We have now included Portuguese language translation (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>.
-
-= 1.0.6 = 
-We have fixed a fatal error that was being thrown on activation for site running older versions of PHP.
-
-= 1.0.5 = 
-We have changed the priority parameter on the custom post type register function, which was causing conflicts on certain user sites.
-
-= 1.0.4
-We have now included Chinese language translation (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>. We have also made a few adjustments to the style declarations of the timeline content and title on the front end.
-
-= 1.0.3 = 
-* Included new function to retain formatting in the announcement excerpt in the timeline (te_wp_trim_words_retain_formatting())
-
-= 1.0.2 =
-* Add display order setting to specify ascending or descending order of announcements in the timeline
-* Fixed "cannot access settings page" when clicking on the settings tab when on the settings page already
-
-= 1.0.1 =
-* Update masonry function to include .imagesLoaded(); to prevent overlapping containers in the timeline
-
-= 1.0 =
-* Initial Release to the WordPress repository
+* Included hungarian translation - props <a href="http://www.keszites.com/" target="_blank">Zsolt</a>
