@@ -1,0 +1,935 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Timeline Express Pro Translation\n"
+"POT-Creation-Date: 2015-05-04 09:07-0500\n"
+"PO-Revision-Date: 2015-07-10 18:22-0500\n"
+"Last-Translator: Evan Herman <evan.m.herman@gmail.com>\n"
+"Language-Team: EH Dev Shop\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: classes/EDD_SL_Plugin_Updater.php:177
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr ""
+"A program új verziója %1$s érhető el. <a target=\"_blank\" class=\"thickbox"
+"\" href=\"%2$s\">Részletek %3$s megtekintése</a>."
+
+#: classes/EDD_SL_Plugin_Updater.php:184
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
+"\">update now</a>."
+msgstr ""
+"A program új verzója %1$s érhető el. <a target=\"_blank\" class=\"thickbox\" "
+"href=\"%2$s\">Részletek %3$s megtekintése</a> or <a href=\"%4$s\">Frissítés "
+"most</a>."
+
+#: classes/EDD_SL_Plugin_Updater.php:324
+msgid "You do not have permission to install plugin updates"
+msgstr "Nincs joga, hogy telepítse a frissítéseket"
+
+#: classes/EDD_SL_Plugin_Updater.php:324
+#: classes/class.timeline-express.php:1597
+msgid "Error"
+msgstr "Hiba"
+
+#: classes/class.timeline-express.php:222
+msgid ""
+"Select which Timeline and categories to display in this timeline. To display "
+"all timelines and events, just click \"Insert Timeline\"."
+msgstr ""
+"Válassza ki, hogy milyen idővonal és kategóriák jelenjenek meg ezen az "
+"idővonalon. Minden idővonal és esemény megtekintéséhez kattintson az "
+"\"Idővonal beillesztése\" feliratra."
+
+#: classes/class.timeline-express.php:224
+#: classes/class.timeline-express.php:558
+msgid "Timelines"
+msgstr "Idővonalak"
+
+#: classes/class.timeline-express.php:239
+msgid "No timelines found."
+msgstr "Nincs elérhető idővonal."
+
+#: classes/class.timeline-express.php:239
+#: classes/class.timeline-express.php:258
+msgid "Create a timeline"
+msgstr "Idővonal létrehozása"
+
+#: classes/class.timeline-express.php:239
+msgid "Create a Timeline"
+msgstr "Idővonal Létrehozása"
+
+#: classes/class.timeline-express.php:243
+msgid "Timeline Categories"
+msgstr "Idővonal Kategóriák"
+
+#: classes/class.timeline-express.php:258
+msgid "No timeline categories found."
+msgstr "Nincs idővonal kategória."
+
+#: classes/class.timeline-express.php:258
+msgid "Create Categories"
+msgstr "Kategóriák Létrehozása"
+
+#: classes/class.timeline-express.php:262
+msgid "Display Filters"
+msgstr "Szűrők megjelenítése"
+
+#: classes/class.timeline-express.php:265
+msgid "Yes"
+msgstr "Igen"
+
+#: classes/class.timeline-express.php:267
+msgid "Insert Timeline"
+msgstr "Idővonal beillesztése"
+
+#: classes/class.timeline-express.php:292
+msgid "No Timelines Found."
+msgstr "Nincs Elérhető Idővonal."
+
+#: classes/class.timeline-express.php:292
+msgid "Setup One Now!"
+msgstr "Állítson be egyet most!"
+
+#: classes/class.timeline-express.php:292
+msgid "Set one up"
+msgstr "Egy Beállítása"
+
+#: classes/class.timeline-express.php:550
+msgid "Search Timelines"
+msgstr "Idővonal Keresése"
+
+#: classes/class.timeline-express.php:551
+#: classes/class.timeline-express.php:1698
+msgid "All Timelines"
+msgstr "Minden Idővonal"
+
+#: classes/class.timeline-express.php:552
+msgid "Parent Timeline"
+msgstr "Szülő Idővonal"
+
+#: classes/class.timeline-express.php:553
+msgid "Parent Timeline:"
+msgstr "Szülő Idővonal:"
+
+#: classes/class.timeline-express.php:554
+msgid "Edit Timeline"
+msgstr "Idővonal Szerkesztése"
+
+#: classes/class.timeline-express.php:555
+msgid "Update Timeline"
+msgstr "Idővonal Frissítése"
+
+#: classes/class.timeline-express.php:556
+msgid "Add New Timeline"
+msgstr "Új Idővonal Hozzáadása"
+
+#: classes/class.timeline-express.php:557
+msgid "New Timeline Name"
+msgstr "Új Idővonal Neve"
+
+#: classes/class.timeline-express.php:591
+msgid "Timeline Express Announcements"
+msgstr "Timeline Express Üzenetek"
+
+#: classes/class.timeline-express.php:592
+msgid "Announcement"
+msgstr "Üzenet"
+
+#: classes/class.timeline-express.php:593
+msgid "Timeline Express"
+msgstr "Timeline Express"
+
+#: classes/class.timeline-express.php:594
+msgid "Timeline Express:"
+msgstr "Timeline Express:"
+
+#: classes/class.timeline-express.php:595
+msgid "All Announcements"
+msgstr "Minden Üzenet"
+
+#: classes/class.timeline-express.php:596
+msgid "View Announcement"
+msgstr "Üzenet Megtekintése"
+
+#: classes/class.timeline-express.php:597
+#: classes/class.timeline-express.php:598
+msgid "New Announcement"
+msgstr "Új Üzenet"
+
+#: classes/class.timeline-express.php:599
+msgid "Edit Announcement"
+msgstr "Üzenet Szerkesztése"
+
+#: classes/class.timeline-express.php:600
+msgid "Update Announcement"
+msgstr "Üzenet Frissítése"
+
+#: classes/class.timeline-express.php:601
+msgid "Search Announcements"
+msgstr "Üzenetek Keresése"
+
+#: classes/class.timeline-express.php:602
+msgid "No Timeline Express Announcements Found"
+msgstr "Nincs elérhető Timeline Express üzenet"
+
+#: classes/class.timeline-express.php:603
+msgid "No Timeline Express Announcements in Trash"
+msgstr "Nincs a lomtárban Timeline Express üzenet"
+
+#: classes/class.timeline-express.php:613
+msgid "Post type for adding timeline express announcements to the site"
+msgstr ""
+"Bejegyzés Típusa, amellyel Timeline Express üzenetek vehetők fel a weboldalon"
+
+#: classes/class.timeline-express.php:682
+msgid "Announcement Color"
+msgstr "Üzenet Színe"
+
+#: classes/class.timeline-express.php:683
+msgid "select the color for this announcement."
+msgstr "Válassza ki az üzenet színét."
+
+#: classes/class.timeline-express.php:691
+msgid "Announcement Icon"
+msgstr "Üzenet Ikon"
+
+#: classes/class.timeline-express.php:692
+msgid ""
+"select an icon from the drop down above. This is used for the icon "
+"associated with the announcement."
+msgstr ""
+"Válasszon ki egy ikont a lenyíló listából fent. Ez jelenik meg az üzenettel "
+"kapcsolatban."
+
+#: classes/class.timeline-express.php:700
+#: classes/class.timeline-express.php:1005
+#: classes/class.timeline-express.php:1013
+msgid "Announcement Date"
+msgstr "Üzenet Dátuma"
+
+#: classes/class.timeline-express.php:701
+msgid ""
+"enter the date of the announcement. the announcements will appear in "
+"chronological order according to this date. "
+msgstr ""
+"Adja meg az üzenet dátumát. Az üzenetek időrendben jelennek meg a dátum "
+"alapján."
+
+#: classes/class.timeline-express.php:709
+msgid "Announcement Image"
+msgstr "Üzenet Kép"
+
+#: classes/class.timeline-express.php:710
+msgid ""
+"select a banner image for this announcement (optional). (recommended 650px "
+"wide or larger)  "
+msgstr ""
+"Válasszon képet(nem kötelező). (ajánlott felbontás 650 pixel széles vagy "
+"több)"
+
+#: classes/class.timeline-express.php:717
+msgid "Associated Timeline"
+msgstr "Kapcsolódó Idővonal"
+
+#: classes/class.timeline-express.php:718
+msgid "Select a timeline to assign this announcement to."
+msgstr "Válassza ki azt az idővonalat, amelyhez az üzenetet rendeli."
+
+#: classes/class.timeline-express.php:742
+msgid "Announcement Info."
+msgstr "Üzenet Info."
+
+#: classes/class.timeline-express.php:753
+msgid "About"
+msgstr "Rólunk"
+
+#: classes/class.timeline-express.php:780
+msgid "Enter Announcement Title"
+msgstr "Adja meg az üzenet címét"
+
+#: classes/class.timeline-express.php:994
+msgid "Categories"
+msgstr "Kategóriák"
+
+#: classes/class.timeline-express.php:1009
+#: classes/class.timeline-express.php:1017
+msgid "Back"
+msgstr "Vissza"
+
+#: classes/class.timeline-express.php:1414
+#: classes/class.timeline-express.php:1421
+#: classes/class.timeline-express.php:1435
+msgid "..."
+msgstr "..."
+
+#: classes/class.timeline-express.php:1422
+#: classes/class.timeline-express.php:1436
+msgid "Read more"
+msgstr "Tovább olvasom"
+
+#: classes/class.timeline-express.php:1733
+msgid "Filter by Timeline"
+msgstr "Szűrés Idővonal szerint"
+
+#: classes/class.timeline-express.php:1739
+msgid "Filter by Category"
+msgstr "Szűrés Kategória szerint"
+
+#: classes/class.timeline-express.php:1774
+msgid "Filter Timeline"
+msgstr "Idővonal Szűrő"
+
+#: classes/class.timeline-express.php:1785 pages/options.php:168
+msgid "Timeline Express Settings"
+msgstr "Timeline Express Beállítások"
+
+#: classes/class.timeline-express.php:1785
+msgid "Settings"
+msgstr "Beállítások"
+
+#: classes/class.timeline-express.php:1787
+msgid "Timeline Express Welcome"
+msgstr "Timeline Express - Üdvözöljük"
+
+#: classes/class.timeline-express.php:1789
+msgid "License"
+msgstr "Liszensz"
+
+#: lib/about-metabox-template.php:38
+msgid "Help!"
+msgstr "Segítség!"
+
+#: lib/about-metabox-template.php:39
+msgid "Review"
+msgstr "Megtekintés"
+
+#: lib/about-metabox-template.php:49
+msgid "made with "
+msgstr "készítette"
+
+#: lib/about-metabox-template.php:49 pages/welcome.php:93
+msgid "by"
+msgstr "szerző"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_ajax.php:47
+msgid "Please Try Again"
+msgstr "Kérem, próbálja újra"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_ajax.php:131
+msgid "Remove Embed"
+msgstr "Embed Eltávolítása"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_ajax.php:134
+#, php-format
+msgid "No oEmbed Results Found for %s. View more info at"
+msgstr "Nincs oEmbed találat a %s -hoz. További információ:"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_field.php:459
+msgid "Add Group"
+msgstr "Csoport hozzáadása"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_field.php:460
+msgid "Remove Group"
+msgstr "Csoport eltávolítása"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:250
+msgid "Add Row"
+msgstr "Sor hozzáadása"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:306
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:706
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:768
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:601
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:635
+msgid "No terms"
+msgstr "Nincs feltétel"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:674
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:728
+msgid "Add or Upload File"
+msgstr "Fájl hozzáadása vagy feltöltése"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:695
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:760
+msgid "Remove Image"
+msgstr "Kép eltávolítása"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:706
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:768
+msgid "File:"
+msgstr "Fájl:"
+
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:706
+#: lib/cmb_metaboxes/helpers/cmb_Meta_Box_types.php:768
+msgid "Download"
+msgstr "Letöltés"
+
+#: lib/cmb_metaboxes/init.php:258
+msgid "Clear"
+msgstr "Törlés"
+
+#: lib/cmb_metaboxes/init.php:259
+msgid "Default"
+msgstr "Sztandard"
+
+#: lib/cmb_metaboxes/init.php:260
+msgid "Select Color"
+msgstr "Válasszon Színt"
+
+#: lib/cmb_metaboxes/init.php:261
+msgid "Current Color"
+msgstr "Aktuális Szín"
+
+#: lib/cmb_metaboxes/init.php:288
+msgid "Select / Deselect All"
+msgstr "Bejelöli mind/ Törli a jelölést"
+
+#: lib/cmb_metaboxes/init.php:1177
+msgid "Save"
+msgstr "Mentés"
+
+#: lib/support-contact-form.php:9
+msgid ""
+"If you need support, please fill out the following form. I will get back to "
+"you with some support as soon as possible."
+msgstr ""
+"Ha szüksége van segítségre, akkor kérem, hogy töltse ki a következő űrlapot. "
+"Amint tudok, segítek."
+
+#: lib/support-contact-form.php:10
+msgid ""
+"note: support requests are limited to one per hour, to help reduce spam."
+msgstr ""
+"megjegyzés: segítségadás korlátozott egy dologra óránként, hogy csökkentsük "
+"a szpemeket"
+
+#: lib/support-contact-form.php:13
+msgid "Your name"
+msgstr "Neve"
+
+#: lib/support-contact-form.php:15
+msgid "Your message"
+msgstr "Üzenete"
+
+#: lib/support-contact-form.php:16
+msgid "please describe your issue in as much detail as possible"
+msgstr "Kérem, hogy írja le a problémát olyan részletesen, ahogy lehetséges"
+
+#: lib/support-contact-form.php:37
+msgid "There was an error sending your request"
+msgstr "Hiba történt kérdése elküldésekor"
+
+#: lib/support-contact-form.php:38
+msgid "If the error persists, please contact me directly for support at"
+msgstr "Ha a hiba fennáll, kérem lépjen velem kapcsolatba közvetlenül itt:"
+
+#: lib/support-contact-form.php:42
+msgid ""
+"Support request successfully sent. I will be in touch regarding your issue "
+"shortly."
+msgstr ""
+"Támogatói kérését sikeresen elküldtük. Hararosan felveszem önökkel a "
+"kapcsolatot a problémát illetően."
+
+#: pages/options.php:32
+msgid "The options were saved successfully!"
+msgstr "Az opciókat sikeresen mentettük!"
+
+#: pages/options.php:35
+msgid "The options could not be saved (or you did not change them)."
+msgstr "Az opciókat nem lehet elmenteni (vagy nem változtatta meg azokat)."
+
+#: pages/options.php:50
+msgid ""
+"Are you sure you want to revert 'Timeline Express' settings? This cannot be "
+"undone."
+msgstr ""
+"Biztos, hogy visszaállítja a 'Timeline Express' beállításokat? Mert nem "
+"vonható vissza."
+
+#: pages/options.php:64
+msgid "Timeline Express settings have successfully been reset"
+msgstr "A Timeline Express beállításokat sikeresen visszaállítottuk."
+
+#: pages/options.php:147
+msgid "Need Help?"
+msgstr "Segítségre van szüksége?"
+
+#: pages/options.php:148
+msgid "Get Support Now!"
+msgstr "Terméktámogatás igénylése most!"
+
+#: pages/options.php:156
+msgid "Loving the plugin?"
+msgstr "Tetszett a bővítmény?"
+
+#: pages/options.php:157
+msgid "Leave us a nice review"
+msgstr "Hagyjon egy szép üzenetet"
+
+#: pages/options.php:169
+msgid ""
+"make adjustments to your timeline here, ranging from style to display options"
+msgstr ""
+"Állítsa be az idővonalat itt, kezdve a stílussal a megjelenítési "
+"beállításokig"
+
+#: pages/options.php:182
+msgid "Timeline Title"
+msgstr "Idővonal Címe"
+
+#: pages/options.php:186
+msgid "Left"
+msgstr "Balra"
+
+#: pages/options.php:187
+msgid "Center"
+msgstr "Középre"
+
+#: pages/options.php:188
+msgid "Right"
+msgstr "Jobbra"
+
+#: pages/options.php:191
+msgid "H1"
+msgstr "H1"
+
+#: pages/options.php:192
+msgid "H2"
+msgstr "H2"
+
+#: pages/options.php:193
+msgid "H3"
+msgstr "H3"
+
+#: pages/options.php:194
+msgid "H4"
+msgstr "H4"
+
+#: pages/options.php:202
+msgid ""
+"Enter the title for the time line // Select the alignment // Select the font "
+"size"
+msgstr ""
+"Adja meg az üzenőfal címét // Válasszon elrendezést // Válassza ki a betű "
+"méretét."
+
+#: pages/options.php:207
+msgid "Time Frame"
+msgstr "Időkeret"
+
+#: pages/options.php:210
+msgid "Future Events"
+msgstr "Jövőbeli Események"
+
+#: pages/options.php:211
+msgid "All Events (past+future)"
+msgstr "Minden esemény (korábbi + későbbi)"
+
+#: pages/options.php:212
+msgid "Past Events"
+msgstr "Régebbi Események"
+
+#: pages/options.php:220
+msgid "Select the time frame to query events from."
+msgstr "Válasszon időkeretet, ahonnan az események jönnek."
+
+#: pages/options.php:225
+msgid "Display Order"
+msgstr "Sorrend-Megjelenítés"
+
+#: pages/options.php:228
+msgid "Ascending"
+msgstr "Növekvő"
+
+#: pages/options.php:229
+msgid "Descending"
+msgstr "Csökkenő"
+
+#: pages/options.php:237
+msgid ""
+"Select the order you would like the announcements to display. Ascending : "
+"Chronological order by announcement date. Descending : Reverse chronological "
+"order by announcement date."
+msgstr ""
+"Válasszon sorrendet, hogyan jelenjenek meg az üzenetek . Növekvő kronólógiai "
+"sorrendben. Csökkentő dátum szerint."
+
+#: pages/options.php:242
+msgid "Announcement Excerpt Length"
+msgstr "Üzenet kivonatának hossza"
+
+#: pages/options.php:251
+msgid ""
+"Set the length of the excerpt for each announcement. ( min=25;max=500 eg: 50 "
+"= 50 characters )"
+msgstr ""
+"Állítsa be a kivonat hosszát üzenetenként. (min=25 ; max=200 pld.: 50 = 50 "
+"Karakter)."
+
+#: pages/options.php:256
+msgid "Category Visibility"
+msgstr "Kategória láthatósága"
+
+#: pages/options.php:266 pages/options.php:283 pages/options.php:300
+msgid "Visible"
+msgstr "Látható"
+
+#: pages/options.php:267 pages/options.php:284 pages/options.php:301
+msgid "Hidden"
+msgstr "Rejtett"
+
+#: pages/options.php:275 pages/options.php:292
+msgid "Toggle the visibility of the date next to the icon."
+msgstr "Állítsa a dátum láthatóságát az ikon mellett."
+
+#: pages/options.php:280
+msgid "Date Visibility"
+msgstr "Dátum láthatósága"
+
+#: pages/options.php:297
+msgid "Read More Visibility"
+msgstr "Tovább olvasom link láthatósága"
+
+#: pages/options.php:309
+msgid ""
+"Toggle the visibility of the read more button. Hide to prevent users from "
+"viewing the full announcement."
+msgstr ""
+"Állítsa a Tovább olvasom gomb láthatóságát. Elrejtve megakadályozza, hogy a "
+"teljes üzenetet elolvassák."
+
+#: pages/options.php:314
+msgid "Default Icon"
+msgstr "Sztandard Ikon"
+
+#: pages/options.php:326
+msgid ""
+"Select the font-awesome class name that you would like to use a default icon "
+"for new events in the dropdown above."
+msgstr ""
+"Válassza ki a font-awesome osztály nevét(class attribútum), amelyet "
+"sztandard ikonként új események felvételekor használni szeretne, fent a "
+"lenyíló listában."
+
+#: pages/options.php:331
+msgid "Default Announcement Color"
+msgstr "Sztandard Üzenetek Színe"
+
+#: pages/options.php:340
+msgid ""
+"Select the default color for all new events. Note : this setting can be "
+"overwritten"
+msgstr ""
+"Válassza ki a sztandard színt minden eseményhez. Megjegyzés: ez a beállítás "
+"felülírható"
+
+#: pages/options.php:345
+msgid "Announcement Container Background"
+msgstr "Üzenet Konténer Színe"
+
+#: pages/options.php:354
+msgid "Select the background color of the announcement container."
+msgstr "Válassza ki az üzenet konténer háttérszínét."
+
+#: pages/options.php:359
+msgid "Announcement Shadow Color"
+msgstr "Üzenet árnyék színe"
+
+#: pages/options.php:368
+msgid "Select the shadow color for the announcement container."
+msgstr "Válassza ki az konténer árnyékának színét."
+
+#: pages/options.php:373
+msgid "Background Line Color"
+msgstr "Háttér vonal színe"
+
+#: pages/options.php:382
+msgid "Select the color of the line in the background of the timeline."
+msgstr "Válassza ki a vonal színét, az idővonal hátterében."
+
+#: pages/options.php:387
+msgid "No Announcements Message"
+msgstr "Nincs Üzenet"
+
+#: pages/options.php:396
+msgid "This is the message that will display when no announcements are found."
+msgstr "Ez az üzenet jelenik meg, ha nincs üzenet."
+
+#: pages/options.php:401
+msgid "Exclude Announcements from Site Searches"
+msgstr "Üzenetek kizárása a keresésből a weboldalon."
+
+#: pages/options.php:404
+msgid "True"
+msgstr "Igaz"
+
+#: pages/options.php:405
+msgid "False"
+msgstr "Hamis"
+
+#: pages/options.php:413
+msgid ""
+"Set to true to exclude announcements from all site searches. False will "
+"include announcements in site searches."
+msgstr ""
+"Állítsa igazra, ha az üzeneteket kizárja a keresésből a weboldalon. Hamis "
+"érték esetén lehet az üzenetek között keresni."
+
+#: pages/options.php:418
+msgid "Delete Announcements On Uninstall?"
+msgstr "Törölje az üzeneteket, ha a programot eltávolítja?"
+
+#: pages/options.php:427
+msgid ""
+"Select this to delete all announcement posts from the data base on plugin "
+"uninstallation. this can not be undone, once they are deleted they are gone "
+"forever. If you want to keep them, export your announcements before "
+"uninstalling."
+msgstr ""
+"Válassza ezt, ha minden üzenet bejegyzést töröl, amikor a bővítményt "
+"eltávolítja. Nem lehet visszavonni, minden bejegyzés vagy üzenet elvész. Ha "
+"meg akarja tartani, akkor exportálja azokat, mielőtt törlődik."
+
+#: pages/options.php:432
+msgid "Save Settings"
+msgstr "Beállítások Mentése"
+
+#: pages/options.php:432
+msgid "Reset Plugin Settings"
+msgstr "Bővítmény beállítások visszaállítása."
+
+#: pages/support.php:21
+msgid "Timeline Express Pro License"
+msgstr "Timeline Express Pro Liszensz"
+
+#: pages/support.php:24
+msgid "Thank you for purchasing the pro version!"
+msgstr "Köszönjük, hogy a pro változatot megvásárolta."
+
+#: pages/support.php:25
+msgid ""
+"If you run into any issues, or need support, feel free to submit a support "
+"ticket via the contact form below."
+msgstr ""
+"Ha problémába ütközik, vagy segítségre van szüksége, bátran igényeljen "
+"segítségkérést a kapcsolati űrlappal alább."
+
+#: pages/support.php:28
+msgid "Please enter your license key in below."
+msgstr "Kérem, hogy írja be a liszensz kulcsot alább."
+
+#: pages/support.php:29
+msgid "Your license key will grant you access to updates and priority support."
+msgstr ""
+"A liszensz kulcs a frissítésekhez és támogatáshoz való hozzáférést tesz "
+"lehetővé."
+
+#: pages/support.php:45
+msgid "Support License Key"
+msgstr "Támogatói Liszensz Kulcs"
+
+#: pages/support.php:49
+msgid "Support license key"
+msgstr "Támogatói liszensz kulcs"
+
+#: pages/support.php:52
+msgid "Valid and Active License"
+msgstr "Érvényes és Aktív Liszensz"
+
+#: pages/support.php:55 pages/support.php:60 pages/support.php:70
+msgid "Purchase a License"
+msgstr "Liszensz vásárlás"
+
+#: pages/support.php:57
+msgid ""
+"There was an error with your license. It appears that your license key has "
+"been "
+msgstr "Hiba történt a liszensszel kapcsolatban. Úgy tűnik a liszensz kulcsa.."
+
+#: pages/support.php:57
+msgid "Please get in contact with support at "
+msgstr "Kérem, lépjen kapcsolatba a támogatóval itt:"
+
+#: pages/support.php:57
+msgid "EH Dev. Shop"
+msgstr "EH Dev. Shop"
+
+#: pages/support.php:57
+msgid " to resolve the issue"
+msgstr "a probléma megoldása"
+
+#: pages/support.php:62
+msgid ""
+"Sorry this license key appears to be invalid. Please purchase a valid "
+"license key."
+msgstr ""
+"Sajnos, úgy tűnik, hogy liszensz kulcs érvénytelen. Kérem, vásároljon "
+"érvényes liszensz kulcsot."
+
+#: pages/support.php:64
+msgid "Renew your Timeline Express license"
+msgstr "Az ön Timeline Express liszenszének megújítása."
+
+#: pages/support.php:65
+msgid "Renew Your License"
+msgstr "Liszensz megújítása"
+
+#: pages/support.php:67
+msgid ""
+"Oops, it looks like your license has expired. Please consider renewing your "
+"license for another year to continue receiving support."
+msgstr ""
+"Hű, úgy tűnik, hogy liszensze lejárt. Kérem, hogy tekintse meg a liszensz "
+"egy éves meghosszabbítását a terméktámogatás folytatásáért."
+
+#: pages/support.php:88
+msgid "Deactivate License"
+msgstr "Liszensz deaktiválása."
+
+#: pages/support.php:92
+msgid "Activate License"
+msgstr "Liszensz aktiválása"
+
+#: pages/support.php:113
+msgid "License Info."
+msgstr "Liszensz Info."
+
+#: pages/support.php:121
+msgid "License Holder"
+msgstr "Liszensz/ Engedély Jogosultja"
+
+#: pages/support.php:126
+msgid "Sites Active/Limit"
+msgstr "Weboldal Aktív/ Korlát"
+
+#: pages/support.php:131
+msgid "License Expires"
+msgstr "Liszensz Lejár"
+
+#: pages/support.php:140
+msgid "Premium Support Ticketing"
+msgstr "Prémium támogatói jegy"
+
+#: pages/support.php:146
+msgid ""
+"It looks like you have recently sent us a support request. We limit the "
+"number of support requests to 1 per hour, to avoid spam. Sorry for the "
+"inconvinience, and thank you for understanding."
+msgstr ""
+"Úgy tűnik, hogy mostanában támogatói kérést küldött. Korlátoztuk a támogatói "
+"kéréseket óránként egyre a szpemek elkerülése végett. Elnézést a "
+"kényelmetlenségért, megértését köszönjük."
+
+#: pages/welcome.php:40
+msgid "Welcome to Timeline Express Pro"
+msgstr "Üdvözöljük Timeline Express Pro programban"
+
+#: pages/welcome.php:42
+msgid ""
+"Thanks for purchasing Timeline Express Pro. We know you're going to find "
+"version well worth the investment! To get started, hover over 'Timeline "
+"Express', in the admin menu, and click"
+msgstr ""
+"Köszönjük, hogy a Timeline Express Pro programot megvásárolta. Tudjuk, hogy "
+"ezt a verzót jó befektetésként könyveli majd el! Kezdéshez kattintson a "
+"'Timeline Express' névére, az admin menüben, utána kattintson a"
+
+#: pages/welcome.php:42
+msgid "'New Announcement'"
+msgstr "'Új Üzenet'"
+
+#: pages/welcome.php:42
+msgid " to start adding announcements your timeline!"
+msgstr "feliratára, hogy üzeneteket adjon hozzá az idővonalához."
+
+#: pages/welcome.php:42
+msgid "or head over to the"
+msgstr "vagy navigáljon azonnal a"
+
+#: pages/welcome.php:42
+msgid "Settings Page"
+msgstr "Oldal beállítások"
+
+#: pages/welcome.php:42
+msgid ""
+"to customize and style your form. New in the pro version, you can assign "
+"announcements to specific timelines and easily display numerous timelines "
+"throughout your site! What are you waiting for? Get started!"
+msgstr ""
+"Szabja testre és stilizálja az üzeneteit. Ez új a pro verzóban, az "
+"üzeneteket speciális idővonalakhoz rendelheti, és könnyedén jeleníthet meg "
+"számtalan idővonalat weboldalán. Mire vár? Kezdjen hozzá!"
+
+#: pages/welcome.php:51
+msgid "Create Beautiful Timelines In Minutes"
+msgstr "Csináljon egy szép üzenőfalat percek alatt"
+
+#: pages/welcome.php:52
+msgid ""
+"Create vertical and responsive, CSS3 animated timelines fast...without ever "
+"touching a single line of code."
+msgstr ""
+"Hozzon létre egy vertikális, reszponzív, CSS3, animációs, gyors... "
+"programozás nélkül."
+
+#: pages/welcome.php:55
+msgid "Font Awesome Included"
+msgstr "Awesome betűtípust tartalmaz"
+
+#: pages/welcome.php:56
+msgid ""
+"Hundreds of icons to choose from to make your announcements really stand out!"
+msgstr "Ikonok százaiból választhat, hogy egyedülálló üzenetet készíthessen."
+
+#: pages/welcome.php:65
+msgid "Intuitive Custom Post Creation Screen"
+msgstr "Intuitív Bejegyzések Képernyője"
+
+#: pages/welcome.php:69
+msgid "Manage Announcements Easily"
+msgstr "Üzenetek egyszerű kezelése"
+
+#: pages/welcome.php:73
+msgid "Style The Timeline"
+msgstr "Idővonal stilizálása"
+
+#: pages/welcome.php:81
+msgid "Timeline Express // Sample Timeline"
+msgstr "Timeline Express // Idővonal Példaprogram"
+
+#: pages/welcome.php:93
+msgid "this free plugin was made with"
+msgstr "Ez az ingyenes bővítmény a következő eszközzel készült."
+
+#: pages/welcome.php:93
+msgid "Please consider making a"
+msgstr "Kérem"
+
+#: pages/welcome.php:93
+msgid "donation"
+msgstr "Támogatását"
+
+#: pages/welcome.php:93
+msgid "if you need support in any way."
+msgstr "ha bármikor szüksége van segítségre"
+
+#: pages/welcome.php:97
+msgid "Keep Up With Me Elsewhere "
+msgstr "Tartsa velem a kapcsolatot bárhol"

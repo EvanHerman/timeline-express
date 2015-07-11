@@ -80,7 +80,7 @@ if(!class_exists("timelineExpressBase"))
 					 }
 						
 					// Register a new custom image size
-					add_image_size( 'timeline-express', '350' , '120', true );
+					add_image_size( 'timeline-express', '350', '120', true );
 						
 					// Add the CSS/JS files - Dashboard
 					add_action( 'admin_enqueue_scripts' , array( &$this , 'addStyles' ) );
@@ -106,14 +106,12 @@ if(!class_exists("timelineExpressBase"))
 					// Move all "advanced" metaboxes above the default editor
 					add_action('edit_form_after_title', array( &$this , 'timeline_express_rearrange_metaboxes' ) , 999 );
 					
-					// initialize the Metabox class
-					add_action( 'init', array( &$this, 'timeline_express_initialize_cmb_meta_boxes' ) , 9998 );
 					// Announcement CPT
 					add_action( 'init', array( &$this , 'timeline_express_generate_announcement_post_type' ), 999 );
 					// change announcement CPT title
 					add_filter( 'enter_title_here', array( &$this , 'change_default_announcement_title' ) );	
 					// enqueue announcement metaboxes
-					add_filter( 'cmb_meta_boxes', array( &$this , 'cmb_timeline_announcement_metaboxes' ), 9999 );
+					// add_filter( 'cmb_meta_boxes', array( &$this , 'cmb_timeline_announcement_metaboxes' ), 9999 );
 					// add custom columns to the timeline express announcement cpt
 					add_filter('manage_edit-te_announcements_columns', array( &$this, 'add_new_timeline_express_columns' ) );
 					// generate the content for each column
@@ -147,29 +145,35 @@ if(!class_exists("timelineExpressBase"))
 					// Cross check the validity of our supportl icense , twice a day
 					add_action('timeline_express_support_license_check', array( &$this , 'crosscheck_support_license' ) );
 					// render new custom timeline express date time
-					add_action( 'cmb_render_te_date_time_stamp_custom', array($this,'cmb_render_te_date_time_stamp_custom'), 10, 2 );
+					add_action( 'cmb2_render_te_date_time_stamp_custom', array($this,'cmb2_render_te_date_time_stamp_custom'), 10, 5 );
 					// render new custom timeline express about metabox
-					add_action( 'cmb_render_te_about_metabox', array($this,'cmb_render_te_about_metabox'), 10, 2 );
+					add_action( 'cmb2_render_te_about_metabox', array($this,'cmb2_render_callback_te_about_metabox'), 10, 5 );
 					// custom vlaidation for our new custom field
 					 //Validate new metabox type
-					add_filter( 'cmb_validate_te_date_time_stamp_custom', array( $this, 'cmb_validate_te_date_time_stamp_custom' ) , 10, 2 );
+					add_filter( 'cmb2_sanitize_te_date_time_stamp_custom', array( $this, 'cmb2_sanitize_te_date_time_stamp_custom_callback' ) , 10, 2 );
 					// render new custom timeline express about metabox
-					add_action( 'cmb_render_te_bootstrap_dropdown', array( $this, 'cmb_render_te_bootstrap_dropdown' ), 10, 2 );
+					add_action( 'cmb2_render_te_bootstrap_dropdown', array( $this, 'cmb2_render_callback_te_bootstrap_dropdown' ), 10, 5 );
 					// validate the new custom timeline express about metabox
-					add_filter( 'cmb_validate_te_bootstrap_dropdown', array( $this, 'cmb_validate_te_bootstrap_dropdown' ) , 10, 2);
+					add_filter( 'cmb2_sanitize_te_bootstrap_dropdown', array( $this, 'cmb2_validate_te_bootstrap_dropdown_callback' ) , 10, 2 );
+					// CMB2
+					if ( file_exists(  TIMELINE_EXPRESS_PATH . 'lib/CMB2/init.php' ) ) {
+						// include the bootstrap file
+						require_once  TIMELINE_EXPRESS_PATH . 'lib/CMB2/init.php';
+						// initiate the metaboxes
+						add_action( 'cmb2_init', array( $this, 'cmb_timeline_announcement_metaboxes' ) );
+					}	
 				}
 			
+			// add any missing options
 			function addMissingOptions() {
 				// store the option temporarily
-				$this->timeline_express_optionVal = get_option( TIMELINE_EXPRESS_OPTION );
+				$this->timeline_express_optionVal = $this->getTimelineOptionValue();
 				// add new option announcement-appear-in-searches 
 				// ( toggle display of announcements in searches )
 				// @since v1.1.5.8
 				if( !isset( $this->timeline_express_optionVal['announcement-appear-in-searches'] ) ) {
 					$this->timeline_express_optionVal['announcement-appear-in-searches'] = 'true';
 				}
-				// update the options -> breaks previous users settings....
-				// update_option( TIMELINE_EXPRESS_OPTION , $this->timeline_express_optionVal );
 			}
 			
 			/*
@@ -177,7 +181,7 @@ if(!class_exists("timelineExpressBase"))
 			* render our custom date time stamp field (allows for a default to be set)
 			* since @v1.1.5
 			*/
-			function cmb_render_te_date_time_stamp_custom( $field, $meta ) {
+			function cmb2_render_te_date_time_stamp_custom( $field, $meta ) {
 					?>
 					<style>
 						#ui-datepicker-div { z-index: 99999 !important; }
@@ -186,11 +190,11 @@ if(!class_exists("timelineExpressBase"))
 					</style>
 					<?php
 					if( $meta && isset( $meta ) ){
-						echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field['default'], '" />';
-						echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
+						echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field->args['default'], '" />';
+						echo '<p class="cmb_metabox_description">'.$field->args['desc'].'</p>';
 					} else{
-						echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field['id'], '" id="', $field['id'], '" value="' . date('m/d/Y' ) .'" />';
-						echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
+						echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="' . date('m/d/Y' ) .'" />';
+						echo '<p class="cmb_metabox_description">'.$field->args['desc'].'</p>';
 					}				
 				}
 
@@ -199,7 +203,7 @@ if(!class_exists("timelineExpressBase"))
 			* save our custom date time stamp
 			* since @v1.1.5
 			*/
-			function cmb_validate_te_date_time_stamp_custom( $value, $new ) {
+			function cmb2_sanitize_te_date_time_stamp_custom_callback( $value, $new ) {
 					if( isset( $new ) && $new != '' ){
 						return strtotime( $new );
 					}
@@ -212,7 +216,7 @@ if(!class_exists("timelineExpressBase"))
 			* render the data contained in our custom about metabox
 			* since @v1.1.5
 			*/
-			function cmb_render_te_about_metabox( $field, $meta ) {
+			function cmb2_render_callback_te_about_metabox( $field, $meta, $object_id, $object_type, $field_type_object ) {
 					require_once TIMELINE_EXPRESS_PATH . 'lib/about-metabox-template.php';
 				}
 			
@@ -221,17 +225,17 @@ if(!class_exists("timelineExpressBase"))
 			* render the custom bootstrap dropdown
 			* since @v1.1.5.7
 			*/
-			function cmb_render_te_bootstrap_dropdown( $field, $meta ) {
+			function cmb2_render_callback_te_bootstrap_dropdown( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
 					// pass in the field object and meta data
-					$this->timeline_express_build_bootstrap_dropdown( $field, $meta );
+					$this->timeline_express_build_bootstrap_dropdown( $field, $escaped_value );
 				}
 			
 			/*
-			* cmb_validate_te_date_time_stamp_custom()
+			* cmb2_validate_te_bootstrap_dropdown_callback()
 			* save our custom date time stamp
 			* since @v1.1.5
 			*/
-			function cmb_validate_te_bootstrap_dropdown( $value, $new ) {
+			function cmb2_validate_te_bootstrap_dropdown_callback( $override_value, $new ) {
 					if( isset( $new ) && $new != '' ){
 						return 'fa-'.trim($new);
 					}
@@ -404,18 +408,12 @@ if(!class_exists("timelineExpressBase"))
 				do_meta_boxes(get_current_screen(), 'advanced', $post);
 				unset($wp_meta_boxes[get_post_type($post)]['advanced']);
 			}
+
 			
-			// enqueue metabox for the announcement cpt
-			public function timeline_express_initialize_cmb_meta_boxes() {
-				if ( ! class_exists( 'cmb_Meta_Box' ) ){
-					require_once( TIMELINE_EXPRESS_PATH . 'lib/cmb_metaboxes/init.php' );
-				}
-			}	
-				
 			// Register Announcement Custom Post Type
 			public function timeline_express_generate_announcement_post_type() {
 					
-					$this->timeline_express_optionVal = get_option( TIMELINE_EXPRESS_OPTION );
+					$this->timeline_express_optionVal = $this->getTimelineOptionValue();
 					if( isset( $this->timeline_express_optionVal['announcement-appear-in-searches'] ) ) {
 						$announcements_public = $this->timeline_express_optionVal['announcement-appear-in-searches'];
 					} else {
@@ -490,56 +488,99 @@ if(!class_exists("timelineExpressBase"))
 
 			/**
 			 * Define the metabox and field configurations.
+			 */
+			function cmb2_sample_metaboxes() {
+
+				// Start with an underscore to hide fields from custom fields list
+				$prefix = '_yourprefix_';
+
+				
+
+				// Add other metaboxes as needed
+
+			}
+			
+			/**
+			 * Define the metabox and field configurations.
 			 *
 			 * @param  array $meta_boxes
 			 * @return array
 			 */
-			public function cmb_timeline_announcement_metaboxes( array $meta_boxes ) {
-	
+			public function cmb_timeline_announcement_metaboxes() {
+		
 					// Start with an underscore to hide fields from custom fields list
 					$prefix = 'announcement_';
 					
 					// setup an empty field type for users to customize
 					$custom_field = array();
 					
-					// set up our array of fields
-					$field_array = array(
-						array(
-								'name' => __( 'Announcement Color', 'timeline-express' ),
-								'desc' => __( 'select the color for this announcement.', 'timeline-express' ),
-								'id'   => $prefix . 'color',
-								'type' => 'colorpicker',
-								'default'  => $this->timeline_express_optionVal['default-announcement-color'],
-								// 'repeatable' => true,
-								// 'on_front' => false, // Optionally designate a field to wp-admin only
-							),
-							array(
-								'name' => __( 'Announcement Icon', 'timeline-express' ),
-								'desc' => __( 'select an icon from the drop down above. This is used for the icon associated with the announcement.', 'timeline-express' ),
-								'id'   => $prefix . 'icon',
-								'type' => 'te_bootstrap_dropdown',
-								'default' => 'fa-'.str_replace( 'fa-' , '' , $this->timeline_express_optionVal['default-announcement-icon'] ),
-								// 'repeatable' => true,
-								// 'on_front' => false, // Optionally designate a field to wp-admin only
-							),
-							array(
-								'name' => __( 'Announcement Date', 'timeline-express' ),
-								'desc' => __( 'enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
-								'id'   => $prefix . 'date',
-								'type' => 'te_date_time_stamp_custom',
-								'default' => strtotime( date( 'm/d/Y' ) ), 
-								// 'repeatable' => true,
-								// 'on_front' => false, // Optionally designate a field to wp-admin only
-							),
-							array(
-								'name' => __( 'Announcement Image', 'timeline-express' ),
-								'desc' => __( 'select a banner image for this announcement (optional). (recommended 650px wide or larger)  ', 'timeline-express' ),
-								'id'   => $prefix . 'image',
-								'type' => 'file',
-								// 'repeatable' => true,
-								// 'on_front' => false, // Optionally designate a field to wp-admin only
-							),
-					);
+					/**
+					 * Initiate the metabox
+					 */
+					$announcement_metabox = new_cmb2_box( array(
+						'id'            => 'announcement_metabox',
+						'title'         => __( 'Announcement Info.', 'timeline-express' ),
+						'object_types'  => array( 'te_announcements', ), // Post type
+						'context'       => 'advanced',
+						'priority'      => 'high',
+						'show_names'    => true, // Show field names on the left
+					) );
+
+					// Regular text field
+					$announcement_metabox->add_field( array(
+						'name'       => __( 'Announcement Color', 'timeline-express' ),
+						'desc'       => __( 'select the color for this announcement.', 'timeline-express' ),
+						'id'         => $prefix . 'color',
+						'type'       => 'colorpicker',
+						'default'  => $this->timeline_express_optionVal['default-announcement-color'],
+					) );
+
+					// URL text field
+					$announcement_metabox->add_field( array(
+						'name' => __( 'Announcement Icon', 'timeline-express' ),
+						'desc' => __( 'select an icon from the drop down above. This is used for the icon associated with the announcement.', 'timeline-express' ),
+						'id'   => $prefix . 'icon',
+						'type' => 'te_bootstrap_dropdown',
+						'default' => $this->timeline_express_optionVal['default-announcement-icon'],
+					) );
+
+					// Email text field
+					$announcement_metabox->add_field( array(
+						'name' => __( 'Announcement Date', 'timeline-express' ),
+						'desc' => __( 'enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
+						'id'   => $prefix . 'date',
+						'type' => 'te_date_time_stamp_custom',
+						'default' => strtotime( date( 'm/d/Y' ) ), 
+					) );
+					
+					// Email text field
+					$announcement_metabox->add_field( array(
+						'name' => __( 'Announcement Image', 'timeline-express' ),
+						'desc' => __( 'select a banner image for this announcement (optional). (recommended 650px wide or larger)  ', 'timeline-express' ),
+						'id'   => $prefix . 'image',
+						'type' => 'file',
+					) );
+					
+					/**
+					 * Initiate the metabox
+					 */
+					$about_metabox = new_cmb2_box( array(
+						'id'            => 'about_the_author',
+						'title'         => __( 'About', 'timeline-express' ),
+						'object_types'  => array( 'te_announcements', ), // Post type
+						'context'    => 'side',
+						'priority'   => 'low',
+						'show_names'    => true, // Show field names on the left
+					) );
+					
+					// Email text field
+					$about_metabox->add_field( array(
+						'name' => __( '', 'timeline-express' ),
+						'desc' => __( '', 'timeline-express' ),
+						'id'   => $prefix . 'about',
+						'type' => 'te_about_metabox',
+					) );
+					
 					
 					//Filter here is to allow extra fields to be added
 					// loop to add fields to our array
@@ -555,39 +596,6 @@ if(!class_exists("timelineExpressBase"))
 						}
 					}
 					
-					$meta_boxes['announcement_info'] = array(
-						'id'         => 'announcement_info',
-						'title'      => __( 'Announcement Info.', 'timeline-express' ),
-						'pages'      => array( 'te_announcements', ), // Post type
-						'context'    => 'advanced',
-						'priority'   => 'high',
-						'show_names' => true, // Show field names on the left
-						// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
-						'fields'     => $field_array
-					);
-					
-					$meta_boxes['about_the_author'] = array(
-						'id'         => 'about_the_author',
-						'title'      => __( 'About', 'timeline-express' ),
-						'pages'      => array( 'te_announcements', ), // Post type
-						'context'    => 'side',
-						'priority'   => 'low',
-						'show_names' => false, // Show field names on the left
-						// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
-						'fields'     => array(
-							array(
-								 'name' => __( '', 'timeline-express' ),
-								 'desc' => __( '', 'timeline-express' ),
-								 'id'   => $prefix . 'about',
-								// 'type' => 'custom_about_the_author_callback',
-								 'type' => 'te_about_metabox',
-							),
-						),
-					);
-						
-					// Add other metaboxes as needed
-					return $meta_boxes;
-			
 				}
 				// End metabox definitions	
 				
@@ -723,7 +731,8 @@ if(!class_exists("timelineExpressBase"))
 						'announcement-bg-color' => "#EFEFEF",
 						'announcement-box-shadow-color' => "#B9C5CD",
 						'announcement-background-line-color' => '#D7E4ED',
-						'delete-announcement-posts-on-uninstallation' => '0'
+						'delete-announcement-posts-on-uninstallation' => '0',
+						'announcement-appear-in-searches' => 'true',
 					);
 					$ov	= get_option( TIMELINE_EXPRESS_OPTION , $timeline_express_defaultVals );
 					$this->timeline_express_optionVal	= $ov;
@@ -886,7 +895,11 @@ if(!class_exists("timelineExpressBase"))
 						// Register Styles
 						wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'css/timeline-express-settings.min.css' , array(), '1.0.0', 'all');	
 						// enqueue font awesome for use in column display
-						wp_enqueue_style( 'prefix-font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' , array() , '4.3.0' );					
+						wp_enqueue_style( 'prefix-font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' , array() , '4.3.0' );		
+						// enqueue bootstrap select/styles
+						wp_enqueue_script( 'bootstrap-select' , TIMELINE_EXPRESS_URL . 'js/bootstrap-select.js' , array( 'jquery' ) , 'all' );
+						wp_enqueue_script( 'bootstrap-min' , '//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' );
+						wp_enqueue_style( 'bootstrap-select-style' ,  TIMELINE_EXPRESS_URL . 'css/bootstrap-select.min.css' );						
 					}
 							
 				}
@@ -958,9 +971,8 @@ if(!class_exists("timelineExpressBase"))
 						$background_line_color = $this->timeline_express_optionVal['announcement-background-line-color'];
 						$display_order = $this->timeline_express_optionVal['announcement-display-order'];
 												
-						// set the current date, with our offset
-						$offset = get_option('gmt_offset');					
-						$current_date = strtotime( 'today ' . $offset );
+						// set the current date, with our offset				
+						$current_date = strtotime( current_time( 'm/d/Y' ) );
 						
 						// decide how to compare our $current_date to $announcement_start_date meta
 						$compare = $this->timeline_express_optionVal['announcement-time-frame'];
@@ -1013,9 +1025,7 @@ if(!class_exists("timelineExpressBase"))
 							// end setting up query args
 										
 							$announcement_query = new WP_Query( $announcement_args );
-							
-							// print_r($announcement_args);
-																
+																							
 							if ( $announcement_query->have_posts() ) {
 								?>
 								<!-- style the arrow that points at the icon -->
@@ -1273,7 +1283,8 @@ if(!class_exists("timelineExpressBase"))
 				// Build a dropdown for our bootstrap icons
 				// @since v1.1.5.7
 				public function timeline_express_build_bootstrap_dropdown( $field, $meta ) {
-						
+						$screen = get_current_screen();
+						$screen_base = $screen->base;
 						if( is_ssl() ) {
 							$http = 'http:';
 						} else {
@@ -1282,14 +1293,14 @@ if(!class_exists("timelineExpressBase"))
 						// get the icons out of the css file
 						// based on https or http...
 						$response = wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css' );
-						
+			
 						if( is_wp_error( $response ) ) {
 							wp_die( $response->get_error_message() , __( 'Error' , 'timeline-express' ) , array( 'back_link' => true ) );
 						}
 
 						// splot the response body, and store the icon classes in a variable
 						$split_dat_response = explode( 'icons */' , $response['body'] );
-						
+													
 						// empty array for icon array
 						$bootstrap_icon_array = array();
 						
@@ -1313,9 +1324,6 @@ if(!class_exists("timelineExpressBase"))
 							}
 						}
 						
-						wp_enqueue_script( 'bootstrap-select' , TIMELINE_EXPRESS_URL . 'js/bootstrap-select.js' , array( 'jquery' ) , 'all' );
-						wp_enqueue_script( 'bootstrap-min' , '//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' );
-						wp_enqueue_style('bootstrap-select-style' ,  TIMELINE_EXPRESS_URL . 'css/bootstrap-select.min.css' );
 						?>	
 						<script>
 						jQuery( document ).ready( function() {
@@ -1330,9 +1338,8 @@ if(!class_exists("timelineExpressBase"))
 							.dropdown-toggle .caret { border-top-color: #333 !important; }
 							.ui-datepicker-prev:hover, .ui-datepicker-next:hover { cursor: pointer; }
 						</style> 
-						
 						<!-- start the font awesome icon select -->
-						<select class="selectpicker" name="<?php echo $field['id']; ?>" id="<?php echo $field['id']; ?>">
+						<select class="selectpicker" name="<?php echo $field->args['id']; ?>" id="<?php echo $field->args['id']; ?>">
 							
 							<?php
 								/* sort the bootstrap icons alphabetically */
@@ -1350,7 +1357,9 @@ if(!class_exists("timelineExpressBase"))
 						<!-- end select -->
 						
 						<?php
-						echo '<p class="cmb_metabox_description">'.$field['desc'].'</p>';
+						if( 'te_announcements_page_timeline-express-settings' != $screen_base ) {
+							echo '<p class="cmb_metabox_description">'.$field->args['desc'].'</p>';
+						}
 					}		
 					
 			/***** ADMINISTRATION MENUS

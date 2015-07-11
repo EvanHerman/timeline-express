@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.1.7
+Stable tag: 1.1.7.1
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -55,6 +55,7 @@ Timeline express comes ready for translation. I would love to get things transla
 * German (de_DE) - thanks goes to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
 * French (fr_FR) - thanks goes to <a href="http://troisplus-et-aeliin-cosplay.fr/" target="_blank">Julien Lambert</a>
 * Italian (it_IT) - thanks goes to <a href="http://evalosapeva.com/" target="_blank">Eva Filoramo</a>
+* Hungarian (hu_HU) - thanks goes to <a href="http://www.keszites.com/" target="_blank">Zsolt</a>
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="http://www.evan-herman.com/contact/" target="_blank">contact me</a> about how you can help translate things so users around the world can benefit from this plugin.</em>
 
@@ -338,6 +339,12 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Changelog ==
 
+= 1.1.7.1 - July 11th, 2015 =
+* Update to CMB2
+* Fix default settings on fresh install
+* Removed max length on the announcement excerpts
+* Altered query to query comparison to reflect current date, not date+time (announcements save dates, not date+time)
+
 = 1.1.7 - July 10th, 2015 =
 * Included hungarian translation - props <a href="http://www.keszites.com/" target="_blank">Zsolt</a>
 
@@ -496,4 +503,7 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Upgrade Notice ==
 
-* Included hungarian translation - props <a href="http://www.keszites.com/" target="_blank">Zsolt</a>
+* Update to CMB2
+* Fix default settings on fresh install
+* Removed max length on the announcement excerpts
+* Fix translation strings, foreign languages should be updated when/where possible

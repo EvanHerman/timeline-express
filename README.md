@@ -1,4 +1,4 @@
-Timeline Express v1.1.7
+Timeline Express v1.1.7.1
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -289,6 +289,22 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+######  1.1.7.1 - July 11th, 2015
+* Update to CMB2
+* Fix default settings on fresh install
+* Removed max length on the announcement excerpts
+* Altered query to query comparison to reflect current date, not date+time (announcements save dates, not date+time)
+
+###### 1.1.7 - July 10th, 2015
+* Included hungarian translation - props <a href="http://www.keszites.com/" target="_blank">Zsolt</a>
+
+######1.1.6.9 - June 22nd, 2015
+* Remove !important declarations on frontend
+* Adjusted announcement images to be 100% width
+
+###### 1.1.6.8 - May 5th, 2015
+* Fixed incorrect version of font awesome enqueued on front end
 
 ###### 1.1.6.9 - June 22nd, 2015 
 * Remove !important declarations on frontend
