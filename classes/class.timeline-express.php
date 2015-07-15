@@ -181,7 +181,9 @@ if(!class_exists("timelineExpressBase"))
 			* render our custom date time stamp field (allows for a default to be set)
 			* since @v1.1.5
 			*/
-			function cmb2_render_te_date_time_stamp_custom( $field, $meta ) {
+			function cmb2_render_te_date_time_stamp_custom( $field, $meta, $object_id, $object_type, $field_type_object ) {
+					// get date picker depencies
+					CMB2_JS::add_dependencies( array( 'jquery-ui-core', 'jquery-ui-datepicker' ) );
 					?>
 					<style>
 						#ui-datepicker-div { z-index: 99999 !important; }
@@ -190,10 +192,10 @@ if(!class_exists("timelineExpressBase"))
 					</style>
 					<?php
 					if( $meta && isset( $meta ) ){
-						echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field->args['default'], '" />';
+						echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field->args['default'], '" />';
 						echo '<p class="cmb_metabox_description">'.$field->args['desc'].'</p>';
 					} else{
-						echo '<input class="cmb_text_small cmb_datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="' . date('m/d/Y' ) .'" />';
+						echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="' . date('m/d/Y' ) .'" />';
 						echo '<p class="cmb_metabox_description">'.$field->args['desc'].'</p>';
 					}				
 				}
@@ -552,7 +554,7 @@ if(!class_exists("timelineExpressBase"))
 						'type' => 'te_date_time_stamp_custom',
 						'default' => strtotime( date( 'm/d/Y' ) ), 
 					) );
-					
+										
 					// Email text field
 					$announcement_metabox->add_field( array(
 						'name' => __( 'Announcement Image', 'timeline-express' ),

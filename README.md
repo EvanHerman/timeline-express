@@ -1,4 +1,4 @@
-Timeline Express v1.1.7.1
+Timeline Express v1.1.7.2
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -289,6 +289,11 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+###### 1.1.7.3 - July 15th, 2015
+* Remove duplicate date picker fields on announcements
+
+###### 1.1.7.2 - July 14th, 2015
+* Repair date picker field not being initialized properly
 
 ######  1.1.7.1 - July 11th, 2015
 * Update to CMB2
