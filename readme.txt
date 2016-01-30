@@ -3,8 +3,8 @@ Contributors: eherman24
 Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
-Tested up to: 4.3
-Stable tag: 1.1.7.3
+Tested up to: 4.4.1
+Stable tag: 1.1.7.7
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -66,6 +66,8 @@ Looking for some advancedd documentation? Check out the <a href="https://wordpre
 <br />
 <strong>While the plugins I develop are free, maintaining and supporting them is hard work. If you find this plugin useful, or it helps in anyway, please consider making a <a href="http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work">donation</a> for its continued development.</strong>
 
+<em>This plugin was originally inspired by the great folks at <a href="http://codyhouse.co/gem/vertical-timeline/">CodyHouse.io</a>.</em>
+
 == Installation ==
 
 1. Download the plugin .zip file
@@ -81,7 +83,7 @@ Looking for some advancedd documentation? Check out the <a href="https://wordpre
 
 = Is there some demo I can checkout? I want to see how the plugin appears on the front end of a WordPress site before I install it. =
 
-You can check out the demo we've setup for users displaying two seperate timelines with filtering enabled.
+You can check out the demo we've set up for users displaying two separate timelines with filtering enabled.
 
 <a href="http://www.evan-herman.com/wordpress/plugins/timeline-express-demo/" title="View the demo">View the Timeline Express Demo</a>
 
@@ -339,6 +341,18 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Changelog ==
 
+= 1.1.7.7 - January 30th, 2016 =
+* Wrapped single announcement template date in `timeline_express_custom_date_format` filter to allow users to alter that, as well as the date in the timeline.
+
+= 1.1.7.6 - October 2nd, 2015 =
+* Fixed issue with timeline icons not saving properly, and returning empty on the front end.
+
+= 1.1.7.5 - September 28th, 2015 =
+* Fixed incorrect name for default icon dropdown.
+
+= 1.1.7.4 - September 18th, 2015 =
+* Fixed adding custom fields and using an image as an icon (https://gist.github.com/EvanHerman/6bbc8de82f34b4cb3c5c#comments)
+
 = 1.1.7.3 - July 15th, 2015 =
 * Remove duplicate date picker fields on announcements
 
@@ -509,4 +523,5 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Upgrade Notice ==
 
-* Remove duplicate date picker fields on announcements
+= 1.1.7.7 - January 30th, 2016 =
+* Wrapped single announcement template date in `timeline_express_custom_date_format` filter to allow users to alter that, as well as the date in the timeline.

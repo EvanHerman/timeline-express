@@ -1,4 +1,4 @@
-Timeline Express v1.1.7.2
+Timeline Express v1.1.7.7
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -289,6 +289,18 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+###### 1.1.7.7 - January 30th, 2016
+* Wrapped single announcement template date in `timeline_express_custom_date_format` filter to allow users to alter that, as well as the date in the timeline.
+
+###### 1.1.7.6 - October 2nd, 2015
+* Fixed issue with timeline icons not saving properly, and returning empty on the front end.
+
+###### 1.1.7.5 - September 28th, 2015
+* Fixed incorrect name for default icon dropdown.
+
+###### 1.1.7.4 - September 18th, 2015
+* Fixed adding custom fields and using an image as an icon (https://gist.github.com/EvanHerman/6bbc8de82f34b4cb3c5c#comments)
+
 ###### 1.1.7.3 - July 15th, 2015
 * Remove duplicate date picker fields on announcements
 

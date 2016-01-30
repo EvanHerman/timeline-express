@@ -237,9 +237,9 @@ if(!class_exists("timelineExpressBase"))
 			* save our custom date time stamp
 			* since @v1.1.5
 			*/
-			function cmb2_validate_te_bootstrap_dropdown_callback( $override_value, $new ) {
-					if( isset( $new ) && $new != '' ){
-						return 'fa-'.trim($new);
+			function cmb2_validate_te_bootstrap_dropdown_callback( $override_value, $value ) {
+					if( isset( $value ) && $value != '' ){
+						return 'fa-'.trim($value);
 					}
 					return '-1';
 				}	
@@ -589,11 +589,15 @@ if(!class_exists("timelineExpressBase"))
 					$custom_fields = apply_filters( 'timeline_express_custom_fields', $custom_field );
 					$i = 0;
 					// first, check if any custom fields are defined...
-					if( !empty( $custom_fields ) ) {
+					if( ! empty( $custom_fields ) ) {
 						foreach( $custom_fields as $user_defined_field ) {
-							if( $custom_fields[$i]['name'] != '' ) {
-								$field_array[] = $custom_fields[$i];
-							}
+							// Email text field
+							$announcement_metabox->add_field( array(
+								'name' => $custom_fields[$i]['name'],
+								'desc' => $custom_fields[$i]['desc'],
+								'id'   => $custom_fields[$i]['id'],
+								'type' => $custom_fields[$i]['type'],
+							) );
 							$i++;
 						}
 					}
@@ -829,14 +833,14 @@ if(!class_exists("timelineExpressBase"))
 									$announcement_header_image = wp_get_attachment_image_src( $announcement_image_id[0] , 'timeline-express-announcement-header');
 									$custom_content .= '<img class="announcement-banner-image" src="' . esc_url ( $announcement_header_image[0] ) . '" alt="' . get_the_title( $post->ID ) . '">';
 								}
-								$custom_content .= '<strong class="timeline-express-single-page-announcement-date">' . __( 'Announcement Date' , 'timeline-express' ) . ' : ' . date( 'M j , Y' , $announcement_date ) . '</strong>';
+								$custom_content .= '<strong class="timeline-express-single-page-announcement-date">' . __( 'Announcement Date' , 'timeline-express' ) . ' : ' . date_i18n( apply_filters( 'timeline_express_custom_date_format' , get_option( 'date_format' ) ) , $announcement_date ) . '</strong>';
 								$custom_content .= $content;
 								if ( $referer != '' ) {	
 									$custom_content .= '<a href="' . $referer . '" class="return-to-timeline"><i class="fa fa-chevron-left"></i> ' . __( 'Back' , 'timeline-express' ) . '</a>';
 								}
 								return $custom_content;
 							} else {	
-								$custom_content = '<strong class="timeline-express-single-page-announcement-date">' . __( 'Announcement Date' , 'timeline-express' ) . ' : ' . date( 'M j , Y' , $announcement_date ) . '</strong>';
+								$custom_content = '<strong class="timeline-express-single-page-announcement-date">' . __( 'Announcement Date' , 'timeline-express' ) . ' : ' . date_i18n( apply_filters( 'timeline_express_custom_date_format' , get_option( 'date_format' ) ) , $announcement_date ) . '</strong>';
 								$custom_content .= $content;
 								if ( $referer != '' ) {	
 									$custom_content .= '<a href="' . $referer . '" class="return-to-timeline"><i class="fa fa-chevron-left"></i> ' . __( 'Back' , 'timeline-express' ) . '</a>';
@@ -1339,9 +1343,19 @@ if(!class_exists("timelineExpressBase"))
 							.dropdown-toggle { background: transparent !important; border: 1px solid rgb(201, 201, 201) !important; } 
 							.dropdown-toggle .caret { border-top-color: #333 !important; }
 							.ui-datepicker-prev:hover, .ui-datepicker-next:hover { cursor: pointer; }
-						</style> 
+						</style> 					
+						
+						<?php
+							// check which page were on, set name appropriately
+							if( isset( $field->args['id'] ) ) {
+								$field_name = $field->args['id'];
+							} else {
+								$field_name = 'default-announcement-icon';
+							}
+						?>
+						
 						<!-- start the font awesome icon select -->
-						<select class="selectpicker" name="<?php echo $field->args['id']; ?>" id="<?php echo $field->args['id']; ?>">
+						<select class="selectpicker" name="<?php echo $field_name; ?>" id="default-announcement-icon>">
 							
 							<?php
 								/* sort the bootstrap icons alphabetically */
