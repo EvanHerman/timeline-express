@@ -896,12 +896,19 @@ if(!class_exists("timelineExpressBase"))
 					
 					$screen = get_current_screen();
 					$print_styles_on_screen_array = array( 'te_announcements_page_timeline-express-settings' , 'admin_page_timeline-express-welcome' , 'te_announcements_page_timeline-express-support' );
-
+					$http = ( is_ssl() ) ? 'https:' : 'http:';
+					$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.5.0' );
+					
 					if ( in_array( $screen->base , $print_styles_on_screen_array ) || $screen->post_type == 'te_announcements' ) {
 						// Register Styles
 						wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'css/timeline-express-settings.min.css' , array(), '1.0.0', 'all');	
-						// enqueue font awesome for use in column display
-						wp_enqueue_style( 'prefix-font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' , array() , '4.3.0' );		
+						// check that we can enqueue font awesome from the CDN before we do so
+						if( wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
+							// enqueue font awesome for use in column display
+							wp_enqueue_style( 'prefix-font-awesome' , $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css' , array() , $font_awesome_version );		
+						} else {
+							wp_enqueue_style( 'prefix-font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.css', array() , $font_awesome_version );
+						}
 						// enqueue bootstrap select/styles
 						wp_enqueue_script( 'bootstrap-select' , TIMELINE_EXPRESS_URL . 'js/bootstrap-select.js' , array( 'jquery' ) , 'all' );
 						wp_enqueue_script( 'bootstrap-min' , '//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' );
@@ -1291,18 +1298,24 @@ if(!class_exists("timelineExpressBase"))
 				public function timeline_express_build_bootstrap_dropdown( $field, $meta ) {
 						$screen = get_current_screen();
 						$screen_base = $screen->base;
-						if( is_ssl() ) {
-							$http = 'http:';
-						} else {
-							$http = 'https:';
+						$http = ( is_ssl() ) ? 'http:' : 'https:';
+						$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.5.0' );
+						
+						// Store our response in a transient for faster page loading
+						if ( false === ( $response = get_transient( 'te_font_awesome_transient' ) ) ) {
+							// get the icons out of the css file
+							// based on https or http...
+							$response = wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' );
+				
+							if( is_wp_error( $response ) ) {
+								// load font awesome locally
+								$response = wp_remote_get( TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.css' );
+							}
+							
+							// It wasn't there, so regenerate the data and save the transient
+							set_transient( 'te_font_awesome_transient', $response );
 						}
-						// get the icons out of the css file
-						// based on https or http...
-						$response = wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css' );
-			
-						if( is_wp_error( $response ) ) {
-							wp_die( $response->get_error_message() , __( 'Error' , 'timeline-express' ) , array( 'back_link' => true ) );
-						}
+						
 
 						// splot the response body, and store the icon classes in a variable
 						$split_dat_response = explode( 'icons */' , $response['body'] );
@@ -1329,6 +1342,8 @@ if(!class_exists("timelineExpressBase"))
 							   $flat_bootstrap_icon_array[$k] = $v;
 							}
 						}
+						
+						
 						
 						?>	
 						<script>

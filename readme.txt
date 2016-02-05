@@ -3,8 +3,8 @@ Contributors: eherman24
 Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
-Tested up to: 4.4.1
-Stable tag: 1.1.7.7
+Tested up to: 4.4.2
+Stable tag: 1.1.7.8
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -331,6 +331,22 @@ function custom_timeline_express_template_file( $template_file ) {
 add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_template_file' , 10 );
 </code>
 
+**Specify Font Awesome Version (New 1.1.7.8)**
+
+Users can now specify which version of font awesome to load from the font awesome CDN. Alternatively, if the font awesome version is not found - the bundled fall back (version 4.5.0) will be used.
+
+Example:
+<code>
+// use a different version of Font Awesome
+function timeline_express_alter_font_awesome_version( $version ) {
+	$version = '4.4.0';
+	return $version;
+}
+add_filter( 'timeline_express_font_awesome_version', 'timeline_express_alter_font_awesome_version' );
+</code>
+
+The above example will load font awesome version 4.4.0 instead of the current stable version from the font awesome CDN.
+
 == Screenshots ==
 
 1. Timeline Express announcement post creation screen
@@ -340,6 +356,12 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 5. Timeline Express full settings page
 
 == Changelog ==
+
+= 1.1.7.8 - February 5th, 2016 =
+* Upgraded font awesome library from 4.3.0 to 4.5.0.
+* Added a fallback for the font awesome library - when the CDN is not accessible for whatever reason.
+* Added CDN responses to transient to decrease page load times.
+* Included a new filter allowing users to specify a font awesome version number to load from the CDN (`timeline_express_font_awesome_version` - see other notes.).
 
 = 1.1.7.7 - January 30th, 2016 =
 * Wrapped single announcement template date in `timeline_express_custom_date_format` filter to allow users to alter that, as well as the date in the timeline.
@@ -523,5 +545,8 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 == Upgrade Notice ==
 
-= 1.1.7.7 - January 30th, 2016 =
-* Wrapped single announcement template date in `timeline_express_custom_date_format` filter to allow users to alter that, as well as the date in the timeline.
+= 1.1.7.8 - February 5th, 2016 =
+* Upgraded font awesome library from 4.3.0 to 4.5.0.
+* Added a fallback for the font awesome library - when the CDN is not accessible for whatever reason.
+* Added CDN responses to transient to decrease page load times.
+* Included a new filter allowing users to specify a font awesome version number to load from the CDN (`timeline_express_font_awesome_version` - see other notes.).

@@ -38,6 +38,22 @@ Timeline express comes ready for translation. I would love to get things transla
 
 **Hooks + Filters**
 
+**Specify Font Awesome Version (New 1.1.7.8)**
+
+Users can now specify which version of font awesome to load from the font awesome CDN. Alternatively, if the font awesome version is not found - the bundled fall back (version 4.5.0) will be used.
+
+Example:
+<code>
+// use a different version of Font Awesome
+function timeline_express_alter_font_awesome_version( $version ) {
+	$version = '4.4.0';
+	return $version;
+}
+add_filter( 'timeline_express_font_awesome_version', 'timeline_express_alter_font_awesome_version' );
+</code>
+
+The above example will load font awesome version 4.4.0 instead of the current stable version from the font awesome CDN.
+
 **Use Custom Images Instead of Font Awesome Icons (New v1.1.6.7)**
 
 Users can now use the custom announcement image in place of the font awesome icons by using the following filter. Props to Pete Nelson for the pull request in making this possible
@@ -289,6 +305,13 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.7.8 - February 5th, 2016
+* Upgraded font awesome library from 4.3.0 to 4.5.0.
+* Added a fallback for the font awesome library - when the CDN is not accessible for whatever reason.
+* Added CDN responses to transient to decrease page load times.
+* Included a new filter allowing users to specify a font awesome version number to load from the CDN (`timeline_express_font_awesome_version` - see other notes.).
+
 ###### 1.1.7.7 - January 30th, 2016
 * Wrapped single announcement template date in `timeline_express_custom_date_format` filter to allow users to alter that, as well as the date in the timeline.
 
