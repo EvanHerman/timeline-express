@@ -191,11 +191,11 @@ if(!class_exists("timelineExpressBase"))
 						.cmb_id_announcement_image td .cmb_upload_button { height: 32px !important; }
 					</style>
 					<?php
-					if( $meta && isset( $meta ) ){
-						echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="', '' !== $meta ? date( 'm/d/Y' , $meta ) : $field->args['default'], '" />';
+					if( $meta && isset( $meta ) ) {
+						echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="', '' !== $meta ? apply_filters( 'timeline_express_admin_render_date_format', date( 'm/d/Y' , $meta ), $meta ) : $field->args['default'], '" />';
 						echo '<p class="cmb_metabox_description">'.$field->args['desc'].'</p>';
 					} else{
-						echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="' . date('m/d/Y' ) .'" />';
+						echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="', $field->args['id'], '" id="', $field->args['id'], '" value="' . apply_filters( 'timeline_express_admin_render_date_format', date('m/d/Y' ), false ) .'" />';
 						echo '<p class="cmb_metabox_description">'.$field->args['desc'].'</p>';
 					}				
 				}
@@ -206,8 +206,8 @@ if(!class_exists("timelineExpressBase"))
 			* since @v1.1.5
 			*/
 			function cmb2_sanitize_te_date_time_stamp_custom_callback( $value, $new ) {
-					if( isset( $new ) && $new != '' ){
-						return strtotime( $new );
+					if( isset( $new ) && $new != '' ) {
+						return apply_filters( 'timeline_express_sanitize_date_format', strtotime( $new ), $new );
 					}
 					return '-1';
 				}
@@ -643,7 +643,7 @@ if(!class_exists("timelineExpressBase"))
 							
 						case 'announcement_date':
 								$announcment_date = get_post_meta( $id , 'announcement_date' , true );
-								echo date( 'l, F jS, Y' , $announcment_date );
+								echo apply_filters( 'timeline_express_admin_column_date_format', date( 'l, F jS, Y' , $announcment_date ), $announcment_date );
 							break;
 						
 						case 'image':
@@ -833,14 +833,14 @@ if(!class_exists("timelineExpressBase"))
 									$announcement_header_image = wp_get_attachment_image_src( $announcement_image_id[0] , 'timeline-express-announcement-header');
 									$custom_content .= '<img class="announcement-banner-image" src="' . esc_url ( $announcement_header_image[0] ) . '" alt="' . get_the_title( $post->ID ) . '">';
 								}
-								$custom_content .= '<strong class="timeline-express-single-page-announcement-date">' . __( 'Announcement Date' , 'timeline-express' ) . ' : ' . date_i18n( apply_filters( 'timeline_express_custom_date_format' , get_option( 'date_format' ) ) , $announcement_date ) . '</strong>';
+								$custom_content .= '<strong class="timeline-express-single-page-announcement-date">' . __( 'Announcement Date' , 'timeline-express' ) . ' : ' . apply_filters( 'timeline_express_frontend_date_filter', date_i18n( apply_filters( 'timeline_express_custom_date_format' , get_option( 'date_format' ) ) , $announcement_date ), $announcement_date ) . '</strong>';
 								$custom_content .= $content;
 								if ( $referer != '' ) {	
 									$custom_content .= '<a href="' . $referer . '" class="return-to-timeline"><i class="fa fa-chevron-left"></i> ' . __( 'Back' , 'timeline-express' ) . '</a>';
 								}
 								return $custom_content;
 							} else {	
-								$custom_content = '<strong class="timeline-express-single-page-announcement-date">' . __( 'Announcement Date' , 'timeline-express' ) . ' : ' . date_i18n( apply_filters( 'timeline_express_custom_date_format' , get_option( 'date_format' ) ) , $announcement_date ) . '</strong>';
+								$custom_content = '<strong class="timeline-express-single-page-announcement-date">' . __( 'Announcement Date' , 'timeline-express' ) . ' : ' . apply_filters( 'timeline_express_frontend_date_filter', date_i18n( apply_filters( 'timeline_express_custom_date_format' , get_option( 'date_format' ) ) , $announcement_date ), $announcement_date ) . '</strong>';
 								$custom_content .= $content;
 								if ( $referer != '' ) {	
 									$custom_content .= '<a href="' . $referer . '" class="return-to-timeline"><i class="fa fa-chevron-left"></i> ' . __( 'Back' , 'timeline-express' ) . '</a>';
@@ -903,11 +903,11 @@ if(!class_exists("timelineExpressBase"))
 						// Register Styles
 						wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'css/timeline-express-settings.min.css' , array(), '1.0.0', 'all');	
 						// check that we can enqueue font awesome from the CDN before we do so
-						if( wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
+						if( wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css' ) ) {
 							// enqueue font awesome for use in column display
 							wp_enqueue_style( 'prefix-font-awesome' , $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css' , array() , $font_awesome_version );		
 						} else {
-							wp_enqueue_style( 'prefix-font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.css', array() , $font_awesome_version );
+							wp_enqueue_style( 'prefix-font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.min.css', array() , $font_awesome_version );
 						}
 						// enqueue bootstrap select/styles
 						wp_enqueue_script( 'bootstrap-select' , TIMELINE_EXPRESS_URL . 'js/bootstrap-select.js' , array( 'jquery' ) , 'all' );
@@ -956,10 +956,17 @@ if(!class_exists("timelineExpressBase"))
 
 			// add styles to the front end
 			public function addStyles_frontend() {
+					$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.5.0' );
+					$http = ( is_ssl() ) ? 'https:' : 'http:';
 					// Enqueue Styles
-					wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . 'css/timeline-express.min.css' , array() , '' , 'all' );
-					// enqueue font awesome for use in the timeline
-					wp_enqueue_style( 'prefix-font-awesome' , '//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' , array() , '4.3.0' );
+					wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . 'css/timeline-express.min.css' , array() , 'all' );
+					// check if CDN is reachable, if so - get em'
+					if( wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
+						// enqueue font awesome for use in column display
+						wp_enqueue_style( 'prefix-font-awesome' , $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css' , array(), $font_awesome_version );		
+					} else {
+						wp_enqueue_style( 'prefix-font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.min.css', array(), $font_awesome_version );
+					}
 				}
 
 			/***** SHORTCODE
@@ -1034,9 +1041,10 @@ if(!class_exists("timelineExpressBase"))
 										),
 									),
 								);
+								$announcement_args = apply_filters( 'timeline_express_frontend_query_args', $announcement_args );
 							}
 							// end setting up query args
-										
+																				
 							$announcement_query = new WP_Query( $announcement_args );
 																							
 							if ( $announcement_query->have_posts() ) {
@@ -1054,12 +1062,12 @@ if(!class_exists("timelineExpressBase"))
 										border-right-color: <?php if ( $content_shadow == '' ) { echo 'transparent'; } else { echo $content_background; } ?>;
 									}
 									#cd-timeline::before {
-										background: <?php if ( $background_line_color == '' ) { echo 'transparent'; } else { echo $background_line_color; } ?>;
+										background: <?php if ( $background_line_color == '' ) { echo 'transparent'; } else { echo $background_line_color; } ?> !important;
 									}
 									@media only screen and (max-width: 821px) {
 										  .cd-timeline-content::before {
 												border-left-color: transparent;
-												border-right-color: <?php if ( $content_background == '' ) { echo 'transparent'; } else { echo $content_background; } ?>;
+												border-right-color: <?php if ( $content_background == '' ) { echo 'transparent'; } else { echo $content_background; } ?> !important;
 										  }
 										  .cd-timeline-block:nth-child(odd) .cd-timeline-content::before {
 											border-left-color: transparent;
@@ -1103,7 +1111,7 @@ if(!class_exists("timelineExpressBase"))
 													<span class="cd-timeline-title-container"><h2 class="cd-timeline-item-title"><?php the_title();?></h2><?php if ( $this->timeline_express_optionVal['date-visibility'] == 1 ) { ?>
 														<!-- release date -->
 														<!-- now localized, for international date formats based on the 'date_format' option -->
-														<span class="timeline-date"><?php echo date_i18n( apply_filters( 'timeline_express_custom_date_format' , get_option( 'date_format' ) ) , get_post_meta( $post->ID , 'announcement_date' , true ) ); ?></span>
+														<span class="timeline-date"><?php echo apply_filters( 'timeline_express_frontend_date_filter', date_i18n( apply_filters( 'timeline_express_custom_date_format' , get_option( 'date_format' ) ) , get_post_meta( $post->ID , 'announcement_date' , true ) ), get_post_meta( $post->ID , 'announcement_date' , true ) ); ?></span>
 													<?php } ?></span>
 													<?php
 													// display our image, if it exists
@@ -1298,7 +1306,7 @@ if(!class_exists("timelineExpressBase"))
 				public function timeline_express_build_bootstrap_dropdown( $field, $meta ) {
 						$screen = get_current_screen();
 						$screen_base = $screen->base;
-						$http = ( is_ssl() ) ? 'http:' : 'https:';
+						$http = ( is_ssl() ) ? 'https:' : 'http:';
 						$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.5.0' );
 						
 						// Store our response in a transient for faster page loading

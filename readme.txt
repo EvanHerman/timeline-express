@@ -4,7 +4,7 @@ Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.4.2
-Stable tag: 1.1.7.8
+Stable tag: 1.1.8.1
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -43,6 +43,14 @@ Timeline express allows you to create a vertical animated timeline of announceme
 > - Priority support, code snippets provided when needed etc.
 
 ><a href="http://www.evan-herman.com/wordpress-plugin/timeline-express/" title="Upgrade Now!">Get the premium version now!</a>
+
+<br />
+
+><strong>Historical Dates</strong>
+
+> If you need to assign dates to announcements prior to the year 1970, you may run into limitations due to the php function `strtotime()`. We have built out an additional addon allowing dates to be saved between the years 1000-9999. 
+
+><a href="https://www.evan-herman.com/wordpress-plugin/timeline-express-historical-dates-add-on/" title="View Historical Date Addon">View Historical Dates Addon</a>
 
 **Translated**
 
@@ -104,6 +112,9 @@ The single announcement post is using a custom template file that comes pre-bund
 you can do so, by creating a directory in your active theme called 'timeline-express'. Once the directory is created, simply copy the file titled 'single-timeline-express-announcement.php' into
 the newly created 'timeline-express' directory in your theme. Timeline express will then automagically pull in the newly created template in your theme root. You can go ahead and customize 
 it to your hearts desire without fear of losing any changes in future updates!
+
+= Why can't I save dates prior to 1970'? =
+Due to a limitation with the built in php function `strtotime()`, you may not be able to save dates prior to 1970. We've built out a premium add-on that works with both the free and pro versions of Timeline Express to allow dates to be saved between the years 1000-9999. If this is a feature you need, please consider purchasing the <strong><a href="https://www.evan-herman.com/wordpress-plugin/timeline-express-historical-dates-add-on/">Historical Dates Add-On</a></strong>.
 
 = Can I create more than one timeline? =
 The free version limits you to one timeline. With the <a href="http://www.evan-herman.com/wordpress-plugin/timeline-express/" title="Timeline Express Pro">pro version</a>, you can create unlimited number of timelines and even assign categories to your announcements.
@@ -357,6 +368,18 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.1.8.1 - Februrary 12th, 2016 =
+* Fixed reversed `is_ssl()` checks.
+
+= 1.1.8 - Februrary 10th, 2016 =
+* Ensured that the minified version of font awesome is enqueued on the front end (v4.5.0)
+* Ensured that the correct version (and fallback) of font awesome was used on both frontend and backend.
+* Added RTL support.
+
+= 1.1.7.9 - February 7th, 2016 =
+* New hooks for add-ons implemented: `timeline_express_sanitize_date_format`, `timeline_express_admin_render_date_format`, `timeline_express_admin_column_date_format`, `timeline_express_frontend_query_args`, `timeline_express_frontend_date_filter`
+* Fix background line color options not properly updating.
+
 = 1.1.7.8 - February 5th, 2016 =
 * Upgraded font awesome library from 4.3.0 to 4.5.0.
 * Added a fallback for the font awesome library - when the CDN is not accessible for whatever reason.
@@ -545,8 +568,5 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.1.7.8 - February 5th, 2016 =
-* Upgraded font awesome library from 4.3.0 to 4.5.0.
-* Added a fallback for the font awesome library - when the CDN is not accessible for whatever reason.
-* Added CDN responses to transient to decrease page load times.
-* Included a new filter allowing users to specify a font awesome version number to load from the CDN (`timeline_express_font_awesome_version` - see other notes.).
+= 1.1.8.1 - Februrary 12th, 2016 =
+* Fixed reversed `is_ssl()` checks.
