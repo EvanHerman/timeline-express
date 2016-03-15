@@ -1,10 +1,10 @@
 === Timeline Express ===
-Contributors: eherman24
+Contributors: codeparrots, eherman24
 Donate link: http://www.evan-herman.com/contact/?contact-reason=I%20want%20to%20make%20a%20donation%20for%20all%20your%20hard%20work
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 3.9
 Tested up to: 4.4.2
-Stable tag: 1.1.8.1
+Stable tag: 1.2
 License: GPLv2 or later
 
 Timeline express allows you to create a beautiful vertical animated and responsive timeline of posts , without writing a single line of code. Sweet!
@@ -48,7 +48,7 @@ Timeline express allows you to create a vertical animated timeline of announceme
 
 ><strong>Historical Dates</strong>
 
-> If you need to assign dates to announcements prior to the year 1970, you may run into limitations due to the php function `strtotime()`. We have built out an additional addon allowing dates to be saved between the years 1000-9999. 
+> If you need to assign dates to announcements prior to the year 1970, you may run into limitations due to the php function `strtotime()`. We have built out an additional addon allowing dates to be saved between the years 1000-9999.
 
 ><a href="https://www.evan-herman.com/wordpress-plugin/timeline-express-historical-dates-add-on/" title="View Historical Date Addon">View Historical Dates Addon</a>
 
@@ -110,7 +110,7 @@ Publish your page, and view it on the front end the see your new super sweet tim
 = What template is the single announcement post using? Can I customize it at all? I want to do x, y or z. =
 The single announcement post is using a custom template file that comes pre-bundled with the plugin. If you want to customize the template for whatever reason
 you can do so, by creating a directory in your active theme called 'timeline-express'. Once the directory is created, simply copy the file titled 'single-timeline-express-announcement.php' into
-the newly created 'timeline-express' directory in your theme. Timeline express will then automagically pull in the newly created template in your theme root. You can go ahead and customize 
+the newly created 'timeline-express' directory in your theme. Timeline express will then automagically pull in the newly created template in your theme root. You can go ahead and customize
 it to your hearts desire without fear of losing any changes in future updates!
 
 = Why can't I save dates prior to 1970'? =
@@ -150,7 +150,7 @@ If you enjoy this plugin and want to contribute, I'm always looking for people t
 * Vietnamese
 * Welsh
 
-Read the Codex article "[I18n for WordPress Developers]"(http://codex.wordpress.org/I18n_for_WordPress_Developers) for more information. 
+Read the Codex article "[I18n for WordPress Developers]"(http://codex.wordpress.org/I18n_for_WordPress_Developers) for more information.
 
 == Other Notes ==
 
@@ -215,7 +215,7 @@ function add_custom_timeline_express_field( $custom_fields ) {
 add_filter( 'timeline_express_custom_fields' , 'add_custom_timeline_express_field' );
 </code>
 
-This example would add 3 new fields below the 'Announcement Image' field on the announcement post. 
+This example would add 3 new fields below the 'Announcement Image' field on the announcement post.
 
 The first field is a simple text field. The second field is an example WYSIWYG, and the third is an email field.
 
@@ -368,10 +368,18 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.1.8.1 - Februrary 12th, 2016 =
+= 1.2 - February xx, 2016 =
+* Refactored plugin base to improve stability.
+* Plugin now more modular.
+* New Templating.
+
+= 1.1.8.2 - February 22nd, 2016 =
+* Built in filters/support for AJAX Limit add-on.
+
+= 1.1.8.1 - February 12th, 2016 =
 * Fixed reversed `is_ssl()` checks.
 
-= 1.1.8 - Februrary 10th, 2016 =
+= 1.1.8 - February 10th, 2016 =
 * Ensured that the minified version of font awesome is enqueued on the front end (v4.5.0)
 * Ensured that the correct version (and fallback) of font awesome was used on both frontend and backend.
 * Added RTL support.
@@ -452,7 +460,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 = 1.1.5.8 - March 5th, 2015 =
 * Enhancement: Upgraded font-awesome to 4.3.0
 * Enhancement: Added icon select dropdown on the settings page, to better mirror the post/page edit screens
-* Enhancement: Added new setting to toggle Timeline posts from appearing in search queries on the front end (defaults to true) 
+* Enhancement: Added new setting to toggle Timeline posts from appearing in search queries on the front end (defaults to true)
 * Enhancement: Packaged German translation - thanks to <a href="http://www.fairsoft.koeln" target="_blank">Martin Gerlach</a>
 
 = 1.1.5.7 - February 5th, 2015 =
@@ -543,20 +551,20 @@ The above example will load font awesome version 4.4.0 instead of the current st
 = 1.0.7 - November 13th, 2014 =
 * Enhancement: Portuguese language translation now included (pt_BR) - thanks goes to <a href="http://toborino.com" target="_blank">Gustavo Magalhães</a>
 
-= 1.0.6 = 
+= 1.0.6 =
 * Fixed fatal error thrown on activation for sites running older versions of PHP
 
-= 1.0.5 = 
+= 1.0.5 =
 * Change priority argument on register post type function, which caused conflicts with other custom post types on certain sites
 
-= 1.0.4 = 
+= 1.0.4 =
 * Chinese language translation now included (zh_CN) - thanks goes to <a href="http://www.vahichen.com" target="_blank">Vahi Chen</a>
 * Removed some un-necessary styles (timeline title/content font-size+font-family declerations)
 
-= 1.0.3 = 
+= 1.0.3 =
 * Included new function to retain formatting in the announcement excerpt in the timeline (`te_wp_trim_words_retain_formatting()`)
 
-= 1.0.2 = 
+= 1.0.2 =
 * Add a display order setting to set Ascending or Descending display order for announcements in the timeline
 * Fixed "cannot access settings page" when clicking on the settings tab when on the settings page already
 
@@ -568,5 +576,5 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.1.8.1 - Februrary 12th, 2016 =
-* Fixed reversed `is_ssl()` checks.
+= 1.1.8.2 - Februrary 22nd, 2016 =
+* Built in filters/support for AJAX Limit add-on..
