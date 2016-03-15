@@ -27,9 +27,8 @@
  *
  * @link http://www.codeparrots.com
  *
- * @package WordPress
- * @subpackage Component
- * @since x.x.x (when the file was introduced)
+ * @package Timeline Express
+ * @since 1.0.0
  **/
 
 /* Include project constants */
@@ -43,6 +42,10 @@ function timeline_express_text_domain_init() {
 	load_plugin_textdomain( 'timeline-express', false, dirname( plugin_basename( __FILE__ ) ) . '/lib/languages' );
 }
 add_action( 'init', 'timeline_express_text_domain_init' );
+
+/* Activation Hooks */
+
+// register_activation_hook( __FILE__ ,		array( $timeline_express_base, 'activate' ) );
 
 /* Include Class Files */
 

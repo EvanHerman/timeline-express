@@ -132,7 +132,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_admin_notices() {
-			if( isset( $_GET['settings-updated'] ) && true == $_GET['settings-updated'] ) {
+			if ( isset( $_GET['settings-updated'] ) && true == $_GET['settings-updated'] ) {
 				?>
 				<div class="notice notice-success">
 					<p><?php esc_attr_e( 'Timeline Express Settings Updated', 'timeline-express' ); ?></p>
@@ -149,7 +149,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		public function timeline_express_add_tinymce() {
 			global $typenow;
 			/* Only on Post Type: Post and Page */
-			if ( ! in_array( $typenow, apply_filters( 'timeline-express-tinymce-post-types', array( 'page', 'post' ) ) ) ) {
+			if ( ! in_array( $typenow, apply_filters( 'timeline-express-tinymce-post-types', array( 'page', 'post' ) ), true ) ) {
 				return;
 			}
 			add_filter( 'mce_external_plugins', array( $this, 'timeline_express_add_tinymce_plugin' ) );
@@ -159,6 +159,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		/**
 		 * Define and process [timeline-express] shortcode
 		 *
+		 * @param array $atts array of shortcode attributes.
 		 * @package  TimelineExpressBase
 		 */
 		public function process_timeline_express_shortcode( $atts ) {
