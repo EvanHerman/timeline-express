@@ -167,7 +167,7 @@ class Timeline_Express_Initialize {
 	 * @param object $post_id The announcement post ID.
 	 * @return string the date to be used for this announcement.
 	 */
-	private function get_announcement_date( $post_id ) {
+	public static function get_announcement_date( $post_id ) {
 		return esc_attr_e( apply_filters( 'timeline_express_frontend_date_filter', date_i18n( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), get_post_meta( $post_id, 'announcement_date', true ) ) );
 	}
 
@@ -175,11 +175,12 @@ class Timeline_Express_Initialize {
 	 * Get the announcement image to use
 	 *
 	 * @param object $post_id The announcement post object.
+	 * @param string $image_size (optional) Image size to use when displaying announcement images.
 	 */
-	private function get_announcement_image( $post_id ) {
+	public static function get_announcement_image( $post_id, $image_size = 'timeline-express' ) {
 		echo wp_get_attachment_image(
 			get_post_meta( $post_id, 'announcement_image_id', true ),
-			apply_filters( 'timeline-express-announcement-img-size', 'timeline-express' ),
+			apply_filters( 'timeline-express-announcement-img-size', $image_size ),
 			false,
 			array(
 				'title' => esc_attr__( get_the_title() ),

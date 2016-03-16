@@ -44,7 +44,10 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			add_action( 'admin_head', array( $this, 'timeline_express_add_tinymce' ) );
 			/* Define our [timeline-express] shortcode, so it's usable on the frontend */
 			add_shortcode( 'timeline-express', array( $this, 'process_timeline_express_shortcode' ) );
-
+			/** Filter the single announcement content. */
+			add_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ) );
+			/** Enqueue single announcement template styles */
+			add_action( 'wp_enqueue_scripts', array( $this, 'timeline_express_single_template_styles' ) );
 			/*
 			 * Include CMB2 - Metabox Framework
 			 * @resource https://github.com/WebDevStudios/CMB2
@@ -168,6 +171,46 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			return $timeline_express->generate_timeline_express( timeline_express_get_options(), $atts );
 		}
 
+		/**
+		 * Filter the content, and load our template in it's place.
+		 *
+		 * @param array $the_content The page content to filter.
+		 * @return page template.
+		 */
+		public function timeline_express_single_page_content( $the_content ) {
+			global $post;
+			if ( is_single() && 'te_announcements' === $post->post_type ) {
+				ob_start();
+				/* Include helper functions */
+				include_once TIMELINE_EXPRESS_PATH . 'lib/helpers.php';
+				/**
+				 * Check if a file exists locally (theme root), and load it.
+				 * Users can create a directory (timeline-express), and copy over the announcement template into the theme root.
+				 *
+				 * @since 1.2
+				 */
+				if ( file_exists( get_template_directory() . '/timeline-express/single.timeline-express.php' ) ) {
+					include( get_template_directory() . '/timeline-express/single.timeline-express.php' );
+				} else {
+					include( TIMELINE_EXPRESS_PATH . 'lib/public/partials/single.timeline-express.php' );
+				}
+				/* Return the output buffering */
+				$the_content = ob_get_clean();
+			}
+			return $the_content;
+		}
+		/**
+		 * Enqueue styles on single announcement templates.
+		 *
+		 * @return null
+		 */
+		public function timeline_express_single_template_styles() {
+			global $post;
+			if ( is_single() && 'te_announcements' === $post->post_type ) {
+				wp_enqueue_style( 'single-timeline-express-styles', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express-single-page.min.css', array(), 'all' );
+			}
+			return;
+		}
 		/**
 		 * Add our tinyMCE plugin to the tinyMCE WordPress instance
 		 *

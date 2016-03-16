@@ -262,4 +262,56 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	}
 }
 
+
+/*
+ * Helper functions used in the single Timeline Express announcement template.
+ * @file single.timeline-express.php
+ */
+
+/**
+ * Check if our Timeline Express Init class exists
+ * if it does not, include our class file.
+ *
+ * @return null
+ */
+function does_timeline_express_init_class_exist() {
+	if ( ! class_exists( 'Timeline_Express_Initialize' ) ) {
+		include TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php';
+	}
+	return;
+}
+/**
+ * Retreive the timeline express announcement image
+ *
+ * @param  int    $post_id The announcement (post) ID whos image you want to retreive.
+ * @param  string $image_size (optional) The image size to retreive.
+ * @return Timeline_Express_Initialize::get_announcement_image() Execute the function to retreive the image.
+ */
+function timeline_express_get_announcement_image( $post_id, $image_size = 'timeline-express' ) {
+	does_timeline_express_init_class_exist();
+	return Timeline_Express_Initialize::get_announcement_image( $post_id, $image_size );
+}
+
+/**
+ * Retreive the timeline express announcement date
+ *
+ * @param int    $post_id The announcement (post) ID whos image you want to retreive.
+ * @param string $image_size The image size you want to retreive. Possible: timeline-express, full, large, medium, thumbnail.
+ * @return Timeline_Express_Initialize::get_announcement_date() Execute the function to retreive the date.
+ */
+function timeline_express_get_announcement_date( $post_id, $image_size = 'timeline-express' ) {
+	does_timeline_express_init_class_exist();
+	return Timeline_Express_Initialize::get_announcement_date( $post_id );
+}
+
+/**
+ * Retreive the timeline express announcement content.
+ * Note: Cannot be used on the single announcement template.
+ *
+ * @param  int $post_id The announcement (post) ID whos content you want to retreive.
+ * @return array The announcement content, passed through the_content() filter.
+ */
+function timeline_express_get_announcement_content( $post_id ) {
+	return the_content( $post_id );
+}
 ?>
