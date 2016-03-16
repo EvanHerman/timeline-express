@@ -19,7 +19,25 @@ module.exports = function(grunt) {
                 }
             }
         },
-
+		
+		// Autoprefixer for our CSS files
+		postcss: {
+			options: {
+                map: true,
+                processors: [
+                    require('autoprefixer-core')({
+                        browsers: ['last 2 versions']
+                    })
+                ]
+            },
+			dist: {
+			  src: [ 'lib/admin/css/*.css' , 'lib/public/css/*.css' ]
+			}
+		},
+		auto_install: { 
+			local: {}
+		},
+		
 		// css minify all contents of our directory and add .min.css extension
 		cssmin: {
 			target: {
@@ -48,6 +66,29 @@ module.exports = function(grunt) {
 			}
 		},
 		
+		// Copy our template files to the root /template/ directory.
+		copy: {
+		  main: {
+			files: [
+				// copy over the announcement container template
+				{
+					expand: true,
+					flatten: true,
+					src: ['lib/public/partials/timeline-express-container.php'], 
+					dest: 'templates/', 
+					filter: 'isFile'
+				},
+				{
+					expand: true,
+					flatten: true,
+					src: ['lib/public/partials/single.timeline-express.php'], 
+					dest: 'templates/', 
+					filter: 'isFile'
+				},
+			],
+		  },
+		},
+
         // watch our project for changes
        watch: {
 			admin_css: { // admin css
@@ -84,37 +125,8 @@ module.exports = function(grunt) {
 				},
 			},
 		},
+				
 		
-		// Borwser Sync
-		/*
-		browserSync: {
-			bsFiles: {
-				src : [ 'admin/css/*.min.css' , 'public/css/*.min.css' , 'admin/js/*.min.js' , 'public/js/*.min.js' ],
-			},
-			options: {
-				proxy: "localhost/mc_free/",
-				watchTask : true
-			}
-		},
-		*/
-		
-		// Autoprefixer for our CSS files
-		postcss: {
-			options: {
-                map: true,
-                processors: [
-                    require('autoprefixer-core')({
-                        browsers: ['last 2 versions']
-                    })
-                ]
-            },
-			dist: {
-			  src: [ 'lib/admin/css/*.css' , 'lib/public/css/*.css' ]
-			}
-		},
-		auto_install: { 
-			local: {}
-		},
 		
     });
 
@@ -122,9 +134,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	// grunt.loadNpmTasks('grunt-browser-sync'); // browser-sync auto refresh
+	grunt.loadNpmTasks('grunt-contrib-copy'); // Copy template files from within the plugin - over to a /template/ directory in the plugin root.
 	grunt.loadNpmTasks('grunt-postcss'); // CSS autoprefixer plugin (cross-browser auto pre-fixes)
-	grunt.loadNpmTasks('grunt-wp-i18n'); // wordpress localization plugin
 	grunt.loadNpmTasks('grunt-auto-install'); // autoload all of ourd ependencies (ideally, you install this one package, and run grunt auto_install to install our dependencies automagically)
 
     // register task
@@ -132,7 +143,7 @@ module.exports = function(grunt) {
 		'uglify',
 		'postcss',
         'cssmin',
-		/* 'browserSync', */
+		'copy',
         'watch',
     ]);
 
