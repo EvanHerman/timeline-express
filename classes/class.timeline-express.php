@@ -952,6 +952,8 @@ if(!class_exists("timelineExpressBase"))
 					wp_enqueue_script( 'timeline-express-js-base' , TIMELINE_EXPRESS_URL . 'js/script.timeline-express.min.js' , array( 'jquery' ) );
 					// masonry for layout
 					wp_enqueue_script( 'jquery-masonry' );
+					// action hook to load custom scripts wherever our shortcode is used
+					do_action( 'timeline-express-scripts' );
 				}
 
 			// add styles to the front end
@@ -967,13 +969,19 @@ if(!class_exists("timelineExpressBase"))
 					} else {
 						wp_enqueue_style( 'prefix-font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.min.css', array(), $font_awesome_version );
 					}
+					// action hook to load custom styles wherever our shortcode is used
+					do_action( 'timeline-express-styles' );
 				}
 
 			/***** SHORTCODE
 			 ****************************************************************************************************/
 			 // Function to process the shortcode provided by the plugin
 			 // $p is the data associated with the shortcode (ie: form id and submit button text)
-			public function processShortcode( $p ) {
+			public function processShortcode( $atts ) {
+				
+				$atts = shortcode_atts( array(
+				), $atts, 'timeline-express' );
+				
 				// enqueue our scripts + styles
 				$this->addScripts_frontend();
 				$this->addStyles_frontend();
@@ -1045,7 +1053,11 @@ if(!class_exists("timelineExpressBase"))
 							}
 							// end setting up query args
 																				
-							$announcement_query = new WP_Query( $announcement_args );
+							/*
+							*	*NEW* since 1.1.8.2 users can now filter entire query however they would like
+							*/
+							global $post;
+							$announcement_query = new WP_Query( apply_filters( 'timeline_express_announcement_query_args', $announcement_args, $post, $atts ) );
 																							
 							if ( $announcement_query->have_posts() ) {
 								?>
@@ -1174,8 +1186,12 @@ if(!class_exists("timelineExpressBase"))
 								}
 							
 							?></section><!-- Timeline Express by Evan Herman - http://www.Evan-Herman.com --><?php
-								wp_reset_query();
-								
+							
+							wp_reset_query();
+							
+							// Action hook after timeline
+							do_action( 'timeline-express-after-timeline', $atts, apply_filters( 'timeline_express_announcement_query_args', $announcement_args, $post, $atts ), $announcement_query->found_posts );
+
 							} else {
 							?>
 								<h2><?php echo $this->timeline_express_optionVal['no-events-message']; ?></h2>

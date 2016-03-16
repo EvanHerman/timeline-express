@@ -1,4 +1,4 @@
-Timeline Express v1.1.7.7
+Timeline Express v1.1.8.3
 ================
 
 Timeline express allows you to create a vertical animated and responsive timeline of posts , without writing a single line of code. Sweet! 
@@ -305,6 +305,9 @@ Have an idea for a future release feature? I love hearing about new ideas! You c
 
 
 ### Changelog
+
+###### 1.1.7.8 - March 16, 2016
+* Bumped CMB2 version up to 2.2.1 - prevents conflicts with other plugins.
 
 ###### 1.1.7.8 - February 5th, 2016
 * Upgraded font awesome library from 4.3.0 to 4.5.0.
