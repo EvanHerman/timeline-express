@@ -48,8 +48,9 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			add_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ) );
 			/** Enqueue single announcement template styles */
 			add_action( 'wp_enqueue_scripts', array( $this, 'timeline_express_single_template_styles' ) );
-			/*
+			/**
 			 * Include CMB2 - Metabox Framework
+			 *
 			 * @resource https://github.com/WebDevStudios/CMB2
 			 */
 			if ( file_exists( TIMELINE_EXPRESS_PATH . 'lib/admin/CMB2/init.php' ) ) {
@@ -135,7 +136,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_admin_notices() {
-			if ( isset( $_GET['settings-updated'] ) && true == $_GET['settings-updated'] ) {
+			if ( isset( $_GET['settings-updated'] ) && true === $_GET['settings-updated'] ) {
 				?>
 				<div class="notice notice-success">
 					<p><?php esc_attr_e( 'Timeline Express Settings Updated', 'timeline-express' ); ?></p>
