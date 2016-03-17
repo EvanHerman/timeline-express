@@ -44,35 +44,79 @@ $custom_icon_html = apply_filters( 'timeline-express-custom-icon-html', '', $pos
 	<!-- Timeline Content -->
 	<div class="cd-timeline-content">
 
+		<?php
+		/* Action hook to display content at the top of the announcement container */
+		do_action( 'timeline-express-container-top' );
+		?>
+
 		<!-- Announcement Title -->
 		<span class="cd-timeline-title-container">
+
+			<?php
+			/* Action hook to display content before the announcement title on the timeline */
+			do_action( 'timeline-express-before-title' );
+			?>
+
 			<h2 class="cd-timeline-item-title">
 				<?php the_title();?>
 			</h2>
 
 			<?php
+			/* Action hook to display content after the announcement title on the timeline */
+			do_action( 'timeline-express-after-title' );
+
 			/* Generate the announcement date. */
 			if ( 1 === (int) $timeline_express_options['date-visibility'] ) {
 				?>
 				<span class="timeline-date">
-					<?php self::get_announcement_date( $post->ID ); ?>
+					<?php
+					/* Action hook to display content before the announcement date on the timeline */
+					do_action( 'timeline-express-before-date' );
+
+					self::get_announcement_date( $post->ID );
+
+					/* Action hook to display content after the announcement date on the timeline */
+					do_action( 'timeline-express-after-date' );
+					?>
 				</span>
 				<?php
 			}
 			?>
 		</span>
+		<!-- End Announcement Title -->
 
 		<?php
+		/* Action hook to display content before the announcement image on the timeline */
+		do_action( 'timeline-express-before-image' );
+
 		/* Generate the announcement image. */
 		esc_attr_e( self::get_announcement_image( $post->ID ) );
+
+		/* Action hook to display content after the announcement image on the timeline */
+		do_action( 'timeline-express-after-image' );
 		?>
 
+		<!-- Announcement Excerpt -->
 		<span class="the-excerpt">
 			<?php
+			/* Action hook to display content before the announcement excerpt on the timeline */
+			do_action( 'timeline-express-before-excerpt' );
+
 			/* Generate the announcement excerpt. */
 			self::get_announcement_excerpt( $timeline_express_options['excerpt-random-length'], $timeline_express_options['excerpt-trim-length'], $timeline_express_options['read-more-visibility'], $post->ID );
+
+			/* Action hook to display content after the announcement excerpt on the timeline */
+			do_action( 'timeline-express-after-excerpt' );
 			?>
 		</span>
-		
+		<!-- End Announcement Excerpt -->
+
+		<?php
+		/* Action hook to display content at the bottom of the announcement container */
+		do_action( 'timeline-express-container-bottom' );
+		?>
+
 	</div>
+	<!-- End Timeline Content -->
 </div>
+<!-- End Timeline Block -->

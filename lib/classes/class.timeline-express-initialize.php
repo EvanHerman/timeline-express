@@ -75,6 +75,10 @@ class Timeline_Express_Initialize {
 			</section>
 			<?php
 		}
+
+		/* Generate About Text */
+		echo '<!-- ' . esc_html( self::timeline_express_about_content() ) . ' -->';
+
 		$shortcode = ob_get_contents();
 		ob_end_clean();
 		return $shortcode;
@@ -295,5 +299,18 @@ class Timeline_Express_Initialize {
 			return apply_filters( 'timeline_express_frontend_query_args', $announcement_args );
 		}
 
+	}
+
+	/**
+	 * Generate about text, to aid in debugging.
+	 *
+	 * @return string We're returning a comment block for the frontend.
+	 */
+	private function timeline_express_about_content() {
+		ob_start();
+		echo 'Timeline Express Free v' . esc_attr__( TIMELINE_EXPRESS_VERSION_CURRENT );
+		echo ' | Site: http://www.wp-timelineexpress.com';
+		echo ' | Author: CodeParrots - http://www.codeparrots.com';
+		return ob_get_clean();
 	} /* Last Function */
 }

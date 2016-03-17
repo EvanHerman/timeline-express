@@ -44,6 +44,8 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			add_action( 'admin_head', array( $this, 'timeline_express_add_tinymce' ) );
 			/* Define our [timeline-express] shortcode, so it's usable on the frontend */
 			add_shortcode( 'timeline-express', array( $this, 'process_timeline_express_shortcode' ) );
+			/* load our custom post type single template (override the default) */
+			add_filter( 'single_template', array( $this, 'timeline_express_single_announcement_template' ) );
 			/** Filter the single announcement content. */
 			add_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ) );
 			/** Enqueue single announcement template styles */
@@ -74,7 +76,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @package  TimelineExpressBase
 		 */
 		public function activate() {
-				update_option( 'timeline_express_do_activation_redirect', true );
+			update_option( 'timeline_express_do_activation_redirect', true );
 		}
 
 		/**
@@ -180,8 +182,11 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 */
 		public function timeline_express_single_page_content( $the_content ) {
 			global $post;
+			$announcement_content = false;
 			if ( is_single() && 'te_announcements' === $post->post_type ) {
 				ob_start();
+				/* Store the announcement content from the WYSIWYG editor */
+				$announcement_content = $the_content;
 				/* Include helper functions */
 				include_once TIMELINE_EXPRESS_PATH . 'lib/helpers.php';
 				/**
@@ -198,7 +203,35 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 				/* Return the output buffering */
 				$the_content = ob_get_clean();
 			}
-			return $the_content;
+			/* Return announcement meta & append the announcement content */
+			return apply_filters( 'timeline-express-single-content', $the_content . $announcement_content );
+		}
+
+		/**
+		 * Decide what template file to use to display single announcements.
+		 * 	First checks for a directory in the theme root /timeline-express/single-te_announcements.php,
+		 *  Next it checks for a single.php template in the theme root
+		 *  Next it checksf or a page.php template in the theme root
+		 *  If all else fails, it will use the default template defined by WordPress.
+		 *
+		 * @param  string $single_template The page template name to be used for single announcements.
+		 * @return string                  The page template to be used for the single announcements.
+		 */
+		public function timeline_express_single_announcement_template( $single_template ) {
+			global $post;
+			if ( isset( $post->post_type ) && 'te_announcements' === $post->post_type ) {
+				/* If custom template file exists */
+				if ( file_exists( get_template_directory() . '/timeline-express/single-te_announcements.php' ) ) {
+					$single_template = get_template_directory() . '/timeline-express/single-te_announcements.php';
+				} else if ( file_exists( get_template_directory() . 'single.php' ) ) { /* If single.php exists */
+					$single_template = get_template_directory() . 'single.php';
+				} else if ( file_exists( get_template_directory() . 'page.php' ) ) { /* If page.php exists */
+					$single_template = get_template_directory() . 'page.php';
+				} else {
+					$single_template = $single_template; /* return standard template */
+				}
+				return apply_filters( 'timeline-express-single-page-template', $single_template );
+			}
 		}
 		/**
 		 * Enqueue styles on single announcement templates.
@@ -212,6 +245,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			}
 			return;
 		}
+
 		/**
 		 * Add our tinyMCE plugin to the tinyMCE WordPress instance
 		 *

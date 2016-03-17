@@ -7,6 +7,9 @@
  * @link http://www.codeparrots.com
  */
 
+/* Action hook to display content before the single announcement image */
+do_action( 'timeline-express-single-before-image' );
+
 /**
  * Render the announcement image.
  *
@@ -14,17 +17,31 @@
  * @param string $image_size Name of the image size you want to retreive. Possible: timeline-express, full, large, medium, thumbnail.
  */
 esc_attr_e( timeline_express_get_announcement_image( get_the_ID(), 'full' ) );
+
+/* Action hook to display content after the single announcement image */
+do_action( 'timeline-express-single-after-image' );
 ?>
 
 <!-- Render the announcement date -->
 <strong class="timeline-express-single-page-announcement-date">
 	<?php
+		/* Action hook to display content before the single announcement date */
+		do_action( 'timeline-express-single-before-date' );
+
 		esc_attr_e( __( 'Announcement Date:' , 'timeline-express' ) . ' ' );
 		esc_attr_e( timeline_express_get_announcement_date( get_the_ID() ) );
+
+		/* Action hook to display content after the single announcement date */
+		do_action( 'timeline-express-single-after-date' );
 	?>
 </strong>
 
-<!-- Render the announcement content (Note: Currently does not properly pass through the_content() filter.) -->
-<div class="timeline-express-single-page-content">
-	<?php	esc_attr_e( get_the_content( get_the_ID() ) ); ?>
-</div>
+<?php
+/* Action hook to display content before the single announcement content */
+do_action( 'timeline-express-single-before-content' );
+?>
+
+<!--
+	The content is appended via the_content() filter.
+	See class.timeline-express.php timeline_express_single_page_content()
+-->
