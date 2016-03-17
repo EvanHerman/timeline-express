@@ -16,6 +16,8 @@ In version 1.2 users can now customize the single announcement template for each
 
 Copy over `lib/public/partials/single.timeline-express.php` into your theme root, in a `timeline-express` directory (`wp-content/themes/theme_name/timeline-express/single.timeline-express.php`), and start customizing.
 
+Note: Out of the box, Timeline Express looks for a single.php template inside of your theme root. If one is not found, it will check for a page.php template. Additionally, you can create a template named `single.te_announcements.php` inside of a `timeline-express` directory in your theme root (`wp-content/themes/theme_name/timeline-express-single.te_announcements.php`) for full customization of the page template loaded.
+
 ### Actions & Filters
 
 To do...
