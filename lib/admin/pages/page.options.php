@@ -19,14 +19,14 @@ if ( isset( $current_user_object->user_firstname ) && '' !== $current_user_objec
 // Get & Store the current options from the database.
 $current_options = timeline_express_get_options();
 
-	// Setup the options for our WYSIWYG editors for the optin messages.
-	$no_event_messages_parameters = array(
-		'teeny' => true,
-		'textarea_rows' => 15,
-		'tabindex' => 1,
-		'textarea_name' => 'no-events-message',
-		'drag_drop_upload' => true,
-	);
+// Setup the options for our WYSIWYG editors for the optin messages.
+$additional_editor_parameters = array(
+	'textarea_name' => 'timeline_express_storage[no-events-message]',
+	'teeny' => true,
+	'textarea_rows' => 15,
+	'tabindex' => 1,
+	'drag_drop_upload' => true,
+);
 ?>
 
 <!-- Page Title -->
@@ -66,15 +66,25 @@ $current_options = timeline_express_get_options();
 					<div class="postbox">
 						<div class="inside">
 
-							<form method="post" name="timeline-express-form" id="timeline-express-form">
+							<form method="post" action="options.php" name="timeline-express-form" id="timeline-express-form">
+
+								<?php
+								/* Do the settings fields */
+								settings_fields( 'timeline-express-settings' );
+								do_settings_sections( 'timeline-express-settings' );
+
+								/* Nonce security check :) */
+								wp_nonce_field( 'timeline_express_save_settings', 'timeline_express_settings_nonce' );
+								?>
+
 								<table class="form-table timeline-express-form">
 									<tbody>
 
 										<!-- Select Time Frame -->
 										<tr valign="top">
-											<th scope="row"><label for="announcement-time-frame"><?php _e('Time Frame','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[announcement-time-frame]"><?php _e('Time Frame','timeline-express'); ?></label></th>
 											<td>
-												<select name="announcement-time-frame" id="announcement-time-frame" class="regular-text" />
+												<select name="timeline_express_storage[announcement-time-frame]" id="announcement-time-frame" class="regular-text" />
 													<option value="0"<?php echo ($current_options['announcement-time-frame'] === '0' ? ' selected' : ''); ?>><?php _e('Future Events','timeline-express'); ?></option>
 													<option value="1"<?php echo ($current_options['announcement-time-frame'] === '1' ? ' selected' : ''); ?>><?php _e('All Events (past+future)','timeline-express'); ?></option>
 													<option value="2"<?php echo ($current_options['announcement-time-frame'] === '2' ? ' selected' : ''); ?>><?php _e('Past Events','timeline-express'); ?></option>
@@ -87,11 +97,11 @@ $current_options = timeline_express_get_options();
 
 										<!-- Display Order -->
 										<tr valign="top">
-											<th scope="row"><label for="announcement-display-order"><?php _e('Display Order','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[announcement-display-order]"><?php _e('Display Order','timeline-express'); ?></label></th>
 											<td>
-												<select name="announcement-display-order" id="announcement-display-order" class="regular-text" />
-													<option value="ASC"<?php echo ($current_options['announcement-display-order'] === 'ASC' ? ' selected' : ''); ?>><?php _e('Ascending','timeline-express'); ?></option>
-													<option value="DESC"<?php echo ($current_options['announcement-display-order'] === 'DESC' ? ' selected' : ''); ?>><?php _e('Descending','timeline-express'); ?></option>
+												<select name="timeline_express_storage[announcement-display-order]" id="announcement-display-order" class="regular-text" />
+													<option value="ASC"<?php echo ( $current_options['announcement-display-order'] === 'ASC' ? ' selected' : '' ); ?>><?php esc_attr_e( 'Ascending','timeline-express' ); ?></option>
+													<option value="DESC"<?php echo ( $current_options['announcement-display-order'] === 'DESC' ? ' selected' : '' ); ?>><?php esc_attr_e( 'Descending','timeline-express' ); ?></option>
 												</select>
 												<p class="description">
 													<?php _e('Select the order you would like the announcements to display. Ascending : Chronological order by announcement date. Descending : Reverse chronological order by announcement date.','timeline-express'); ?>
@@ -101,11 +111,11 @@ $current_options = timeline_express_get_options();
 
 										<!-- Excerpt Trim Length -->
 										<tr valign="top">
-											<th scope="row"><label for="excerpt-trim-length"><?php _e('Announcement Excerpt Length','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[excerpt-trim-length]"><?php _e('Announcement Excerpt Length','timeline-express'); ?></label></th>
 											<td>
-												<input <?php if( $current_options['excerpt-random-length'] == '1' ) { ?> style="display:none;" <?php } ?> type="number" name="excerpt-trim-length" min="25" value="<?php echo $current_options['excerpt-trim-length']; ?>">
+												<input <?php if( isset( $current_options['excerpt-random-length'] ) && $current_options['excerpt-random-length'] == '1' ) { ?> style="display:none;" <?php } ?> type="number" name="timeline_express_storage[excerpt-trim-length]" min="25" value="<?php echo $current_options['excerpt-trim-length']; ?>">
 												<label for="excerpt-random-length">
-													<input type="checkbox" id="excerpt-random-length" name="excerpt-random-length" onclick="changeRandomTrimLengthCheckbox();" value="1" <?php checked( $current_options['excerpt-random-length'], '1' ); ?> <?php if( $current_options['excerpt-random-length'] == '0' ) { ?> style="margin-left:.5em;" <?php } ?>>
+													<input type="checkbox" id="excerpt-random-length" name="timeline_express_storage[excerpt-random-length]" onclick="changeRandomTrimLengthCheckbox();" value="1" <?php checked( $current_options['excerpt-random-length'], '1' ); ?> <?php if( $current_options['excerpt-random-length'] == '0' ) { ?> style="margin-left:.5em;" <?php } ?>>
 													<span id="random-lenth-text-container"<?php if( $current_options['excerpt-random-length'] == '0' ) { ?> class="random-length-text" <?php } ?>>
 														<?php _e( 'random length', 'timeline-express' ); ?>
 													</span>
@@ -118,11 +128,11 @@ $current_options = timeline_express_get_options();
 
 										<!-- Toggle Date Visibility -->
 										<tr valign="top">
-											<th scope="row"><label for="date-visibility"><?php _e('Date Visibility','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[date-visibility]"><?php _e('Date Visibility','timeline-express'); ?></label></th>
 											<td>
-												<select name="date-visibility" id="date-visibility" class="regular-text" />
-													<option value="1"<?php echo ($current_options['date-visibility'] === '1' ? ' selected' : ''); ?>><?php _e('Visible','timeline-express'); ?></option>
-													<option value="0"<?php echo ($current_options['date-visibility'] === '0' ? ' selected' : ''); ?>><?php _e('Hidden','timeline-express'); ?></option>
+												<select name="timeline_express_storage[date-visibility]" id="timeline_express_storage[date-visibility]" class="regular-text" />
+													<option value="1"<?php echo ( $current_options['date-visibility'] === '1' ? ' selected' : '' ); ?>><?php _e('Visible','timeline-express'); ?></option>
+													<option value="0"<?php echo ( $current_options['date-visibility'] === '0' ? ' selected' : '' ); ?>><?php _e('Hidden','timeline-express'); ?></option>
 												</select>
 												<p class="description">
 													<?php _e('Toggle the visibility of the date next to the icon.','timeline-express'); ?>
@@ -132,9 +142,9 @@ $current_options = timeline_express_get_options();
 
 										<!-- Toggle Read Visibility More -->
 										<tr valign="top">
-											<th scope="row"><label for="read-more-visibility"><?php _e('Read More Visibility','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[read-more-visibility]"><?php _e('Read More Visibility','timeline-express'); ?></label></th>
 											<td>
-												<select name="read-more-visibility" id="read-more-visibility" class="regular-text" />
+												<select name="timeline_express_storage[read-more-visibility]" id="read-more-visibility" class="regular-text" />
 													<option value="1" <?php selected( $current_options['read-more-visibility'] , '1' ); ?>><?php _e('Visible','timeline-express'); ?></option>
 													<option value="0" <?php selected( $current_options['read-more-visibility'] , '0' ); ?>><?php _e('Hidden','timeline-express'); ?></option>
 												</select>
@@ -146,11 +156,16 @@ $current_options = timeline_express_get_options();
 
 										<!-- Default Announcement Icon -->
 										<tr valign="top">
-											<th scope="row"><label for="default-announcement-icon"><?php _e('Default Icon','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[default-announcement-icon]"><?php esc_attr_e( 'Default Icon', 'timeline-express' ); ?></label></th>
 											<td>
 												<?php
 													// display our dropdown, pass in the ID, and empty desc.
-													timeline_express_build_bootstrap_icon_dropdown( array( 'id' => 'default-announcement-icon' , 'desc' => '' ) , 'fa-'.$current_options['default-announcement-icon'] );
+													timeline_express_build_bootstrap_icon_dropdown( array(
+															'id' => 'timeline_express_storage[default-announcement-icon]',
+															'desc' => '',
+														),
+														'fa-' . esc_attr__( $current_options['default-announcement-icon'] )
+													);
 												?>
 												<p class="description">
 													<?php _e('Select the font-awesome icon that you would like to use as a default icon for new announcements.','timeline-express'); ?> <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank" style="font-size:12px;font-style:em;">cheat sheet</a>
@@ -160,9 +175,9 @@ $current_options = timeline_express_get_options();
 
 										<!-- Default Announcement Color -->
 										<tr valign="top">
-											<th scope="row"><label for="default-announcement-color"><?php _e('Default Announcement Color','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[default-announcement-color]"><?php _e('Default Announcement Color','timeline-express'); ?></label></th>
 											<td>
-												<input name="default-announcement-color" type="text" id="default-announcement-color" value="<?php echo $current_options['default-announcement-color']; ?>" class="regular-text color-picker-field" />
+												<input name="timeline_express_storage[default-announcement-color]" type="text" id="default-announcement-color" value="<?php echo $current_options['default-announcement-color']; ?>" class="regular-text color-picker-field" />
 												<p class="description">
 													<?php _e('Select the default color for all new events. Note : this setting can be overwritten','timeline-express'); ?>
 												</p>
@@ -171,9 +186,9 @@ $current_options = timeline_express_get_options();
 
 										<!-- Single Announcement Container Background -->
 										<tr valign="top">
-											<th scope="row"><label for="announcement-bg-color"><?php _e('Announcement Container Background','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[announcement-bg-color]"><?php _e('Announcement Container Background','timeline-express'); ?></label></th>
 											<td>
-												<input type="text" name="announcement-bg-color" class="color-picker-field" value="<?php echo $current_options['announcement-bg-color']; ?>" />
+												<input type="text" name="timeline_express_storage[announcement-bg-color]" class="color-picker-field" value="<?php echo $current_options['announcement-bg-color']; ?>" />
 												<p class="description">
 													<?php _e('Select the background color of the announcement container.','timeline-express'); ?>
 												</p>
@@ -182,9 +197,9 @@ $current_options = timeline_express_get_options();
 
 										<!-- Single Announcement Box Shadow Color -->
 										<tr valign="top">
-											<th scope="row"><label for="announcement-box-shadow-color"><?php _e('Announcement Shadow Color','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[announcement-box-shadow-color]"><?php _e('Announcement Shadow Color','timeline-express'); ?></label></th>
 											<td>
-												<input type="text" name="announcement-box-shadow-color" class="color-picker-field" value="<?php echo $current_options['announcement-box-shadow-color']; ?>" />
+												<input type="text" name="timeline_express_storage[announcement-box-shadow-color]" class="color-picker-field" value="<?php echo $current_options['announcement-box-shadow-color']; ?>" />
 												<p class="description">
 													<?php _e('Select the shadow color for the announcement container.','timeline-express'); ?>
 												</p>
@@ -193,9 +208,9 @@ $current_options = timeline_express_get_options();
 
 										<!-- Background Line Color -->
 										<tr valign="top">
-											<th scope="row"><label for="announcement-background-line-color"><?php _e('Background Line Color','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[announcement-background-line-color]"><?php _e('Background Line Color','timeline-express'); ?></label></th>
 											<td>
-												<input type="text" name="announcement-background-line-color" class="color-picker-field" value="<?php echo $current_options['announcement-background-line-color']; ?>" />
+												<input type="text" name="timeline_express_storage[announcement-background-line-color]" class="color-picker-field" value="<?php echo $current_options['announcement-background-line-color']; ?>" />
 												<p class="description">
 													<?php _e('Select the color of the line in the background of the timeline.','timeline-express'); ?>
 												</p>
@@ -204,9 +219,13 @@ $current_options = timeline_express_get_options();
 
 										<!-- No Announcements Message -->
 										<tr valign="top">
-											<th scope="row"><label for="no-events-message"><?php _e('No Announcements Message','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[no-events-message]"><?php _e('No Announcements Message','timeline-express'); ?></label></th>
 											<td>
-												<?php wp_editor( stripslashes( $current_options['no-events-message'] ) , 'no-events-message', $no_event_messages_parameters); ?>
+												<?php wp_editor(
+													stripslashes( $current_options['no-events-message'] ),
+													'no-events-message',
+													$additional_editor_parameters
+												); ?>
 												<p class="description">
 													<?php _e('This is the message that will display when no announcements are found.','timeline-express'); ?>
 												</p>
@@ -215,9 +234,9 @@ $current_options = timeline_express_get_options();
 
 										<!-- Publicly Query Timeline Announcements Checkbox -->
 										<tr valign="top">
-											<th scope="row"><label for="delete-announcement-posts-on-uninstallation"><?php _e('Exclude Announcements from Site Searches','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[delete-announcement-posts-on-uninstallation]"><?php _e('Exclude Announcements from Site Searches','timeline-express'); ?></label></th>
 											<td>
-												<select name="announcement-appear-in-searches" id="announcement-appear-in-searches" class="regular-text" />
+												<select name="timeline_express_storage[announcement-appear-in-searches]" id="announcement-appear-in-searches" class="regular-text" />
 													<option value="true"<?php echo ($current_options['announcement-appear-in-searches'] === 'true' ? ' selected' : ''); ?>><?php _e('True','timeline-express'); ?></option>
 													<option value="false"<?php echo ($current_options['announcement-appear-in-searches'] === 'false' ? ' selected' : ''); ?>><?php _e('False','timeline-express'); ?></option>
 												</select>
@@ -229,9 +248,9 @@ $current_options = timeline_express_get_options();
 
 										<!-- Delete Announcements On Uninstall Checkbox -->
 										<tr valign="top">
-											<th scope="row"><label for="delete-announcement-posts-on-uninstallation"><?php _e('Delete Announcements On Uninstall?','timeline-express'); ?></label></th>
+											<th scope="row"><label for="timeline_express_storage[delete-announcement-posts-on-uninstallation]"><?php _e('Delete Announcements On Uninstall?','timeline-express'); ?></label></th>
 											<td>
-												<input type="checkbox" name="delete-announcement-posts-on-uninstallation" onclick="toggleDeleteCheckClass();" <?php checked( $current_options['delete-announcement-posts-on-uninstallation'] , '1' ); ?> value="1" /><span class="<?php if( $current_options['delete-announcement-posts-on-uninstallation'] == '0' ) { ?> delete-no <?php } else { ?> delete-yes <?php } ?>" onclick="toggle_delete_checkbox();"></span>
+												<input type="checkbox" name="timeline_express_storage[delete-announcement-posts-on-uninstallation]" onclick="toggleDeleteCheckClass();" <?php checked( $current_options['delete-announcement-posts-on-uninstallation'] , '1' ); ?> value="1" /><span class="<?php if( $current_options['delete-announcement-posts-on-uninstallation'] == '0' ) { ?> delete-no <?php } else { ?> delete-yes <?php } ?>" onclick="toggle_delete_checkbox();"></span>
 												<p class="description">
 													<?php _e('Select this to delete all announcement posts from the data base on plugin uninstallation. this can not be undone, once they are deleted they are gone forever. If you want to keep them, export your announcements before uninstalling.','timeline-express'); ?>
 												</p>

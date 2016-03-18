@@ -35,9 +35,11 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			/* Generate our announcements custom post type */
 			add_action( 'init', array( $this, 'timeline_express_generate_announcement_post_type' ) );
 			/* Generate our admin menus */
-			add_action( 'admin_menu' , array( $this, 'timeline_express_admin_menus' ) );
+			add_action( 'admin_menu', array( $this, 'timeline_express_admin_menus' ) );
+			/* Register our settings, and the default values */
+			add_action( 'admin_init', array( $this, 'timeline_express_register_settings' ) );
 			/* Sanitize and store our options when they are saved */
-			add_action( 'admin_init', array( $this, 'timeline_express_save_options' ) );
+			// add_action( 'admin_init', array( $this, 'timeline_express_save_options' ) );
 			/* Custom admin notices for Timeline Express */
 			add_action( 'admin_notices', array( $this, 'timeline_express_admin_notices' ) );
 			/* Add our TinyMCE button that generates our shortcode for the user */
@@ -105,30 +107,46 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		}
 
 		/**
+		 * Register the Timeline Express settings
+		 *
+		 * @package  TimelineExpressBase
+		 */
+		public function timeline_express_register_settings() {
+			register_setting( 'timeline-express-settings', 'timeline_express_storage', array( $this, 'timeline_express_save_options' ) );
+		}
+
+		/**
 		 * Sanitize and save our options to the database
 		 *
 		 * @package  TimelineExpressBase
 		 */
-		public function timeline_express_save_options() {
+		public function timeline_express_save_options( $options ) {
 			if ( isset( $_POST['save-timeline-express-options'] ) && 'true' === $_POST['save-timeline-express-options'] ) {
+				if ( ! isset( $_POST['timeline_express_settings_nonce'] ) || ! wp_verify_nonce( $_POST['timeline_express_settings_nonce'], 'timeline_express_save_settings' ) ) {
+					wp_die( esc_attr__( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ), __( 'Failed Nonce Security Check', 'timeline-express' ), array(
+						'response' => 500,
+						'back_link' => true,
+						'text_direction' => ( is_rtl() ) ? 'rtl' : 'ltr',
+					) );
+					exit;
+				}
 				/* Retreive our default options to update */
 				$timeline_express_options = timeline_express_get_options();
-				$timeline_express_options['announcement-time-frame'] = sanitize_text_field( $_POST['announcement-time-frame'] );
-				$timeline_express_options['announcement-display-order'] = sanitize_text_field( $_POST['announcement-display-order'] );
-				$timeline_express_options['excerpt-trim-length'] = (int) sanitize_text_field( $_POST['excerpt-trim-length'] );
-				$timeline_express_options['excerpt-random-length'] = (int) ( isset( $_POST['excerpt-random-length'] ) ) ? 1 : 0;
-				$timeline_express_options['date-visibility'] = sanitize_text_field( $_POST['date-visibility'] );
-				$timeline_express_options['read-more-visibility'] = sanitize_text_field( $_POST['read-more-visibility'] );
-				$timeline_express_options['default-announcement-icon'] = sanitize_text_field( $_POST['default-announcement-icon'] );
-				$timeline_express_options['default-announcement-color'] = sanitize_text_field( $_POST['default-announcement-color'] );
-				$timeline_express_options['announcement-bg-color'] = sanitize_text_field( $_POST['announcement-bg-color'] );
-				$timeline_express_options['announcement-box-shadow-color'] = sanitize_text_field( $_POST['announcement-box-shadow-color'] );
-				$timeline_express_options['announcement-background-line-color'] = sanitize_text_field( $_POST['announcement-background-line-color'] );
-				$timeline_express_options['no-events-message'] = sanitize_text_field( $_POST['no-events-message'] );
-				$timeline_express_options['announcement-appear-in-searches'] = sanitize_text_field( $_POST['announcement-appear-in-searches'] );
-				update_option( TIMELINE_EXPRESS_OPTION, $timeline_express_options );
-				wp_redirect( esc_url_raw( add_query_arg( array( 'settings-updated' => true ), admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) ) ) );
-				exit;
+				$timeline_express_options['announcement-time-frame'] = sanitize_text_field( $options['announcement-time-frame'] );
+				$timeline_express_options['announcement-display-order'] = sanitize_text_field( $options['announcement-display-order'] );
+				$timeline_express_options['excerpt-trim-length'] = (int) sanitize_text_field( $options['excerpt-trim-length'] );
+				$timeline_express_options['excerpt-random-length'] = (int) ( isset( $options['excerpt-random-length'] ) ) ? 1 : 0;
+				$timeline_express_options['date-visibility'] = sanitize_text_field( $options['date-visibility'] );
+				$timeline_express_options['read-more-visibility'] = sanitize_text_field( $options['read-more-visibility'] );
+				$timeline_express_options['default-announcement-icon'] = sanitize_text_field( $options['default-announcement-icon'] );
+				$timeline_express_options['default-announcement-color'] = sanitize_text_field( $options['default-announcement-color'] );
+				$timeline_express_options['announcement-bg-color'] = sanitize_text_field( $options['announcement-bg-color'] );
+				$timeline_express_options['announcement-box-shadow-color'] = sanitize_text_field( $options['announcement-box-shadow-color'] );
+				$timeline_express_options['announcement-background-line-color'] = sanitize_text_field( $options['announcement-background-line-color'] );
+				$timeline_express_options['no-events-message'] = sanitize_text_field( $options['no-events-message'] );
+				$timeline_express_options['announcement-appear-in-searches'] = sanitize_text_field( $options['announcement-appear-in-searches'] );
+				$timeline_express_options['delete-announcement-posts-on-uninstallation'] = (int) ( isset( $options['delete-announcement-posts-on-uninstallation'] ) ) ? 1 : 0;
+				return $timeline_express_options;
 			}
 		}
 
@@ -138,12 +156,15 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_admin_notices() {
-			if ( isset( $_GET['settings-updated'] ) && true === $_GET['settings-updated'] ) {
-				?>
-				<div class="notice notice-success">
-					<p><?php esc_attr_e( 'Timeline Express Settings Updated', 'timeline-express' ); ?></p>
-				</div>
-				<?php
+			$screen = get_current_screen();
+			if ( isset( $screen ) && isset( $screen->base ) && 'te_announcements_page_timeline-express-settings' === $screen->base ) {
+				if ( isset( $_GET['settings-updated'] ) && 'true' === $_GET['settings-updated'] ) {
+					?>
+					<div class="notice notice-success">
+						<p><span class="dashicons dashicons-yes"></span> <?php esc_attr_e( 'Timeline Express Settings Updated', 'timeline-express' ); ?></p>
+					</div>
+					<?php
+				}
 			}
 		}
 

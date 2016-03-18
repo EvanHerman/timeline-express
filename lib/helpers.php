@@ -241,7 +241,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	?>
 
 	<!-- start the font awesome icon select -->
-	<select class="selectpicker" name="<?php echo esc_attr( $field_name ); ?>" id="default-announcement-icon>">
+	<select class="selectpicker" name="timeline_express_storage[<?php echo esc_attr( $field_name ); ?>]" id="default-announcement-icon>">
 
 		<?php
 		/* sort the bootstrap icons alphabetically */
