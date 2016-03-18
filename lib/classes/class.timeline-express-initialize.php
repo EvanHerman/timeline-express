@@ -278,6 +278,7 @@ class Timeline_Express_Initialize {
 				'meta_key'   => 'announcement_date',
 				'orderby'    => 'meta_value_num',
 				'order'      => $display_order,
+				'no_found_rows' => true,
 				'posts_per_page' => 50,
 			);
 		} else { /* Else the compare sign is set */
@@ -286,6 +287,7 @@ class Timeline_Express_Initialize {
 				'meta_key'   => 'announcement_date',
 				'orderby'    => 'meta_value_num',
 				'order'      => $display_order,
+				'no_found_rows' => true,
 				'posts_per_page' => 50,
 				'meta_query' => array(
 					array(
@@ -296,9 +298,8 @@ class Timeline_Express_Initialize {
 					),
 				),
 			);
-			return apply_filters( 'timeline_express_frontend_query_args', $announcement_args );
 		}
-
+		return apply_filters( 'timeline_express_frontend_query_args', $announcement_args );
 	}
 
 	/**

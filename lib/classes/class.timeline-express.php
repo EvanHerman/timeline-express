@@ -38,8 +38,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			add_action( 'admin_menu', array( $this, 'timeline_express_admin_menus' ) );
 			/* Register our settings, and the default values */
 			add_action( 'admin_init', array( $this, 'timeline_express_register_settings' ) );
-			/* Sanitize and store our options when they are saved */
-			// add_action( 'admin_init', array( $this, 'timeline_express_save_options' ) );
 			/* Custom admin notices for Timeline Express */
 			add_action( 'admin_notices', array( $this, 'timeline_express_admin_notices' ) );
 			/* Add our TinyMCE button that generates our shortcode for the user */
@@ -74,11 +72,29 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Plugin activation function
-		 *
-		 * @package  TimelineExpressBase
 		 */
-		public function activate() {
+		public function timeline_express_activate() {
+			/* Setup the plugin activation redirect */
 			update_option( 'timeline_express_do_activation_redirect', true );
+		}
+
+		/**
+		 * Plugin deactivation function
+		 */
+		public function timeline_express_deactivate() {
+			/* Clear the re-write rules, so on next activation we can re-flush them */
+			delete_option( 'post_type_rules_flased_te-announcements' );
+		}
+
+		/**
+		 * Plugin deactivation function
+		 */
+		function timeline_express_activate_redirect() {
+			if ( get_option( 'timeline_express_do_activation_redirect', false ) ) {
+				delete_option( 'timeline_express_do_activation_redirect' );
+				/* Redirect to our custom Welcome page */
+				wp_redirect( esc_url_raw( admin_url( '/admin.php?page=timeline-express-welcome' ) ) );
+			}
 		}
 
 		/**
@@ -113,23 +129,25 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 */
 		public function timeline_express_register_settings() {
 			register_setting( 'timeline-express-settings', 'timeline_express_storage', array( $this, 'timeline_express_save_options' ) );
+			/* Plugin redirect */
+			self::timeline_express_activate_redirect();
 		}
 
 		/**
 		 * Sanitize and save our options to the database
 		 *
 		 * @package  TimelineExpressBase
+		 * @param array $options Options array to update.
 		 */
 		public function timeline_express_save_options( $options ) {
-			if ( isset( $_POST['save-timeline-express-options'] ) && 'true' === $_POST['save-timeline-express-options'] ) {
-				if ( ! isset( $_POST['timeline_express_settings_nonce'] ) || ! wp_verify_nonce( $_POST['timeline_express_settings_nonce'], 'timeline_express_save_settings' ) ) {
-					wp_die( esc_attr__( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ), __( 'Failed Nonce Security Check', 'timeline-express' ), array(
-						'response' => 500,
-						'back_link' => true,
-						'text_direction' => ( is_rtl() ) ? 'rtl' : 'ltr',
-					) );
-					exit;
-				}
+			if ( ! isset( $_POST['timeline_express_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['timeline_express_settings_nonce'] ) ), 'timeline_express_save_settings' ) ) { // Input var okay.
+				wp_die( esc_attr__( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ), __( 'Failed Nonce Security Check', 'timeline-express' ), array(
+					'response' => 500,
+					'back_link' => true,
+					'text_direction' => ( is_rtl() ) ? 'rtl' : 'ltr',
+				) );
+				exit;
+			} else {
 				/* Retreive our default options to update */
 				$timeline_express_options = timeline_express_get_options();
 				$timeline_express_options['announcement-time-frame'] = sanitize_text_field( $options['announcement-time-frame'] );
@@ -158,7 +176,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		public function timeline_express_admin_notices() {
 			$screen = get_current_screen();
 			if ( isset( $screen ) && isset( $screen->base ) && 'te_announcements_page_timeline-express-settings' === $screen->base ) {
-				if ( isset( $_GET['settings-updated'] ) && 'true' === $_GET['settings-updated'] ) {
+				if ( isset( $_GET['settings-updated'] ) && 'true' === $_GET['settings-updated'] ) {  // Input var okay.
 					?>
 					<div class="notice notice-success">
 						<p><span class="dashicons dashicons-yes"></span> <?php esc_attr_e( 'Timeline Express Settings Updated', 'timeline-express' ); ?></p>

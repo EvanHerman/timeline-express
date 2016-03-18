@@ -6,34 +6,34 @@
  *
  * @link http://www.codeparrots.com
  *
- * @package WordPress
- * @subpackage Component
+ * @package Timeline Express
  * @since 1.2
  */
 
-/** Configuration **/
+/**
+ * Define the current version of Timeline Express
+ */
 if ( ! defined( 'TIMELINE_EXPRESS_VERSION_CURRENT' ) ) {
 	define( 'TIMELINE_EXPRESS_VERSION_CURRENT',	'1.2' );
 }
 
+/**
+ * Define the path to Timeline Express
+ */
 if ( ! defined( 'TIMELINE_EXPRESS_PATH' ) ) {
 	define( 'TIMELINE_EXPRESS_PATH', plugin_dir_path( __FILE__ ) );
 }
 
+/**
+ * Define the URL of Timeline Express
+ */
 if ( ! defined( 'TIMELINE_EXPRESS_URL' ) ) {
 	define( 'TIMELINE_EXPRESS_URL', plugins_url( 'timeline-express/' ) );
 }
 
-/* Define Support Constants */
-if ( ! defined( 'EH_DEV_SHOP_URL' ) ) {
-	define( 'EH_DEV_SHOP_URL', 'https://www.evan-herman.com' );
-}
-
-if ( ! defined( 'EH_DEV_SHOP_SUPPORT_PRODUCT_NAME' ) ) {
-	define( 'EH_DEV_SHOP_SUPPORT_PRODUCT_NAME', 'timeline-express' );
-}
-
-/** Database Tables **/
+/**
+ * Define the name of the option in the database
+ */
 if ( ! defined( 'TIMELINE_EXPRESS_OPTION' ) ) {
 	define( 'TIMELINE_EXPRESS_OPTION', 'timeline_express_storage' );
 }

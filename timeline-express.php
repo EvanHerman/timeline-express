@@ -43,10 +43,6 @@ function timeline_express_text_domain_init() {
 }
 add_action( 'init', 'timeline_express_text_domain_init' );
 
-/* Activation Hooks */
-
-// register_activation_hook( __FILE__ ,		array( $timeline_express_base, 'activate' ) );
-
 /* Include Class Files */
 
 /* Main timeline express class file */
@@ -54,12 +50,17 @@ require_once plugin_dir_path( __FILE__ ) . 'lib/classes/class.timeline-express.p
 /* Initialize the plugin's base class */
 $timeline_express_base = new TimelineExpressBase();
 
-/* Ajax functions */
-// require_once TIMELINE_EXPRESS_PATH.'lib/lib.ajax.php';
-
-/* Activation Hooks */
-// register_activation_hook( __FILE__ ,		array( $timeline_express_base, 'activate' ) );
-// register_deactivation_hook( __FILE__ ,	array( $timeline_express_base, 'deactivate' ) );
-
-/* Daily Cron Job to check license */
-// register_activation_hook( __FILE__ , array( $timeline_express_base, 'schedule_timeline_express_support_cron' ) );
+/* Activation Hook */
+register_activation_hook( __FILE__,
+	array(
+		$timeline_express_base,
+		'timeline_express_activate',
+	)
+);
+/* Deactivation Hook */
+register_deactivation_hook( __FILE__,
+	array(
+		$timeline_express_base,
+		'timeline_express_deactivate',
+	)
+);

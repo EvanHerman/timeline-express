@@ -9,19 +9,7 @@ $current_user_name = $current_user_object->user_firstname;
 $current_user_name .= ' ' . $current_user_object->user_lastname;
 
 ?>
-<script>
-jQuery(document).ready(function() {
-	jQuery(window).resize(function() {
-		var window_width = jQuery(window).width();
-		console.log(window_width);
-		var height = jQuery( '.slides' ).css('height');
-		var new_height = parseFloat( '.40' ) * parseInt( window_width );
-		console.log(new_height);
-		jQuery( '.slides' ).css('height',new_height+'px');
-		jQuery( '.slides' ).find('li').find('div').css('height',new_height+'px');
-	});
-});
-</script>
+
 <!-- used for the media query -->
 <meta name="viewport" content="width=device-width" />
 
@@ -62,25 +50,6 @@ jQuery(document).ready(function() {
 			</div>
 
 			<hr />
-
-			<div class="slides">
-				<ul>
-					<li>
-						<div class="intuitive-post-creation"></div>
-						<h2 class="promo-text"><?php _e( 'Intuitive Custom Post Creation Screen' , 'timeline-express' ); ?></h2>
-					</li>
-					<li>
-						<div class="admin-manage-announcements"></div>
-						<h2 class="promo-text"><?php _e( 'Manage Announcements Easily' , 'timeline-express' ); ?></h2>
-					</li>
-					<li>
-						<div class="customize-your-timeline"></div>
-						<h2 class="promo-text"><?php _e( 'Style The Timeline' , 'timeline-express' ); ?></h2>
-					</li>
-				</ul>
-			</div>
-
-			<hr style="margin-bottom:0;" />
 
 			<div class="timeline-express-image">
 				<h2 style="display:block;text-align:center;padding-top:4em;"><?php _e( 'Timeline Express // Sample Timeline' , 'timeline-express' ); ?></h2><img style="width:60%;display:block;margin:0 auto;padding-top:1em;" src="<?php echo TIMELINE_EXPRESS_URL . 'images/welcome/timeline-screenshot.png'; ?>" alt="Sample Timeline Express" title="Timeline Express Example" >
