@@ -1,12 +1,14 @@
 {
-  "name": "yikes-inc-easy-mailchimp-extender",
-  "version": "6.0.1",
-  "description": "Easy MailChimp opt-in forms for your site.",
+  "name": "Timeline-Express",
+	"title": "Timeline Express",
+  "version": "1.2.0",
+  "description": "Build beautiful, animated CSS3 timelines on your WordPress site..",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Yikes Inc.",
+  "author": "Code Parrots",
+	"site": "http://www.wp-timelineexpress.com",
   "license": "GPLv2",
   "dependencies": {
     "grunt": "^0.4.5"
@@ -14,6 +16,7 @@
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "grunt-auto-install": "^0.2.4",
+    "grunt-banner": "^0.6.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^0.12.3",
     "grunt-contrib-uglify": "^0.9.1",

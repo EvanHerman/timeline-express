@@ -30,7 +30,7 @@ class Timeline_Express_Initialize {
 		 */
 		/* Scripts */
 		wp_enqueue_script( 'jquery-masonry' );
-		wp_enqueue_script( 'timeline-express-js-base' , TIMELINE_EXPRESS_URL . 'lib/public/js/min/script.timeline-express.min.js' , array( 'jquery-masonry' ) );
+		wp_enqueue_script( 'timeline-express-js-base' , TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js' , array( 'jquery-masonry' ) );
 		do_action( 'timeline-express-scripts' );
 
 		/**

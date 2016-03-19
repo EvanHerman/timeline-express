@@ -103,12 +103,15 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_admin_menus() {
+
+			$menu_cap = apply_filters( 'timeline_express_menu_cap', 'manage_options' );
+
 			/* Settings Page */
 			add_submenu_page(
 				'edit.php?post_type=te_announcements',
 				__( 'Timeline Express Settings','timeline-express' ),
 				__( 'Settings', 'timeline-express' ),
-				'manage_options',
+				$menu_cap,
 				'timeline-express-settings',
 				array( $this, 'timeline_express_options_page' )
 			);
@@ -116,9 +119,18 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			add_submenu_page('options.php',
 				__( 'Timeline Express Welcome', 'timeline-express' ),
 				__( 'Timeline Express Welcome', 'timeline-express' ),
-				'manage_options',
+				$menu_cap,
 				'timeline-express-welcome',
 				array( $this, 'timeline_express_welcome_page' )
+			);
+			/* Addon Page */
+			add_submenu_page(
+				'edit.php?post_type=te_announcements',
+				__( 'Timeline Express Addons', 'timeline-express' ),
+				'<span style="color:#f18500">' . __( 'Addons', 'timeline-express' ) . '<span>',
+				$menu_cap,
+				'timeline-express-addons',
+				array( $this, 'timeline_express_addons_page' )
 			);
 		}
 
@@ -280,7 +292,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		public function timeline_express_single_template_styles() {
 			global $post;
 			if ( is_single() && 'te_announcements' === $post->post_type ) {
-				wp_enqueue_style( 'single-timeline-express-styles', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express-single-page.min.css', array(), 'all' );
+				wp_enqueue_style( 'single-timeline-express-styles', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express.min.css', array(), 'all' );
 			}
 			return;
 		}
@@ -330,6 +342,17 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		}
 
 		/**
+		 * Inclue our addons page
+		 *
+		 * @since 1.2
+		 * @package included in TimelineExpressBase->timeline_express_admin_menus()
+		 */
+		function timeline_express_addons_page() {
+			/* Include the addons class */
+			require_once TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-addons.php';
+		}
+
+		/**
 		 * Register Announcement Custom Post Type
 		 * Register Announcement Custom Post Type Columns
 		 *
@@ -351,7 +374,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			$load_styles_on_pages = array( 'te_announcements_page_timeline-express-settings', 'admin_page_timeline-express-welcome' );
 			if ( in_array( $screen->base, $load_styles_on_pages, true ) || 'te_announcements' === $screen->post_type ) {
 				/* Register Styles */
-				wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'lib/admin/css/min/timeline-express-settings.min.css' , array(), TIMELINE_EXPRESS_VERSION_CURRENT, 'all' );
+				wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'lib/admin/css/min/timeline-express-admin.min.css' , array(), TIMELINE_EXPRESS_VERSION_CURRENT, 'all' );
 				/* Enqueue font awesome icons, defined in helpers.php */
 				timeline_express_enqueue_font_awesome();
 

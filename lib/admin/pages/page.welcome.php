@@ -1,84 +1,57 @@
 <?php
-//
-// Welcome Page Template
-// Users are redirected here upon activation
-//
+/**
+ * Welcome Page template
+ * users are redirected here upon activation
+ *
+ * @package Timeline Express
+ * @subpackage Timeline_Express_Addons
+ * @since 1.2
+ */
 
-$current_user_object = wp_get_current_user();
-$current_user_name = $current_user_object->user_firstname;
-$current_user_name .= ' ' . $current_user_object->user_lastname;
-
+$selected = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : 'timeline-express-getting-started';
 ?>
+<!-- Welcome Page Template Wrap -->
+<div class="wrap about-wrap">
+	<h1><?php esc_attr_e( 'Welcome to Timeline Express', 'timeline-express' ); ?></h1>
+	<div class="about-text">
+		<?php esc_attr_e( "Thank you for choosing Timeline Express - the most beginner friendly, attractive and powerful WordPress Timeline plugin. Here's how to get started.", 'timeline-express' ); ?>
+	</div>
+	<div class="timeline-express-badge">
+		<img src="<?php echo esc_attr__( TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-logo-128.png' ); ?>" title="Timeline Express" />
+		<span class="version"><?php printf( esc_attr__( 'Version %s', 'timeline-express' ), esc_attr__( TIMELINE_EXPRESS_VERSION_CURRENT ) ); ?></span>
+	</div>
+	<h2 class="nav-tab-wrapper">
+		<a class="nav-tab <?php echo 'timeline-express-getting-started' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'timeline-express-getting-started' ), 'index.php' ) ) ); ?>">
+			<?php esc_attr_e( 'Getting Started', 'timeline-express' ); ?>
+		</a>
+	</h2>
 
-<!-- used for the media query -->
-<meta name="viewport" content="width=device-width" />
+	<p class="about-description">
+		<?php esc_attr_e( 'Use the tips below to get started using timeline-express. You will be up and running in no time.', 'timeline-express' ); ?>
+	</p>
 
-<div class="wrap yksme-page-about">
-
-	<div id="ykseme-icon" class="icon32"></div>
-
-	<div id="welcome-page-content" class="col-md-9">
-
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-
-			<a href="http://www.Evan-Herman.com" target="_blank" class="timeline_express_header_logo" style="margin-top:10px; float:right; margin-right:15px;">
-				<img src="<?php echo TIMELINE_EXPRESS_URL . 'images/evan_herman_logo.png'; ?>" alt="Evan Herman" width=65 title="Evan Herman" />
-			</a>
-
-			<h1 id="timeline-express-page-header">
-				<div id="timeline-express-icon" class="icon32"></div><?php _e('Welcome to Timeline Express','timeline-express'); ?> v<?php echo TIMELINE_EXPRESS_VERSION_CURRENT; ?>
-			</h1>
-
-			<p style="font-size:20px;"><?php _e( "Thanks for installing Timeline Express. We know you're going to find this free plugin super helpful and easy to use! To get started, hover over 'Timeline Express', in the admin menu, and click" , "timeline-express" ); ?> <a href="<?php echo admin_url(); ?>post-new.php?post_type=te_announcements"><?php _e( "'New Announcement'" , "timeline-express" ); ?></a><?php _e( " to start adding announcements your timeline!" , "timeline-express" ); ?></p>
-
-			<p style="font-size:20px;"><?php _e( 'or head over to the' , 'timeline-express' ); ?> <a class="button-secondary" href="<?php echo admin_url(); ?>edit.php?post_type=te_announcements&page=timeline-express-settings"><?php _e( "Settings Page" , "timeline-express" ); ?></a> <?php _e( 'to customize and style your form' , 'timeline-express' ); ?></p>
-
+	<div class="feature-section two-col">
+		<div class="col">
+			<h3><?php esc_attr_e( 'Creating Your First Announcement' , 'timeline-express' ); ?></h3>
+			<p><?php printf( __( 'Timeline Express makes it easy to create and display a beautiful and animated timeline in WordPress. Feel free to read our how to <a href="%s" target="_blank">create your first announcement</a>.', 'timeline-express' ), 'http://www.wp-timelineexpress.com/documentation/creating-an-announcement/' ); ?>
+			<p><?php printf( __( 'The process is so intuitive that you can jump right in by going to <a href="%s">Timeline Express > New Announcement</a>.', 'timeline-express' ), esc_url( admin_url( 'admin.php?page=timeline-express-builder' ) ) ); ?>
 		</div>
-
-		<hr />
-
-		<div class="row">
-
-		  <div class="col-md-6 timeline-screenshot">
-			<h2><?php _e( 'Create a Beautiful Timeline In Minutes' , 'timeline-express' ); ?></h2>
-			<p><?php _e( 'Create a vertical and responsive, CSS3 animated timeline fast...without ever writing a single line of code.' , 'timeline-express' ); ?></p>
-
-			<div class="font-awesome-background">
-				<h1 style="width:350px;display:block;margin:0 auto;line-height:1;margin-bottom:2em;background:#F1F1F1;padding:.5em;"><?php _e( 'Font Awesome Included' , 'timeline-express' ); ?></h1>
-				<p style="display:block;background:#F1F1F1;padding:.5em;font-size:18px;"><em><?php _e( 'Hundreds of icons to choose from to make your announcements really stand out!' , 'timeline-express' ); ?></em></p>
+		<div class="col">
+			<div class="feature-video">
+				<img src="<?php esc_attr_e( TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-logo-128.png' ); ?>">
 			</div>
-
-			<hr />
-
-			<div class="timeline-express-image">
-				<h2 style="display:block;text-align:center;padding-top:4em;"><?php _e( 'Timeline Express // Sample Timeline' , 'timeline-express' ); ?></h2><img style="width:60%;display:block;margin:0 auto;padding-top:1em;" src="<?php echo TIMELINE_EXPRESS_URL . 'images/welcome/timeline-screenshot.png'; ?>" alt="Sample Timeline Express" title="Timeline Express Example" >
-			</div>
-
-			<hr style="margin-top:0;" />
-
-		  </div>
-
+		</div>
 	</div>
 
-
-	<div id="welcome-page-sidebar" class="col-md-3">
-
-			<em><?php _e( 'this free plugin was made with' , 'timeline-express' ); ?><div class="dashicons dashicons-heart"></div>, <?php _e( 'by' , 'timeline-express' ); ?> <a href="http://www.evan-herman.com" target="_blank">Evan Herman</a></em><span style="float:right;"><?php _e( 'Please consider making a' , 'timeline-express' ); ?> <a href="http://www.evan-herman.com/contact/?contact-name=<?php echo $current_user_name; ?>&contact-reason=I want to make a donation for all your hard work" target="_blank"><?php _e( 'donation' , 'timeline-express' ); ?></a> <?php _e( 'if you need support in any way.' , 'timeline-express' ); ?></span>
-		<hr />
-
-		<div class="social-media-buttons" style="height:40px;">
-			<strong style="display:inline-block;float:left;margin-top:10px;font-size:16px;"><?php _e( 'Keep Up With Me Elsewhere ' , 'timeline-express' ); ?>:</strong>
-			<span style="display:inline-block;width:115px; margin-left:15px;margin-top:5px;">
-				<a href="https://profiles.wordpress.org/eherman24#content-plugins" title="WordPress" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>images/wordpress-icon.png" style="border: 0px none;" alt="Evan Herman - WordPress Profile" height="24" width="24"></a>
-				<a href="http://twitter.com/evanmherman" title="Twitter" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>images/twitter.png" style="border: 0px none;" alt="Evan Herman - Twitter Profile" height="24" width="24"></a>
-				<a href="https://www.linkedin.com/profile/view?id=46246110" title="Linkedin" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>images/linkedin.png" alt="Evan Herman - LinkedIn Profile" border="0" height="24" width="24"></a>
-				<a href="http://www.evan-herman.com/feed/" title="RSS Feed" target="_blank" class="evan_herman_about_icon"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>images/rss_icon.png" alt="Evan Herman - RSS Feed" border="0" height="24" width="24"></a>
-			</span>
-			<a style="float:right;" href="http://www.evan-herman.com" title="EH Development Shop" target="_blank"><img src="<?php echo TIMELINE_EXPRESS_URL; ?>images/evan_herman_logo.png" alt="Evan Herman" class="timeline_express_header_logo" /></a>
+	<div class="feature-section two-col">
+		<div class="col">
+			<h3><?php esc_attr_e( 'See all Timeline Express Has to Offer' ); ?></h3>
+			<p><?php esc_attr_e( 'Timeline Express is both easy to use and extremely powerful. On top of the visible features, we have built in a ton of additional features under the hood.', 'timeline-express' ); ?></p>
+			<p><a href="http://wp-timelineexpress.com" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'See all Features', 'timeline-express' ); ?></a></p>
 		</div>
-
-
+		<div class="col">
+			<img src="<?php esc_attr_e( TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-logo-128.png' ); ?>">
+		</div>
 	</div>
 
 </div>
