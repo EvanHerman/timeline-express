@@ -38,12 +38,12 @@ add_action( 'pre_get_posts', 'te_announcements_pre_get_posts', 1 );
  */
 function add_new_timeline_express_columns( $timeline_express_columns ) {
 	$timeline_express_announcement_columns['cb'] = '<input type="checkbox" />';
-	$timeline_express_announcement_columns['title'] = _x( 'Announcement Name', 'timeline-express' );
+	$timeline_express_announcement_columns['title'] = sprintf( _x( '%s Name', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
 	$timeline_express_announcement_columns['color'] = _x( 'Color', 'timeline-express' );
 	$timeline_express_announcement_columns['icon'] = _x( 'Icon', 'timeline-express' );
-	$timeline_express_announcement_columns['announcement_date'] = _x( 'Announcement Date', 'timeline-express' );
+	$timeline_express_announcement_columns['announcement_date'] = sprintf( _x( '%s Date', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
 	$timeline_express_announcement_columns['image'] = _x( 'Image', 'timeline-express' );
-	$timeline_express_announcement_columns['past_announcement'] = _x( 'Announcement Past?', 'timeline-express' );
+	$timeline_express_announcement_columns['past_announcement'] = sprintf( _x( '%s Past?', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
 	return $timeline_express_announcement_columns;
 }
 
@@ -87,7 +87,7 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 			$announcment_date = get_post_meta( $id, 'announcement_date' , true );
 			$todays_date = strtotime( date( 'm/d/Y' ) );
 			if ( $announcment_date < $todays_date ) {
-				echo '<div class="dashicon-past-announcement dashicons dashicons-backup" title="announcement has past..."></div>';
+				echo '<div class="dashicon-past-announcement dashicons dashicons-backup" title="' . sprintf( esc_attr__( '%s has past.', 'timeline-express' ), esc_attr__( apply_filters( 'timeline_express_singular_name', 'Announcement' ) ) ) . '" style="display:block;width:100%;"></div>';
 			}
 			break;
 

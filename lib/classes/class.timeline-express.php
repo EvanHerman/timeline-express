@@ -34,6 +34,8 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			add_image_size( 'timeline-express-thumbnail', '200', '120', true );
 			/* Generate our announcements custom post type */
 			add_action( 'init', array( $this, 'timeline_express_generate_announcement_post_type' ) );
+			/* Move all "advanced" metaboxes above the default editor */
+			add_action( 'edit_form_after_title', array( $this, 'timeline_express_rearrange_metaboxes' ), 999 );
 			/* Generate our admin menus */
 			add_action( 'admin_menu', array( $this, 'timeline_express_admin_menus' ) );
 			/* Register our settings, and the default values */
@@ -46,10 +48,13 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			add_shortcode( 'timeline-express', array( $this, 'process_timeline_express_shortcode' ) );
 			/* load our custom post type single template (override the default) */
 			add_filter( 'single_template', array( $this, 'timeline_express_single_announcement_template' ) );
-			/** Filter the single announcement content. */
+			/* Filter the single announcement content. */
 			add_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ) );
-			/** Enqueue single announcement template styles */
+			/* Enqueue single announcement template styles */
 			add_action( 'wp_enqueue_scripts', array( $this, 'timeline_express_single_template_styles' ) );
+			/* Custom plugin action links */
+			add_filter( 'plugin_action_links', array( $this, 'my_plugin_action_links' ), 10, 2 );
+
 			/**
 			 * Include CMB2 - Metabox Framework
 			 *
@@ -90,10 +95,24 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * Plugin deactivation function
 		 */
 		function timeline_express_activate_redirect() {
+			/* User can disable the activation redirect, if it gets annoying */
+			if ( defined( 'TIMELINE_EXPRESS_DISABLED_ACTIVATION_REDIRECT' ) ) {
+				return;
+			}
 			if ( get_option( 'timeline_express_do_activation_redirect', false ) ) {
 				delete_option( 'timeline_express_do_activation_redirect' );
-				/* Redirect to our custom Welcome page */
-				wp_redirect( esc_url_raw( admin_url( '/admin.php?page=timeline-express-welcome' ) ) );
+
+				// Check if this is an update or first install
+				$announcement_count = wp_count_posts( 'te_announcements' );
+				if ( ! isset( $announcement_count ) || 0 === $announcement_count->publish ) {
+					/* Redirect to the welcome page -  Initial install */
+					wp_redirect( admin_url( 'admin.php?page=timeline-express-welcome' ) );
+					exit;
+				} else {
+						/* Redirect to the welcome page (whats new tab)-  Update install */
+					wp_redirect( admin_url( 'admin.php?page=timeline-express-welcome&tab=whats-new' ) );
+					exit;
+				}
 			}
 		}
 
@@ -103,7 +122,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_admin_menus() {
-
+			/* Filter caps, for who can view this menu item */
 			$menu_cap = apply_filters( 'timeline_express_menu_cap', 'manage_options' );
 
 			/* Settings Page */
@@ -115,22 +134,23 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 				'timeline-express-settings',
 				array( $this, 'timeline_express_options_page' )
 			);
-			/* Welcome Page */
-			add_submenu_page('options.php',
-				__( 'Timeline Express Welcome', 'timeline-express' ),
-				__( 'Timeline Express Welcome', 'timeline-express' ),
-				$menu_cap,
-				'timeline-express-welcome',
-				array( $this, 'timeline_express_welcome_page' )
-			);
 			/* Addon Page */
 			add_submenu_page(
 				'edit.php?post_type=te_announcements',
 				__( 'Timeline Express Addons', 'timeline-express' ),
-				'<span style="color:#f18500">' . __( 'Addons', 'timeline-express' ) . '<span>',
+				'<span style="color:#F7A933">' . __( 'Addons', 'timeline-express' ) . '<span>',
 				$menu_cap,
 				'timeline-express-addons',
 				array( $this, 'timeline_express_addons_page' )
+			);
+			/* Welcome Page */
+			add_submenu_page(
+				'edit.php?post_type=te_announcements',
+				__( 'Timeline Express Welcome', 'timeline-express' ),
+				__( 'Welcome', 'timeline-express' ),
+				$menu_cap,
+				'timeline-express-welcome',
+				array( $this, 'timeline_express_welcome_page' )
 			);
 		}
 
@@ -204,6 +224,14 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_add_tinymce() {
+			/* Hide the 'Welcome' menu item from Timeline Express */
+			?>
+			<style>
+			#menu-posts-te_announcements .wp-submenu li:last-child {
+				display: none !important;
+			}
+			</style>
+			<?php
 			global $typenow;
 			/* Only on Post Type: Post and Page */
 			if ( ! in_array( $typenow, apply_filters( 'timeline-express-tinymce-post-types', array( 'page', 'post' ) ), true ) ) {
@@ -298,6 +326,23 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		}
 
 		/**
+		 * Custom plugin action links.
+		 * @param  array $links  array of links to display for our plugin.
+		 * @param  string $file  The file name of the current iteration.
+		 * @return array       New array of links to display.
+		 */
+		public function my_plugin_action_links( $links, $file ) {
+			if ( 'timeline-express/timeline-express.php' === $file ) {
+				/* Remove the edit button */
+				unset( $links['edit'] );
+				$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) . '">' . esc_attr__( 'Settings', 'timeline-express' ) . '</a>';
+				$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_attr__( 'Addons', 'timeline-express' ) . '</a>';
+				$links[] = '<a href="http://www.wp-timelineexpress.com/knowledgebase_category/timeline-express/" target="_blank">' . esc_attr__( 'Documentation', 'timeline-express' ) . '</a>';
+			}
+			return $links;
+		}
+
+		/**
 		 * Add our tinyMCE plugin to the tinyMCE WordPress instance
 		 *
 		 * @package  TimelineExpressBase
@@ -353,6 +398,20 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		}
 
 		/**
+		 * Re-arrange the metbaoxes on our announcements custom post type.
+		 *
+		 * @since 1.0
+		 * @return null
+		 */
+		function timeline_express_rearrange_metaboxes() {
+			global $post, $wp_meta_boxes;
+			if ( isset( $post->post_type ) && 'te_announcements' === $post->post_type ) {
+				do_meta_boxes( get_current_screen(), 'advanced', $post );
+				unset( $wp_meta_boxes[ get_post_type( $post ) ]['advanced'] );
+			}
+		}
+
+		/**
 		 * Register Announcement Custom Post Type
 		 * Register Announcement Custom Post Type Columns
 		 *
@@ -371,7 +430,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 */
 		public function add_timeline_express_admin_scripts_and_styles() {
 			$screen = get_current_screen();
-			$load_styles_on_pages = array( 'te_announcements_page_timeline-express-settings', 'admin_page_timeline-express-welcome' );
+			$load_styles_on_pages = array( 'te_announcements_page_timeline-express-settings', 'te_announcements_page_timeline-express-welcome' );
 			if ( in_array( $screen->base, $load_styles_on_pages, true ) || 'te_announcements' === $screen->post_type ) {
 				/* Register Styles */
 				wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'lib/admin/css/min/timeline-express-admin.min.css' , array(), TIMELINE_EXPRESS_VERSION_CURRENT, 'all' );

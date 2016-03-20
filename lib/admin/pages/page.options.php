@@ -159,7 +159,7 @@ $additional_editor_parameters = array(
 											<th scope="row"><label for="timeline_express_storage[default-announcement-icon]"><?php esc_attr_e( 'Default Icon', 'timeline-express' ); ?></label></th>
 											<td>
 												<?php
-													/* Display our dropdown, pass in the ID, and empty desc */.
+													/* Display our dropdown, pass in the ID, and empty desc */
 													timeline_express_build_bootstrap_icon_dropdown(
 														array(
 															'id' => 'timeline_express_storage[default-announcement-icon]',
@@ -287,12 +287,20 @@ $additional_editor_parameters = array(
 
 				<div class="meta-box-sortables">
 
+					<!-- Timeline Express Logo Metabox -->
+					<div class="postbox">
+						<div class="inside" style="padding:0;">
+							<a href="http://www.wp-timelineexpress.com" target="_blank" style="display:block;">
+								<img src="<?php esc_attr_e( TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-logo-128.png' ); ?>" style="display:block;margin:0 auto;" title="Timeline Express" />
+							</a>
+						</div>
+						<!-- .inside -->
+					</div>
+					<!-- Timeline Express Logo metabox -->
+
 					<!-- CodeParrots Metabox -->
 					<div class="postbox">
 						<div class="inside">
-							<a href="http://www.wp-timelineexpress.com" target="_blank" style="display:block;">
-								<img src="<?php esc_attr_e( TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-logo-128.png' ); ?>" style="display:block;margin:0 auto;margin-bottom:5px;" title="Timeline Express" />
-							</a>
 							<a href="https://www.codeparrots.com" target="_blank" style="display:block;">
 								<img src="<?php esc_attr_e( TIMELINE_EXPRESS_URL . 'lib/admin/images/code-parrots-logo-dark.png' ); ?>" title="Code Parrots" style="max-width:100%;" />
 							</a>

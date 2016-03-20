@@ -61,8 +61,11 @@ class Timeline_Express_Initialize {
 
 		$compare_sign = self::timeline_express_compare_sign( $timeline_express_options['announcement-time-frame'] );
 		$announcement_args = self::timeline_express_query_args( $compare_sign, $timeline_express_options['announcement-display-order'] );
+
+		/* Run the query to retreive our announcements */
 		$announcement_query = new WP_Query( apply_filters( 'timeline_express_announcement_query_args', $announcement_args, $post, $atts ) );
 
+		/* Loop over announcements, if found */
 		if ( $announcement_query->have_posts() ) {
 			?>
 			<section id="cd-timeline" class="cd-container">
@@ -73,6 +76,11 @@ class Timeline_Express_Initialize {
 			}
 			?>
 			</section>
+			<?php
+		} else {
+			/* Display the 'no events' message, setup in our options. */
+			?>
+				<h2><?php esc_attr_e( $timeline_express_options['no-events-message'] ); ?></h2>
 			<?php
 		}
 
@@ -152,7 +160,7 @@ class Timeline_Express_Initialize {
 	 * @return the icon to be used for this announcement.
 	 */
 	private function get_announcement_icon( $post_id ) {
-		return get_post_meta( $post_id, 'announcement_icon', true );
+		return apply_filters( 'timeline_express_icon', get_post_meta( $post_id, 'announcement_icon', true ) );
 	}
 
 	/**
@@ -162,7 +170,7 @@ class Timeline_Express_Initialize {
 	 * @return the icon color to be used for this announcement.
 	 */
 	private function get_announcement_icon_color( $post_id ) {
-		return get_post_meta( $post_id, 'announcement_color', true );
+		return apply_filters( 'timeline_express_icon_color', get_post_meta( $post_id, 'announcement_color', true ) );
 	}
 
 	/**
@@ -172,7 +180,7 @@ class Timeline_Express_Initialize {
 	 * @return string the date to be used for this announcement.
 	 */
 	public static function get_announcement_date( $post_id ) {
-		return esc_attr_e( apply_filters( 'timeline_express_frontend_date_filter', date_i18n( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), get_post_meta( $post_id, 'announcement_date', true ) ) );
+		return esc_attr_e( apply_filters( 'timeline_express_date', date_i18n( apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), get_post_meta( $post_id, 'announcement_date', true ) ) );
 	}
 
 	/**
@@ -182,15 +190,16 @@ class Timeline_Express_Initialize {
 	 * @param string $image_size (optional) Image size to use when displaying announcement images.
 	 */
 	public static function get_announcement_image( $post_id, $image_size = 'timeline-express' ) {
-		echo wp_get_attachment_image(
+		/* Escaped on output in the timeline/single page */
+		echo apply_filters( 'timeline_express_image', wp_get_attachment_image(
 			get_post_meta( $post_id, 'announcement_image_id', true ),
-			apply_filters( 'timeline-express-announcement-img-size', $image_size ),
+			apply_filters( 'timeline-express-announcement-img-size', $image_size ), /* Legacy filter name - maintain formatting */
 			false,
 			array(
 				'title' => esc_attr__( get_the_title() ),
 				'class' => 'announcement-banner-image',
 			)
-		);
+		) );
 	}
 
 	/**
@@ -205,7 +214,7 @@ class Timeline_Express_Initialize {
 	private function get_announcement_excerpt( $random_length, $excerpt_length, $read_more_visiblity, $post_id ) {
 		/* Remove the default excerpt behavior from announcements */
 		add_filter( 'excerpt_more', function( $post_id ) {
-				return '';
+				$excerpt = '';
 		});
 		/* If read more is visible, add a read more link */
 		if ( '1' === $read_more_visiblity ) {
@@ -216,13 +225,14 @@ class Timeline_Express_Initialize {
 		}
 		/* Setup the excerpt length */
 		if ( 1 === $random_length ) {
-			return self::generate_random_excerpt_length( $post_id );
+			$excerpt = self::generate_random_excerpt_length( $post_id );
 		} else {
 			add_filter( 'excerpt_length', function( $excerpt_length ) {
 				return $excerpt_length;
 			});
-			return the_excerpt( get_the_content( $post_id ) );
+			$excerpt = the_excerpt( get_the_content( $post_id ) );
 		}
+		return apply_filters( 'timeline_express_frontend_image', $excerpt );
 	}
 
 	/**
@@ -233,10 +243,10 @@ class Timeline_Express_Initialize {
 	 */
 	private function generate_random_excerpt_length( $announcement_id ) {
 		add_filter( 'excerpt_length', function() {
-			$random_length = (int) rand( apply_filters( 'timeline-express-random-excerpt-min', 50 ), apply_filters( 'timeline-express-random-excerpt-max', 150 ) );
+			$random_length = (int) rand( apply_filters( 'timeline_express_random_excerpt_min', 50 ), apply_filters( 'timeline_express_random_excerpt_max', 150 ) );
 			return (int) $random_length;
 		});
-		return the_excerpt( get_the_content( $announcement_id ) );
+		return apply_filters( 'timeline_express_random_excerpt', the_excerpt( get_the_content( $announcement_id ) ) );
 	}
 
 	/**
@@ -260,7 +270,7 @@ class Timeline_Express_Initialize {
 				$compare_sign = '<';
 			break;
 		}
-		return $compare_sign;
+		return apply_filters( 'timeline_express_compare_sign', $compare_sign );
 	}
 
 	/**
@@ -299,7 +309,11 @@ class Timeline_Express_Initialize {
 				),
 			);
 		}
-		return apply_filters( 'timeline_express_frontend_query_args', $announcement_args );
+		/**
+		 * Fitlered on line 64
+		 * filter name: timeline_express_announcement_query_args
+		 */
+		return $announcement_args;
 	}
 
 	/**
@@ -312,6 +326,6 @@ class Timeline_Express_Initialize {
 		echo 'Timeline Express Free v' . esc_attr__( TIMELINE_EXPRESS_VERSION_CURRENT );
 		echo ' | Site: http://www.wp-timelineexpress.com';
 		echo ' | Author: CodeParrots - http://www.codeparrots.com';
-		return ob_get_clean();
+		return apply_filters( 'timeline_express_html_comment', ob_get_clean() );
 	} /* Last Function */
 }

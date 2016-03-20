@@ -13,7 +13,7 @@ $timeline_express_options = timeline_express_get_options();
 $announcement_metabox = new_cmb2_box( array(
 	'id'            => 'announcement_metabox',
 	'title'         => __( 'Announcement Info.', 'timeline-express' ),
-	'object_types'  => array( 'te_announcements', ), // Post type
+	'object_types'  => array( 'te_announcements' ), // Post type
 	'context'       => 'advanced',
 	'priority'      => 'high',
 	'show_names'    => true, // Show field names on the left
@@ -55,39 +55,61 @@ $announcement_metabox->add_field( array(
 ) );
 
 /**
- * Initiate the metabox
+ * Initiate the sidebar metaboxs
  */
-$about_metabox = new_cmb2_box( array(
-	'id'            => 'about_the_author',
-	'title'         => __( 'About', 'timeline-express' ),
-	'object_types'  => array( 'te_announcements', ), // Post type
+
+/**
+ * Documentation sidebar Metabox
+ */
+$help_docs_metabox = new_cmb2_box( array(
+	'id'            => 'help_docs_metabox',
+	'title'         => __( 'Help & Documentation', 'timeline-express' ),
+	'object_types'  => array( 'te_announcements' ),
 	'context'    => 'side',
 	'priority'   => 'low',
-	'show_names'    => true, // Show field names on the left
+	'show_names'    => true,
 ) );
 
 // Email text field
-$about_metabox->add_field( array(
+$help_docs_metabox->add_field( array(
 	'name' => __( '', 'timeline-express' ),
 	'desc' => __( '', 'timeline-express' ),
-	'id'   => $prefix . 'about',
-	'type' => 'te_about_metabox',
+	'id'   => $prefix . 'help_docs',
+	'type' => 'te_help_docs_metabox',
 ) );
 
+$advert_metabox_title = ( false === get_transient( 'timeline_express_advert_metabox_title' ) ) ? 'Addon' : get_transient( 'timeline_express_advert_metabox_title' );
 
-//Filter here is to allow extra fields to be added
+$advert_metabox = new_cmb2_box( array(
+	'id'            => 'timeline_express_ads',
+	'title'         => $advert_metabox_title,
+	'object_types'  => array( 'te_announcements' ),
+	'context'    => 'side',
+	'priority'   => 'low',
+	'show_names'    => true,
+) );
+
+// Author metabox (custom)
+$advert_metabox->add_field( array(
+	'name' => __( '', 'timeline-express' ),
+	'desc' => __( '', 'timeline-express' ),
+	'id'   => $prefix . 'advertisments',
+	'type' => 'te_advert_metabox',
+) );
+
+// Filter here is to allow extra fields to be added
 // loop to add fields to our array
 $custom_fields = apply_filters( 'timeline_express_custom_fields', $custom_field );
 $i = 0;
 // first, check if any custom fields are defined...
-if( ! empty( $custom_fields ) ) {
-	foreach( $custom_fields as $user_defined_field ) {
+if ( ! empty( $custom_fields ) ) {
+	foreach ( $custom_fields as $user_defined_field ) {
 		// Email text field
 		$announcement_metabox->add_field( array(
-			'name' => $custom_fields[$i]['name'],
-			'desc' => $custom_fields[$i]['desc'],
-			'id'   => $custom_fields[$i]['id'],
-			'type' => $custom_fields[$i]['type'],
+			'name' => $custom_fields[ $i ]['name'],
+			'desc' => $custom_fields[ $i ]['desc'],
+			'id'   => $custom_fields[ $i ]['id'],
+			'type' => $custom_fields[ $i ]['type'],
 		) );
 		$i++;
 	}

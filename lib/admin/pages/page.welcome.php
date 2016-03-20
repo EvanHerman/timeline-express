@@ -8,7 +8,7 @@
  * @since 1.2
  */
 
-$selected = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : 'timeline-express-getting-started';
+$selected = isset( $_GET['page'] ) ? $_GET['page'] : 'timeline-express-getting-started';
 ?>
 <!-- Welcome Page Template Wrap -->
 <div class="wrap about-wrap">

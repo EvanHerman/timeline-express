@@ -17,8 +17,10 @@
  */
 /* Render custom date_time_stamp field */
 add_action( 'cmb2_render_te_date_time_stamp_custom', 'cmb2_render_te_date_time_stamp_custom', 10, 5 );
-/* Render content in the about metabox */
-add_action( 'cmb2_render_te_about_metabox', 'cmb2_render_callback_te_about_metabox', 10, 5 );
+/* Render content in the timeline express addon advertisments metabox */
+add_action( 'cmb2_render_te_advert_metabox', 'cmb2_render_callback_te_advert_metabox', 10, 5 );
+/* Render content in the help & doc metabox */
+add_action( 'cmb2_render_te_help_docs_metabox', 'cmb2_render_callback_te_help_docs_metabox', 10, 5 );
 /* Render custom bootstrap icons dropdown field */
 add_action( 'cmb2_render_te_bootstrap_dropdown', 'cmb2_render_callback_te_bootstrap_dropdown', 10, 5 );
 
@@ -102,7 +104,7 @@ function cmb2_render_te_date_time_stamp_custom( $field, $meta, $object_id, $obje
 }
 
 /**
- * Render the custom 'about' metabox.
+ * Render the custom 'Advertisment' metabox.
  *
  * @since v1.1.5
  *
@@ -112,8 +114,23 @@ function cmb2_render_te_date_time_stamp_custom( $field, $meta, $object_id, $obje
  * @param type       $object_type the type for this field.
  * @param type       $field_type_object the entire field object.
  */
-function cmb2_render_callback_te_about_metabox( $field, $meta, $object_id, $object_type, $field_type_object ) {
-	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/about-metabox.php' );
+function cmb2_render_callback_te_advert_metabox( $field, $meta, $object_id, $object_type, $field_type_object ) {
+	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/advertisment-metabox.php' );
+}
+
+/**
+ * Render the custom 'Help & Documentation' metabox.
+ *
+ * @since v1.1.5
+ *
+ * @param int        $field field to render.
+ * @param int/string $meta stored value for this field.
+ * @param type       $object_id this specific fields id.
+ * @param type       $object_type the type for this field.
+ * @param type       $field_type_object the entire field object.
+ */
+function cmb2_render_callback_te_help_docs_metabox( $field, $meta, $object_id, $object_type, $field_type_object ) {
+	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/help-docs-metabox.php' );
 }
 
 /**
@@ -313,5 +330,27 @@ function timeline_express_get_announcement_date( $post_id, $image_size = 'timeli
  */
 function timeline_express_get_announcement_content( $post_id ) {
 	return the_content( $post_id );
+}
+
+/**
+ * Retreive a custom, user defined, field object.
+ * This is used after you define custom fields using the timeline_express_custom_fields filter.
+ *
+ * @param int    $post_id The announcement (post) ID whos content you want to retreive.
+ * @param string $meta_id The ID of the metabox, whos value you want to retrieve.
+ * @param bool   $array True/False to return an array. Optional. Default: true.
+ * @return array The announcement content, passed through the_content() filter.
+ */
+function timeline_express_get_custom_meta( $post_id, $meta_name, $array = true ) {
+	/* If no post id was passed in, abort */
+	if ( ! $post_id ) {
+		return esc_attr__( 'You forgot to include the announcement ID.', 'timeline-express' );
+	}
+	/* If no meta name was passed in, abort */
+	if ( ! $meta_name ) {
+		return esc_attr__( 'You forgot to include the meta key.', 'timeline-express' );
+	}
+	/* Return the post meta, or false if nothing was found */
+	return ( get_post_meta( $post_id, $meta_name, true ) ) ? get_post_meta( $post_id, $meta_name, true ) : false;
 }
 ?>
