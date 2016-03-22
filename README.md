@@ -6,6 +6,11 @@
 # Timeline Express - v1.2
 This repository is a re-factor of the original code base.
 
+[![WordPress plugin](https://img.shields.io/wordpress/plugin/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
+[![WordPress](https://img.shields.io/wordpress/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
+[![WordPress](https://img.shields.io/wordpress/plugin/dt/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
+[![WordPress rating](https://img.shields.io/wordpress/plugin/r/timeline-express.svg?style=flat-square)](https://wordpress.org/support/plugin/timeline-express)
+
 ### New Site & Documentation
 For the new version of Timeline Express, we built out an entirely new site to showcase the features & add-ons of Timeline Express.
 
