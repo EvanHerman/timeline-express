@@ -12,14 +12,11 @@ class TE_CPT_Meta_Tests extends WP_UnitTestCase {
 	 * @since 1.2
 	 */
 	public function test_announcement_post_type() {
-		// Create an announcement to use for testing purposes.
-		$announcement_id = $this->factory->post->create(
-			array(
-				'post_type' => 'te_announcements',
-				'post_title' => 'Test Announcement',
-				'post_content' => 'This is some test content for our announcement.',
-			)
-		);
+		$announcement_id = wp_insert_post( array(
+			'post_type' => 'te_announcements',
+			'post_title' => 'Test Announcement',
+			'post_content' => 'This is some test content for our announcement.',
+		) );
 
 		$this->assertTrue( is_int( $announcement_id ) && $announcement_id > 0 );
 
