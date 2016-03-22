@@ -174,7 +174,7 @@ function timeline_express_enqueue_font_awesome() {
 	/* Check if CDN is reachable, if so - get em' */
 	if ( wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
 		/* Enqueue font awesome for use in column display */
-		wp_enqueue_style( 'font-awesome' , $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css' , array(), $font_awesome_version );
+		wp_enqueue_style( 'font-awesome', $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css' , array(), $font_awesome_version );
 	} else {
 		/* If not, load the local version */
 		wp_enqueue_style( 'font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.min.css', array(), $font_awesome_version );
@@ -313,10 +313,9 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
  * Retreive the timeline express announcement date
  *
  * @param int    $post_id The announcement (post) ID whos image you want to retreive.
- * @param string $image_size The image size you want to retreive. Possible: timeline-express, full, large, medium, thumbnail.
  * @return Timeline_Express_Initialize::get_announcement_date() Execute the function to retreive the date.
  */
-function timeline_express_get_announcement_date( $post_id, $image_size = 'timeline-express' ) {
+function timeline_express_get_announcement_date( $post_id ) {
 	does_timeline_express_init_class_exist();
 	return Timeline_Express_Initialize::get_announcement_date( $post_id );
 }
@@ -329,7 +328,8 @@ function timeline_express_get_announcement_date( $post_id, $image_size = 'timeli
  * @return array The announcement content, passed through the_content() filter.
  */
 function timeline_express_get_announcement_content( $post_id ) {
-	return the_content( $post_id );
+	$announcement_object = get_post( $post_id );
+	return ( isset( $announcement_object->post_content ) ) ? apply_filters( 'the_content', $announcement_object->post_content ) : '';
 }
 
 /**

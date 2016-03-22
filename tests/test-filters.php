@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Test class to test out that our filters all work properly.
+ *
+ * @package Timeline Express
+ * @since 1.2
+ */
 class TE_Filter_Tests extends WP_UnitTestCase {
 
 	/**

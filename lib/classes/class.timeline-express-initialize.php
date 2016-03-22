@@ -159,7 +159,7 @@ class Timeline_Express_Initialize {
 	 * @param object $post_id The announcement post ID.
 	 * @return the icon to be used for this announcement.
 	 */
-	private function get_announcement_icon( $post_id ) {
+	public function get_announcement_icon( $post_id ) {
 		return apply_filters( 'timeline_express_icon', get_post_meta( $post_id, 'announcement_icon', true ) );
 	}
 
@@ -169,7 +169,7 @@ class Timeline_Express_Initialize {
 	 * @param object $post_id The announcement post ID.
 	 * @return the icon color to be used for this announcement.
 	 */
-	private function get_announcement_icon_color( $post_id ) {
+	public function get_announcement_icon_color( $post_id ) {
 		return apply_filters( 'timeline_express_icon_color', get_post_meta( $post_id, 'announcement_color', true ) );
 	}
 
@@ -180,7 +180,7 @@ class Timeline_Express_Initialize {
 	 * @return string the date to be used for this announcement.
 	 */
 	public static function get_announcement_date( $post_id ) {
-		return esc_attr_e( apply_filters( 'timeline_express_date', date_i18n( apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), get_post_meta( $post_id, 'announcement_date', true ) ) );
+		return apply_filters( 'timeline_express_date', date_i18n( apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), get_post_meta( $post_id, 'announcement_date', true ) );
 	}
 
 	/**
@@ -211,7 +211,7 @@ class Timeline_Express_Initialize {
 	 * @param object  $post_id The announcement post ID.
 	 * @return the excerpt to be used for this announcement.
 	 */
-	private function get_announcement_excerpt( $random_length, $excerpt_length, $read_more_visiblity, $post_id ) {
+	public function get_announcement_excerpt( $random_length, $excerpt_length, $read_more_visiblity, $post_id ) {
 		/* Remove the default excerpt behavior from announcements */
 		add_filter( 'excerpt_more', function( $post_id ) {
 				$excerpt = '';
@@ -232,7 +232,7 @@ class Timeline_Express_Initialize {
 			});
 			$excerpt = the_excerpt( get_the_content( $post_id ) );
 		}
-		return apply_filters( 'timeline_express_frontend_image', $excerpt );
+		return apply_filters( 'timeline_express_frontend_excerpt', $excerpt );
 	}
 
 	/**
@@ -255,7 +255,7 @@ class Timeline_Express_Initialize {
 	 * @param string $time_frame The time frame, defined on our settings page (possible values: 0, 1, 2).
 	 * @return string $compare_sign Return the compare sign to be used.
 	 */
-	private function timeline_express_compare_sign( $time_frame ) {
+	public function timeline_express_compare_sign( $time_frame ) {
 		switch ( $time_frame ) {
 			default:
 			case '0':
@@ -280,7 +280,7 @@ class Timeline_Express_Initialize {
 	 * @param string $display_order The display order set in the timeline express settings array.
 	 * @return array $query_args Array of query arguments to be used.
 	 */
-	private function timeline_express_query_args( $compare_sign, $display_order ) {
+	public function timeline_express_query_args( $compare_sign, $display_order ) {
 		/* Set up the announcement arguments */
 		if ( '' === $compare_sign ) {
 			$announcement_args = array(
