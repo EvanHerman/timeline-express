@@ -8,8 +8,8 @@
 class TE_Helper_Tests extends WP_UnitTestCase {
 
 	/* Helper function to create an announcement for our test cases */
-	public function test_create_announcement( $color = '#FF6347', $icon = 'fa-bluetooth-b', $date = false, $image = '', $image_id = '' ) {
-		// Create our announcement for testing
+	public static function test_create_announcement( $color = '#FF6347', $icon = 'fa-bluetooth-b', $date = false, $image = '', $image_id = '' ) {
+		// Create an announcement to use for testing purposes.
 		$announcement_id = $this->factory->post->create(
 			array(
 				'post_type' => 'te_announcements',
@@ -198,10 +198,8 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 	 * Testing that timeline_express_get_announcement_date() returns what we expect
 	 */
 	public function test_timeline_express_get_announcement_date() {
-		// Re-instantiate this class
-		$helper_functions_test_class = new TE_Helper_Tests;
 		// Create some test announcements, passing in some defaults.
-		$announcement_id = $helper_functions_test_class->test_create_announcement( '#FF6347', 'fa-plus', '04/04/1989' );
+		$announcement_id = self::test_create_announcement( '#FF6347', 'fa-plus', '04/04/1989' );
 		// Grab the announcement date
 		$announcement_date = timeline_express_get_announcement_date( $announcement_id );
 		$comparison_date = date_i18n( get_option( 'date_format' ), strtotime( '04/04/1989' ) );
@@ -213,10 +211,8 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 	 * Testing that timeline_express_get_announcement_content() returns what we expect
 	 */
 	public function test_timeline_express_get_announcement_content() {
-		// Re-instantiate this class
-		$helper_functions_test_class = new TE_Helper_Tests;
 		// Create some test announcements, passing in some defaults.
-		$announcement_id = $helper_functions_test_class->test_create_announcement();
+		$announcement_id = self::test_create_announcement();
 		// Grab the announcement date
 		$announcement_content = trim( timeline_express_get_announcement_content( $announcement_id ) );
 		// $announcement_date = get_post_meta( $announcement_id, 'announcement_date', true );
