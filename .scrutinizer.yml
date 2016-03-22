@@ -1,66 +1,111 @@
-before_commands:
-    - 'composer install --dev --prefer-source'
 tools:
-    external_code_coverage:
-            timeout: 900    # wait for 15 minutes instead of 5
-    php_mess_detector:
-        config:
-            code_size_rules:
-                cyclomatic_complexity:  false
-                npath_complexity:     false
-                excessive_method_length:  false
-                excessive_class_length:  false
-                excessive_parameter_list:  false
-                excessive_public_count:  false
-                too_many_fields:      false
-                too_many_methods:     false
-                excessive_class_complexity:  false
-
-    php_code_sniffer: true
-    sensiolabs_security_checker: true
-    php_code_coverage: true
+    php_sim: true
     php_pdepend: true
-    php_loc:
-        enabled: true
-        excluded_dirs: [vendor, tests, languages, includes/libraries, bin, assets, templates]
-    php_cpd:
-        enabled: true
-        excluded_dirs: [vendor, tests, languages, includes/libraries, bin, assets, templates]
+    php_analyzer: true
+    external_code_coverage:
+        timeout: 600    # Timeout in seconds.
+filter:
+    excluded_paths:
+        - 'tests/*'
 checks:
     php:
-        psr2_switch_declaration: false
-        psr2_control_structure_declaration: false
-        psr2_class_declaration: false
-        one_class_per_file: false
-        avoid_superglobals: false
-        require_php_tag_first: false
         code_rating: true
         duplication: true
-        variable_existence: true
-        useless_calls: true
-        use_statement_alias_conflict: true
-        unused_variables: false
-        unused_properties: true
-        unused_parameters: false
-        unreachable_code: true
-        sql_injection_vulnerabilities: true
-        security_vulnerabilities: true
-        precedence_mistakes: true
-        precedence_in_conditions: true
-        parameter_non_unique: true
-        no_property_on_interface: true
-        no_non_implemented_abstract_methods: true
-        deprecated_code_usage: true
-        closure_use_not_conflicting: true
-        closure_use_modifiable: true
-        avoid_useless_overridden_methods: true
-        avoid_conflicting_incrementers: true
-        assignment_of_null_return: true
-        unused_methods: true
-        too_many_arguments: true
-        no_debug_code: true
-        missing_arguments: true
-        argument_type_checks: false
-        no_error_suppression: false
-        return_doc_comments: false
-        property_assignments: false
+
+coding_style:
+    php:
+        indentation:
+            general:
+                use_tabs: true
+                size: 3
+            switch:
+                indent_case: true
+        spaces:
+            before_parentheses:
+                function_declaration: false
+                closure_definition: false
+                function_call: false
+                if: true
+                for: true
+                while: true
+                switch: true
+                catch: true
+                array_initializer: false
+            around_operators:
+                assignment: true
+                logical: true
+                equality: true
+                relational: true
+                bitwise: true
+                additive: true
+                multiplicative: true
+                shift: true
+                unary_additive: false
+                concatenation: true
+                negation: true
+            before_left_brace:
+                class: true
+                function: true
+                if: true
+                else: true
+                for: true
+                while: true
+                do: true
+                switch: true
+                try: true
+                catch: true
+                finally: true
+            before_keywords:
+                else: true
+                while: true
+                catch: true
+                finally: true
+            within:
+                brackets: true
+                array_initializer: true
+                grouping: true
+                function_call: true
+                function_declaration: true
+                if: true
+                for: true
+                while: true
+                switch: true
+                catch: true
+                type_cast: false
+            ternary_operator:
+                before_condition: true
+                after_condition: true
+                before_alternative: true
+                after_alternative: true
+                in_short_version: true
+            other:
+                before_comma: false
+                after_comma: true
+                before_semicolon: false
+                after_semicolon: true
+                after_type_cast: true
+        braces:
+            classes_functions:
+                class: end-of-line
+                function: end-of-line
+                closure: end-of-line
+            if:
+                opening: end-of-line
+                always: true
+                else_on_new_line: false
+            for:
+                opening: end-of-line
+                always: true
+            while:
+                opening: end-of-line
+                always: true
+            do_while:
+                opening: end-of-line
+                always: true
+                while_on_new_line: false
+            switch:
+                opening: end-of-line
+            try:
+                opening: end-of-line
+                catch_on_new_line: false
+                finally_on_new_line: false
