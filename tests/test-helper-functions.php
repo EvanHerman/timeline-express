@@ -172,10 +172,8 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 	 * Testing that get_announcement_image() returns what we need
 	 */
 	public function test_timeline_express_get_announcement_image() {
-		// instantiate a new class
-		$helper_functions_test_class = new TE_Helper_Tests;
 		// create some test announcements
-		$announcement_id = $helper_functions_test_class->test_create_announcement();
+		$announcement_id = self::test_create_announcement();
 		// store the announcement id
 		$announcement_image_id = get_post_meta( $announcement_id, 'announcement_image_id', true );
 		// if the announcement id exists, continue
