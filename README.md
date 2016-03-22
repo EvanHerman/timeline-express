@@ -1,4 +1,4 @@
-# Timeline Express - v1.2
+# Timeline Express - v1.2 
 This repository is a re-factor of the original code base.
 
 ### New Site & Documentation 
