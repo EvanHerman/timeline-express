@@ -9,11 +9,14 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 
 	/* Helper function to create an announcement for our test cases */
 	public function test_create_announcement( $color = '#FF6347', $icon = 'fa-bluetooth-b', $date = false, $image = '', $image_id = '' ) {
-		$announcement_id = wp_insert_post( array(
-			'post_type' => 'te_announcements',
-			'post_title' => 'Test Announcement',
-			'post_content' => 'This is some test content for our announcement.',
-		) );
+		// Create our announcement for testing
+		$announcement_id = $this->factory->post->create(
+			array(
+				'post_type' => 'te_announcements',
+				'post_title' => 'Test Announcement',
+				'post_content' => 'This is some test content for our announcement.',
+			)
+		);
 
 		// setup the date parameter
 		$date = ( $date ) ? strtotime( $date ) : strtotime( 'now' );
