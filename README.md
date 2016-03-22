@@ -1,7 +1,7 @@
-# Timeline Express - v1.2 
+# Timeline Express - v1.2 ![Travis CI Badge](https://travis-ci.org/EvanHerman/Timeline-Express.svg?branch=master)
 This repository is a re-factor of the original code base.
 
-### New Site & Documentation 
+### New Site & Documentation
 For the new version of Timeline Express, we built out an entirely new site to showcase the features & add-ons of Timeline Express.
 
 Additionally, the documentation for the new version of timeline express can be found at [WP Timeline Express](http://www.wp-timelineexpress.com/documentation).
