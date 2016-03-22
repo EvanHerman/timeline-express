@@ -1,4 +1,9 @@
-# Timeline Express - v1.2 [![Build Status](https://travis-ci.org/EvanHerman/Timeline-Express.svg?branch=master)](https://travis-ci.org/EvanHerman/Timeline-Express)
+[![Build Status](https://travis-ci.org/EvanHerman/Timeline-Express.svg?branch=master)](https://travis-ci.org/EvanHerman/Timeline-Express)
+[![Build Status](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/build.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/build-status/Refactor---v1.2)
+[![Code Coverage](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/coverage.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/quality-score.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
+
+# Timeline Express - v1.2
 This repository is a re-factor of the original code base.
 
 ### New Site & Documentation
