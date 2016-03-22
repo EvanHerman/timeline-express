@@ -1,4 +1,4 @@
-# Timeline Express - v1.2 ![Travis CI Badge](https://travis-ci.org/EvanHerman/Timeline-Express.svg?branch=master)
+# Timeline Express - v1.2 [![Build Status](https://travis-ci.org/EvanHerman/Timeline-Express.svg?branch=master)](https://travis-ci.org/EvanHerman/Timeline-Express)
 This repository is a re-factor of the original code base.
 
 ### New Site & Documentation
