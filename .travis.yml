@@ -49,5 +49,3 @@ after_script:
 - if [[ $TRAVIS_PHP_VERSION = '5.5' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
   ]]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover;
   fi
-
-script: phpunit
