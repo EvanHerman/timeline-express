@@ -51,12 +51,12 @@ class TE_Init_Tests extends WP_UnitTestCase {
 	 *
 	 * Test that the announcement date returns what we expect.
 	 * @return int The UNIX time stamp of the date to use.
-	 */
 	public function test_get_announcement_excerpt() {
 		$init_class = new Timeline_Express_Initialize( array() );
 		$announcement_excerpt = $init_class->get_announcement_excerpt( null, '200', '0', $this->announcement_id );
 		$this->assertEquals( 'test', $announcement_excerpt );
 	}
+	*/
 
 	/**
 	 * Test that the announcement date returns what we expect.
