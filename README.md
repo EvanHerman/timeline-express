@@ -525,7 +525,7 @@ add_filter( 'timeline_express_single_content', 'alter_timeline_express_single_te
 
 `timeline_express_single_page_template` or `timeline-express-single-page-template` <small>(legacy)</small>
 
-- *Description:* Set which template is used to display the single announcements. By default the plugin will look for a file called `single-te_announcements.php` located inside of a `/timeline-express/` directory, in your theme root. If that is not found, it will look for a `single.php` template in the theme root. Finally if neither are found, it will use `page.php`.
+- *Description:* Set which template is used to display the single announcements. By default the plugin will look for a file called `single-te_announcements.php` located inside of a `/timeline-express/` directory in your theme root. If that is not found, it will look for a `single.php` template in the theme root. Finally if neither are found, it will use `page.php`.
 - *Location:* `/timeline-express/lib/classes/class.timeline-express.php`
 - *Paramaters:* `$single_template`
 - *Default:* Default template chosen to be used for single announcements. Possible: `single.php`, `page.php`, `/path/to/custom-template.php`
