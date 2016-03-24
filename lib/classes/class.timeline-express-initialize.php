@@ -59,7 +59,7 @@ class Timeline_Express_Initialize {
 
 		global $post;
 
-		$compare_sign = self::timeline_express_compare_sign( $timeline_express_options['announcement-time-frame'] );
+		$compare_sign = self::timeline_express_compare_sign( $timeline_express_options['announcement-time-frame'], $post->ID );
 		$announcement_args = self::timeline_express_query_args( $compare_sign, $timeline_express_options['announcement-display-order'] );
 
 		/* Run the query to retreive our announcements */
@@ -160,7 +160,7 @@ class Timeline_Express_Initialize {
 	 * @return the icon to be used for this announcement.
 	 */
 	public function get_announcement_icon( $post_id ) {
-		return apply_filters( 'timeline_express_icon', get_post_meta( $post_id, 'announcement_icon', true ) );
+		return apply_filters( 'timeline_express_icon', get_post_meta( $post_id, 'announcement_icon', true ), $post_id );
 	}
 
 	/**
@@ -170,7 +170,7 @@ class Timeline_Express_Initialize {
 	 * @return the icon color to be used for this announcement.
 	 */
 	public function get_announcement_icon_color( $post_id ) {
-		return apply_filters( 'timeline_express_icon_color', get_post_meta( $post_id, 'announcement_color', true ) );
+		return apply_filters( 'timeline_express_icon_color', get_post_meta( $post_id, 'announcement_color', true ), $post_id );
 	}
 
 	/**
@@ -180,7 +180,7 @@ class Timeline_Express_Initialize {
 	 * @return string the date to be used for this announcement.
 	 */
 	public static function get_announcement_date( $post_id ) {
-		return apply_filters( 'timeline_express_date', date_i18n( apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), get_post_meta( $post_id, 'announcement_date', true ) );
+		return apply_filters( 'timeline_express_date', date_i18n( apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), $post_id );
 	}
 
 	/**
@@ -193,13 +193,13 @@ class Timeline_Express_Initialize {
 		/* Escaped on output in the timeline/single page */
 		echo apply_filters( 'timeline_express_image', wp_get_attachment_image(
 			get_post_meta( $post_id, 'announcement_image_id', true ),
-			apply_filters( 'timeline-express-announcement-img-size', $image_size ), /* Legacy filter name - maintain formatting */
+			apply_filters( 'timeline_express_announcement_img_size', apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id ), $post_id ) /* Legacy filter name - maintain formatting */
 			false,
 			array(
 				'title' => esc_attr__( get_the_title() ),
 				'class' => 'announcement-banner-image',
 			)
-		) );
+		), $post_id );
 	}
 
 	/**
@@ -220,7 +220,7 @@ class Timeline_Express_Initialize {
 		if ( '1' === $read_more_visiblity ) {
 			/* Setup the read more button */
 			add_filter( 'excerpt_more', function( $post_id ) {
-					return '... <a class="' . esc_attr__( apply_filters( 'timeline-express-read-more-class', 'timeline-express-read-more-link' ) ) . '" href="'. esc_attr__( esc_url( get_permalink( $post_id ) ) ) . '"> ' . esc_attr__( apply_filters( 'timeline-express-read-more-text', __( 'Read more' , 'timeline-express' ) ) ) . '</a>';
+					return '... <a class="' . esc_attr__( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post_id ) ) . '" href="'. esc_attr__( esc_url( get_permalink( $post_id ) ) ) . '"> ' . esc_attr__( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post_id ) ) . '</a>';
 			});
 		}
 		/* Setup the excerpt length */
@@ -232,21 +232,21 @@ class Timeline_Express_Initialize {
 			});
 			$excerpt = the_excerpt( get_the_content( $post_id ) );
 		}
-		return apply_filters( 'timeline_express_frontend_excerpt', $excerpt );
+		return apply_filters( 'timeline_express_frontend_excerpt', $excerpt, $post_id );
 	}
 
 	/**
 	 * Generate a random excerpt length for the announcement.
 	 *
-	 * @param object $announcement_id The announcement ID, to use in queries.
+	 * @param object $post_id The announcement (post) ID, to use in queries.
 	 * @return the excerpt to be used for this announcement.
 	 */
-	private function generate_random_excerpt_length( $announcement_id ) {
+	private function generate_random_excerpt_length( $post_id ) {
 		add_filter( 'excerpt_length', function() {
-			$random_length = (int) rand( apply_filters( 'timeline_express_random_excerpt_min', 50 ), apply_filters( 'timeline_express_random_excerpt_max', 150 ) );
+			$random_length = (int) rand( apply_filters( 'timeline_express_random_excerpt_min', 50, $post_id ), apply_filters( 'timeline_express_random_excerpt_max', 200, $post_id ) );
 			return (int) $random_length;
 		});
-		return apply_filters( 'timeline_express_random_excerpt', the_excerpt( get_the_content( $announcement_id ) ) );
+		return apply_filters( 'timeline_express_random_excerpt', the_excerpt( get_the_content( $post_id ) ), $post_id );
 	}
 
 	/**
@@ -255,7 +255,7 @@ class Timeline_Express_Initialize {
 	 * @param string $time_frame The time frame, defined on our settings page (possible values: 0, 1, 2).
 	 * @return string $compare_sign Return the compare sign to be used.
 	 */
-	public function timeline_express_compare_sign( $time_frame ) {
+	public function timeline_express_compare_sign( $time_frame, $post_id ) {
 		switch ( $time_frame ) {
 			default:
 			case '0':
@@ -270,7 +270,7 @@ class Timeline_Express_Initialize {
 				$compare_sign = '<';
 			break;
 		}
-		return apply_filters( 'timeline_express_compare_sign', $compare_sign );
+		return apply_filters( 'timeline_express_compare_sign', $compare_sign, $post_id );
 	}
 
 	/**

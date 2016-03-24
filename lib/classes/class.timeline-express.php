@@ -234,7 +234,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			<?php
 			global $typenow;
 			/* Only on Post Type: Post and Page */
-			if ( ! in_array( $typenow, apply_filters( 'timeline-express-tinymce-post-types', array( 'page', 'post' ) ), true ) ) {
+			if ( ! in_array( $typenow, apply_filters( 'timeline_express_tinymce_post_types', array( 'page', 'post' ) ), true ) ) {
 				return;
 			}
 			add_filter( 'mce_external_plugins', array( $this, 'timeline_express_add_tinymce_plugin' ) );
@@ -283,7 +283,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 				$the_content = ob_get_clean();
 			}
 			/* Return announcement meta & append the announcement content */
-			return apply_filters( 'timeline-express-single-content', $the_content . $announcement_content );
+			return apply_filters( 'timeline_express_single_content', $the_content . $announcement_content, $post->ID );
 		}
 
 		/**
@@ -309,7 +309,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 				} else {
 					$single_template = $single_template; /* return standard template */
 				}
-				return apply_filters( 'timeline-express-single-page-template', $single_template );
+				return apply_filters( 'timeline_express_single_page_template', apply_filters( 'timeline-express-single-page-template', $single_template ) ); /* Legacy Support, 2 filters */
 			}
 		}
 		/**

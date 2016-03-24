@@ -70,7 +70,8 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 
 		case 'announcement_date':
 				$announcment_date = get_post_meta( $id, 'announcement_date', true );
-				echo esc_attr( apply_filters( 'timeline_express_admin_column_date_format', date( 'l, F jS, Y' , $announcment_date ), $announcment_date ) );
+				$date_format = apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) );
+				echo esc_attr( date( $date_format, $announcment_date ) );
 			break;
 
 		case 'image':
