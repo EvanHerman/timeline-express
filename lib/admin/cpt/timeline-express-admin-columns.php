@@ -12,31 +12,14 @@
  **/
 
 /**
- * Admin te_announcements table columns
- *
- * @since 1.2
- */
-
-/* Define/Add our new columns to the Timeline Express admin table */
-add_filter( 'manage_edit-te_announcements_columns', 'add_new_timeline_express_columns' );
-
-/* Render content inside of the new Timeline Express admin table columns */
-add_action( 'manage_te_announcements_posts_custom_column', 'manage_timeline_express_column_content', 10, 2 );
-
-/* Define which tables are sortable */
-add_filter( 'manage_edit-te_announcements_sortable_columns', 'make_sortable_timeline_express_column' );
-
-/* Custom sort function when one of our sortable columns is clicked */
-add_action( 'pre_get_posts', 'te_announcements_pre_get_posts', 1 );
-
-/**
  * Add our custom table columns to the te_announcements table.
  *
- * @param type $timeline_express_columns Timeline Express default admin table columns.
+ * @param type $timeline_express_announcement_columns Timeline Express default admin table columns.
  * @since v1.2
  * @return array New, custom admin tables.
  */
-function add_new_timeline_express_columns( $timeline_express_columns ) {
+add_filter( 'manage_edit-te_announcements_columns', 'add_new_timeline_express_columns' );
+function add_new_timeline_express_columns( $timeline_express_announcement_columns ) {
 	$timeline_express_announcement_columns['cb'] = '<input type="checkbox" />';
 	$timeline_express_announcement_columns['title'] = sprintf( _x( '%s Name', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
 	$timeline_express_announcement_columns['color'] = _x( 'Color', 'timeline-express' );
@@ -54,6 +37,7 @@ function add_new_timeline_express_columns( $timeline_express_columns ) {
  * @param string $column_name the name of the field to render.
  * @param string $id the id of the field to render.
  */
+add_action( 'manage_te_announcements_posts_custom_column', 'manage_timeline_express_column_content', 10, 2 );
 function manage_timeline_express_column_content( $column_name, $id ) {
 
 	switch ( $column_name ) {
@@ -105,6 +89,7 @@ function manage_timeline_express_column_content( $column_name, $id ) {
  * @param array $columns Default array of sortable columns.
  * @return array $columns the array of columns that are now sortable.
  */
+add_filter( 'manage_edit-te_announcements_sortable_columns', 'make_sortable_timeline_express_column' );
 function make_sortable_timeline_express_column( $columns ) {
 	$columns['announcement_date'] = 'announcement_date';
 	return $columns;
@@ -117,6 +102,7 @@ function make_sortable_timeline_express_column( $columns ) {
  * @param array $query default query array.
  * @return array $query return the altered, or default, query array.
  */
+add_action( 'pre_get_posts', 'te_announcements_pre_get_posts', 1 );
 function te_announcements_pre_get_posts( $query ) {
 	/**
 	* We only want our code to run in the main WP query
@@ -134,5 +120,3 @@ function te_announcements_pre_get_posts( $query ) {
 	}
 	return $query;
 }
-
-?>

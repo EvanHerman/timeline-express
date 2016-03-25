@@ -32,7 +32,7 @@ class Timeline_Express_Addons {
 	/**
 	 * Query the main site for our add-ons
 	 *
-	 * @return array RSS add-on items returned from our site.
+	 * @return object RSS add-on items returned from our site.
 	 */
 	private function get_addons_rss_feed() {
 		/* Get RSS Feed(s) */

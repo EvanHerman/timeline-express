@@ -43,7 +43,7 @@ function timeline_express_get_options() {
 		'excerpt-random-length' => '0',
 		'date-visibility'	=> '1',
 		'read-more-visibility'	=> '1',
-		'default-announcement-icon' => 'fa-exclamation-triangle',
+		'default-announcement-icon' => 'exclamation-triangle',
 		'default-announcement-color' => '#75CE66',
 		'announcement-box-shadow-color' => '#B9C5CD',
 		'announcement-background-line-color' => '#D7E4ED',
@@ -210,21 +210,13 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	// Split the response body, and store the icon classes in a variable.
 	$split_dat_response = explode( 'icons */' , $response['body'] );
 
-	// Define an empty array to store our icons in.
-	$bootstrap_icon_array = array();
-
 	// Replace the unecessary stuff from the font awesome CSS icon file.
 	$data = str_replace( ';' , '' , str_replace( ':before' , '' , str_replace( '}' , '' , str_replace( 'content' , '' , str_replace( '{' , '' , $split_dat_response[1] ) ) ) ) );
 	$icon_data = explode( '.fa-' , $data );
 	$i = 1;
 
-	foreach ( array_slice( $icon_data, 1 ) as $key => $value ) {
-		$split_icon = explode( ':' , $value );
-		if ( isset( $split_icon[1] ) ) {
-			$bootstrap_icon_array[] = array( trim( 'fa-' . $split_icon[0] ) => trim( $split_icon[0] ) );
-		}
-		$i++;
-	}
+	// Define & Build our icon array
+	$bootstrap_icon_array = build_bootstrap_icons_array( $icon_data );
 
 	$flat_bootstrap_icon_array = array();
 	foreach ( $bootstrap_icon_array as $array ) {
@@ -253,12 +245,12 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	if ( isset( $field->args['id'] ) ) {
 		$field_name = $field->args['id'];
 	} else {
-		$field_name = 'default-announcement-icon';
+		$field_name = esc_attr( $field['id'] );
 	}
 	?>
 
 	<!-- start the font awesome icon select -->
-	<select class="selectpicker" name="timeline_express_storage[<?php echo esc_attr( $field_name ); ?>]" id="default-announcement-icon>">
+	<select class="selectpicker" name="<?php echo esc_attr( $field_name ); ?>" id="default-announcement-icon" name="<?php echo esc_attr( $field_name ); ?>">
 
 		<?php
 		/* sort the bootstrap icons alphabetically */
@@ -279,11 +271,60 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	}
 }
 
-
-/*
- * Helper functions used in the single Timeline Express announcement template.
- * @file single.timeline-express.php
+/**
+ * Helper function to build the bootstrap icons array
+ * @param  array $icons the entire array of icons to filter
+ * @return [type]        [description]
  */
+function build_bootstrap_icons_array( $icon_data ) {
+	// Confirm that $icons is an array and not empty
+	if ( ! is_array( $icon_data ) || empty( $icon_data ) ) {
+		return;
+	}
+	// Empty array for icon array
+	$bootstrap_icon_array = array();
+	// Loop
+	foreach ( array_slice( $icon_data, 1 ) as $key => $value ) {
+		$split_icon = explode( ':' , $value );
+		if ( isset( $split_icon[1] ) ) {
+			// Push to the array
+			$bootstrap_icon_array[] = array( trim( 'fa-' . $split_icon[0] ) => trim( $split_icon[0] ) );
+		}
+	}
+	// Return our array of icons
+	return $bootstrap_icon_array;
+}
+
+/**
+ * Include a Timeline Express template
+ * @param  string $template_name Template name to load
+ * @return null                Include the template needed
+ * @since 1.2
+ */
+function get_timeline_express_template( $template_name = 'timeline-container' ) {
+	/**
+	 * Switch over the template name, return template
+	 * - Check if a file exists locally (theme root), and load it.
+	 * - Note: Users can create a directory (timeline-express), and copy over the announcement template into the theme root.
+	 */
+	switch ( $template_name ) {
+		default:
+		case 'timeline-container':
+			if ( file_exists( get_template_directory() . '/timeline-express/timeline-express-container.php' ) ) {
+				include( get_template_directory() . '/timeline-express/timeline-express-container.php' );
+			} else {
+				include( TIMELINE_EXPRESS_PATH . 'lib/public/partials/timeline-express-container.php' );
+			}
+			break;
+		case 'single-announcement':
+			if ( file_exists( get_template_directory() . '/timeline-express/single.timeline-express.php' ) ) {
+				include( get_template_directory() . '/timeline-express/single.timeline-express.php' );
+			} else {
+				include( TIMELINE_EXPRESS_PATH . 'lib/public/partials/single.timeline-express.php' );
+			}
+			break;
+	}
+}
 
 /**
  * Check if our Timeline Express Init class exists
@@ -297,39 +338,111 @@ function does_timeline_express_init_class_exist() {
 	}
 	return;
 }
+
+/**
+ * Get the announcement icon chosen in the dropdown
+ * @param  int $post_id The announcement ID to retreive the icon from
+ * @return string       The announcement icon to use
+ */
+function timeline_express_get_announcement_icon( $post_id ) {
+	return apply_filters( 'timeline_express_icon', get_post_meta( $post_id, 'announcement_icon', true ), $post_id );
+}
+
+/**
+ * Get the announcement color chosen on the announcement edit page
+ * @param  int $post_id The announcement ID to retreive the color from
+ * @return string       The announcement color to use behind the icon
+ */
+function timeline_express_get_announcement_icon_color( $post_id ) {
+	return apply_filters( 'timeline_express_icon_color', get_post_meta( $post_id, 'announcement_color', true ), $post_id );
+}
+
 /**
  * Retreive the timeline express announcement image
- *
  * @param  int    $post_id The announcement (post) ID whos image you want to retreive.
  * @param  string $image_size (optional) The image size to retreive.
- * @return Timeline_Express_Initialize::get_announcement_image() Execute the function to retreive the image.
+ * @return Announcement image markup.
  */
 function timeline_express_get_announcement_image( $post_id, $image_size = 'timeline-express' ) {
-	does_timeline_express_init_class_exist();
-	return Timeline_Express_Initialize::get_announcement_image( $post_id, $image_size );
+	/* Escaped on output in the timeline/single page */
+	echo apply_filters( 'timeline_express_image', wp_get_attachment_image(
+		get_post_meta( $post_id, 'announcement_image_id', true ),
+		apply_filters( 'timeline_express_announcement_img_size', apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id ), $post_id ), /* Legacy filter name - maintain formatting */
+		false,
+		array(
+			'title' => esc_attr__( get_the_title() ),
+			'class' => 'announcement-banner-image',
+		)
+	), $post_id );
 }
 
 /**
  * Retreive the timeline express announcement date
- *
  * @param int    $post_id The announcement (post) ID whos image you want to retreive.
  * @return Timeline_Express_Initialize::get_announcement_date() Execute the function to retreive the date.
  */
 function timeline_express_get_announcement_date( $post_id ) {
-	does_timeline_express_init_class_exist();
-	return Timeline_Express_Initialize::get_announcement_date( $post_id );
+	return apply_filters( 'timeline_express_date', date_i18n( apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), $post_id );
 }
 
 /**
  * Retreive the timeline express announcement content.
  * Note: Cannot be used on the single announcement template.
- *
  * @param  int $post_id The announcement (post) ID whos content you want to retreive.
  * @return array The announcement content, passed through the_content() filter.
  */
 function timeline_express_get_announcement_content( $post_id ) {
 	$announcement_object = get_post( $post_id );
 	return ( isset( $announcement_object->post_content ) ) ? apply_filters( 'the_content', $announcement_object->post_content ) : '';
+}
+
+/**
+ * Get the announcement excerpt
+ * @param  int $post_id The announcement (post) ID whos excerpt you want to retreive.
+ * @return string       The announcement excerpt
+ */
+function timeline_express_get_announcement_excerpt( $post_id ) {
+	/* Setup the excerpt length */
+	$excerpt = the_excerpt( get_the_content( $post_id ) );
+	return apply_filters( 'timeline_express_frontend_excerpt', $excerpt, $post_id );
+}
+
+/**
+ * Setup a custom or random excerpt length based on the options set in the settings
+ * @return string The announcement excerpt
+ * @since 1.2
+ */
+add_filter( 'excerpt_length', 'timeline_express_custom_excerpt_length' );
+function timeline_express_custom_excerpt_length( $length ) {
+	$timeline_express_options = timeline_express_get_options();
+	if ( 1 === $timeline_express_options['excerpt-random-length'] ) {
+		$random_length = (int) rand( apply_filters( 'timeline_express_random_excerpt_min', 50 ), apply_filters( 'timeline_express_random_excerpt_max', 200 ) );
+		return (int) $random_length;
+	}
+	return $length;
+}
+
+/**
+ * Filter the read more links to a custom state
+ * @since 1.2
+ */
+add_filter( 'excerpt_more', 'timeline_express_custom_read_more' );
+function timeline_express_custom_read_more() {
+	global $post;
+	$timeline_express_options = timeline_express_get_options();
+	if ( '1' !== $timeline_express_options['read-more-visibility'] ) {
+		return;
+	}
+	return apply_filters( 'timeline_express_read_more_link', '... <a class="' . esc_attr__( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="'. esc_attr__( esc_url( get_permalink( $post->ID ) ) ) . '"> ' . esc_attr__( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID );
+}
+
+/**
+ * Generate an excerpt of random length
+ * @param  int $post_id The announcement ID to retreive the excerpt
+ * @return string       The announcement excerpt of random length
+ */
+function timeline_express_generate_random_announcement( $post_id ) {
+	return apply_filters( 'timeline_express_random_excerpt', get_the_content( $post_id ), $post_id );
 }
 
 /**

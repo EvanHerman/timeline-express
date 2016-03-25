@@ -10,7 +10,7 @@ if ( false === ( $response = get_transient( 'te_font_awesome_transient' ) ) ) {
 	// based on https or http...
 	$response = wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' );
 
-	if( is_wp_error( $response ) ) {
+	if ( is_wp_error( $response ) ) {
 		// load font awesome locally
 		$response = wp_remote_get( TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.css' );
 	}
@@ -23,32 +23,23 @@ if ( false === ( $response = get_transient( 'te_font_awesome_transient' ) ) ) {
 // splot the response body, and store the icon classes in a variable
 $split_dat_response = explode( 'icons */' , $response['body'] );
 
-// empty array for icon array
-$bootstrap_icon_array = array();
 
 // replace the unecessary stuff
 $data = str_replace( ';' , '' , str_replace( ':before' , '' , str_replace( '}' , '' , str_replace( 'content' , '' , str_replace( '{' , '' , $split_dat_response[1] ) ) ) ) );
 $icon_data = explode( '.fa-' , $data );
 $i = 1;
 
-foreach( array_slice($icon_data,1) as $key => $value) {
-	$split_icon = explode( ':' , $value );
-	if( isset( $split_icon[1] ) ) {
-		$bootstrap_icon_array[] = array( trim( 'fa-' . $split_icon[0] ) => trim( $split_icon[0] ) );
-	}
-	$i++;
-}
+// Get our icon array
+$bootstrap_icon_array = build_bootstrap_icons_array( $icon_data );
 
 $flat_bootstrap_icon_array = array();
-foreach($bootstrap_icon_array as $array) {
-	foreach($array as $k=>$v) {
+foreach ( $bootstrap_icon_array as $array ) {
+	foreach ( $array as $k => $v ) {
 		 $flat_bootstrap_icon_array[$k] = $v;
 	}
 }
-
-
-
 ?>
+
 <script>
 jQuery( document ).ready( function() {
 	jQuery('.selectpicker').selectpicker({
@@ -57,6 +48,7 @@ jQuery( document ).ready( function() {
 	});
 });
 </script>
+
 <style>
 	.dropdown-toggle { background: transparent !important; border: 1px solid rgb(201, 201, 201) !important; }
 	.dropdown-toggle .caret { border-top-color: #333 !important; }
@@ -64,33 +56,31 @@ jQuery( document ).ready( function() {
 </style>
 
 <?php
-	// check which page were on, set name appropriately
-	if( isset( $field->args['id'] ) ) {
-		$field_name = $field->args['id'];
-	} else {
-		$field_name = 'default-announcement-icon';
-	}
+// check which page were on, set name appropriately
+if ( isset( $field->args['id'] ) ) {
+	$field_name = $field->args['id'];
+} else {
+	$field_name = 'default-announcement-icon';
+}
 ?>
 
 <!-- start the font awesome icon select -->
-<select class="selectpicker" name="<?php echo $field_name; ?>" id="default-announcement-icon>">
+<select class="selectpicker" name="<?php esc_attr_e( $field_name ); ?>" id="default-announcement-icon>">
 
 	<?php
-		/* sort the bootstrap icons alphabetically */
-		sort( $flat_bootstrap_icon_array );
-		foreach( $flat_bootstrap_icon_array as $icon ) {
+	/* sort the bootstrap icons alphabetically */
+	sort( $flat_bootstrap_icon_array );
+	foreach ( $flat_bootstrap_icon_array as $icon ) {
 	?>
-
-	<option class="fa" data-icon="fa-<?php echo $icon; ?>" <?php selected( 'fa-'.$icon, $escaped_value ); ?>><?php echo $icon; ?></option>
-
+		<option class="fa" data-icon="fa-<?php esc_attr_e( $icon ); ?>" <?php selected( 'fa-'.$icon, $escaped_value ); ?>><?php esc_attr_e( $icon ); ?></option>
 	<?php
-		}
+	}
 	?>
 
 </select>
 <!-- end select -->
 
 <?php
-if( 'te_announcements_page_timeline-express-settings' != $screen_base ) {
-	echo '<p class="cmb_metabox_description">'.$field->args['desc'].'</p>';
+if ( 'te_announcements_page_timeline-express-settings' !== $screen_base ) {
+	echo '<p class="cmb_metabox_description">' . esc_attr__( $field->args['desc'] ).'</p>';
 }

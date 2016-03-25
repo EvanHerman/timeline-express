@@ -1,7 +1,6 @@
 <?php
 /**
  * Timeline Express Initialization class
- *
  * @category Timeline_Express_Initialize
  * @package  TimelineExpressBase
  * @author    CodeParrots
@@ -15,7 +14,6 @@
 class Timeline_Express_Initialize {
 	/**
 	 * Main class constructor
-	 *
 	 * @param array $atts Shortcode attributes passed in from class.timeline-express.php.
 	 */
 	public function __construct( $atts ) {
@@ -49,7 +47,6 @@ class Timeline_Express_Initialize {
 
 	/**
 	 * Generate our timeline containers etc.
-	 *
 	 * @param array $timeline_express_options Array of timeline express settings, to be used in the timeline.
 	 * @param array $atts Array of shortcode attributes, passed in above.
 	 * @return mixed HTML content of our timeline used to render on the frontend.
@@ -71,7 +68,7 @@ class Timeline_Express_Initialize {
 			<section id="cd-timeline" class="cd-container">
 			<?php
 			while ( $announcement_query->have_posts() ) {
-				$announcement = $announcement_query->the_post();
+				$announcement_query->the_post();
 				self::generate_timeline_express_container( get_post( get_the_ID() ), $timeline_express_options );
 			}
 			?>
@@ -85,7 +82,7 @@ class Timeline_Express_Initialize {
 		}
 
 		/* Generate About Text */
-		echo '<!-- ' . esc_html( self::timeline_express_about_content() ) . ' -->';
+		echo '<!-- ' . esc_html( self::timeline_express_about_comment() ) . ' -->';
 
 		$shortcode = ob_get_contents();
 		ob_end_clean();
@@ -95,7 +92,6 @@ class Timeline_Express_Initialize {
 	/**
 	 * Print the inlien styles for Timeline Express.
 	 * These styles load the proper colors for Timeline Express containerss and background line.
-	 *
 	 * @param array $timeline_express_options Timeline Express options array.
 	 * @since 1.2
 	 */
@@ -135,123 +131,15 @@ class Timeline_Express_Initialize {
 
 	/**
 	 * Generate the timeline express container
-	 *
 	 * @param object $announcement The announcement (post) object.
 	 * @param array  $timeline_express_options The timeline express settings array.
 	 */
 	private function generate_timeline_express_container( $announcement, $timeline_express_options ) {
-		/**
-		 * Check if a file exists locally (theme root), and load it.
-		 * Users can create a directory (timeline-express), and copy over the announcement template into the theme root.
-		 *
-		 * @since 1.2
-		 */
-		if ( file_exists( get_template_directory() . '/timeline-express/timeline-express-container.php' ) ) {
-			include( get_template_directory() . '/timeline-express/timeline-express-container.php' );
-		} else {
-			include( TIMELINE_EXPRESS_PATH . 'lib/public/partials/timeline-express-container.php' );
-		}
-	}
-
-	/**
-	 * Get the announcement icon to use.
-	 *
-	 * @param object $post_id The announcement post ID.
-	 * @return the icon to be used for this announcement.
-	 */
-	public function get_announcement_icon( $post_id ) {
-		return apply_filters( 'timeline_express_icon', get_post_meta( $post_id, 'announcement_icon', true ), $post_id );
-	}
-
-	/**
-	 * Get the announcement icon color to use.
-	 *
-	 * @param object $post_id The announcement post ID.
-	 * @return the icon color to be used for this announcement.
-	 */
-	public function get_announcement_icon_color( $post_id ) {
-		return apply_filters( 'timeline_express_icon_color', get_post_meta( $post_id, 'announcement_color', true ), $post_id );
-	}
-
-	/**
-	 * Get the announcement date
-	 *
-	 * @param object $post_id The announcement post ID.
-	 * @return string the date to be used for this announcement.
-	 */
-	public static function get_announcement_date( $post_id ) {
-		return apply_filters( 'timeline_express_date', date_i18n( apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), $post_id );
-	}
-
-	/**
-	 * Get the announcement image to use
-	 *
-	 * @param object $post_id The announcement post object.
-	 * @param string $image_size (optional) Image size to use when displaying announcement images.
-	 */
-	public static function get_announcement_image( $post_id, $image_size = 'timeline-express' ) {
-		/* Escaped on output in the timeline/single page */
-		echo apply_filters( 'timeline_express_image', wp_get_attachment_image(
-			get_post_meta( $post_id, 'announcement_image_id', true ),
-			apply_filters( 'timeline_express_announcement_img_size', apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id ), $post_id ), /* Legacy filter name - maintain formatting */
-			false,
-			array(
-				'title' => esc_attr__( get_the_title() ),
-				'class' => 'announcement-banner-image',
-			)
-		), $post_id );
-	}
-
-	/**
-	 * Get the announcement image to use
-	 *
-	 * @param bool    $random_length Dictates whether a random string length should be used.
-	 * @param integer $excerpt_length the length of the excerpt to be used.
-	 * @param object  $read_more_visiblity Whether or not the read more link should be visible.
-	 * @param object  $post_id The announcement post ID.
-	 * @return the excerpt to be used for this announcement.
-	 */
-	public function get_announcement_excerpt( $random_length, $excerpt_length, $read_more_visiblity, $post_id ) {
-		/* Remove the default excerpt behavior from announcements */
-		add_filter( 'excerpt_more', function( $post_id ) {
-				$excerpt = '';
-		});
-		/* If read more is visible, add a read more link */
-		if ( '1' === $read_more_visiblity ) {
-			/* Setup the read more button */
-			add_filter( 'excerpt_more', function( $post_id ) {
-					return '... <a class="' . esc_attr__( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post_id ) ) . '" href="'. esc_attr__( esc_url( get_permalink( $post_id ) ) ) . '"> ' . esc_attr__( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post_id ) ) . '</a>';
-			});
-		}
-		/* Setup the excerpt length */
-		if ( 1 === $random_length ) {
-			$excerpt = self::generate_random_excerpt_length( $post_id );
-		} else {
-			add_filter( 'excerpt_length', function( $excerpt_length ) {
-				return $excerpt_length;
-			});
-			$excerpt = the_excerpt( get_the_content( $post_id ) );
-		}
-		return apply_filters( 'timeline_express_frontend_excerpt', $excerpt, $post_id );
-	}
-
-	/**
-	 * Generate a random excerpt length for the announcement.
-	 *
-	 * @param object $post_id The announcement (post) ID, to use in queries.
-	 * @return the excerpt to be used for this announcement.
-	 */
-	private function generate_random_excerpt_length( $post_id ) {
-		add_filter( 'excerpt_length', function() {
-			$random_length = (int) rand( apply_filters( 'timeline_express_random_excerpt_min', 50, $post_id ), apply_filters( 'timeline_express_random_excerpt_max', 200, $post_id ) );
-			return (int) $random_length;
-		});
-		return apply_filters( 'timeline_express_random_excerpt', the_excerpt( get_the_content( $post_id ) ), $post_id );
+		get_timeline_express_template( 'timeline-container' );
 	}
 
 	/**
 	 * Decide what compare sign should be used in the query arguments
-	 *
 	 * @param string $time_frame The time frame, defined on our settings page (possible values: 0, 1, 2).
 	 * @return string $compare_sign Return the compare sign to be used.
 	 */
@@ -275,7 +163,6 @@ class Timeline_Express_Initialize {
 
 	/**
 	 * Setup the Timeline Express query
-	 *
 	 * @param string $compare_sign Compare sign to be used in the query arguments. Dictates the query to be used.
 	 * @param string $display_order The display order set in the timeline express settings array.
 	 * @return array $query_args Array of query arguments to be used.
@@ -318,10 +205,9 @@ class Timeline_Express_Initialize {
 
 	/**
 	 * Generate about text, to aid in debugging.
-	 *
 	 * @return string We're returning a comment block for the frontend.
 	 */
-	private function timeline_express_about_content() {
+	private function timeline_express_about_comment() {
 		ob_start();
 		echo 'Timeline Express Free v' . esc_attr__( TIMELINE_EXPRESS_VERSION_CURRENT );
 		echo ' | Site: http://www.wp-timelineexpress.com';

@@ -12,15 +12,6 @@
 
 if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
-	/**
-	 * MyClass Class Doc Comment
-	 *
-	 * @category Class
-	 * @package  MyClass
-	 * @author    A NOther
-	 * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
-	 * @link     http://www.hashbangcode.com/
-	 */
 	class TimelineExpressBase {
 		/**
 		 * Main constructor
@@ -57,7 +48,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 			/**
 			 * Include CMB2 - Metabox Framework
-			 *
 			 * @resource https://github.com/WebDevStudios/CMB2
 			 */
 			if ( file_exists( TIMELINE_EXPRESS_PATH . 'lib/admin/CMB2/init.php' ) ) {
@@ -69,7 +59,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 			/**
 			 * Admin scripts and styles enqueue
-			 *
 			 * @since 1.2
 			 */
 			 add_action( 'admin_enqueue_scripts' , array( $this, 'add_timeline_express_admin_scripts_and_styles' ) );
@@ -118,7 +107,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Generate administrative menus
-		 *
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_admin_menus() {
@@ -156,7 +144,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Register the Timeline Express settings
-		 *
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_register_settings() {
@@ -167,7 +154,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Sanitize and save our options to the database
-		 *
 		 * @package  TimelineExpressBase
 		 * @param array $options Options array to update.
 		 */
@@ -202,7 +188,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Display admin notices in certain locations
-		 *
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_admin_notices() {
@@ -220,7 +205,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Add our tinyMCE button, and scripts to the WP_Editor() instance
-		 *
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_add_tinymce() {
@@ -255,7 +239,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Filter the content, and load our template in it's place.
-		 *
 		 * @param array $the_content The page content to filter.
 		 * @return page template.
 		 */
@@ -269,17 +252,8 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 				$announcement_content = $the_content;
 				/* Include helper functions */
 				include_once TIMELINE_EXPRESS_PATH . 'lib/helpers.php';
-				/**
-				 * Check if a file exists locally (theme root), and load it.
-				 * Users can create a directory (timeline-express), and copy over the announcement template into the theme root.
-				 *
-				 * @since 1.2
-				 */
-				if ( file_exists( get_template_directory() . '/timeline-express/single.timeline-express.php' ) ) {
-					include( get_template_directory() . '/timeline-express/single.timeline-express.php' );
-				} else {
-					include( TIMELINE_EXPRESS_PATH . 'lib/public/partials/single.timeline-express.php' );
-				}
+				/* Include the single template */
+				get_timeline_express_template( 'single-announcement' );
 				/* Return the output buffering */
 				$the_content = ob_get_clean();
 			}
@@ -293,7 +267,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 *  Next it checks for a single.php template in the theme root
 		 *  Next it checksf or a page.php template in the theme root
 		 *  If all else fails, it will use the default template defined by WordPress.
-		 *
 		 * @param  string $single_template The page template name to be used for single announcements.
 		 * @return string                  The page template to be used for the single announcements.
 		 */
@@ -315,7 +288,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		}
 		/**
 		 * Enqueue styles on single announcement templates.
-		 *
 		 * @return null
 		 */
 		public function timeline_express_single_template_styles() {
@@ -345,7 +317,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Add our tinyMCE plugin to the tinyMCE WordPress instance
-		 *
 		 * @package  TimelineExpressBase
 		 * @param array $plugin_array Array of default tinyMCE plugins.
 		 * @return tinyMCE plugin array
@@ -357,7 +328,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Add our tinyMCE plugin to the tinyMCE WordPress instance
-		 *
 		 * @package  TimelineExpressBase
 		 * @param array $buttons Array of default tinyMCE buttons.
 		 * @return tinyMCE buttons array
@@ -369,7 +339,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Inclue our options page
-		 *
 		 * @since 1.2
 		 * @package included in TimelineExpressBase->timeline_express_admin_menus()
 		 */
@@ -379,7 +348,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Inclue our welcome page
-		 *
 		 * @since 1.2
 		 * @package included in TimelineExpressBase->timeline_express_admin_menus()
 		 */
@@ -389,7 +357,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Inclue our addons page
-		 *
 		 * @since 1.2
 		 * @package included in TimelineExpressBase->timeline_express_admin_menus()
 		 */
@@ -400,7 +367,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Re-arrange the metbaoxes on our announcements custom post type.
-		 *
 		 * @since 1.0
 		 * @return null
 		 */
@@ -415,7 +381,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		/**
 		 * Register Announcement Custom Post Type
 		 * Register Announcement Custom Post Type Columns
-		 *
 		 * @since 1.2
 		 */
 		public function timeline_express_generate_announcement_post_type() {
@@ -426,7 +391,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Conditionally enqueue our scripts and styles on the dashboard, where needed.
-		 *
 		 * @since 1.2
 		 */
 		public function add_timeline_express_admin_scripts_and_styles() {

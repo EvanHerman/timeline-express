@@ -294,6 +294,25 @@ function set_custom_timeline_express_image_size( $image_size, $post_id ) {
 add_filter( 'timeline_express_announcement_img_size', 'set_custom_timeline_express_image_size', 10, 2 );
 ```
 
+`timeline_express_read_more_link`
+
+- *Description:* Alter the Timeline Express read more link markup, or set custom markup using the `$post_id` variable to set the href. **Note:** To alter the read more classes see, `timeline_express_read_more_class`. To alter the read more text, see `timeline_express_read_more_text`.
+- *Location:* `/timeline-express/lib/helpers.php`
+- *Paramaters:* `$read_more_html`, `$post_id`
+- *Default:* HTML markup for the read more link
+
+*Example Usage*
+```php
+/**
+ * Wrap the read more html in <p> tags and remove the elipses (...)
+ */
+function custom_timeline_express_read_more_link( $read_more_html, $post_id ) {
+	$read_more_html = '<p>' . str_replace( '...', '', $read_more_html ) . '</p>';
+	return $read_more_html;
+}
+add_filter( 'timeline_express_read_more_link', 'custom_timeline_express_read_more_link', 10, 2 );
+```
+
 `timeline_express_read_more_class`
 
 - *Description:* Alter the Timeline Express read more link class, or add additional classes.

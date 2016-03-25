@@ -34,7 +34,7 @@ $announcement_metabox->add_field( array(
 	'desc' => __( 'select an icon from the drop down above. This is used for the icon associated with the announcement.', 'timeline-express' ),
 	'id'   => $prefix . 'icon',
 	'type' => 'te_bootstrap_dropdown',
-	'default' => $timeline_express_options['default-announcement-icon'],
+	'default' => 'fa-' . $timeline_express_options['default-announcement-icon'],
 ) );
 
 // Email text field
