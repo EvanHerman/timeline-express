@@ -2,8 +2,9 @@ tools:
     php_sim: true
     php_pdepend: true
     php_analyzer: true
-    php_code_coverage:
-        test_command: vendor/bin/phpunit
+    php_code_sniffer:
+        config:
+            standard: "WordPress" # Other Values: PSR2, PEAR, Zend, WordPress, Drupal, TYPO3CMS
     external_code_coverage:
         timeout: 1200    # Timeout in seconds.
         runs: 3
