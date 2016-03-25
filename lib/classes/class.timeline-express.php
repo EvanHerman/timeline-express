@@ -261,6 +261,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 */
 		public function timeline_express_single_page_content( $the_content ) {
 			global $post;
+			$post_id = ( isset( $post->ID ) ) ? $post->ID : '';
 			$announcement_content = false;
 			if ( is_single() && 'te_announcements' === $post->post_type ) {
 				ob_start();
@@ -283,7 +284,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 				$the_content = ob_get_clean();
 			}
 			/* Return announcement meta & append the announcement content */
-			return apply_filters( 'timeline_express_single_content', $the_content . $announcement_content, $post->ID );
+			return apply_filters( 'timeline_express_single_content', $the_content . $announcement_content, $post_id );
 		}
 
 		/**

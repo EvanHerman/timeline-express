@@ -65,13 +65,13 @@ class TE_Init_Tests extends WP_UnitTestCase {
 	public function test_get_timeline_express_compare_sign() {
 		$init_class = new Timeline_Express_Initialize( array() );
 		// Ensure compare sign returns properly when 'Past' events is set
-		$compare_sign = $init_class->timeline_express_compare_sign( '0' );
+		$compare_sign = $init_class->timeline_express_compare_sign( '0', 1 );
 		$this->assertEquals( '>=', $compare_sign );
 		// Ensure compare sign returns properly when 'All(Past+Future)' events is set
-		$compare_sign = $init_class->timeline_express_compare_sign( '1' );
+		$compare_sign = $init_class->timeline_express_compare_sign( '1', 1 );
 		$this->assertEquals( '', $compare_sign );
 		// Ensure compare sign returns properly when 'Future' events is set
-		$compare_sign = $init_class->timeline_express_compare_sign( '2' );
+		$compare_sign = $init_class->timeline_express_compare_sign( '2', 1 );
 		$this->assertEquals( '<', $compare_sign );
 	}
 
