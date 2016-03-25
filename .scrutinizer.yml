@@ -5,7 +5,7 @@ tools:
     php_code_coverage:
         test_command: vendor/bin/phpunit
     external_code_coverage:
-        timeout: 600    # Timeout in seconds.
+        timeout: 1200    # Timeout in seconds.
         runs: 3
 
 filter:
