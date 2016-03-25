@@ -8,7 +8,9 @@ tools:
         timeout: 600    # Timeout in seconds.
         runs: 3
 filter:
-    excluded_paths: [tests/*]
+    excluded_paths: tests/*
+    excluded_paths: lib/admin/CMB2/*
+
 checks:
     php:
         code_rating: true
