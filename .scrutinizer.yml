@@ -2,6 +2,8 @@ tools:
     php_sim: true
     php_pdepend: true
     php_analyzer: true
+    php_code_coverage:
+        test_command: vendor/bin/phpunit
     external_code_coverage:
         timeout: 600    # Timeout in seconds.
 filter:
