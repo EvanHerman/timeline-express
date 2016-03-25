@@ -12,6 +12,9 @@ checks:
         code_rating: true
         duplication: true
 
+#Exclude CMB2 from being included in the scan
+Disallow: lib/admin/CMB2/
+
 coding_style:
     php:
         indentation:
