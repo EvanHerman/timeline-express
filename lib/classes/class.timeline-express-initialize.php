@@ -193,7 +193,7 @@ class Timeline_Express_Initialize {
 		/* Escaped on output in the timeline/single page */
 		echo apply_filters( 'timeline_express_image', wp_get_attachment_image(
 			get_post_meta( $post_id, 'announcement_image_id', true ),
-			apply_filters( 'timeline_express_announcement_img_size', apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id ), $post_id ) /* Legacy filter name - maintain formatting */
+			apply_filters( 'timeline_express_announcement_img_size', apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id ), $post_id ), /* Legacy filter name - maintain formatting */
 			false,
 			array(
 				'title' => esc_attr__( get_the_title() ),
