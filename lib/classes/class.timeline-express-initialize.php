@@ -208,7 +208,7 @@ class Timeline_Express_Initialize {
 	 * Generate about text, to aid in debugging.
 	 * @return string We're returning a comment block for the frontend.
 	 */
-	private function timeline_express_about_comment() {
+	public function timeline_express_about_comment() {
 		ob_start();
 		echo 'Timeline Express Free v' . esc_attr__( TIMELINE_EXPRESS_VERSION_CURRENT );
 		echo ' | Site: http://www.wp-timelineexpress.com';

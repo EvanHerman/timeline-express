@@ -77,7 +77,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 */
 		public function timeline_express_deactivate() {
 			/* Clear the re-write rules, so on next activation we can re-flush them */
-			delete_option( 'post_type_rules_flased_te-announcements' );
+			delete_option( 'post_type_rules_flushed_te-announcements' );
 		}
 
 		/**

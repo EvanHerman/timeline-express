@@ -91,8 +91,8 @@ register_post_type( 'te_announcements', $timeline_express_args );
 /* End release cycle cpt */
 
 /* Flush the re-write rules/permalinks - prevents 404 on initial plugin activation */
-$set = get_option( 'post_type_rules_flased_te-announcements', false );
+$set = get_option( 'post_type_rules_flushed_te-announcements', false );
 if ( true !== $set ) {
 	flush_rewrite_rules( false );
-	update_option( 'post_type_rules_flased_te-announcements', true );
+	update_option( 'post_type_rules_flushed_te-announcements', true );
 }
