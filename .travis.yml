@@ -37,12 +37,13 @@ before_script:
 script:
 - phpunit
 - if [[ $TRAVIS_PHP_VERSION = '5.5' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
-  ]]; then phpunit --coverage-text --coverage-clover=coverage.clover else phpunit;
+  ]]; then phpunit phpunit --coverage-text --coverage-clover=coverage.clover else phpunit;
   fi
 
 after_script:
 - if [[ $TRAVIS_PHP_VERSION = '5.5' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
-  ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
+  ]]; then wget https://scrutinizer-ci.com/ocular.phar;
+  fi
 - if [[ $TRAVIS_PHP_VERSION = '5.5' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
   ]]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover;
   fi
