@@ -59,7 +59,6 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 			break;
 
 		case 'image':
-			global $wpdb;
 			$announcement_image_id = get_post_meta( $id, 'announcement_image_id', true );
 			if ( $announcement_image_id ) {
 				echo wp_get_attachment_image( $announcement_image_id, 'timeline-express-thumbnail' );
