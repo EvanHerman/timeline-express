@@ -119,15 +119,15 @@ class TE_Options_Test extends WP_UnitTestCase {
 	 */
 	public function test_announcement_default_announcement_icon_option() {
 		// Check the default is correct
-		$this->assertEquals( $this->options['default-announcement-icon'], 'fa-exclamation-triangle' );
+		$this->assertEquals( $this->options['default-announcement-icon'], 'exclamation-triangle' );
 		// Test announcement time frame
-		$this->options['default-announcement-icon'] = 'fa-thumbs-o-up';
+		$this->options['default-announcement-icon'] = 'thumbs-o-up';
 		// Update the option with the new value
 		update_option( TIMELINE_EXPRESS_OPTION, $this->options );
 		// Get new options
 		$options = timeline_express_get_options();
 		// Assert the new value is correct
-		$this->assertEquals( $options['default-announcement-icon'], 'fa-thumbs-o-up' );
+		$this->assertEquals( $options['default-announcement-icon'], 'thumbs-o-up' );
 	}
 
 	/**
