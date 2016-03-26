@@ -12,7 +12,7 @@ class TE_Base_Tests extends WP_UnitTestCase {
 	public $options;
 
 	public function setUp() {
-		$this->$options = timeline_express_get_options();
+		$this->options = timeline_express_get_options();
 	}
 
 	// test plugin activation
