@@ -6,8 +6,8 @@ tools:
         config:
             standard: "WordPress" # Other Values: PSR2, PEAR, Zend, WordPress, Drupal, TYPO3CMS
     external_code_coverage:
-        timeout: 28800    # Timeout in seconds (8 hours for slow/throttled reports).
-        runs: 3
+        timeout: 1800    # Timeout in seconds (.5 hours for slow/throttled reports).
+        runs: 1
 
 filter:
     excluded_paths:
