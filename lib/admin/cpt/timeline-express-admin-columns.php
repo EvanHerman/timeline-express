@@ -68,7 +68,7 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 			break;
 
 		case 'past_announcement':
-			$announcment_date = get_post_meta( $id, 'announcement_date' , true );
+			$announcment_date = get_post_meta( $id, 'announcement_date', true );
 			$todays_date = strtotime( date( 'm/d/Y' ) );
 			if ( $announcment_date < $todays_date ) {
 				echo '<div class="dashicon-past-announcement dashicons dashicons-backup" title="' . sprintf( esc_attr__( '%s has past.', 'timeline-express' ), esc_attr__( apply_filters( 'timeline_express_singular_name', 'Announcement' ) ) ) . '" style="display:block;width:100%;"></div>';

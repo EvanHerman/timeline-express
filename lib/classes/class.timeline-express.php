@@ -158,7 +158,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @param array $options Options array to update.
 		 */
 		public function timeline_express_save_options( $options ) {
-			if ( ! isset( $_POST['timeline_express_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['timeline_express_settings_nonce'] ) ), 'timeline_express_save_settings' ) ) { // Input var okay.
+			if ( ! isset( $_POST['timeline_express_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['timeline_express_settings_nonce'] ) ), 'timeline_express_save_settings' ) ) {
 				wp_die( esc_attr__( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ), __( 'Failed Nonce Security Check', 'timeline-express' ), array(
 					'response' => 500,
 					'back_link' => true,
@@ -193,7 +193,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		public function timeline_express_admin_notices() {
 			$screen = get_current_screen();
 			if ( isset( $screen ) && isset( $screen->base ) && 'te_announcements_page_timeline-express-settings' === $screen->base ) {
-				if ( isset( $_GET['settings-updated'] ) && 'true' === $_GET['settings-updated'] ) {  // Input var okay.
+				if ( isset( $_GET['settings-updated'] ) && 'true' === $_GET['settings-updated'] ) {
 					?>
 					<div class="notice notice-success">
 						<p><span class="dashicons dashicons-yes"></span> <?php esc_attr_e( 'Timeline Express Settings Updated', 'timeline-express' ); ?></p>

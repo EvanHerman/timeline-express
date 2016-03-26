@@ -98,9 +98,9 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 		// Announcement metabox file
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/metaboxes.announcements.php' );
 		// Bootstrap dropdown file
-		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/bootstrap_icon_dropdown.php' );
+		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/bootstrap-icon-dropdown.php' );
 		// Custom date timestamp file
-		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time_stamp_custom.php' );
+		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time-stamp-custom.php' );
 		// Advertisment metabox file
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/advertisment-metabox.php' );
 		// Help & Documentation metabox file

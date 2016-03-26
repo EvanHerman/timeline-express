@@ -32,7 +32,7 @@ $selected = isset( $_GET['page'] ) ? $_GET['page'] : 'timeline-express-getting-s
 
 	<div class="feature-section two-col">
 		<div class="col">
-			<h3><?php esc_attr_e( 'Creating Your First Announcement' , 'timeline-express' ); ?></h3>
+			<h3><?php esc_attr_e( 'Creating Your First Announcement', 'timeline-express' ); ?></h3>
 			<p><?php printf( __( 'Timeline Express makes it easy to create and display a beautiful and animated timeline in WordPress. Feel free to read our how to <a href="%s" target="_blank">create your first announcement</a>.', 'timeline-express' ), 'http://www.wp-timelineexpress.com/documentation/creating-an-announcement/' ); ?>
 			<p><?php printf( __( 'The process is so intuitive that you can jump right in by going to <a href="%s">Timeline Express > New Announcement</a>.', 'timeline-express' ), esc_url( admin_url( 'admin.php?page=timeline-express-builder' ) ) ); ?>
 		</div>

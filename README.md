@@ -139,7 +139,7 @@ add_filter( 'timeline_express_custom_fields', 'add_custom_timeline_express_field
 `timeline_express_font_awesome_version`
 
 - *Description:* Specify which version of Font Awesome you want to use to display your icons. Defaults to 4.5.0 (or latest).
-- *Location:* `/timeline-express/lib/admin/metaboxes/partials/bootstrap_icon_dropdown.php`
+- *Location:* `/timeline-express/lib/admin/metaboxes/partials/bootstrap-icon-dropdown.php`
 - *Paramaters:* `$font_awesome_version`
 - *Default:* Array of default Timeline Express fields.
 
@@ -158,7 +158,7 @@ add_filter( 'alter_timeline_express_font_awesome_version', 'timeline_express_fon
 `timeline_express_admin_render_date_format`
 
 - *Description:* Alter how the date is rendered in the Announcement Date field on the edit announcement page. This field is used in our 'Historical Dates' add on. This should default to the same format as the global WordPress date format setting. **Note:** You should **not** use this filter when you have the 'Historical Dates' add on installed and active.
-- *Location:* `/timeline-express/lib/admin/metaboxes/partials/time_stamp_custom.php`
+- *Location:* `/timeline-express/lib/admin/metaboxes/partials/time-stamp-custom.php`
 - *Paramaters:* `$date_format`
 - *Default:* `get_option( 'date_format' )`
 

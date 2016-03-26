@@ -39,10 +39,10 @@ $additional_editor_parameters = array(
 					<div class="postbox timeline-express-settings-header" style="margin-bottom:0;">
 						<div class="inside settings-header">
 							<h1 id="timeline-express-page-header">
-								<?php esc_attr_e( 'Timeline Express Settings','timeline-express' ); ?>
+								<?php esc_attr_e( 'Timeline Express Settings', 'timeline-express' ); ?>
 							</h1>
 							<p style="margin-top:0;font-weight:200;" class="description">
-								<?php esc_attr_e( 'Alter your timeline settings here. You can adjust some of the visual settings as well as the display order, below.' , 'timeline-express' ); ?>
+								<?php esc_attr_e( 'Alter your timeline settings here. You can adjust some of the visual settings as well as the display order, below.', 'timeline-express' ); ?>
 							</p>
 						</div>
 					</div>
@@ -135,7 +135,7 @@ $additional_editor_parameters = array(
 													<option value="0" <?php selected( $current_options['date-visibility'], '0' ); ?>><?php esc_attr_e( 'Hidden', 'timeline-express' ); ?></option>
 												</select>
 												<p class="description">
-													<?php esc_attr_e( 'Toggle the visibility of the date next to the icon.','timeline-express' ); ?>
+													<?php esc_attr_e( 'Toggle the visibility of the date next to the icon.', 'timeline-express' ); ?>
 												</p>
 											</td>
 										</tr>
@@ -263,7 +263,7 @@ $additional_editor_parameters = array(
 											<td>
 												<br />
 												<input type="hidden" name="save-timeline-express-options" value="true" />
-												<input type="submit" name="submit" id="submit" class="button-primary" value="<?php esc_attr_e( 'Save Settings' , 'timeline-express' ); ?>">
+												<input type="submit" name="submit" id="submit" class="button-primary" value="<?php esc_attr_e( 'Save Settings', 'timeline-express' ); ?>">
 											</td>
 										</tr>
 

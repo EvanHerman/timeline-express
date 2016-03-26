@@ -85,7 +85,7 @@ function timeline_express_announcement_metaboxes() {
  * @since v1.1.5.7
  */
 function cmb2_render_callback_te_bootstrap_dropdown( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
-	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/bootstrap_icon_dropdown.php' );
+	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/bootstrap-icon-dropdown.php' );
 }
 
 /**
@@ -100,7 +100,7 @@ function cmb2_render_callback_te_bootstrap_dropdown( $field, $escaped_value, $ob
  * @since v1.1.5.7
  */
 function cmb2_render_te_date_time_stamp_custom( $field, $meta, $object_id, $object_type, $field_type_object ) {
-	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time_stamp_custom.php' );
+	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time-stamp-custom.php' );
 }
 
 /**
@@ -273,8 +273,8 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 
 /**
  * Helper function to build the bootstrap icons array
- * @param  array $icons the entire array of icons to filter
- * @return [type]        [description]
+ * @param  array $icon_data the entire array of icons to filter
+ * @return array The reformatted array of bootstrap icons
  */
 function build_bootstrap_icons_array( $icon_data ) {
 	// Confirm that $icons is an array and not empty
@@ -450,7 +450,7 @@ function timeline_express_generate_random_announcement( $post_id ) {
  * This is used after you define custom fields using the timeline_express_custom_fields filter.
  *
  * @param int    $post_id The announcement (post) ID whos content you want to retreive.
- * @param string $meta_id The ID of the metabox, whos value you want to retrieve.
+ * @param string $meta_name The name of the meta field (id), whos value you want to retrieve.
  * @param bool   $array True/False to return an array. Optional. Default: true.
  * @return array The announcement content, passed through the_content() filter.
  */

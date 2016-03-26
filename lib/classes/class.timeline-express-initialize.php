@@ -49,7 +49,7 @@ class Timeline_Express_Initialize {
 	 * Generate our timeline containers etc.
 	 * @param array $timeline_express_options Array of timeline express settings, to be used in the timeline.
 	 * @param array $atts Array of shortcode attributes, passed in above.
-	 * @return mixed HTML content of our timeline used to render on the frontend.
+	 * @return string HTML content of our timeline used to render on the frontend.
 	 */
 	public function generate_timeline_express( $timeline_express_options, $atts ) {
 		ob_start();
@@ -178,7 +178,8 @@ class Timeline_Express_Initialize {
 				'no_found_rows' => true,
 				'posts_per_page' => 50,
 			);
-		} else { /* Else the compare sign is set */
+		} else {
+			/* Else the compare sign is set */
 			$announcement_args = array(
 				'post_type' => 'te_announcements',
 				'meta_key'   => 'announcement_date',
