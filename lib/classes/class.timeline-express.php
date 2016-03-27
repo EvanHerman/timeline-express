@@ -90,7 +90,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			}
 			if ( get_option( 'timeline_express_do_activation_redirect', false ) ) {
 				delete_option( 'timeline_express_do_activation_redirect' );
-
 				// Check if this is an update or first install
 				$announcement_count = wp_count_posts( 'te_announcements' );
 				if ( ! isset( $announcement_count ) || 0 === $announcement_count->publish ) {

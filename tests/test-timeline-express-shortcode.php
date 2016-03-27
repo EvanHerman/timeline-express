@@ -4,7 +4,7 @@
  */
 class Tests_Shortcode extends WP_UnitTestCase {
 
-	public $options, $init_class, $announcement_id;
+	private $options, $init_class, $announcement_id;
 
 	public function setUp() {
 		parent::setUp();

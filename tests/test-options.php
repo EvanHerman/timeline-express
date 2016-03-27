@@ -7,8 +7,8 @@
  */
 class TE_Options_Test extends WP_UnitTestCase {
 
-	// Define public options var
-	public $options, $base_class;
+	// Define private options var
+	private $options, $base_class;
 
 	/**
 	 * Test out our options save and return expected valies.

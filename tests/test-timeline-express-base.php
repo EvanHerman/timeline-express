@@ -9,7 +9,7 @@
 class TE_Base_Tests extends WP_UnitTestCase {
 
 	// store global options
-	public $options, $base_class;
+	private $options, $base_class;
 
 	public function setUp() {
 		$this->options = timeline_express_get_options();

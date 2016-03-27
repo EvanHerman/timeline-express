@@ -9,7 +9,7 @@
 class TE_Init_Tests extends WP_UnitTestCase {
 
 	// Setup the init class
-	protected $init_class, $options;
+	private $init_class, $options;
 
 	/**
 	 * Constructor, include the class to test.
