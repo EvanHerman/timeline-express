@@ -406,7 +406,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 				 * admin/js/script.options-color-picker-custom.js
 				 */
 				wp_enqueue_script( 'timeline-express-admin-js', TIMELINE_EXPRESS_URL . 'lib/admin/js/min/timeline-express-admin.min.js', array( 'jquery' ), TIMELINE_EXPRESS_VERSION_CURRENT, true );
-				wp_enqueue_script( 'bootstrap-min', '//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' );
+				wp_enqueue_script( 'bootstrap-min', TIMELINE_EXPRESS_URL . 'lib/admin/js/min/bootstrap.min.js' );
 				wp_enqueue_style( 'bootstrap-select-style',  TIMELINE_EXPRESS_URL . 'lib/admin/css/min/bootstrap-select.min.css' );
 			}
 
