@@ -97,8 +97,9 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 					/* Redirect to the welcome page -  Initial install */
 					wp_safe_redirect( admin_url( 'admin.php?page=timeline-express-welcome' ) );
 				} else {
-						/* Redirect to the welcome page (whats new tab)-  Update install */
+					/* Redirect to the welcome page (whats new tab)-  Update install */
 					wp_safe_redirect( admin_url( 'admin.php?page=timeline-express-welcome&tab=whats-new' ) );
+				}
 			}
 		}
 
