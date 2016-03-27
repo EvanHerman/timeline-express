@@ -95,13 +95,10 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 				$announcement_count = wp_count_posts( 'te_announcements' );
 				if ( ! isset( $announcement_count ) || 0 === $announcement_count->publish ) {
 					/* Redirect to the welcome page -  Initial install */
-					wp_redirect( admin_url( 'admin.php?page=timeline-express-welcome' ) );
-					exit;
+					wp_safe_redirect( admin_url( 'admin.php?page=timeline-express-welcome' ) );
 				} else {
 						/* Redirect to the welcome page (whats new tab)-  Update install */
-					wp_redirect( admin_url( 'admin.php?page=timeline-express-welcome&tab=whats-new' ) );
-					exit;
-				}
+					wp_safe_redirect( admin_url( 'admin.php?page=timeline-express-welcome&tab=whats-new' ) );
 			}
 		}
 
