@@ -83,7 +83,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		/**
 		 * Plugin deactivation function
 		 */
-		function timeline_express_activate_redirect() {
+		public function timeline_express_activate_redirect() {
 			/* User can disable the activation redirect, if it gets annoying */
 			if ( defined( 'TIMELINE_EXPRESS_DISABLED_ACTIVATION_REDIRECT' ) ) {
 				return;
@@ -339,7 +339,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @since 1.2
 		 * @package included in TimelineExpressBase->timeline_express_admin_menus()
 		 */
-		function timeline_express_options_page() {
+		public function timeline_express_options_page() {
 			require_once TIMELINE_EXPRESS_PATH . 'lib/admin/pages/page.options.php';
 		}
 
@@ -348,7 +348,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @since 1.2
 		 * @package included in TimelineExpressBase->timeline_express_admin_menus()
 		 */
-		function timeline_express_welcome_page() {
+		public function timeline_express_welcome_page() {
 			require_once TIMELINE_EXPRESS_PATH . 'lib/admin/pages/page.welcome.php';
 		}
 
@@ -357,7 +357,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @since 1.2
 		 * @package included in TimelineExpressBase->timeline_express_admin_menus()
 		 */
-		function timeline_express_addons_page() {
+		public function timeline_express_addons_page() {
 			/* Include the addons class */
 			require_once TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-addons.php';
 		}
@@ -367,7 +367,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @since 1.0
 		 * @return null
 		 */
-		function timeline_express_rearrange_metaboxes() {
+		public function timeline_express_rearrange_metaboxes() {
 			global $post, $wp_meta_boxes;
 			if ( isset( $post->post_type ) && 'te_announcements' === $post->post_type ) {
 				do_meta_boxes( get_current_screen(), 'advanced', $post );
