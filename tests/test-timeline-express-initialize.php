@@ -9,18 +9,25 @@
 class TE_Init_Tests extends WP_UnitTestCase {
 
 	// Setup the init class
-	protected $init_class;
+	protected $init_class, $options;
 
 	/**
 	 * Constructor, include the class to test.
 	 */
 	public function setUp() {
+		parent::setUp();
 		// include the helpers class, so we can quickly create announcements for testing
 		$te_helper_tests = new TE_Helper_Tests;
 		$this->announcement_id = $te_helper_tests->test_create_announcement( '#c332d5', 'fa-cutlery', '05/18/2002' );
 		// Include the parent class so we can use it
 		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php' );
 		$this->init_class = new Timeline_Express_Initialize( array() );
+		// Setup options
+		$this->options = timeline_express_get_options();
+	}
+
+	public function tearDown() {
+		parent::tearDown();
 	}
 
 	/**
@@ -133,5 +140,24 @@ class TE_Init_Tests extends WP_UnitTestCase {
 		$assumed_block = 'Timeline Express Free v' . TIMELINE_EXPRESS_VERSION_CURRENT . ' | Site: http://www.wp-timelineexpress.com | Author: CodeParrots - http://www.codeparrots.com';
 		$html_block = $this->init_class->timeline_express_about_comment();
 		$this->assertEquals( $assumed_block, $html_block );
+	}
+
+	/**
+	 * Test that our inline styles are printing
+	 */
+	public function test_timeline_express_print_inline_styles() {
+		// store some options
+		$content_bg_color = $this->options['announcement-bg-color'];
+		$bg_line_color = $this->options['announcement-background-line-color'];
+		$box_shadow_color = $this->options['announcement-box-shadow-color'];
+		// print the inline styles
+		$this->init_class->timeline_express_print_inline_styles( $this->options );
+		// get the loaded styles
+		global $wp_styles;
+		$inline_styles = $wp_styles->registered['timeline-express-base']->extra['after'][0];
+		// assert the return values contain what we expect
+		$this->assertContains( 'border-left-color: ' . $content_bg_color . ';', $inline_styles );
+		$this->assertContains( '-moz-box-shadow: 0 3px 0 ' . $box_shadow_color . ';', $inline_styles );
+		$this->assertContains( 'background: ' . $bg_line_color . ';', $inline_styles );
 	}
 }

@@ -38,7 +38,7 @@ class Timeline_Express_Initialize {
 		 * 3) do_action( 'timeline-express-styles' ); for additional plugins to hook into.
 		 */
 		timeline_express_enqueue_font_awesome();
-		wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express.min.css' , array( 'font-awesome' ) , 'all' );
+		wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express.min.css', array( 'font-awesome' ) , 'all' );
 		do_action( 'timeline-express-styles' );
 
 		/** Print our Timeline Express styles */
@@ -56,7 +56,7 @@ class Timeline_Express_Initialize {
 
 		global $post;
 
-		$compare_sign = self::timeline_express_compare_sign( $timeline_express_options['announcement-time-frame'], $post->ID );
+		$compare_sign = self::timeline_express_compare_sign( $timeline_express_options['announcement-time-frame'] );
 		$announcement_args = self::timeline_express_query_args( $compare_sign, $timeline_express_options['announcement-display-order'] );
 
 		/* Run the query to retreive our announcements */
@@ -95,7 +95,7 @@ class Timeline_Express_Initialize {
 	 * @param array $timeline_express_options Timeline Express options array.
 	 * @since 1.2
 	 */
-	private function timeline_express_print_inline_styles( $timeline_express_options ) {
+	public function timeline_express_print_inline_styles( $timeline_express_options ) {
 
 		$content_background = ( '' === $timeline_express_options['announcement-bg-color'] ) ? 'transparent' : $timeline_express_options['announcement-bg-color'];
 		$content_shadow = ( '' === $timeline_express_options['announcement-box-shadow-color'] ) ? '0 3px 0 transparent' : '0 3px 0 ' . $timeline_express_options['announcement-box-shadow-color'];
@@ -143,7 +143,7 @@ class Timeline_Express_Initialize {
 	 * @param string $time_frame The time frame, defined on our settings page (possible values: 0, 1, 2).
 	 * @return string $compare_sign Return the compare sign to be used.
 	 */
-	public function timeline_express_compare_sign( $time_frame, $post_id ) {
+	public function timeline_express_compare_sign( $time_frame ) {
 		switch ( $time_frame ) {
 			default:
 			case '0':
@@ -158,7 +158,7 @@ class Timeline_Express_Initialize {
 				$compare_sign = '<';
 			break;
 		}
-		return apply_filters( 'timeline_express_compare_sign', $compare_sign, $post_id );
+		return apply_filters( 'timeline_express_compare_sign', $compare_sign, get_the_ID() );
 	}
 
 	/**
