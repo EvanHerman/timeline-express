@@ -21,6 +21,44 @@ class TE_Options_Test extends WP_UnitTestCase {
 		$this->base_class = new TimelineExpressBase();
 	}
 
+	public function setUp() {
+		parent::setUp();
+	}
+
+	public function tearDown() {
+		parent::tearDown();
+	}
+
+	public function test_options_sanitization() {
+		// create a nonce
+		$_POST['timeline_express_settings_nonce'] = wp_create_nonce( 'timeline_express_save_settings' );
+		// create an array of test data
+		$new_options_array = array(
+			'announcement-time-frame' => '2',
+			'announcement-display-order' => 'DESC',
+			'excerpt-trim-length' => 300,
+			'excerpt-random-length' => 0,
+			'date-visibility' => '1',
+			'read-more-visibility' => '0',
+			'default-announcement-icon' => 'wordpress',
+			'default-announcement-color' => '#c43434',
+			'announcement-bg-color' => '#86d228',
+			'announcement-box-shadow-color' => '#83ccd6',
+			'announcement-background-line-color' => '#cfe354',
+			'no-events-message' => 'This is a test. Warning - this is a test. Not a warning, just a test.',
+			'announcement-appear-in-searches' => '1',
+			'delete-announcement-posts-on-uninstallation' => '1',
+		);
+		// update our options
+		$this->base_class->timeline_express_save_options( $new_options_array );
+		// retreive the new options array
+		$new_options_array = timeline_express_get_options();
+		// loop over existing options, and assert they equal the new options set above
+		foreach ( $new_options_array as $name => $value ) {
+			$this->assertEquals( $value, $new_options_array[ $name ] );
+		}
+	}
+
 	/**
 	 * Test the announcement time frame option
 	 */
