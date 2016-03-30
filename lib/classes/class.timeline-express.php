@@ -44,8 +44,9 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			/* Enqueue single announcement template styles */
 			add_action( 'wp_enqueue_scripts', array( $this, 'timeline_express_single_template_styles' ) );
 			/* Custom plugin action links */
-			add_filter( 'plugin_action_links', array( $this, 'my_plugin_action_links' ), 10, 2 );
-
+			add_filter( 'plugin_action_links', array( $this, 'timeline_express_action_links' ), 10, 2 );
+			/* Reset the transient anytime an announcement gets updated/published */
+			add_action( 'save_post', array( $this, 'timeline_express_reset_transients' ) );
 			/**
 			 * Include CMB2 - Metabox Framework
 			 * @resource https://github.com/WebDevStudios/CMB2
@@ -155,54 +156,60 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @param array $options Options array to update.
 		 */
 		public function timeline_express_save_options( $options ) {
+			// If the nonce is not set, abort
 			if ( ! isset( $_POST['timeline_express_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['timeline_express_settings_nonce'] ) ), 'timeline_express_save_settings' ) ) {
 				wp_die( esc_attr__( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ), __( 'Failed Nonce Security Check', 'timeline-express' ), array(
 					'response' => 500,
 					'back_link' => true,
 					'text_direction' => ( is_rtl() ) ? 'rtl' : 'ltr',
 				) );
-				exit;
-			} else {
-				/* Retreive our default options to update */
-				$timeline_express_options = timeline_express_get_options();
-				$timeline_express_options['announcement-time-frame'] = sanitize_text_field( $options['announcement-time-frame'] );
-				$timeline_express_options['announcement-display-order'] = sanitize_text_field( $options['announcement-display-order'] );
-				$timeline_express_options['excerpt-trim-length'] = (int) sanitize_text_field( $options['excerpt-trim-length'] );
-				$timeline_express_options['excerpt-random-length'] = (int) ( isset( $options['excerpt-random-length'] ) ) ? 1 : 0;
-				$timeline_express_options['date-visibility'] = sanitize_text_field( $options['date-visibility'] );
-				$timeline_express_options['read-more-visibility'] = sanitize_text_field( $options['read-more-visibility'] );
-				$timeline_express_options['default-announcement-icon'] = sanitize_text_field( $options['default-announcement-icon'] );
-				$timeline_express_options['default-announcement-color'] = sanitize_text_field( $options['default-announcement-color'] );
-				$timeline_express_options['announcement-bg-color'] = sanitize_text_field( $options['announcement-bg-color'] );
-				$timeline_express_options['announcement-box-shadow-color'] = sanitize_text_field( $options['announcement-box-shadow-color'] );
-				$timeline_express_options['announcement-background-line-color'] = sanitize_text_field( $options['announcement-background-line-color'] );
-				$timeline_express_options['no-events-message'] = sanitize_text_field( $options['no-events-message'] );
-				$timeline_express_options['announcement-appear-in-searches'] = sanitize_text_field( $options['announcement-appear-in-searches'] );
-				$timeline_express_options['delete-announcement-posts-on-uninstallation'] = (int) ( isset( $options['delete-announcement-posts-on-uninstallation'] ) ) ? 1 : 0;
-				return $timeline_express_options;
 			}
+			/* Retreive our default options to update */
+			$timeline_express_options = timeline_express_get_options();
+			$timeline_express_options['announcement-time-frame'] = sanitize_text_field( $options['announcement-time-frame'] );
+			$timeline_express_options['announcement-display-order'] = sanitize_text_field( $options['announcement-display-order'] );
+			$timeline_express_options['excerpt-trim-length'] = (int) sanitize_text_field( $options['excerpt-trim-length'] );
+			$timeline_express_options['excerpt-random-length'] = (int) ( isset( $options['excerpt-random-length'] ) ) ? 1 : 0;
+			$timeline_express_options['date-visibility'] = sanitize_text_field( $options['date-visibility'] );
+			$timeline_express_options['read-more-visibility'] = sanitize_text_field( $options['read-more-visibility'] );
+			$timeline_express_options['default-announcement-icon'] = sanitize_text_field( $options['default-announcement-icon'] );
+			$timeline_express_options['default-announcement-color'] = sanitize_text_field( $options['default-announcement-color'] );
+			$timeline_express_options['announcement-bg-color'] = sanitize_text_field( $options['announcement-bg-color'] );
+			$timeline_express_options['announcement-box-shadow-color'] = sanitize_text_field( $options['announcement-box-shadow-color'] );
+			$timeline_express_options['announcement-background-line-color'] = sanitize_text_field( $options['announcement-background-line-color'] );
+			$timeline_express_options['no-events-message'] = sanitize_text_field( $options['no-events-message'] );
+			$timeline_express_options['announcement-appear-in-searches'] = sanitize_text_field( $options['announcement-appear-in-searches'] );
+			$timeline_express_options['delete-announcement-posts-on-uninstallation'] = (int) ( isset( $options['delete-announcement-posts-on-uninstallation'] ) ) ? 1 : 0;
+			return $timeline_express_options;
 		}
 
 		/**
 		 * Display admin notices in certain locations
-		 * @package  TimelineExpressBase
+		 * @since  1.2
 		 */
 		public function timeline_express_admin_notices() {
 			$screen = get_current_screen();
-			if ( isset( $screen ) && isset( $screen->base ) && 'te_announcements_page_timeline-express-settings' === $screen->base ) {
-				if ( isset( $_GET['settings-updated'] ) && 'true' === $_GET['settings-updated'] ) {
-					?>
-					<div class="notice notice-success">
-						<p><span class="dashicons dashicons-yes"></span> <?php esc_attr_e( 'Timeline Express Settings Updated', 'timeline-express' ); ?></p>
-					</div>
-					<?php
-				}
+			// If the screen base is not set or it is and it doesn't equal our settings base, abort
+			if ( ! isset( $screen ) || ! isset( $screen->base ) || 'te_announcements_page_timeline-express-settings' !== $screen->base ) {
+				return;
 			}
+			// store the current URL
+			$current_url = admin_url( add_query_arg( null, null ) );
+			$split_url = wp_parse_args( $current_url );
+			// if the settings were not updated, or it isn't set to true, abort
+			if ( ! isset( $split_url['settings-updated'] ) && 'true' !== $split_url['settings-updated'] ) {
+				return;
+			}
+			?>
+			<div class="notice notice-success">
+				<p><span class="dashicons dashicons-yes"></span> <?php esc_attr_e( 'Timeline Express settings saved successfully!', 'timeline-express' ); ?></p>
+			</div>
+			<?php
 		}
 
 		/**
 		 * Add our tinyMCE button, and scripts to the WP_Editor() instance
-		 * @package  TimelineExpressBase
+		 * @since  1.0
 		 */
 		public function timeline_express_add_tinymce() {
 			/* Hide the 'Welcome' menu item from Timeline Express */
@@ -226,7 +233,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * Define and process [timeline-express] shortcode
 		 *
 		 * @param array $atts array of shortcode attributes.
-		 * @package  TimelineExpressBase
+		 * @since  1.0
 		 */
 		public function process_timeline_express_shortcode( $atts ) {
 			include TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php';
@@ -238,22 +245,24 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * Filter the content, and load our template in it's place.
 		 * @param array $the_content The page content to filter.
 		 * @return page template.
+		 * @since  1.0
 		 */
 		public function timeline_express_single_page_content( $the_content ) {
 			global $post;
 			$post_id = ( isset( $post->ID ) ) ? $post->ID : '';
-			$announcement_content = false;
-			if ( is_single() && 'te_announcements' === $post->post_type ) {
-				ob_start();
-				/* Store the announcement content from the WYSIWYG editor */
-				$announcement_content = $the_content;
-				/* Include helper functions */
-				include_once TIMELINE_EXPRESS_PATH . 'lib/helpers.php';
-				/* Include the single template */
-				get_timeline_express_template( 'single-announcement' );
-				/* Return the output buffering */
-				$the_content = ob_get_clean();
+			// If this is not a single post, or it is and it isn't an announcement, abort
+			if ( ! is_single() || 'te_announcements' !== $post->post_type ) {
+				return $the_content;
 			}
+			ob_start();
+			/* Store the announcement content from the WYSIWYG editor */
+			$announcement_content = $the_content;
+			/* Include helper functions */
+			include_once TIMELINE_EXPRESS_PATH . 'lib/helpers.php';
+			/* Include the single template */
+			get_timeline_express_template( 'single-announcement' );
+			/* Return the output buffering */
+			$the_content = ob_get_clean();
 			/* Return announcement meta & append the announcement content */
 			return apply_filters( 'timeline_express_single_content', $the_content . $announcement_content, $post_id );
 		}
@@ -266,50 +275,75 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 *  If all else fails, it will use the default template defined by WordPress.
 		 * @param  string $single_template The page template name to be used for single announcements.
 		 * @return string                  The page template to be used for the single announcements.
+		 * @since 1.2
 		 */
 		public function timeline_express_single_announcement_template( $single_template ) {
 			global $post;
-			if ( isset( $post->post_type ) && 'te_announcements' === $post->post_type ) {
-				/* If custom template file exists */
-				if ( file_exists( get_template_directory() . '/timeline-express/single-te_announcements.php' ) ) {
-					$single_template = get_template_directory() . '/timeline-express/single-te_announcements.php';
-				} else if ( file_exists( get_template_directory() . 'single.php' ) ) { /* If single.php exists */
-					$single_template = get_template_directory() . 'single.php';
-				} else if ( file_exists( get_template_directory() . 'page.php' ) ) { /* If page.php exists */
-					$single_template = get_template_directory() . 'page.php';
-				} else {
-					$single_template = $single_template; /* return standard template */
-				}
-				return apply_filters( 'timeline_express_single_page_template', apply_filters( 'timeline-express-single-page-template', $single_template ) ); /* Legacy Support, 2 filters */
+			if ( ! isset( $post->post_type ) && 'te_announcements' !== $post->post_type ) {
+				return $single_template;
 			}
+			/* If custom template file exists */
+			if ( file_exists( get_template_directory() . '/timeline-express/single-te_announcements.php' ) ) {
+				$single_template = get_template_directory() . '/timeline-express/single-te_announcements.php';
+			} else if ( file_exists( get_template_directory() . 'single.php' ) ) { /* If single.php exists */
+				$single_template = get_template_directory() . 'single.php';
+			} else if ( file_exists( get_template_directory() . 'page.php' ) ) { /* If page.php exists */
+				$single_template = get_template_directory() . 'page.php';
+			}
+			/**
+			 * Return our template, passed through filters
+			 * Legacy Support, 2 filters
+			 */
+			return apply_filters( 'timeline_express_single_page_template', apply_filters( 'timeline-express-single-page-template', $single_template ) );
 		}
 		/**
 		 * Enqueue styles on single announcement templates.
 		 * @return null
+		 * @since 1.2
 		 */
 		public function timeline_express_single_template_styles() {
 			global $post;
-			if ( is_single() && 'te_announcements' === $post->post_type ) {
-				wp_enqueue_style( 'single-timeline-express-styles', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express.min.css', array(), 'all' );
+			// If this is not a single post, or it is but is not an announcement
+			if ( ! is_single() || 'te_announcements' !== $post->post_type ) {
+				return;
 			}
-			return;
+			wp_enqueue_style( 'single-timeline-express-styles', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express.min.css', array(), 'all' );
 		}
 
 		/**
 		 * Custom plugin action links.
 		 * @param  array $links  array of links to display for our plugin.
 		 * @param  string $file  The file name of the current iteration.
-		 * @return array       New array of links to display.
+		 * @return array         New array of links to display.
+		 * @since 1.2
 		 */
-		public function my_plugin_action_links( $links, $file ) {
-			if ( 'timeline-express/timeline-express.php' === $file ) {
-				/* Remove the edit button */
-				unset( $links['edit'] );
-				$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) . '">' . esc_attr__( 'Settings', 'timeline-express' ) . '</a>';
-				$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_attr__( 'Addons', 'timeline-express' ) . '</a>';
-				$links[] = '<a href="http://www.wp-timelineexpress.com/knowledgebase_category/timeline-express/" target="_blank">' . esc_attr__( 'Documentation', 'timeline-express' ) . '</a>';
+		public function timeline_express_action_links( $links, $file ) {
+			if ( 'timeline-express/timeline-express.php' !== $file ) {
+				return $links;
 			}
+			/* Remove the edit button */
+			unset( $links['edit'] );
+			$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) . '">' . esc_attr__( 'Settings', 'timeline-express' ) . '</a>';
+			$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_attr__( 'Addons', 'timeline-express' ) . '</a>';
+			$links[] = '<a href="http://www.wp-timelineexpress.com/knowledgebase_category/timeline-express/" target="_blank">' . esc_attr__( 'Documentation', 'timeline-express' ) . '</a>';
 			return $links;
+		}
+
+		/**
+		 * Whenever an announcement is updated/published reset the 'timeline-express-query' transient
+		 * @since 1.2
+		 */
+		public function timeline_express_reset_transients( $post_id ) {
+			// If not an announcement post, abort
+			if ( 'te_announcements' !== get_post_type( $post_id ) ) {
+				return;
+			}
+			// If a revision, abort
+			if ( wp_is_post_revision( $post_id ) ) {
+				return;
+			}
+			// Clear our transient
+			delete_transient( 'timeline-express-query' );
 		}
 
 		/**
@@ -366,13 +400,17 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * Re-arrange the metbaoxes on our announcements custom post type.
 		 * @since 1.0
 		 * @return null
+		 * @since 1.2
 		 */
 		public function timeline_express_rearrange_metaboxes() {
 			global $post, $wp_meta_boxes;
-			if ( isset( $post->post_type ) && 'te_announcements' === $post->post_type ) {
-				do_meta_boxes( get_current_screen(), 'advanced', $post );
-				unset( $wp_meta_boxes[ get_post_type( $post ) ]['advanced'] );
+			// If the post type is not set, or it is and it's not an announcement, abort
+			if ( ! isset( $post->post_type ) || 'te_announcements' !== $post->post_type ) {
+				return;
 			}
+			/* Re-arrange our metaboxes */
+			do_meta_boxes( get_current_screen(), 'advanced', $post );
+			unset( $wp_meta_boxes[ get_post_type( $post ) ]['advanced'] );
 		}
 
 		/**

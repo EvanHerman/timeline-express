@@ -56,11 +56,21 @@ class Timeline_Express_Initialize {
 
 		global $post;
 
-		$compare_sign = self::timeline_express_compare_sign( $timeline_express_options['announcement-time-frame'] );
-		$announcement_args = self::timeline_express_query_args( $compare_sign, $timeline_express_options['announcement-display-order'] );
-
-		/* Run the query to retreive our announcements */
-		$announcement_query = new WP_Query( apply_filters( 'timeline_express_announcement_query_args', $announcement_args, $post, $atts ) );
+		/**
+		 * Check if our transient is present, and use that
+		 * if not, re-run our query and setup the transient
+		 * @since 1.2
+		 */
+		if ( false === ( $announcement_query = get_transient( 'timeline-express-query' ) ) ) {
+			/* Setup the compare sign */
+			$compare_sign = self::timeline_express_compare_sign( $timeline_express_options['announcement-time-frame'] );
+			/* Setup the announcement args */
+			$announcement_args = self::timeline_express_query_args( $compare_sign, $timeline_express_options['announcement-display-order'] );
+			/* Run the query to retreive our announcements */
+			$announcement_query = new WP_Query( apply_filters( 'timeline_express_announcement_query_args', $announcement_args, $post, $atts ) );
+			/* Setup our transient, and store it for a full day - before running again */
+			set_transient( 'timeline-express-query', $announcement_query, 24 * HOUR_IN_SECONDS );
+		}
 
 		/* Loop over announcements, if found */
 		if ( $announcement_query->have_posts() ) {
