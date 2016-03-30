@@ -11,6 +11,9 @@
  * @since 1.2
  */
 
+// store our options for use here
+$timeline_express_options = timeline_express_get_options();
+
 /**
  * Wrapped in apply_filters() twice, for legacy support.
  * Allow users to alter the timeline express slug.

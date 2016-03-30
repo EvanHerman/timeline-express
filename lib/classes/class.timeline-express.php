@@ -244,7 +244,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		/**
 		 * Filter the content, and load our template in it's place.
 		 * @param array $the_content The page content to filter.
-		 * @return page template.
+		 * @return string The single page content to display for this announcement.
 		 * @since  1.0
 		 */
 		public function timeline_express_single_page_content( $the_content ) {
@@ -419,7 +419,6 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @since 1.2
 		 */
 		public function timeline_express_generate_announcement_post_type() {
-			$timeline_express_options = timeline_express_get_options();
 			include_once TIMELINE_EXPRESS_PATH . 'lib/admin/cpt/cpt.announcements.php';
 			include_once TIMELINE_EXPRESS_PATH . 'lib/admin/cpt/timeline-express-admin-columns.php';
 		}
