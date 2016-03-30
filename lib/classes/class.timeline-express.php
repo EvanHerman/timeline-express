@@ -156,7 +156,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @param array $options Options array to update.
 		 */
 		public function timeline_express_save_options( $options ) {
-			// If the nonce is not set, abort
+			// When the nonce is not set, abort
 			if ( ! isset( $_POST['timeline_express_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['timeline_express_settings_nonce'] ) ), 'timeline_express_save_settings' ) ) {
 				wp_die( esc_attr__( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ), __( 'Failed Nonce Security Check', 'timeline-express' ), array(
 					'response' => 500,
@@ -189,15 +189,15 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 */
 		public function timeline_express_admin_notices() {
 			$screen = get_current_screen();
-			// If the screen base is not set or it is and it doesn't equal our settings base, abort
+			// When the screen base is not set or it is and it doesn't equal our settings base, abort
 			if ( ! isset( $screen ) || ! isset( $screen->base ) || 'te_announcements_page_timeline-express-settings' !== $screen->base ) {
 				return;
 			}
 			// store the current URL
 			$current_url = admin_url( add_query_arg( null, null ) );
 			$split_url = wp_parse_args( $current_url );
-			// if the settings were not updated, or it isn't set to true, abort
-			if ( ! isset( $split_url['settings-updated'] ) && 'true' !== $split_url['settings-updated'] ) {
+			// When the settings were not updated, or it isn't set to true, abort
+			if ( ! isset( $split_url['settings-updated'] ) || 'true' !== $split_url['settings-updated'] ) {
 				return;
 			}
 			?>
@@ -250,7 +250,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		public function timeline_express_single_page_content( $the_content ) {
 			global $post;
 			$post_id = ( isset( $post->ID ) ) ? $post->ID : '';
-			// If this is not a single post, or it is and it isn't an announcement, abort
+			// When this is not a single post, or it is and it isn't an announcement, abort
 			if ( ! is_single() || 'te_announcements' !== $post->post_type ) {
 				return $the_content;
 			}
@@ -303,7 +303,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 */
 		public function timeline_express_single_template_styles() {
 			global $post;
-			// If this is not a single post, or it is but is not an announcement
+			// When this is not a single post, or it is but is not an announcement
 			if ( ! is_single() || 'te_announcements' !== $post->post_type ) {
 				return;
 			}
@@ -334,11 +334,11 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @since 1.2
 		 */
 		public function timeline_express_reset_transients( $post_id ) {
-			// If not an announcement post, abort
+			// When not an announcement post, abort
 			if ( 'te_announcements' !== get_post_type( $post_id ) ) {
 				return;
 			}
-			// If a revision, abort
+			// When a revision, abort
 			if ( wp_is_post_revision( $post_id ) ) {
 				return;
 			}
@@ -404,7 +404,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 */
 		public function timeline_express_rearrange_metaboxes() {
 			global $post, $wp_meta_boxes;
-			// If the post type is not set, or it is and it's not an announcement, abort
+			// When the post type is not set, or it is and it's not an announcement, abort
 			if ( ! isset( $post->post_type ) || 'te_announcements' !== $post->post_type ) {
 				return;
 			}
