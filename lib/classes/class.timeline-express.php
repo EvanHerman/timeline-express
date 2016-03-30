@@ -243,8 +243,8 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 
 		/**
 		 * Filter the content, and load our template in it's place.
-		 * @param array $the_content The page content to filter.
-		 * @return string The single page content to display for this announcement.
+		 * @param array  $the_content The page content to filter.
+		 * @return array The single page content to display for this announcement.
 		 * @since  1.0
 		 */
 		public function timeline_express_single_page_content( $the_content ) {
