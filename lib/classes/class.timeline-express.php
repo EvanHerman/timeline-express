@@ -166,6 +166,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			}
 			/* Retreive our default options to update */
 			$timeline_express_options = timeline_express_get_options();
+			/* Update our options */
 			$timeline_express_options['announcement-time-frame'] = sanitize_text_field( $options['announcement-time-frame'] );
 			$timeline_express_options['announcement-display-order'] = sanitize_text_field( $options['announcement-display-order'] );
 			$timeline_express_options['excerpt-trim-length'] = (int) sanitize_text_field( $options['excerpt-trim-length'] );
@@ -180,6 +181,8 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			$timeline_express_options['no-events-message'] = sanitize_text_field( $options['no-events-message'] );
 			$timeline_express_options['announcement-appear-in-searches'] = sanitize_text_field( $options['announcement-appear-in-searches'] );
 			$timeline_express_options['delete-announcement-posts-on-uninstallation'] = (int) ( isset( $options['delete-announcement-posts-on-uninstallation'] ) ) ? 1 : 0;
+			/* Delete the transient, to refresh the frontend timeline (display order, excerpt length etc.) */
+			delete_transient( 'timeline-express-query' );
 			return $timeline_express_options;
 		}
 
