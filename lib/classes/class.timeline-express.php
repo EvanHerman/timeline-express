@@ -215,7 +215,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			/* Hide the 'Welcome' menu item from Timeline Express */
 			?>
 			<style>
-			#menu-posts-te_announcements .wp-submenu li:last-child {
+			#menu-posts-te_announcements .wp-submenu a[href="edit.php?post_type=te_announcements&page=timeline-express-welcome"] {
 				display: none !important;
 			}
 			</style>
