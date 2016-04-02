@@ -53,9 +53,7 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 			break;
 
 		case 'announcement_date':
-				$announcment_date = get_post_meta( $id, 'announcement_date', true );
-				$date_format = apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) );
-				echo esc_attr( date( $date_format, $announcment_date ) );
+				echo timeline_express_get_announcement_date( $id );
 			break;
 
 		case 'image':
