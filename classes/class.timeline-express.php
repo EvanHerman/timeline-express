@@ -977,9 +977,11 @@ if(!class_exists("timelineExpressBase"))
 			 ****************************************************************************************************/
 			 // Function to process the shortcode provided by the plugin
 			 // $p is the data associated with the shortcode (ie: form id and submit button text)
+			 //By default it loads all announcements from the database, but you can also give an amount
 			public function processShortcode( $atts ) {
 				
 				$atts = shortcode_atts( array(
+					'amount'=>'-1',
 				), $atts, 'timeline-express' );
 				
 				// enqueue our scripts + styles
@@ -1029,7 +1031,7 @@ if(!class_exists("timelineExpressBase"))
 									'meta_key'   => 'announcement_date',
 									'orderby'    => 'meta_value_num',
 									'order'      => $display_order,
-									'posts_per_page' => -1
+									'posts_per_page' => $atts['amount']
 								);
 							} else { 
 								// else we only want to query what we
@@ -1039,7 +1041,7 @@ if(!class_exists("timelineExpressBase"))
 									'meta_key'   => 'announcement_date',
 									'orderby'    => 'meta_value_num',
 									'order'      => $display_order,
-									'posts_per_page' => -1,
+									'posts_per_page' => $atts['amount'],
 									'meta_query' => array(
 										array(
 											'key'     => 'announcement_date',
