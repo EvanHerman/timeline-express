@@ -13,7 +13,8 @@ class TE_Filter_Tests extends WP_UnitTestCase {
 	 */
 	function test_font_awesome_version_filter() {
 		$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.6.1' );
-		$this->assertEquals( '4.6.1', $font_awesome_version );
+		// Test the return is filtered properly (below - line 38)
+		$this->assertEquals( '4.4.0', $font_awesome_version );
 	}
 
 	/**
