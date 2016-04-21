@@ -12,8 +12,8 @@ class TE_Filter_Tests extends WP_UnitTestCase {
 	 * @return bool PHP Unit test assertion.
 	 */
 	function test_font_awesome_version_filter() {
-		$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.5.0' );
-		$this->assertEquals( '4.4.0', $font_awesome_version );
+		$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.6.1' );
+		$this->assertEquals( '4.6.1', $font_awesome_version );
 	}
 
 	/**

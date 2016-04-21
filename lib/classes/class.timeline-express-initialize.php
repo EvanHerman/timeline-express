@@ -20,6 +20,10 @@ class Timeline_Express_Initialize {
 		/* Parse the shortcode attributes */
 		$atts = shortcode_atts( array(), $atts, 'timeline-express' );
 
+		// retreive & store our options
+		$options = timeline_express_get_options();
+		// check if the animation is disabled or not
+		$animation_disabled = ( isset( $options['disable-animation'] ) && $options['disable-animation'] ) ? true : false;
 		/**
 		 * Enqueue our scripts & styles
 		 * 1) jquery-masonry for laying out the announcements
@@ -29,6 +33,10 @@ class Timeline_Express_Initialize {
 		/* Scripts */
 		wp_enqueue_script( 'jquery-masonry' );
 		wp_enqueue_script( 'timeline-express-js-base' , TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js' , array( 'jquery-masonry' ) );
+		/* pass the disabled state to our script */
+		wp_localize_script( 'timeline-express-js-base', 'timeline_express_data', array(
+			'animation_disabled' => $animation_disabled,
+		) );
 		do_action( 'timeline-express-scripts' );
 
 		/**
@@ -42,7 +50,10 @@ class Timeline_Express_Initialize {
 		do_action( 'timeline-express-styles' );
 
 		/** Print our Timeline Express styles */
-		add_action( 'wp_enqueue_scripts', array( $this, self::timeline_express_print_inline_styles( timeline_express_get_options() ) ) );
+		add_action( 'wp_enqueue_scripts', array( $this, self::timeline_express_print_inline_styles( $options ) ) );
+
+		/* Add Custom Classes to the announcment container */
+		add_filter( 'timeline-express-announcement-container-class', array( $this, 'timeline_express_announcement_container_classes' ), 10, 2 );
 	}
 
 	/**
@@ -224,5 +235,25 @@ class Timeline_Express_Initialize {
 		echo ' | Site: http://www.wp-timelineexpress.com';
 		echo ' | Author: CodeParrots - http://www.codeparrots.com';
 		return apply_filters( 'timeline_express_html_comment', ob_get_clean() );
-	} /* Last Function */
+	}
+
+	/**
+	 * Append additional classes to our container based on the announcement meta
+	 * @param  string    $class             Initial class to add to our container (cd-container)
+	 * @param  integer   $announcement_id   The announcement ID to retreive meta from
+	 * @return string                       Imploded array of new classes to append to our container.
+	 */
+	public function timeline_express_announcement_container_classes( $class, $announcement_id ) {
+		$container_classes = array( $class );
+		// append the month
+		$container_classes[] = strtolower( date_i18n( 'F', get_post_meta( $announcement_id, 'announcement_date', true ) ) );
+		// append the day
+		$container_classes[] = strtolower( date_i18n( 't', get_post_meta( $announcement_id, 'announcement_date', true ) ) );
+		// append the year
+		$container_classes[] = strtolower( date_i18n( 'Y', get_post_meta( $announcement_id, 'announcement_date', true ) ) );
+		// append the post ID
+		$container_classes[] = 'announcement-' . $announcement_id;
+		// return the array
+		return implode( ' ', $container_classes );
+	}/* Last Function */
 }

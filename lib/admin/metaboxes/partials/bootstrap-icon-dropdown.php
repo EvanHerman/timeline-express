@@ -2,7 +2,7 @@
 $screen = get_current_screen();
 $screen_base = $screen->base;
 $http = ( is_ssl() ) ? 'https:' : 'http:';
-$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.5.0' );
+$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.6.1' );
 
 // Store our response in a transient for faster page loading
 if ( false === ( $response = get_transient( 'te_font_awesome_transient' ) ) ) {
@@ -16,7 +16,7 @@ if ( false === ( $response = get_transient( 'te_font_awesome_transient' ) ) ) {
 	}
 
 	// It wasn't there, so regenerate the data and save the transient
-	set_transient( 'te_font_awesome_transient', $response );
+	set_transient( 'te_font_awesome_transient', $response, 12 * HOUR_IN_SECONDS );
 }
 
 

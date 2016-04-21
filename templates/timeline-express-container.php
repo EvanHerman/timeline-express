@@ -15,7 +15,7 @@ $timeline_express_options = timeline_express_get_options();
 $custom_icon_html = apply_filters( 'timeline_express_custom_icon_html', apply_filters( 'timeline-express-custom-icon-html', '', $post, $timeline_express_options ), $post->ID, $timeline_express_options );
 ?>
 
-<div class="cd-timeline-block">
+<div class="<?php echo apply_filters( 'timeline-express-announcement-container-class', 'cd-timeline-block', $post->ID ); ?>">
 
 	<?php
 	/* Generate the Custom Icon. */

@@ -39,8 +39,8 @@ function timeline_express_get_options() {
 	$timeline_express_defaultvals	= array(
 		'announcement-time-frame' => '0',
 		'announcement-display-order' => 'ASC',
-		'excerpt-trim-length' => '250',
-		'excerpt-random-length' => '0',
+		'excerpt-trim-length' => 250,
+		'excerpt-random-length' => 0,
 		'date-visibility'	=> '1',
 		'read-more-visibility'	=> '1',
 		'default-announcement-icon' => 'exclamation-triangle',
@@ -50,7 +50,8 @@ function timeline_express_get_options() {
 		'announcement-bg-color' => '#EFEFEF',
 		'no-events-message' => __( 'No announcements found', 'timeline-express' ),
 		'announcement-appear-in-searches' => 'true',
-		'delete-announcement-posts-on-uninstallation' => '0',
+		'disable-animation' => 0,
+		'delete-announcement-posts-on-uninstallation' => 0,
 		'version'	=> TIMELINE_EXPRESS_VERSION_CURRENT,
 	);
 	return get_option( TIMELINE_EXPRESS_OPTION, $timeline_express_defaultvals );
@@ -169,7 +170,7 @@ function cmb2_validate_te_bootstrap_dropdown_callback( $override_value, $value )
  * @since v1.1.5.7
  */
 function timeline_express_enqueue_font_awesome() {
-	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.5.0' );
+	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.6.1' );
 	$http = ( is_ssl() ) ? 'https:' : 'http:';
 	/* Check if CDN is reachable, if so - get em' */
 	if ( wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
@@ -192,7 +193,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	$screen = get_current_screen();
 	$screen_base = $screen->base;
 	$http = ( is_ssl() ) ? 'https:' : 'http:';
-	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.5.0' );
+	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.6.1' );
 
 	// Store our response in a transient for faster page loading.
 	if ( false === ( $response = get_transient( 'te_font_awesome_transient' ) ) ) {
@@ -204,7 +205,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 		}
 
 		// It wasn't there, so regenerate the data and save the transient.
-		set_transient( 'te_font_awesome_transient', $response );
+		set_transient( 'te_font_awesome_transient', $response, 12 * HOUR_IN_SECONDS );
 	}
 
 	// Split the response body, and store the icon classes in a variable.
@@ -365,7 +366,7 @@ function timeline_express_get_announcement_icon_color( $post_id ) {
  */
 function timeline_express_get_announcement_image( $post_id, $image_size = 'timeline-express' ) {
 	/* Escaped on output in the timeline/single page */
-	echo apply_filters( 'timeline_express_image', wp_get_attachment_image(
+	echo wp_kses_post( apply_filters( 'timeline_express_image', wp_get_attachment_image(
 		get_post_meta( $post_id, 'announcement_image_id', true ),
 		apply_filters( 'timeline_express_announcement_img_size', apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id ), $post_id ), /* Legacy filter name - maintain formatting */
 		false,
@@ -373,7 +374,7 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 			'title' => esc_attr__( get_the_title() ),
 			'class' => 'announcement-banner-image',
 		)
-	), $post_id );
+	), $post_id ) );
 }
 
 /**

@@ -138,7 +138,7 @@ add_filter( 'timeline_express_custom_fields', 'add_custom_timeline_express_field
 
 `timeline_express_font_awesome_version`
 
-- *Description:* Specify which version of Font Awesome you want to use to display your icons. Defaults to 4.5.0 (or latest).
+- *Description:* Specify which version of Font Awesome you want to use to display your icons. Defaults to 4.6.1 (or latest).
 - *Location:* `/timeline-express/lib/admin/metaboxes/partials/bootstrap-icon-dropdown.php`
 - *Paramaters:* `$font_awesome_version`
 - *Default:* Array of default Timeline Express fields.
@@ -579,6 +579,29 @@ function set_custom_icon_html_markup( $single_template ) {
 	 */
 }
 add_filter( 'timeline_express_custom_icon_html', 'set_custom_icon_html_markup' );
+```
+
+`timeline-express-announcement-container-class`
+
+- *Description:* Add additional classes to each announcement container on the time line.
+- *Location:* `/timeline-express/lib/public/partials/timeline-express-container.php`
+- *Paramaters:* `$class` & `$announcement_id`
+- *Default:* 'cd-timeline-block'.
+
+*Example Usage*
+```php
+/**
+ * The following example will append 'custom-class' on to each announcement
+ * container on the timeline.
+ * @param string   $class             The default classes to filter.
+ * @param integer  $announcement_id   The announcement ID to retrieve data from.
+ */
+public function add_additional_timeline_container_classes( $class, $announcement_id ) {
+	$container_classes = array( $class );
+	$container_classes[] = 'custom-class';
+	return implode( ' ', $container_classes );
+}
+add_filter( 'timeline-express-announcement-container-class', 'add_additional_timeline_container_classes', 10, 2 );
 ```
 
 #### Actions

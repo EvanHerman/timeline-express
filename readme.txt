@@ -344,7 +344,7 @@ add_filter( 'timeline_express_custom_template' , 'custom_timeline_express_templa
 
 **Specify Font Awesome Version (New 1.1.7.8)**
 
-Users can now specify which version of font awesome to load from the font awesome CDN. Alternatively, if the font awesome version is not found - the bundled fall back (version 4.5.0) will be used.
+Users can now specify which version of font awesome to load from the font awesome CDN. Alternatively, if the font awesome version is not found - the bundled fall back (version 4.6.1) will be used.
 
 Example:
 <code>
@@ -380,7 +380,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 * Fixed reversed `is_ssl()` checks.
 
 = 1.1.8 - February 10th, 2016 =
-* Ensured that the minified version of font awesome is enqueued on the front end (v4.5.0)
+* Ensured that the minified version of font awesome is enqueued on the front end (v4.6.1)
 * Ensured that the correct version (and fallback) of font awesome was used on both frontend and backend.
 * Added RTL support.
 

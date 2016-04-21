@@ -181,6 +181,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			$timeline_express_options['no-events-message'] = sanitize_text_field( $options['no-events-message'] );
 			$timeline_express_options['announcement-appear-in-searches'] = sanitize_text_field( $options['announcement-appear-in-searches'] );
 			$timeline_express_options['delete-announcement-posts-on-uninstallation'] = (int) ( isset( $options['delete-announcement-posts-on-uninstallation'] ) ) ? 1 : 0;
+			$timeline_express_options['disable-animation'] = (int) ( isset( $options['disable-animation'] ) ) ? 1 : 0;
 			/* Delete the transient, to refresh the frontend timeline (display order, excerpt length etc.) */
 			delete_transient( 'timeline-express-query' );
 			return $timeline_express_options;

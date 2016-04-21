@@ -247,13 +247,24 @@ $additional_editor_parameters = array(
 											</td>
 										</tr>
 
+										<!-- Disable Timeline Animation -->
+										<tr valign="top">
+											<th scope="row"><label for="timeline_express_storage[disable-animation]"><?php esc_attr_e( 'Disable Timeline Animations?', 'timeline-express' ); ?></label></th>
+											<td>
+												<input type="checkbox" name="timeline_express_storage[disable-animation]" <?php checked( $current_options['disable-animation'] , '1' ); ?> value="1" />
+												<p class="description">
+													<?php esc_attr_e( 'Check this option off to disable the timeline animations while scrolling..', 'timeline-express' ); ?>
+												</p>
+											</td>
+										</tr>
+
 										<!-- Delete Announcements On Uninstall Checkbox -->
 										<tr valign="top">
 											<th scope="row"><label for="timeline_express_storage[delete-announcement-posts-on-uninstallation]"><?php esc_attr_e( 'Delete Announcements On Uninstall?', 'timeline-express' ); ?></label></th>
 											<td>
 												<input type="checkbox" name="timeline_express_storage[delete-announcement-posts-on-uninstallation]" onclick="toggleDeleteCheckClass();" <?php checked( $current_options['delete-announcement-posts-on-uninstallation'] , '1' ); ?> value="1" /><span class="<?php if ( '0' === $current_options['delete-announcement-posts-on-uninstallation'] ) { ?> delete-no <?php } else { ?> delete-yes <?php } ?>" onclick="toggle_delete_checkbox();"></span>
 												<p class="description">
-													<?php esc_attr_e( 'Select this to delete all announcement posts from the data base on plugin uninstallation. this can not be undone, once they are deleted they are gone forever. If you want to keep them, export your announcements before uninstalling.', 'timeline-express' ); ?>
+													<?php esc_attr_e( 'Check this option to delete all announcement posts from the data base on plugin uninstallation. this can not be undone, once they are deleted they are gone forever. If you want to back them up, it is recommended you export your announcements before uninstalling.', 'timeline-express' ); ?>
 												</p>
 											</td>
 										</tr>
