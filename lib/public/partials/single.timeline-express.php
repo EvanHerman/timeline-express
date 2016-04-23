@@ -28,7 +28,7 @@ do_action( 'timeline-express-single-after-image' );
 		/* Action hook to display content before the single announcement date */
 		do_action( 'timeline-express-single-before-date' );
 
-		esc_attr_e( __( 'Announcement Date:' , 'timeline-express' ) . ' ' );
+		esc_attr_e( __( 'Announcement Date:', 'timeline-express' ) . ' ' );
 		esc_attr_e( timeline_express_get_announcement_date( get_the_ID() ) );
 
 		/* Action hook to display content after the single announcement date */

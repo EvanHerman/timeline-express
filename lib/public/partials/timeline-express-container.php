@@ -37,7 +37,7 @@ $timeline_express_options = timeline_express_get_options();
 			?>
 
 			<h2 class="cd-timeline-item-title">
-				<?php the_title();?>
+				<?php the_title(); ?>
 			</h2>
 
 			<?php

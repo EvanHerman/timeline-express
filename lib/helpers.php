@@ -36,7 +36,7 @@ add_filter( 'cmb2_sanitize_te_bootstrap_dropdown', 'cmb2_validate_te_bootstrap_d
  * @return plugin options or defaults if not set
  */
 function timeline_express_get_options() {
-	$timeline_express_defaultvals	= array(
+	$timeline_express_defaultvals = array(
 		'announcement-time-frame' => '0',
 		'announcement-display-order' => 'ASC',
 		'excerpt-trim-length' => 250,
@@ -175,7 +175,7 @@ function timeline_express_enqueue_font_awesome() {
 	/* Check if CDN is reachable, if so - get em' */
 	if ( wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
 		/* Enqueue font awesome for use in column display */
-		wp_enqueue_style( 'font-awesome', $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css' , array(), $font_awesome_version );
+		wp_enqueue_style( 'font-awesome', $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css', array(), $font_awesome_version );
 	} else {
 		/* If not, load the local version */
 		wp_enqueue_style( 'font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.min.css', array(), $font_awesome_version );
@@ -209,11 +209,11 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	}
 
 	// Split the response body, and store the icon classes in a variable.
-	$split_dat_response = explode( 'icons */' , $response['body'] );
+	$split_dat_response = explode( 'icons */', $response['body'] );
 
 	// Replace the unecessary stuff from the font awesome CSS icon file.
-	$data = str_replace( ';' , '' , str_replace( ':before' , '' , str_replace( '}' , '' , str_replace( 'content' , '' , str_replace( '{' , '' , $split_dat_response[1] ) ) ) ) );
-	$icon_data = explode( '.fa-' , $data );
+	$data = str_replace( ';', '', str_replace( ':before', '', str_replace( '}', '', str_replace( 'content', '', str_replace( '{', '', $split_dat_response[1] ) ) ) ) );
+	$icon_data = explode( '.fa-', $data );
 	$i = 1;
 
 	// Define & Build our icon array
@@ -286,7 +286,7 @@ function build_bootstrap_icons_array( $icon_data ) {
 	$bootstrap_icon_array = array();
 	// Loop
 	foreach ( array_slice( $icon_data, 1 ) as $key => $value ) {
-		$split_icon = explode( ':' , $value );
+		$split_icon = explode( ':', $value );
 		if ( isset( $split_icon[1] ) ) {
 			// Push to the array
 			$bootstrap_icon_array[] = array( trim( 'fa-' . $split_icon[0] ) => trim( $split_icon[0] ) );

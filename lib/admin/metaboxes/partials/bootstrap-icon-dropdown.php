@@ -21,12 +21,12 @@ if ( false === ( $response = get_transient( 'te_font_awesome_transient' ) ) ) {
 
 
 // splot the response body, and store the icon classes in a variable
-$split_dat_response = explode( 'icons */' , $response['body'] );
+$split_dat_response = explode( 'icons */', $response['body'] );
 
 
 // replace the unecessary stuff
-$data = str_replace( ';' , '' , str_replace( ':before' , '' , str_replace( '}' , '' , str_replace( 'content' , '' , str_replace( '{' , '' , $split_dat_response[1] ) ) ) ) );
-$icon_data = explode( '.fa-' , $data );
+$data = str_replace( ';', '', str_replace( ':before', '', str_replace( '}', '', str_replace( 'content', '', str_replace( '{', '', $split_dat_response[1] ) ) ) ) );
+$icon_data = explode( '.fa-', $data );
 $i = 1;
 
 // Get our icon array
@@ -35,7 +35,7 @@ $bootstrap_icon_array = build_bootstrap_icons_array( $icon_data );
 $flat_bootstrap_icon_array = array();
 foreach ( $bootstrap_icon_array as $array ) {
 	foreach ( $array as $k => $v ) {
-		 $flat_bootstrap_icon_array[$k] = $v;
+		 $flat_bootstrap_icon_array[ $k ] = $v;
 	}
 }
 ?>
