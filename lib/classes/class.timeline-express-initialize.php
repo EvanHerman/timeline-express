@@ -155,7 +155,7 @@ class Timeline_Express_Initialize {
 	 * @param object $announcement The announcement (post) object.
 	 * @param array  $timeline_express_options The timeline express settings array.
 	 */
-	private function generate_timeline_express_container( $announcement, $timeline_express_options ) {
+	public function generate_timeline_express_container( $announcement, $timeline_express_options ) {
 		get_timeline_express_template( 'timeline-container' );
 	}
 

@@ -72,11 +72,14 @@ module.exports = function(grunt) {
 	    taskName: {
 	      options: {
 	        position: 'top',
-	        banner: '/*! @Plugin <%= pkg.title %> ' +
-						' - @Author <%= pkg.author %> '+
-						'- @Site <%= pkg.site %> '+
-						'- @Version <%= pkg.version %> - ' +
-		        '@Build <%= grunt.template.today("mm-dd-yyyy") %> !*/',
+					replace: true,
+	        banner: '/*\n'+
+						' * @Plugin <%= pkg.title %>\n' +
+						' * @Author <%= pkg.author %>\n'+
+						' * @Site <%= pkg.site %>\n'+
+						' * @Version <%= pkg.version %>\n' +
+		        ' * @Build <%= grunt.template.today("mm-dd-yyyy") %>\n'+
+						' */',
 	        linebreak: true
 	      },
 	      files: {

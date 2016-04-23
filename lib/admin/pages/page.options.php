@@ -251,9 +251,9 @@ $additional_editor_parameters = array(
 										<tr valign="top">
 											<th scope="row"><label for="timeline_express_storage[disable-animation]"><?php esc_attr_e( 'Disable Timeline Animations?', 'timeline-express' ); ?></label></th>
 											<td>
-												<input type="checkbox" name="timeline_express_storage[disable-animation]" <?php checked( $current_options['disable-animation'] , '1' ); ?> value="1" />
+												<input type="checkbox" name="timeline_express_storage[disable-animation]" <?php if ( isset( $current_options['disable-animation'] ) ) { checked( $current_options['disable-animation'] , '1' ); } ?> value="1" />
 												<p class="description">
-													<?php esc_attr_e( 'Check this option off to disable the timeline animations while scrolling..', 'timeline-express' ); ?>
+													<?php esc_attr_e( 'Check this option off to disable the timeline animations while scrolling.', 'timeline-express' ); ?>
 												</p>
 											</td>
 										</tr>

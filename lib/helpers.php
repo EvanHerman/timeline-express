@@ -341,6 +341,38 @@ function does_timeline_express_init_class_exist() {
 }
 
 /**
+ * Get the full icon HTML markup
+ * @param  int $post_id The announcement ID to retreive the icon from
+ * @return string       The HTML markup to return
+ */
+function timeline_express_get_announcement_icon_markup( $post_id ) {
+	$timeline_express_options = timeline_express_get_options();
+	$custom_icon_html = apply_filters( 'timeline_express_custom_icon_html', apply_filters( 'timeline-express-custom-icon-html', false, $post_id, $timeline_express_options ), $post_id, $timeline_express_options );
+	/* Generate the Icon */
+	if ( $custom_icon_html ) {
+		echo wp_kses_post( $custom_icon_html );
+		return;
+	}
+	/* If read more visibility is set to true, wrap the icon in a link. */
+	if ( 0 !== $timeline_express_options['read-more-visibility'] ) {
+		?>
+		<a class="cd-timeline-icon-link" href="<?php esc_attr_e( get_the_permalink( $post_id ) ); ?>">
+			<div class="cd-timeline-img cd-picture" style="background:'<?php esc_attr_e( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
+			<span class="fa <?php esc_attr_e( timeline_express_get_announcement_icon( $post_id ) ); ?>" title="<?php esc_attr_e( get_the_title( $post_id ) ); ?>"></span>
+			</div> <!-- cd-timeline-img -->
+		</a>
+		<?php
+	} else {
+		/* Else, no link around the icon. */
+		?>
+		<div class="cd-timeline-img cd-picture" style="background:<?php esc_attr_e( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">';
+			<span class="fa <?php esc_attr_e( timeline_express_get_announcement_icon( $post_id ) ); ?>" title="<?php esc_attr_e( get_the_title( $post_id ) ); ?>"></span>';
+		</div>
+		<?php
+	}
+}
+
+/**
  * Get the announcement icon chosen in the dropdown
  * @param  int $post_id The announcement ID to retreive the icon from
  * @return string       The announcement icon to use
