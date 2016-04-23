@@ -62,7 +62,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			 * Admin scripts and styles enqueue
 			 * @since 1.2
 			 */
-			 add_action( 'admin_enqueue_scripts' , array( $this, 'add_timeline_express_admin_scripts_and_styles' ) );
+			 add_action( 'admin_enqueue_scripts', array( $this, 'add_timeline_express_admin_scripts_and_styles' ) );
 		}
 
 		/**
@@ -114,7 +114,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			/* Settings Page */
 			add_submenu_page(
 				'edit.php?post_type=te_announcements',
-				__( 'Timeline Express Settings','timeline-express' ),
+				__( 'Timeline Express Settings', 'timeline-express' ),
 				__( 'Settings', 'timeline-express' ),
 				$menu_cap,
 				'timeline-express-settings',
@@ -289,9 +289,11 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			/* If custom template file exists */
 			if ( file_exists( get_template_directory() . '/timeline-express/single-te_announcements.php' ) ) {
 				$single_template = get_template_directory() . '/timeline-express/single-te_announcements.php';
-			} else if ( file_exists( get_template_directory() . 'single.php' ) ) { /* If single.php exists */
+			} else if ( file_exists( get_template_directory() . 'single.php' ) ) {
+				/* If single.php exists */
 				$single_template = get_template_directory() . 'single.php';
-			} else if ( file_exists( get_template_directory() . 'page.php' ) ) { /* If page.php exists */
+			} else if ( file_exists( get_template_directory() . 'page.php' ) ) {
+				/* If page.php exists */
 				$single_template = get_template_directory() . 'page.php';
 			}
 			/**
@@ -436,7 +438,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 			$load_styles_on_pages = array( 'te_announcements_page_timeline-express-settings', 'te_announcements_page_timeline-express-welcome' );
 			if ( in_array( $screen->base, $load_styles_on_pages, true ) || 'te_announcements' === $screen->post_type ) {
 				/* Register Styles */
-				wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'lib/admin/css/min/timeline-express-admin.min.css' , array(), TIMELINE_EXPRESS_VERSION_CURRENT, 'all' );
+				wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'lib/admin/css/min/timeline-express-admin.min.css', array(), TIMELINE_EXPRESS_VERSION_CURRENT, 'all' );
 				/* Enqueue font awesome icons, defined in helpers.php */
 				timeline_express_enqueue_font_awesome();
 
@@ -448,7 +450,7 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 				 */
 				wp_enqueue_script( 'timeline-express-admin-js', TIMELINE_EXPRESS_URL . 'lib/admin/js/min/timeline-express-admin.min.js', array( 'jquery' ), TIMELINE_EXPRESS_VERSION_CURRENT, true );
 				wp_enqueue_script( 'bootstrap-min', TIMELINE_EXPRESS_URL . 'lib/admin/js/min/bootstrap.min.js' );
-				wp_enqueue_style( 'bootstrap-select-style',  TIMELINE_EXPRESS_URL . 'lib/admin/css/min/bootstrap-select.min.css' );
+				wp_enqueue_style( 'bootstrap-select-style', TIMELINE_EXPRESS_URL . 'lib/admin/css/min/bootstrap-select.min.css' );
 			}
 
 			if ( in_array( $screen->base, array( 'te_announcements_page_timeline-express-settings' ), true ) || 'te_announcements' === $screen->post_type ) {

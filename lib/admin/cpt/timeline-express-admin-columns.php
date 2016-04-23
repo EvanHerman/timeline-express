@@ -53,8 +53,8 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 			break;
 
 		case 'announcement_date':
-				$announcment_date = get_post_meta( $id , 'announcement_date' , true );
-				echo apply_filters( 'timeline_express_admin_column_date_format', date( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), $announcment_date ), $announcment_date );
+				$announcment_date = get_post_meta( $id, 'announcement_date', true );
+				echo esc_textarea( pply_filters( 'timeline_express_admin_column_date_format', date( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), $announcment_date ), $announcment_date ) );
 			break;
 
 		case 'image':
@@ -102,10 +102,9 @@ function make_sortable_timeline_express_column( $columns ) {
  */
 add_action( 'pre_get_posts', 'te_announcements_pre_get_posts', 1 );
 function te_announcements_pre_get_posts( $query ) {
-	/**
-	* We only want our code to run in the main WP query
-	* AND if an orderby query variable is designated.
-	*/
+	// We only want our code to run in the main WP query
+	// AND only when an orderby query variable is designated.
+	// AND when the orderby query variable is set to 'announcement_date'
 	if ( $query->is_main_query() && ( $orderby = $query->get( 'orderby' ) ) ) {
 		switch ( $orderby ) {
 			/* If we're ordering by 'announcement_date'. */

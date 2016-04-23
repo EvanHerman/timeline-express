@@ -32,7 +32,7 @@ class Timeline_Express_Initialize {
 		 */
 		/* Scripts */
 		wp_enqueue_script( 'jquery-masonry' );
-		wp_enqueue_script( 'timeline-express-js-base' , TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js' , array( 'jquery-masonry' ) );
+		wp_enqueue_script( 'timeline-express-js-base', TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js', array( 'jquery-masonry' ) );
 		/* pass the disabled state to our script */
 		wp_localize_script( 'timeline-express-js-base', 'timeline_express_data', array(
 			'animation_disabled' => $animation_disabled,
@@ -46,7 +46,7 @@ class Timeline_Express_Initialize {
 		 * 3) do_action( 'timeline-express-styles' ); for additional plugins to hook into.
 		 */
 		timeline_express_enqueue_font_awesome();
-		wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express.min.css', array( 'font-awesome' ) , 'all' );
+		wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express.min.css', array( 'font-awesome' ), 'all' );
 		do_action( 'timeline-express-styles' );
 
 		/** Print our Timeline Express styles */
