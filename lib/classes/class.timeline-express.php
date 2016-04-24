@@ -145,6 +145,10 @@ if ( ! class_exists( 'TimelineExpressBase' ) ) {
 		 * @package  TimelineExpressBase
 		 */
 		public function timeline_express_register_settings() {
+			// If the years are being used, hide the icon selector
+			if ( defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) ) {
+				?><style>.cmb-type-te-bootstrap-dropdown{ display: none !important; }</style><?php
+			}
 			register_setting( 'timeline-express-settings', 'timeline_express_storage', array( $this, 'timeline_express_save_options' ) );
 			/* Plugin redirect */
 			self::timeline_express_activate_redirect();

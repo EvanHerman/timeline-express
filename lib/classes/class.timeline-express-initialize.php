@@ -251,6 +251,10 @@ class Timeline_Express_Initialize {
 		$container_classes[] = strtolower( date_i18n( 't', get_post_meta( $announcement_id, 'announcement_date', true ) ) );
 		// append the year
 		$container_classes[] = strtolower( date_i18n( 'Y', get_post_meta( $announcement_id, 'announcement_date', true ) ) );
+		// if the announcement has no announcement image
+		if ( ! get_post_meta( $announcement_id, 'announcement_image_id', true ) ) {
+			$container_classes[] = 'announcement-no-image';
+		}
 		// append the post ID
 		$container_classes[] = 'announcement-' . $announcement_id;
 		// return the array

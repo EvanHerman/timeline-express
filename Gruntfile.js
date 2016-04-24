@@ -120,7 +120,7 @@ module.exports = function(grunt) {
     watch: {
       admin_css: { // admin css
         files: 'lib/admin/css/*.css',
-        tasks: ['cssmin'],
+        tasks: ['cssmin', 'usebanner'],
         options: {
           spawn: false,
           event: ['all']
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
       },
       admin_js: { // admin js
         files: 'lib/admin/js/*.js',
-        tasks: ['uglify'],
+        tasks: ['uglify', 'usebanner'],
         options: {
           spawn: false,
           event: ['all']
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
       public_css: {
         // public css
         files: 'lib/public/css/*.css',
-        tasks: ['cssmin'],
+        tasks: ['cssmin', 'usebanner'],
         options: {
           spawn: false,
           event: ['all']
@@ -145,7 +145,7 @@ module.exports = function(grunt) {
       },
       public_js: { // public js
         files: 'lib/public/js/*.js',
-        tasks: ['uglify'],
+        tasks: ['uglify', 'usebanner'],
         options: {
           spawn: false,
           event: ['all']
@@ -171,7 +171,7 @@ module.exports = function(grunt) {
     'cssmin',
 		'usebanner',
     'copy',
-    // 'watch',
+    'watch',
   ]);
 
 };

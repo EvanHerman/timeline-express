@@ -354,22 +354,28 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 		return;
 	}
 	/* If read more visibility is set to true, wrap the icon in a link. */
-	if ( 0 !== $timeline_express_options['read-more-visibility'] ) {
-		?>
+	if ( 0 !== $timeline_express_options['read-more-visibility'] ) { ?>
 		<a class="cd-timeline-icon-link" href="<?php esc_attr_e( get_the_permalink( $post_id ) ); ?>">
-			<div class="cd-timeline-img cd-picture" style="background:'<?php esc_attr_e( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
-			<span class="fa <?php esc_attr_e( timeline_express_get_announcement_icon( $post_id ) ); ?>" title="<?php esc_attr_e( get_the_title( $post_id ) ); ?>"></span>
-			</div> <!-- cd-timeline-img -->
+	<?php } ?>
+		<div class="cd-timeline-img cd-picture" style="background:<?php esc_attr_e( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
+			<!-- Custom Action Hook -->
+			<?php if ( defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) ) { ?>
+				<!-- Standard Font Awesome Icon -->
+				<span class="year">
+					<strong>
+						<?php echo esc_attr( date( 'Y', strtotime( timeline_express_get_announcement_date( $post_id ) ) ) ); ?>
+					</strong>
+				</span>
+			<?php } else { ?>
+				<!-- Standard Font Awesome Icon -->
+				<span class="fa <?php esc_attr_e( timeline_express_get_announcement_icon( $post_id ) ); ?>" title="<?php esc_attr_e( get_the_title( $post_id ) ); ?>"></span>
+			<?php } ?>
+		</div> <!-- cd-timeline-img -->
+	<?php
+	/* If read more visibility is set to true, wrap the icon in a link. */
+	if ( 0 !== $timeline_express_options['read-more-visibility'] ) { ?>
 		</a>
-		<?php
-	} else {
-		/* Else, no link around the icon. */
-		?>
-		<div class="cd-timeline-img cd-picture" style="background:<?php esc_attr_e( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">';
-			<span class="fa <?php esc_attr_e( timeline_express_get_announcement_icon( $post_id ) ); ?>" title="<?php esc_attr_e( get_the_title( $post_id ) ); ?>"></span>';
-		</div>
-		<?php
-	}
+	<?php }
 }
 
 /**

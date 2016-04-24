@@ -23,7 +23,10 @@ function add_new_timeline_express_columns( $timeline_express_announcement_column
 	$timeline_express_announcement_columns['cb'] = '<input type="checkbox" />';
 	$timeline_express_announcement_columns['title'] = sprintf( _x( '%s Name', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
 	$timeline_express_announcement_columns['color'] = _x( 'Color', 'timeline-express' );
-	$timeline_express_announcement_columns['icon'] = _x( 'Icon', 'timeline-express' );
+	// If years are being used, hide this column
+	if ( ! defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) ) {
+		$timeline_express_announcement_columns['icon'] = _x( 'Icon', 'timeline-express' );
+	}
 	$timeline_express_announcement_columns['announcement_date'] = sprintf( _x( '%s Date', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
 	$timeline_express_announcement_columns['image'] = _x( 'Image', 'timeline-express' );
 	$timeline_express_announcement_columns['past_announcement'] = sprintf( _x( '%s Past?', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
@@ -54,7 +57,7 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 
 		case 'announcement_date':
 				$announcment_date = get_post_meta( $id, 'announcement_date', true );
-				echo esc_textarea( pply_filters( 'timeline_express_admin_column_date_format', date( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), $announcment_date ), $announcment_date ) );
+				echo esc_textarea( apply_filters( 'timeline_express_admin_column_date_format', date( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), $announcment_date ), $announcment_date ) );
 			break;
 
 		case 'image':
