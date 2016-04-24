@@ -418,7 +418,7 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 /**
  * Retreive the timeline express announcement date
  * @param int    $post_id The announcement (post) ID whos image you want to retreive.
- * @return Timeline_Express_Initialize::get_announcement_date() Execute the function to retreive the date.
+ * @return string Execute the function to retreive the date.
  */
 function timeline_express_get_announcement_date( $post_id ) {
 	// return apply_filters( 'timeline_express_date', date_i18n( apply_filters( 'timeline_express_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), $post_id );
