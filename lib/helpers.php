@@ -452,9 +452,8 @@ function timeline_express_get_announcement_content( $post_id ) {
  * @return string       The announcement excerpt
  */
 function timeline_express_get_announcement_excerpt( $post_id ) {
-	/* Setup the excerpt length */
-	$excerpt = the_excerpt( get_the_content( $post_id ) );
-	return apply_filters( 'timeline_express_frontend_excerpt', $excerpt, $post_id );
+	/* Setup the excerpt */
+	return apply_filters( 'timeline_express_frontend_excerpt', get_the_excerpt(), $post_id );
 }
 
 /**

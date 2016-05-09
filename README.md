@@ -706,6 +706,3 @@ function sample_use_custom_meta() {
 }
 add_action( 'timeline-express-container-top', 'sample_use_custom_meta' );
 ```
-
-
-- ###### To Do

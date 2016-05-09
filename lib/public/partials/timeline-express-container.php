@@ -82,7 +82,7 @@ $timeline_express_options = timeline_express_get_options();
 			do_action( 'timeline-express-before-excerpt' );
 
 			/* Generate the announcement excerpt. */
-			echo esc_attr( timeline_express_get_announcement_excerpt( $post->ID ) );
+			echo wp_kses_post( timeline_express_get_announcement_excerpt( $post->ID ) );
 
 			/* Action hook to display content after the announcement excerpt on the timeline */
 			do_action( 'timeline-express-after-excerpt' );
