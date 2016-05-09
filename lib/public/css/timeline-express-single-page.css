@@ -1,0 +1,13 @@
+body.single-te_announcements .timeline-express-single-page-announcement-date {
+	display: block;
+	margin: .5em 0;
+}
+
+body.single-te_announcements .timeline-express-single-page-content {
+	margin: .5em 0 1em 0;
+}
+
+body.single-te_announcements nav.navigation.post-navigation {
+	display: none;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRpbWVsaW5lLWV4cHJlc3Mtc2luZ2xlLXBhZ2UuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0NBQ0EsZUFBQTtDQUNDLGVBQVk7Q0FDWjs7QUFFRDtDQUNBLHFCQUFBO0NBQ0M7O0FBRUQ7Q0FDQSxjQUFBO0NBQ0MiLCJmaWxlIjoidGltZWxpbmUtZXhwcmVzcy1zaW5nbGUtcGFnZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBTaW5nbGUtdGVfYW5ub3VuY2VtZW50cyBTdHlsZXMgKi9cbi5zaW5nbGUtdGVfYW5ub3VuY2VtZW50cyBpbWcuYW5ub3VuY2VtZW50LWJhbm5lci1pbWFnZSB7XG5cdGZsb2F0OiBsZWZ0O1xuXHRtYXJnaW46IDVweCAxNXB4IDE1cHggMDtcbn0iXX0= */
