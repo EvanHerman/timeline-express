@@ -37,7 +37,7 @@ $announcement_metabox->add_field( array(
 	'default' => 'fa-' . $timeline_express_options['default-announcement-icon'],
 ) );
 
-// Email text field
+// Announcement Date
 $announcement_metabox->add_field( array(
 	'name' => __( 'Announcement Date', 'timeline-express' ),
 	'desc' => __( 'Enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
@@ -46,7 +46,7 @@ $announcement_metabox->add_field( array(
 	'default' => strtotime( date( 'm/d/Y' ) ),
 ) );
 
-// Email text field
+// Announcement Image
 $announcement_metabox->add_field( array(
 	'name' => __( 'Announcement Image', 'timeline-express' ),
 	'desc' => __( 'Select a banner image for this announcement (optional). (recommended 650px wide or larger)', 'timeline-express' ),
@@ -197,3 +197,32 @@ if ( ! empty( $custom_fields ) ) {
 
 // Action hook to allow users to hook in and define new metaboxes
 do_action( 'timeline_express_metaboxes', $timeline_express_options );
+
+/**
+ * Localize the datepicker fields for international Users
+ * @resource https://github.com/WebDevStudios/CMB2-Snippet-Library/blob/master/filters-and-actions/localize-date-format.php
+ * @since 1.2.2
+ */
+add_filter( 'cmb2_localized_data', 'timeline_express_internationalize_datepicker' );
+function timeline_express_internationalize_datepicker( $l10n ) {
+	switch ( get_option( 'date_format' ) ) {
+		// EG: 04/15/2016 - April 15th, 2016
+		default:
+		case 'm/d/Y':
+			$l10n['defaults']['date_picker']['dateFormat'] = 'mm/dd/yy';
+			break;
+		// EG: 2016-04-15 - April 15th, 2016
+		case 'd/m/Y':
+		case 'd/M/Y':
+		case 'd-m-Y':
+			$l10n['defaults']['date_picker']['dateFormat'] = 'dd/mm/yy';
+			break;
+		case 'Y-m-d':
+			$l10n['defaults']['date_picker']['dateFormat'] = 'yy-mm-dd';
+			break;
+		case 'F j, Y':
+			$l10n['defaults']['date_picker']['dateFormat'] = 'MM d, yy';
+			break;
+	}
+	return apply_filters( 'timeline_express_date_picker_format', $l10n );
+}

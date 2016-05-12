@@ -1,6 +1,5 @@
 .cd-container {
   width: 100%;
-  max-width: 822px;
   margin: 0 auto;
 }
 .cd-container::after {
@@ -203,6 +202,10 @@
   display: inline-block;
   width: 100%;
   float: left;
+}
+/* If date visibility is hidden, add padding to the image/title container */
+.cd-timeline-title-container + img {
+	margin-top: 5px;
 }
 .cd-timeline-content .timeline-date {
   display: block;

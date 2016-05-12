@@ -138,7 +138,8 @@ function cmb2_render_callback_te_help_docs_metabox( $field, $meta, $object_id, $
  */
 function cmb2_sanitize_te_date_time_stamp_custom_callback( $value, $new ) {
 	if ( isset( $new ) && ! empty( $new ) ) {
-		return apply_filters( 'timeline_express_sanitize_date_format', strtotime( $new ), $new );
+		$date_object = date_create_from_format( get_option( 'date_format' ), $new );
+		return $date_object ? apply_filters( 'timeline_express_sanitize_date_format', $date_object->setTime( 0, 0, 0 )->getTimeStamp(), $new ) : apply_filters( 'timeline_express_sanitize_date_format', strtotime( $new ), $new );
 	}
 	/* If all else fails, return current date/time UNIX time stamp */
 	return strtotime( 'now' );
@@ -365,8 +366,8 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 		return $custom_icon_html;
 	}
 	/* If read more visibility is set to true, wrap the icon in a link. */
-	if ( 0 !== $timeline_express_options['read-more-visibility'] ) { ?>
-		<a class="cd-timeline-icon-link" href="<?php esc_attr_e( get_the_permalink( $post_id ) ); ?>">
+	if ( '1' === $timeline_express_options['read-more-visibility'] ) { ?>
+		<a class="cd-timeline-icon-link" href="<?php echo esc_attr( apply_filters( 'timeline-express-read-more-link', esc_url( get_the_permalink( $post_id ) ) ) ); ?>">
 	<?php } ?>
 		<div class="cd-timeline-img cd-picture" style="background:<?php esc_attr_e( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
 			<!-- Custom Action Hook -->
@@ -384,7 +385,7 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 		</div> <!-- cd-timeline-img -->
 	<?php
 	/* If read more visibility is set to true, wrap the icon in a link. */
-	if ( 0 !== $timeline_express_options['read-more-visibility'] ) { ?>
+	if ( '1' === $timeline_express_options['read-more-visibility'] ) { ?>
 		</a>
 	<?php }
 }
@@ -453,7 +454,7 @@ function timeline_express_get_announcement_content( $post_id ) {
  */
 function timeline_express_get_announcement_excerpt( $post_id ) {
 	/* Setup the excerpt */
-	return apply_filters( 'timeline_express_frontend_excerpt', get_the_excerpt(), $post_id );
+	return apply_filters( 'the_content', apply_filters( 'timeline_express_frontend_excerpt', get_the_excerpt(), $post_id ) );
 }
 
 /**
@@ -461,18 +462,23 @@ function timeline_express_get_announcement_excerpt( $post_id ) {
  * @return string The announcement excerpt
  * @since 1.2
  */
-add_filter( 'excerpt_length', 'timeline_express_custom_excerpt_length' );
+add_filter( 'excerpt_length', 'timeline_express_custom_excerpt_length', 999 );
 function timeline_express_custom_excerpt_length( $length ) {
+	global $post;
+	// if not an announcement post, abort
+	if ( 'te_announcements' !== get_post_type( $post ) ) {
+		return $length;
+	}
 	$timeline_express_options = timeline_express_get_options();
 	if ( 1 === $timeline_express_options['excerpt-random-length'] ) {
 		$random_length = (int) rand( apply_filters( 'timeline_express_random_excerpt_min', 50 ), apply_filters( 'timeline_express_random_excerpt_max', 200 ) );
 		return (int) $random_length;
 	}
-	return $length;
+	return (int) apply_filters( 'timeline_express_excerpt_length', $timeline_express_options['excerpt-trim-length'] );
 }
 
 /**
- * Filter the read more links to a custom state
+ * Trim the excerpt and add ellipses to the end fo it
  * @param string $more The default HTML markup for the read more link.
  * @since 1.2
  */
@@ -480,10 +486,31 @@ add_filter( 'excerpt_more', 'timeline_express_custom_read_more', 999 );
 function timeline_express_custom_read_more( $more ) {
 	global $post;
 	$timeline_express_options = timeline_express_get_options();
-	if ( '1' !== $timeline_express_options['read-more-visibility'] || 'te_announcements' !== get_post_type( $post ) ) {
+	// if not timeline post
+	if ( 'te_announcements' !== get_post_type( $post ) ) {
 		return $more;
 	}
-	return apply_filters( 'timeline_express_read_more_link', '... <a class="' . esc_attr__( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="'. esc_attr__( esc_url( get_permalink( $post->ID ) ) ) . '"> ' . esc_attr__( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID );
+	// if read more visibility is set to hidden
+	if ( '1' !== $timeline_express_options['read-more-visibility'] ) {
+		return '';
+	}
+	// return the default
+	return apply_filters( 'timeline_express_read_more_ellipses', '...' );
+}
+
+/**
+ * Hook in and generate a read more link below each announcement
+ * @return string HTML markup for the new read me link.
+ */
+add_action( 'timeline-express-after-excerpt', 'timeline_express_custom_read_more_link', 10 );
+function timeline_express_custom_read_more_link() {
+	global $post;
+	$timeline_express_options = timeline_express_get_options();
+	// if read more visibility is set to hidden
+	if ( '1' !== $timeline_express_options['read-more-visibility'] ) {
+		return;
+	}
+	echo wp_kses_post( apply_filters( 'timeline_express_read_more_link', '<a class="' . esc_attr( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="'. apply_filters( 'timeline-express-read-more-link', esc_url( get_permalink( $post->ID ) ), $post->ID ) . '"> ' . esc_attr( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID ) );
 }
 
 /**
@@ -492,7 +519,7 @@ function timeline_express_custom_read_more( $more ) {
  * @return string       The announcement excerpt of random length
  */
 function timeline_express_generate_random_announcement( $post_id ) {
-	return apply_filters( 'timeline_express_random_excerpt', get_the_content( $post_id ), $post_id );
+	return apply_filters( 'the_content', apply_filters( 'timeline_express_random_excerpt', get_the_excerpt(), $post_id ) );
 }
 
 /**

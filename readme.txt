@@ -3,7 +3,7 @@ Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
 Tested up to: 4.5.2
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 
 Timeline Express allows you to create a beautiful vertical animated and responsive timeline of posts, without writing a single line of code. Sweet!
@@ -357,6 +357,14 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.2.2 - May 10th, 2016 =
+* Re-added the 'Read more' button to <em>all</em> announcements, regardless of length
+* Removed the 'Read More' text/link after the ellipses
+* Fixed theme overriding timeline excerpt lengths, added priority 999 and a post_type() conditional
+* Fixed weird admin responsive issue due to hard coded widths on the columns
+* Localized the date picker to honor the date format setting inside of 'Settings > General > Date Format'
+* Fixed the 'Read More' toggle setting not properly removing the links from the icons
+
 = 1.2.1 - May 9th, 2016 =
 * Repair `timeline_express_frontend_excerpt` filter.
 * Used wp_kses_post() instead of esc_attr() when printing the excerpts.
@@ -581,20 +589,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-== 1.2 - May 8th, 2016 =
-
-* Refactored plugin base to improve stability - split code base into classes and re-wrote many functions.
-* Plugin now more extendable, and much easier to style and customize.
-* New templating system in place, to allow for users to override, for help please see our [customization articles](http://www.wp-timelineexpress.com/?s=customize&post_type=kbe_knowledgebase).
-* Plugin WordPress compatible, following all standards.
-* Transients setup for front end caching (page transient caching to allow for different timelines on different pages).
-* Flush re-write rules now properly setup, to flush when needed (saving a page with the shortcode on it, saving the settings, creating/updating an announcement).
-* Started writing unit tests for improved future proofing.
-* Tweaked front end styles a bit, to improve consistency between themes.
-* Documentation site being built out, to help with questions. (http://www.wp-timelineexpress.com/documentation/)
-* Added additional filters and hooks to help with customizations.
-* Wrapped every string in the plugin in the appropriate gettext filters.
-* Added new options to disable animations and prevent scroll/fade in animations.
-* Tested migration from 1.1.8.2 to 1.2 - including new options.
-* Added new optional shortcode parameters `limit` (integer, limiting the number of announcements to display), `display` ('Future', 'Past' or 'All' to set which announcements will display on the timeline) and `sort` ('DESC' or 'ASC' to set the order of the timeline).
-* Frontend inline styles are now more reliable in overriding the appropriate elements.
+= 1.2.2 - May 10th, 2016 =
+* Re-added the 'Read more' button to <em>all</em> announcements, regardless of length
+* Removed the 'Read More' text/link after the ellipses
+* Fixed theme overriding timeline excerpt lengths, added priority 999 and a post_type() conditional
+* Fixed weird admin responsive issue due to hard coded widths on the columns
+* Localized the date picker to honor the date format setting inside of 'Settings > General > Date Format'
+* Fixed the 'Read More' toggle setting not properly removing the links from the icons

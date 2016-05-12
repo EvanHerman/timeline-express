@@ -20,6 +20,15 @@
  */
 add_filter( 'manage_edit-te_announcements_columns', 'add_new_timeline_express_columns' );
 function add_new_timeline_express_columns( $timeline_express_announcement_columns ) {
+	// Assign a new date column to the end of our table
+	$date_column = $timeline_express_announcement_columns['date'];
+	unset( $timeline_express_announcement_columns['date'] );
+	foreach( $timeline_express_announcement_columns as $key => $value ) {
+		if( $key === 'past_announcement' ) {  // when we find the date column
+			$new['date'] = $date_column;  // put the tags column before it
+		}
+		$new[ $key ] = $value;
+	}
 	$timeline_express_announcement_columns['cb'] = '<input type="checkbox" />';
 	$timeline_express_announcement_columns['title'] = sprintf( _x( '%s Name', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
 	$timeline_express_announcement_columns['color'] = _x( 'Color', 'timeline-express' );
@@ -30,6 +39,7 @@ function add_new_timeline_express_columns( $timeline_express_announcement_column
 	$timeline_express_announcement_columns['announcement_date'] = sprintf( _x( '%s Date', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
 	$timeline_express_announcement_columns['image'] = _x( 'Image', 'timeline-express' );
 	$timeline_express_announcement_columns['past_announcement'] = sprintf( _x( '%s Past?', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
+	$timeline_express_announcement_columns['date'] = 'Published Date';
 	return $timeline_express_announcement_columns;
 }
 
