@@ -203,11 +203,18 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 		set_transient( 'te_font_awesome_transient', $response, 12 * HOUR_IN_SECONDS );
 	}
 
+	/* If the response body is empty, abort */
+	if ( empty( $response['body'] ) || ! isset( $response['body'] ) ) {
+		return printf( '<em>' . esc_attr__( 'There was an error processing the bootstrap icons.', 'timeline-express' ) . '</em>' );
+	}
+
+	// Extract the icons from the stylesheet
 	$pattern = '/\.(fa-(?:\w+(?:-)?)+):before\s+{\s*content:\s*"(.+)";\s+}/';
 	preg_match_all( $pattern, $response['body'], $matches, PREG_SET_ORDER );
+
 	$icons = array();
-	foreach( $matches as $match ) {
-		$icons[str_replace( 'fa-', '', $match[1] )] = $match[2];
+	foreach ( $matches as $match ) {
+		$icons[ str_replace( 'fa-', '', $match[1] ) ] = $match[2];
 	}
 	?>
 
@@ -241,7 +248,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 		ksort( $icons );
 		/* sort the bootstrap icons alphabetically */
 		foreach ( $icons as $icon_name => $icon_content ) { ?>
-			<option class="fa" data-subtext="<i class='fa fa-<?php echo esc_attr( $icon_name ); ?>'></i>" <?php selected( 'fa-'.$icon_name , $meta ); ?>> <?php echo esc_attr( $icon_name ); ?> </option>
+			<option class="fa" data-icon="fa-<?php echo esc_attr( $icon_name ); ?>" <?php selected( 'fa-'.$icon_name , $meta ); ?>> <?php echo esc_attr( $icon_name ); ?> </option>
 		<?php } ?>
 
 	</select>
