@@ -199,26 +199,15 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 			// Load font awesome locally.
 			$response = wp_remote_get( TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.css' );
 		}
-
 		// It wasn't there, so regenerate the data and save the transient.
 		set_transient( 'te_font_awesome_transient', $response, 12 * HOUR_IN_SECONDS );
 	}
 
-	// Split the response body, and store the icon classes in a variable.
-	$split_dat_response = explode( 'icons */', $response['body'] );
-
-	// Replace the unecessary stuff from the font awesome CSS icon file.
-	$data = str_replace( ';', '', str_replace( ':before', '', str_replace( '}', '', str_replace( 'content', '', str_replace( '{', '', $split_dat_response[1] ) ) ) ) );
-	$icon_data = explode( '.fa-', $data );
-
-	// Define & Build our icon array
-	$bootstrap_icon_array = build_bootstrap_icons_array( $icon_data );
-
-	$flat_bootstrap_icon_array = array();
-	foreach ( $bootstrap_icon_array as $array ) {
-		foreach ( $array as $k => $v ) {
-			$flat_bootstrap_icon_array[ $k ] = $v;
-		}
+	$pattern = '/\.(fa-(?:\w+(?:-)?)+):before\s+{\s*content:\s*"(.+)";\s+}/';
+	preg_match_all( $pattern, $response['body'], $matches, PREG_SET_ORDER );
+	$icons = array();
+	foreach( $matches as $match ) {
+		$icons[str_replace( 'fa-', '', $match[1] )] = $match[2];
 	}
 	?>
 
@@ -249,13 +238,10 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	<select class="selectpicker" name="<?php echo esc_attr( $field_name ); ?>" id="default-announcement-icon" name="<?php echo esc_attr( $field_name ); ?>">
 
 		<?php
+		ksort( $icons );
 		/* sort the bootstrap icons alphabetically */
-		sort( $flat_bootstrap_icon_array );
-		foreach ( $flat_bootstrap_icon_array as $icon ) {
-		?>
-
-		<option class="fa" data-icon="fa-<?php echo esc_attr( $icon ); ?>" <?php selected( 'fa-'.$icon , $meta ); ?>><?php echo esc_html( $icon ); ?></option>
-
+		foreach ( $icons as $icon_name => $icon_content ) { ?>
+			<option class="fa" data-subtext="<i class='fa fa-<?php echo esc_attr( $icon_name ); ?>'></i>" <?php selected( 'fa-'.$icon_name , $meta ); ?>> <?php echo esc_attr( $icon_name ); ?> </option>
 		<?php } ?>
 
 	</select>
@@ -265,28 +251,6 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	if ( 'te_announcements_page_timeline-express-settings' !== $screen_base ) {
 		echo '<p class="cmb2-metabox-description">' . esc_html( $field->args['desc'] ) . '</p>';
 	}
-}
-
-/**
- * Helper function to build the bootstrap icons array
- * @param  array $icon_data the entire array of icons to filter
- * @return array The reformatted array of bootstrap icons
- */
-function build_bootstrap_icons_array( $icon_data ) {
-	// Confirm that $icons is an array and not empty
-	if ( ! is_array( $icon_data ) || empty( $icon_data ) ) {
-		return;
-	}
-	$bootstrap_icon_array = array();
-	foreach ( array_slice( $icon_data, 1 ) as $key => $value ) {
-		$split_icon = explode( ':', $value );
-		if ( isset( $split_icon[1] ) ) {
-			// Push to the array
-			$bootstrap_icon_array[] = array( trim( 'fa-' . $split_icon[0] ) => trim( $split_icon[0] ) );
-		}
-	}
-	// Return our array of icons
-	return $bootstrap_icon_array;
 }
 
 /**
