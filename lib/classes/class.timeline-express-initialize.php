@@ -97,7 +97,7 @@ class Timeline_Express_Initialize {
 			<?php
 			while ( $announcement_query->have_posts() ) {
 				$announcement_query->the_post();
-				self::generate_timeline_express_container();
+				get_timeline_express_template( 'timeline-container' );
 			}
 			?>
 			</section>
@@ -160,13 +160,6 @@ class Timeline_Express_Initialize {
 		}
 		";
 		wp_add_inline_style( 'timeline-express-base', $timeline_express_styles );
-	}
-
-	/**
-	 * Generate the timeline express container
-	 */
-	public function generate_timeline_express_container() {
-		get_timeline_express_template( 'timeline-container' );
 	}
 
 	/**

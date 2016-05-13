@@ -20,7 +20,7 @@ class TimelineExpressPublic {
 		/* load a custom page template (override the default) */
 		add_filter( 'single_template', array( $this, 'timeline_express_announcement_single_page_template' ) );
 		/* Filter the single announcement content. */
-		add_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ) );
+		add_action( 'loop_start', array( $this, 'condition_to_timeline_content' ) );
 		/* Enqueue single announcement template styles */
 		add_action( 'wp_enqueue_scripts', array( $this, 'timeline_express_single_template_styles' ) );
 	}
@@ -73,6 +73,24 @@ class TimelineExpressPublic {
 		 * Legacy Support, 2 filters
 		 */
 		return apply_filters( 'timeline_express_single_page_template', apply_filters( 'timeline-express-single-page-template', $single_template ) );
+	}
+
+	/**
+	 * Conditional to check which page is being displayed
+	 * - This allows for the proper template
+	 * - This fixes single templates loading in place of the timeline-container template
+	 * 	 when the timeline is displayed inside of a post.
+	 * @param  $query $query Query object used as the conditional.
+	 * @return null  				 Filter to use when displaying the content.
+	 * @since 1.2.3
+	 */
+	public function condition_to_timeline_content( $query ) {
+		global $wp_query;
+		if( $query === $wp_query ) {
+			add_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ), 10, 2 );
+		} else {
+			remove_filter('the_content', array( $this, 'timeline_express_single_page_content' ), 10, 2 );
+		}
 	}
 
 	/**
