@@ -290,6 +290,15 @@ function get_timeline_express_template( $template_name = 'timeline-container' ) 
 }
 
 /**
+ * Generate the parent container class on the single announcement template
+ * @return [type] [description]
+ */
+function timeline_express_container_classes( $classes ) {
+	$container_classes = ( ! is_active_sidebar( 'timeline-express-announcement-sidebar' ) ) ? ' container-full-width' : ' container-two-thirds';
+	echo 'class="' . esc_attr( $classes . $container_classes ) . '"';
+}
+
+/**
  * Helper function used to clear out the timeline express transients
  * This is fired when the settings are saved, and when an announcement is updated/published
  * @param integer $page_id The page ID to delete transients for
