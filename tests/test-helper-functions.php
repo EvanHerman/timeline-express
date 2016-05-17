@@ -215,6 +215,6 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 		// Grab the announcement date
 		$announcement_content = trim( timeline_express_get_announcement_content( $announcement_id ) );
 		// $announcement_date = get_post_meta( $announcement_id, 'announcement_date', true );
-		$this->assertEquals( $announcement_content, '<p>This is some test content for our announcement.</p>' );
+		$this->assertEquals( $announcement_content, 'This is some test content for our announcement.' );
 	}
 }

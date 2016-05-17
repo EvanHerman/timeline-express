@@ -45,13 +45,6 @@ class TimelineExpressAdmin {
 		 * @since 1.2
 		 */
 		 add_action( 'admin_enqueue_scripts', array( $this, 'add_timeline_express_admin_scripts_and_styles' ) );
-
-		 // Define a custom Timeline Express widget area
-		register_sidebar( array(
-			'id'          => 'timeline-express-announcement-sidebar',
-			'name'        => __( 'Announcement Widget', 'timeline-express' ),
-			'description' => __( 'This sidebar displays on all single announcement templates.', 'timeline-express' ),
-		) );
 	}
 
 	/**

@@ -3,7 +3,7 @@ Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
 Tested up to: 4.5.2
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 
 Timeline Express allows you to create a beautiful vertical animated and responsive timeline of posts, without writing a single line of code. Sweet!
@@ -357,6 +357,11 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.2.5 - May 17th, 2106 =
+* Revert to the old method of filtering the content. (this was an overlooked breaking change)
+* Fix content filtering issue - some themes not properly displaying the content on single announcements.
+* Refactor.
+
 = 1.2.4 - May 16th, 2106 =
 * Cleared old conditional which didn't work on some themes due to priority. Single announcements are now loaded via a custom template (single.timeline-express.php - which can be overridden by copying to theme root into a 'timeline-express' direcotry).
 * Single announcement pages may not work with ALL themes, and might need to be customized (we've done our best).
@@ -600,10 +605,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.2.4 - May 16th, 2106 =
-* Cleared old conditional which didn't work on some themes due to priority. Single announcements are now loaded via a custom template (single.timeline-express.php - which can be overridden by copying to theme root into a 'timeline-express' direcotry).
-* Single announcement pages may not work with ALL themes, and might need to be customized (we've done our best).
-* Added new helper function to load the single announcement template class.
-* Re-minify css/js
-* Tweak front end single announcement template styles.
-* Added new conditional, dynamic sidebar for single announcement templates.
+= 1.2.5 - May 17th, 2106 =
+* Revert to the old method of filtering the content. (this was an overlooked breaking change)
+* Fix content filtering issue - some themes not properly displaying the content on single announcements.
+* Refactor.
