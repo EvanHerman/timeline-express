@@ -357,9 +357,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.2.5 - May 16th, 2106 =
+= 1.2.5 - May 17th, 2106 =
 * Revert to the old method of filtering the content. (this was an overlooked breaking change)
 * Fix content filtering issue - some themes not properly displaying the content on single announcements.
+* Refactor.
 
 = 1.2.4 - May 16th, 2106 =
 * Cleared old conditional which didn't work on some themes due to priority. Single announcements are now loaded via a custom template (single.timeline-express.php - which can be overridden by copying to theme root into a 'timeline-express' direcotry).
@@ -604,10 +605,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.2.2 - May 10th, 2016 =
-* Re-added the 'Read more' button to <em>all</em> announcements, regardless of length
-* Removed the 'Read More' text/link after the ellipses
-* Fixed theme overriding timeline excerpt lengths, added priority 999 and a post_type() conditional
-* Fixed weird admin responsive issue due to hard coded widths on the columns
-* Localized the date picker to honor the date format setting inside of 'Settings > General > Date Format'
-* Fixed the 'Read More' toggle setting not properly removing the links from the icons
+= 1.2.5 - May 17th, 2106 =
+* Revert to the old method of filtering the content. (this was an overlooked breaking change)
+* Fix content filtering issue - some themes not properly displaying the content on single announcements.
+* Refactor.

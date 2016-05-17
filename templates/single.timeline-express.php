@@ -41,11 +41,9 @@ do_action( 'timeline-express-single-after-image' );
 <?php
 	/* Action hook to display content before the single announcement content */
 	do_action( 'timeline-express-single-before-content' );
+
+	echo wp_kses_post( timeline_express_get_announcement_content( get_the_ID() ) );
+
+	/* Action hook to display content before the single announcement content */
+	do_action( 'timeline-express-single-after-content' );
 ?>
-
-
-the_content();
-<!--
-	The content is appended via the_content() filter.
-	See class.timeline-express.php timeline_express_single_page_content()
--->
