@@ -290,15 +290,6 @@ function get_timeline_express_template( $template_name = 'timeline-container' ) 
 }
 
 /**
- * Generate the parent container class on the single announcement template
- * @return [type] [description]
- */
-function timeline_express_container_classes( $classes ) {
-	$container_classes = ( ! is_active_sidebar( 'timeline-express-announcement-sidebar' ) ) ? ' container-full-width' : ' container-two-thirds';
-	echo 'class="' . esc_attr( $classes . $container_classes ) . '"';
-}
-
-/**
  * Helper function used to clear out the timeline express transients
  * This is fired when the settings are saved, and when an announcement is updated/published
  * @param integer $page_id The page ID to delete transients for
@@ -424,7 +415,7 @@ function timeline_express_get_announcement_date( $post_id ) {
  */
 function timeline_express_get_announcement_content( $post_id ) {
 	$announcement_object = get_post( $post_id );
-	return ( isset( $announcement_object->post_content ) ) ? apply_filters( 'the_content', $announcement_object->post_content ) : '';
+	return ( isset( $announcement_object->post_content ) ) ? $announcement_object->post_content : '';
 }
 
 /**
