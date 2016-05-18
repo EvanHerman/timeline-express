@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Code Parrots",
-	"site": "http://www.wp-timelineexpress.com",
+	"site": "https://www.wp-timelineexpress.com",
   "license": "GPLv2",
   "dependencies": {
     "grunt": "^0.4.5"

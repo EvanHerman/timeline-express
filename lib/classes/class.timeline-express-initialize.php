@@ -226,7 +226,7 @@ class Timeline_Express_Initialize {
 	public function timeline_express_about_comment() {
 		ob_start();
 		echo 'Timeline Express Free v' . esc_attr__( TIMELINE_EXPRESS_VERSION_CURRENT );
-		echo ' | Site: http://www.wp-timelineexpress.com';
+		echo ' | Site: https://www.wp-timelineexpress.com';
 		echo ' | Author: CodeParrots - http://www.codeparrots.com';
 		return apply_filters( 'timeline_express_html_comment', ob_get_clean() );
 	}

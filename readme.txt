@@ -12,7 +12,7 @@ Timeline Express allows you to create a beautiful vertical animated and responsi
 
 Timeline Express allows you to create a vertical animated timeline of announcement posts, without writing a single line of code. You simply create the 'announcement' posts, set the announcement date and publish. The timeline will populate automatically in chronological order, based on the announcement date. Easily limit the announcements displayed to upcoming announcements, past announcements or display all of them.
 
-<a href="http://www.wp-timelineexpress.com/examples/basic-timeline/" title="View the demo">View the Timeline Express Demo</a>
+<a href="https://www.wp-timelineexpress.com/examples/basic-timeline/" title="View the demo">View the Timeline Express Demo</a>
 
 **Features**
 
@@ -41,7 +41,7 @@ Timeline Express allows you to create a vertical animated timeline of announceme
 > - Display categories on single announcement templates.
 > - Priority support, code snippets provided when needed etc.
 
-><a href="http://www.wp-timelineexpress.com/features/" title="Upgrade Now!">Full Feature List</a>
+><a href="https://www.wp-timelineexpress.com/features/" title="Upgrade Now!">Full Feature List</a>
 
 <br />
 
@@ -57,9 +57,9 @@ Timeline Express comes ready for translation. I would love to get things transla
 
 <em>We're always looking for polyglots to help with the translations. If you enjoy this plugin, speak multiple languages and want to contribute please <a href="https://translate.wordpress.org/projects/wp-plugins/timeline-express" target="_blank">help translate</a>!</em>
 
-<a href="http://www.wp-timelineexpress.com/examples/filterable-timeline/" title="View the demo">View the Timeline Express Demo</a>
+<a href="https://www.wp-timelineexpress.com/examples/filterable-timeline/" title="View the demo">View the Timeline Express Demo</a>
 
-Looking for additional documentation? Check out the <a href="http://www.wp-timelineexpress.com/documentation/">knowledge base</a>.
+Looking for additional documentation? Check out the <a href="https://www.wp-timelineexpress.com/documentation/">knowledge base</a>.
 
 <br />
 <br />
@@ -83,12 +83,12 @@ Looking for additional documentation? Check out the <a href="http://www.wp-timel
 
 Yes! Check out the demo we've set up on our site, which shows off some of the features of the pro version.
 
-<a href="http://www.wp-timelineexpress.com/examples/basic-timeline/" title="View the demo">View the Timeline Express Demo</a>
+<a href="https://www.wp-timelineexpress.com/examples/basic-timeline/" title="View the demo">View the Timeline Express Demo</a>
 
 = Can I filter announcements by posts/ Can I create multiple timelines? =
 Not in the free version, but with our pro verson you can create numerous timelines and assign posts to a single timeline or all timelines. Also with the pro version you can easily filter announcements by categories on the front end.
 
-<a href="http://www.wp-timelineexpress.com/examples/filterable-timeline/" title="View the demo">View the Timeline Express Pro Demo</a>
+<a href="https://www.wp-timelineexpress.com/examples/filterable-timeline/" title="View the demo">View the Timeline Express Pro Demo</a>
 
 = How do I use this plugin? =
 Begin by simply installing the plugin. Once the plugin has been installed, go ahead and begin creating announcement posts. You'll find a new menu item just below 'Posts'.
@@ -100,7 +100,7 @@ Publish your page, and view it on the front end the see your new super sweet tim
 = What template is the single announcement post using? Can I customize it at all? I want to do x, y or z. =
 Yes! In version 1.2 and above, we have a templating engine built into the plugin - allowing you to fully customize both the announcement containers on the timeline or the single announcement page. All you have to do is copy over the proper templates.
 
-Take a look at our documentation articles on <a href="http://www.wp-timelineexpress.com/documentation/customize-announcement-container/">customizations</a>.
+Take a look at our documentation articles on <a href="https://www.wp-timelineexpress.com/documentation/customize-announcement-container/">customizations</a>.
 
 = Why can't I save dates prior to 1970'? =
 Due to a limitation with the built in php function `strtotime()`, you may not be able to save dates prior to 1970. We've built out a premium add-on that works with both the free and pro versions of Timeline Express to allow dates to be saved between the years 1000-9999. If this is a feature you need, please consider purchasing the <strong><a href="https://www.evan-herman.com/wordpress-plugin/timeline-express-historical-dates-add-on/">Historical Dates Add-On</a></strong>.
@@ -143,7 +143,7 @@ Read the Codex article "[GlotPress]"(https://make.wordpress.org/polyglots/handbo
 
 == Other Notes ==
 
-Have an idea for a future release feature? I love hearing about new ideas! You can get in contact with us through the contact form on our website, <a href="http://www.wp-timelineexpress.com/" target="_blank">WP Timeline Express</a>.
+Have an idea for a future release feature? I love hearing about new ideas! You can get in contact with us through the contact form on our website, <a href="https://www.wp-timelineexpress.com/" target="_blank">WP Timeline Express</a>.
 
 <hr />
 
@@ -392,13 +392,13 @@ The above example will load font awesome version 4.4.0 instead of the current st
 = 1.2 - May 8th, 2016 =
 * Refactored plugin base to improve stability - split code base into classes and re-wrote many functions.
 * Plugin now more extendable, and much easier to style and customize.
-* New templating system in place, to allow for users to override, for help please see our [customization articles](http://www.wp-timelineexpress.com/?s=customize&post_type=kbe_knowledgebase).
+* New templating system in place, to allow for users to override, for help please see our [customization articles](https://www.wp-timelineexpress.com/?s=customize&post_type=kbe_knowledgebase).
 * Plugin WordPress compatible, following all standards.
 * Transients setup for front end caching (page transient caching to allow for different timelines on different pages).
 * Flush re-write rules now properly setup, to flush when needed (saving a page with the shortcode on it, saving the settings, creating/updating an announcement).
 * Started writing unit tests for improved future proofing.
 * Tweaked front end styles a bit, to improve consistency between themes.
-* Documentation site being built out, to help with questions. (http://www.wp-timelineexpress.com/documentation/)
+* Documentation site being built out, to help with questions. (https://www.wp-timelineexpress.com/documentation/)
 * Added additional filters and hooks to help with customizations.
 * Wrapped every string in the plugin in the appropriate gettext filters.
 * Added new options to disable animations and prevent scroll/fade in animations.
