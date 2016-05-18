@@ -85,7 +85,6 @@ module.exports = function(grunt) {
 	      files: {
 	        src: [
 						'lib/public/css/min/timeline-express.min.css',
-						'lib/public/css/min/timeline-express-single-page.min.css',
 						'lib/admin/css/min/timeline-express-admin.min.css',
 						'lib/public/js/min/timeline-express.min.js',
 						'lib/admin/js/min/timeline-express-tinymce.min.js',

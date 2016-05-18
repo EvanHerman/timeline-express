@@ -359,6 +359,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 = 1.2.6 - May 18th, 2106 =
 * Define a custom content filter, to enable shortcode usage and other quirks in announcements. (<strong>Note:</strong>YouTube embeds need to be done with the ``[embed]www.youtube_url.com[/embed]` shortcode.)
+* New single announcement template can be fully customized. Please see: <a href="https://www.wp-timelineexpress.com/documentation/customize-single-announcement-template/">How do I customize the single announcement template?</a>.
 
 = 1.2.5 - May 17th, 2106 =
 * Revert to the old method of filtering the content. (this was an overlooked breaking change)
