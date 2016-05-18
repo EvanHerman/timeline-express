@@ -408,17 +408,6 @@ function timeline_express_get_announcement_date( $post_id ) {
 }
 
 /**
- * Retreive the timeline express announcement content.
- * Note: Cannot be used on the single announcement template.
- * @param  int $post_id The announcement (post) ID whos content you want to retreive.
- * @return array The announcement content, passed through the_content() filter.
- */
-function timeline_express_get_announcement_content( $post_id ) {
-	$announcement_object = get_post( $post_id );
-	return ( isset( $announcement_object->post_content ) ) ? $announcement_object->post_content : '';
-}
-
-/**
  * Get the announcement excerpt
  * @param  int $post_id The announcement (post) ID whos excerpt you want to retreive.
  * @return string       The announcement excerpt

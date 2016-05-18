@@ -3,7 +3,7 @@ Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
 Tested up to: 4.5.2
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 License: GPLv2 or later
 
 Timeline Express allows you to create a beautiful vertical animated and responsive timeline of posts, without writing a single line of code. Sweet!
@@ -356,6 +356,9 @@ The above example will load font awesome version 4.4.0 instead of the current st
 5. Timeline Express full settings page
 
 == Changelog ==
+
+= 1.2.6 - May 18th, 2106 =
+* Define a custom content filter, to enable shortcode usage and other quirks in announcements. (<strong>Note:</strong>YouTube embeds need to be done with the ``[embed]www.youtube_url.com[/embed]` shortcode.)
 
 = 1.2.5 - May 17th, 2106 =
 * Revert to the old method of filtering the content. (this was an overlooked breaking change)

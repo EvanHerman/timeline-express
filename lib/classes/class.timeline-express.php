@@ -42,6 +42,15 @@ class TimelineExpressBase {
 	 * Plugin activation function
 	 */
 	public function timeline_express_activate() {
+		/**
+		 * Duplicate the current theme single.php or page.php file
+		 * and replace get_template_part() or the_content() with get_timeline_express_template( 'single-announcement' );
+		 */
+		$file = get_stylesheet_directory() . '/single.php';
+		$newfile = get_stylesheet_directory() . '/single.timeline-express.php';
+		if ( copy( $file, $newfile ) ) {
+			file_put_contents( $file, str_replace( "get_template_part( 'template-parts/content', 'single' );", "get_timeline_express_template( 'single-announcement' );", file_get_contents( $file ) ) );
+		}
 		/* Setup the plugin activation redirect */
 		update_option( 'timeline_express_do_activation_redirect', true );
 	}

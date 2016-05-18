@@ -1,7 +1,7 @@
 {
   "name": "Timeline-Express",
 	"title": "Timeline Express",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Build beautiful, animated CSS3 timelines on your WordPress site..",
   "main": "index.js",
   "scripts": {

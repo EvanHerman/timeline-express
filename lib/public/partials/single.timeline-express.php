@@ -42,7 +42,7 @@ do_action( 'timeline-express-single-after-image' );
 	/* Action hook to display content before the single announcement content */
 	do_action( 'timeline-express-single-before-content' );
 
-	echo wp_kses_post( timeline_express_get_announcement_content( get_the_ID() ) );
+	the_content();
 
 	/* Action hook to display content before the single announcement content */
 	do_action( 'timeline-express-single-after-content' );
