@@ -4,7 +4,7 @@
 [![Build Status](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/build.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/build-status/Refactor---v1.2)
 [![Project Stats](https://www.openhub.net/p/timeline-express/widgets/project_thin_badge.gif)](https://www.openhub.net/p/timeline-express)
 
-# Timeline Express - v1.2.5
+# Timeline Express - v1.2.6
 This repository is a re-factor of the original code base.
 
 [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
@@ -25,9 +25,9 @@ Copy over `templates/timeline-express-container.php` into your theme root, in a 
 ### Custom Single Announcement Template
 In version 1.2 users can now customize the single announcement template for each announcement on the timeline.
 
-Copy over `templates/single.timeline-express.php` into your theme root, in a `timeline-express` directory (`wp-content/themes/theme_name/timeline-express/single.timeline-express.php`), and start customizing.
+Copy over `templates/single-timeline-express.php` into your theme root, in a `timeline-express` directory (`wp-content/themes/theme_name/timeline-express/single-timeline-express.php`), and start customizing.
 
-Note: Out of the box, Timeline Express looks for a single.php template inside of your theme root. If one is not found, it will check for a page.php template. Additionally, you can create a template named `single-announcement-template.php` inside of a `timeline-express` directory in your theme root (`wp-content/themes/theme_name/timeline-express/single-announcement-template.php`) for full customization of the page template loaded.
+Or to quickly and easily get the timeline announcements to look the same as your current theme, you can duplicate your existing 'single.php' template file, place it in a 'timeline-express' directory in your theme root, and replace `get_template_part();` or `the_content();` with the following Timeline Express helper function `timeline_express_content();`. Once added you can save the file, and you're all set.
 
 ### Years Instead of Icons
 Many users have asked for the ability to display the year instead of displaying the Font Awesome icons. With version 1.2, we've built in support to allow users to quickly swap out the icons for the year by dropping a single line of code into the **functions.php** file of the active theme.

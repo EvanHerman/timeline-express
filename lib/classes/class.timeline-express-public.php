@@ -20,8 +20,7 @@ class TimelineExpressPublic {
 		/* load a custom page template (override the default) */
 		add_filter( 'single_template', array( $this, 'timeline_express_announcement_single_page_template' ) );
 		/* Filter the single announcement content. */
-		add_action( 'loop_start', array( $this, 'condition_to_timeline_content' ) );
-		add_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ), 0 );
+		// add_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ) );
 		/* Enqueue single announcement template styles */
 		add_action( 'wp_enqueue_scripts', array( $this, 'timeline_express_single_template_styles' ) );
 	}
@@ -56,40 +55,20 @@ class TimelineExpressPublic {
 	 */
 	public function timeline_express_announcement_single_page_template( $single_template ) {
 		global $post;
-		if ( ! isset( $post->post_type ) && 'te_announcements' !== $post->post_type ) {
+		if ( ! isset( $post->post_type ) || 'te_announcements' !== $post->post_type ) {
 			return $single_template;
 		}
 		/* If custom template file exists */
-		if ( file_exists( get_stylesheet_directory() . '/timeline-express/single-announcement-template.php' ) ) {
-			$single_template = get_stylesheet_directory() . '/timeline-express/single-announcement-template.php';
-		} else if ( file_exists( get_stylesheet_directory() . 'single.php' ) ) {
-			/* If single.php exists */
-			$single_template = get_stylesheet_directory() . 'single.php';
-		} else if ( file_exists( get_stylesheet_directory() . 'page.php' ) ) {
-			/* If page.php exists */
-			$single_template = get_stylesheet_directory() . 'page.php';
+		if ( file_exists( get_stylesheet_directory() . '/timeline-express/single-timeline-express.php' ) ) {
+			$single_template = get_stylesheet_directory() . '/timeline-express/single-timeline-express.php';
+		} else {
+			$single_template = TIMELINE_EXPRESS_PATH . 'lib/public/partials/single-timeline-express.php';
 		}
 		/**
 		 * Return our template, passed through filters
 		 * Legacy Support, 2 filters
 		 */
 		return apply_filters( 'timeline_express_single_page_template', apply_filters( 'timeline-express-single-page-template', $single_template ) );
-	}
-
-	/**
-	 * Conditional to check which page is being displayed
-	 * - This allows for the proper template
-	 * - This fixes single templates loading in place of the timeline-container template
-	 * 	 when the timeline is displayed inside of a post.
-	 * @param  $query array  Query object used as the conditional.
-	 * @return null  				 Filter to use when displaying the content.
-	 * @since 1.2.3
-	 */
-	public function condition_to_timeline_content( $query ) {
-		global $wp_query;
-		if ( $query !== $wp_query ) {
-			remove_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ) );
-		}
 	}
 
 	/**
@@ -102,22 +81,16 @@ class TimelineExpressPublic {
 		global $post, $wp_query;
 		$post_id = ( isset( $post->ID ) ) ? $post->ID : '';
 		// When this is not a single post, or it is and it isn't an announcement, abort
-		if ( ! is_singular() || 'te_announcements' !== $post->post_type || in_the_loop() || ! is_main_query() ) {
+		if ( 'te_announcements' !== $post->post_type || ! is_page() ) {
 			return $the_content;
 		}
-		// setup the post data
-		the_post();
 		ob_start();
-		/* Store the announcement content from the WYSIWYG editor */
-		$announcement_content = $the_content;
 		/* Include the single template */
 		get_timeline_express_template( 'single-announcement' );
 		/* Return the output buffering */
 		$the_content = ob_get_clean();
-		// reset the post data
-		wp_reset_postdata();
 		/* Return announcement meta & append the announcement content */
-		return apply_filters( 'timeline_express_single_content', $the_content . $announcement_content, $post_id );
+		return $the_content;
 	}
 
 	/**

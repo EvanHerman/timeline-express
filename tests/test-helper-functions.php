@@ -203,18 +203,4 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 		// $announcement_date = get_post_meta( $announcement_id, 'announcement_date', true );
 		$this->assertEquals( $announcement_date, $comparison_date );
 	}
-
-	/**
-	 * Testing that timeline_express_get_announcement_content() returns what we expect
-	 */
-	public function test_timeline_express_get_announcement_content() {
-		// Re-instantiate this class
-		$helper_functions_test_class = new TE_Helper_Tests;
-		// Create some test announcements, passing in some defaults.
-		$announcement_id = $helper_functions_test_class->test_create_announcement();
-		// Grab the announcement date
-		$announcement_content = trim( timeline_express_get_announcement_content( $announcement_id ) );
-		// $announcement_date = get_post_meta( $announcement_id, 'announcement_date', true );
-		$this->assertEquals( $announcement_content, 'This is some test content for our announcement.' );
-	}
 }
