@@ -237,7 +237,7 @@ class TimelineExpressAdmin {
 		unset( $links['edit'] );
 		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) . '">' . esc_attr__( 'Settings', 'timeline-express' ) . '</a>';
 		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_attr__( 'Add-ons', 'timeline-express' ) . '</a>';
-		$links[] = '<a href="http://www.wp-timelineexpress.com/documentation/" target="_blank">' . esc_attr__( 'Documentation', 'timeline-express' ) . '</a>';
+		$links[] = '<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank">' . esc_attr__( 'Documentation', 'timeline-express' ) . '</a>';
 		return $links;
 	}
 

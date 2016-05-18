@@ -15,7 +15,7 @@ This repository is a re-factor of the original code base.
 ### New Site & Documentation
 For the new version of Timeline Express, we built out an entirely new site to showcase the features & add-ons of Timeline Express.
 
-Additionally, the documentation for the new version of timeline express can be found at [WP Timeline Express](http://www.wp-timelineexpress.com/documentation).
+Additionally, the documentation for the new version of timeline express can be found at [WP Timeline Express](https://www.wp-timelineexpress.com/documentation).
 
 ### Custom Announcement Template
 In version 1.2 users can now customize the announcement container for each announcement on the timeline.

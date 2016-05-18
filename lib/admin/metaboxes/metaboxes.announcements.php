@@ -114,7 +114,7 @@ if ( false === ( $te_ad_rss_feed = get_transient( 'timeline_express_ad_rss_feed'
 	/* Create the SimplePie object */
 	$feed = new SimplePie();
 	/* Setup the URL */
-	$feed_url = esc_url( 'http://www.wp-timelineexpress.com/?feed=ads' );
+	$feed_url = esc_url( 'https://www.wp-timelineexpress.com/?feed=ads' );
 	/* Pass the URL */
 	$feed->set_feed_url( $feed_url );
 	/* Retreive an advertisments */

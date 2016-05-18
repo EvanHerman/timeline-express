@@ -2,7 +2,7 @@
 /**
  #_________________________________________________ PLUGIN
  Plugin Name: Timeline Express
- Plugin URI: http://www.wp-timelineexpress.com
+ Plugin URI: https://www.wp-timelineexpress.com
  Description: Create a beautiful vertical, CSS3 animated and responsive timeline in minutes flat without writing code.
  Version: 1.2.6
  Author: Code Parrots

@@ -301,7 +301,7 @@ $additional_editor_parameters = array(
 					<!-- Timeline Express Logo Metabox -->
 					<div class="postbox">
 						<div class="inside" style="padding:0;">
-							<a href="http://www.wp-timelineexpress.com" target="_blank" style="display:block;">
+							<a href="https://www.wp-timelineexpress.com" target="_blank" style="display:block;">
 								<img src="<?php esc_attr_e( TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-logo-128.png' ); ?>" style="display:block;margin:0 auto;" title="Timeline Express" />
 							</a>
 						</div>
@@ -329,7 +329,7 @@ $additional_editor_parameters = array(
 								<div class="dashicons dashicons-star-filled"></div><div class="dashicons dashicons-star-filled"></div><div class="dashicons dashicons-star-filled"></div><div class="dashicons dashicons-star-filled"></div><div class="dashicons dashicons-star-filled"></div>
 
 								<p style="margin-bottom:0;"><?php esc_attr_e( 'Tweet About It', 'timeline-express' ); ?></p>
-								<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.wp-timelineexpress.com" data-text="I am using the Timeline Express #WordPress plugin on my site!" data-via="CodeParrots" data-size="large">Tweet</a>
+								<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://www.wp-timelineexpress.com" data-text="I am using the Timeline Express #WordPress plugin on my site!" data-via="CodeParrots" data-size="large">Tweet</a>
 								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 						</div>
@@ -346,7 +346,7 @@ $additional_editor_parameters = array(
 								'timeline-express'
 							); ?></p>
 							<a href="https://wordpress.org/support/plugin/timeline-express" target="_blank" class="button-secondary"><?php esc_attr_e( 'Support Forums', 'timeline-express' ); ?></a>
-							<a href="www.wp-timelineexpress.com/documentation/" target="_blank" class="button-secondary"><?php esc_attr_e( 'Documentation', 'timeline-express' ); ?></a>
+							<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank" class="button-secondary"><?php esc_attr_e( 'Documentation', 'timeline-express' ); ?></a>
 						</div>
 						<!-- .inside -->
 					</div>

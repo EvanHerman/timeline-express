@@ -12,4 +12,4 @@
 	'timeline-express'
 ); ?></p>
 <a href="https://wordpress.org/support/plugin/timeline-express" target="_blank" class="button-secondary"><?php esc_attr_e( 'Support Forums', 'timeline-express' ); ?></a>
-<a href="http://www.wp-timelineexpress.com/documentation/" target="_blank" class="button-secondary"><?php esc_attr_e( 'Documentation', 'timeline-express' ); ?></a>
+<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank" class="button-secondary"><?php esc_attr_e( 'Documentation', 'timeline-express' ); ?></a>
