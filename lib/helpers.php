@@ -278,7 +278,7 @@ function get_timeline_express_template( $template_name = 'timeline-container' ) 
 			$file_name = 'timeline-express-container';
 			break;
 		case 'single-announcement':
-			$file_name = 'single.timeline-express';
+			$file_name = 'single-timeline-express-content';
 			break;
 	}
 	// check for and load file
@@ -287,6 +287,19 @@ function get_timeline_express_template( $template_name = 'timeline-container' ) 
 		return;
 	}
 	include( TIMELINE_EXPRESS_PATH . 'lib/public/partials/' . $file_name . '.php' );
+}
+
+/**
+ * Helper function to retreive the timeline express single announcement templates
+ * This is redundant, but will be easier for our users to use in their themes
+ */
+function timeline_express_content() {
+	// check for and load file
+	if ( file_exists( get_stylesheet_directory() . '/timeline-express/single-timeline-express-content.php' ) ) {
+		include( get_stylesheet_directory() . '/timeline-express/single-timeline-express-content.php' );
+		return;
+	}
+	include( TIMELINE_EXPRESS_PATH . 'lib/public/partials/single-timeline-express-content.php' );
 }
 
 /**

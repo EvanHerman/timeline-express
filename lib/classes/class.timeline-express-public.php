@@ -55,18 +55,14 @@ class TimelineExpressPublic {
 	 */
 	public function timeline_express_announcement_single_page_template( $single_template ) {
 		global $post;
-		if ( ! isset( $post->post_type ) && 'te_announcements' !== $post->post_type ) {
+		if ( ! isset( $post->post_type ) || 'te_announcements' !== $post->post_type ) {
 			return $single_template;
 		}
 		/* If custom template file exists */
-		if ( file_exists( get_stylesheet_directory() . '/timeline-express/single-announcement-template.php' ) ) {
-			$single_template = get_stylesheet_directory() . '/timeline-express/single-announcement-template.php';
-		} else if ( file_exists( get_stylesheet_directory() . 'single.php' ) ) {
-			/* If single.php exists */
-			$single_template = get_stylesheet_directory() . 'single.php';
-		} else if ( file_exists( get_stylesheet_directory() . 'page.php' ) ) {
-			/* If page.php exists */
-			$single_template = get_stylesheet_directory() . 'page.php';
+		if ( file_exists( get_stylesheet_directory() . '/timeline-express/single-timeline-express.php' ) ) {
+			$single_template = get_stylesheet_directory() . '/timeline-express/single-timeline-express.php';
+		} else {
+			$single_template = TIMELINE_EXPRESS_PATH . 'lib/public/partials/single-timeline-express.php';
 		}
 		/**
 		 * Return our template, passed through filters
@@ -85,7 +81,7 @@ class TimelineExpressPublic {
 		global $post, $wp_query;
 		$post_id = ( isset( $post->ID ) ) ? $post->ID : '';
 		// When this is not a single post, or it is and it isn't an announcement, abort
-		if ( 'te_announcements' !== $post->post_type || is_page() ) {
+		if ( 'te_announcements' !== $post->post_type || ! is_page() ) {
 			return $the_content;
 		}
 		ob_start();

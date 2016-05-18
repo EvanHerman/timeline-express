@@ -98,12 +98,12 @@ class Timeline_Express_Initialize {
 			while ( $announcement_query->have_posts() ) {
 				$announcement_query->the_post();
 				get_timeline_express_template( 'timeline-container' );
+				// reset the post data
+				wp_reset_postdata();
 			}
 			?>
 			</section>
 			<?php
-			// reset the post data
-			wp_reset_postdata();
 			// Action hook after timeline
 			do_action( 'timeline-express-after-timeline', $atts, self::timeline_express_query_args( $compare_sign, $atts['order'], $atts ), $announcement_query->found_posts );
 		} else {

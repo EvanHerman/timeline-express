@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Timeline Express Announcemnet Template
+ * Content markup for single announcement templates
  *
  * @package Timeline Express
  * @by CodeParrots
