@@ -60,6 +60,7 @@
 }
 .cd-timeline-block {
   margin: 25px 0;
+	width: 100% !important;
 }
 .cd-timeline-block:after {
   content: "";
