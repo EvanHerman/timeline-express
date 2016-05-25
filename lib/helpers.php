@@ -399,13 +399,24 @@ function timeline_express_get_announcement_icon_color( $post_id ) {
  * @return Announcement image markup.
  */
 function timeline_express_get_announcement_image( $post_id, $image_size = 'timeline-express' ) {
+	$image_size = apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id );
+	/**
+	* If on a single page announcement, return the srcset image - for proper responsive images
+	* @since 1.2.7
+	*/
+	if ( is_single() ) {
+		$img_src = wp_get_attachment_image_url( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );
+		$img_srcset = wp_get_attachment_image_srcset( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );
+		?><img src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="(max-width: 100%) 75vw, 680px" alt="<?php esc_attr( get_the_title() ); ?>"><?php
+		return;
+	}
 	/* Escaped on output in the timeline/single page */
 	return apply_filters( 'timeline_express_image', wp_get_attachment_image(
 		get_post_meta( $post_id, 'announcement_image_id', true ),
-		apply_filters( 'timeline_express_announcement_img_size', apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id ), $post_id ), /* Legacy filter name - maintain formatting */
+		apply_filters( 'timeline_express_announcement_img_size', $image_size, $post_id ), /* Legacy filter name - maintain formatting */
 		false,
 		array(
-			'title' => esc_attr__( get_the_title() ),
+			'alt' => esc_attr__( get_the_title() ),
 			'class' => 'announcement-banner-image',
 		)
 	), $post_id );

@@ -223,6 +223,9 @@ function timeline_express_internationalize_datepicker( $l10n ) {
 		case 'F j, Y':
 			$l10n['defaults']['date_picker']['dateFormat'] = 'MM d, yy';
 			break;
+		case 'j F Y':
+			$l10n['defaults']['date_picker']['dateFormat'] = 'd M yy';
+			break;
 	}
 	return apply_filters( 'timeline_express_date_picker_format', $l10n );
 }

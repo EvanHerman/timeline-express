@@ -11,20 +11,21 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit();
 }
 
-$options = get_option( TIMELINE_EXPRESS_OPTION );
+$options = get_option( 'timeline_express_storage' );
+
+global $wpdb;
 
 /* If the user has set to delete the announcement on uninstall, do so */
 if ( isset( $options['delete-announcement-posts-on-uninstallation'] ) && '1' === $options['delete-announcement-posts-on-uninstallation'] ) {
-	global $wpdb;
 	/* SQL query for to delete all announcement posts */
 	$sql = $wpdb->get_results( $wpdb->prepare( 'DELETE FROM %s WHERE post_type = "te_announcements"', $wpdb->posts ), ARRAY_A );
 }
 
 /* Delete Timeline Express options */
-delete_option( TIMELINE_EXPRESS_OPTION );
+delete_option( 'timeline_express_storage' );
 
 /* For site options in multisite */
-delete_site_option( TIMELINE_EXPRESS_OPTION );
+delete_site_option( 'timeline_express_storage' );
 
 /* Delete Our Transients */
 delete_transient( 'timeline_express_ad_rss_feed' );
