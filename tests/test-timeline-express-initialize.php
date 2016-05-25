@@ -140,7 +140,7 @@ class TE_Init_Tests extends WP_UnitTestCase {
 	 * @return string HTMl helper comment generated below the timeline.
 	 */
 	public function test_timeline_express_html_comment() {
-		$assumed_block = 'Timeline Express Free v' . TIMELINE_EXPRESS_VERSION_CURRENT . ' | Site: http://www.wp-timelineexpress.com | Author: CodeParrots - http://www.codeparrots.com';
+		$assumed_block = 'Timeline Express Free v' . TIMELINE_EXPRESS_VERSION_CURRENT . ' | Site: https://www.wp-timelineexpress.com | Author: CodeParrots - http://www.codeparrots.com';
 		$html_block = $this->init_class->timeline_express_about_comment();
 		$this->assertEquals( $assumed_block, $html_block );
 	}

@@ -49,7 +49,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 		<div class="feature-section two-col" style="padding-top:0;">
 			<div class="col" style="width:100%;">
 				<h3><?php esc_attr_e( 'Creating Your First Announcement', 'timeline-express' ); ?></h3>
-				<p><?php printf( esc_attr__( 'Timeline Express makes it easy to create and display a beautiful animated timeline in WordPress. If you are new to Timeline Express you may want to read our knowledge base article, %s.', 'timeline-express' ), '<a href="http://www.wp-timelineexpress.com/documentation/creating-an-announcement/" target="_blank">How To Create Your First Announcement</a>' ); ?>
+				<p><?php printf( esc_attr__( 'Timeline Express makes it easy to create and display a beautiful animated timeline in WordPress. If you are new to Timeline Express you may want to read our knowledge base article, %s.', 'timeline-express' ), '<a href="https://www.wp-timelineexpress.com/documentation/creating-an-announcement/" target="_blank">How To Create Your First Announcement</a>' ); ?>
 				<p><?php printf( esc_attr__( 'However, the process is so intuitive that you can jump right in by going to %s.', 'timeline-express' ), '<a href="' . esc_url( admin_url( 'post-new.php?post_type=te_announcements' ) ) . '">Timeline Express &#8594; New Announcement</a>' ); ?>
 				<hr style="margin:2em 0;" />
 				<h3><?php esc_attr_e( 'Tweak the Settings', 'timeline-express' ); ?></h3>
@@ -62,7 +62,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 			<div class="col">
 				<h3><?php esc_attr_e( 'Feature Packed' ); ?></h3>
 				<p><?php esc_attr_e( 'Timeline Express is both easy to use and extremely powerful. On top of the visible features, we have built in a ton of additional features under the hood - to allow beginners and seasoned developers to bring their timeline to new heights.', 'timeline-express' ); ?></p>
-				<p><a href="http://www.wp-timelineexpress.com/features/" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'See all Features', 'timeline-express' ); ?></a></p>
+				<p><a href="https://www.wp-timelineexpress.com/features/" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'See all Features', 'timeline-express' ); ?></a></p>
 			</div>
 			<div class="col">
 				<img src="<?php esc_attr_e( TIMELINE_EXPRESS_URL . 'lib/admin/images/flag-astronaut.png' ); ?>">
@@ -76,7 +76,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 				<p><?php esc_attr_e( 'Got stuck on something? Run into an issue? Not to worry, our knowledgeable support staff is equipped to help resolve any issues you may encounter. Post an issue in the WordPress.org support forums, or take a peak at our support documentation.', 'timeline-express' ); ?></p>
 				<p>
 					<a href="https://wordpress.org/support/plugin/timeline-express" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'Support', 'timeline-express' ); ?></a>
-					<a href="http://www.wp-timelineexpress.com" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'Documentation', 'timeline-express' ); ?></a>
+					<a href="https://www.wp-timelineexpress.com" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'Documentation', 'timeline-express' ); ?></a>
 				</p>
 			</div>
 			<div class="col">
@@ -90,7 +90,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 				<h3><?php esc_attr_e( 'Add-Ons' ); ?></h3>
 				<p><?php esc_attr_e( "Timeline Express has the option to be extended with some of the dvanced add-ons that we've built out. The add-ons extend Timeline Express beyond what it can do out of the box, and allows for more advanced use cases - including date ranges between the year 1000-9999, ajax loading more announcements and more. If you're looking for additionality functionality, take a peak at our full list of add-ons.", 'timeline-express' ); ?></p>
 				<p>
-					<a href="http://www.wp-timelineexpress.com/add-ons/" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'View Add-Ons', 'timeline-express' ); ?></a>
+					<a href="https://www.wp-timelineexpress.com/add-ons/" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'View Add-Ons', 'timeline-express' ); ?></a>
 				</p>
 			</div>
 			<div class="col">
@@ -105,7 +105,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 				<p><?php esc_attr_e( 'Out of the box, Timeline Express is both attractive and powerful. However, some projects may require an additional level of customization to fit the existing look and feel of the site. You can quickly and easily tweak the visual appearance of any element on the timeline using some CSS.', 'timeline-express' ); ?></p>
 				<p><?php esc_attr_e( 'Users with even a little bit of knowledge customizing WordPress templates will feel right at home. In the latest release, users can now copy over any of the bundled templates and customize them as needed!.', 'timeline-express' ); ?></p>
 				<p>
-					<a href="http://www.wp-timelineexpress.com/?s=Customize&post_type=kbe_knowledgebase" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'View Customization Articles', 'timeline-express' ); ?></a>
+					<a href="https://www.wp-timelineexpress.com/?s=Customize&post_type=kbe_knowledgebase" target="_blank" class="timeline-express-features-button button button-primary"><?php esc_attr_e( 'View Customization Articles', 'timeline-express' ); ?></a>
 				</p>
 			</div>
 			<div class="col">

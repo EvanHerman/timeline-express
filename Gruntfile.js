@@ -85,7 +85,6 @@ module.exports = function(grunt) {
 	      files: {
 	        src: [
 						'lib/public/css/min/timeline-express.min.css',
-						'lib/public/css/min/timeline-express-single-page.min.css',
 						'lib/admin/css/min/timeline-express-admin.min.css',
 						'lib/public/js/min/timeline-express.min.js',
 						'lib/admin/js/min/timeline-express-tinymce.min.js',
@@ -106,10 +105,18 @@ module.exports = function(grunt) {
             src: ['lib/public/partials/timeline-express-container.php'],
             dest: 'templates/',
             filter: 'isFile'
-          }, {
+          },
+					{
             expand: true,
             flatten: true,
-            src: ['lib/public/partials/single.timeline-express.php'],
+            src: ['lib/public/partials/single-timeline-express-content.php'],
+            dest: 'templates/',
+            filter: 'isFile'
+          },
+					{
+            expand: true,
+            flatten: true,
+            src: ['lib/public/partials/single-timeline-express.php'],
             dest: 'templates/',
             filter: 'isFile'
           },

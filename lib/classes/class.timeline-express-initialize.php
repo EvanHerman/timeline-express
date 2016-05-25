@@ -98,12 +98,12 @@ class Timeline_Express_Initialize {
 			while ( $announcement_query->have_posts() ) {
 				$announcement_query->the_post();
 				get_timeline_express_template( 'timeline-container' );
+				// reset the post data
+				wp_reset_postdata();
 			}
 			?>
 			</section>
 			<?php
-			// reset the post data
-			wp_reset_postdata();
 			// Action hook after timeline
 			do_action( 'timeline-express-after-timeline', $atts, self::timeline_express_query_args( $compare_sign, $atts['order'], $atts ), $announcement_query->found_posts );
 		} else {
@@ -226,7 +226,7 @@ class Timeline_Express_Initialize {
 	public function timeline_express_about_comment() {
 		ob_start();
 		echo 'Timeline Express Free v' . esc_attr__( TIMELINE_EXPRESS_VERSION_CURRENT );
-		echo ' | Site: http://www.wp-timelineexpress.com';
+		echo ' | Site: https://www.wp-timelineexpress.com';
 		echo ' | Author: CodeParrots - http://www.codeparrots.com';
 		return apply_filters( 'timeline_express_html_comment', ob_get_clean() );
 	}

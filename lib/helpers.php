@@ -278,7 +278,7 @@ function get_timeline_express_template( $template_name = 'timeline-container' ) 
 			$file_name = 'timeline-express-container';
 			break;
 		case 'single-announcement':
-			$file_name = 'single.timeline-express';
+			$file_name = 'single-timeline-express-content';
 			break;
 	}
 	// check for and load file
@@ -287,6 +287,19 @@ function get_timeline_express_template( $template_name = 'timeline-container' ) 
 		return;
 	}
 	include( TIMELINE_EXPRESS_PATH . 'lib/public/partials/' . $file_name . '.php' );
+}
+
+/**
+ * Helper function to retreive the timeline express single announcement templates
+ * This is redundant, but will be easier for our users to use in their themes
+ */
+function timeline_express_content() {
+	// check for and load file
+	if ( file_exists( get_stylesheet_directory() . '/timeline-express/single-timeline-express-content.php' ) ) {
+		include( get_stylesheet_directory() . '/timeline-express/single-timeline-express-content.php' );
+		return;
+	}
+	include( TIMELINE_EXPRESS_PATH . 'lib/public/partials/single-timeline-express-content.php' );
 }
 
 /**
@@ -386,13 +399,24 @@ function timeline_express_get_announcement_icon_color( $post_id ) {
  * @return Announcement image markup.
  */
 function timeline_express_get_announcement_image( $post_id, $image_size = 'timeline-express' ) {
+	$image_size = apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id );
+	/**
+	* If on a single page announcement, return the srcset image - for proper responsive images
+	* @since 1.2.7
+	*/
+	if ( is_single() ) {
+		$img_src = wp_get_attachment_image_url( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );
+		$img_srcset = wp_get_attachment_image_srcset( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );
+		?><img src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="(max-width: 100%) 75vw, 680px" alt="<?php esc_attr( get_the_title() ); ?>"><?php
+		return;
+	}
 	/* Escaped on output in the timeline/single page */
 	return apply_filters( 'timeline_express_image', wp_get_attachment_image(
 		get_post_meta( $post_id, 'announcement_image_id', true ),
-		apply_filters( 'timeline_express_announcement_img_size', apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id ), $post_id ), /* Legacy filter name - maintain formatting */
+		apply_filters( 'timeline_express_announcement_img_size', $image_size, $post_id ), /* Legacy filter name - maintain formatting */
 		false,
 		array(
-			'title' => esc_attr__( get_the_title() ),
+			'alt' => esc_attr__( get_the_title() ),
 			'class' => 'announcement-banner-image',
 		)
 	), $post_id );
@@ -405,17 +429,6 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
  */
 function timeline_express_get_announcement_date( $post_id ) {
 	return apply_filters( 'timeline_express_frontend_date_filter', date_i18n( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), get_post_meta( $post_id, 'announcement_date', true ) );
-}
-
-/**
- * Retreive the timeline express announcement content.
- * Note: Cannot be used on the single announcement template.
- * @param  int $post_id The announcement (post) ID whos content you want to retreive.
- * @return array The announcement content, passed through the_content() filter.
- */
-function timeline_express_get_announcement_content( $post_id ) {
-	$announcement_object = get_post( $post_id );
-	return ( isset( $announcement_object->post_content ) ) ? $announcement_object->post_content : '';
 }
 
 /**

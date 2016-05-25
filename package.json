@@ -1,14 +1,14 @@
 {
   "name": "Timeline-Express",
 	"title": "Timeline Express",
-  "version": "1.2.5",
+  "version": "1.2.7",
   "description": "Build beautiful, animated CSS3 timelines on your WordPress site..",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Code Parrots",
-	"site": "http://www.wp-timelineexpress.com",
+	"site": "https://www.wp-timelineexpress.com",
   "license": "GPLv2",
   "dependencies": {
     "grunt": "^0.4.5"

@@ -114,7 +114,7 @@ if ( false === ( $te_ad_rss_feed = get_transient( 'timeline_express_ad_rss_feed'
 	/* Create the SimplePie object */
 	$feed = new SimplePie();
 	/* Setup the URL */
-	$feed_url = esc_url( 'http://www.wp-timelineexpress.com/?feed=ads' );
+	$feed_url = esc_url( 'https://www.wp-timelineexpress.com/?feed=ads' );
 	/* Pass the URL */
 	$feed->set_feed_url( $feed_url );
 	/* Retreive an advertisments */
@@ -222,6 +222,9 @@ function timeline_express_internationalize_datepicker( $l10n ) {
 			break;
 		case 'F j, Y':
 			$l10n['defaults']['date_picker']['dateFormat'] = 'MM d, yy';
+			break;
+		case 'j F Y':
+			$l10n['defaults']['date_picker']['dateFormat'] = 'd M yy';
 			break;
 	}
 	return apply_filters( 'timeline_express_date_picker_format', $l10n );
