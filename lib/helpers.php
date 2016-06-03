@@ -407,7 +407,7 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 	if ( is_single() ) {
 		$img_src = wp_get_attachment_image_url( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );
 		$img_srcset = wp_get_attachment_image_srcset( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );
-		?><img src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="(max-width: 100%) 75vw, 680px" alt="<?php esc_attr( get_the_title() ); ?>"><?php
+		?><img class="announcement-banner-image" src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="(max-width: 100%) 75vw, 680px" alt="<?php esc_attr( get_the_title() ); ?>"><?php
 		return;
 	}
 	/* Escaped on output in the timeline/single page */

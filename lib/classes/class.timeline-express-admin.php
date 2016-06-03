@@ -91,7 +91,7 @@ class TimelineExpressAdmin {
 			'timeline-express-settings',
 			array( $this, 'timeline_express_options_page' )
 		);
-		/* Addon Page */
+		/* Addon Page
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
 			__( 'Timeline Express Add-ons', 'timeline-express' ),
@@ -100,6 +100,7 @@ class TimelineExpressAdmin {
 			'timeline-express-addons',
 			array( $this, 'timeline_express_addons_page' )
 		);
+		*/
 		/* Welcome Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
@@ -236,7 +237,7 @@ class TimelineExpressAdmin {
 		/* Remove the edit button */
 		unset( $links['edit'] );
 		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) . '">' . esc_attr__( 'Settings', 'timeline-express' ) . '</a>';
-		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_attr__( 'Add-ons', 'timeline-express' ) . '</a>';
+		// $links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_attr__( 'Add-ons', 'timeline-express' ) . '</a>';
 		$links[] = '<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank">' . esc_attr__( 'Documentation', 'timeline-express' ) . '</a>';
 		return $links;
 	}
