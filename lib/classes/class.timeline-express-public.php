@@ -19,8 +19,6 @@ class TimelineExpressPublic {
 		add_shortcode( 'timeline-express', array( $this, 'process_timeline_express_shortcode' ) );
 		/* load a custom page template (override the default) */
 		add_filter( 'single_template', array( $this, 'timeline_express_announcement_single_page_template' ) );
-		/* Filter the single announcement content. */
-		// add_filter( 'the_content', array( $this, 'timeline_express_single_page_content' ) );
 		/* Enqueue single announcement template styles */
 		add_action( 'wp_enqueue_scripts', array( $this, 'timeline_express_single_template_styles' ) );
 	}
@@ -69,28 +67,6 @@ class TimelineExpressPublic {
 		 * Legacy Support, 2 filters
 		 */
 		return apply_filters( 'timeline_express_single_page_template', apply_filters( 'timeline-express-single-page-template', $single_template ) );
-	}
-
-	/**
-	 * Filter the content, and load our template in it's place.
-	 * @param array  $the_content The page content to filter.
-	 * @return array The single page content to display for this announcement.
-	 * @since  1.0
-	 */
-	public function timeline_express_single_page_content( $the_content ) {
-		global $post, $wp_query;
-		$post_id = ( isset( $post->ID ) ) ? $post->ID : '';
-		// When this is not a single post, or it is and it isn't an announcement, abort
-		if ( 'te_announcements' !== $post->post_type || ! is_page() ) {
-			return $the_content;
-		}
-		ob_start();
-		/* Include the single template */
-		get_timeline_express_template( 'single-announcement' );
-		/* Return the output buffering */
-		$the_content = ob_get_clean();
-		/* Return announcement meta & append the announcement content */
-		return $the_content;
 	}
 
 	/**

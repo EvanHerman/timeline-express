@@ -145,10 +145,6 @@ class TimelineExpressAdmin {
 	 * @package  TimelineExpressBase
 	 */
 	public function timeline_express_register_settings() {
-		// If the years are being used, hide the icon selector
-		if ( defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) && TIMELINE_EXPRESS_YEAR_ICONS ) {
-			?><style>.cmb-type-te-bootstrap-dropdown{ display: none !important; }</style><?php
-		}
 		global $timeline_express_base;
 		register_setting( 'timeline-express-settings', 'timeline_express_storage', array( $timeline_express_base, 'timeline_express_save_options' ) );
 		/* Plugin redirect */
@@ -276,11 +272,14 @@ class TimelineExpressAdmin {
 		$screen = get_current_screen();
 		$load_styles_on_pages = array( 'te_announcements_page_timeline-express-settings', 'te_announcements_page_timeline-express-welcome' );
 		if ( in_array( $screen->base, $load_styles_on_pages, true ) || 'te_announcements' === $screen->post_type ) {
+			// If the years are being used, hide the icon selector
+			if ( defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) && TIMELINE_EXPRESS_YEAR_ICONS ) {
+				?><style>.cmb-type-te-bootstrap-dropdown{ display: none !important; }</style><?php
+			}
 			/* Register Styles */
 			wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . 'lib/admin/css/min/timeline-express-admin.min.css', array(), TIMELINE_EXPRESS_VERSION_CURRENT, 'all' );
 			/* Enqueue font awesome icons, defined in helpers.php */
 			timeline_express_enqueue_font_awesome();
-
 			/*
 			 * Enqueue bootstrap select/styles
 			 * Note: Minified .js file includes -
