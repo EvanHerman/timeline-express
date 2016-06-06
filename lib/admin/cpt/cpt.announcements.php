@@ -72,7 +72,7 @@ $timeline_express_args = array(
 	'supports'            => array( 'title', 'editor' ),
 	'taxonomies'          => array(),
 	'hierarchical'        => true,
-	'public'              => ( isset( $timeline_express_options['announcement-appear-in-searches'] ) && 'false' === $timeline_express_options['announcement-appear-in-searches'] ) ? true : false,
+	'public'							=> true,
 	'show_ui'             => true,
 	'show_in_menu'        => true,
 	'show_in_nav_menus'   => true,
@@ -81,6 +81,8 @@ $timeline_express_args = array(
 	'menu_icon'                     => TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-menu-icon.png',
 	'can_export'          => true,
 	'has_archive'         => true,
+	'publicly_queryable'	=> true,
+	'exclude_from_search'	=> ( isset( $timeline_express_options['announcement-appear-in-searches'] ) && 'true' === $timeline_express_options['announcement-appear-in-searches'] ) ? true : false,
 	'rewrite'             => $timeline_express_rewrite,
 	'capability_type'     => 'page',
 );
