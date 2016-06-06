@@ -357,11 +357,11 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.2.8.1 - June 3rd, 2016 =
+= 1.2.8.1 - June 6th, 2016 =
 - Re-added parameters removed from the announcement custom post type.
 - Fixed strange re-direct when viewing an announcement on the front-end, with 'Exclude Announcements from Site Searches' set to true.
 
-= 1.2.8 - June 3rd, 2016 =
+= 1.2.8 - June 5th, 2016 =
 - Bump version.
 - Fix AJAX media library grid breaking.
 - Fix announcements appear in site search setting.
