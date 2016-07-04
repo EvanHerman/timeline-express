@@ -81,7 +81,6 @@ class TimelineExpressAdmin {
 	public function timeline_express_admin_menus() {
 		/* Filter caps, for who can view this menu item */
 		$menu_cap = apply_filters( 'timeline_express_menu_cap', 'manage_options' );
-
 		/* Settings Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
@@ -91,7 +90,7 @@ class TimelineExpressAdmin {
 			'timeline-express-settings',
 			array( $this, 'timeline_express_options_page' )
 		);
-		/* Addon Page
+		/* Addon Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
 			__( 'Timeline Express Add-ons', 'timeline-express' ),
@@ -100,7 +99,6 @@ class TimelineExpressAdmin {
 			'timeline-express-addons',
 			array( $this, 'timeline_express_addons_page' )
 		);
-		*/
 		/* Welcome Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
