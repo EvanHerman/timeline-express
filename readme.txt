@@ -359,6 +359,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 = 1.2.8.2 - July 4th, 2016 =
 - Repair initial options on plugin activation (some options not stored/referenced properly).
+- Re-enable the 'Add-ons' menu item.
 
 = 1.2.8.1 - June 6th, 2016 =
 - Re-added parameters removed from the announcement custom post type.
@@ -637,3 +638,4 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 = 1.2.8.2 - July 4th, 2016 =
 - Repair initial options on plugin activation (some options not stored/referenced properly).
+- Re-enable the 'Add-ons' menu item.
