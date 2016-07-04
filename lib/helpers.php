@@ -35,9 +35,9 @@ add_filter( 'cmb2_sanitize_te_bootstrap_dropdown', 'cmb2_validate_te_bootstrap_d
  */
 function timeline_express_get_options() {
 	return get_option( TIMELINE_EXPRESS_OPTION, array(
-		'announcement-time-frame' => '0',
+		'announcement-time-frame' => '1',
 		'announcement-display-order' => 'ASC',
-		'excerpt-trim-length' => 250,
+		'excerpt-trim-length' => 50,
 		'excerpt-random-length' => 0,
 		'date-visibility'	=> '1',
 		'read-more-visibility'	=> '1',

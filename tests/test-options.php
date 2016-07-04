@@ -64,15 +64,15 @@ class TE_Options_Test extends WP_UnitTestCase {
 	 */
 	public function test_announcement_time_frame_option() {
 		// Check the default is correct
-		$this->assertEquals( $this->options['announcement-time-frame'], '0' );
+		$this->assertEquals( $this->options['announcement-time-frame'], '1' );
 		// Test announcement time frame
-		$this->options['announcement-time-frame'] = '1';
+		$this->options['announcement-time-frame'] = '0';
 		// Update the option with the new value
 		update_option( TIMELINE_EXPRESS_OPTION, $this->options );
 		// Get new options
 		$options = timeline_express_get_options();
 		// Assert the new value is correct
-		$this->assertEquals( $options['announcement-time-frame'], '1' );
+		$this->assertEquals( $options['announcement-time-frame'], '0' );
 	}
 
 	/**
@@ -96,7 +96,7 @@ class TE_Options_Test extends WP_UnitTestCase {
 	 */
 	public function test_announcement_excerpt_trim_length_option() {
 		// Check the default is correct
-		$this->assertEquals( $this->options['excerpt-trim-length'], '250' );
+		$this->assertEquals( $this->options['excerpt-trim-length'], '50' );
 		// Test announcement time frame
 		$this->options['excerpt-trim-length'] = '500';
 		// Update the option with the new value
@@ -306,7 +306,7 @@ class TE_Options_Test extends WP_UnitTestCase {
 		// Assert our defaults are setup properly
 		$this->assertEquals( $this->options['default-announcement-color'], '#75CE66' );
 		$this->assertEquals( $this->options['date-visibility'], '1' );
-		$this->assertEquals( $this->options['excerpt-trim-length'], '250' );
+		$this->assertEquals( $this->options['excerpt-trim-length'], '50' );
 		$this->assertEquals( $this->options['announcement-display-order'], 'ASC' );
 
 		// Setup new values
