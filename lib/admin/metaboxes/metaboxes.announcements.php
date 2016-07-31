@@ -97,8 +97,8 @@ $help_docs_metabox = new_cmb2_box( array(
 
 // Email text field
 $help_docs_metabox->add_field( array(
-	'name' => __( '', 'timeline-express' ),
-	'desc' => __( '', 'timeline-express' ),
+	'name' => '',
+	'desc' => '',
 	'id'   => $prefix . 'help_docs',
 	'type' => 'te_help_docs_metabox',
 ) );

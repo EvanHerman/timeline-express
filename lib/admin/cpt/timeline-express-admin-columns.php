@@ -20,25 +20,27 @@
  */
 add_filter( 'manage_edit-te_announcements_columns', 'add_new_timeline_express_columns' );
 function add_new_timeline_express_columns( $timeline_express_announcement_columns ) {
+	// Setup the singular Name
+	$timeline_express_singular_name = apply_filters( 'timeline_express_singular_name', 'Announcement' );
 	// Assign a new date column to the end of our table
 	$date_column = $timeline_express_announcement_columns['date'];
 	unset( $timeline_express_announcement_columns['date'] );
-	foreach( $timeline_express_announcement_columns as $key => $value ) {
-		if( $key === 'past_announcement' ) {  // when we find the date column
+	foreach ( $timeline_express_announcement_columns as $key => $value ) {
+		if ( 'past_announcement' === $key ) {  // when we find the date column
 			$new['date'] = $date_column;  // put the tags column before it
 		}
 		$new[ $key ] = $value;
 	}
 	$timeline_express_announcement_columns['cb'] = '<input type="checkbox" />';
-	$timeline_express_announcement_columns['title'] = sprintf( _x( '%s Name', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
+	$timeline_express_announcement_columns['title'] = sprintf( _x( '%s Name', 'Announcement singular name eg: Announcement Name', 'timeline-express' ), $timeline_express_singular_name );
 	$timeline_express_announcement_columns['color'] = _x( 'Color', 'timeline-express' );
 	// If years are being used, hide this column
 	if ( ! defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) || ! TIMELINE_EXPRESS_YEAR_ICONS ) {
 		$timeline_express_announcement_columns['icon'] = _x( 'Icon', 'timeline-express' );
 	}
-	$timeline_express_announcement_columns['announcement_date'] = sprintf( _x( '%s Date', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
+	$timeline_express_announcement_columns['announcement_date'] = sprintf( _x( '%s Date', 'Announcement singular name eg: Announcement Date', 'timeline-express' ), $timeline_express_singular_name );
 	$timeline_express_announcement_columns['image'] = _x( 'Image', 'timeline-express' );
-	$timeline_express_announcement_columns['past_announcement'] = sprintf( _x( '%s Past?', 'timeline-express' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
+	$timeline_express_announcement_columns['past_announcement'] = sprintf( _x( '%s Past?', 'Announcement singular name eg: Announcement Past?', 'timeline-express' ), $timeline_express_singular_name );
 	$timeline_express_announcement_columns['date'] = 'Published Date';
 	return $timeline_express_announcement_columns;
 }
@@ -83,7 +85,7 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 			$announcment_date = get_post_meta( $id, 'announcement_date', true );
 			$todays_date = strtotime( date( 'm/d/Y' ) );
 			if ( $announcment_date < $todays_date ) {
-				echo '<div class="dashicon-past-announcement dashicons dashicons-backup" title="' . sprintf( esc_attr__( '%s has past.', 'timeline-express' ), esc_attr__( apply_filters( 'timeline_express_singular_name', 'Announcement' ) ) ) . '" style="display:block;width:100%;"></div>';
+				echo '<div class="dashicon-past-announcement dashicons dashicons-backup" title="' . sprintf( esc_attr_x( '%s has past.', 'Announcement singular name eg: announcement has past.', 'timeline-express' ), esc_attr__( apply_filters( 'timeline_express_singular_name', 'Announcement' ) ) ) . '" style="display:block;width:100%;"></div>';
 			}
 			break;
 

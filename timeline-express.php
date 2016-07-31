@@ -40,7 +40,7 @@ include_once plugin_dir_path( __FILE__ ) . 'constants.php';
  * Include our textdomain and translation files
  **/
 function timeline_express_text_domain_init() {
-	load_plugin_textdomain( 'timeline-express', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'timeline-express', false, dirname( plugin_basename( __FILE__ ) ) . '/i18n' );
 }
 add_action( 'init', 'timeline_express_text_domain_init' );
 

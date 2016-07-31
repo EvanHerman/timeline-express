@@ -37,19 +37,19 @@ $announcement_plural_text = apply_filters( 'timeline_express_plural_name', __( '
  * Custom Post Type Label Array
  */
 $timeline_express_labels = array(
-	'name'                => sprintf( __( 'Timeline Express %s', 'timeline-express' ), $announcement_plural_text ),
+	'name'                => sprintf( _x( 'Timeline Express %s', 'Announcement plural name eg: Timeline Express Announcements', 'timeline-express' ), $announcement_plural_text ),
 	'singular_name'       => $announcement_singular_text, /* Menu item at the top New > Announcement */
 	'menu_name'           => __( 'Timeline Express', 'timeline-express' ), /* Menu name */
 	'parent_item_colon'   => __( 'Timeline Express:', 'timeline-express' ),
-	'all_items'           => sprintf( __( 'All %s', 'timeline-express' ), $announcement_plural_text ),
-	'view_item'           => sprintf( __( 'View %s', 'timeline-express' ), $announcement_singular_text ),
-	'add_new_item'        => sprintf( __( 'New %s', 'timeline-express' ), $announcement_singular_text ),
-	'add_new'             => sprintf( __( 'New %s', 'timeline-express' ), $announcement_singular_text ),
-	'edit_item'           => sprintf( __( 'Edit %s', 'timeline-express' ), $announcement_singular_text ),
-	'update_item'         => sprintf( __( 'Update %s', 'timeline-express' ), $announcement_singular_text ),
-	'search_items'        => sprintf( __( 'Search %s', 'timeline-express' ), $announcement_plural_text ),
-	'not_found'           => sprintf( __( 'No Timeline Express %s Found', 'timeline-express' ), $announcement_plural_text ),
-	'not_found_in_trash'  => sprintf( __( 'No Timeline Express %s in Trash', 'timeline-express' ), $announcement_plural_text ),
+	'all_items'           => sprintf( _x( 'All %s', 'timeline-express' ), 'Announcement plural name eg: All Announcements', $announcement_plural_text ),
+	'view_item'           => sprintf( _x( 'View %s', 'timeline-express' ), 'Announcement singular name eg: View Announcement', $announcement_singular_text ),
+	'add_new_item'        => sprintf( _x( 'New %s', 'timeline-express' ), 'Announcement singular name eg: New Announcement', $announcement_singular_text ),
+	'add_new'             => sprintf( _x( 'New %s', 'timeline-express' ), 'Announcement singular name eg: New Announcement', $announcement_singular_text ),
+	'edit_item'           => sprintf( _x( 'Edit %s', 'timeline-express' ), 'Announcement singular name eg: Edit Announcement', $announcement_singular_text ),
+	'update_item'         => sprintf( _x( 'Update %s', 'timeline-express' ), 'Announcement singular name eg: Update Announcement', $announcement_singular_text ),
+	'search_items'        => sprintf( _x( 'Search %s', 'Announcement plural name eg: Search Announcements', 'timeline-express' ), $announcement_plural_text ),
+	'not_found'           => sprintf( _x( 'No Timeline Express %s Found', 'Announcement plural name eg: No Timeline Express Announcements Found', 'timeline-express' ), $announcement_plural_text ),
+	'not_found_in_trash'  => sprintf( _x( 'No Timeline Express %s in Trash', 'Announcement plural name eg: No Timeline Express Announcements in Trash', 'timeline-express' ), $announcement_plural_text ),
 );
 
 /**
@@ -67,7 +67,7 @@ $timeline_express_rewrite = array(
  */
 $timeline_express_args = array(
 	'label'               => 'timeline-express-announcement',
-	'description'         => sprintf( __( 'Post type for adding timeline express %s to the site', 'timeline-express' ), strtolower( $announcement_plural_text ) ),
+	'description'         => sprintf( _x( 'Post type for adding timeline express %s to the site', 'Announcement plural name eg: Post type for adding timeline express announcements to the site', 'timeline-express' ), strtolower( $announcement_plural_text ) ),
 	'labels'              => $timeline_express_labels,
 	'supports'            => array( 'title', 'editor' ),
 	'taxonomies'          => array(),
@@ -78,7 +78,7 @@ $timeline_express_args = array(
 	'show_in_nav_menus'   => true,
 	'show_in_admin_bar'   => true,
 	'menu_position'       => 5,
-	'menu_icon'                     => TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-menu-icon.png',
+	'menu_icon'           => TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-menu-icon.png',
 	'can_export'          => true,
 	'has_archive'         => true,
 	'publicly_queryable'	=> true,

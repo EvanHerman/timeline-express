@@ -18,7 +18,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 	</div>
 	<div class="timeline-express-badge">
 		<img src="<?php echo esc_attr__( TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-logo-128.png' ); ?>" title="Timeline Express" />
-		<span class="version"><?php printf( esc_attr__( 'Version %s', 'timeline-express' ), esc_attr__( TIMELINE_EXPRESS_VERSION_CURRENT ) ); ?></span>
+		<span class="version"><?php printf( esc_attr_x( 'Version %s', 'Integer: Timeline Express Version Number (eg: 6.2)', 'timeline-express' ), esc_attr__( TIMELINE_EXPRESS_VERSION_CURRENT ) ); ?></span>
 	</div>
 	<h2 class="nav-tab-wrapper">
 		<a class="nav-tab <?php echo 'timeline-express-getting-started' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'tab' => 'timeline-express-getting-started' ), 'admin.php?page=timeline-express-welcome' ) ) ); ?>">
@@ -53,7 +53,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 				<p><?php printf( esc_attr__( 'However, the process is so intuitive that you can jump right in by going to %s.', 'timeline-express' ), '<a href="' . esc_url( admin_url( 'post-new.php?post_type=te_announcements' ) ) . '">Timeline Express &#8594; New Announcement</a>' ); ?>
 				<hr style="margin:2em 0;" />
 				<h3><?php esc_attr_e( 'Tweak the Settings', 'timeline-express' ); ?></h3>
-				<p><?php printf( esc_attr__( 'Head into the %s to tweak how the Timeline is going to appear on your site.', 'timeline-express' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) ) . '">' . esc_attr__( 'Settings Page', 'timeline-express' ) . '</a>' ); ?>
+				<p><?php printf( esc_attr_x( 'Head into the %s to tweak how the Timeline is going to appear on your site.', 'Link to the Timeline Express options page. (eg: <a href="#">settings page</a>)', 'timeline-express' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) ) . '">' . esc_attr__( 'Settings Page', 'timeline-express' ) . '</a>' ); ?>
 			</div>
 		</div>
 
