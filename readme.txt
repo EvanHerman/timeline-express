@@ -3,7 +3,7 @@ Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
 Tested up to: 4.6
-Stable tag: 1.2.8.3
+Stable tag: 1.2.8.4
 License: GPLv2 or later
 
 Timeline Express allows you to create a beautiful vertical animated and responsive timeline of posts, without writing a single line of code. Sweet!
@@ -357,6 +357,13 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.2.8.4 - August 13th, 2016 =
+- Prepped for post type add-on (re-factored sections, including template inclusions).
+- Altered the date function, switched out the parameter from $announcement_date to $post_id (post ID can be used to retrieve appropriate data from the announcements)
+- Set a fall back date (current time) on the announcement container classes when no announcement date is set.
+- Added new collision detection between announcement containers.
+- Included jquery collision plugin.
+
 = 1.2.8.3 - August 12th, 2016 =
 - Repaired translation contexts, which were improperly printing in unwanted locations. (Admin Menus)
 
@@ -639,5 +646,9 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.2.8.3 - August 12th, 2016 =
-- Repaired translation contexts, which were improperly printing in unwanted locations. (Admin Menus)
+= 1.2.8.4 - August 13th, 2016 =
+- Prepped for post type add-on (re-factored sections, including template inclusions).
+- Altered the date function, switched out the parameter from $announcement_date to $post_id (post ID can be used to retrieve appropriate data from the announcements)
+- Set a fall back date (current time) on the announcement container classes when no announcement date is set.
+- Added new collision detection between announcement containers.
+- Included jquery collision plugin.

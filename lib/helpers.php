@@ -428,7 +428,8 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
  * @return string Execute the function to retreive the date.
  */
 function timeline_express_get_announcement_date( $post_id ) {
-	return apply_filters( 'timeline_express_frontend_date_filter', date_i18n( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), get_post_meta( $post_id, 'announcement_date', true ) ), get_post_meta( $post_id, 'announcement_date', true ) );
+	$announcement_date = ( get_post_meta( $post_id, 'announcement_date', true ) ) ? get_post_meta( $post_id, 'announcement_date', true ) : strtotime( 'now' );
+	return apply_filters( 'timeline_express_frontend_date_filter', date_i18n( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), $announcement_date ), $post_id );
 }
 
 /**
