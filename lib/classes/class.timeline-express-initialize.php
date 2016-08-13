@@ -28,7 +28,8 @@ class Timeline_Express_Initialize {
 		 */
 		/* Scripts */
 		wp_enqueue_script( 'jquery-masonry' );
-		wp_enqueue_script( 'timeline-express-js-base', TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js', array( 'jquery-masonry' ) );
+		wp_enqueue_script( 'jquery-collision', TIMELINE_EXPRESS_URL . 'lib/public/js/min/jquery-collision.min.js', array( 'jquery-masonry' ) );
+		wp_enqueue_script( 'timeline-express-js-base', TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js', array( 'jquery-collision' ) );
 		/* pass the disabled state to our script */
 		wp_localize_script( 'timeline-express-js-base', 'timeline_express_data', array(
 			'animation_disabled' => $animation_disabled,
@@ -239,8 +240,9 @@ class Timeline_Express_Initialize {
 	 */
 	public function timeline_express_announcement_container_classes( $class, $announcement_id ) {
 		$container_classes = array( $class );
+		$announcement_obj = get_post( $announcement_id );
 		// Setup the date
-		$announcement_date = get_post_meta( $announcement_id, 'announcement_date', true );
+		$announcement_date = ( get_post_meta( $announcement_id, 'announcement_date', true ) ) ? get_post_meta( $announcement_id, 'announcement_date', true ) : strtotime( $announcement_obj->post_date_gmt );
 		// append the month
 		$container_classes[] = strtolower( date_i18n( 'F', $announcement_date ) );
 		// append the day
