@@ -2,8 +2,8 @@
 Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 1.2.8.4
+Tested up to: 4.6.1
+Stable tag: 1.2.8.5
 License: GPLv2 or later
 
 Timeline Express allows you to create a beautiful vertical animated and responsive timeline of posts, without writing a single line of code. Sweet!
@@ -357,6 +357,14 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.2.8.5 - September 12th, 2016 =
+- Removed collision detection, causing initialization issues for certain users.
+- Introduced new templating engine, to aid in creation of the `single-announcement` template page wrappers (no longer requires user interaction on most themes).
+- Introduced new template files (`timeline-express-page-wrappers-start.php`, `timeline-express-page-wrappers-end.php`, `timeline-express-sidebar.php`)
+- Introduced new action hooks inside of `single-timeline-express.php` ( `timeline_express_before_main_content`, `timeline_express_after_main_content`,`timeline_express_sidebar`)
+- Added additional single announcement template styles.
+- Tested with bundled WordPress themes (TwentyFourteen-TwentySixteen), and a few other popular themes (Divi, X Theme etc.)
+
 = 1.2.8.4 - August 13th, 2016 =
 - Prepped for post type add-on (re-factored sections, including template inclusions).
 - Altered the date function, switched out the parameter from $announcement_date to $post_id (post ID can be used to retrieve appropriate data from the announcements)
@@ -646,9 +654,5 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.2.8.4 - August 13th, 2016 =
-- Prepped for post type add-on (re-factored sections, including template inclusions).
-- Altered the date function, switched out the parameter from $announcement_date to $post_id (post ID can be used to retrieve appropriate data from the announcements)
-- Set a fall back date (current time) on the announcement container classes when no announcement date is set.
-- Added new collision detection between announcement containers.
-- Included jquery collision plugin.
+= 1.2.8.5 - September 12th, 2016 =
+- Removed collision detection, causing issues for certain users.

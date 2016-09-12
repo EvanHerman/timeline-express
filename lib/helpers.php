@@ -27,6 +27,20 @@ add_action( 'cmb2_render_te_bootstrap_dropdown', 'cmb2_render_callback_te_bootst
 add_filter( 'cmb2_sanitize_te_date_time_stamp_custom', 'cmb2_sanitize_te_date_time_stamp_custom_callback', 10, 2 );
 /* Sanitize custom bootstrap icons dropdown field */
 add_filter( 'cmb2_sanitize_te_bootstrap_dropdown', 'cmb2_validate_te_bootstrap_dropdown_callback', 10, 2 );
+
+/*
+ * Output the Start and End content wrappers on the single timeline express template
+ * @since 1.2.8.5
+ */
+add_action( 'timeline_express_before_main_content', 'timeline_express_generate_page_wrapper_start', 10 );
+add_action( 'timeline_express_after_main_content', 'timeline_express_generate_page_wrapper_end', 10 );
+
+/**
+ * Output the Timeline Express Sidebar on the single announcement template
+ * @since 1.2.8.5
+ */
+add_action( 'timeline_express_sidebar', 'timeline_express_generate_sidebar', 10 );
+
 /**
  * Retreive plugin settings from the database
  *
@@ -280,6 +294,15 @@ function get_timeline_express_template( $template_name = 'timeline-container' ) 
 		case 'single-announcement':
 			$file_name = 'single-timeline-express-content';
 			break;
+		case 'page-wrappers-start':
+			$file_name = 'timeline-express-page-wrappers-start';
+			break;
+		case 'page-wrappers-end':
+			$file_name = 'timeline-express-page-wrappers-end';
+			break;
+		case 'timeline-express-sidebar':
+			$file_name = 'timeline-express-sidebar';
+			break;
 	}
 	// check for and load file
 	if ( file_exists( get_stylesheet_directory() . '/timeline-express/' . $file_name . '.php' ) ) {
@@ -528,4 +551,45 @@ function timeline_express_get_custom_meta( $post_id, $meta_name, $array = true )
 	/* Return the post meta, or false if nothing was found */
 	return ( get_post_meta( $post_id, $meta_name, $array ) ) ? get_post_meta( $post_id, $meta_name, $array ) : false;
 }
-?>
+
+if ( ! function_exists( 'timeline_express_generate_page_wrapper_start' ) ) {
+
+	/**
+	 * Generate the Timeline Express beginning page wrappers
+	 * @return mixed
+	 */
+	function timeline_express_generate_page_wrapper_start() {
+
+		get_timeline_express_template( 'page-wrappers-start' );
+
+	}
+
+}
+
+if ( ! function_exists( 'timeline_express_generate_page_wrapper_end' ) ) {
+
+	/**
+	 * Generate the Timeline Express ending page wrappers
+	 * @return mixed
+	 */
+	function timeline_express_generate_page_wrapper_end() {
+
+		get_timeline_express_template( 'page-wrappers-end' );
+
+	}
+
+}
+
+if ( ! function_exists( 'timeline_express_generate_sidebar' ) ) {
+
+	/**
+	 * Generate the Timeline Express ending page wrappers
+	 * @return mixed
+	 */
+	function timeline_express_generate_sidebar() {
+
+		get_timeline_express_template( 'timeline-express-sidebar' );
+
+	}
+
+}

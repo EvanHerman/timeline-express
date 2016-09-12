@@ -14,7 +14,7 @@
  * Define the current version of Timeline Express
  */
 if ( ! defined( 'TIMELINE_EXPRESS_VERSION_CURRENT' ) ) {
-	define( 'TIMELINE_EXPRESS_VERSION_CURRENT', '1.2.8.4' );
+	define( 'TIMELINE_EXPRESS_VERSION_CURRENT', '1.2.8.5' );
 }
 
 /**

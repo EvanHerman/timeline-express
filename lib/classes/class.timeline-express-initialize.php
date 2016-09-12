@@ -28,8 +28,7 @@ class Timeline_Express_Initialize {
 		 */
 		/* Scripts */
 		wp_enqueue_script( 'jquery-masonry' );
-		wp_enqueue_script( 'jquery-collision', TIMELINE_EXPRESS_URL . 'lib/public/js/min/jquery-collision.min.js', array( 'jquery-masonry' ) );
-		wp_enqueue_script( 'timeline-express-js-base', TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js', array( 'jquery-collision' ) );
+		wp_enqueue_script( 'timeline-express-js-base', TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js', array( 'jquery-masonry' ) );
 		/* pass the disabled state to our script */
 		wp_localize_script( 'timeline-express-js-base', 'timeline_express_data', array(
 			'animation_disabled' => $animation_disabled,
