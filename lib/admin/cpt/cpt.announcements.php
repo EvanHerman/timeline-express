@@ -95,7 +95,16 @@ register_post_type( 'te_announcements', $timeline_express_args );
 
 /* Flush the re-write rules/permalinks - prevents 404 on initial plugin activation */
 $set = get_option( 'post_type_rules_flushed_te-announcements', false );
-if ( true !== $set ) {
+
+/**
+ * If the re-write rules are not set, flush them and update the option
+ * Prevents re-write rules being flushed every page load
+ *
+ * @since 1.2.8.5
+ *
+ * @link https://github.com/EvanHerman/timeline-express/pull/24
+ */
+if ( ! $set ) {
 	flush_rewrite_rules( false );
 	update_option( 'post_type_rules_flushed_te-announcements', true );
 }
