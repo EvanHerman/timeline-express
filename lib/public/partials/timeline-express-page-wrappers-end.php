@@ -43,6 +43,14 @@ switch ( $template ) {
 		break;
 
 	default :
+
+		/**
+		 * @action timeline_express_page_wrapper_end
+		 *
+		 * Hook in to use custom page wrappers
+		 */
+		do_action( 'timeline_express_page_wrapper_end' );
+
 		echo '</div></div>';
 		break;
 }

@@ -7,6 +7,11 @@
  * @link http://www.codeparrots.com
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /* Action hook to display content before the single announcement image */
 do_action( 'timeline-express-single-before-image' );
 
