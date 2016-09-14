@@ -205,10 +205,6 @@ body.te_announcements_page_timeline-express-settings .wrap .postbox.ui-sortable-
 	margin-bottom: 3em;
 }
 
-	.timeline-express-form th {
-		font-weight: bold;
-	}
-
 .timeline-express-settings-description {
 	padding-bottom: 2em !important;
 	color: #A7A7A7;

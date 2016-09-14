@@ -3,7 +3,7 @@ Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
 Tested up to: 4.6.1
-Stable tag: 1.2.8.5
+Stable tag: 1.2.8.6
 License: GPLv2 or later
 
 Timeline Express allows you to create a beautiful vertical animated and responsive timeline of posts, without writing a single line of code. Sweet!
@@ -357,6 +357,11 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.2.8.6 - September 14th, 2016 =
+- Minor tweaks to template engine.
+- Updated add-ons feed.
+- Tweaked the settings styles (inherit WordPress core styles).
+
 = 1.2.8.5 - September 12th, 2016 =
 - Removed collision detection, causing initialization issues for certain users.
 - Introduced new templating engine, to aid in creation of the `single-announcement` template page wrappers (no longer requires user interaction on most themes).
@@ -654,5 +659,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.2.8.5 - September 12th, 2016 =
-- Removed collision detection, causing issues for certain users.
+= 1.2.8.6 - September 14th, 2016 =
+- Minor tweaks to template engine.
+- Updated add-ons feed.
+- Tweaked the settings styles (inherit WordPress core styles).

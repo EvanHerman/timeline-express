@@ -41,7 +41,7 @@ $additional_editor_parameters = array(
 							<h1 id="timeline-express-page-header">
 								<?php esc_attr_e( 'Timeline Express Settings', 'timeline-express' ); ?>
 							</h1>
-							<p style="margin-top:0;font-weight:200;" class="description">
+							<p class="description">
 								<?php esc_attr_e( 'Alter your timeline settings here. You can adjust some of the visual settings as well as the display order, below.', 'timeline-express' ); ?>
 							</p>
 						</div>
@@ -71,6 +71,7 @@ $additional_editor_parameters = array(
 								<?php
 								/* Do the settings fields */
 								settings_fields( 'timeline-express-settings' );
+
 								do_settings_sections( 'timeline-express-settings' );
 
 								/* Nonce security check :) */

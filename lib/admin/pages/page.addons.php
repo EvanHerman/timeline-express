@@ -48,7 +48,7 @@ $items = $this->get_addons_rss_feed();
 			<div class="timeline-express-addon-item timeline-express-addon-status-upgrade timeline-express-first; ?>">
 				<div class="timeline-express-addon-image"><img src="<?php echo esc_url( $addon_json['thumbnail'][0] ); ?>" /></div>
 				<div class="timeline-express-addon-text">
-					<h4><?php echo esc_attr( $addon_json['title'] ); ?></h4>
+					<h4><?php echo esc_attr( str_replace( 'u2013', '', $addon_json['title'] ) ); ?></h4>
 					<p class="desc"><?php echo esc_attr( $addon_json['content'] ); ?></p>
 				</div>
 				<div class="timeline-express-addon-action">

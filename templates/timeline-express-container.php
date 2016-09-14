@@ -6,6 +6,11 @@
  * @since 1.2
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /* Store the global $post object */
 global $post;
 

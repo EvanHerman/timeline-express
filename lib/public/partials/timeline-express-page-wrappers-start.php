@@ -9,7 +9,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+
 $template = get_option( 'template' );
+
 switch ( $template ) {
 
 	case 'twentyeleven' :
@@ -39,6 +41,14 @@ switch ( $template ) {
 		break;
 
 	default :
+
+		/**
+		 * @action timeline_express_page_wrapper_start
+		 *
+		 * Hook in to use custom page wrappers
+		 */
+		do_action( 'timeline_express_page_wrapper_start' );
+
 		echo '<div id="container"><div id="content" role="main">';
 		break;
 

@@ -9,6 +9,11 @@
  * @since Twenty Sixteen 1.2.5
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 get_header();
 
 /**

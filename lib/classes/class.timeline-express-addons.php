@@ -48,7 +48,7 @@ class Timeline_Express_Addons {
 		$feed->set_file_class( 'WP_SimplePie_File' );
 		$feed->enable_cache( true ); // temporary
 		/* Tell SimplePie how long to cache the feed data in the WordPress database */
-		$feed->set_cache_duration( apply_filters( 'wp_feed_cache_transient_lifetime', 43200, $feed_url ) );
+		$feed->set_cache_duration( apply_filters( 'wp_feed_cache_transient_lifetime', 86400, $feed_url ) );
 		/* Run any other functions or filters that WordPress normally runs on feeds */
 		do_action_ref_array( 'wp_feed_options', array( $feed, $feed_url ) );
 		/* Initiate the SimplePie instance */
