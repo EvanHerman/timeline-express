@@ -103,21 +103,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             flatten: true,
-            src: ['lib/public/partials/timeline-express-container.php'],
-            dest: 'templates/',
-            filter: 'isFile'
-          },
-					{
-            expand: true,
-            flatten: true,
-            src: ['lib/public/partials/single-timeline-express-content.php'],
-            dest: 'templates/',
-            filter: 'isFile'
-          },
-					{
-            expand: true,
-            flatten: true,
-            src: ['lib/public/partials/single-timeline-express.php'],
+            src: ['lib/public/partials/*.php'],
             dest: 'templates/',
             filter: 'isFile'
           },
