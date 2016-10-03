@@ -12,7 +12,7 @@ $timeline_express_options = timeline_express_get_options();
  */
 $announcement_metabox = new_cmb2_box( array(
 	'id'            => 'announcement_metabox',
-	'title'         => __( 'Announcement Info.', 'timeline-express' ),
+	'title'         => esc_html__( 'Announcement Info.', 'timeline-express' ),
 	'object_types'  => array( 'te_announcements' ), // Post type
 	'context'       => 'advanced',
 	'priority'      => 'high',
@@ -21,8 +21,8 @@ $announcement_metabox = new_cmb2_box( array(
 
 // Regular text field
 $announcement_metabox->add_field( array(
-	'name'       => __( 'Announcement Color', 'timeline-express' ),
-	'desc'       => __( 'Select the color for this announcement.', 'timeline-express' ),
+	'name'       => esc_html__( 'Announcement Color', 'timeline-express' ),
+	'desc'       => esc_html__( 'Select the color for this announcement.', 'timeline-express' ),
 	'id'         => $prefix . 'color',
 	'type'       => 'colorpicker',
 	'default'  => $timeline_express_options['default-announcement-color'],
@@ -30,8 +30,8 @@ $announcement_metabox->add_field( array(
 
 // URL text field
 $announcement_metabox->add_field( array(
-	'name' => __( 'Announcement Icon', 'timeline-express' ),
-	'desc' => __( 'Select an icon from the drop down above. This is used for the icon associated with the announcement.', 'timeline-express' ),
+	'name' => esc_html__( 'Announcement Icon', 'timeline-express' ),
+	'desc' => esc_html__( 'Select an icon from the drop down above. This is used for the icon associated with the announcement.', 'timeline-express' ),
 	'id'   => $prefix . 'icon',
 	'type' => 'te_bootstrap_dropdown',
 	'default' => 'fa-' . $timeline_express_options['default-announcement-icon'],
@@ -39,8 +39,8 @@ $announcement_metabox->add_field( array(
 
 // Announcement Date
 $announcement_metabox->add_field( array(
-	'name' => __( 'Announcement Date', 'timeline-express' ),
-	'desc' => __( 'Enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
+	'name' => esc_html__( 'Announcement Date', 'timeline-express' ),
+	'desc' => esc_html__( 'Enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
 	'id'   => $prefix . 'date',
 	'type' => 'te_date_time_stamp_custom',
 	'default' => strtotime( date( 'm/d/Y' ) ),
@@ -48,8 +48,8 @@ $announcement_metabox->add_field( array(
 
 // Announcement Image
 $announcement_metabox->add_field( array(
-	'name' => __( 'Announcement Image', 'timeline-express' ),
-	'desc' => __( 'Select a banner image for this announcement (optional). (recommended 650px wide or larger)', 'timeline-express' ),
+	'name' => esc_html__( 'Announcement Image', 'timeline-express' ),
+	'desc' => esc_html__( 'Select a banner image for this announcement (optional). (recommended 650px wide or larger)', 'timeline-express' ),
 	'id'   => $prefix . 'image',
 	'type' => 'file',
 ) );
@@ -63,7 +63,7 @@ $announcement_metabox->add_field( array(
 if ( defined( 'TIMELINE_EXPRESS_CONTAINER_CLASSES' ) && TIMELINE_EXPRESS_CONTAINER_CLASSES ) {
 	$announcement_container_metabox = new_cmb2_box( array(
 		'id'            => 'announcement_container_metabox',
-		'title'         => __( 'Announcement Container Info.', 'timeline-express' ),
+		'title'         => esc_html__( 'Announcement Container Info.', 'timeline-express' ),
 		'object_types'  => array( 'te_announcements' ), // Post type
 		'context'       => 'advanced',
 		'priority'      => 'high',
@@ -72,8 +72,8 @@ if ( defined( 'TIMELINE_EXPRESS_CONTAINER_CLASSES' ) && TIMELINE_EXPRESS_CONTAIN
 
 	// Container class
 	$announcement_container_metabox->add_field( array(
-		'name' => __( 'Custom Container Class', 'timeline-express' ),
-		'desc' => __( 'Enter the class that you would like added to this announcement container on the timeline.', 'timeline-express' ),
+		'name' => esc_html__( 'Custom Container Class', 'timeline-express' ),
+		'desc' => esc_html__( 'Enter the class that you would like added to this announcement container on the timeline.', 'timeline-express' ),
 		'id'   => $prefix . 'container_classes',
 		'type' => 'text',
 	) );
@@ -88,7 +88,7 @@ if ( defined( 'TIMELINE_EXPRESS_CONTAINER_CLASSES' ) && TIMELINE_EXPRESS_CONTAIN
  */
 $help_docs_metabox = new_cmb2_box( array(
 	'id'            => 'help_docs_metabox',
-	'title'         => __( 'Help & Documentation', 'timeline-express' ),
+	'title'         => esc_html__( 'Help & Documentation', 'timeline-express' ),
 	'object_types'  => array( 'te_announcements' ),
 	'context'    => 'side',
 	'priority'   => 'low',

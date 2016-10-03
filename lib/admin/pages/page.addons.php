@@ -15,10 +15,10 @@ $items = $this->get_addons_rss_feed();
 <!-- addons page wrap -->
 <div id="timeline-express-addons" class="wrap">
 	<h1 class="page-title">
-		<?php esc_attr_e( 'Timeline Express Add-ons', 'timeline-express' ); ?>
+		<?php esc_html_e( 'Timeline Express Add-ons', 'timeline-express' ); ?>
 	</h1>
 	<p class="intro" style="max-width:800px;">
-		<?php esc_attr_e( "Extend the base Timeline Express functionality with our powerful add-ons. We're constantly looking to build out additional add-ons. If you have a great idea for a new add-on, get in contact with us!", 'timeline-express' ); ?>
+		<?php esc_html_e( "Extend the base Timeline Express functionality with our powerful add-ons. We're constantly looking to build out additional add-ons. If you have a great idea for a new add-on, get in contact with us!", 'timeline-express' ); ?>
 	</p>
 	<?php
 	foreach ( $items as $add_on ) {
@@ -27,7 +27,7 @@ $items = $this->get_addons_rss_feed();
 		$add_on_slug = str_replace( 'limits', 'limit', str_replace( 'timeline-express-addon-', '', sanitize_title( $title ) ) );
 		$plugin_active = is_plugin_active( $add_on_slug . '/' . $add_on_slug . '.php' );
 		$disabled_button = ( $plugin_active ) ? 'disabled="disabled";' : '';
-		$button_text = ( $plugin_active ) ? __( 'Add-on Installed', 'timeline-express' ) : __( 'Buy Now', 'timeline-express' );
+		$button_text = ( $plugin_active ) ? esc_html__( 'Add-on Installed', 'timeline-express' ) : esc_html__( 'Buy Now', 'timeline-express' );
 		/* Only query timeline express addons */
 		if ( false !== $pos ) {
 			$data = wp_strip_all_tags( $add_on->get_content(), true );

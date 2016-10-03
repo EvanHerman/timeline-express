@@ -76,8 +76,6 @@ class TimelineExpressBase {
 		}
 	}
 
-
-
 	/**
 	 * Sanitize and save our options to the database
 	 * @package  TimelineExpressBase
@@ -86,7 +84,7 @@ class TimelineExpressBase {
 	public static function timeline_express_save_options( $options ) {
 		// When the nonce is not set, abort
 		if ( ! isset( $_POST['timeline_express_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['timeline_express_settings_nonce'] ) ), 'timeline_express_save_settings' ) ) {
-			wp_die( esc_attr__( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ), __( 'Failed Nonce Security Check', 'timeline-express' ), array(
+			wp_die( esc_attr__( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ), esc_html__( 'Failed Nonce Security Check', 'timeline-express' ), array(
 				'response' => 500,
 				'back_link' => true,
 				'text_direction' => ( is_rtl() ) ? 'rtl' : 'ltr',
