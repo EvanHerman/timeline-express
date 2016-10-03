@@ -84,8 +84,8 @@ class TimelineExpressAdmin {
 		/* Settings Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
-			__( 'Timeline Express Settings', 'timeline-express' ),
-			__( 'Settings', 'timeline-express' ),
+			esc_html__( 'Timeline Express Settings', 'timeline-express' ),
+			esc_html__( 'Settings', 'timeline-express' ),
 			$menu_cap,
 			'timeline-express-settings',
 			array( $this, 'timeline_express_options_page' )
@@ -93,8 +93,8 @@ class TimelineExpressAdmin {
 		/* Addon Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
-			__( 'Timeline Express Add-ons', 'timeline-express' ),
-			'<span style="color:#F7A933">' . __( 'Add-ons', 'timeline-express' ) . '<span>',
+			esc_html__( 'Timeline Express Add-ons', 'timeline-express' ),
+			'<span style="color:#F7A933">' . esc_html__( 'Add-ons', 'timeline-express' ) . '<span>',
 			$menu_cap,
 			'timeline-express-addons',
 			array( $this, 'timeline_express_addons_page' )
@@ -102,8 +102,8 @@ class TimelineExpressAdmin {
 		/* Welcome Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
-			__( 'Timeline Express Welcome', 'timeline-express' ),
-			__( 'Welcome', 'timeline-express' ),
+			esc_html__( 'Timeline Express Welcome', 'timeline-express' ),
+			esc_html__( 'Welcome', 'timeline-express' ),
 			$menu_cap,
 			'timeline-express-welcome',
 			array( $this, 'timeline_express_welcome_page' )
@@ -230,9 +230,9 @@ class TimelineExpressAdmin {
 		}
 		/* Remove the edit button */
 		unset( $links['edit'] );
-		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) . '">' . esc_attr__( 'Settings', 'timeline-express' ) . '</a>';
-		// $links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_attr__( 'Add-ons', 'timeline-express' ) . '</a>';
-		$links[] = '<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank">' . esc_attr__( 'Documentation', 'timeline-express' ) . '</a>';
+		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) . '">' . esc_html__( 'Settings', 'timeline-express' ) . '</a>';
+		// $links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_html__( 'Add-ons', 'timeline-express' ) . '</a>';
+		$links[] = '<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank">' . esc_html__( 'Documentation', 'timeline-express' ) . '</a>';
 		return $links;
 	}
 
