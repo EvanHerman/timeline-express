@@ -2,6 +2,83 @@
  * @Plugin Timeline Express
  * @Author Code Parrots
  * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
+ * @Version 1.2.9
+ * @Build 10-08-2016
+ */
+/*
+ * @Plugin Timeline Express
+ * @Author Code Parrots
+ * @Site https://www.wp-timelineexpress.com
  * @Version 1.2.8.7
  * @Build 09-18-2016
  */

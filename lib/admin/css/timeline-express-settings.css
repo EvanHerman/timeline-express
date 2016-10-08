@@ -62,47 +62,29 @@
  * Advertisment Metabox
  */
 
-#cmb2-metabox-timeline_express_ads .cmb2-id-announcement-advertisments {
-	padding: 0 !important;
-}
-
-#cmb2-metabox-timeline_express_ads p.description {
-	margin: 10px 0 !important;
-}
-
-#cmb2-metabox-timeline_express_ads a.button-primary {
-	font-size: 15px;
-	height: auto;
-	padding: 3px;
-	margin: 0;
-	width: 100%;
-	text-align: center;
-}
-
-#timeline_express_ads {
-	background: transparent;
-	box-shadow: none;
-	border: none;
-}
-
-#timeline_express_ads .advertisment-link {
-	display: block;
-	width: 100%;
-	height: 100%;
-}
-
-#timeline_express_ads .handlediv,
-#timeline_express_ads h2,
-#timeline_express_ads .button-primary,
-#timeline_express_ads p.description {
-	display: none !important;
-}
-
-#timeline_express_ads div.inside,
-#timeline_express_ads .cmb-type-te-advert-metabox {
-	margin: 0;
+#advert_metabox .inside {
 	padding: 0;
+	margin-top: 0;
 }
+
+	#advert_metabox .inside .cmb2-id-announcement-advertisments {
+		padding: 0 !important;
+		border: none;
+		background: transparent;
+		margin-bottom: 0;
+	}
+
+		#advert_metabox .inside .cmb2-id-announcement-advertisments p {
+			padding: 0 10px;
+		}
+
+		#advert_metabox .inside .cmb2-id-announcement-advertisments a.advertisment-link {
+			position: relative;
+			display: block;
+			max-height: 278px;
+		}
+
+/** End Advertisment Metabox **/
 
 div.cmb2-id-announcement-help-docs {
 	padding-top: 0 !important;

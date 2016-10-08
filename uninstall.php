@@ -28,11 +28,6 @@ delete_option( 'timeline_express_storage' );
 delete_site_option( 'timeline_express_storage' );
 
 /* Delete Our Transients */
-delete_transient( 'timeline_express_ad_rss_feed' );
-delete_transient( 'timeline_express_ad_title' );
-delete_transient( 'timeline_express_ad_image' );
-delete_transient( 'timeline_express_ad_content' );
-delete_transient( 'timeline_express_ad_url' );
 delete_transient( 'te_font_awesome_transient' );
 
 /* Delete all timeline express query transients created on pages eg: timeline-express-query-PAGE_ID */

@@ -13,11 +13,18 @@
 class CMB2_Utils {
 
 	/**
+	 * The WordPress ABSPATH constant.
+	 * @var   string
+	 * @since 2.2.3
+	 */
+	protected static $ABSPATH = ABSPATH;
+
+	/**
 	 * The url which is used to load local resources.
 	 * @var   string
 	 * @since 2.0.0
 	 */
-	protected $url = '';
+	protected static $url = '';
 
 	/**
 	 * Utility method that attempts to get an attachment's ID by it's url
@@ -25,7 +32,7 @@ class CMB2_Utils {
 	 * @param  string  $img_url Attachment url
 	 * @return int|false            Attachment ID or false
 	 */
-	public function image_id_from_url( $img_url ) {
+	public static function image_id_from_url( $img_url ) {
 		$attachment_id = 0;
 		$dir = wp_upload_dir();
 
@@ -74,7 +81,7 @@ class CMB2_Utils {
 	 * @param  string $tzstring Time string
 	 * @return string           Offset time string
 	 */
-	public function timezone_offset( $tzstring ) {
+	public static function timezone_offset( $tzstring ) {
 		$tz_offset = 0;
 
 		if ( ! empty( $tzstring ) && is_string( $tzstring ) ) {
@@ -87,7 +94,7 @@ class CMB2_Utils {
 				$date_time_zone_selected = new DateTimeZone( $tzstring );
 				$tz_offset = timezone_offset_get( $date_time_zone_selected, date_create() );
 			} catch ( Exception $e ) {
-				$this->log_if_debug( __METHOD__, __LINE__, $e->getMessage() );
+				self::log_if_debug( __METHOD__, __LINE__, $e->getMessage() );
 			}
 
 		}
@@ -106,9 +113,14 @@ class CMB2_Utils {
 	 * @since  1.0.0
 	 * @return string Timezone string
 	 */
-	public function timezone_string() {
+	public static function timezone_string() {
 		$current_offset = get_option( 'gmt_offset' );
 		$tzstring       = get_option( 'timezone_string' );
+
+		// Remove old Etc mappings. Fallback to gmt_offset.
+		if ( false !== strpos( $tzstring, 'Etc/GMT' ) ) {
+			$tzstring = '';
+		}
 
 		if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 			if ( 0 == $current_offset ) {
@@ -129,12 +141,12 @@ class CMB2_Utils {
 	 * @param  string|int $string Possible timestamp string
 	 * @return int   	            Time stamp
 	 */
-	public function make_valid_time_stamp( $string ) {
+	public static function make_valid_time_stamp( $string ) {
 		if ( ! $string ) {
 			return 0;
 		}
 
-		return $this->is_valid_time_stamp( $string )
+		return self::is_valid_time_stamp( $string )
 			? (int) $string :
 			strtotime( (string) $string );
 	}
@@ -145,7 +157,7 @@ class CMB2_Utils {
 	 * @param  mixed  $timestamp Value to check
 	 * @return boolean           Whether value is a valid timestamp
 	 */
-	public function is_valid_time_stamp( $timestamp ) {
+	public static function is_valid_time_stamp( $timestamp ) {
 		return (string) (int) $timestamp === (string) $timestamp
 			&& $timestamp <= PHP_INT_MAX
 			&& $timestamp >= ~PHP_INT_MAX;
@@ -157,8 +169,28 @@ class CMB2_Utils {
 	 * @param  mixed $value Value to check
 	 * @return bool         True or false
 	 */
-	public function isempty( $value ) {
+	public static function isempty( $value ) {
 		return null === $value || '' === $value || false === $value;
+	}
+
+	/**
+	 * Checks if a value is not 'empty'. 0 doesn't count as empty.
+	 * @since  2.2.2
+	 * @param  mixed $value Value to check
+	 * @return bool         True or false
+	 */
+	public static function notempty( $value ){
+		return null !== $value && '' !== $value && false !== $value;
+	}
+
+	/**
+	 * Filters out empty values (not including 0).
+	 * @since  2.2.2
+	 * @param  mixed $value Value to check
+	 * @return bool         True or false
+	 */
+	public static function filter_empty( $value ) {
+		return array_filter( $value, array( __CLASS__, 'notempty' ) );
 	}
 
 	/**
@@ -168,7 +200,7 @@ class CMB2_Utils {
 	 * @param  array $new      New array to insert
 	 * @param  int   $position Position in the main array to insert the new array
 	 */
-	public function array_insert( &$array, $new, $position ) {
+	public static function array_insert( &$array, $new, $position ) {
 		$before = array_slice( $array, 0, $position - 1 );
 		$after  = array_diff_key( $array, $before );
 		$array  = array_merge( $before, $new, $after );
@@ -181,33 +213,97 @@ class CMB2_Utils {
 	 * @since  1.0.1
 	 * @return string URL to CMB2 resources
 	 */
-	public function url( $path = '' ) {
-		if ( $this->url ) {
-			return $this->url . $path;
+	public static function url( $path = '' ) {
+		if ( self::$url ) {
+			return self::$url . $path;
 		}
 
-		if ( 'WIN' === strtoupper( substr( PHP_OS, 0, 3 ) ) ) {
-			// Windows
-			$content_dir = str_replace( '/', DIRECTORY_SEPARATOR, WP_CONTENT_DIR );
-			$content_url = str_replace( $content_dir, WP_CONTENT_URL, cmb2_dir() );
-			$cmb2_url = str_replace( DIRECTORY_SEPARATOR, '/', $content_url );
-
-		} else {
-			$cmb2_url = str_replace(
-				array( WP_CONTENT_DIR, WP_PLUGIN_DIR ),
-				array( WP_CONTENT_URL, WP_PLUGIN_URL ),
-				cmb2_dir()
-			);
-		}
+		$cmb2_url = self::get_url_from_dir( cmb2_dir() );
 
 		/**
 		 * Filter the CMB location url
 		 *
 		 * @param string $cmb2_url Currently registered url
 		 */
-		$this->url = trailingslashit( apply_filters( 'cmb2_meta_box_url', set_url_scheme( $cmb2_url ), CMB2_VERSION ) );
+		self::$url = trailingslashit( apply_filters( 'cmb2_meta_box_url', $cmb2_url, CMB2_VERSION ) );
 
-		return $this->url . $path;
+		return self::$url . $path;
+	}
+
+	/**
+	 * Converts a system path to a URL
+	 * @since  2.2.2
+	 * @param  string $dir Directory path to convert.
+	 * @return string      Converted URL.
+	 */
+	public static function get_url_from_dir( $dir ) {
+		$dir = self::normalize_path( $dir );
+
+		// Let's test if We are in the plugins or mu-plugins dir.
+		$test_dir = trailingslashit( $dir ) . 'unneeded.php';
+		if (
+			0 === strpos( $test_dir, self::normalize_path( WPMU_PLUGIN_DIR ) )
+			|| 0 === strpos( $test_dir, self::normalize_path( WP_PLUGIN_DIR ) )
+		) {
+			// Ok, then use plugins_url, as it is more reliable.
+			return trailingslashit( plugins_url( '', $test_dir ) );
+		}
+
+		// Ok, now let's test if we are in the theme dir.
+		$theme_root = self::normalize_path( get_theme_root() );
+		if ( 0 === strpos( $dir, $theme_root ) ) {
+			// Ok, then use get_theme_root_uri.
+			return set_url_scheme(
+				trailingslashit(
+					str_replace(
+						untrailingslashit( $theme_root ),
+						untrailingslashit( get_theme_root_uri() ),
+						$dir
+					)
+				)
+			);
+		}
+
+		// Check to see if it's anywhere in the root directory
+
+		$site_dir = self::normalize_path( self::$ABSPATH );
+		$site_url = trailingslashit( is_multisite() ? network_site_url() : site_url() );
+
+		$url = str_replace(
+			array( $site_dir, WP_PLUGIN_DIR ),
+			array( $site_url, WP_PLUGIN_URL ),
+			$dir
+		);
+
+		return set_url_scheme( $url );
+	}
+
+	/**
+	 * `wp_normalize_path` wrapper for back-compat. Normalize a filesystem path.
+	 *
+	 * On windows systems, replaces backslashes with forward slashes
+	 * and forces upper-case drive letters.
+	 * Allows for two leading slashes for Windows network shares, but
+	 * ensures that all other duplicate slashes are reduced to a single.
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $path Path to normalize.
+	 * @return string Normalized path.
+	 */
+	protected static function normalize_path( $path ) {
+		if ( function_exists( 'wp_normalize_path' ) ) {
+			return wp_normalize_path( $path );
+		}
+
+		// Replace newer WP's version of wp_normalize_path.
+		$path = str_replace( '\\', '/', $path );
+		$path = preg_replace( '|(?<=.)/+|', '/', $path );
+		if ( ':' === substr( $path, 1, 1 ) ) {
+			$path = ucfirst( $path );
+		}
+
+		return $path;
 	}
 
 	/**
@@ -217,7 +313,7 @@ class CMB2_Utils {
 	 * @param  string $date_format Expected date format
 	 * @return mixed               Unix timestamp representing the date.
 	 */
-	public function get_timestamp_from_value( $value, $date_format ) {
+	public static function get_timestamp_from_value( $value, $date_format ) {
 		$date_object = date_create_from_format( $date_format, $value );
 		return $date_object ? $date_object->setTime( 0, 0, 0 )->getTimeStamp() : strtotime( $value );
 	}
@@ -237,7 +333,7 @@ class CMB2_Utils {
 	 * @param string $format php date format
 	 * @return string reformatted string
 	 */
-	public function php_to_js_dateformat( $format ) {
+	public static function php_to_js_dateformat( $format ) {
 
 		// order is relevant here, since the replacement will be done sequentially.
 		$supported_options = array(
@@ -267,7 +363,7 @@ class CMB2_Utils {
 			$format = preg_replace( "~(?<!\\\\)$php~", $js, $format );
 		}
 
-		$format = preg_replace_callback( '~(?:\\\.)+~', array( $this, 'wrap_escaped_chars' ), $format );
+		$format = preg_replace_callback( '~(?:\\\.)+~', array( __CLASS__, 'wrap_escaped_chars' ), $format );
 
 		return $format;
 	}
@@ -278,7 +374,7 @@ class CMB2_Utils {
 	 * @param  $value Value to wrap/escape
 	 * @return string Modified value
 	 */
-	public function wrap_escaped_chars( $value ) {
+	public static function wrap_escaped_chars( $value ) {
 		return "&#39;" . str_replace( '\\', '', $value[0] ) . "&#39;";
 	}
 
@@ -292,10 +388,64 @@ class CMB2_Utils {
 	 * @param  mixed   $msg      Message to output
 	 * @param  mixed   $debug    Variable to print_r
 	 */
-	public function log_if_debug( $function, $line, $msg, $debug = null ) {
+	public static function log_if_debug( $function, $line, $msg, $debug = null ) {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			error_log( "In $function, $line:" . print_r( $msg, true ) . ( $debug ? print_r( $debug, true ) : '' ) );
 		}
+	}
+
+	/**
+	 * Determine a file's extension
+	 * @since  1.0.0
+	 * @param  string       $file File url
+	 * @return string|false       File extension or false
+	 */
+	public static function get_file_ext( $file ) {
+		$parsed = @parse_url( $file, PHP_URL_PATH );
+		return $parsed ? strtolower( pathinfo( $parsed, PATHINFO_EXTENSION ) ) : false;
+	}
+
+	/**
+	 * Get the file name from a url
+	 * @since  2.0.0
+	 * @param  string $value File url or path
+	 * @return string        File name
+	 */
+	public static function get_file_name_from_path( $value ) {
+		$parts = explode( '/', $value );
+		return is_array( $parts ) ? end( $parts ) : $value;
+	}
+
+	/**
+	 * Check if WP version is at least $version.
+	 * @since  2.2.2
+	 * @param  string  $version WP version string to compare.
+	 * @return bool             Result of comparison check.
+	 */
+	public static function wp_at_least( $version ) {
+		return version_compare( get_bloginfo( 'version' ), $version, '>=' );
+	}
+
+	/**
+	 * Combines attributes into a string for a form element.
+	 * @since  1.1.0
+	 * @param  array  $attrs        Attributes to concatenate.
+	 * @param  array  $attr_exclude Attributes that should NOT be concatenated.
+	 * @return string               String of attributes for form element.
+	 */
+	public static function concat_attrs( $attrs, $attr_exclude = array() ) {
+		$attr_exclude[] = 'rendered';
+		$attributes = '';
+		foreach ( $attrs as $attr => $val ) {
+			$excluded = in_array( $attr, (array) $attr_exclude, true );
+			$empty    = false === $val && 'value' !== $attr;
+			if ( ! $excluded && ! $empty ) {
+				// if data attribute, use single quote wraps, else double
+				$quotes = false !== stripos( $attr, 'data-' ) ? "'" : '"';
+				$attributes .= sprintf( ' %1$s=%3$s%2$s%3$s', $attr, $val, $quotes );
+			}
+		}
+		return $attributes;
 	}
 
 }

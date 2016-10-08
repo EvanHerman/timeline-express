@@ -3,7 +3,7 @@ Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
 Tested up to: 4.6.1
-Stable tag: 1.2.8.7
+Stable tag: 1.2.9
 License: GPLv2 or later
 
 Timeline Express allows you to create a beautiful vertical animated and responsive timeline of posts, without writing a single line of code. Sweet!
@@ -356,6 +356,13 @@ The above example will load font awesome version 4.4.0 instead of the current st
 5. Timeline Express full settings page
 
 == Changelog ==
+
+= 1.2.9 - i18n focused - October, 2016 =
+- Updates to the i18n functions and strings.
+- Confirmed i18n timelines working as well as RTL languages.
+- Style and layout tweaks to welcome page and add-ons page.
+- Update to latest stable release of CMB2.
+- Re-added and localized the advertisements, to serve them locally.
 
 = 1.2.8.7 - September 18th, 2016 =
 - Fixed bug where 'years' were not displaying properly when using `TIMELINE_EXPRESS_YEAR_ICONS`.

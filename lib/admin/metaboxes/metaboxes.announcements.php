@@ -103,13 +103,40 @@ $help_docs_metabox->add_field( array(
 	'type' => 'te_help_docs_metabox',
 ) );
 
+$advertisment_data = te_get_advertisment();
+
+$advertisment_title = $advertisment_data['title'];
+
+// Advert metabox
+$advert_metabox = new_cmb2_box( array(
+	'id'            => 'advert_metabox',
+	'title'         => $advertisment_title,
+	'object_types'  => array( 'te_announcements' ),
+	'context'    => 'side',
+	'priority'   => 'low',
+	'show_names'    => true,
+) );
+
+// Advertisment Metabox Field
+$advert_metabox->add_field( array(
+	'name'    => '',
+	'desc'    => '',
+	'id'      => $prefix . 'advertisments',
+	'type'    => 'te_advert_metabox',
+	'ad_data' => $advertisment_data,
+) );
+
 // Filter here is to allow extra fields to be added
 // loop to add fields to our array
 $custom_fields = apply_filters( 'timeline_express_custom_fields', $custom_field );
+
 $i = 0;
+
 // first, check if any custom fields are defined...
 if ( ! empty( $custom_fields ) ) {
+
 	foreach ( $custom_fields as $user_defined_field ) {
+
 		// Email text field
 		$announcement_metabox->add_field( array(
 			'name' => $custom_fields[ $i ]['name'],
@@ -118,6 +145,7 @@ if ( ! empty( $custom_fields ) ) {
 			'type' => $custom_fields[ $i ]['type'],
 		) );
 		$i++;
+
 	}
 }
 
@@ -130,28 +158,75 @@ do_action( 'timeline_express_metaboxes', $timeline_express_options );
  * @since 1.2.2
  */
 add_filter( 'cmb2_localized_data', 'timeline_express_internationalize_datepicker' );
+
 function timeline_express_internationalize_datepicker( $l10n ) {
+
 	switch ( get_option( 'date_format' ) ) {
+
 		// EG: 04/15/2016 - April 15th, 2016
 		default:
 		case 'm/d/Y':
 			$l10n['defaults']['date_picker']['dateFormat'] = 'mm/dd/yy';
 			break;
+
 		// EG: 2016-04-15 - April 15th, 2016
 		case 'd/m/Y':
 		case 'd/M/Y':
 		case 'd-m-Y':
 			$l10n['defaults']['date_picker']['dateFormat'] = 'dd/mm/yy';
 			break;
+
 		case 'Y-m-d':
 			$l10n['defaults']['date_picker']['dateFormat'] = 'yy-mm-dd';
 			break;
+
 		case 'F j, Y':
 			$l10n['defaults']['date_picker']['dateFormat'] = 'MM d, yy';
 			break;
+
 		case 'j F Y':
 			$l10n['defaults']['date_picker']['dateFormat'] = 'd M yy';
 			break;
 	}
+
 	return apply_filters( 'timeline_express_date_picker_format', $l10n );
+
+}
+
+/**
+ * Get our advertisment & store it in a transient for later reference
+ *
+ * @param  string        $part Optional, part of the ad to retreive
+ *
+ * @return array/string
+ *
+ * @since 1.2.9
+ */
+function te_get_advertisment( $part = '' ) {
+
+	$advertisment = te_get_random_ad();
+
+	if ( '' !== $part && isset( $advertisment[ $part ] ) ) {
+
+		return $advertisment[ $part ];
+
+	}
+
+	return $advertisment;
+
+}
+
+/**
+ * Return a random advertisment from the directory
+ *
+ * @return array Array of advertisment data
+ *
+ * @since 1.2.9
+ */
+function te_get_random_ad() {
+
+	$files = glob( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/advertisments/*.*' );
+
+	return include_once( $files[ array_rand( $files ) ] );
+
 }
