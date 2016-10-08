@@ -362,6 +362,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 - Confirmed i18n timelines working as well as RTL languages.
 - Style and layout tweaks to welcome page and add-ons page.
 - Update to latest stable release of CMB2.
+- Rebuilt the welcome and add-ons pages, including styles.
 - Re-added and localized the advertisements, to serve them locally.
 
 = 1.2.8.7 - September 18th, 2016 =
