@@ -88,7 +88,7 @@ array_unshift( $addon_array, [
 <div id="timeline-express-addons" class="wrap">
 
 	<h1 class="page-title">
-		<?php esc_attr_e( 'Timeline Express Add-ons', 'timeline-express-pro' ); ?>
+		<?php esc_attr_e( 'Timeline Express Add-Ons', 'timeline-express-pro' ); ?>
 	</h1>
 
 	<p class="intro" style="max-width:800px;">
