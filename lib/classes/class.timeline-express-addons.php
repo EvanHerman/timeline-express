@@ -9,7 +9,7 @@
  * @package Timeline_Express
  * *
  * @since 1.2
- **/
+ */
 
 class Timeline_Express_Addons {
 	/**

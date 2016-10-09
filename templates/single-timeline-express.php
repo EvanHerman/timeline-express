@@ -5,13 +5,20 @@
  * To customize this template, copy it into a directory 'timeline-express' in your theme root
  * For full instructions, see https://www.wp-timelineexpress.com
  *
+ * @author Code Parrots
+ *
+ * @link http://www.codeparrots.com
+ *
  * @package Timeline Express
- * @since Twenty Sixteen 1.2.5
+ *
+ * @since 1.2.5
  */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
+
 	exit;
+
 }
 
 get_header();

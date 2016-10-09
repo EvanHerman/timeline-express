@@ -1,13 +1,15 @@
 <?php
 /**
  * Timeline Express :: Admin Class
- * By Code Parrots
+ *
+ * @author Code Parrots
+ *
  * @link http://www.codeparrots.com
  *
- * @package WordPress
- * @subpackage Component
+ * @package Timeline_Express
+ *
  * @since 1.2
- **/
+ */
 class TimelineExpressAdmin {
 	/**
 	 * Main constructor
@@ -76,8 +78,9 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Re-arrange the metbaoxes on our announcements custom post type.
-	 * @since 1.0
+	 *
 	 * @return null
+	 *
 	 * @since 1.2
 	 */
 	public function timeline_express_rearrange_metaboxes() {
@@ -92,7 +95,6 @@ class TimelineExpressAdmin {
 		}
 
 		/* Re-arrange our metaboxes */
-
 		do_meta_boxes( get_current_screen(), 'advanced', $post );
 
 		unset( $wp_meta_boxes[ get_post_type( $post ) ]['advanced'] );
@@ -101,7 +103,8 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Generate administrative menus
-	 * @package  TimelineExpressBase
+	 *
+	 * @since  1.2
 	 */
 	public function timeline_express_admin_menus() {
 
@@ -122,7 +125,7 @@ class TimelineExpressAdmin {
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
 			__( 'Timeline Express Add-Ons', 'timeline-express' ),
-			'<span style="color:#F7A933">' . __( 'Add-Ons', 'timeline-express' ) . '<span>',
+			'<span style="color:#F7A933">' . esc_html__( 'Add-Ons', 'timeline-express' ) . '<span>',
 			$menu_cap,
 			'timeline-express-addons',
 			array( $this, 'timeline_express_addons_page' )
@@ -142,8 +145,8 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Inclue our options page
+	 *
 	 * @since 1.2
-	 * @package included in TimelineExpressBase->timeline_express_admin_menus()
 	 */
 	public function timeline_express_options_page() {
 
@@ -153,8 +156,8 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Inclue our welcome page
+	 *
 	 * @since 1.2
-	 * @package included in TimelineExpressBase->timeline_express_admin_menus()
 	 */
 	public function timeline_express_welcome_page() {
 
@@ -164,8 +167,8 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Inclue our addons page
+	 *
 	 * @since 1.2
-	 * @package included in TimelineExpressBase->timeline_express_admin_menus()
 	 */
 	public function timeline_express_addons_page() {
 
@@ -176,7 +179,8 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Register the Timeline Express settings
-	 * @package  TimelineExpressBase
+	 *
+	 * @since  1.2
 	 */
 	public function timeline_express_register_settings() {
 
@@ -191,6 +195,7 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Display admin notices in certain locations
+	 *
 	 * @since  1.2
 	 */
 	public function timeline_express_admin_notices() {
@@ -219,7 +224,9 @@ class TimelineExpressAdmin {
 		?>
 		<div class="notice notice-success">
 
-			<p><span class="dashicons dashicons-yes"></span> <?php esc_attr_e( 'Timeline Express settings saved successfully!', 'timeline-express' ); ?></p>
+			<p>
+				<span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Timeline Express settings saved successfully!', 'timeline-express' ); ?>
+			</p>
 
 		</div>
 
@@ -228,6 +235,7 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Add our tinyMCE button, and scripts to the WP_Editor() instance
+	 *
 	 * @since  1.0
 	 */
 	public function timeline_express_add_tinymce() {
@@ -260,9 +268,12 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Add our tinyMCE plugin to the tinyMCE WordPress instance
-	 * @package  TimelineExpressBase
-	 * @param array $plugin_array Array of default tinyMCE plugins.
-	 * @return tinyMCE plugin array
+	 *
+	 * @param  array   $plugin_array Array of default tinyMCE plugins.
+	 *
+	 * @return tinyMCE $plugin array
+	 *
+	 * @since  1.0
 	 */
 	public function timeline_express_add_tinymce_plugin( $plugin_array ) {
 
@@ -274,9 +285,12 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Add our tinyMCE plugin to the tinyMCE WordPress instance
-	 * @package  TimelineExpressBase
+	 *
 	 * @param array $buttons Array of default tinyMCE buttons.
+	 *
 	 * @return tinyMCE buttons array
+	 *
+	 * @since  1.0
 	 */
 	public function timeline_express_add_tinymce_button( $buttons ) {
 
@@ -287,10 +301,13 @@ class TimelineExpressAdmin {
 	}
 
 	/**
-	 * Custom plugin action links.
+	 * Generate custom plugin action links
+	 *
 	 * @param  array $links  array of links to display for our plugin.
 	 * @param  string $file  The file name of the current iteration.
+	 *
 	 * @return array         New array of links to display.
+	 *
 	 * @since 1.2
 	 */
 	public function timeline_express_action_links( $links, $file ) {
@@ -305,11 +322,11 @@ class TimelineExpressAdmin {
 
 		unset( $links['edit'] );
 
-		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) . '">' . esc_attr__( 'Settings', 'timeline-express' ) . '</a>';
+		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) . '">' . esc_html__( 'Settings', 'timeline-express' ) . '</a>';
 
-		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_attr__( 'Add-Ons', 'timeline-express' ) . '</a>';
+		$links[] = '<a href="' . admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) . '">' . esc_html__( 'Add-Ons', 'timeline-express' ) . '</a>';
 
-		$links[] = '<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank">' . esc_attr__( 'Documentation', 'timeline-express' ) . '</a>';
+		$links[] = '<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank">' . esc_html__( 'Documentation', 'timeline-express' ) . '</a>';
 
 		return $links;
 
@@ -317,6 +334,7 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Whenever an announcement is updated/published reset the 'timeline-express-query' transient
+	 *
 	 * @since 1.2
 	 */
 	public function timeline_express_reset_transients( $post_id ) {
@@ -358,6 +376,7 @@ class TimelineExpressAdmin {
 
 	/**
 	 * Conditionally enqueue our scripts and styles on the dashboard, where needed.
+	 *
 	 * @since 1.2
 	 */
 	public function add_timeline_express_admin_scripts_and_styles() {

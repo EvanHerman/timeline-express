@@ -182,6 +182,7 @@ function cmb2_sanitize_te_date_time_stamp_custom_callback( $value, $new ) {
 
 	/* If all else fails, return current date/time UNIX time stamp */
 	return strtotime( 'now' );
+
 }
 
 /**
@@ -201,6 +202,7 @@ function cmb2_validate_te_bootstrap_dropdown_callback( $override_value, $value )
 	}
 
 	return '';
+
 }
 
 /**
@@ -269,7 +271,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 	/* If the response body is empty, abort */
 	if ( empty( $response['body'] ) || ! isset( $response['body'] ) ) {
 
-		return printf( '<em>' . esc_attr__( 'There was an error processing the bootstrap icons.', 'timeline-express' ) . '</em>' );
+		return printf( '<em>' . esc_html__( 'There was an error processing the bootstrap icons.', 'timeline-express' ) . '</em>' );
 
 	}
 
@@ -312,7 +314,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 
 	} else {
 
-		$field_name = esc_attr( $field['id'] );
+		$field_name = $field['id'];
 
 	}
 	?>
@@ -327,7 +329,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 		/* sort the bootstrap icons alphabetically */
 		foreach ( $icons as $icon_name => $icon_content ) { ?>
 
-			<option class="fa" data-icon="fa-<?php echo esc_attr( $icon_name ); ?>" <?php selected( 'fa-'.$icon_name , $meta ); ?>> <?php echo esc_attr( $icon_name ); ?> </option>
+			<option class="fa" data-icon="fa-<?php echo esc_attr( $icon_name ); ?>" <?php selected( 'fa-'.$icon_name , $meta ); ?>><?php echo esc_html( $icon_name ); ?></option>
 
 		<?php } ?>
 
@@ -446,7 +448,6 @@ function delete_timeline_express_transients( $page_id = false ) {
 			delete_transient( str_replace( '_transient_', '', $transient->option_name ) );
 
 		}
-
 	}
 
 }
@@ -494,7 +495,7 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 
 	<?php } ?>
 
-		<div class="cd-timeline-img cd-picture" style="background:<?php esc_attr_e( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
+		<div class="cd-timeline-img cd-picture" style="background:<?php echo esc_attr( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
 
 			<!-- Custom Action Hook -->
 			<?php if ( defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) && TIMELINE_EXPRESS_YEAR_ICONS ) { ?>
@@ -513,7 +514,7 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 			<?php } else { ?>
 
 				<!-- Standard Font Awesome Icon -->
-				<span class="fa <?php esc_attr_e( timeline_express_get_announcement_icon( $post_id ) ); ?>" title="<?php esc_attr_e( get_the_title( $post_id ) ); ?>"></span>
+				<span class="fa <?php echo esc_attr( timeline_express_get_announcement_icon( $post_id ) ); ?>" title="<?php echo esc_attr( get_the_title( $post_id ) ); ?>"></span>
 
 			<?php } ?>
 
@@ -578,7 +579,7 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 
 		$img_srcset = wp_get_attachment_image_srcset( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );
 
-		?><img class="announcement-banner-image" src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="(max-width: 100%) 75vw, 680px" alt="<?php esc_attr( get_the_title() ); ?>"><?php
+		?><img class="announcement-banner-image" src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="(max-width: 100%) 75vw, 680px" alt="<?php echo esc_attr( get_the_title() ); ?>"><?php
 
 		return;
 
@@ -590,7 +591,7 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 		apply_filters( 'timeline_express_announcement_img_size', $image_size, $post_id ), /* Legacy filter name - maintain formatting */
 		false,
 		array(
-			'alt' => esc_attr__( get_the_title() ),
+			'alt' => esc_attr( get_the_title() ),
 			'class' => 'announcement-banner-image',
 		)
 	), $post_id );
@@ -684,14 +685,14 @@ function timeline_express_custom_read_more( $more ) {
 
 	global $post;
 
-	$timeline_express_options = timeline_express_get_options();
-
 	// if not timeline post
 	if ( 'te_announcements' !== get_post_type( $post ) ) {
 
 		return $more;
 
 	}
+
+	$timeline_express_options = timeline_express_get_options();
 
 	// if read more visibility is set to hidden
 	if ( '1' !== $timeline_express_options['read-more-visibility'] ) {

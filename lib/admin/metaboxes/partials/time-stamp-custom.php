@@ -13,9 +13,15 @@ CMB2_JS::add_dependencies( array( 'jquery-ui-core', 'jquery-ui-datepicker' ) );
 
 <?php
 if ( $meta && isset( $meta ) ) {
+
 	$value = ( '' !== $meta ) ? apply_filters( 'timeline_express_admin_render_date_format', date( get_option( 'date_format' ), $meta ), $meta ) : $field->args['default'];
+
 	echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="' . esc_attr( $field->args['id'] ) . '" id="' . esc_attr( $field->args['id'] ) . '" value="' . esc_attr( $value ) . '" />';
+
 } else {
+
 	echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="' . esc_attr( $field->args['id'] ) . '" id="' .  esc_attr( $field->args['id'] ) . '" value="' . esc_attr( apply_filters( 'timeline_express_admin_render_date_format', date( get_option( 'date_format' ) ), false ) ) .'" />';
+
 }
-echo '<p class="cmb2-metabox-description">' . esc_attr( $field->args['desc'] ) . '</p>';
+
+echo '<p class="cmb2-metabox-description">' . esc_html( $field->args['desc'] ) . '</p>';

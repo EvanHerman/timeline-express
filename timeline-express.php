@@ -40,16 +40,16 @@ include_once plugin_dir_path( __FILE__ ) . 'constants.php';
  * Include our textdomain and translation files
  **/
 function timeline_express_text_domain_init() {
+
 	load_plugin_textdomain( 'timeline-express', false, dirname( plugin_basename( __FILE__ ) ) . '/i18n' );
+
 }
 add_action( 'init', 'timeline_express_text_domain_init' );
 
-/* Include Class Files */
-
-/* Main timeline express class file */
+/* Main Timeline Express class file */
 require_once plugin_dir_path( __FILE__ ) . 'lib/classes/class.timeline-express.php';
 
-/* Initialize the plugin's base class */
+/* Initialize the base class */
 $timeline_express_base = new TimelineExpressBase();
 
 /* Activation Hook */
@@ -59,6 +59,7 @@ register_activation_hook( __FILE__,
 		'timeline_express_activate',
 	)
 );
+
 /* Deactivation Hook */
 register_deactivation_hook( __FILE__,
 	array(

@@ -2,13 +2,20 @@
 /**
  * Timeline Express Container Markup
  *
+ * @author Code Parrots
+ *
+ * @link http://www.codeparrots.com
+ *
  * @package Timeline Express
+ *
  * @since 1.2
  */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
+
 	exit;
+
 }
 
 /* Store the global $post object */
@@ -102,5 +109,6 @@ $timeline_express_options = timeline_express_get_options();
 
 	</div>
 	<!-- End Timeline Content -->
+
 </div>
 <!-- End Timeline Block -->

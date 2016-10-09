@@ -2,14 +2,20 @@
 /**
  * Content markup for single announcement templates
  *
- * @package Timeline Express
- * @by CodeParrots
+ * @author Code Parrots
+ *
  * @link http://www.codeparrots.com
+ *
+ * @package Timeline Express
+ *
+ * @since 1.2
  */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
+
 	exit;
+
 }
 
 /* Action hook to display content before the single announcement image */
@@ -29,6 +35,7 @@ do_action( 'timeline-express-single-after-image' );
 
 <!-- Render the announcement date -->
 <strong class="timeline-express-single-page-announcement-date">
+
 	<?php
 		/* Action hook to display content before the single announcement date */
 		do_action( 'timeline-express-single-before-date' );
@@ -41,6 +48,7 @@ do_action( 'timeline-express-single-after-image' );
 		/* Action hook to display content after the single announcement date */
 		do_action( 'timeline-express-single-after-date' );
 	?>
+
 </strong>
 
 <?php

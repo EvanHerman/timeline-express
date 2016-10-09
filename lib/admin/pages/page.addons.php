@@ -88,11 +88,11 @@ array_unshift( $addon_array, [
 <div id="timeline-express-addons" class="wrap">
 
 	<h1 class="page-title">
-		<?php esc_attr_e( 'Timeline Express Add-Ons', 'timeline-express-pro' ); ?>
+		<?php esc_html_e( 'Timeline Express Add-Ons', 'timeline-express-pro' ); ?>
 	</h1>
 
 	<p class="intro" style="max-width:800px;">
-		<?php esc_attr_e( "Extend the base Timeline Express functionality with our powerful add-ons. We're constantly looking to build out additional add-ons. If you have a great idea for a new add-on, get in contact with us!", 'timeline-express-pro' ); ?>
+		<?php esc_html_e( "Extend the base Timeline Express functionality with our powerful add-ons. We're constantly looking to build out additional add-ons. If you have a great idea for a new add-on, get in contact with us!", 'timeline-express-pro' ); ?>
 	</p>
 
 	<?php

@@ -2,12 +2,13 @@
 /**
  * Register our Announcement Custom Post Type
  * used to easily manage the announcements on the site
- * By Code Parrots
+ *
+ * @author Code Parrots
  *
  * @link http://www.codeparrots.com
  *
- * @package WordPress
- * @subpackage Component
+ * @package Timeline Express
+ *
  * @since 1.2
  */
 
@@ -22,11 +23,13 @@ $timeline_express_options = timeline_express_get_options();
  * New Filter: timeline_express_slug @since 1.2
  */
 $announcement_slug = apply_filters( 'timeline_express_slug', apply_filters( 'timeline-express-slug', 'announcement' ) );
+
 /**
  * Allow users to alter the timeline express menu text (singular items)
  * @since 1.2
  */
 $announcement_singular_text = apply_filters( 'timeline_express_singular_name', __( 'Announcement', 'timeline-express' ) );
+
 /**
  * Allow users to alter the timeline express menu text (plural items)
  * @since 1.2
@@ -67,12 +70,12 @@ $timeline_express_rewrite = array(
  */
 $timeline_express_args = array(
 	'label'               => 'timeline-express-announcement',
-	'description'         => sprintf( _x( 'Post type for adding timeline express %s to the site', 'Announcement plural name eg: Post type for adding timeline express announcements to the site', 'timeline-express' ), strtolower( $announcement_plural_text ) ),
+	'description'         => sprintf( _x( 'Post type for adding timeline express %s to the site.', 'Announcement plural name eg: Post type for adding timeline express announcements to the site', 'timeline-express' ), strtolower( $announcement_plural_text ) ),
 	'labels'              => $timeline_express_labels,
 	'supports'            => array( 'title', 'editor' ),
 	'taxonomies'          => array(),
 	'hierarchical'        => true,
-	'public'							=> true,
+	'public'              => true,
 	'show_ui'             => true,
 	'show_in_menu'        => true,
 	'show_in_nav_menus'   => true,
@@ -91,7 +94,6 @@ $timeline_express_args = array(
  * Register the announcement post type.
  */
 register_post_type( 'te_announcements', $timeline_express_args );
-/* End release cycle cpt */
 
 /* Flush the re-write rules/permalinks - prevents 404 on initial plugin activation */
 $set = get_option( 'post_type_rules_flushed_te-announcements', false );

@@ -17,8 +17,10 @@ global $wpdb;
 
 /* If the user has set to delete the announcement on uninstall, do so */
 if ( isset( $options['delete-announcement-posts-on-uninstallation'] ) && '1' === $options['delete-announcement-posts-on-uninstallation'] ) {
+
 	/* SQL query for to delete all announcement posts */
 	$sql = $wpdb->get_results( $wpdb->prepare( 'DELETE FROM %s WHERE post_type = "te_announcements"', $wpdb->posts ), ARRAY_A );
+
 }
 
 /* Delete Timeline Express options */
@@ -37,10 +39,14 @@ $results = $wpdb->get_results(
 		"SELECT * from `{$wpdb->prefix}options` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( 'timeline-express-query' ) . '%'
 	)
 );
+
 // if we have some results, continue
 if ( $results && ! empty( $results ) ) {
+
 	// loop and delete our transient
 	foreach ( $results as $transient ) {
+
 		delete_transient( str_replace( '_transient_', '', $transient->option_name ) );
+
 	}
 }
