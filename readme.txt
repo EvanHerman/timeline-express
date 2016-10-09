@@ -364,6 +364,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 - Update to latest stable release of CMB2.
 - Rebuilt the welcome and add-ons pages, including styles.
 - Re-added and localized the advertisements, to serve them locally.
+- Re-factor/update spacing and doc blocks in the code, throughout the plugin (.php & .js files).
 
 = 1.2.8.7 - September 18th, 2016 =
 - Fixed bug where 'years' were not displaying properly when using `TIMELINE_EXPRESS_YEAR_ICONS`.
