@@ -48,22 +48,22 @@ function add_new_timeline_express_columns( $timeline_express_announcement_column
 
 	$timeline_express_announcement_columns['title'] = sprintf( _x( '%s Name', 'Announcement singular name eg: Announcement Name', 'timeline-express' ), $timeline_express_singular_name );
 
-	$timeline_express_announcement_columns['color'] = _x( 'Color', 'timeline-express' );
+	$timeline_express_announcement_columns['color'] = __( 'Color', 'timeline-express' );
 
 	// If years are being used, hide this column
 	if ( ! defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) || ! TIMELINE_EXPRESS_YEAR_ICONS ) {
 
-		$timeline_express_announcement_columns['icon'] = _x( 'Icon', 'timeline-express' );
+		$timeline_express_announcement_columns['icon'] = __( 'Icon', 'timeline-express' );
 
 	}
 
 	$timeline_express_announcement_columns['announcement_date'] = sprintf( _x( '%s Date', 'Announcement singular name eg: Announcement Date', 'timeline-express' ), $timeline_express_singular_name );
 
-	$timeline_express_announcement_columns['image'] = _x( 'Image', 'timeline-express' );
+	$timeline_express_announcement_columns['image'] = __( 'Image', 'timeline-express' );
 
 	$timeline_express_announcement_columns['past_announcement'] = sprintf( _x( '%s Past?', 'Announcement singular name eg: Announcement Past?', 'timeline-express' ), $timeline_express_singular_name );
 
-	$timeline_express_announcement_columns['date'] = 'Published Date';
+	$timeline_express_announcement_columns['date'] = __( 'Published Date', 'timeline-express' );
 
 	return $timeline_express_announcement_columns;
 

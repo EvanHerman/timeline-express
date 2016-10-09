@@ -37,6 +37,8 @@ class Timeline_Express_Initialize {
 
 		do_action( 'timeline-express-scripts' );
 
+		$rtl = is_rtl() ? '-rtl' : '';
+
 		/**
 		 * Styles
 		 * 1) Font Awesome for timeline icons
@@ -44,7 +46,8 @@ class Timeline_Express_Initialize {
 		 * 3) do_action( 'timeline-express-styles' ); for additional plugins to hook into.
 		 */
 		timeline_express_enqueue_font_awesome();
-		wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express.min.css', array( 'font-awesome' ), 'all' );
+
+		wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . "lib/public/css/min/timeline-express{$rtl}.min.css", array( 'font-awesome' ), 'all' );
 
 		do_action( 'timeline-express-styles' );
 
@@ -167,12 +170,6 @@ class Timeline_Express_Initialize {
 		$background_line_color = ( '' === $timeline_express_options['announcement-background-line-color'] ) ? 'transparent' : $timeline_express_options['announcement-background-line-color'];
 
 		$timeline_express_styles = "
-		.cd-timeline-block:nth-child(odd) .cd-timeline-content::before {
-			border-left-color: {$content_background};
-		}
-		.cd-timeline-block:nth-child(even) .cd-timeline-content::before {
-			border-right-color: {$content_background};
-		}
 		#cd-timeline::before {
 			background: {$background_line_color};
 		}
@@ -182,7 +179,17 @@ class Timeline_Express_Initialize {
 			-moz-box-shadow: {$content_shadow};
 			box-shadow: {$content_shadow};
 		}
-		@media only screen and (max-width: 821px) {
+		";
+
+		if ( ! is_rtl() ) {
+
+			$timeline_express_styles .= ".cd-timeline-block:nth-child(odd) .cd-timeline-content::before {
+				border-left-color: {$content_background};
+			}
+			.cd-timeline-block:nth-child(even) .cd-timeline-content::before {
+				border-right-color: {$content_background};
+			}
+			@media only screen and (max-width: 821px) {
 				.cd-timeline-content::before {
 					border-left-color: transparent;
 					border-right-color: {$content_background};
@@ -190,8 +197,24 @@ class Timeline_Express_Initialize {
 				.cd-timeline-block:nth-child(odd) .cd-timeline-content::before {
 					border-left-color: transparent;
 				}
+			}";
+
 		}
-		";
+
+		if ( is_rtl() ) {
+
+			$timeline_express_styles .= "@media only screen and (max-width: 821px) {
+				.cd-timeline-content::before {
+					border-right-color: transparent;
+					border-left-color: {$content_background};
+				}
+				.cd-timeline-block:nth-child(odd) .cd-timeline-content::before {
+					border-right-color: transparent;
+					border-left-color: {$content_background};
+				}
+			}";
+
+		}
 
 		wp_add_inline_style( 'timeline-express-base', $timeline_express_styles );
 

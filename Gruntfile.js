@@ -1,172 +1,267 @@
 'use strict';
 module.exports = function(grunt) {
 
-  grunt.initConfig({
+	var pkg = grunt.file.readJSON( 'package.json' );
 
-		pkg: grunt.file.readJSON('package.json'),
+	grunt.initConfig({
 
-    // js minification
-    uglify: {
-      dist: {
-        files: {
-          // admin scripts
-          'lib/admin/js/min/timeline-express-admin.min.js': [ // all other admin scripts
-            'lib/admin/js/bootstrap-select.js',
-            'lib/admin/js/script.options-color-picker-custom.js',
-          ],
-          // tinymce scripts
-          'lib/admin/js/min/timeline-express-tinymce.min.js': [ // tinymce button script
-            'lib/admin/js/timeline-express-button-script.js',
-          ],
+		pkg: pkg,
+
+		// js minification
+		uglify: {
+			dist: {
+				files: {
+					// admin scripts
+					'lib/admin/js/min/timeline-express-admin.min.js': [ // all other admin scripts
+						'lib/admin/js/bootstrap-select.js',
+						'lib/admin/js/script.options-color-picker-custom.js',
+					],
+					// tinymce scripts
+					'lib/admin/js/min/timeline-express-tinymce.min.js': [ // tinymce button script
+						'lib/admin/js/timeline-express-button-script.js',
+					],
 					// public scripts
 					'lib/public/js/min/timeline-express.min.js': [ // public scripts
 						'lib/public/js/timeline-express.js',
 					],
-        }
-      }
-    },
+				}
+			}
+		},
 
-    // Autoprefixer for our CSS files
-    postcss: {
-      options: {
-        map: true,
-        processors: [
-          require('autoprefixer-core') ({
-            browsers: ['last 2 versions']
-          })
-        ]
-      },
-      dist: {
-        src: ['lib/admin/css/*.css', 'lib/public/css/*.css']
-      }
-    },
-    auto_install: {
-      local: {}
-    },
+		// Autoprefixer for our CSS files
+		postcss: {
+			options: {
+				map: true,
+				processors: [
+					require('autoprefixer-core') ({
+						browsers: ['last 2 versions']
+					})
+				]
+			},
+			dist: {
+				src: ['lib/admin/css/*.css', 'lib/public/css/*.css']
+			}
+		},
 
-    // css minify all contents of our directory and add .min.css extension
-    cssmin: {
-      target: {
-        files: [
-          // admin css files
-          {
+		// css minify all contents of our directory and add .min.css extension
+		cssmin: {
+			target: {
+				files: [
+					// Admin CSS files
+					{
 						'lib/admin/css/min/timeline-express-admin.min.css':
 						[
 							'lib/admin/css/timeline-express-settings.css',
 							'lib/admin/css/timeline-express-welcome.css',
 							'lib/admin/css/timeline-express-addons.css'
 						],
-          }, {
+					},
+					// Admin RTL CSS files
+					{
+						'lib/admin/css/min/timeline-express-admin-rtl.min.css':
+						[
+							'lib/admin/css/timeline-express-settings-rtl.css',
+							'lib/admin/css/timeline-express-welcome-rtl.css',
+							'lib/admin/css/timeline-express-addons-rtl.css'
+						],
+					},
+					// Public CSS file
+					{
 						'lib/public/css/min/timeline-express.min.css':
 						[
 							'lib/public/css/timeline-express.css',
-							'lib/public/css/timeline-express-single-page.css',
+							'lib/public/css/timeline-express-single-page.css'
+						],
+					},
+					// Public RTL CSS file
+					{
+						'lib/public/css/min/timeline-express-rtl.min.css':
+						[
+							'lib/public/css/timeline-express-rtl.css',
+							'lib/public/css/timeline-express-single-page-rtl.css'
 						],
 					}
-        ]
-      }
-    },
+				]
+			}
+		},
 
 		// Generate a nice banner for our css/js files
 		usebanner: {
-	    taskName: {
-	      options: {
-	        position: 'top',
+			taskName: {
+				options: {
+					position: 'top',
 					replace: true,
-	        banner: '/*\n'+
+					banner: '/*\n'+
 						' * @Plugin <%= pkg.title %>\n' +
 						' * @Author <%= pkg.author %>\n'+
 						' * @Site <%= pkg.site %>\n'+
 						' * @Version <%= pkg.version %>\n' +
-		        ' * @Build <%= grunt.template.today("mm-dd-yyyy") %>\n'+
+						' * @Build <%= grunt.template.today("mm-dd-yyyy") %>\n'+
 						' */',
-	        linebreak: true
-	      },
-	      files: {
-	        src: [
+					linebreak: true
+				},
+				files: {
+					src: [
 						'lib/public/css/min/timeline-express.min.css',
+						'lib/public/css/min/timeline-express-rtl.min.css',
 						'lib/public/js/min/timeline-express.min.js',
 						'lib/admin/css/min/timeline-express-admin.min.css',
+						'lib/admin/css/min/timeline-express-admin-rtl.min.css',
 						'lib/admin/css/min/timeline-express-settings.min.css',
 						'lib/admin/js/min/timeline-express-tinymce.min.js',
 						'lib/admin/js/min/timeline-express-admin.min.js',
 					]
-	      }
-	    }
-	  },
+				}
+			}
+		},
 
-    // Copy our template files to the root /template/ directory.
-    copy: {
-      main: {
-        files: [
-          // copy over the announcement container template
-          {
-            expand: true,
-            flatten: true,
-            src: ['lib/public/partials/*.php'],
-            dest: 'templates/',
-            filter: 'isFile'
-          },
-        ],
-      },
-    },
+		// Copy our template files to the root /template/ directory.
+		copy: {
+			main: {
+				files: [
+					// copy over the announcement container template
+					{
+						expand: true,
+						flatten: true,
+						src: ['lib/public/partials/*.php'],
+						dest: 'templates/',
+						filter: 'isFile'
+					},
+				],
+			},
+		},
 
-    // watch our project for changes
-    watch: {
-      admin_css: { // admin css
-        files: 'lib/admin/css/*.css',
-        tasks: ['cssmin', 'usebanner'],
-        options: {
-          spawn: false,
-          event: ['all']
-        },
-      },
-      admin_js: { // admin js
-        files: 'lib/admin/js/*.js',
-        tasks: ['uglify', 'usebanner'],
-        options: {
-          spawn: false,
-          event: ['all']
-        },
-      },
-      public_css: {
-        // public css
-        files: 'lib/public/css/*.css',
-        tasks: ['cssmin', 'usebanner'],
-        options: {
-          spawn: false,
-          event: ['all']
-        },
-      },
-      public_js: { // public js
-        files: 'lib/public/js/*.js',
-        tasks: ['uglify', 'usebanner'],
-        options: {
-          spawn: false,
-          event: ['all']
-        },
-      },
-    },
+		// watch our project for changes
+		watch: {
+			admin_css: { // admin css
+				files: 'lib/admin/css/*.css',
+				tasks: [ 'cssjanus', 'cssmin', 'usebanner' ],
+				options: {
+					spawn: false,
+					event: ['all']
+				},
+			},
+			admin_js: { // admin js
+				files: 'lib/admin/js/*.js',
+				tasks: [ 'uglify', 'usebanner' ],
+				options: {
+					spawn: false,
+					event: ['all']
+				},
+			},
+			public_css: {
+				// public css
+				files: 'lib/public/css/*.css',
+				tasks: [ 'cssjanus', 'cssmin', 'usebanner' ],
+				options: {
+					spawn: false,
+					event: ['all']
+				},
+			},
+			public_js: { // public js
+				files: 'lib/public/js/*.js',
+				tasks: [ 'uglify', 'usebanner' ],
+				options: {
+					spawn: false,
+					event: ['all']
+				},
+			},
+		},
 
-  });
+		cssjanus: {
+			theme: {
+				options: {
+					swapLtrRtlInUrl: false
+				},
+				files: [
+					{
+						src: 'lib/admin/css/timeline-express-addons.css',
+						dest: 'lib/admin/css/timeline-express-addons-rtl.css'
+					},
+					{
+						src: 'lib/admin/css/timeline-express-settings.css',
+						dest: 'lib/admin/css/timeline-express-settings-rtl.css'
+					},
+					{
+						src: 'lib/admin/css/timeline-express-welcome.css',
+						dest: 'lib/admin/css/timeline-express-welcome-rtl.css'
+					},
+					{
+						src: 'lib/public/css/timeline-express-single-page.css',
+						dest: 'lib/public/css/timeline-express-single-page-rtl.css'
+					},
+					{
+						src: 'lib/public/css/timeline-express.css',
+						dest: 'lib/public/css/timeline-express-rtl.css'
+					}
+				]
+			}
+		},
 
-  // load tasks
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-banner');
-	grunt.loadNpmTasks('grunt-contrib-copy'); // Copy template files from within the plugin - over to a /template/ directory in the plugin root.
-  grunt.loadNpmTasks('grunt-postcss'); // CSS autoprefixer plugin (cross-browser auto pre-fixes)
-  grunt.loadNpmTasks('grunt-auto-install'); // autoload all of ourd ependencies (ideally, you install this one package, and run grunt auto_install to install our dependencies automagically)
+		makepot: {
+			target: {
+				options: {
+					domainPath: 'i18n/',
+					include: [ '.+\.php' ],
+					exclude: [ 'node_modules/', 'bin/', 'lib/admin/CMB2', 'tests/' ],
+					potComments: 'Copyright (c) {year} Code Parrots. All Rights Reserved.',
+					potHeaders: {
+						'x-poedit-keywordslist': true
+					},
+					processPot: function( pot, options ) {
+						pot.headers['report-msgid-bugs-to'] = pkg.bugs.url;
+						return pot;
+					},
+					type: 'wp-plugin',
+					updatePoFiles: true
+				}
+			}
+		},
 
-  // register task
-  grunt.registerTask('default', [
-    'uglify',
-    'postcss',
-    'cssmin',
+		po2mo: {
+			files: {
+				src: 'i18n/*.po',
+				expand: true
+			}
+		},
+
+	});
+
+	// load tasks
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
+	grunt.loadNpmTasks( 'grunt-banner' );
+	grunt.loadNpmTasks( 'grunt-contrib-copy' ); // Copy template files from within the plugin - over to a /template/ directory in the plugin root.
+	grunt.loadNpmTasks( 'grunt-postcss' ); // CSS autoprefixer plugin (cross-browser auto pre-fixes)
+	grunt.loadNpmTasks( 'grunt-cssjanus' );
+	grunt.loadNpmTasks( 'grunt-wp-i18n' );
+	grunt.loadNpmTasks( 'grunt-po2mo' );
+
+	// register task
+	grunt.registerTask( 'default', [
+		'cssjanus',
+		'uglify',
+		'postcss',
+		'cssmin',
 		'usebanner',
-    'copy',
-    'watch',
-  ]);
+		'copy'
+	] );
+
+	// register update-pot task
+	grunt.registerTask( 'update-pot', [
+		'makepot'
+	] );
+
+	// register update-mo task
+	grunt.registerTask( 'update-mo', [
+		'po2mo'
+	] );
+
+	// register update-translations
+	grunt.registerTask( 'update-translations', [
+		'makepot',
+		'po2mo'
+	] );
 
 };

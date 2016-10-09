@@ -111,7 +111,9 @@ class TimelineExpressPublic {
 
 		}
 
-		wp_enqueue_style( 'single-timeline-express-styles', TIMELINE_EXPRESS_URL . 'lib/public/css/min/timeline-express.min.css', array(), 'all' );
+		$rtl = is_rtl() ? '-rtl' : '';
+
+		wp_enqueue_style( 'single-timeline-express-styles', TIMELINE_EXPRESS_URL . "lib/public/css/min/timeline-express{$rtl}.min.css", array(), 'all' );
 
 	}
 }

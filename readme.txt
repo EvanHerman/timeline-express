@@ -359,12 +359,16 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 = 1.2.9 - i18n focused - October, 2016 =
 - Updates to the i18n functions and strings.
-- Confirmed i18n timelines working as well as RTL languages.
+- Added full RTL support.
 - Style and layout tweaks to welcome page and add-ons page.
 - Update to latest stable release of CMB2.
 - Rebuilt the welcome and add-ons pages, including styles.
 - Re-added and localized the advertisements, to serve them locally.
 - Re-factor/update spacing and doc blocks in the code, throughout the plugin (.php & .js files).
+- Updated Grunt.js file with new functions.
+- Built in RTL support.
+- Generated an RTL css file for admin/front end.
+- Generated new language files (po/mo).
 
 = 1.2.8.7 - September 18th, 2016 =
 - Fixed bug where 'years' were not displaying properly when using `TIMELINE_EXPRESS_YEAR_ICONS`.
