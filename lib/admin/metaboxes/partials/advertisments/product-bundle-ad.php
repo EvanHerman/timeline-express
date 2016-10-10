@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	exit;
 
-} 
+}
 
 return array(
 	'title'   => __( 'Timeline Express Bundle', 'timeline-express' ),
