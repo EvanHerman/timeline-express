@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Timeline Express 1.2.9\n"
 "Report-Msgid-Bugs-To: https://github.com/EvanHerman/Timeline-Express/issues\n"
-"POT-Creation-Date: 2016-10-09 22:32:17+00:00\n"
+"POT-Creation-Date: 2016-10-10 21:55:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -116,8 +116,24 @@ msgstr ""
 msgid "AJAX Load More Add-On"
 msgstr ""
 
+#: lib/admin/metaboxes/partials/advertisments/halloween-discount-ad.php:16
+msgid "Halloween Discount"
+msgstr ""
+
 #: lib/admin/metaboxes/partials/advertisments/historical-dates-ad.php:16
 msgid "Historical Dates Add-On"
+msgstr ""
+
+#: lib/admin/metaboxes/partials/advertisments/html-excerpts-ad.php:18
+msgid "HTML Excerpts Add-On"
+msgstr ""
+
+#: lib/admin/metaboxes/partials/advertisments/post-types-ad.php:16
+msgid "Post Types Add-On"
+msgstr ""
+
+#: lib/admin/metaboxes/partials/advertisments/product-bundle-ad.php:16
+msgid "Timeline Express Bundle"
 msgstr ""
 
 #: lib/admin/metaboxes/partials/help-docs-metabox.php:11
@@ -134,7 +150,7 @@ msgstr ""
 
 #: lib/admin/metaboxes/partials/help-docs-metabox.php:22
 #: lib/admin/pages/page.options.php:443 lib/admin/pages/page.welcome.php:189
-#: lib/classes/class.timeline-express-admin.php:329
+#: lib/classes/class.timeline-express-admin.php:348
 msgid "Documentation"
 msgstr ""
 
@@ -213,7 +229,7 @@ msgid "Timeline Express Product Bundle"
 msgstr ""
 
 #: lib/admin/pages/page.addons.php:91
-#: lib/classes/class.timeline-express-admin.php:127
+#: lib/classes/class.timeline-express-admin.php:146
 msgid "Timeline Express Add-Ons"
 msgstr ""
 
@@ -237,7 +253,7 @@ msgid "Add-On Installed"
 msgstr ""
 
 #: lib/admin/pages/page.options.php:33
-#: lib/classes/class.timeline-express-admin.php:117
+#: lib/classes/class.timeline-express-admin.php:136
 msgid "Timeline Express Settings"
 msgstr ""
 
@@ -564,8 +580,8 @@ msgid "Support"
 msgstr ""
 
 #: lib/admin/pages/page.welcome.php:201
-#: lib/classes/class.timeline-express-admin.php:128
-#: lib/classes/class.timeline-express-admin.php:327
+#: lib/classes/class.timeline-express-admin.php:147
+#: lib/classes/class.timeline-express-admin.php:346
 msgid "Add-Ons"
 msgstr ""
 
@@ -595,20 +611,20 @@ msgid ""
 "behind it's products."
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:118
-#: lib/classes/class.timeline-express-admin.php:325
+#: lib/classes/class.timeline-express-admin.php:137
+#: lib/classes/class.timeline-express-admin.php:344
 msgid "Settings"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:137
+#: lib/classes/class.timeline-express-admin.php:156
 msgid "Timeline Express Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:138
+#: lib/classes/class.timeline-express-admin.php:157
 msgid "Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:228
+#: lib/classes/class.timeline-express-admin.php:247
 msgid "Timeline Express settings saved successfully!"
 msgstr ""
 
@@ -620,6 +636,22 @@ msgstr ""
 
 #: lib/classes/class.timeline-express.php:108
 msgid "Failed Nonce Security Check"
+msgstr ""
+
+#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:150
+msgid ""
+"Allow Timeline Express to track plugin usage? Tracking will help improve "
+"Timeline Express by allowing us to gather anonymous usage data so we know "
+"which configurations, plugins and themes to test with. No sensitive data is "
+"tracked."
+msgstr ""
+
+#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:152
+msgid "Allow"
+msgstr ""
+
+#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:154
+msgid "Do not allow"
 msgstr ""
 
 #: lib/helpers.php:69

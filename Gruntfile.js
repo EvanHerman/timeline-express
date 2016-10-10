@@ -204,7 +204,7 @@ module.exports = function(grunt) {
 				options: {
 					domainPath: 'i18n/',
 					include: [ '.+\.php' ],
-					exclude: [ 'node_modules/', 'bin/', 'lib/admin/CMB2', 'tests/' ],
+					exclude: [ 'node_modules/', 'bin/', 'lib/admin/CMB2', 'tests/', 'lib/admin/classes/usage-tracking/vendor/' ],
 					potComments: 'Copyright (c) {year} Code Parrots. All Rights Reserved.',
 					potHeaders: {
 						'x-poedit-keywordslist': true
