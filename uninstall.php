@@ -31,6 +31,7 @@ delete_site_option( 'timeline_express_storage' );
 
 /* Delete Our Transients */
 delete_transient( 'te_font_awesome_transient' );
+delete_transient( 'timeline_express_ad_transient' );
 
 /* Delete all timeline express query transients created on pages eg: timeline-express-query-PAGE_ID */
 // Query the database for all transients with the text 'timeline-express-query'

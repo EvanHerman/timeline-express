@@ -222,7 +222,24 @@ function timeline_express_internationalize_datepicker( $l10n ) {
  */
 function te_get_advertisment( $part = '' ) {
 
-	$advertisment = te_get_random_ad();
+	// Check for a transient before continuing
+	if ( false === ( $advertisment = get_transient( 'timeline_express_ad_transient' ) ) ) {
+
+		$advertisment = te_get_random_ad();
+
+		if ( isset( $advertisment['start_date'] ) && isset( $advertisment['end_date'] ) ) {
+
+			if ( strtotime( 'now' ) < $advertisment['start_date'] || strtotime( 'now' ) > $advertisment['end_date'] ) {
+
+				$advertisment = te_get_advertisment();
+
+			}
+
+		}
+
+		set_transient( 'timeline_express_ad_transient', $advertisment, 1 * HOUR_IN_SECONDS );
+
+	}
 
 	if ( '' !== $part && isset( $advertisment[ $part ] ) ) {
 
