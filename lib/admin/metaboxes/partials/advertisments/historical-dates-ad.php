@@ -15,6 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 return [
 	'title'   => __( 'Historical Dates Add-On', 'timeline-express' ),
 	'image'   => TIMELINE_EXPRESS_URL . 'lib/admin/images/advertisement/historical-dates-ad.jpg',
-	'content' => 'Testing some content',
+	'content' => null,
 	'url'     => 'https://www.wp-timelineexpress.com/add-ons/?utm_source=plugin&utm_medium=banner&utm_campaign=freeplugin',
 ];
