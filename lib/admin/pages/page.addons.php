@@ -24,8 +24,8 @@ endif;
  *
  * @var array
  */
-$addon_array = [
-	[
+$addon_array = array(
+	array(
 		'name'          => __( 'Timeline HTML Excerpts', 'timeline-express-pro' ),
 		'class'         => 'Timeline_Express_HTML_Excerpts',
 		'description'   => __( 'Enable custom HTML excerpts and allow for your timeline excerpts to display audio, video and shortcodes. As one of the most visited documentation pages on the site, we decided to break this feature off into a free add-on, so you never have to touch your sites code.', 'timeline-express-pro' ),
@@ -33,47 +33,47 @@ $addon_array = [
 		'purchase_url'  => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=timeline-express-html-excerpt-add-on' ), 'install-plugin_timeline-express-html-excerpt-add-on' ),
 		'popular'       => true,
 		'free'          => true,
-	],
-	[
+	),
+	array(
 		'name'          => __( 'White Label Branding', 'timeline-express-pro' ),
 		'class'         => 'Timeline_Express_White_label',
 		'description'   => __( 'Remove any and all references to our branding, Code Parrots. This addon removes links, metaboxes, menu items and any association to Code Parrots so your clients won’t get confused with the mixed branding across the dashboard.', 'timeline-express-pro' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/06/timeline-express-white-label-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.evan-herman.com/wordpress-plugin/timeline-express-white-label-addon/',
-	],
-	[
+	),
+	array(
 		'name'          => __( 'Single Column Timeline', 'timeline-express-pro' ),
 		'class'         => 'Timeline_Express_Single_Column',
 		'description'   => __( 'This add-on enables a new layout for your Timelines, by displaying them in a single column. A highly requested features that we’ve turned into a plug and play solution – so you, as the end user, don’t have to make any alterations to your code.', 'timeline-express-pro' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/06/timeline-express-single-column-addon-banner-150x150.jpg',
 		'purchase_url'  => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=timeline-express-single-column-add-on' ), 'install-plugin_timeline-express-single-column-add-on' ),
 		'free'          => true,
-	],
-	[
+	),
+	array(
 		'name'          => __( 'Timeline Post Types', 'timeline-express-pro' ),
 		'class'         => 'Timeline_Express_Post_Type',
 		'description'   => __( 'Generate timelines using posts, pages or any other custom post type on your site with this add-on. Powerful, flexible and simple to use – now users can generate custom timelines in a beautiful timeline without altering any code.', 'timeline-express-pro' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/05/timeline-express-post-types-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.evan-herman.com/wordpress-plugin/timeline-express-post-types-add-on/',
 		'popular'       => true,
-	],
-	[
+	),
+	array(
 		'name'          => __( 'Historical Dates', 'timeline-express-pro' ),
 		'class'         => 'Timeline_Express_Historical_Dates_Addon',
 		'description'   => __( 'Due to a limitation with PHP, storing dates prior to 1970 has been a one of the limitations of Timeline Express. Quickly enable the ability to assign dates between the years 1000 to 9999 to all announcements.', 'timeline-express-pro' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/05/timeline-express-historical-dates-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.evan-herman.com/wordpress-plugin/timeline-express-historical-dates-add-on/',
 		'popular'       => true,
-	],
-	[
+	),
+	array(
 		'name'          => __( 'AJAX Limits Add-On', 'timeline-express-pro' ),
 		'class'         => 'Timeline_Express_AJAX_Limits',
 		'description'   => __( 'Limit your Timeline to a set number of announcements, and display a ‘Load More’ button beneath, allowing users to load more announcements onto the timeline. This prevents your pages from becoming unruly in length if you display many announcements.', 'timeline-express-pro' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/05/ajax-limits-add-on-banner-1-150x150.jpg',
 		'purchase_url'  => 'https://www.evan-herman.com/wordpress-plugin/timeline-express-ajax-limits-add-on/',
 		'popular'       => true,
-	],
-];
+	),
+);
 
 shuffle( $addon_array );
 

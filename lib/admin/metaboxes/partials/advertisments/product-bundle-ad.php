@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 }
 
-return [
+return array(
 	'title'   => __( 'Timeline Express Bundle', 'timeline-express' ),
 	'image'   => TIMELINE_EXPRESS_URL . 'lib/admin/images/advertisement/product-bundle-ad.jpg',
 	'content' => null,
