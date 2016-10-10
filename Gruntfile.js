@@ -78,6 +78,7 @@ module.exports = function(grunt) {
 						'lib/public/css/min/timeline-express-rtl.min.css':
 						[
 							'lib/public/css/timeline-express-rtl.css',
+							'lib/public/css/timeline-express-single-page.css',
 							'lib/public/css/timeline-express-single-page-rtl.css'
 						],
 					}
