@@ -15,7 +15,7 @@
  */
 if ( ! defined( 'TIMELINE_EXPRESS_VERSION_CURRENT' ) ) {
 
-	define( 'TIMELINE_EXPRESS_VERSION_CURRENT', '1.2.9' );
+	define( 'TIMELINE_EXPRESS_VERSION_CURRENT', '1.3' );
 
 }
 
@@ -56,7 +56,9 @@ if ( ! defined( 'EH_DEV_SHOP_URL' ) ) {
 }
 
 /**
- * Define the tracking project id
+ * Define the tracking project ID
+ *
+ * @since 1.3
  */
 if ( ! defined( 'TIMELINE_EXPRESS_TRACKING_PROJECT_ID' ) ) {
 
@@ -66,6 +68,8 @@ if ( ! defined( 'TIMELINE_EXPRESS_TRACKING_PROJECT_ID' ) ) {
 
 /**
  * Define the tracking write key
+ *
+ * @since 1.3
  */
 if ( ! defined( 'TIMELINE_EXPRESS_TRACKING_WRITE_KEY' ) ) {
 
