@@ -16,8 +16,19 @@ class TimelineExpressAdmin {
 	 */
 	public function __construct() {
 
-		// Include our plugin usage tracking class
-		add_action( 'admin_init', array( $this, 'timeline_express_process_tracking_info') );
+		/* Include the usage tracking file */
+		require_once  TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/wp-plugin-usage-tracker.php';
+
+		$tracker = new WP_Plugin_Usage_Tracker();
+
+		$tracker->init();
+
+		// Include our 2 weeks notice/rating request class
+		require_once  TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-2-week-notice.php';
+
+		$two_week_notice = new Timeline_Express_Two_Weeks_Notice();
+
+		$two_week_notice->init();
 
 		/* Generate our announcements custom post type */
 		add_action( 'init', array( $this, 'timeline_express_generate_announcement_post_type' ) );
@@ -63,22 +74,6 @@ class TimelineExpressAdmin {
 		 */
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_timeline_express_admin_scripts_and_styles' ) );
-
-	}
-
-	/**
-	 * Initialize the tracker, if the user has opted in
-	 *
-	 * This method sends tracking data to keen.io
-	 */
-	public function timeline_express_process_tracking_info() {
-
-		/* Include the usage tracking file */
-		require_once  TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/wp-plugin-usage-tracker.php';
-
-		$tracker = new WP_Plugin_Usage_Tracker();
-
-		$tracker->init();
 
 	}
 

@@ -25,6 +25,9 @@ if ( isset( $options['delete-announcement-posts-on-uninstallation'] ) && '1' ===
 
 /* Delete Timeline Express options */
 delete_option( 'timeline_express_storage' );
+delete_option( 'timeline-express_tracking' );
+delete_option( 'timeline-express_nobug' );
+delete_option( 'timeline-express_rating_nobug' );
 
 /* For site options in multisite */
 delete_site_option( 'timeline_express_storage' );
