@@ -113,12 +113,10 @@ $help_docs_metabox->add_field( array(
 
 $advertisment_data = te_get_advertisment();
 
-$advertisment_title = $advertisment_data['title'];
-
 // Advertisement Metabox
 $advert_metabox = new_cmb2_box( array(
 	'id'            => 'advert_metabox',
-	'title'         => $advertisment_title,
+	'title'         => $advertisment_data['title'],
 	'object_types'  => array( 'te_announcements' ),
 	'context'    => 'side',
 	'priority'   => 'low',
@@ -260,8 +258,24 @@ function te_get_advertisment( $part = '' ) {
  */
 function te_get_random_ad() {
 
-	$files = glob( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/advertisments/*.*' );
+	$advertisements = include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/advertisements/advertisements-array.php' );
 
-	return include_once( $files[ array_rand( $files ) ] );
+	// Remove any items from the array that are inactive (Halloween ad., etc.)
+	// eg: start date hasn't occured OR end date has passed
+	foreach ( $advertisements as $advertisment => $ad_data ) :
+
+		if ( isset( $ad_data['start_date'] ) && isset( $ad_data['end_date' ] ) ) {
+
+			if ( $ad_data['start_date'] > strtotime( 'now' ) || $ad_data['end_date'] < strtotime( 'now' ) ) {
+
+				unset( $advertisements[ $advertisment ] );
+
+			}
+
+		}
+
+	endforeach;
+
+	return $advertisements[ array_rand( $advertisements ) ];
 
 }

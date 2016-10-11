@@ -16,12 +16,17 @@ class TimelineExpressAdmin {
 	 */
 	public function __construct() {
 
-		/* Include the usage tracking file */
-		require_once  TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/wp-plugin-usage-tracker.php';
+		// Only offer user tracking if the PHP version is equal to 5.4.0 (or later)
+		if ( version_compare( PHP_VERSION, '5.4.0' ) >= 0 ) {
 
-		$tracker = new WP_Plugin_Usage_Tracker();
+			/* Include the usage tracking file */
+			require_once  TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/wp-plugin-usage-tracker.php';
 
-		$tracker->init();
+			$tracker = new WP_Plugin_Usage_Tracker();
+
+			$tracker->init();
+
+		}
 
 		// Include our 2 weeks notice/rating request class
 		require_once  TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-2-week-notice.php';
