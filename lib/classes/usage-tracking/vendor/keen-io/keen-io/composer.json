@@ -1,0 +1,48 @@
+{
+    "name": "keen-io/keen-io",
+    "description": "A PHP library for reporting events to the Keen IO API",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "keen io",
+        "analytics"
+    ],
+    "support": {
+        "chat": "https://www.hipchat.com/gIdidQscL"
+    },
+    "require": {
+        "php":           ">=5.6.0",
+        "ext-mcrypt":    "*",
+        "guzzle/guzzle": "~3.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.3.*"
+    },
+    "homepage": "http://keen.io",
+    "autoload": {
+        "psr-4": {
+            "KeenIO\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KeenIO\\Tests\\": "tests/Tests"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tom Anderson",
+            "email": "tom.h.anderson@gmail.com"
+        },
+        {
+            "name": "Keith Kirk",
+            "email": "keith@kmfk.io",
+            "homepage": "http://kmfk.io"
+        },
+        {
+            "name": "Michaël Gallego",
+            "email": "mic.gallego@gmail.com",
+            "homepage": "http://michaelgallego.fr"
+        }
+    ]
+}
