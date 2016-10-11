@@ -172,6 +172,14 @@ function make_sortable_timeline_express_column( $columns ) {
 add_action( 'pre_get_posts', 'te_announcements_pre_get_posts', 1 );
 function te_announcements_pre_get_posts( $query ) {
 
+	$orderby = ( isset( $_GET['orderby'] ) ) ? sanitize_key( $_GET['orderby'] ) : false;
+
+	if ( ! is_admin() || ! $orderby ) {
+
+		return $query;
+
+	}
+
 	// We only want our code to run in the main WP query
 	// AND only when an orderby query variable is designated.
 	// AND when the orderby query variable is set to 'announcement_date'

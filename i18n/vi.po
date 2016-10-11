@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Timeline Express 1.2.9\n"
 "Report-Msgid-Bugs-To: https://github.com/EvanHerman/Timeline-Express/issues\n"
-"POT-Creation-Date: 2016-10-10 23:07:43+00:00\n"
+"POT-Creation-Date: 2016-10-11 15:48:47+00:00\n"
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,27 +114,27 @@ msgstr ""
 msgid "Help & Documentation"
 msgstr ""
 
-#: lib/admin/metaboxes/partials/advertisments/ajax-load-more-ad.php:16
+#: lib/admin/metaboxes/partials/advertisements/advertisements-array.php:19
 msgid "AJAX Load More Add-On"
 msgstr ""
 
-#: lib/admin/metaboxes/partials/advertisments/halloween-discount-ad.php:16
+#: lib/admin/metaboxes/partials/advertisements/advertisements-array.php:25
 msgid "Halloween Discount"
 msgstr ""
 
-#: lib/admin/metaboxes/partials/advertisments/historical-dates-ad.php:16
+#: lib/admin/metaboxes/partials/advertisements/advertisements-array.php:33
 msgid "Historical Dates Add-On"
 msgstr ""
 
-#: lib/admin/metaboxes/partials/advertisments/html-excerpts-ad.php:18
+#: lib/admin/metaboxes/partials/advertisements/advertisements-array.php:39
 msgid "HTML Excerpts Add-On"
 msgstr ""
 
-#: lib/admin/metaboxes/partials/advertisments/post-types-ad.php:16
+#: lib/admin/metaboxes/partials/advertisements/advertisements-array.php:45
 msgid "Post Types Add-On"
 msgstr ""
 
-#: lib/admin/metaboxes/partials/advertisments/product-bundle-ad.php:16
+#: lib/admin/metaboxes/partials/advertisements/advertisements-array.php:51
 msgid "Timeline Express Bundle"
 msgstr ""
 
@@ -152,7 +152,7 @@ msgstr ""
 
 #: lib/admin/metaboxes/partials/help-docs-metabox.php:22
 #: lib/admin/pages/page.options.php:443 lib/admin/pages/page.welcome.php:189
-#: lib/classes/class.timeline-express-admin.php:343
+#: lib/classes/class.timeline-express-admin.php:348
 msgid "Documentation"
 msgstr ""
 
@@ -230,7 +230,7 @@ msgid "Timeline Express Product Bundle"
 msgstr ""
 
 #: lib/admin/pages/page.addons.php:91
-#: lib/classes/class.timeline-express-admin.php:141
+#: lib/classes/class.timeline-express-admin.php:146
 msgid "Timeline Express Add-Ons"
 msgstr ""
 
@@ -254,7 +254,7 @@ msgid "Add-On Installed"
 msgstr ""
 
 #: lib/admin/pages/page.options.php:33
-#: lib/classes/class.timeline-express-admin.php:131
+#: lib/classes/class.timeline-express-admin.php:136
 msgid "Timeline Express Settings"
 msgstr ""
 
@@ -581,8 +581,8 @@ msgid "Support"
 msgstr ""
 
 #: lib/admin/pages/page.welcome.php:201
-#: lib/classes/class.timeline-express-admin.php:142
-#: lib/classes/class.timeline-express-admin.php:341
+#: lib/classes/class.timeline-express-admin.php:147
+#: lib/classes/class.timeline-express-admin.php:346
 msgid "Add-Ons"
 msgstr ""
 
@@ -635,20 +635,20 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:132
-#: lib/classes/class.timeline-express-admin.php:339
+#: lib/classes/class.timeline-express-admin.php:137
+#: lib/classes/class.timeline-express-admin.php:344
 msgid "Settings"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:151
+#: lib/classes/class.timeline-express-admin.php:156
 msgid "Timeline Express Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:152
+#: lib/classes/class.timeline-express-admin.php:157
 msgid "Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:242
+#: lib/classes/class.timeline-express-admin.php:247
 msgid "Timeline Express settings saved successfully!"
 msgstr ""
 
