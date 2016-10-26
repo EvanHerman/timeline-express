@@ -104,6 +104,8 @@ class Timeline_Express_Initialize {
 
 		}
 
+		$announcement_query = apply_filters( 'timeline_express_announcement_query', $announcement_query );
+
 		/* Loop over announcements, if found */
 		if ( $announcement_query->have_posts() ) {
 			?>
