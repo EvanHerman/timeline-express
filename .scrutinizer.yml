@@ -9,7 +9,7 @@ tools:
         timeout: 900    # Timeout in seconds (15 mins for slow/throttled reports).
 
 filter:
-    excluded_paths: [tests/*, languages/*, lib/admin/CMB2/*, bin/*, lib/icons/*, templates/* ]
+    excluded_paths: [tests/*, i18n/*, lib/admin/CMB2/*, bin/*, lib/icons/*, templates/*, lib/classes/usage-tracking/vendor/* ]
 
 checks:
     php:
