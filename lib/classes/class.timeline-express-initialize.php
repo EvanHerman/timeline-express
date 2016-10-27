@@ -137,7 +137,7 @@ class Timeline_Express_Initialize {
 			?>
 				<h3 class="timeline-express-no-announcements-found">
 
-					<?php echo apply_filters( 'timeline_express_no_announcements_found_message', esc_textarea( $timeline_express_options['no-events-message'] ), $atts ); ?>
+					<?php echo apply_filters( 'timeline_express_no_announcements_found_message', esc_textarea( $timeline_express_options['no-events-message'] ) ); ?>
 
 				</h3>
 			<?php
