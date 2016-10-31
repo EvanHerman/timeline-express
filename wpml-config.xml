@@ -1,0 +1,7 @@
+<wpml-config>
+  <admin-texts>
+    <key name="timeline_express_storage">
+      <key name="no-events-message"/>
+    </key>
+  </admin-texts>
+</wpml-config>
