@@ -213,12 +213,14 @@ function cmb2_validate_te_bootstrap_dropdown_callback( $override_value, $value )
  */
 function timeline_express_enqueue_font_awesome() {
 
+	$local_font_awesome = ( defined( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL' ) && TIMELINE_EXPRESS_FONT_AWESOME_LOCAL ) ? true : false;
+
 	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.6.1' );
 
 	$http = ( is_ssl() ) ? 'https:' : 'http:';
 
 	/* Check if CDN is reachable, if so - get em' */
-	if ( wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
+	if ( ! $local_font_awesome && wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
 
 		/* Enqueue font awesome for use in column display */
 		wp_enqueue_style( 'font-awesome', $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css', array(), $font_awesome_version );
