@@ -733,7 +733,7 @@ function timeline_express_custom_read_more_link() {
 
 	}
 
-	echo wp_kses_post( apply_filters( 'timeline_express_read_more_link', '<a class="' . esc_attr( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="'. apply_filters( 'timeline-express-read-more-link', esc_url( get_permalink( $post->ID ) ), $post->ID ) . '"> ' . esc_attr( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID ) );
+	echo wp_kses_post( apply_filters( 'timeline_express_read_more_link', '<a class="' . esc_attr( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="'. apply_filters( 'timeline_express_announcement_permalink', get_permalink( $post->ID ), $post->ID ) . '"> ' . esc_attr( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID ) );
 
 }
 add_action( 'timeline-express-after-excerpt', 'timeline_express_custom_read_more_link', 10 );
