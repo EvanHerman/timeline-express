@@ -369,12 +369,14 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.3.2 - October xx, 2016 =
+= 1.3.2 - October 31st, 2016 =
 - Added new hooks to the options page.
 - Introduced `timeline_express_announcement_query` filter, to filter the final WP_Query object (including results).
 - Introduced `timeline_express_announcement_permalink` filter, to filter the read more link URL.
 - Introduced new helper functions: `get_timeline_express_add_ons()`, `add_timeline_express_add_on`, `remove_timeline_express_add_on`, `timeline_express_generate_options_header`, `timeline_express_generate_options_tabs`
 - Added new styles for the options page header/tabs.
+- Added missing local font awesome icons.
+- Define new constant to load font awesome icons ( `define( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL', true );` - added to theme functions.php will load font awesome icons locally instead of Font Awesome CDN).
 - Bumped version numbers.
 
 = 1.3.1 - October 12th, 2016 =
@@ -710,9 +712,9 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.3.2 - October xx, 2016 =
+= 1.3.2 - October 31st, 2016 =
 
-This update further extends the plugin, allowing the end user to filter text or add additional sections to Timeline Express. This release preps the plugin for the Twitter Feed add-on, that we are releasing.
+This update further extends the plugin, allowing the end user to filter text or add additional sections to Timeline Express. This release preps the plugin for the Twitter Feed add-on, and adds new features.
 
 **Changes:**
 
@@ -721,4 +723,6 @@ This update further extends the plugin, allowing the end user to filter text or 
 - Introduced `timeline_express_announcement_permalink` filter, to filter the read more link URL.
 - Introduced new helper functions: `get_timeline_express_add_ons()`, `add_timeline_express_add_on`, `remove_timeline_express_add_on`, `timeline_express_generate_options_header`, `timeline_express_generate_options_tabs`
 - Added new styles for the options page header/tabs.
+- Added missing local font awesome icons.
+- Define new constant to load font awesome icons ( `define( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL', true );` - added to theme functions.php will load font awesome icons locally instead of Font Awesome CDN).
 - Bumped version numbers.
