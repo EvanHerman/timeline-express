@@ -108,7 +108,6 @@ module.exports = function(grunt) {
 						'lib/public/js/min/timeline-express.min.js',
 						'lib/admin/css/min/timeline-express-admin.min.css',
 						'lib/admin/css/min/timeline-express-admin-rtl.min.css',
-						'lib/admin/css/min/timeline-express-settings.min.css',
 						'lib/admin/js/min/timeline-express-tinymce.min.js',
 						'lib/admin/js/min/timeline-express-admin.min.js',
 					]
@@ -226,6 +225,41 @@ module.exports = function(grunt) {
 			}
 		},
 
+		replace: {
+			base_file: {
+				src: [ 'timeline-express.php' ],
+				overwrite: true,
+				replacements: [{
+					from: /Version: (.*)/,
+					to: "Version: <%= pkg.version %>"
+				}]
+			},
+			readme_txt: {
+				src: [ 'readme.txt' ],
+				overwrite: true,
+				replacements: [{
+					from: /Stable tag: (.*)/,
+					to: "Stable tag: <%= pkg.version %>"
+				}]
+			},
+			readme_md: {
+				src: [ 'README.md' ],
+				overwrite: true,
+				replacements: [{
+					from: /# Timeline Express - (.*)/,
+					to: "# Timeline Express - <%= pkg.version %>"
+				}]
+			},
+			constants: {
+				src: [ 'constants.php' ],
+				overwrite: true,
+				replacements: [{
+					from: /define\(\s*'TIMELINE_EXPRESS_VERSION_CURRENT',\s*'(.*)'\s*\);/,
+					to: "define( 'TIMELINE_EXPRESS_VERSION_CURRENT', '<%= pkg.version %>' );"
+				}]
+			}
+		},
+
 	});
 
 	// load tasks
@@ -238,6 +272,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-cssjanus' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-po2mo' );
+	grunt.loadNpmTasks( 'grunt-text-replace' );
 
 	// register task
 	grunt.registerTask( 'default', [

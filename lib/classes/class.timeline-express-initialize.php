@@ -104,6 +104,8 @@ class Timeline_Express_Initialize {
 
 		}
 
+		$announcement_query = apply_filters( 'timeline_express_announcement_query', $announcement_query );
+
 		/* Loop over announcements, if found */
 		if ( $announcement_query->have_posts() ) {
 			?>
@@ -134,7 +136,9 @@ class Timeline_Express_Initialize {
 			/* Display the 'no events' message, setup in our options. */
 			?>
 				<h3 class="timeline-express-no-announcements-found">
-					<?php echo esc_textarea( $timeline_express_options['no-events-message'] ); ?>
+
+					<?php echo apply_filters( 'timeline_express_no_announcements_found_message', esc_textarea( $timeline_express_options['no-events-message'] ) ); ?>
+
 				</h3>
 			<?php
 

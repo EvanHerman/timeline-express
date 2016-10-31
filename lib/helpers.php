@@ -213,12 +213,14 @@ function cmb2_validate_te_bootstrap_dropdown_callback( $override_value, $value )
  */
 function timeline_express_enqueue_font_awesome() {
 
+	$local_font_awesome = ( defined( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL' ) && TIMELINE_EXPRESS_FONT_AWESOME_LOCAL ) ? true : false;
+
 	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.6.1' );
 
 	$http = ( is_ssl() ) ? 'https:' : 'http:';
 
 	/* Check if CDN is reachable, if so - get em' */
-	if ( wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
+	if ( ! $local_font_awesome && wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
 
 		/* Enqueue font awesome for use in column display */
 		wp_enqueue_style( 'font-awesome', $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css', array(), $font_awesome_version );
@@ -481,6 +483,8 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 
 	$custom_icon_html = apply_filters( 'timeline_express_custom_icon_html', apply_filters( 'timeline-express-custom-icon-html', false, $post_id, $timeline_express_options ), $post_id, $timeline_express_options );
 
+	$icon_container_class = ' icon-no-readmore';
+
 	/* Generate the Icon */
 	if ( $custom_icon_html ) {
 
@@ -489,13 +493,17 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 	}
 
 	/* If read more visibility is set to true, wrap the icon in a link. */
-	if ( '1' === $timeline_express_options['read-more-visibility'] ) { ?>
+	if ( '1' === $timeline_express_options['read-more-visibility'] ) {
 
-		<a class="cd-timeline-icon-link" href="<?php echo esc_attr( apply_filters( 'timeline-express-read-more-link', esc_url( get_the_permalink( $post_id ) ) ) ); ?>">
+		$icon_container_class = '';
+
+		?>
+
+		<a class="cd-timeline-icon-link" href="<?php echo esc_attr( apply_filters( 'timeline_express_announcement_permalink', get_the_permalink( $post_id ), $post_id ) ); ?>">
 
 	<?php } ?>
 
-		<div class="cd-timeline-img cd-picture" style="background:<?php echo esc_attr( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
+		<div class="cd-timeline-img cd-picture<?php echo esc_attr( $icon_container_class ); ?>" style="background:<?php echo esc_attr( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
 
 			<!-- Custom Action Hook -->
 			<?php if ( defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) && TIMELINE_EXPRESS_YEAR_ICONS ) { ?>
@@ -774,6 +782,61 @@ function timeline_express_get_custom_meta( $post_id, $meta_name, $array = true )
 
 }
 
+/**
+ * Check if any add-ons are installed
+ *
+ * @since 1.3.0
+ */
+function get_timeline_express_add_ons() {
+
+	return get_option( 'timeline_express_installed_add_ons', array() );
+
+}
+
+/**
+ * Check if any add-ons are installed
+ *
+ * @since 1.3.0
+ */
+function add_timeline_express_add_on( $add_on_slug ) {
+
+	$installed_add_ons = get_timeline_express_add_ons();
+
+	if ( isset( $installed_add_ons[ $add_on_slug ] ) ) {
+
+		return;
+
+	}
+
+	$installed_add_ons[ $add_on_slug ] = ucwords( str_replace( '-', ' ', $add_on_slug ) );
+
+	update_option( 'timeline_express_installed_add_ons', $installed_add_ons );
+
+	return;
+
+}
+
+/**
+ * Check if any add-ons are installed
+ *
+ * @since 1.3.0
+ */
+function remove_timeline_express_add_on( $add_on_slug ) {
+
+	$installed_add_ons = get_timeline_express_add_ons();
+
+	if ( isset( $installed_add_ons[ $add_on_slug ] ) ) {
+
+		unset( $installed_add_ons[ $add_on_slug ] );
+
+	}
+
+	update_option( 'timeline_express_installed_add_ons', $installed_add_ons );
+
+	return;
+
+}
+
 if ( ! function_exists( 'timeline_express_generate_page_wrapper_start' ) ) {
 	/**
 	 * Generate the Timeline Express beginning page wrappers
@@ -817,4 +880,75 @@ if ( ! function_exists( 'timeline_express_generate_sidebar' ) ) {
 		get_timeline_express_template( 'timeline-express-sidebar' );
 
 	}
+}
+
+/**
+ * Options helpers
+ */
+
+/**
+ * Genereate the options title and description text
+ *
+ * @param $active_tab string The current active tab.
+ *
+ * @since 1.3.0
+ */
+function timeline_express_generate_options_header( $active_tab ) {
+
+	if ( 'base' === $active_tab ) {
+
+		?>
+
+		<h1 id="timeline-express-page-header">
+			<?php esc_html_e( 'Timeline Express Pro Settings', 'timeline-express-pro' ); ?>
+		</h1>
+
+		<p class="description">
+			<?php esc_html_e( 'Alter your timeline settings here. You can adjust some of the visual settings as well as the display order, below.', 'timeline-express-pro' ); ?>
+		</p>
+
+		<?php
+
+		return;
+
+	}
+
+	do_action( 'timeline_express_add_on_options_page_header', $active_tab );
+
+}
+
+/**
+ * Generate the options tabs
+ *
+ * @param $active_tab string The current active tab.
+ *
+ * @since 1.3.0
+ */
+function timeline_express_generate_options_tabs( $active_tab ) {
+
+	$active_add_ons = get_timeline_express_add_ons();
+
+	if ( ! empty( $active_add_ons ) ) {
+
+		?><h2 class="nav-tab-wrapper te-options"><?php
+
+		$active_add_ons = array( 'base' => __( 'Timeline Express', 'timeline-express-pro' ) ) + $active_add_ons;
+
+		foreach ( $active_add_ons as $add_on_slug => $add_on_name ) {
+
+			$active = ( $active_tab === $add_on_slug ) ? 'nav-tab-active' : '';
+
+			printf(
+				'<a href="%1$s" class="nav-tab %2$s">%3$s</a>',
+				admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings&tab=' . $add_on_slug ),
+				esc_attr( $active ),
+				esc_html( $add_on_name )
+			);
+
+		}
+
+		?></h2><?php
+
+	}
+
 }

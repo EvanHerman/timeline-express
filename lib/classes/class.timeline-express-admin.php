@@ -414,7 +414,7 @@ class TimelineExpressAdmin {
 
 			}
 
-			$rtl = is_rtl() ? '-rtl' : '';
+			$rtl = is_rtl() ? '-rtl' : ''; 
 
 			/* Register Styles */
 			wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . "lib/admin/css/min/timeline-express-admin{$rtl}.min.css", array(), TIMELINE_EXPRESS_VERSION_CURRENT, 'all' );

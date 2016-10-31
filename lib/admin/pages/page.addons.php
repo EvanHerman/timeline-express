@@ -73,6 +73,13 @@ $addon_array = array(
 		'purchase_url'  => 'https://www.evan-herman.com/wordpress-plugin/timeline-express-ajax-limits-add-on/',
 		'popular'       => true,
 	),
+	array(
+		'name'          => __( 'Twitter Feed Add-On', 'timeline-express-pro' ),
+		'class'         => 'Timeline_Express_Twitter_Feed',
+		'description'   => __( 'Display twitter feeds in a Timeline for users, search terms and by gelocation using our Twitter Feed Add-On. Twitter feeds can be set to live update, so every 30 seconds the feed is updated with new, fresh, tweets.', 'timeline-express-pro' ),
+		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/05/twitter-feed-add-on-banner-150x150.jpg',
+		'purchase_url'  => 'https://www.evan-herman.com/wordpress-plugin/timeline-express-twitter-feed-add-on/',
+	),
 );
 
 shuffle( $addon_array );
