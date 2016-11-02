@@ -1,35 +1,50 @@
+[![Timeline Express](https://cldup.com/kqTilQus7B.jpg)](https://www.wp-timelineexpress.com)
+
+# Timeline Express - v1.3.2
+
 [![Build Status](https://travis-ci.org/EvanHerman/timeline-express.svg?branch=master)](https://travis-ci.org/EvanHerman/timeline-express)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/quality-score.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
 [![Code Coverage](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/coverage.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
 [![Build Status](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/build.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/build-status/Refactor---v1.2)
 [![Project Stats](https://www.openhub.net/p/timeline-express/widgets/project_thin_badge.gif)](https://www.openhub.net/p/timeline-express)
-
-# Timeline Express - 1.3.2
-This repository is a re-factor of the original code base.
-
 [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
 [![WordPress](https://img.shields.io/wordpress/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
 [![WordPress](https://img.shields.io/wordpress/plugin/dt/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
 [![WordPress rating](https://img.shields.io/wordpress/plugin/r/timeline-express.svg?style=flat-square)](https://wordpress.org/support/plugin/timeline-express)
 
-### New Site & Documentation
+## Description
+[Timeline Express](https://www.wp-timelineexpress.com) is a WordPress plugin that creates an animated, responsive vertical timeline of posts, in chronological order. Timeline Express has been maintained for 2+ years, and remains the #1 WordPress Timeline Plugin on WordPress.org. While there have been many copy cat plugins popping up recently, Timeline Express remains the most feature packed and top supported timeline plugin for WordPress sites.
+
+Timeline Express has grown to be more than just a simple timeline plugin, and can be extended for different use cases. For example, our Timeline Express Twitter Feeds Add-On converts a specified timeline into a twitter feed for a given user or search term.
+
+## New Site & Documentation
 For the new version of Timeline Express, we built out an entirely new site to showcase the features & add-ons of Timeline Express.
 
 Additionally, the documentation for the new version of timeline express can be found at [WP Timeline Express](https://www.wp-timelineexpress.com/documentation).
 
-### Custom Announcement Template
-In version 1.2 users can now customize the announcement container for each announcement on the timeline.
+## Internationalization
+All of the strings contained in Timeline Express are properly prepared for translation, closely following the WordPress coding standards. That means you can create a Timeline in multiple languages, to be used on a multi-language site.
+
+Additionally, Timeline Express comes with **full WPML Support** and is the only timeline plugin [supported by WPML](https://wpml.org/plugin/timeline-express/).
+
+Other WordPress translation plugins will work just as well, including [Polylang](https://wordpress.org/plugins/polylang/) and [qtranslate](qTranslate).
+
+________________________________________
+
+## FAQ and Documentation
+
+#### Custom Announcement Template
 
 Copy over `templates/timeline-express-container.php` into your theme root, in a `timeline-express` directory (`wp-content/themes/theme_name/timeline-express/timeline-express-container.php`), and start customizing.
 
-### Custom Single Announcement Template
-In version 1.2 users can now customize the single announcement template for each announcement on the timeline.
+#### Custom Single Announcement Template
 
 Copy over `templates/single-timeline-express.php` into your theme root, in a `timeline-express` directory (`wp-content/themes/theme_name/timeline-express/single-timeline-express.php`), and start customizing.
 
 Or to quickly and easily get the timeline announcements to look the same as your current theme, you can duplicate your existing 'single.php' template file, place it in a 'timeline-express' directory in your theme root, and replace `get_template_part();` or `the_content();` with the following Timeline Express helper function `timeline_express_content();`. Once added you can save the file, and you're all set.
 
-### Years Instead of Icons
+#### Years Instead of Icons
+
 Many users have asked for the ability to display the year instead of displaying the Font Awesome icons. With version 1.2, we've built in support to allow users to quickly swap out the icons for the year by dropping a single line of code into the **functions.php** file of the active theme.
 
 ```php
@@ -38,7 +53,7 @@ define( 'TIMELINE_EXPRESS_YEAR_ICONS', true );
 
 Once added to your active themes **functions.php** file, you'll notice that the icon drop down no longer displays on your announcement posts - and on the front end of your site the icons are replaced with the year selected for the given announcement. If you need to style the year, or make any other sort of tweaks, you can target the element by using the following class `.`
 
-### Custom Container Classes
+#### Custom Container Classes
 Another extremely popular request was the ability to assign custom classes to the announcement containers, for further styling. In version 1.2 we've built in a filter to allow users to add additional classes as needed - `timeline-express-announcement-container-class`.
 
 Additionally, similar to the method mentioned above, users can drop a single line of code into their **functions.php** file, and be off to the races.
@@ -49,12 +64,12 @@ define( 'TIMELINE_EXPRESS_CONTAINER_CLASSES', true );
 
 Once added, you'll find a new metabox added to your announcement new/edit page titled 'Custom Container Class'. From here, you can enter the custom classes into the metabox, and save or update your post for the changes to take effect. You should now find that the newly defined classes are appended to the respective announcement containers.
 
-### Actions & Filters
+#### Actions & Filters
 Timeline Express is constructed with extensibility in mind. That means there are a number of actions and filters that developers can make use of, to extend the base functionality of Timeline Express.
 
 For a visual map of the locations of the hooks within the plugin, please see [this article](#).
 
-### Adding Custom Metaboxes and Fields
+#### Adding Custom Metaboxes and Fields
 Users have the ability to add additional meta boxes and fields as needed to the announcement post types. This can be achieved by utilizing the action hook `timeline_express_metaboxes`, or filtering the available metaboxes within the `timeline_express_custom_fields` filter. Using the `timeline_express_custom_fields` filter will allow you to add additional fields to the default 'Announcement Info.' metabox.
 
 If you need to add custom metaboxes, it is recommended that you hook into `timeline_express_metaboxes` and define your metaboxes.
@@ -89,7 +104,7 @@ Users can then display the new meta anywhere on their site or in page templates 
 
 Below you'll find a complete list of Actions and Filters contained within the Timeline Express code base.
 
-#### Filters
+### Filters
 
 `timeline_express_slug` or `timeline-express-slug` <small>(legacy)</small>
 
@@ -659,7 +674,7 @@ public function add_additional_timeline_container_classes( $class, $announcement
 add_filter( 'timeline-express-announcement-container-class', 'add_additional_timeline_container_classes', 10, 2 );
 ```
 
-#### Actions
+### Actions
 
 `timeline_express_metaboxes`
 
