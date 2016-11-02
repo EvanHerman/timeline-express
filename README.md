@@ -1,4 +1,4 @@
-[![Timeline Express](https://cldup.com/kqTilQus7B.jpg)](https://www.wp-timelineexpress.com)
+[![Timeline Express](https://cldup.com/muOzYZg5GP.jpg)](https://www.wp-timelineexpress.com)
 
 # Timeline Express - v1.3.2
 
