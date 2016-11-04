@@ -2,7 +2,7 @@
 Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
-Tested up to: 4.6.1
+Tested up to: 4.7
 Stable tag: 1.3.3
 License: GPLv2 or later
 
@@ -371,8 +371,8 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 = 1.3.3 - November 4th, 2016 =
 - Removed `jquery-masonry` reference from the WordPress timeline plugin.
-- Images located at external URLs can now be used, so you can reference images from other sites. (However, the image will not crop to the appropriate dimensions, and will remain at it's original size).
-- Removed margin on WordPress Timeline containers. Under certain conditions this caused overlapping on the containers. (If you need to adjust the spacing, please see <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">our help documentation</a>)
+- Images located at external URLs can now be used, so you can reference images from other sites. (However, the image will not crop to the appropriate dimensions, and will remain at its original size).
+- Removed margin on WordPress Timeline containers. Under certain conditions, this caused overlapping on the containers. (If you need to adjust the spacing, please see <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">our help documentation</a>)
 - Refactored the `style.css` file, for readability & conciseness (removed excess declarations etc.).
 - Swapped the announcement date HTML wrapper from a `<strong>` tag to a `<p>` tag.
 - Tweaked styles in the plugin for better 'out of the box' appearance.
@@ -731,8 +731,8 @@ If you need to adjust the spacing of the containers, or revert them back, please
 **Notable Changes:**
 
 - Removed `jquery-masonry` reference from the WordPress timeline plugin.
-- Images located at external URLs can now be used, so you can reference images from other sites. (However, the image will not crop to the appropriate dimensions, and will remain at it's original size).
-- Removed margin on WordPress Timeline containers. Under certain conditions this caused overlapping on the containers. (If you need to adjust the spacing, please see <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">our help documentation</a>)
+- Images located at external URLs can now be used, so you can reference images from other sites. (However, the image will not crop to the appropriate dimensions, and will remain at its original size).
+- Removed margin on WordPress Timeline containers. Under certain conditions, this caused overlapping on the containers. (If you need to adjust the spacing, please see <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">our help documentation</a>)
 - Refactored the `style.css` file, for readability & conciseness (removed excess declarations etc.).
 - Swapped the announcement date HTML wrapper from a `<strong>` tag to a `<p>` tag.
 - Tweaked styles in the plugin for better 'out of the box' appearance.
