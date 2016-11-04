@@ -656,6 +656,12 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
  */
 function timeline_express_map_html_attributes( $attribute_array ) {
 
+	if ( ! $attribute_array || empty( $attribute_array ) ) {
+
+		return;
+
+	}
+
 	return join( ' ', array_map( function( $key ) use ( $attribute_array ) {
 
 		if ( is_bool( $attribute_array[ $key ] ) ) {
