@@ -114,17 +114,19 @@ function cmb2_render_callback_te_bootstrap_dropdown( $field, $escaped_value ) {
  * Function cmb2_render_te_date_time_stamp_custom()
  * Render the custom time stamp field
  *
- * @param int  $field field to render.
- * @param type $meta stored value retreived from the database.
- * @param type $object_id this specific fields id.
- * @param type $object_type the type for this field.
- * @param type $field_type_object the entire field object.
+ * @param   int     $field field to render.
+ * @param   array   $meta stored value retreived from the database.
+ * @param   string  $object_id this specific fields id.
+ * @param   string  $object_type the type for this field.
+ * @param   string  $field_type_object the entire field object.
  *
- * @since v1.1.5.7
+ * @since   v1.1.5.7
+ *
+ * @change  v1.3.3  Change include_once to include to allow users to enable additional date_time_stamp_custom fields
  */
 function cmb2_render_te_date_time_stamp_custom( $field, $meta, $object_id, $object_type, $field_type_object ) {
 
-	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time-stamp-custom.php' );
+	include( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time-stamp-custom.php' );
 
 }
 
@@ -575,6 +577,14 @@ function timeline_express_get_announcement_icon_color( $post_id ) {
  */
 function timeline_express_get_announcement_image( $post_id, $image_size = 'timeline-express' ) {
 
+	if ( ! get_post_meta( $post_id, 'announcement_image_id', true ) && ! get_post_meta( $post_id, 'announcement_image', true ) ) {
+
+		return;
+
+	}
+
+	$image = ( get_post_meta( $post_id, 'announcement_image_id', true ) ) ? (int) get_post_meta( $post_id, 'announcement_image_id', true ) : get_post_meta( $post_id, 'announcement_image', true );
+
 	$image_size = apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id );
 
 	/**
@@ -583,26 +593,86 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 	*/
 	if ( is_single() ) {
 
-		$img_src = wp_get_attachment_image_url( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );
+		$img_src = ( is_integer( $image ) ) ? wp_get_attachment_image_url( $image, $image_size ) : $image;
+
+		$image_attributes = array(
+			'class'  => 'announcement-banner-image',
+			'src'    => esc_url( $img_src ),
+			'sizes'  => '(max-width: 100%) 75vw, 680px',
+			'alt'    => get_the_title(),
+		);
 
 		$img_srcset = wp_get_attachment_image_srcset( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );
 
-		?><img class="announcement-banner-image" src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="(max-width: 100%) 75vw, 680px" alt="<?php echo esc_attr( get_the_title() ); ?>"><?php
+		if ( $img_srcset ) {
+
+			$image_attributes['srcset'] = $img_srcset;
+
+		}
+
+		?>
+
+		<img <?php echo timeline_express_map_html_attributes( $image_attributes ); ?>>
+
+		<?php
 
 		return;
 
 	}
 
-	/* Escaped on output in the timeline/single page */
-	return apply_filters( 'timeline_express_image', wp_get_attachment_image(
+	$announcement_image = apply_filters( 'timeline_express_image', wp_get_attachment_image(
 		get_post_meta( $post_id, 'announcement_image_id', true ),
-		apply_filters( 'timeline_express_announcement_img_size', $image_size, $post_id ), /* Legacy filter name - maintain formatting */
+		$image_size,
 		false,
 		array(
 			'alt' => esc_attr( get_the_title() ),
 			'class' => 'announcement-banner-image',
 		)
 	), $post_id );
+
+	if ( empty( $announcement_image ) ) {
+
+		$image_attributes = array(
+			'class'  => 'announcement-banner-image external-image',
+			'alt'    => get_the_title(),
+			'src'    => get_post_meta( $post_id, 'announcement_image', true ),
+		);
+
+		$announcement_image = '<img ' . timeline_express_map_html_attributes( $image_attributes ) . '>';
+
+	}
+
+	/* Escaped on output in the timeline/single page */
+	return $announcement_image;
+
+}
+
+/**
+ * Map an array to HTML attributes
+ *
+ * @param  array $attribute_array Array of HTML attributes
+ *
+ * @return string                 String of attributes to be used in the final HTML element.
+ */
+function timeline_express_map_html_attributes( $attribute_array ) {
+
+	if ( ! $attribute_array || empty( $attribute_array ) ) {
+
+		return;
+
+	}
+
+	return join( ' ', array_map( function( $key ) use ( $attribute_array ) {
+
+		if ( is_bool( $attribute_array[ $key ] ) ) {
+
+			return $attribute_array[ $key ] ? $key:'';
+
+		}
+
+		return $key . '="' . $attribute_array[ $key ] . '"';
+
+	}, array_keys( $attribute_array ) ) );
 
 }
 
@@ -733,7 +803,7 @@ function timeline_express_custom_read_more_link() {
 
 	}
 
-	echo wp_kses_post( apply_filters( 'timeline_express_read_more_link', '<a class="' . esc_attr( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="'. apply_filters( 'timeline-express-read-more-link', esc_url( get_permalink( $post->ID ) ), $post->ID ) . '"> ' . esc_attr( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID ) );
+	echo wp_kses_post( apply_filters( 'timeline_express_read_more_link', '<a class="' . esc_attr( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="'. apply_filters( 'timeline_express_announcement_permalink', get_permalink( $post->ID ), $post->ID ) . '"> ' . esc_attr( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID ) );
 
 }
 add_action( 'timeline-express-after-excerpt', 'timeline_express_custom_read_more_link', 10 );
@@ -900,11 +970,11 @@ function timeline_express_generate_options_header( $active_tab ) {
 		?>
 
 		<h1 id="timeline-express-page-header">
-			<?php esc_html_e( 'Timeline Express Pro Settings', 'timeline-express-pro' ); ?>
+			<?php esc_html_e( 'Timeline Express Settings', 'timeline-express' ); ?>
 		</h1>
 
 		<p class="description">
-			<?php esc_html_e( 'Alter your timeline settings here. You can adjust some of the visual settings as well as the display order, below.', 'timeline-express-pro' ); ?>
+			<?php esc_html_e( 'Alter your timeline settings here. You can adjust some of the visual settings as well as the display order using the settings below.', 'timeline-express' ); ?>
 		</p>
 
 		<?php
@@ -932,7 +1002,7 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 
 		?><h2 class="nav-tab-wrapper te-options"><?php
 
-		$active_add_ons = array( 'base' => __( 'Timeline Express', 'timeline-express-pro' ) ) + $active_add_ons;
+		$active_add_ons = array( 'base' => __( 'Timeline Express', 'timeline-express' ) ) + $active_add_ons;
 
 		foreach ( $active_add_ons as $add_on_slug => $add_on_name ) {
 

@@ -34,7 +34,7 @@ do_action( 'timeline-express-single-after-image' );
 ?>
 
 <!-- Render the announcement date -->
-<strong class="timeline-express-single-page-announcement-date">
+<p class="timeline-express-single-page-announcement-date">
 
 	<?php
 		/* Action hook to display content before the single announcement date */
@@ -49,7 +49,7 @@ do_action( 'timeline-express-single-after-image' );
 		do_action( 'timeline-express-single-after-date' );
 	?>
 
-</strong>
+</p>
 
 <?php
 	/* Action hook to display content before the single announcement content */

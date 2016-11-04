@@ -2,19 +2,19 @@
 Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
-Tested up to: 4.6.1
-Stable tag: 1.3.2
+Tested up to: 4.7
+Stable tag: 1.3.3
 License: GPLv2 or later
 
 Timeline Express creates a beautiful vertical animated and responsive timeline of posts, in chronological order.
 
 == Description ==
 
-Timeline Express is the <strong>best WordPress timeline plugin</strong>, which allows you to create a beautiful animated timeline on your site. Populate your site with announcements, set the date and Timeline Express will populate with the latest and greatest announcements in chronological order.
+Timeline Express is the <strong>best WordPress timeline plugin</strong>, which allows you to create a beautiful animated vertical timeline on your site. Populate your site with announcements, set the date and Timeline Express will load the latest and greatest announcements in proper chronological order.
 
 Use the included shortcode (`[timeline-express]`) to place Timeline Express timeline anywhere on your site.
 
-If you're looking for power, flexibility and top tier support - look no fruther.
+If you're looking for power, flexibility and top tier support - look no further.
 
 > <a href="https://www.wp-timelineexpress.com/examples/basic-timeline/" title="View the demo">View the Timeline Express Demo</a>
 
@@ -50,32 +50,32 @@ Timeline Express has been used to create:
 
 - Company History Timeline
 - Personal Achievement Timeline
-- Product Announcement Timeline (Roadmap)
+- Product Announcement Timeline (Roadmap/Release Cycles)
 - Event Timeline
 - Police/Fire History
 - Twitter Feed Timeline
 - Post/Page/Custom Post Timeline
 - Customer History Timeline
 
-The small list above demonstrates the flexibility and power behind Timeline Express. Check out our <a href="www.wp-timelineexpress.com/documentation/">documentation</a> for some helpful code snippets,
+The small list above demonstrates the flexibility and power behind Timeline Express. Check out our <a href="https://www.wp-timelineexpress.com/documentation/">documentation</a> for some helpful code snippets,
 
 > Timeline Express Add-Ons
 
 > We have built out some powerful add-ons that extend Timeline Express beyond it's core capabilities. Many of the add-ons have been user requested features, which we've spun off into add-ons. If your looking for some advanced feature that you don't see in the base plugin, checkout a list of our add-ons.
 
 > - <a href="https://wordpress.org/plugins/timeline-express-html-excerpt-add-on/">Timeline Express - HTML Excerpts</a>
-> - <a href="http://wp-timelineexpress.com/add-ons/white-label-branding/">Timeline Express - White Label Branding</a>
+> - <a href="https://www.wp-timelineexpress.com/add-ons/white-label-branding/">Timeline Express - White Label Branding</a>
 > - <a href="https://wordpress.org/plugins/timeline-express-single-column-add-on/">Timeline Express - Single Column Timeline</a>
-> - <a href="http://wp-timelineexpress.com/add-ons/timeline-post-types/">Timeline Express - Timeline Post Types</a>
-> - <a href="http://wp-timelineexpress.com/add-ons/historical-dates/">Timeline Express - Historical Dates</a>
-> - <a href="http://wp-timelineexpress.com/add-ons/ajax-limits/">Timeline Express - AJAX Limits</a>
+> - <a href="https://www.wp-timelineexpress.com/add-ons/timeline-post-types/">Timeline Express - Timeline Post Types</a>
+> - <a href="https://www.wp-timelineexpress.com/add-ons/historical-dates/">Timeline Express - Historical Dates</a>
+> - <a href="https://www.wp-timelineexpress.com/add-ons/ajax-limits/">Timeline Express - AJAX Limits</a>
 > - Timeline Express - Twitter Feed <small>(coming soon)</small>
 
-> <a href="http://wp-timelineexpress.com/add-ons/">View All Add-Ons</a>
+> <a href="https://www.wp-timelineexpress.com/add-ons/">View All Add-Ons</a>
 
 **Timeline Express Translations**
 
-Timeline Express comes ready for translation! With all of the proper i18n functions in place, 100% of our plugin is ready for translation. If you're multi-lingual, and interested in translating the plugin into one of the languages not yet available, we're willing to pass a long Single Site license of Timeline Express Pro, which is good for one full year. We're huge fans of the open source community, and believe that this plugin should be available to everyone, in their native language. If this is something you would be interested in, please get in touch with us on our <a href="http://wp-timelineexpress.com/contact/">Contact Page</a>.
+Timeline Express comes ready for translation! With all of the proper i18n functions in place, 100% of our plugin is ready for translation. If you're multi-lingual, and interested in translating the plugin into one of the languages not yet available, we're willing to pass a long Single Site license of Timeline Express Pro, which is good for one full year. We're huge fans of the open source community, and believe that this plugin should be available to everyone, in their native language. If this is something you would be interested in, please get in touch with us on our <a href="https://www.wp-timelineexpress.com/contact/">Contact Page</a>.
 
 The Timeline Express polyglot project can be found <a href="https://translate.wordpress.org/projects/wp-plugins/timeline-express" target="_blank">here</a>.
 
@@ -89,7 +89,7 @@ Timeline Express has been thoroughly tested with some of the top rated, and wide
 
 Two multi-lingual plugins which we are fully, 100% compatible with are <a href="https://wpml.org/">WPML</a> and <a href="https://wordpress.org/plugins/polylang/">Polylang</a>.
 
-Timeline Express may be compatible with other multi-lingual plugins, we just haven't thoroughly tested it with otheres. If you find it's compatible with other plugins, please <a href="http://wp-timelineexpress.com/contact/">get in touch</a> and let us know and we can add it to this list.
+Timeline Express may be compatible with other multi-lingual plugins, we just haven't thoroughly tested it with otheres. If you find it's compatible with other plugins, please <a href="https://www.wp-timelineexpress.com/contact/">get in touch</a> and let us know and we can add it to this list.
 
 <br />
 <br />
@@ -117,8 +117,8 @@ Yes! Check out the demo we've set up on our site, which shows off some of the fe
 
 <a href="https://www.wp-timelineexpress.com/examples/basic-timeline/" title="View the demo">View the Timeline Express Demo</a>
 
-= Can I filter announcements by categories/ Can I create multiple timelines? =
-Not in the free version, but with our pro verson you can create numerous timelines and assign posts to a single timeline or all timelines. Also with the pro version you can easily filter announcements by categories on the front end.
+= Can I filter announcements by categories/Can I create multiple timelines? =
+Not in the free version, but with our pro version you can create numerous timelines and assign posts to a single timeline or all timelines. Also with the pro version you can easily filter announcements by categories on the front end.
 
 <a href="https://www.wp-timelineexpress.com/examples/filterable-timeline/" title="View the demo">View the Timeline Express Pro Demo</a>
 
@@ -149,13 +149,13 @@ Breakpoints are set at 822px. The timeline will shift/re-adjust automatically ba
 = How can I translate this plugin? =
 The text-domain for all gettext functions is `timeline-express`.
 
-If you enjoy this plugin and want to contribute, we are always looking for people to help translate the plugin into their native language. Anyone who translates this plugin to 100% completion, will receive a single site license for Timeline Express, valid for 1 full calendar year.
+If you enjoy this plugin and want to contribute, we are always looking for people to help translate the plugin into their native language. Anyone who translates this plugin to 100% completion, will receive a single site license for Timeline Express Pro, valid for 1 full calendar year.
 
 If you need help getting started, read through Codex article "[GlotPress]"(https://make.wordpress.org/polyglots/handbook/tools/glotpress-translate-wordpress-org/) for more information.
 
 == Other Notes ==
 
-Have an idea for a future release feature? We love hearing about new ideas! You can get in contact with us through the contact form on our website, <a href="https://www.wp-timelineexpress.com/contact/" target="_blank">WP Timeline Express</a>.
+Have an idea for a feature you want to see added to Timeline Express? We love hearing about new ideas! You can get in contact with us through the contact form on our website, <a href="https://www.wp-timelineexpress.com/contact/" target="_blank">WP Timeline Express</a>.
 
 <hr />
 
@@ -361,13 +361,23 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Screenshots ==
 
-1. Timeline Express announcement post creation screen
-2. Timeline Express announcement management on the 'Edit Announcements' page
-3. Timeline Express sample timeline with multiple icons/colors
-4. Timeline Express responsive (mobile version)
-5. Timeline Express full settings page
+1. Timeline Express - Announcement Creation Screen
+2. Timeline Express - Admin Announcement Management
+3. Timeline Express - Frontend Timeline Layout
+4. Timeline Express - Responsive Layout (mobile devices)
+5. Timeline Express - Admin Settings Page
 
 == Changelog ==
+
+= 1.3.3 - November 4th, 2016 =
+- Removed `jquery-masonry` reference from the WordPress timeline plugin.
+- Images located at external URLs can now be used, so you can reference images from other sites. (However, the image will not crop to the appropriate dimensions, and will remain at its original size).
+- Removed margin on WordPress Timeline containers. Under certain conditions, this caused overlapping on the containers. (If you need to adjust the spacing, please see <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">our help documentation</a>)
+- Refactored the `style.css` file, for readability & conciseness (removed excess declarations etc.).
+- Swapped the announcement date HTML wrapper from a `<strong>` tag to a `<p>` tag.
+- Tweaked styles in the plugin for better 'out of the box' appearance.
+- Tweaked settings page, add-ons list.
+- Updates to the readme.txt file.
 
 = 1.3.2 - October 31st, 2016 =
 - Added new hooks to the options page.
@@ -712,17 +722,19 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.3.2 - October 31st, 2016 =
+= 1.3.3 - November 3rd, 2016 =
 
-This update further extends the plugin, allowing the end user to filter text or add additional sections to Timeline Express. This release preps the plugin for the Twitter Feed add-on, and adds new features.
+**Important, Please Read:** The major change in this patch is the tweak in spacing between each announcement container. We have removed the `-3.5em 0;` margin on the `.cd-timeline-block` element. This was causing a number of issues for users, under certain conditions. If announcements were short in length, this caused the containers to overlap.
 
-**Changes:**
+If you need to adjust the spacing of the containers, or revert them back, please take a look at our <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">documentation article</a>, where we provide a simple CSS snippet to get things back to how they were.
 
-- Added new hooks to the options page.
-- Introduced `timeline_express_announcement_query` filter, to filter the final WP_Query object (including results).
-- Introduced `timeline_express_announcement_permalink` filter, to filter the read more link URL.
-- Introduced new helper functions: `get_timeline_express_add_ons()`, `add_timeline_express_add_on`, `remove_timeline_express_add_on`, `timeline_express_generate_options_header`, `timeline_express_generate_options_tabs`
-- Added new styles for the options page header/tabs.
-- Added missing local font awesome icons.
-- Define new constant to load font awesome icons ( `define( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL', true );` - added to theme functions.php will load font awesome icons locally instead of Font Awesome CDN).
-- Bumped version numbers.
+**Notable Changes:**
+
+- Removed `jquery-masonry` reference from the WordPress timeline plugin.
+- Images located at external URLs can now be used, so you can reference images from other sites. (However, the image will not crop to the appropriate dimensions, and will remain at its original size).
+- Removed margin on WordPress Timeline containers. Under certain conditions, this caused overlapping on the containers. (If you need to adjust the spacing, please see <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">our help documentation</a>)
+- Refactored the `style.css` file, for readability & conciseness (removed excess declarations etc.).
+- Swapped the announcement date HTML wrapper from a `<strong>` tag to a `<p>` tag.
+- Tweaked styles in the plugin for better 'out of the box' appearance.
+- Tweaked settings page, add-ons list.
+- Updates to the readme.txt file.

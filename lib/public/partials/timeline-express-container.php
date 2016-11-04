@@ -59,7 +59,7 @@ $timeline_express_options = timeline_express_get_options();
 			/* Generate the announcement date. */
 			if ( 1 === (int) $timeline_express_options['date-visibility'] ) {
 				?>
-				<strong class="timeline-date">
+				<p class="timeline-date">
 					<?php
 					/* Action hook to display content before the announcement date on the timeline */
 					do_action( 'timeline-express-before-date' );
@@ -69,7 +69,7 @@ $timeline_express_options = timeline_express_get_options();
 					/* Action hook to display content after the announcement date on the timeline */
 					do_action( 'timeline-express-after-date' );
 					?>
-				</strong>
+				</p>
 				<?php
 			}
 			?>

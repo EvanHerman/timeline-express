@@ -300,4 +300,9 @@ module.exports = function(grunt) {
 		'po2mo'
 	] );
 
+	// register bump-version
+	grunt.registerTask( 'bump-version', [
+		'replace',
+	] );
+
 };
