@@ -1,12 +1,20 @@
-[![Timeline Express](https://cldup.com/muOzYZg5GP.jpg)](https://www.wp-timelineexpress.com)
-
-# Timeline Express - v1.3.2
+# Timeline Express - 1.3.3
 
 [![Build Status](https://travis-ci.org/EvanHerman/timeline-express.svg?branch=master)](https://travis-ci.org/EvanHerman/timeline-express)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/quality-score.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
 [![Code Coverage](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/coverage.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
 [![Build Status](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/build.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/build-status/Refactor---v1.2)
 [![Project Stats](https://www.openhub.net/p/timeline-express/widgets/project_thin_badge.gif)](https://www.openhub.net/p/timeline-express)
+
+[![Timeline Express](https://cldup.com/muOzYZg5GP.jpg)](https://www.wp-timelineexpress.com)
+
+**Tags:**              timeline, wordpress, plugin, vertical, animated, responsive <br />
+**Requires at least:** WordPress v4.2  
+**Tested up to:**      WordPress v4.7.1  
+**Stable tag:**        v1.3.3  
+**License:**           GPLv2 or later  
+**License URI:**       [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)  
+
 [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
 [![WordPress](https://img.shields.io/wordpress/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
 [![WordPress](https://img.shields.io/wordpress/plugin/dt/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
@@ -14,19 +22,26 @@
 
 
 ## Description
-[Timeline Express](https://www.wp-timelineexpress.com) is a WordPress plugin that creates an animated, responsive vertical timeline of posts, in chronological order. Timeline Express has been maintained for 2+ years, and remains the #1 WordPress Timeline Plugin on WordPress.org. While there have been many copy cat plugins popping up recently, Timeline Express remains the most feature packed and top supported timeline plugin for WordPress sites.
+
+[Timeline Express](https://www.wp-timelineexpress.com) is a WordPress plugin that creates a vertical animated, responsive timeline of posts, in chronological order.
+
+Timeline Express has been maintained for 2+ years, and remains the #1 WordPress Timeline Plugin on WordPress.org. While there have been a few copy cat plugins popping up recently, Timeline Express remains the most feature packed, top supported and top rated plugin timeline plugin for WordPress sites.
 
 Timeline Express has grown to be more than just a simple timeline plugin, and can be extended for different use cases. For example, our Timeline Express Twitter Feeds Add-On converts a specified timeline into a twitter feed for a given user or search term.
 
 
 ## New Site & Documentation
+
 For the new version of Timeline Express, we built out an entirely new site to showcase the features & add-ons of Timeline Express.
 
 Additionally, the documentation for the new version of timeline express can be found at [WP Timeline Express](https://www.wp-timelineexpress.com/documentation).
 
 
 ## Internationalization
+
 All of the strings contained in Timeline Express are properly prepared for translation, closely following the WordPress coding standards. That means you can create a Timeline in multiple languages, to be used on a multi-language site.
+
+If you are multi-lingual, and want to help out with translations, feel free to [work with glotpress.org](https://translate.wordpress.org/projects/wp-plugins/timeline-express) to help provide additional translations!
 
 Additionally, Timeline Express comes with **full WPML Support** and is the only timeline plugin [supported by WPML](https://wpml.org/plugin/timeline-express/).
 

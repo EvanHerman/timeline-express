@@ -114,17 +114,19 @@ function cmb2_render_callback_te_bootstrap_dropdown( $field, $escaped_value ) {
  * Function cmb2_render_te_date_time_stamp_custom()
  * Render the custom time stamp field
  *
- * @param int  $field field to render.
- * @param type $meta stored value retreived from the database.
- * @param type $object_id this specific fields id.
- * @param type $object_type the type for this field.
- * @param type $field_type_object the entire field object.
+ * @param   int     $field field to render.
+ * @param   array   $meta stored value retreived from the database.
+ * @param   string  $object_id this specific fields id.
+ * @param   string  $object_type the type for this field.
+ * @param   string  $field_type_object the entire field object.
  *
- * @since v1.1.5.7
+ * @since   v1.1.5.7
+ *
+ * @change  v1.3.3  Change include_once to include to allow users to enable additional date_time_stamp_custom fields
  */
 function cmb2_render_te_date_time_stamp_custom( $field, $meta, $object_id, $object_type, $field_type_object ) {
 
-	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time-stamp-custom.php' );
+	include( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time-stamp-custom.php' );
 
 }
 
