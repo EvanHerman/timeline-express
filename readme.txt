@@ -10,11 +10,11 @@ Timeline Express creates a beautiful vertical animated and responsive timeline o
 
 == Description ==
 
-Timeline Express is the <strong>best WordPress timeline plugin</strong>, which allows you to create a beautiful animated timeline on your site. Populate your site with announcements, set the date and Timeline Express will populate with the latest and greatest announcements in chronological order.
+Timeline Express is the <strong>best WordPress timeline plugin</strong>, which allows you to create a beautiful animated vertical timeline on your site. Populate your site with announcements, set the date and Timeline Express will load the latest and greatest announcements in proper chronological order.
 
 Use the included shortcode (`[timeline-express]`) to place Timeline Express timeline anywhere on your site.
 
-If you're looking for power, flexibility and top tier support - look no fruther.
+If you're looking for power, flexibility and top tier support - look no further.
 
 > <a href="https://www.wp-timelineexpress.com/examples/basic-timeline/" title="View the demo">View the Timeline Express Demo</a>
 
@@ -50,7 +50,7 @@ Timeline Express has been used to create:
 
 - Company History Timeline
 - Personal Achievement Timeline
-- Product Announcement Timeline (Roadmap)
+- Product Announcement Timeline (Roadmap/Release Cycles)
 - Event Timeline
 - Police/Fire History
 - Twitter Feed Timeline
@@ -117,8 +117,8 @@ Yes! Check out the demo we've set up on our site, which shows off some of the fe
 
 <a href="https://www.wp-timelineexpress.com/examples/basic-timeline/" title="View the demo">View the Timeline Express Demo</a>
 
-= Can I filter announcements by categories/ Can I create multiple timelines? =
-Not in the free version, but with our pro verson you can create numerous timelines and assign posts to a single timeline or all timelines. Also with the pro version you can easily filter announcements by categories on the front end.
+= Can I filter announcements by categories/Can I create multiple timelines? =
+Not in the free version, but with our pro version you can create numerous timelines and assign posts to a single timeline or all timelines. Also with the pro version you can easily filter announcements by categories on the front end.
 
 <a href="https://www.wp-timelineexpress.com/examples/filterable-timeline/" title="View the demo">View the Timeline Express Pro Demo</a>
 
@@ -149,13 +149,13 @@ Breakpoints are set at 822px. The timeline will shift/re-adjust automatically ba
 = How can I translate this plugin? =
 The text-domain for all gettext functions is `timeline-express`.
 
-If you enjoy this plugin and want to contribute, we are always looking for people to help translate the plugin into their native language. Anyone who translates this plugin to 100% completion, will receive a single site license for Timeline Express, valid for 1 full calendar year.
+If you enjoy this plugin and want to contribute, we are always looking for people to help translate the plugin into their native language. Anyone who translates this plugin to 100% completion, will receive a single site license for Timeline Express Pro, valid for 1 full calendar year.
 
 If you need help getting started, read through Codex article "[GlotPress]"(https://make.wordpress.org/polyglots/handbook/tools/glotpress-translate-wordpress-org/) for more information.
 
 == Other Notes ==
 
-Have an idea for a future release feature? We love hearing about new ideas! You can get in contact with us through the contact form on our website, <a href="https://www.wp-timelineexpress.com/contact/" target="_blank">WP Timeline Express</a>.
+Have an idea for a feature you want to see added to Timeline Express? We love hearing about new ideas! You can get in contact with us through the contact form on our website, <a href="https://www.wp-timelineexpress.com/contact/" target="_blank">WP Timeline Express</a>.
 
 <hr />
 
@@ -361,18 +361,21 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Screenshots ==
 
-1. Timeline Express announcement post creation screen
-2. Timeline Express announcement management on the 'Edit Announcements' page
-3. Timeline Express sample timeline with multiple icons/colors
-4. Timeline Express responsive (mobile version)
-5. Timeline Express full settings page
+1. Timeline Express - Announcement Creation Screen
+2. Timeline Express - Admin Announcement Management
+3. Timeline Express - Frontend Timeline Layout
+4. Timeline Express - Responsive Layout (mobile devices)
+5. Timeline Express - Admin Settings Page
 
 == Changelog ==
 
-= 1.3.3 - November 3rd, 2016 =
-- Removed `jquery-masonry` reference from the plugin.
-- Removed margin on Timeline containers. Under certain conditions this caused overlapping on the containers. (If you need to adjust the spacing, please see <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">our help documentation</a>)
+= 1.3.3 - November 4th, 2016 =
+- Removed `jquery-masonry` reference from the WordPress timeline plugin.
+- Removed margin on WordPress Timeline containers. Under certain conditions this caused overlapping on the containers. (If you need to adjust the spacing, please see <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">our help documentation</a>)
 - Refactored the `style.css` file, for readability & conciseness (removed excess declarations etc.).
+- Images located at external URLs can now be used, so you won't need to upload all of your announcement images. (However, the image will not crop to the appropriate dimensions, and will remain at it's original size).
+- Tweaked styles in the plugin for better 'out of the box' appearance.
+- Tweaked settings page, add-ons list.
 
 = 1.3.2 - October 31st, 2016 =
 - Added new hooks to the options page.
