@@ -728,7 +728,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 If you need to adjust the spacing of the containers, or revert them back, please take a look at our <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">documentation article</a>, where we provide a simple CSS snippet to get things back to how they were.
 
-**Noteable Changes:**
+**Notable Changes:**
 
 - Removed `jquery-masonry` reference from the WordPress timeline plugin.
 - Images located at external URLs can now be used, so you can reference images from other sites. (However, the image will not crop to the appropriate dimensions, and will remain at it's original size).
