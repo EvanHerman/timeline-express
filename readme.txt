@@ -3,7 +3,7 @@ Contributors: codeparrots, eherman24
 Tags: vertical, timeline, animated, css3, animations, evan, herman, evan herman, easy, time, line, font awesome, font, awesome, announcements, notifications, simple, events, calendar, scroll, triggered, scrolling, animated, fade, in, fade in
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 
 Timeline Express creates a beautiful vertical animated and responsive timeline of posts, in chronological order.
@@ -63,13 +63,13 @@ The small list above demonstrates the flexibility and power behind Timeline Expr
 
 > We have built out some powerful add-ons that extend Timeline Express beyond it's core capabilities. Many of the add-ons have been user requested features, which we've spun off into add-ons. If your looking for some advanced feature that you don't see in the base plugin, checkout a list of our add-ons.
 
-> - <a href="https://wordpress.org/plugins/timeline-express-html-excerpt-add-on/">Timeline Express - HTML Excerpts</a>
-> - <a href="https://www.wp-timelineexpress.com/add-ons/white-label-branding/">Timeline Express - White Label Branding</a>
-> - <a href="https://wordpress.org/plugins/timeline-express-single-column-add-on/">Timeline Express - Single Column Timeline</a>
-> - <a href="https://www.wp-timelineexpress.com/add-ons/timeline-post-types/">Timeline Express - Timeline Post Types</a>
-> - <a href="https://www.wp-timelineexpress.com/add-ons/historical-dates/">Timeline Express - Historical Dates</a>
-> - <a href="https://www.wp-timelineexpress.com/add-ons/ajax-limits/">Timeline Express - AJAX Limits</a>
-> - Timeline Express - Twitter Feed <small>(coming soon)</small>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-html-excerpts-add/">Timeline Express - HTML Excerpts</a>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-white-label-addon/">Timeline Express - White Label Branding</a>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-single-column-add/">Timeline Express - Single Column Timeline</a>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-post-types-add-on/">Timeline Express - Timeline Post Types</a>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-historical-dates-add-on/">Timeline Express - Historical Dates</a>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-ajax-limits-add-on/">Timeline Express - AJAX Limits</a>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-twitter-feeds-add/">Timeline Express - Twitter Feed</a>
 
 > <a href="https://www.wp-timelineexpress.com/add-ons/">View All Add-Ons</a>
 
@@ -368,6 +368,9 @@ The above example will load font awesome version 4.4.0 instead of the current st
 5. Timeline Express - Admin Settings Page
 
 == Changelog ==
+
+= 1.3.4 - December 13th, 2016 =
+- Tweaks to the styles on the front end (Compatible with Twenty Seventeen)
 
 = 1.3.3 - November 4th, 2016 =
 - Removed `jquery-masonry` reference from the WordPress timeline plugin.

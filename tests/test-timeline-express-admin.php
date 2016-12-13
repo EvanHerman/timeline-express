@@ -45,6 +45,5 @@ class TE_Admin_Tests extends WP_UnitTestCase {
 	 */
 	public function test_timeline_express_register_settings() {
 		$this->assertNotNull( get_option( 'timeline_express_storage' ) );
-		$this->assertNotEmpty( get_option( 'timeline_express_storage' ) );
 	}
 }
