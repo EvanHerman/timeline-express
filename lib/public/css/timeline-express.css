@@ -181,9 +181,13 @@
 
 /** End Timeline Express Animations **/
 
-.cd-timeline-icon-link {
-  color: transparent !important;
-	margin: 0 !important;
+.cd-timeline-icon-link,
+.cd-timeline-icon-link:hover {
+  color: transparent;
+	margin: 0;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	text-decoration: none;
 }
 
 #cd-timeline span.fa {
