@@ -283,9 +283,10 @@ module.exports = function(grunt) {
 			deploy: {
 				options: {
 					plugin_slug: 'timeline-express',
-					build_dir: '/build/',
+					build_dir: 'build/',
 					deploy_trunk: true,
-					deploy_tag: pkg.version
+					deploy_tag: pkg.version,
+					max_buffer: 1024*1024*2
 					// assets_dir: 'wp-assets'
 				},
 			}
