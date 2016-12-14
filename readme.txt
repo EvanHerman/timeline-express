@@ -1,6 +1,6 @@
 === Timeline Express ===
 Contributors: codeparrots, eherman24
-Tags: timeline, time, line, vertical, animated, company, history, font awesome, events, calendar, scroll, dates, story, timeline express, milestone, stories
+Tags: timeline, responsive, time, line, vertical, animated, company, history, font awesome, events, calendar, scroll, dates, story, timeline express, milestone, stories
 Requires at least: 4.0
 Tested up to: 4.7
 Stable tag: 1.3.4
