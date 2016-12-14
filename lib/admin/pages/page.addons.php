@@ -87,7 +87,7 @@ shuffle( $addon_array );
 array_unshift( $addon_array, [
 	'name'          => __( 'Timeline Express Product Bundle', 'timeline-express' ),
 	'description'   => sprintf( _x( "Get any and all %s of the Timeline Express add-ons, for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'Integer value for the number of add-ons in the add-on list. (eg: 6)', 'timeline-express' ), count( $addon_array ) ),
-	'purchase_url'  => 'https://www.evan-herman.com/wordpress-plugin/timeline-express-bundle/',
+	'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-bundle/',
 	'popular'       => true,
 ] );
 
@@ -163,7 +163,7 @@ function timeline_express_build_addon_data( $data ) {
 	$data['button_text']   = ( isset( $data['free'] ) && $data['free'] ) ? __( 'Download Now', 'timeline-express' ) : __( 'Buy Now', 'timeline-express' );
 
 	// Setup thumbnail URL with fallback
-	$data['thumbnail_url'] = ( isset( $data['thumbnail_url'] ) ) ? $data['thumbnail_url'] : 'https://www.evan-herman.com/wp-content/uploads/edd/2014/12/timeline-express-150x150.png';
+	$data['thumbnail_url'] = ( isset( $data['thumbnail_url'] ) ) ? $data['thumbnail_url'] : 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/11/timeline-express-150x150.png';
 
 	// Check if this add-on is installed or not
 	$data['plugin_installed'] = ( isset( $data['class'] ) && class_exists( $data['class'] ) ) ? true : false;
