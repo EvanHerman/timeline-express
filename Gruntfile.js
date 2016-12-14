@@ -129,6 +129,25 @@ module.exports = function(grunt) {
 					},
 				],
 			},
+			deploy: {
+				files: [
+					// copy over the files in preperation for a deploy to SVN
+					{
+						expand: true,
+						src: [
+							'constants.php',
+							'i18n/**',
+							'lib/**',
+							'templates/**',
+							'readme.txt',
+							'timeline-express.php',
+							'uninstall.php',
+							'wpml-config.xml'
+						],
+						dest: 'build/'
+					},
+				],
+			}
 		},
 
 		// watch our project for changes
@@ -260,6 +279,18 @@ module.exports = function(grunt) {
 			}
 		},
 
+		wp_deploy: {
+			deploy: {
+				options: {
+					plugin_slug: 'timeline-express',
+					build_dir: '/build/',
+					deploy_trunk: true,
+					deploy_tag: pkg.version
+					// assets_dir: 'wp-assets'
+				},
+			}
+		}
+
 	});
 
 	// load tasks
@@ -273,6 +304,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-po2mo' );
 	grunt.loadNpmTasks( 'grunt-text-replace' );
+	grunt.loadNpmTasks( 'grunt-wp-deploy' );
 
 	// register task
 	grunt.registerTask( 'default', [
@@ -281,12 +313,18 @@ module.exports = function(grunt) {
 		'postcss',
 		'cssmin',
 		'usebanner',
-		'copy'
+		'copy:main'
 	] );
 
 	// register update-pot task
 	grunt.registerTask( 'update-pot', [
 		'makepot'
+	] );
+
+	// register deploy
+	grunt.registerTask( 'deploy', [
+		'copy:deploy',
+		'wp_deploy'
 	] );
 
 	// register update-mo task
