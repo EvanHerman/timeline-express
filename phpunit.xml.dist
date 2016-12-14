@@ -6,9 +6,33 @@
 	convertNoticesToExceptions="true"
 	convertWarningsToExceptions="true"
 	>
+
 	<testsuites>
 		<testsuite>
 			<directory prefix="test-" suffix=".php">./tests/</directory>
 		</testsuite>
 	</testsuites>
+
+	<filter>
+		<whitelist addUncoveredFilesFromWhitelist="true">
+
+			<directory suffix=".php">*</directory>
+
+			<exclude>
+				<directory suffix=".php">./lib/admin/CMB2/</directory>
+				<directory suffix=".php">./lib/classes/usage-tracking/</directory>
+				<directory suffix=".php">./node_modules/</directory>
+				<directory suffix=".php">./templates/</directory>
+				<directory suffix=".php">./lib/public/partials/</directory>
+			</exclude>
+
+		</whitelist>
+	</filter>
+
+	<logging>
+		<log type="testdox-html" target="./tests/log/test-results.html" />
+		<log type="coverage-clover" target="./tests/log/logs/clover.xml"/>
+    <log type="coverage-html" target="./tests/log/coverage" charset="UTF-8" yui="true" highlight="true" lowUpperBound="35" highLowerBound="80" />
+	</logging>
+
 </phpunit>

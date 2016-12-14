@@ -129,7 +129,7 @@ class Timeline_Express_Initialize {
 			<?php
 
 			// Action hook after timeline
-			do_action( 'timeline-express-after-timeline', $atts, self::timeline_express_query_args( $compare_sign, $atts['order'], $atts ), $announcement_query->found_posts );
+			do_action( 'timeline-express-after-timeline', $atts, self::timeline_express_query_args( $compare_sign, $atts['order'], $atts ), $announcement_query );
 
 		} else {
 
