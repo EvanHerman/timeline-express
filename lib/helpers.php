@@ -217,7 +217,7 @@ function timeline_express_enqueue_font_awesome() {
 
 	$local_font_awesome = ( defined( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL' ) && TIMELINE_EXPRESS_FONT_AWESOME_LOCAL ) ? true : false;
 
-	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.6.1' );
+	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.7.0' );
 
 	$http = ( is_ssl() ) ? 'https:' : 'http:';
 
@@ -252,7 +252,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 
 	$http = ( is_ssl() ) ? 'https:' : 'http:';
 
-	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.6.1' );
+	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.7.0' );
 
 	// Store our response in a transient for faster page loading.
 	if ( false === ( $response = get_transient( 'te_font_awesome_transient' ) ) ) {

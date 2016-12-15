@@ -1,5 +1,6 @@
-# Timeline Express - 1.3.4
+# Timeline Express - 1.3.5
 
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com)
 [![Build Status](https://travis-ci.org/EvanHerman/timeline-express.svg?branch=master)](https://travis-ci.org/EvanHerman/timeline-express)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/quality-score.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
 [![Code Coverage](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/coverage.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
@@ -9,11 +10,11 @@
 [![Timeline Express](https://cldup.com/muOzYZg5GP.jpg)](https://www.wp-timelineexpress.com)
 
 **Tags:**              timeline, wordpress, plugin, vertical, animated, responsive <br />
-**Requires at least:** WordPress v4.2  
-**Tested up to:**      WordPress v4.7.1  
-**Stable tag:**        v1.3.3  
-**License:**           GPLv2 or later  
-**License URI:**       [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)  
+**Requires at least:** WordPress v4.2
+**Tested up to:**      WordPress v4.7
+**Stable tag:**        1.3.5
+**License:**           GPLv2 or later
+**License URI:**       [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
 [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
 [![WordPress](https://img.shields.io/wordpress/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)
