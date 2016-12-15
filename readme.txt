@@ -371,6 +371,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 = 1.3.5 - December 15th, 2016 =
 - Adjusted the links on the add-ons page to lead to https://www.wp-timelineexpress.com/add-ons/
+- Updated default font awesome version to 4.7.0.
 - Introduced `timeline_express_announcement_date_text` filter to alter the announcement date string (see: http://wp-timelineexpress.com/documentation/alter-announcement-date-string/)
 - Built in support for TwentySeventeen theme in the page wrapper templates.
 - Adjusted translation functions.
