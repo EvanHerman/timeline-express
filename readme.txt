@@ -735,19 +735,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.3.3 - November 3rd, 2016 =
+= 1.3.5 - December 15th, 2016 =
 
-**Important, Please Read:** The major change in this patch is the tweak in spacing between each announcement container. We have removed the `-3.5em 0;` margin on the `.cd-timeline-block` element. This was causing a number of issues for users, under certain conditions. If announcements were short in length, this caused the containers to overlap.
-
-If you need to adjust the spacing of the containers, or revert them back, please take a look at our <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">documentation article</a>, where we provide a simple CSS snippet to get things back to how they were.
-
-**Notable Changes:**
-
-- Removed `jquery-masonry` reference from the WordPress timeline plugin.
-- Images located at external URLs can now be used, so you can reference images from other sites. (However, the image will not crop to the appropriate dimensions, and will remain at its original size).
-- Removed margin on WordPress Timeline containers. Under certain conditions, this caused overlapping on the containers. (If you need to adjust the spacing, please see <a href="https://www.wp-timelineexpress.com/documentation/adjust-spacing-announcement-containers/">our help documentation</a>)
-- Refactored the `style.css` file, for readability & conciseness (removed excess declarations etc.).
-- Swapped the announcement date HTML wrapper from a `<strong>` tag to a `<p>` tag.
-- Tweaked styles in the plugin for better 'out of the box' appearance.
-- Tweaked settings page, add-ons list.
-- Updates to the readme.txt file.
+- Adjusted the links on the add-ons page to lead to https://www.wp-timelineexpress.com/add-ons/
+- Updated default font awesome version to 4.7.0.
+- Introduced `timeline_express_announcement_date_text` filter to alter the announcement date string (see: http://wp-timelineexpress.com/documentation/alter-announcement-date-string/)
+- Built in support for TwentySeventeen theme in the page wrapper templates.
+- Adjusted translation functions.
