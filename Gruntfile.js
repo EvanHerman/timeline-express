@@ -264,10 +264,16 @@ module.exports = function(grunt) {
 			readme_md: {
 				src: [ 'README.md' ],
 				overwrite: true,
-				replacements: [{
-					from: /# Timeline Express - (.*)/,
-					to: "# Timeline Express - <%= pkg.version %>"
-				}]
+				replacements: [
+					{
+						from: /# Timeline Express - (.*)/,
+						to: "# Timeline Express - <%= pkg.version %>"
+					},
+					{
+						from: /\*\*Stable tag:\*\*        (.*)/,
+						to: "\**Stable tag:**        <%= pkg.version %>"
+					}
+				]
 			},
 			constants: {
 				src: [ 'constants.php' ],

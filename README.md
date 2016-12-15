@@ -1,4 +1,4 @@
-# Timeline Express - 1.3.4
+# Timeline Express - 1.3.5
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com)
 [![Build Status](https://travis-ci.org/EvanHerman/timeline-express.svg?branch=master)](https://travis-ci.org/EvanHerman/timeline-express)
@@ -11,8 +11,8 @@
 
 **Tags:**              timeline, wordpress, plugin, vertical, animated, responsive <br />
 **Requires at least:** WordPress v4.2
-**Tested up to:**      WordPress v4.7.1
-**Stable tag:**        v1.3.4
+**Tested up to:**      WordPress v4.7
+**Stable tag:**        1.3.5
 **License:**           GPLv2 or later
 **License URI:**       [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
