@@ -271,7 +271,7 @@ module.exports = function(grunt) {
 					},
 					{
 						from: /\*\*Stable tag:\*\*        (.*)/,
-						to: "\**Stable tag:**        <%= pkg.version %>"
+						to: "\**Stable tag:**        <%= pkg.version %> <br />"
 					}
 				]
 			},
