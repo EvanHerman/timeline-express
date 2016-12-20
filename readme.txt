@@ -371,6 +371,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 = 1.3.6 - December xx, 2016 =
 - Set year icons to white.
+- Alphabetically sort the returned add-ons array.
 
 = 1.3.5 - December 15th, 2016 =
 - Adjusted the links on the add-ons page to lead to https://www.wp-timelineexpress.com/add-ons/
