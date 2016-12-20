@@ -54,7 +54,7 @@ add_action( 'timeline_express_sidebar', 'timeline_express_generate_sidebar', 10 
  */
 function timeline_express_get_options() {
 
-	return get_option( TIMELINE_EXPRESS_OPTION, array(
+	return apply_filters( 'timeline_express_options', get_option( TIMELINE_EXPRESS_OPTION, array(
 		'announcement-time-frame' => '1',
 		'announcement-display-order' => 'ASC',
 		'excerpt-trim-length' => 50,
@@ -71,7 +71,7 @@ function timeline_express_get_options() {
 		'disable-animation' => 0,
 		'delete-announcement-posts-on-uninstallation' => 0,
 		'version'	=> TIMELINE_EXPRESS_VERSION_CURRENT,
-	) );
+	) ) );
 
 }
 
