@@ -859,7 +859,11 @@ function timeline_express_get_custom_meta( $post_id, $meta_name, $array = true )
  */
 function get_timeline_express_add_ons() {
 
-	return get_option( 'timeline_express_installed_add_ons', array() );
+	$addons = get_option( 'timeline_express_installed_add_ons', array() );
+
+	sort( $addons );
+
+	return $addons;
 
 }
 
