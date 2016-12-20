@@ -135,6 +135,10 @@ body.te_announcements_page_timeline-express-settings .te-sidebar.add-ons-active 
 	margin-top: 3.3em;
 }
 
+body.te_announcements_page_timeline-express-settings .wrap h2.nav-tab-wrapper {
+	border-bottom: none;
+}
+
 .settings-header {
 	display: inline-block;
 	width: 100%;
