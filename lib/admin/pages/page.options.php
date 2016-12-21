@@ -24,6 +24,10 @@ $active_tab = ( filter_has_var( INPUT_GET, 'tab' ) ) ? filter_input( INPUT_GET, 
 $add_ons = get_option( 'timeline_express_installed_add_ons', array() );
 
 $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
+
+// Setup the labels
+$timeline_express_singular_name = ucwords( apply_filters( 'timeline_express_singular_name', __( 'Announcement', 'timeline-express' ) ) );
+$timeline_express_plural_name   = ucwords( apply_filters( 'timeline_express_plural_name', __( 'Announcements', 'timeline-express' ) ) );
 ?>
 
 <!-- Page Title -->
@@ -96,17 +100,17 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 												<td>
 													<select name="timeline_express_storage[announcement-time-frame]" id="announcement-time-frame" class="regular-text" />
 														<option value="0"<?php echo ( '0' === $current_options['announcement-time-frame'] ? ' selected' : ''); ?>>
-															<?php esc_html_e( 'Future Events', 'timeline-express' ); ?>
+															<?php esc_html_e( 'Future', 'timeline-express' ); ?>
 														</option>
 														<option value="1"<?php echo ( '1' === $current_options['announcement-time-frame'] ? ' selected' : ''); ?>>
-															<?php esc_html_e( 'All Events (past+future)', 'timeline-express' ); ?>
+															<?php esc_html_e( 'All (Past & Future)', 'timeline-express' ); ?>
 														</option>
 														<option value="2"<?php echo ( '2' === $current_options['announcement-time-frame'] ? ' selected' : ''); ?>>
-															<?php esc_html_e( 'Past Events','timeline-express' ); ?>
+															<?php esc_html_e( 'Past','timeline-express' ); ?>
 														</option>
 													</select>
 													<p class="description">
-														<?php esc_html_e( 'Select the time frame to query events from.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Select the time frame to query %s from.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
 													</p>
 												</td>
 											</tr>
@@ -128,7 +132,11 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 														</option>
 													</select>
 													<p class="description">
-														<?php esc_html_e( 'Select the order you would like the announcements to display. Ascending : Chronological order by announcement date. Descending : Reverse chronological order by announcement date.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Select the order you would like the %s to display.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
+													</p>
+													<p class="description">
+														<code><?php printf( esc_html_x( 'Ascending: Chronological order by %s date.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?></code><br />
+														<code><?php printf( esc_html_x( 'Descending: Reverse chronological order by %s date.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?></code>
 													</p>
 												</td>
 											</tr>
@@ -137,7 +145,7 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[excerpt-trim-length]">
-														<?php esc_html_e( 'Announcement Excerpt Length', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( '%s Excerpt Length', 'Timeline Express singular name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ); ?>
 													</label>
 												</th>
 												<td>
@@ -149,7 +157,10 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 														</span>
 													</label>
 													<p class="description">
-														<?php esc_html_e( 'Set the length of the excerpt for each announcement. ( min=25; 50 = 50 characters )', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Set the length of the excerpt for each %s.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
+													</p>
+													<p class="description">
+														 <code><?php esc_html_e( 'Minimum Length: 25; 50 = 50 character excerpt length.', 'timeline-express' ); ?></code>
 													</p>
 												</td>
 											</tr>
@@ -193,7 +204,7 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 														</option>
 													</select>
 													<p class="description">
-														<?php esc_html_e( 'Toggle the visibility of the read more button. Hide to prevent users from viewing the full announcement.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Toggle the visibility of the read more button. Hide to prevent users from viewing the full %s.',  'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
 													</p>
 												</td>
 											</tr>
@@ -217,7 +228,7 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 														);
 													?>
 													<p class="description">
-														<?php esc_html_e( 'Select the font-awesome icon that you would like to use as a default icon for new announcements.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Select the font-awesome icon that you would like to use as a default icon for new %s.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
 														<a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank" style="font-size:12px;font-style:em;">
 															<?php esc_html_e( 'cheat sheet', 'timeline-express' ); ?>
 														</a>
@@ -229,13 +240,16 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[default-announcement-color]">
-														<?php esc_html_e( 'Default Announcement Color', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Default %s Color', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), $timeline_express_singular_name ); ?>
 													</label>
 												</th>
 												<td>
 													<input name="timeline_express_storage[default-announcement-color]" type="text" id="default-announcement-color" value="<?php echo esc_attr( $current_options['default-announcement-color'] ); ?>" class="regular-text color-picker-field" />
 													<p class="description">
-														<?php esc_html_e( 'Select the default color for all new events. Note : this setting can be overwritten', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Set the default color for all new %s.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
+													</p>
+													<p clss="description">
+														<code><?php printf( esc_html_x( 'Note: You can override this setting within each %s.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?></code>
 													</p>
 												</td>
 											</tr>
@@ -244,13 +258,13 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[announcement-bg-color]">
-														<?php esc_html_e( 'Announcement Container Background', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( '%s Container Background Color', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), $timeline_express_singular_name ); ?>
 													</label>
 												</th>
 												<td>
 													<input type="text" name="timeline_express_storage[announcement-bg-color]" class="color-picker-field" value="<?php echo esc_attr( $current_options['announcement-bg-color'] ); ?>" />
 													<p class="description">
-														<?php esc_html_e( 'Select the background color of the announcement container.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Set the background color of the %s container on the timeline.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
 													</p>
 												</td>
 											</tr>
@@ -259,13 +273,13 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[announcement-box-shadow-color]">
-														<?php esc_html_e( 'Announcement Shadow Color', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( '%s Shadow Color', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), $timeline_express_singular_name ); ?>
 													</label>
 												</th>
 												<td>
 													<input type="text" name="timeline_express_storage[announcement-box-shadow-color]" class="color-picker-field" value="<?php echo esc_attr( $current_options['announcement-box-shadow-color'] ); ?>" />
 													<p class="description">
-														<?php esc_html_e( 'Select the shadow color for the announcement container.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Set the shadow color for the %s container on the timeline.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
 													</p>
 												</td>
 											</tr>
@@ -274,7 +288,7 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[announcement-background-line-color]">
-														<?php esc_html_e( 'Background Line Color', 'timeline-express' ); ?>
+														<?php esc_html_e( 'Timeline Background Line Color', 'timeline-express' ); ?>
 													</label>
 												</th>
 												<td>
@@ -289,7 +303,7 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[no-events-message]">
-														<?php esc_html_e( 'No Announcements Message', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'No %s Message', 'Timeline Express plural name (eg: announcements)', 'timeline-express' ), $timeline_express_plural_name ); ?>
 													</label>
 												</th>
 												<td>
@@ -299,7 +313,7 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 														$additional_editor_parameters
 													); ?>
 													<p class="description">
-														<?php esc_html_e( 'This is the message that will display when no announcements are found.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Set the message that will display when no %s are found.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
 													</p>
 												</td>
 											</tr>
@@ -308,7 +322,7 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[delete-announcement-posts-on-uninstallation]">
-														<?php esc_html_e( 'Exclude Announcements from Site Searches', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Exclude %s from Site Searches', 'Timeline Express plural name (eg: announcements)', 'timeline-express' ), $timeline_express_plural_name ); ?>
 													</label>
 												</th>
 												<td>
@@ -321,7 +335,7 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 														</option>
 													</select>
 													<p class="description">
-														<?php esc_html_e( 'Set to true to exclude announcements from all site searches. False will include announcements in site searches.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Set to true to exclude %1$s from all site searches. False will include %1$s in site searches.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
 													</p>
 												</td>
 											</tr>
@@ -345,14 +359,14 @@ $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[delete-announcement-posts-on-uninstallation]">
-														<?php esc_html_e( 'Delete Announcements On Uninstall?', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Delete %s On Uninstall?', 'Timeline Express plural name (eg: announcements)', 'timeline-express' ), $timeline_express_plural_name ); ?>
 													</label>
 												</th>
 												<td>
 													<input type="checkbox" name="timeline_express_storage[delete-announcement-posts-on-uninstallation]" onclick="toggleDeleteCheckClass();" <?php checked( $current_options['delete-announcement-posts-on-uninstallation'] , '1' ); ?> value="1" />
 													<span class="<?php if ( '0' === $current_options['delete-announcement-posts-on-uninstallation'] ) { ?> delete-no <?php } else { ?> delete-yes <?php } ?>" onclick="toggle_delete_checkbox();"></span>
 													<p class="description">
-														<?php esc_html_e( 'Check this option to delete all announcement posts from the data base on plugin uninstallation. this can not be undone, once they are deleted they are gone forever. If you want to back them up, it is recommended you export your announcements before uninstalling.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Check this option to delete all %1$s from the database on plugin uninstallation. This can not be undone, once they are deleted they are gone forever. If you want to back them up, it is recommended you %2$s before uninstalling.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ), '<a href="' . admin_url( 'export.php' ) . '">' . sprintf( esc_html__( 'export your %s', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ) . '</a>' ); ?>
 													</p>
 												</td>
 											</tr>

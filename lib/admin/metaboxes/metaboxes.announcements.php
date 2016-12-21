@@ -14,12 +14,15 @@ $prefix = 'announcement_';
 
 $timeline_express_options = timeline_express_get_options();
 
+// Setup the singular Name
+$timeline_express_singular_name = apply_filters( 'timeline_express_singular_name', __( 'Announcement', 'timeline-express' ) );
+
 /**
  * Initiate the metabox
  */
 $announcement_metabox = new_cmb2_box( array(
 	'id'            => 'announcement_metabox',
-	'title'         => __( 'Announcement Info.', 'timeline-express' ),
+	'title'         => sprintf( _x( '%s Info.', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
 	'object_types'  => array( 'te_announcements' ),
 	'context'       => 'advanced',
 	'priority'      => 'high',
@@ -28,8 +31,8 @@ $announcement_metabox = new_cmb2_box( array(
 
 // Announcement Color
 $announcement_metabox->add_field( array(
-	'name'       => __( 'Announcement Color', 'timeline-express' ),
-	'desc'       => __( 'Select the color for this announcement.', 'timeline-express' ),
+	'name'       => sprintf( _x( '%s Color', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	'desc'       => sprintf( _x( 'Select the color for this %s.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'         => $prefix . 'color',
 	'type'       => 'colorpicker',
 	'default'  => $timeline_express_options['default-announcement-color'],
@@ -37,8 +40,8 @@ $announcement_metabox->add_field( array(
 
 // Announcement Icon
 $announcement_metabox->add_field( array(
-	'name' => __( 'Announcement Icon', 'timeline-express' ),
-	'desc' => __( 'Select an icon from the drop down above. This is used for the icon associated with the announcement.', 'timeline-express' ),
+	'name' => sprintf( _x( '%s Icon', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	'desc' => sprintf( _x( 'Select an icon from the drop down above. This is used for the icon associated with the %s.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'icon',
 	'type' => 'te_bootstrap_dropdown',
 	'default' => 'fa-' . $timeline_express_options['default-announcement-icon'],
@@ -46,8 +49,8 @@ $announcement_metabox->add_field( array(
 
 // Announcement Date
 $announcement_metabox->add_field( array(
-	'name' => __( 'Announcement Date', 'timeline-express' ),
-	'desc' => __( 'Enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
+	'name' => sprintf( _x( '%s Date', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	'desc' => sprintf( _x( 'Enter the date of the %s. the announcements will appear in chronological order according to this date.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'date',
 	'type' => 'te_date_time_stamp_custom',
 	'default' => strtotime( date( 'm/d/Y' ) ),
@@ -55,8 +58,8 @@ $announcement_metabox->add_field( array(
 
 // Announcement Image
 $announcement_metabox->add_field( array(
-	'name' => __( 'Announcement Image', 'timeline-express' ),
-	'desc' => __( 'Select a banner image for this announcement (optional). (recommended 650px wide or larger)', 'timeline-express' ),
+	'name' => sprintf( _x( '%s Image', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	'desc' => sprintf( _x( 'Select a banner image for this %s (optional). (recommended 650px wide or larger)', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'image',
 	'type' => 'file',
 ) );

@@ -55,22 +55,22 @@ add_action( 'timeline_express_sidebar', 'timeline_express_generate_sidebar', 10 
 function timeline_express_get_options() {
 
 	return apply_filters( 'timeline_express_options', get_option( TIMELINE_EXPRESS_OPTION, array(
-		'announcement-time-frame' => '1',
-		'announcement-display-order' => 'ASC',
-		'excerpt-trim-length' => 50,
-		'excerpt-random-length' => 0,
-		'date-visibility'	=> '1',
-		'read-more-visibility'	=> '1',
-		'default-announcement-icon' => 'exclamation-triangle',
-		'default-announcement-color' => '#75CE66',
-		'announcement-box-shadow-color' => '#B9C5CD',
-		'announcement-background-line-color' => '#D7E4ED',
-		'announcement-bg-color' => '#EFEFEF',
-		'no-events-message' => __( 'No announcements found', 'timeline-express' ),
-		'announcement-appear-in-searches' => 'true',
-		'disable-animation' => 0,
+		'announcement-time-frame'                     => '1',
+		'announcement-display-order'                  => 'ASC',
+		'excerpt-trim-length'                         => 50,
+		'excerpt-random-length'                       => 0,
+		'date-visibility'                             => '1',
+		'read-more-visibility'                        => '1',
+		'default-announcement-icon'                   => 'exclamation-triangle',
+		'default-announcement-color'                  => '#75CE66',
+		'announcement-box-shadow-color'               => '#B9C5CD',
+		'announcement-background-line-color'          => '#D7E4ED',
+		'announcement-bg-color'                       => '#EFEFEF',
+		'no-events-message'                           => __( 'No announcements found', 'timeline-express' ),
+		'announcement-appear-in-searches'             => 'true',
+		'disable-animation'                           => 0,
 		'delete-announcement-posts-on-uninstallation' => 0,
-		'version'	=> TIMELINE_EXPRESS_VERSION_CURRENT,
+		'version'                                     => TIMELINE_EXPRESS_VERSION_CURRENT,
 	) ) );
 
 }
