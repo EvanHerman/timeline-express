@@ -344,7 +344,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[disable-animation]">
-														<?php esc_html_e( 'Disable Timeline Animations?', 'timeline-express' ); ?>
+														<?php esc_html_e( 'Disable Timeline Animations', 'timeline-express' ); ?>
 													</label>
 												</th>
 												<td>
@@ -359,7 +359,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[delete-announcement-posts-on-uninstallation]">
-														<?php printf( esc_html_x( 'Delete %s On Uninstall?', 'Timeline Express plural name (eg: announcements)', 'timeline-express' ), $timeline_express_plural_name ); ?>
+														<?php printf( esc_html_x( 'Delete %s On Uninstall', 'Timeline Express plural name (eg: announcements)', 'timeline-express' ), $timeline_express_plural_name ); ?>
 													</label>
 												</th>
 												<td>
