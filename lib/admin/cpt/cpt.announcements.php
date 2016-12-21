@@ -87,6 +87,8 @@ $timeline_express_args = array(
 	'publicly_queryable'  => true,
 	'exclude_from_search' => ( isset( $timeline_express_options['announcement-appear-in-searches'] ) && 'true' === $timeline_express_options['announcement-appear-in-searches'] ) ? true : false,
 	'rewrite'             => $timeline_express_rewrite,
+	'rest_base'           => $announcement_slug,
+	'show_in_rest'        => 'WP_REST_Posts_Controller',
 	'capability_type'     => 'page',
 );
 
