@@ -26,8 +26,8 @@ $add_ons = get_option( 'timeline_express_installed_add_ons', array() );
 $active_add_ons_class = ( ! empty( $add_ons ) ) ? ' add-ons-active' : '';
 
 // Setup the labels
-$timeline_express_singular_name = ucwords( apply_filters( 'timeline_express_singular_name', __( 'Announcement', 'timeline-express' ) ) );
-$timeline_express_plural_name   = ucwords( apply_filters( 'timeline_express_plural_name', __( 'Announcements', 'timeline-express' ) ) );
+$timeline_express_singular_name = apply_filters( 'timeline_express_singular_name', __( 'Announcement', 'timeline-express' ) );
+$timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name', __( 'Announcements', 'timeline-express' ) );
 ?>
 
 <!-- Page Title -->
@@ -182,7 +182,7 @@ $timeline_express_plural_name   = ucwords( apply_filters( 'timeline_express_plur
 														</option>
 													</select>
 													<p class="description">
-														<?php esc_html_e( 'Toggle the visibility of the date next to the icon.', 'timeline-express' ); ?>
+														<?php printf( esc_html_x( 'Toggle the visibility of the date for the %s.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
 													</p>
 												</td>
 											</tr>
@@ -335,7 +335,7 @@ $timeline_express_plural_name   = ucwords( apply_filters( 'timeline_express_plur
 														</option>
 													</select>
 													<p class="description">
-														<?php printf( esc_html_x( 'Set to true to exclude %1$s from all site searches. False will include %1$s in site searches.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
+														<?php printf( esc_html_x( 'Set to true to exclude %1$s from site searches. False will include %1$s in site searches.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
 													</p>
 												</td>
 											</tr>
