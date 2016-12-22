@@ -1026,3 +1026,98 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 	}
 
 }
+
+/**
+ * Helper functions for Timeline Express Toolbox
+ *
+ * @since 1.0.0
+ *
+ * @author Code Parrots <support@codeparrots.com>
+ */
+
+/*
+ * Matches each symbol of PHP date format standard
+ * with jQuery equivalent codeword
+ * @author Tristan Jahier
+ */
+function te_dateformat_php_to_jqueryui( $php_format ) {
+
+	$symbols_matching = array(
+		// Day
+		'd' => 'dd',
+		'D' => 'D',
+		'j' => 'd',
+		'l' => 'DD',
+		'N' => '',
+		'S' => '',
+		'w' => '',
+		'z' => 'o',
+		// Week
+		'W' => '',
+		// Month
+		'F' => 'MM',
+		'm' => 'mm',
+		'M' => 'M',
+		'n' => 'm',
+		't' => '',
+		// Year
+		'L' => '',
+		'o' => '',
+		'Y' => 'yy',
+		'y' => 'y',
+		// Time
+		'a' => '',
+		'A' => '',
+		'B' => '',
+		'g' => '',
+		'G' => '',
+		'h' => '',
+		'H' => '',
+		'i' => '',
+		's' => '',
+		'u' => '',
+	);
+
+	$jqueryui_format = '';
+
+	$escaping = false;
+
+	for ( $i = 0; $i < strlen( $php_format ); $i++ ) {
+
+		$char = $php_format[ $i ];
+
+		if ( '\\' === $char ) {
+
+			$i++;
+
+			$jqueryui_format .= ( $escaping ) ? $php_format[ $i ] : '\'' . $php_format[ $i ];
+
+			$escaping = true;
+
+		} else {
+
+			if ( $escaping ) {
+
+				$jqueryui_format .= "'";
+
+				$escaping = false;
+
+			}
+
+			if ( isset( $symbols_matching[ $char ] ) ) {
+
+				$jqueryui_format .= $symbols_matching[ $char ];
+
+			} else {
+
+				$jqueryui_format .= $char;
+
+			}
+
+		}
+
+	}
+
+	return $jqueryui_format;
+
+}

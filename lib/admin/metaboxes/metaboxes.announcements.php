@@ -53,7 +53,7 @@ $announcement_metabox->add_field( array(
 	'desc' => sprintf( _x( 'Enter the date of the %s. the announcements will appear in chronological order according to this date.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'date',
 	'type' => 'te_date_time_stamp_custom',
-	'default' => strtotime( date( 'm/d/Y' ) ),
+	'default' => strtotime( 'now' ),
 ) );
 
 // Announcement Image
@@ -180,33 +180,9 @@ add_filter( 'cmb2_localized_data', 'timeline_express_internationalize_datepicker
 
 function timeline_express_internationalize_datepicker( $l10n ) {
 
-	switch ( get_option( 'date_format' ) ) {
+	$date_format = apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) );
 
-		// EG: 04/15/2016 - April 15th, 2016
-		default:
-		case 'm/d/Y':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'mm/dd/yy';
-			break;
-
-		// EG: 2016-04-15 - April 15th, 2016
-		case 'd/m/Y':
-		case 'd/M/Y':
-		case 'd-m-Y':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'dd/mm/yy';
-			break;
-
-		case 'Y-m-d':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'yy-mm-dd';
-			break;
-
-		case 'F j, Y':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'MM d, yy';
-			break;
-
-		case 'j F Y':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'd M yy';
-			break;
-	}
+	$l10n['defaults']['date_picker']['dateFormat'] = te_dateformat_php_to_jqueryui( $date_format );
 
 	return apply_filters( 'timeline_express_date_picker_format', $l10n );
 
