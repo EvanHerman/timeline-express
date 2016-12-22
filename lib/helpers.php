@@ -1027,14 +1027,6 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 
 }
 
-/**
- * Helper functions for Timeline Express Toolbox
- *
- * @since 1.0.0
- *
- * @author Code Parrots <support@codeparrots.com>
- */
-
 /*
  * Matches each symbol of PHP date format standard
  * with jQuery equivalent codeword
