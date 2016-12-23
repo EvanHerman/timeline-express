@@ -377,6 +377,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 - Shifted around the `timeline_express_custom_date_format` filter so it is referenced in more locations.
 - Introduced a new helper to format the jQuery UI picker for international users.
 - Update twitter feed add-on image path.
+- Update add-ons page layout and styles.
 
 = 1.3.5 - December 15th, 2016 =
 - Adjusted the links on the add-ons page to lead to https://www.wp-timelineexpress.com/add-ons/
