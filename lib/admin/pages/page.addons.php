@@ -77,7 +77,7 @@ $addon_array = array(
 		'name'          => __( 'Twitter Feed Add-On', 'timeline-express' ),
 		'class'         => 'Timeline_Express_Twitter_Feed',
 		'description'   => __( 'Display twitter feeds in a Timeline for users, search terms and by gelocation using our Twitter Feed Add-On. Twitter feeds can be set to live update, so every 30 seconds the feed is updated with new, fresh, tweets.', 'timeline-express' ),
-		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/05/twitter-feed-add-on-banner-150x150.jpg',
+		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/10/timeline-express-twitter-feeds-addon-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-twitter-feeds-add/',
 	),
 );

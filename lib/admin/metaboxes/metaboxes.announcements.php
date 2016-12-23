@@ -211,7 +211,6 @@ function te_get_advertisment( $part = '' ) {
 				$advertisment = te_get_advertisment();
 
 			}
-
 		}
 
 		set_transient( 'timeline_express_ad_transient', $advertisment, 1 * HOUR_IN_SECONDS );
@@ -243,14 +242,13 @@ function te_get_random_ad() {
 	// eg: start date hasn't occured OR end date has passed
 	foreach ( $advertisements as $advertisment => $ad_data ) :
 
-		if ( isset( $ad_data['start_date'] ) && isset( $ad_data['end_date' ] ) ) {
+		if ( isset( $ad_data['start_date'] ) && isset( $ad_data['end_date'] ) ) {
 
 			if ( $ad_data['start_date'] > strtotime( 'now' ) || $ad_data['end_date'] < strtotime( 'now' ) ) {
 
 				unset( $advertisements[ $advertisment ] );
 
 			}
-
 		}
 
 	endforeach;
