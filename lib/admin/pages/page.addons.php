@@ -80,6 +80,14 @@ $addon_array = array(
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/10/timeline-express-twitter-feeds-addon-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-twitter-feeds-add/',
 	),
+	array(
+		'name'          => __( 'No Icons Add-On', 'timeline-express' ),
+		'class'         => 'Timeline_Express_No_Icons',
+		'description'   => __( 'Remove the icon selection on the announcement creation/edit screen, and remove the icons on the timeline on the front end of the site.', 'timeline-express' ),
+		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/10/timeline-express-no-icons-addon-banner-150x150.jpg',
+		'purchase_url'  => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=timeline-express-no-icons-add-on' ), 'install-plugin_timeline-express-no-icons-add-on' ),
+		'free'          => true,
+	),
 );
 
 shuffle( $addon_array );
