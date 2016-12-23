@@ -104,7 +104,15 @@ array_unshift( $addon_array, [
 
 	<?php
 
+	$x = 1;
+
 	foreach ( $addon_array as $addon_data ) :
+
+		if ( $x === 1 ) {
+
+			?><div class="section group"><?php
+
+		}
 
 		$addon_data_array = timeline_express_build_addon_data( $addon_data );
 
@@ -113,7 +121,7 @@ array_unshift( $addon_array, [
 		?>
 
 			<!-- Individual add-on containers -->
-			<div class="timeline-express-addon-item timeline-express-addon-status-upgrade<?php if ( isset( $addon_data['popular'] ) && $addon_data['popular'] ) { echo ' popular-addon'; } ?><?php if ( $addon_data_array['plugin_installed'] ) { echo ' timeline-express-addon-installed-container'; } ?>">
+			<div class="timeline-express-addon-item col span_1_of_3 timeline-express-addon-status-upgrade<?php if ( isset( $addon_data['popular'] ) && $addon_data['popular'] ) { echo ' popular-addon'; } ?><?php if ( $addon_data_array['plugin_installed'] ) { echo ' timeline-express-addon-installed-container'; } ?>">
 
 				<div class="timeline-express-addon-image">
 					<img src="<?php echo esc_url( $addon_data_array['thumbnail_url'] ); ?>" />
@@ -140,6 +148,18 @@ array_unshift( $addon_array, [
 			</div>
 
 		<?php
+
+		if ( $x === 3 ) {
+
+			?></div><?php
+
+			$x = 1;
+
+			continue;
+
+		}
+
+		$x++;
 
 	endforeach;
 
