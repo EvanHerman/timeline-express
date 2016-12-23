@@ -96,6 +96,7 @@ array_unshift( $addon_array, [
 
 	<h1 class="page-title">
 		<?php esc_html_e( 'Timeline Express Add-Ons', 'timeline-express' ); ?>
+		<a href="https://www.wp-timelineexpress.com/add-ons/" target="_blank" class="view-all-addons button-primary">View All Add-Ons</a>
 	</h1>
 
 	<p class="intro" style="max-width:800px;">
