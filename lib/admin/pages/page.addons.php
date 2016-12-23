@@ -37,7 +37,7 @@ $addon_array = array(
 	array(
 		'name'          => __( 'White Label Branding', 'timeline-express' ),
 		'class'         => 'Timeline_Express_White_label',
-		'description'   => __( 'Remove any and all references to our branding, Code Parrots. This addon removes links, metaboxes, menu items and any association to Code Parrots so your clients won’t get confused with the mixed branding across the dashboard.', 'timeline-express' ),
+		'description'   => __( 'Remove any and all references to our branding, Code Parrots. This add-on removes links, metaboxes, menu items and any association to Code Parrots so your clients won’t get confused with the mixed branding across the dashboard.', 'timeline-express' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/06/timeline-express-white-label-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-white-label-addon/',
 	),
@@ -66,7 +66,7 @@ $addon_array = array(
 		'popular'       => true,
 	),
 	array(
-		'name'          => __( 'AJAX Limits Add-On', 'timeline-express' ),
+		'name'          => __( 'AJAX Limits', 'timeline-express' ),
 		'class'         => 'Timeline_Express_AJAX_Limits',
 		'description'   => __( 'Limit your Timeline to a set number of announcements, and display a ‘Load More’ button beneath, allowing users to load more announcements onto the timeline. This prevents your pages from becoming unruly in length if you display many announcements.', 'timeline-express' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/05/ajax-limits-add-on-banner-1-150x150.jpg',
@@ -74,14 +74,14 @@ $addon_array = array(
 		'popular'       => true,
 	),
 	array(
-		'name'          => __( 'Twitter Feed Add-On', 'timeline-express' ),
+		'name'          => __( 'Twitter Feed', 'timeline-express' ),
 		'class'         => 'Timeline_Express_Twitter_Feed',
 		'description'   => __( 'Display twitter feeds in a Timeline for users, search terms and by gelocation using our Twitter Feed Add-On. Twitter feeds can be set to live update, so every 30 seconds the feed is updated with new, fresh, tweets.', 'timeline-express' ),
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/10/timeline-express-twitter-feeds-addon-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-twitter-feeds-add/',
 	),
 	array(
-		'name'          => __( 'No Icons Add-On', 'timeline-express' ),
+		'name'          => __( 'No Icons', 'timeline-express' ),
 		'class'         => 'Timeline_Express_No_Icons',
 		'description'   => __( 'Remove the icon selection on the announcement creation/edit screen, and remove the icons on the timeline on the front end of the site.', 'timeline-express' ),
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/10/timeline-express-no-icons-addon-banner-150x150.jpg',
