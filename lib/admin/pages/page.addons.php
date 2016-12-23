@@ -109,7 +109,7 @@ array_unshift( $addon_array, [
 
 	foreach ( $addon_array as $addon_data ) :
 
-		if ( $x === 1 ) {
+		if ( 1 === $x ) {
 
 			?><div class="section group"><?php
 
@@ -150,7 +150,7 @@ array_unshift( $addon_array, [
 
 		<?php
 
-		if ( $x === 3 ) {
+		if ( 3 === $x ) {
 
 			?></div><?php
 
