@@ -99,13 +99,13 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 												</th>
 												<td>
 													<select name="timeline_express_storage[announcement-time-frame]" id="announcement-time-frame" class="regular-text" />
-														<option value="0"<?php echo ( '0' === $current_options['announcement-time-frame'] ? ' selected' : ''); ?>>
+														<option value="0" <?php selected( $current_options['announcement-time-frame'], '0' ); ?>>
 															<?php esc_html_e( 'Future', 'timeline-express' ); ?>
 														</option>
-														<option value="1"<?php echo ( '1' === $current_options['announcement-time-frame'] ? ' selected' : ''); ?>>
+														<option value="1" <?php selected( $current_options['announcement-time-frame'], '1' ); ?>>
 															<?php esc_html_e( 'All (Past & Future)', 'timeline-express' ); ?>
 														</option>
-														<option value="2"<?php echo ( '2' === $current_options['announcement-time-frame'] ? ' selected' : ''); ?>>
+														<option value="2" <?php selected( $current_options['announcement-time-frame'], '2' ); ?>>
 															<?php esc_html_e( 'Past','timeline-express' ); ?>
 														</option>
 													</select>
