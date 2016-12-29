@@ -132,12 +132,14 @@
 	padding: 8px;
 }
 
+	.timeline-express-addon-installed-container,
 	.timeline-express-addon-action .button-addon-installed,
 	.timeline-express-addon-action .button-addon-installed:hover {
-		opacity: .8;
-		background: #FFB780;
-		border: 1px solid #9B6943;
-		color: #333;
+		opacity: .5;
+	}
+
+	.timeline-express-addon-action .button-addon-installed[href="#"]:hover {
+		cursor: no-drop;
 	}
 
 /*  Grid SETUP  */

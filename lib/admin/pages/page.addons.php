@@ -125,7 +125,7 @@ array_unshift( $addon_array, [
 
 		$addon_data_array = timeline_express_build_addon_data( $addon_data );
 
-		$addon_purchase_url = ( $addon_data_array['plugin_installed'] ) ? '#/' : esc_url( $addon_data_array['purchase_url'] );
+		$addon_purchase_url = ( $addon_data_array['plugin_installed'] ) ? '#' : esc_url( $addon_data_array['purchase_url'] );
 
 		?>
 
@@ -199,7 +199,7 @@ function timeline_express_build_addon_data( $data ) {
 
 	if ( $data['plugin_installed'] ) {
 
-		$data['button_text'] = __( 'Add-On Installed', 'timeline-express' );
+		$data['button_text'] = __( 'Installed', 'timeline-express' );
 
 	}
 
