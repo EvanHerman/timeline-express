@@ -112,6 +112,10 @@
 	background-color: #006d98;
 }
 
+.timeline-express-addon-installed-container a:hover {
+	background-color: #0085ba;
+}
+
 .timeline-express-addon-status-active .timeline-express-addon-action {
 	background-color: #edfaff;
 }
