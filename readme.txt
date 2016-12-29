@@ -64,6 +64,7 @@ The small list above demonstrates the flexibility and power behind Timeline Expr
 > We have built out some powerful add-ons that extend Timeline Express beyond it's core capabilities. Many of the add-ons have been user requested features, which we've spun off into add-ons. If your looking for some advanced feature that you don't see in the base plugin, checkout a list of our add-ons.
 
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-html-excerpts-add/">Timeline Express - HTML Excerpts</a>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-no-icons-add-on/">Timeline Express - No Icons</a>
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-white-label-addon/">Timeline Express - White Label Branding</a>
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-single-column-add/">Timeline Express - Single Column Timeline</a>
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-post-types-add-on/">Timeline Express - Timeline Post Types</a>

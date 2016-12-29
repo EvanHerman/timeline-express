@@ -84,7 +84,7 @@ $addon_array = array(
 		'name'          => __( 'No Icons', 'timeline-express' ),
 		'class'         => 'Timeline_Express_No_Icons',
 		'description'   => __( 'Remove the icon selection on the announcement creation/edit screen, and remove the icons on the timeline on the front end of the site.', 'timeline-express' ),
-		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/10/timeline-express-no-icons-addon-banner-150x150.jpg',
+		'thumbnail_url' => 'http://wp-timelineexpress.com/wp-content/uploads/edd/2016/12/timeline-express-no-icons-banner-new-150x150.jpg',
 		'purchase_url'  => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=timeline-express-no-icons-add-on' ), 'install-plugin_timeline-express-no-icons-add-on' ),
 		'free'          => true,
 	),
