@@ -479,7 +479,7 @@ function does_timeline_express_init_class_exist() {
  *
  * @return string           The HTML markup to return
  */
-function timeline_express_get_announcement_icon_markup( $post_id ) {
+function timeline_express_get_announcement_icon_markup( $post_id , $add_link = true ) {
 
 	$timeline_express_options = timeline_express_get_options();
 
@@ -499,11 +499,11 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 
 		$icon_container_class = '';
 
-		?>
+		if ($add_link) { ?>
 
 		<a class="cd-timeline-icon-link" href="<?php echo esc_attr( apply_filters( 'timeline_express_announcement_permalink', get_the_permalink( $post_id ), $post_id ) ); ?>">
 
-	<?php } ?>
+	<?php } } ?>
 
 		<div class="cd-timeline-img cd-picture<?php echo esc_attr( $icon_container_class ); ?>" style="background:<?php echo esc_attr( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
 
