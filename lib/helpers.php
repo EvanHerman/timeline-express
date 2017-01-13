@@ -66,7 +66,7 @@ function timeline_express_get_options() {
 		'announcement-box-shadow-color'               => '#B9C5CD',
 		'announcement-background-line-color'          => '#D7E4ED',
 		'announcement-bg-color'                       => '#EFEFEF',
-		'no-events-message'                           => __( 'No announcements found', 'timeline-express' ),
+		'no-events-message'                           => esc_html__( 'No announcements found', 'timeline-express' ),
 		'announcement-appear-in-searches'             => 'true',
 		'disable-animation'                           => 0,
 		'delete-announcement-posts-on-uninstallation' => 0,
@@ -333,7 +333,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 		/* sort the bootstrap icons alphabetically */
 		foreach ( $icons as $icon_name => $icon_content ) { ?>
 
-			<option class="fa" data-icon="fa-<?php echo esc_attr( $icon_name ); ?>" <?php selected( 'fa-'.$icon_name , $meta ); ?>><?php echo esc_html( $icon_name ); ?></option>
+			<option class="fa" data-icon="fa-<?php echo esc_attr( $icon_name ); ?>" <?php selected( 'fa-' . $icon_name , $meta ); ?>><?php echo esc_html( $icon_name ); ?></option>
 
 		<?php } ?>
 
@@ -625,7 +625,7 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 		$image_size,
 		false,
 		array(
-			'alt' => esc_attr( get_the_title() ),
+			'alt'   => esc_attr( get_the_title() ),
 			'class' => 'announcement-banner-image',
 		)
 	), $post_id );
@@ -633,9 +633,9 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 	if ( empty( $announcement_image ) ) {
 
 		$image_attributes = array(
-			'class'  => 'announcement-banner-image external-image',
-			'alt'    => get_the_title(),
-			'src'    => get_post_meta( $post_id, 'announcement_image', true ),
+			'class' => 'announcement-banner-image external-image',
+			'alt'   => get_the_title(),
+			'src'   => get_post_meta( $post_id, 'announcement_image', true ),
 		);
 
 		$announcement_image = '<img ' . timeline_express_map_html_attributes( $image_attributes ) . '>';
@@ -803,7 +803,7 @@ function timeline_express_custom_read_more_link() {
 
 	}
 
-	echo wp_kses_post( apply_filters( 'timeline_express_read_more_link', '<a class="' . esc_attr( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="'. apply_filters( 'timeline_express_announcement_permalink', get_permalink( $post->ID ), $post->ID ) . '"> ' . esc_attr( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID ) );
+	echo wp_kses_post( apply_filters( 'timeline_express_read_more_link', '<a class="' . esc_attr( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="' . apply_filters( 'timeline_express_announcement_permalink', get_permalink( $post->ID ), $post->ID ) . '"> ' . esc_attr( apply_filters( 'timeline_express_read_more_text', esc_html__( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID ) );
 
 }
 add_action( 'timeline-express-after-excerpt', 'timeline_express_custom_read_more_link', 10 );
@@ -836,14 +836,14 @@ function timeline_express_get_custom_meta( $post_id, $meta_name, $array = true )
 	/* If no post id was passed in, abort */
 	if ( ! $post_id ) {
 
-		return esc_attr__( 'You forgot to include the announcement ID.', 'timeline-express' );
+		return esc_html__( 'You forgot to include the announcement ID.', 'timeline-express' );
 
 	}
 
 	/* If no meta name was passed in, abort */
 	if ( ! $meta_name ) {
 
-		return esc_attr__( 'You forgot to include the meta key.', 'timeline-express' );
+		return esc_html__( 'You forgot to include the meta key.', 'timeline-express' );
 
 	}
 
@@ -1004,7 +1004,11 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 
 	if ( ! empty( $active_add_ons ) ) {
 
-		?><h2 class="nav-tab-wrapper te-options"><?php
+		?>
+
+		<h2 class="nav-tab-wrapper te-options">
+
+		<?php
 
 		$active_add_ons = array( 'base' => __( 'Timeline Express', 'timeline-express' ) ) + $active_add_ons;
 
@@ -1021,7 +1025,11 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 
 		}
 
-		?></h2><?php
+		?>
+
+		</h2>
+
+		<?php
 
 	}
 
@@ -1104,9 +1112,9 @@ function te_dateformat_php_to_jqueryui( $php_format ) {
 
 				$jqueryui_format .= $char;
 
-			}
+			} // @codingStandardsIgnoreLine
 
-		}
+		} // @codingStandardsIgnoreLine
 
 	}
 

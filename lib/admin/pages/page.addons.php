@@ -26,64 +26,64 @@ endif;
  */
 $addon_array = array(
 	array(
-		'name'          => __( 'Timeline HTML Excerpts', 'timeline-express' ),
+		'name'          => esc_html__( 'Timeline HTML Excerpts', 'timeline-express' ),
 		'class'         => 'Timeline_Express_HTML_Excerpts',
-		'description'   => __( 'Enable custom HTML excerpts and allow for your timeline excerpts to display audio, video and shortcodes. As one of the most visited documentation pages on the site, we decided to break this feature off into a free add-on, so you never have to touch your sites code.', 'timeline-express' ),
+		'description'   => esc_html__( 'Enable custom HTML excerpts and allow for your timeline excerpts to display audio, video and shortcodes. As one of the most visited documentation pages on the site, we decided to break this feature off into a free add-on, so you never have to touch your sites code.', 'timeline-express' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/09/html-excerpts-banner-150x150.jpg',
 		'purchase_url'  => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=timeline-express-html-excerpt-add-on' ), 'install-plugin_timeline-express-html-excerpt-add-on' ),
 		'popular'       => true,
 		'free'          => true,
 	),
 	array(
-		'name'          => __( 'White Label Branding', 'timeline-express' ),
+		'name'          => esc_html__( 'White Label Branding', 'timeline-express' ),
 		'class'         => 'Timeline_Express_White_label',
-		'description'   => __( 'Remove any and all references to our branding, Code Parrots. This add-on removes links, metaboxes, menu items and any association to Code Parrots so your clients won’t get confused with the mixed branding across the dashboard.', 'timeline-express' ),
+		'description'   => esc_html__( 'Remove any and all references to our branding, Code Parrots. This add-on removes links, metaboxes, menu items and any association to Code Parrots so your clients won’t get confused with the mixed branding across the dashboard.', 'timeline-express' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/06/timeline-express-white-label-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-white-label-addon/',
 	),
 	array(
-		'name'          => __( 'Single Column Timeline', 'timeline-express' ),
+		'name'          => esc_html__( 'Single Column Timeline', 'timeline-express' ),
 		'class'         => 'Timeline_Express_Single_Column',
-		'description'   => __( 'This add-on enables a new layout for your Timelines, by displaying them in a single column. A highly requested features that we’ve turned into a plug and play solution – so you, as the end user, don’t have to make any alterations to your code.', 'timeline-express' ),
+		'description'   => esc_html__( 'This add-on enables a new layout for your Timelines, by displaying them in a single column. A highly requested features that we’ve turned into a plug and play solution – so you, as the end user, don’t have to make any alterations to your code.', 'timeline-express' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/06/timeline-express-single-column-addon-banner-150x150.jpg',
 		'purchase_url'  => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=timeline-express-single-column-add-on' ), 'install-plugin_timeline-express-single-column-add-on' ),
 		'free'          => true,
 	),
 	array(
-		'name'          => __( 'Timeline Post Types', 'timeline-express' ),
+		'name'          => esc_html__( 'Timeline Post Types', 'timeline-express' ),
 		'class'         => 'Timeline_Express_Post_Type',
-		'description'   => __( 'Generate timelines using posts, pages or any other custom post type on your site with this add-on. Powerful, flexible and simple to use – now users can generate custom timelines in a beautiful timeline without altering any code.', 'timeline-express' ),
+		'description'   => esc_html__( 'Generate timelines using posts, pages or any other custom post type on your site with this add-on. Powerful, flexible and simple to use – now users can generate custom timelines in a beautiful timeline without altering any code.', 'timeline-express' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/05/timeline-express-post-types-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-post-types-add-on/',
 		'popular'       => true,
 	),
 	array(
-		'name'          => __( 'Historical Dates', 'timeline-express' ),
+		'name'          => esc_html__( 'Historical Dates', 'timeline-express' ),
 		'class'         => 'Timeline_Express_Historical_Dates_Addon',
-		'description'   => __( 'Due to a limitation with PHP, storing dates prior to 1970 has been a one of the limitations of Timeline Express. Quickly enable the ability to assign dates between the years 1000 to 9999 to all announcements.', 'timeline-express' ),
+		'description'   => esc_html__( 'Due to a limitation with PHP, storing dates prior to 1970 has been a one of the limitations of Timeline Express. Quickly enable the ability to assign dates between the years 1000 to 9999 to all announcements.', 'timeline-express' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/05/timeline-express-historical-dates-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-historical-dates-add-on/',
 		'popular'       => true,
 	),
 	array(
-		'name'          => __( 'AJAX Limits', 'timeline-express' ),
+		'name'          => esc_html__( 'AJAX Limits', 'timeline-express' ),
 		'class'         => 'Timeline_Express_AJAX_Limits',
-		'description'   => __( 'Limit your Timeline to a set number of announcements, and display a ‘Load More’ button beneath, allowing users to load more announcements onto the timeline. This prevents your pages from becoming unruly in length if you display many announcements.', 'timeline-express' ),
+		'description'   => esc_html__( 'Limit your Timeline to a set number of announcements, and display a ‘Load More’ button beneath, allowing users to load more announcements onto the timeline. This prevents your pages from becoming unruly in length if you display many announcements.', 'timeline-express' ),
 		'thumbnail_url' => 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/05/ajax-limits-add-on-banner-1-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-ajax-limits-add-on/',
 		'popular'       => true,
 	),
 	array(
-		'name'          => __( 'Twitter Feed', 'timeline-express' ),
+		'name'          => esc_html__( 'Twitter Feed', 'timeline-express' ),
 		'class'         => 'Timeline_Express_Twitter_Feed',
-		'description'   => __( 'Display twitter feeds in a Timeline for users, search terms and by gelocation using our Twitter Feed Add-On. Twitter feeds can be set to live update, so every 30 seconds the feed is updated with new, fresh, tweets.', 'timeline-express' ),
+		'description'   => esc_html__( 'Display twitter feeds in a Timeline for users, search terms and by gelocation using our Twitter Feed Add-On. Twitter feeds can be set to live update, so every 30 seconds the feed is updated with new, fresh, tweets.', 'timeline-express' ),
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/10/timeline-express-twitter-feeds-addon-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-twitter-feeds-add/',
 	),
 	array(
-		'name'          => __( 'No Icons', 'timeline-express' ),
+		'name'          => esc_html__( 'No Icons', 'timeline-express' ),
 		'class'         => 'Timeline_Express_No_Icons',
-		'description'   => __( 'Remove the icon selection on the announcement creation/edit screen, and remove the icons on the timeline on the front end of the site.', 'timeline-express' ),
+		'description'   => esc_html__( 'Remove the icon selection on the announcement creation/edit screen, and remove the icons on the timeline on the front end of the site.', 'timeline-express' ),
 		'thumbnail_url' => 'http://wp-timelineexpress.com/wp-content/uploads/edd/2016/12/timeline-express-no-icons-banner-new-150x150.jpg',
 		'purchase_url'  => wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=timeline-express-no-icons-add-on' ), 'install-plugin_timeline-express-no-icons-add-on' ),
 		'free'          => true,
@@ -93,8 +93,8 @@ $addon_array = array(
 shuffle( $addon_array );
 
 array_unshift( $addon_array, [
-	'name'          => __( 'Timeline Express Product Bundle', 'timeline-express' ),
-	'description'   => sprintf( _x( "Get any and all %s of the Timeline Express add-ons, for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'Integer value for the number of add-ons in the add-on list. (eg: 6)', 'timeline-express' ), count( $addon_array ) ),
+	'name'          => esc_html__( 'Timeline Express Product Bundle', 'timeline-express' ),
+	'description'   => sprintf( esc_html_x( "Get any and all %s of the Timeline Express add-ons, for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'Integer value for the number of add-ons in the add-on list. (eg: 6)', 'timeline-express' ), count( $addon_array ) ),
 	'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-bundle/',
 	'popular'       => true,
 ] );
@@ -115,7 +115,7 @@ array_unshift( $addon_array, [
 
 	$x = 1;
 
-	foreach ( $addon_array as $addon_data ) :
+	foreach ( $addon_array as $addon_data ) {
 
 		if ( 1 === $x ) {
 
@@ -170,7 +170,7 @@ array_unshift( $addon_array, [
 
 		$x++;
 
-	endforeach;
+	}
 
 	?>
 
@@ -189,7 +189,7 @@ array_unshift( $addon_array, [
 function timeline_express_build_addon_data( $data ) {
 
 	// Button Text
-	$data['button_text']   = ( isset( $data['free'] ) && $data['free'] ) ? __( 'Download Now', 'timeline-express' ) : __( 'Buy Now', 'timeline-express' );
+	$data['button_text']   = ( isset( $data['free'] ) && $data['free'] ) ? esc_html__( 'Download Now', 'timeline-express' ) : esc_html__( 'Buy Now', 'timeline-express' );
 
 	// Setup thumbnail URL with fallback
 	$data['thumbnail_url'] = ( isset( $data['thumbnail_url'] ) ) ? $data['thumbnail_url'] : 'http://www.wp-timelineexpress.com/wp-content/uploads/2016/11/timeline-express-150x150.png';
@@ -199,7 +199,7 @@ function timeline_express_build_addon_data( $data ) {
 
 	if ( $data['plugin_installed'] ) {
 
-		$data['button_text'] = __( 'Installed', 'timeline-express' );
+		$data['button_text'] = esc_html__( 'Installed', 'timeline-express' );
 
 	}
 

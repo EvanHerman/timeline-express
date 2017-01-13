@@ -136,8 +136,8 @@ class TimelineExpressAdmin {
 		/* Settings Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
-			__( 'Timeline Express Settings', 'timeline-express' ),
-			__( 'Settings', 'timeline-express' ),
+			esc_html__( 'Timeline Express Settings', 'timeline-express' ),
+			esc_html__( 'Settings', 'timeline-express' ),
 			$menu_cap,
 			'timeline-express-settings',
 			array( $this, 'timeline_express_options_page' )
@@ -146,7 +146,7 @@ class TimelineExpressAdmin {
 		/* Addon Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
-			__( 'Timeline Express Add-Ons', 'timeline-express' ),
+			esc_html__( 'Timeline Express Add-Ons', 'timeline-express' ),
 			'<span style="color:#F7A933">' . esc_html__( 'Add-Ons', 'timeline-express' ) . '<span>',
 			$menu_cap,
 			'timeline-express-addons',
@@ -156,8 +156,8 @@ class TimelineExpressAdmin {
 		/* Welcome Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
-			__( 'Timeline Express Welcome', 'timeline-express' ),
-			__( 'Welcome', 'timeline-express' ),
+			esc_html__( 'Timeline Express Welcome', 'timeline-express' ),
+			esc_html__( 'Welcome', 'timeline-express' ),
 			$menu_cap,
 			'timeline-express-welcome',
 			array( $this, 'timeline_express_welcome_page' )
@@ -511,7 +511,7 @@ class TimelineExpressAdmin {
 
 					$size_data['source_url'] = $image_src[0];
 
-				}
+				} // @codingStandardsIgnoreLine
 
 			} elseif ( is_string( $featured_image['media_details'] ) ) {
 
@@ -525,7 +525,7 @@ class TimelineExpressAdmin {
 
 				$featured_image['media_details']['sizes'] = new stdClass;
 
-			}
+			} // @codingStandardsIgnoreLine
 
 		} else {
 
