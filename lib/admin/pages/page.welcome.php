@@ -30,7 +30,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 		<h1><?php
 			printf(
-				/* translator: %s: Integer value, representing the plugin version number. */
+				/* translators: %s: Integer value, representing the plugin version number. */
 				esc_html__( 'Welcome to Timeline Express v%s', 'timeline-express' ),
 				esc_html( TIMELINE_EXPRESS_VERSION_CURRENT )
 			);
@@ -79,7 +79,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 					<p><?php
 						printf(
-							/* translator: %s: Anchor tag linking back to the Timeline Express documentation. */
+							/* translators: %s: Anchor tag linking back to the Timeline Express documentation. */
 							esc_html__( 'Timeline Express makes it easy to create and display a beautiful and animated timeline in WordPress. Feel free to read our support article, %s.', 'timeline-express' ),
 							'<a href="https://www.wp-timelineexpress.com/documentation/creating-an-announcement/" target="_blank">' . esc_html__( 'How To Create Your First Announcement', 'timeine-express-pro' ) . '</a>'
 						);
@@ -87,7 +87,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 					<p><?php
 						printf(
-							/* translator: %s: Anchor tag linking to create a new announcement. */
+							/* translators: %s: Anchor tag linking to create a new announcement. */
 							esc_html__( 'The process is so intuitive that you can jump right in by going to %s.', 'timeline-express' ),
 							'<a href="' . esc_url( admin_url( 'post-new.php?post_type=te_announcements' ) ) . '">' . esc_html__( 'Timeline Express &#8594; New Announcement', 'timeine-express-pro' ) . '</a>'
 						);
@@ -117,7 +117,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 					<p><?php
 						printf(
-							/* translator: %s: Anchor tag linking back to the Timeline Express settings page. */
+							/* translators: %s: Anchor tag linking back to the Timeline Express settings page. */
 							esc_html__( 'Head into the %s to tweak how the Timeline is going to function and display on your site. You can tweak the visual appearance of the timeline, and the order and time period from which announcements should disdplay.', 'timeline-express' ),
 							'<a href="' . esc_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) ) . '">' . esc_html__( 'Settings Page', 'timeline-express' ) . '</a>'
 						);
@@ -125,7 +125,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 					<p><?php
 						printf(
-							/* translator: %s: HTML markup (strong tags) surrounding the words "Pro Tip". */
+							/* translators: %s: HTML markup (strong tags) surrounding the words "Pro Tip". */
 							esc_html__( "%s: If you ever notice something doesn't look correct or function properly on the timeline, double check that your settings are correct.", 'timeline-express' ),
 							'<strong>' . esc_html__( 'Pro Tip', 'timeline-express' ) . '</strong>'
 						);

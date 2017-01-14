@@ -95,7 +95,7 @@ shuffle( $addon_array );
 array_unshift( $addon_array, [
 	'name'          => esc_html__( 'Timeline Express Product Bundle', 'timeline-express' ),
 	'description'   => sprintf(
-		 /* translator: %s: Integer value for the number of add-ons in the add-on list. (eg: 6). */
+		 /* translators: %s: Integer value for the number of add-ons in the add-on list. (eg: 6). */
 		esc_html__( "Get any and all %s of the Timeline Express add-ons, for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'timeline-express' ),
 		count( $addon_array )
 	),
