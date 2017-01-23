@@ -370,7 +370,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.3.6 - December xx, 2016 =
+= 1.3.6 - January 23rd, 2017 =
 - Set year icons to white.
 - Alphabetically sort the returned add-ons array.
 - Refactor many of the functions contained within.
@@ -380,6 +380,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 - Update twitter feed add-on image path.
 - Tweak add-on page styles.
 - Update add-ons page layout and styles.
+- Introduced new parameter into `timeline_express_get_announcement_icon_markup()`, controlling the link wrap around the icon container.
 
 = 1.3.5 - December 15th, 2016 =
 - Adjusted the links on the add-ons page to lead to https://www.wp-timelineexpress.com/add-ons/

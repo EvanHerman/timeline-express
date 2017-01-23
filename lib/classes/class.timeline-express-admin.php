@@ -17,9 +17,8 @@ class TimelineExpressAdmin {
 	public function __construct() {
 
 		// Only offer user tracking if the PHP version is equal to 5.4.0 (or later)
-		if ( version_compare( PHP_VERSION, '5.4.0' ) >= 0 ) {
+		if ( version_compare( PHP_VERSION, '5.4.0' ) >= 0 && function_exists( 'curl_exec' ) ) {
 
-			/* Include the usage tracking file */
 			require_once  TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/wp-plugin-usage-tracker.php';
 
 			$tracker = new WP_Plugin_Usage_Tracker();

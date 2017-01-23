@@ -22,7 +22,11 @@
 */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+
+	exit;
+
+}
 
 use KeenIO\Client\KeenIOClient;
 
@@ -68,17 +72,17 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function __construct() {
 
-		$this->plugin_prefix     = sanitize_title( 'timeline-express' );
-		$this->plugin_name       = strip_tags( 'Timeline Express' );
-		$this->project_id        = TIMELINE_EXPRESS_TRACKING_PROJECT_ID;
-		$this->write_key         = TIMELINE_EXPRESS_TRACKING_WRITE_KEY;
+		$this->plugin_prefix = sanitize_title( 'timeline-express' );
+		$this->plugin_name   = strip_tags( 'Timeline Express' );
+		$this->project_id    = TIMELINE_EXPRESS_TRACKING_PROJECT_ID;
+		$this->write_key     = TIMELINE_EXPRESS_TRACKING_WRITE_KEY;
 
 		require __DIR__ . '/vendor/autoload.php';
 
 		$this->client = KeenIOClient::factory(
 			array(
 				'projectId' => $this->project_id,
-				'writeKey'  => $this->write_key
+				'writeKey'  => $this->write_key,
 			)
 		);
 
@@ -95,11 +99,11 @@ class WP_Plugin_Usage_Tracker {
 		add_action( 'admin_init',    array( $this, 'approve_tracking' ), 10 );
 		add_action( 'admin_init',    array( $this, 'schedule_tracking' ), 10 );
 
-		if( $this->is_tracking_enabled() ) {
+		if ( $this->is_tracking_enabled() ) {
 
 			add_filter( 'cron_schedules', array( $this, 'cron_schedules' ) );
 
-			add_action( $this->plugin_prefix.'_usage_tracking', array( $this, 'track' ) );
+			add_action( $this->plugin_prefix . '_usage_tracking', array( $this, 'track' ) );
 
 		}
 
@@ -120,7 +124,7 @@ class WP_Plugin_Usage_Tracker {
 
 		if ( ! function_exists( 'get_current_screen' ) ) {
 
-			require_once(ABSPATH . 'wp-admin/includes/screen.php');
+			require_once( ABSPATH . 'wp-admin/includes/screen.php' );
 
 		}
 
@@ -132,7 +136,7 @@ class WP_Plugin_Usage_Tracker {
 
 		}
 
-		if( current_user_can( 'manage_options' ) && ! $this->is_tracking_enabled() ) {
+		if ( current_user_can( 'manage_options' ) && ! $this->is_tracking_enabled() ) {
 
 			?>
 
@@ -155,9 +159,9 @@ class WP_Plugin_Usage_Tracker {
 
 		$message = esc_html__( 'Allow Timeline Express to track plugin usage? Tracking will help improve Timeline Express by allowing us to gather anonymous usage data so we know which configurations, plugins and themes to test with. No sensitive data is tracked.', 'timeline-express' );
 
-		$message .= ' <p><a href="'. esc_url( $this->get_tracking_approval_url() ) .'" class="button-primary">'. esc_html__( 'Allow', 'timeline-express' ) .'</a>';
+		$message .= ' <p><a href="' . esc_url( $this->get_tracking_approval_url() ) . '" class="button-primary">' . esc_html__( 'Allow', 'timeline-express' ) . '</a>';
 
-		$message .= ' <a href="'. esc_url( $this->get_tracking_denied_url() ) .'" class="button-secondary">'. esc_html__( 'Do not allow', 'timeline-express' ) .'</a></p>';
+		$message .= ' <a href="' . esc_url( $this->get_tracking_denied_url() ) . '" class="button-secondary">' . esc_html__( 'Do not allow', 'timeline-express' ) . '</a></p>';
 
 		return $message;
 
@@ -192,9 +196,9 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function approve_tracking() {
 
-		if(
+		if (
 			isset( $_GET['timeline_express_tracker'] )
-			&& $_GET['timeline_express_tracker'] == 'approved'
+			&& 'approved' === $_GET['timeline_express_tracker']
 			&& isset( $_GET['plugin'] )
 			&& $_GET['plugin'] == $this->plugin_prefix
 			&& current_user_can( 'manage_options' )
@@ -207,9 +211,9 @@ class WP_Plugin_Usage_Tracker {
 
 		}
 
-		if(
+		if (
 			isset( $_GET['timeline_express_tracker'] )
-			&& $_GET['timeline_express_tracker'] == 'denied'
+			&& 'denied' === $_GET['timeline_express_tracker']
 			&& isset( $_GET['plugin'] )
 			&& $_GET['plugin'] == $this->plugin_prefix
 			&& current_user_can( 'manage_options' )
@@ -283,7 +287,7 @@ class WP_Plugin_Usage_Tracker {
 
 		$schedules['monthly'] = array(
 			'interval' => 30 * DAY_IN_SECONDS,
-			'display' => 'Once a month'
+			'display'  => 'Once a month',
 		);
 
 		return $schedules;
@@ -310,7 +314,7 @@ class WP_Plugin_Usage_Tracker {
 
 		update_option( $this->plugin_prefix . '_nobug', true );
 		delete_option( $this->plugin_prefix . '_tracking' );
-		wp_clear_scheduled_hook( $this->plugin_prefix.'_usage_tracking' );
+		wp_clear_scheduled_hook( $this->plugin_prefix . '_usage_tracking' );
 
 	}
 
@@ -321,9 +325,9 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function schedule_tracking() {
 
-		if( $this->is_tracking_enabled() && ! wp_next_scheduled ( $this->plugin_prefix.'_usage_tracking' ) ) {
+		if ( $this->is_tracking_enabled() && ! wp_next_scheduled( $this->plugin_prefix . '_usage_tracking' ) ) {
 
-			wp_schedule_event( time(), 'monthly', $this->plugin_prefix.'_usage_tracking' );
+			wp_schedule_event( time(), 'monthly', $this->plugin_prefix . '_usage_tracking' );
 
 		}
 

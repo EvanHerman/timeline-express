@@ -479,7 +479,7 @@ function does_timeline_express_init_class_exist() {
  *
  * @return string           The HTML markup to return
  */
-function timeline_express_get_announcement_icon_markup( $post_id ) {
+function timeline_express_get_announcement_icon_markup( $post_id, $link = true ) {
 
 	$timeline_express_options = timeline_express_get_options();
 
@@ -495,7 +495,7 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 	}
 
 	/* If read more visibility is set to true, wrap the icon in a link. */
-	if ( '1' === $timeline_express_options['read-more-visibility'] ) {
+	if ( '1' === $timeline_express_options['read-more-visibility'] && $link ) {
 
 		$icon_container_class = '';
 
@@ -533,7 +533,7 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 	<?php
 
 	/* If read more visibility is set to true, wrap the icon in a link. */
-	if ( '1' === $timeline_express_options['read-more-visibility'] ) { ?>
+	if ( '1' === $timeline_express_options['read-more-visibility'] && $link ) { ?>
 
 		</a>
 
