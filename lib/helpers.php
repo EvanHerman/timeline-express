@@ -54,24 +54,24 @@ add_action( 'timeline_express_sidebar', 'timeline_express_generate_sidebar', 10 
  */
 function timeline_express_get_options() {
 
-	return get_option( TIMELINE_EXPRESS_OPTION, array(
-		'announcement-time-frame' => '1',
-		'announcement-display-order' => 'ASC',
-		'excerpt-trim-length' => 50,
-		'excerpt-random-length' => 0,
-		'date-visibility'	=> '1',
-		'read-more-visibility'	=> '1',
-		'default-announcement-icon' => 'exclamation-triangle',
-		'default-announcement-color' => '#75CE66',
-		'announcement-box-shadow-color' => '#B9C5CD',
-		'announcement-background-line-color' => '#D7E4ED',
-		'announcement-bg-color' => '#EFEFEF',
-		'no-events-message' => __( 'No announcements found', 'timeline-express' ),
-		'announcement-appear-in-searches' => 'true',
-		'disable-animation' => 0,
+	return apply_filters( 'timeline_express_options', get_option( TIMELINE_EXPRESS_OPTION, array(
+		'announcement-time-frame'                     => '1',
+		'announcement-display-order'                  => 'ASC',
+		'excerpt-trim-length'                         => 50,
+		'excerpt-random-length'                       => 0,
+		'date-visibility'                             => '1',
+		'read-more-visibility'                        => '1',
+		'default-announcement-icon'                   => 'exclamation-triangle',
+		'default-announcement-color'                  => '#75CE66',
+		'announcement-box-shadow-color'               => '#B9C5CD',
+		'announcement-background-line-color'          => '#D7E4ED',
+		'announcement-bg-color'                       => '#EFEFEF',
+		'no-events-message'                           => esc_html__( 'No announcements found', 'timeline-express' ),
+		'announcement-appear-in-searches'             => 'true',
+		'disable-animation'                           => 0,
 		'delete-announcement-posts-on-uninstallation' => 0,
-		'version'	=> TIMELINE_EXPRESS_VERSION_CURRENT,
-	) );
+		'version'                                     => TIMELINE_EXPRESS_VERSION_CURRENT,
+	) ) );
 
 }
 
@@ -333,7 +333,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 		/* sort the bootstrap icons alphabetically */
 		foreach ( $icons as $icon_name => $icon_content ) { ?>
 
-			<option class="fa" data-icon="fa-<?php echo esc_attr( $icon_name ); ?>" <?php selected( 'fa-'.$icon_name , $meta ); ?>><?php echo esc_html( $icon_name ); ?></option>
+			<option class="fa" data-icon="fa-<?php echo esc_attr( $icon_name ); ?>" <?php selected( 'fa-' . $icon_name , $meta ); ?>><?php echo esc_html( $icon_name ); ?></option>
 
 		<?php } ?>
 
@@ -479,7 +479,7 @@ function does_timeline_express_init_class_exist() {
  *
  * @return string           The HTML markup to return
  */
-function timeline_express_get_announcement_icon_markup( $post_id ) {
+function timeline_express_get_announcement_icon_markup( $post_id, $link = true ) {
 
 	$timeline_express_options = timeline_express_get_options();
 
@@ -495,7 +495,7 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 	}
 
 	/* If read more visibility is set to true, wrap the icon in a link. */
-	if ( '1' === $timeline_express_options['read-more-visibility'] ) {
+	if ( '1' === $timeline_express_options['read-more-visibility'] && $link ) {
 
 		$icon_container_class = '';
 
@@ -503,7 +503,11 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 
 		<a class="cd-timeline-icon-link" href="<?php echo esc_attr( apply_filters( 'timeline_express_announcement_permalink', get_the_permalink( $post_id ), $post_id ) ); ?>">
 
-	<?php } ?>
+	<?php
+
+	}
+
+	?>
 
 		<div class="cd-timeline-img cd-picture<?php echo esc_attr( $icon_container_class ); ?>" style="background:<?php echo esc_attr( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
 
@@ -533,11 +537,15 @@ function timeline_express_get_announcement_icon_markup( $post_id ) {
 	<?php
 
 	/* If read more visibility is set to true, wrap the icon in a link. */
-	if ( '1' === $timeline_express_options['read-more-visibility'] ) { ?>
+	if ( '1' === $timeline_express_options['read-more-visibility'] && $link ) {
+
+	?>
 
 		</a>
 
-	<?php }
+	<?php
+
+	}
 
 }
 
@@ -625,7 +633,7 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 		$image_size,
 		false,
 		array(
-			'alt' => esc_attr( get_the_title() ),
+			'alt'   => esc_attr( get_the_title() ),
 			'class' => 'announcement-banner-image',
 		)
 	), $post_id );
@@ -633,9 +641,9 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 	if ( empty( $announcement_image ) ) {
 
 		$image_attributes = array(
-			'class'  => 'announcement-banner-image external-image',
-			'alt'    => get_the_title(),
-			'src'    => get_post_meta( $post_id, 'announcement_image', true ),
+			'class' => 'announcement-banner-image external-image',
+			'alt'   => get_the_title(),
+			'src'   => get_post_meta( $post_id, 'announcement_image', true ),
 		);
 
 		$announcement_image = '<img ' . timeline_express_map_html_attributes( $image_attributes ) . '>';
@@ -803,7 +811,7 @@ function timeline_express_custom_read_more_link() {
 
 	}
 
-	echo wp_kses_post( apply_filters( 'timeline_express_read_more_link', '<a class="' . esc_attr( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="'. apply_filters( 'timeline_express_announcement_permalink', get_permalink( $post->ID ), $post->ID ) . '"> ' . esc_attr( apply_filters( 'timeline_express_read_more_text', __( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID ) );
+	echo wp_kses_post( apply_filters( 'timeline_express_read_more_link', '<a class="' . esc_attr( apply_filters( 'timeline_express_read_more_class', 'timeline-express-read-more-link', $post->ID ) ) . '" href="' . apply_filters( 'timeline_express_announcement_permalink', get_permalink( $post->ID ), $post->ID ) . '"> ' . esc_attr( apply_filters( 'timeline_express_read_more_text', esc_html__( 'Read more', 'timeline-express' ), $post->ID ) ) . '</a>', $post->ID ) );
 
 }
 add_action( 'timeline-express-after-excerpt', 'timeline_express_custom_read_more_link', 10 );
@@ -836,14 +844,14 @@ function timeline_express_get_custom_meta( $post_id, $meta_name, $array = true )
 	/* If no post id was passed in, abort */
 	if ( ! $post_id ) {
 
-		return esc_attr__( 'You forgot to include the announcement ID.', 'timeline-express' );
+		return esc_html__( 'You forgot to include the announcement ID.', 'timeline-express' );
 
 	}
 
 	/* If no meta name was passed in, abort */
 	if ( ! $meta_name ) {
 
-		return esc_attr__( 'You forgot to include the meta key.', 'timeline-express' );
+		return esc_html__( 'You forgot to include the meta key.', 'timeline-express' );
 
 	}
 
@@ -859,7 +867,11 @@ function timeline_express_get_custom_meta( $post_id, $meta_name, $array = true )
  */
 function get_timeline_express_add_ons() {
 
-	return get_option( 'timeline_express_installed_add_ons', array() );
+	$addons = get_option( 'timeline_express_installed_add_ons', array() );
+
+	ksort( $addons );
+
+	return $addons;
 
 }
 
@@ -1000,7 +1012,11 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 
 	if ( ! empty( $active_add_ons ) ) {
 
-		?><h2 class="nav-tab-wrapper te-options"><?php
+		?>
+
+		<h2 class="nav-tab-wrapper te-options">
+
+		<?php
 
 		$active_add_ons = array( 'base' => __( 'Timeline Express', 'timeline-express' ) ) + $active_add_ons;
 
@@ -1017,8 +1033,99 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 
 		}
 
-		?></h2><?php
+		?>
+
+		</h2>
+
+		<?php
 
 	}
+
+}
+
+/*
+ * Matches each symbol of PHP date format standard
+ * with jQuery equivalent codeword
+ * @author Tristan Jahier
+ */
+function te_dateformat_php_to_jqueryui( $php_format ) {
+
+	$symbols_matching = array(
+		// Day
+		'd' => 'dd',
+		'D' => 'D',
+		'j' => 'd',
+		'l' => 'DD',
+		'N' => '',
+		'S' => '',
+		'w' => '',
+		'z' => 'o',
+		// Week
+		'W' => '',
+		// Month
+		'F' => 'MM',
+		'm' => 'mm',
+		'M' => 'M',
+		'n' => 'm',
+		't' => '',
+		// Year
+		'L' => '',
+		'o' => '',
+		'Y' => 'yy',
+		'y' => 'y',
+		// Time
+		'a' => '',
+		'A' => '',
+		'B' => '',
+		'g' => '',
+		'G' => '',
+		'h' => '',
+		'H' => '',
+		'i' => '',
+		's' => '',
+		'u' => '',
+	);
+
+	$jqueryui_format = '';
+
+	$escaping = false;
+
+	for ( $i = 0; $i < strlen( $php_format ); $i++ ) {
+
+		$char = $php_format[ $i ];
+
+		if ( '\\' === $char ) {
+
+			$i++;
+
+			$jqueryui_format .= ( $escaping ) ? $php_format[ $i ] : '\'' . $php_format[ $i ];
+
+			$escaping = true;
+
+		} else {
+
+			if ( $escaping ) {
+
+				$jqueryui_format .= "'";
+
+				$escaping = false;
+
+			}
+
+			if ( isset( $symbols_matching[ $char ] ) ) {
+
+				$jqueryui_format .= $symbols_matching[ $char ];
+
+			} else {
+
+				$jqueryui_format .= $char;
+
+			} // @codingStandardsIgnoreLine
+
+		} // @codingStandardsIgnoreLine
+
+	}
+
+	return $jqueryui_format;
 
 }

@@ -1,4 +1,4 @@
-# Timeline Express - 1.3.5
+# Timeline Express - 1.3.6
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com)
 [![Build Status](https://travis-ci.org/EvanHerman/timeline-express.svg?branch=master)](https://travis-ci.org/EvanHerman/timeline-express)
@@ -10,10 +10,10 @@
 [![Timeline Express](https://cldup.com/muOzYZg5GP.jpg)](https://www.wp-timelineexpress.com)
 
 **Tags:**              timeline, wordpress, plugin, vertical, animated, responsive <br />
-**Requires at least:** WordPress v4.2
-**Tested up to:**      WordPress v4.7
-**Stable tag:**        1.3.5
-**License:**           GPLv2 or later
+**Requires at least:** WordPress v4.2 <br />
+**Tested up to:**      WordPress v4.7 <br />
+**Stable tag:**        1.3.6 <br />
+**License:**           GPLv2 or later <br />
 **License URI:**       [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
 [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/timeline-express.svg?style=flat-square)](https://wordpress.org/plugins/timeline-express/)

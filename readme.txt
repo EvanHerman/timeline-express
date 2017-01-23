@@ -3,7 +3,7 @@ Contributors: codeparrots, eherman24
 Tags: timeline, responsive, time, line, vertical, animated, company, history, font awesome, events, calendar, scroll, dates, story, timeline express, milestone, stories
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 License: GPLv2 or later
 
 Timeline Express creates a beautiful vertical animated and responsive timeline of posts, in chronological order.
@@ -64,6 +64,7 @@ The small list above demonstrates the flexibility and power behind Timeline Expr
 > We have built out some powerful add-ons that extend Timeline Express beyond it's core capabilities. Many of the add-ons have been user requested features, which we've spun off into add-ons. If your looking for some advanced feature that you don't see in the base plugin, checkout a list of our add-ons.
 
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-html-excerpts-add/">Timeline Express - HTML Excerpts</a>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-no-icons-add-on/">Timeline Express - No Icons</a>
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-white-label-addon/">Timeline Express - White Label Branding</a>
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-single-column-add/">Timeline Express - Single Column Timeline</a>
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-post-types-add-on/">Timeline Express - Timeline Post Types</a>
@@ -368,6 +369,19 @@ The above example will load font awesome version 4.4.0 instead of the current st
 5. Timeline Express - Admin Settings Page
 
 == Changelog ==
+
+= 1.3.6 - January 23rd, 2017 =
+- Set year icons to white.
+- Alphabetically sort the returned add-ons array.
+- Refactor many of the functions contained within.
+- Adjusted i18n strings on options page.
+- Shifted around the `timeline_express_custom_date_format` filter so it is referenced in more locations.
+- Introduced a new helper to format the jQuery UI picker for international users.
+- Update twitter feed add-on image path.
+- Tweak add-on page styles.
+- Update add-ons page layout and styles.
+- Introduced new parameter into `timeline_express_get_announcement_icon_markup()`, controlling the link wrap around the icon container. (Props @Arifi)
+- Check for `curl_exec` before loading the usage tracking class.
 
 = 1.3.5 - December 15th, 2016 =
 - Adjusted the links on the add-ons page to lead to https://www.wp-timelineexpress.com/add-ons/
@@ -735,10 +749,16 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.3.5 - December 15th, 2016 =
+= 1.3.6 - January 23rd, 2017 =
 
-- Adjusted the links on the add-ons page to lead to https://www.wp-timelineexpress.com/add-ons/
-- Updated default font awesome version to 4.7.0.
-- Introduced `timeline_express_announcement_date_text` filter to alter the announcement date string (see: http://wp-timelineexpress.com/documentation/alter-announcement-date-string/)
-- Built in support for TwentySeventeen theme in the page wrapper templates.
-- Adjusted translation functions.
+- Set year icons to white.
+- Alphabetically sort the returned add-ons array.
+- Refactor many of the functions contained within.
+- Adjusted i18n strings on options page.
+- Shifted around the `timeline_express_custom_date_format` filter so it is referenced in more locations.
+- Introduced a new helper to format the jQuery UI picker for international users.
+- Update twitter feed add-on image path.
+- Tweak add-on page styles.
+- Update add-ons page layout and styles.
+- Introduced new parameter into `timeline_express_get_announcement_icon_markup()`, controlling the link wrap around the icon container. (Props @Arifi)
+- Check for `curl_exec` before loading the usage tracking class.

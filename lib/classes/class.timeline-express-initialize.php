@@ -47,7 +47,7 @@ class Timeline_Express_Initialize {
 		 */
 		timeline_express_enqueue_font_awesome();
 
-		wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . "lib/public/css/min/timeline-express{$rtl}.min.css", array( 'font-awesome' ), 'all' );
+		wp_enqueue_style( 'timeline-express-base', TIMELINE_EXPRESS_URL . "lib/public/css/min/timeline-express{$rtl}.min.css", array( 'font-awesome' ), TIMELINE_EXPRESS_VERSION_CURRENT );
 
 		do_action( 'timeline-express-styles' );
 

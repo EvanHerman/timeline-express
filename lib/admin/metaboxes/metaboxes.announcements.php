@@ -14,12 +14,15 @@ $prefix = 'announcement_';
 
 $timeline_express_options = timeline_express_get_options();
 
+// Setup the singular Name
+$timeline_express_singular_name = apply_filters( 'timeline_express_singular_name', esc_html__( 'Announcement', 'timeline-express' ) );
+
 /**
  * Initiate the metabox
  */
 $announcement_metabox = new_cmb2_box( array(
 	'id'            => 'announcement_metabox',
-	'title'         => __( 'Announcement Info.', 'timeline-express' ),
+	'title'         => sprintf( esc_html_x( '%s Info.', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
 	'object_types'  => array( 'te_announcements' ),
 	'context'       => 'advanced',
 	'priority'      => 'high',
@@ -28,8 +31,8 @@ $announcement_metabox = new_cmb2_box( array(
 
 // Announcement Color
 $announcement_metabox->add_field( array(
-	'name'       => __( 'Announcement Color', 'timeline-express' ),
-	'desc'       => __( 'Select the color for this announcement.', 'timeline-express' ),
+	'name'       => sprintf( esc_html_x( '%s Color', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	'desc'       => sprintf( esc_html_x( 'Select the color for this %s.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'         => $prefix . 'color',
 	'type'       => 'colorpicker',
 	'default'  => $timeline_express_options['default-announcement-color'],
@@ -37,8 +40,8 @@ $announcement_metabox->add_field( array(
 
 // Announcement Icon
 $announcement_metabox->add_field( array(
-	'name' => __( 'Announcement Icon', 'timeline-express' ),
-	'desc' => __( 'Select an icon from the drop down above. This is used for the icon associated with the announcement.', 'timeline-express' ),
+	'name' => sprintf( esc_html_x( '%s Icon', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	'desc' => sprintf( esc_html_x( 'Select an icon from the drop down above. This is used for the icon associated with the %s.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'icon',
 	'type' => 'te_bootstrap_dropdown',
 	'default' => 'fa-' . $timeline_express_options['default-announcement-icon'],
@@ -46,17 +49,17 @@ $announcement_metabox->add_field( array(
 
 // Announcement Date
 $announcement_metabox->add_field( array(
-	'name' => __( 'Announcement Date', 'timeline-express' ),
-	'desc' => __( 'Enter the date of the announcement. the announcements will appear in chronological order according to this date. ', 'timeline-express' ),
+	'name' => sprintf( esc_html_x( '%s Date', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	'desc' => sprintf( esc_html_x( 'Enter the date of the %s. the announcements will appear in chronological order according to this date.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'date',
 	'type' => 'te_date_time_stamp_custom',
-	'default' => strtotime( date( 'm/d/Y' ) ),
+	'default' => strtotime( 'now' ),
 ) );
 
 // Announcement Image
 $announcement_metabox->add_field( array(
-	'name' => __( 'Announcement Image', 'timeline-express' ),
-	'desc' => __( 'Select a banner image for this announcement (optional). (recommended 650px wide or larger)', 'timeline-express' ),
+	'name' => sprintf( esc_html_x( '%s Image', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	'desc' => sprintf( esc_html_x( 'Select a banner image for this %s (optional). (recommended 650px wide or larger)', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'image',
 	'type' => 'file',
 ) );
@@ -72,7 +75,7 @@ if ( defined( 'TIMELINE_EXPRESS_CONTAINER_CLASSES' ) && TIMELINE_EXPRESS_CONTAIN
 	// Custom Announcement Container Info. Metabox
 	$announcement_container_metabox = new_cmb2_box( array(
 		'id'            => 'announcement_container_metabox',
-		'title'         => __( 'Announcement Container Info.', 'timeline-express' ),
+		'title'         => esc_html__( 'Announcement Container Info.', 'timeline-express' ),
 		'object_types'  => array( 'te_announcements' ), // Post type
 		'context'       => 'advanced',
 		'priority'      => 'high',
@@ -81,8 +84,8 @@ if ( defined( 'TIMELINE_EXPRESS_CONTAINER_CLASSES' ) && TIMELINE_EXPRESS_CONTAIN
 
 	// Custom Container Class(es)
 	$announcement_container_metabox->add_field( array(
-		'name' => __( 'Custom Container Class', 'timeline-express' ),
-		'desc' => __( 'Enter the class that you would like added to this announcement container on the timeline.', 'timeline-express' ),
+		'name' => esc_html__( 'Custom Container Class', 'timeline-express' ),
+		'desc' => esc_html__( 'Enter the class that you would like added to this announcement container on the timeline.', 'timeline-express' ),
 		'id'   => $prefix . 'container_classes',
 		'type' => 'text',
 	) );
@@ -96,7 +99,7 @@ if ( defined( 'TIMELINE_EXPRESS_CONTAINER_CLASSES' ) && TIMELINE_EXPRESS_CONTAIN
 // Documentation Metabox
 $help_docs_metabox = new_cmb2_box( array(
 	'id'            => 'help_docs_metabox',
-	'title'         => __( 'Help & Documentation', 'timeline-express' ),
+	'title'         => esc_html__( 'Help & Documentation', 'timeline-express' ),
 	'object_types'  => array( 'te_announcements' ),
 	'context'    => 'side',
 	'priority'   => 'low',
@@ -115,12 +118,12 @@ $advertisment_data = te_get_advertisment();
 
 // Advertisement Metabox
 $advert_metabox = new_cmb2_box( array(
-	'id'            => 'advert_metabox',
-	'title'         => $advertisment_data['title'],
-	'object_types'  => array( 'te_announcements' ),
-	'context'    => 'side',
-	'priority'   => 'low',
-	'show_names'    => true,
+	'id'           => 'advert_metabox',
+	'title'        => $advertisment_data['title'],
+	'object_types' => array( 'te_announcements' ),
+	'context'      => 'side',
+	'priority'     => 'low',
+	'show_names'   => true,
 ) );
 
 // Advertisment Field (image & content)
@@ -177,33 +180,9 @@ add_filter( 'cmb2_localized_data', 'timeline_express_internationalize_datepicker
 
 function timeline_express_internationalize_datepicker( $l10n ) {
 
-	switch ( get_option( 'date_format' ) ) {
+	$date_format = apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) );
 
-		// EG: 04/15/2016 - April 15th, 2016
-		default:
-		case 'm/d/Y':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'mm/dd/yy';
-			break;
-
-		// EG: 2016-04-15 - April 15th, 2016
-		case 'd/m/Y':
-		case 'd/M/Y':
-		case 'd-m-Y':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'dd/mm/yy';
-			break;
-
-		case 'Y-m-d':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'yy-mm-dd';
-			break;
-
-		case 'F j, Y':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'MM d, yy';
-			break;
-
-		case 'j F Y':
-			$l10n['defaults']['date_picker']['dateFormat'] = 'd M yy';
-			break;
-	}
+	$l10n['defaults']['date_picker']['dateFormat'] = te_dateformat_php_to_jqueryui( $date_format );
 
 	return apply_filters( 'timeline_express_date_picker_format', $l10n );
 
@@ -232,7 +211,6 @@ function te_get_advertisment( $part = '' ) {
 				$advertisment = te_get_advertisment();
 
 			}
-
 		}
 
 		set_transient( 'timeline_express_ad_transient', $advertisment, 1 * HOUR_IN_SECONDS );
@@ -264,14 +242,13 @@ function te_get_random_ad() {
 	// eg: start date hasn't occured OR end date has passed
 	foreach ( $advertisements as $advertisment => $ad_data ) :
 
-		if ( isset( $ad_data['start_date'] ) && isset( $ad_data['end_date' ] ) ) {
+		if ( isset( $ad_data['start_date'] ) && isset( $ad_data['end_date'] ) ) {
 
 			if ( $ad_data['start_date'] > strtotime( 'now' ) || $ad_data['end_date'] < strtotime( 'now' ) ) {
 
 				unset( $advertisements[ $advertisment ] );
 
 			}
-
 		}
 
 	endforeach;

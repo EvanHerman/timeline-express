@@ -105,11 +105,15 @@ class TimelineExpressBase {
 		// When the nonce is not set, abort
 		if ( ! isset( $_POST['timeline_express_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['timeline_express_settings_nonce'] ) ), 'timeline_express_save_settings' ) ) {
 
-			wp_die( __( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ), __( 'Failed Nonce Security Check', 'timeline-express' ), array(
-				'response' => 500,
-				'back_link' => true,
-				'text_direction' => ( is_rtl() ) ? 'rtl' : 'ltr',
-			) );
+			wp_die(
+				esc_html__( 'Sorry, the nonce security check did not pass. Please go back to the settings page, refresh the page and try to save your settings again.', 'timeline-express' ),
+				__( 'Failed Nonce Security Check', 'timeline-express' ),
+				array(
+					'response' => 500,
+					'back_link' => true,
+					'text_direction' => ( is_rtl() ) ? 'rtl' : 'ltr',
+				)
+			);
 
 		}
 

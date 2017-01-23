@@ -17,9 +17,8 @@ class TimelineExpressAdmin {
 	public function __construct() {
 
 		// Only offer user tracking if the PHP version is equal to 5.4.0 (or later)
-		if ( version_compare( PHP_VERSION, '5.4.0' ) >= 0 ) {
+		if ( version_compare( PHP_VERSION, '5.4.0' ) >= 0 && function_exists( 'curl_exec' ) ) {
 
-			/* Include the usage tracking file */
 			require_once  TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/wp-plugin-usage-tracker.php';
 
 			$tracker = new WP_Plugin_Usage_Tracker();
@@ -58,6 +57,9 @@ class TimelineExpressAdmin {
 
 		/* Reset the transient anytime an announcement gets updated/published */
 		add_action( 'save_post', array( $this, 'timeline_express_reset_transients' ) );
+
+		/* Add our announcement met adata to the REST API */
+		add_action( 'rest_api_init', array( $this, 'timeline_express_rest_api' ) );
 
 		/**
 		 * Include CMB2 - Metabox Framework
@@ -133,8 +135,8 @@ class TimelineExpressAdmin {
 		/* Settings Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
-			__( 'Timeline Express Settings', 'timeline-express' ),
-			__( 'Settings', 'timeline-express' ),
+			esc_html__( 'Timeline Express Settings', 'timeline-express' ),
+			esc_html__( 'Settings', 'timeline-express' ),
 			$menu_cap,
 			'timeline-express-settings',
 			array( $this, 'timeline_express_options_page' )
@@ -143,7 +145,7 @@ class TimelineExpressAdmin {
 		/* Addon Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
-			__( 'Timeline Express Add-Ons', 'timeline-express' ),
+			esc_html__( 'Timeline Express Add-Ons', 'timeline-express' ),
 			'<span style="color:#F7A933">' . esc_html__( 'Add-Ons', 'timeline-express' ) . '<span>',
 			$menu_cap,
 			'timeline-express-addons',
@@ -153,8 +155,8 @@ class TimelineExpressAdmin {
 		/* Welcome Page */
 		add_submenu_page(
 			'edit.php?post_type=te_announcements',
-			__( 'Timeline Express Welcome', 'timeline-express' ),
-			__( 'Welcome', 'timeline-express' ),
+			esc_html__( 'Timeline Express Welcome', 'timeline-express' ),
+			esc_html__( 'Welcome', 'timeline-express' ),
 			$menu_cap,
 			'timeline-express-welcome',
 			array( $this, 'timeline_express_welcome_page' )
@@ -394,6 +396,148 @@ class TimelineExpressAdmin {
 	}
 
 	/**
+	 * Expose our announcement meta data to the REST API
+	 *
+	 * @since 1.3.6
+	 */
+	public function timeline_express_rest_api() {
+
+		if ( ! function_exists( 'register_rest_field' ) ) {
+
+			return;
+
+		}
+
+		register_rest_field( 'te_announcements',
+			'announcement_date',
+			array(
+				'get_callback' => array( $this, 'get_announcement_date' ),
+				'schema'       => null,
+			)
+		);
+
+		register_rest_field( 'te_announcements',
+			'announcement_image',
+			array(
+				'get_callback' => array( $this, 'get_announcement_image' ),
+				'schema'       => null,
+			)
+		);
+
+	}
+
+	/**
+	 * Return the announcement date to the REST API
+	 *
+	 * @param  object $object     The field object.
+	 * @param  string $field_name The name of the field.
+	 * @param  string $request    The request type.
+	 *
+	 * @since 1.3.6
+	 *
+	 * @return string
+	 */
+	function get_announcement_date( $object, $field_name, $request ) {
+
+		return sprintf(
+			apply_filters( 'timeline_express_announcement_date_text', _x( 'Announcement Date: %s', 'The announcement date.', 'timeline-express' ) ),
+			wp_kses_post( timeline_express_get_announcement_date( $object['id'] ) )
+		);
+
+	}
+
+	/**
+	 * Return the announcement date to the REST API
+	 *
+	 * @param  object $object     The field object.
+	 * @param  string $field_name The name of the field.
+	 * @param  string $request    The request type.
+	 *
+	 * @since 1.3.6
+	 *
+	 * @return string
+	 */
+	function get_announcement_image( $object, $field_name, $request ) {
+
+		$image = get_post_meta( $object['id'], 'announcement_image_id', true ) ? (int) get_post_meta( $object['id'], 'announcement_image_id', true ) : ( get_post_meta( $object['id'], 'announcement_image', true ) ? get_post_meta( $object['id'], 'announcement_image', true ) : false );
+
+		if ( ! $image ) {
+
+			return;
+
+		}
+
+		$featured_image = array();
+
+		// Attached image
+		if ( is_integer( $image ) ) {
+
+			$image_obj = get_post( $image );
+
+			if ( ! $image_obj ) {
+
+				return;
+
+			}
+
+			// This is taken from WP_REST_Attachments_Controller::prepare_item_for_response().
+			$featured_image['id']            = $image;
+			$featured_image['alt_text']      = get_post_meta( $image, '_wp_attachment_image_alt', true );
+			$featured_image['caption']       = $image->post_excerpt;
+			$featured_image['description']   = $image->post_content;
+			$featured_image['media_type']    = wp_attachment_is_image( $image ) ? 'image' : 'file';
+			$featured_image['media_details'] = wp_get_attachment_metadata( $image );
+			$featured_image['post']          = ! empty( $image->post_parent ) ? (int) $image->post_parent : null;
+			$featured_image['source_url']    = wp_get_attachment_url( $image );
+
+			if ( empty( $featured_image['media_details'] ) ) {
+
+				$featured_image['media_details'] = new stdClass;
+
+			} elseif ( ! empty( $featured_image['media_details']['sizes'] ) ) {
+
+				$img_url_basename = wp_basename( $featured_image['source_url'] );
+
+				foreach ( $featured_image['media_details']['sizes'] as $size => &$size_data ) {
+
+					$image_src = wp_get_attachment_image_src( $image_id, $size );
+
+					if ( ! $image_src ) {
+
+						continue;
+
+					}
+
+					$size_data['source_url'] = $image_src[0];
+
+				} // @codingStandardsIgnoreLine
+
+			} elseif ( is_string( $featured_image['media_details'] ) ) {
+
+				// This was added to work around conflicts with plugins that cause
+				// wp_get_attachment_metadata() to return a string.
+				$featured_image['media_details'] = new stdClass();
+
+				$featured_image['media_details']->sizes = new stdClass();
+
+			} else {
+
+				$featured_image['media_details']['sizes'] = new stdClass;
+
+			} // @codingStandardsIgnoreLine
+
+		} else {
+
+			// Image URL
+			$featured_image['image_url'] = $image;
+
+		}
+
+		return apply_filters( 'timeline_express_popups_addon_announcement_image', $featured_image, $image_id );
+
+	}
+
+	/**
 	 * Conditionally enqueue our scripts and styles on the dashboard, where needed.
 	 *
 	 * @since 1.2
@@ -414,7 +558,7 @@ class TimelineExpressAdmin {
 
 			}
 
-			$rtl = is_rtl() ? '-rtl' : ''; 
+			$rtl = is_rtl() ? '-rtl' : '';
 
 			/* Register Styles */
 			wp_enqueue_style( 'timeline-express-css-base', TIMELINE_EXPRESS_URL . "lib/admin/css/min/timeline-express-admin{$rtl}.min.css", array(), TIMELINE_EXPRESS_VERSION_CURRENT, 'all' );
