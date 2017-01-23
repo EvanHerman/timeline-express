@@ -381,6 +381,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 - Tweak add-on page styles.
 - Update add-ons page layout and styles.
 - Introduced new parameter into `timeline_express_get_announcement_icon_markup()`, controlling the link wrap around the icon container.
+- Check for `curl_exec` before loading the usage tracking class.
 
 = 1.3.5 - December 15th, 2016 =
 - Adjusted the links on the add-ons page to lead to https://www.wp-timelineexpress.com/add-ons/
