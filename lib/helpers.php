@@ -503,7 +503,11 @@ function timeline_express_get_announcement_icon_markup( $post_id, $link = true )
 
 		<a class="cd-timeline-icon-link" href="<?php echo esc_attr( apply_filters( 'timeline_express_announcement_permalink', get_the_permalink( $post_id ), $post_id ) ); ?>">
 
-	<?php } ?>
+	<?php
+
+	}
+
+	?>
 
 		<div class="cd-timeline-img cd-picture<?php echo esc_attr( $icon_container_class ); ?>" style="background:<?php echo esc_attr( timeline_express_get_announcement_icon_color( $post_id ) ); ?>;">
 
@@ -533,11 +537,15 @@ function timeline_express_get_announcement_icon_markup( $post_id, $link = true )
 	<?php
 
 	/* If read more visibility is set to true, wrap the icon in a link. */
-	if ( '1' === $timeline_express_options['read-more-visibility'] && $link ) { ?>
+	if ( '1' === $timeline_express_options['read-more-visibility'] && $link ) {
+
+	?>
 
 		</a>
 
-	<?php }
+	<?php
+
+	}
 
 }
 
