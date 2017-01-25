@@ -49,9 +49,9 @@ if ( ! defined( 'TIMELINE_EXPRESS_OPTION' ) ) {
 /**
  * Define Support/Update endpoint URLs for our Add-ons
  */
-if ( ! defined( 'EH_DEV_SHOP_URL' ) ) {
+if ( ! defined( 'TIMELINE_EXPRESS_SITE_URL' ) ) {
 
-	define( 'EH_DEV_SHOP_URL', 'https://www.evan-herman.com' );
+	define( 'TIMELINE_EXPRESS_SITE_URL', 'https://www.wp-timelineexpress.com' );
 
 }
 
