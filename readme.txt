@@ -71,6 +71,7 @@ The small list above demonstrates the flexibility and power behind Timeline Expr
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-historical-dates-add-on/">Timeline Express - Historical Dates</a>
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-ajax-limits-add-on/">Timeline Express - AJAX Limits</a>
 > - <a href="https://www.wp-timelineexpress.com/products/timeline-express-twitter-feeds-add/">Timeline Express - Twitter Feed</a>
+> - <a href="https://www.wp-timelineexpress.com/products/timeline-express-toolbox-add/">Timeline Express - Toolbox</a>
 
 > <a href="https://www.wp-timelineexpress.com/add-ons/">View All Add-Ons</a>
 
@@ -369,6 +370,9 @@ The above example will load font awesome version 4.4.0 instead of the current st
 5. Timeline Express - Admin Settings Page
 
 == Changelog ==
+
+= 1.3.7 - January xx, 2017 =
+- Added Toolbox Add-On to the add-ons page.
 
 = 1.3.6 - January 23rd, 2017 =
 - Set year icons to white.
