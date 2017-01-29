@@ -256,10 +256,16 @@ module.exports = function(grunt) {
 			readme_txt: {
 				src: [ 'readme.txt' ],
 				overwrite: true,
-				replacements: [{
+				replacements: [
+				{
 					from: /Stable tag: (.*)/,
 					to: "Stable tag: <%= pkg.version %>"
-				}]
+				},
+				{
+					from: /Tested up to: (.*)/,
+					to: "Tested up to: <%= pkg.tested_up_to %>"
+				}
+			]
 			},
 			readme_md: {
 				src: [ 'README.md' ],
@@ -272,7 +278,11 @@ module.exports = function(grunt) {
 					{
 						from: /\*\*Stable tag:\*\*        (.*)/,
 						to: "\**Stable tag:**        <%= pkg.version %> <br />"
-					}
+					},
+					{
+						from: /\*\*Tested up to:\*\*      WordPress v(.*)/,
+						to: "\**Tested up to:**      WordPress v<%= pkg.tested_up_to %> <br />"
+					},
 				]
 			},
 			constants: {
