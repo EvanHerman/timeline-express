@@ -180,7 +180,7 @@ add_filter( 'cmb2_localized_data', 'timeline_express_internationalize_datepicker
 
 function timeline_express_internationalize_datepicker( $l10n ) {
 
-	$date_format = apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) );
+	$date_format = get_option( 'date_format' );
 
 	$l10n['defaults']['date_picker']['dateFormat'] = te_dateformat_php_to_jqueryui( $date_format );
 
