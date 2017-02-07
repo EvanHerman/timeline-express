@@ -80,7 +80,6 @@ $timeline_express_rewrite = array(
  */
 $timeline_express_args = array(
 	'label'               => 'timeline-express-announcement',
-	Announcement plural name eg: Search Announcements
 	/* translators: %s: Announcement plural name eg: announcements */
 	'description'         => sprintf( esc_html( 'Post type for adding timeline express %s to the site.', 'timeline-express' ), strtolower( $announcement_plural_text ) ),
 	'labels'              => $timeline_express_labels,
