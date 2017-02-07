@@ -304,6 +304,7 @@ module.exports = function(grunt) {
 						} else if( results['bump.increment'] === 'custom' ) {
 							grunt.task.run( [ 'shell:bump_custom' ] );
 						}
+						grunt.task.run( [ 'shell:bump' ] );
 					}
 				}
 			}
@@ -363,27 +364,17 @@ module.exports = function(grunt) {
 		shell: {
 			bump_patch: [
 				'grunt bump:patch',
-				'grunt replace',
-				'grunt cssmin',
-				'grunt uglify',
-				'grunt usebanner',
 			].join( ' && ' ),
 			bump_minor: [
 				'grunt bump:minor',
-				'grunt replace',
-				'grunt cssmin',
-				'grunt uglify',
-				'grunt usebanner',
 			].join( ' && ' ),
 			bump_major: [
 				'grunt bump:major',
-				'grunt replace',
-				'grunt cssmin',
-				'grunt uglify',
-				'grunt usebanner',
 			].join( ' && ' ),
 			bump_custom: [
 				'grunt bump --setversion=<%= bump.custom_version %>',
+			].join( ' && ' ),
+			bump: [
 				'grunt replace',
 				'grunt cssmin',
 				'grunt uglify',
