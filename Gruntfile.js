@@ -244,6 +244,71 @@ module.exports = function(grunt) {
 			}
 		},
 
+		bump: {
+			options: {
+				files: ['package.json'],
+				updateConfigs: [],
+				commit: false,
+				createTag: false,
+				push: false,
+				globalReplace: false,
+				prereleaseName: false,
+				metadata: '',
+				regExp: false
+			}
+		},
+
+		prompt: {
+			bump: {
+				options: {
+					questions: [
+						{
+							config:  'bump.increment',
+							type:    'list',
+							message: 'Bump version from ' + '<%= pkg.version %>' + ' to:',
+							choices: [
+								{
+									value: 'patch',
+									name:  'Patch:  Patch Release eg: 1.0.0 => 1.0.1'
+								},
+								{
+									value: 'minor',
+									name:  'Minor:  Minor Release eg: 1.0.3 => 1.1.0'
+								},
+								{
+									value: 'major',
+									name:  'Major:  Major Release eg: 1.1.0 => 2.0.0'
+								},
+								{
+									value: 'custom',
+									name:  'Custom: Specify Version'
+								}
+							]
+						},
+						{
+							config:   'bump.custom_version',
+							type:     'input',
+							message:  'What specific version would you like',
+							when:     function (answers) {
+								return answers['bump.increment'] === 'custom';
+							}
+						},
+					],
+					then: function( results ) {
+						if ( results['bump.increment'] === 'patch' ) {
+							grunt.task.run( [ 'shell:bump_patch' ] );
+						} else if( results['bump.increment'] === 'minor' ) {
+							grunt.task.run( [ 'shell:bump_minor' ] );
+						} else if( results['bump.increment'] === 'major' ) {
+							grunt.task.run( [ 'shell:bump_major' ] );
+						} else if( results['bump.increment'] === 'custom' ) {
+							grunt.task.run( [ 'shell:bump_custom' ] );
+						}
+					}
+				}
+			}
+		},
+
 		replace: {
 			base_file: {
 				src: [ 'timeline-express.php' ],
@@ -295,6 +360,25 @@ module.exports = function(grunt) {
 			}
 		},
 
+		shell: {
+			bump_patch: [
+				'grunt bump:patch',
+				'grunt replace',
+			].join( ' && ' ),
+			bump_minor: [
+				'grunt bump:minor',
+				'grunt replace',
+			].join( ' && ' ),
+			bump_major: [
+				'grunt bump:major',
+				'grunt replace',
+			].join( ' && ' ),
+			bump_custom: [
+				'grunt bump --setversion=<%= bump.custom_version %>',
+				'grunt replace',
+			].join( ' && ' ),
+		},
+
 		wp_deploy: {
 			deploy: {
 				options: {
@@ -315,16 +399,23 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-banner' );
-	grunt.loadNpmTasks( 'grunt-contrib-copy' ); // Copy template files from within the plugin - over to a /template/ directory in the plugin root.
-	grunt.loadNpmTasks( 'grunt-postcss' ); // CSS autoprefixer plugin (cross-browser auto pre-fixes)
+	grunt.loadNpmTasks( 'grunt-contrib-copy' );
+	grunt.loadNpmTasks( 'grunt-postcss' );
 	grunt.loadNpmTasks( 'grunt-cssjanus' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-po2mo' );
+	grunt.loadNpmTasks( 'grunt-prompt' );
+	grunt.loadNpmTasks( 'grunt-shell' );
+	grunt.loadNpmTasks( 'grunt-bump' );
 	grunt.loadNpmTasks( 'grunt-text-replace' );
 	grunt.loadNpmTasks( 'grunt-wp-deploy' );
+	grunt.loadNpmTasks( 'grunt-menu' );
 
 	// register task
-	grunt.registerTask( 'default', [
+	grunt.registerTask( 'default', [ 'menu' ] );
+
+	// register task
+	grunt.registerTask( 'Default Grunt.js tasks for development.', [
 		'cssjanus',
 		'uglify',
 		'postcss',
@@ -333,30 +424,35 @@ module.exports = function(grunt) {
 		'copy:main'
 	] );
 
+	// register increase-version
+	grunt.registerTask( 'Bump the verison of Timeline Express to the next release.', [
+		'prompt',
+	] );
+
 	// register update-pot task
-	grunt.registerTask( 'update-pot', [
+	grunt.registerTask( 'Generate a .pot translation file.', [
 		'makepot'
 	] );
 
-	// register deploy
-	grunt.registerTask( 'deploy', [
-		'copy:deploy',
-		'wp_deploy'
-	] );
-
 	// register update-mo task
-	grunt.registerTask( 'update-mo', [
+	grunt.registerTask( 'Convert .po to .mo files.', [
 		'po2mo'
 	] );
 
 	// register update-translations
-	grunt.registerTask( 'update-translations', [
+	grunt.registerTask( 'Update the Timeline Express translation files.', [
 		'makepot',
 		'po2mo'
 	] );
 
+	// register deploy
+	grunt.registerTask( 'Deploy Timeline Express to the WordPress.org repository.', [
+		'copy:deploy',
+		'wp_deploy'
+	] );
+
 	// register bump-version
-	grunt.registerTask( 'bump-version', [
+	grunt.registerTask( 'Bump the version throughout from package.json.', [
 		'replace',
 	] );
 

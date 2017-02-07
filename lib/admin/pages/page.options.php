@@ -110,7 +110,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 														</option>
 													</select>
 													<p class="description">
-														<?php printf( esc_html_x( 'Select the time frame to query %s from.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'Select the time frame to query %s from.', 'timeline-express' ), strtolower( $timeline_express_plural_name ) );
+														?>
 													</p>
 												</td>
 											</tr>
@@ -132,11 +135,25 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 														</option>
 													</select>
 													<p class="description">
-														<?php printf( esc_html_x( 'Select the order you would like the %s to display.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'Select the order you would like the %s to display.', 'Timeline Express plural name (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) );
+														?>
 													</p>
 													<p class="description">
-														<code><?php printf( esc_html_x( 'Ascending: Chronological order by %s date.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?></code><br />
-														<code><?php printf( esc_html_x( 'Descending: Reverse chronological order by %s date.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?></code>
+														<code>
+															<?php
+																/* translators: Timeline Express singular name (eg: announcement) */
+																printf( esc_html( 'Ascending: Chronological order by %s date.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) );
+															?>
+														</code>
+														<br />
+														<code>
+															<?php
+																/* translators: Timeline Express singular name (eg: announcement) */
+																printf( esc_html( 'Descending: Reverse chronological order by %s date.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) );
+															?>
+														</code>
 													</p>
 												</td>
 											</tr>
@@ -145,7 +162,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[excerpt-trim-length]">
-														<?php printf( esc_html_x( '%s Excerpt Length', 'Timeline Express singular name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ); ?>
+														<?php
+															/* translators: Timeline Express singular name (eg: Announcement) */
+															printf( esc_html( '%s Excerpt Length', 'timeline-express' ), $timeline_express_singular_name );
+														?>
 													</label>
 												</th>
 												<td>
@@ -157,7 +177,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 														</span>
 													</label>
 													<p class="description">
-														<?php printf( esc_html_x( 'Set the length of the excerpt for each %s.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
+														<?php
+															/* translators: Timeline Express singular name (eg: announcement) */
+															printf( esc_html( 'Set the length of the excerpt for each %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) );
+														?>
 													</p>
 													<p class="description">
 														 <code><?php esc_html_e( 'Minimum Length: 25; 50 = 50 character excerpt length.', 'timeline-express' ); ?></code>
@@ -182,7 +205,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 														</option>
 													</select>
 													<p class="description">
-														<?php printf( esc_html_x( 'Toggle the visibility of the date for the %s.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
+														<?php
+															/* translators: Timeline Express singular name (eg: announcement) */
+															printf( esc_html( 'Toggle the visibility of the date for the %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) );
+														?>
 													</p>
 												</td>
 											</tr>
@@ -204,7 +230,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 														</option>
 													</select>
 													<p class="description">
-														<?php printf( esc_html_x( 'Toggle the visibility of the read more button. Hide to prevent users from viewing the full %s.',  'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
+														<?php
+															/* translators: Timeline Express singular name (eg: announcement) */
+															printf( esc_html( 'Toggle the visibility of the read more button. Hide to prevent users from viewing the full %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) );
+														?>
 													</p>
 												</td>
 											</tr>
@@ -228,7 +257,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 														);
 													?>
 													<p class="description">
-														<?php printf( esc_html_x( 'Select the font-awesome icon that you would like to use as a default icon for new %s.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'Select the font-awesome icon that you would like to use as a default icon for new %s.', 'timeline-express' ), strtolower( $timeline_express_plural_name ) );
+														?>
 														<a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank" style="font-size:12px;font-style:em;">
 															<?php esc_html_e( 'cheat sheet', 'timeline-express' ); ?>
 														</a>
@@ -240,16 +272,27 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[default-announcement-color]">
-														<?php printf( esc_html_x( 'Default %s Color', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), $timeline_express_singular_name ); ?>
+														<?php
+															/* translators: Timeline Express singular name (eg: announcement) */
+															printf( esc_html( 'Default %s Color', 'timeline-express' ), $timeline_express_singular_name );
+														?>
 													</label>
 												</th>
 												<td>
 													<input name="timeline_express_storage[default-announcement-color]" type="text" id="default-announcement-color" value="<?php echo esc_attr( $current_options['default-announcement-color'] ); ?>" class="regular-text color-picker-field" />
 													<p class="description">
-														<?php printf( esc_html_x( 'Set the default color for all new %s.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'Set the default color for all new %s.', 'timeline-express' ), strtolower( $timeline_express_plural_name ) );
+														?>
 													</p>
 													<p clss="description">
-														<code><?php printf( esc_html_x( 'Note: You can override this setting within each %s.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?></code>
+														<code>
+															<?php
+																/* translators: Timeline Express singular name (eg: announcement) */
+																printf( esc_html( 'Note: You can override this setting within each %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) );
+															?>
+														</code>
 													</p>
 												</td>
 											</tr>
@@ -258,13 +301,19 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[announcement-bg-color]">
-														<?php printf( esc_html_x( '%s Container Background Color', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), $timeline_express_singular_name ); ?>
+														<?php
+															/* translators: Timeline Express singular name (eg: announcement) */
+															printf( esc_html( '%s Container Background Color', 'timeline-express' ), $timeline_express_singular_name );
+														?>
 													</label>
 												</th>
 												<td>
 													<input type="text" name="timeline_express_storage[announcement-bg-color]" class="color-picker-field" value="<?php echo esc_attr( $current_options['announcement-bg-color'] ); ?>" />
 													<p class="description">
-														<?php printf( esc_html_x( 'Set the background color of the %s container on the timeline.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
+														<?php
+															/* translators: Timeline Express singular name (eg: announcement) */
+															printf( esc_html( 'Set the background color of the %s container on the timeline.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) );
+														?>
 													</p>
 												</td>
 											</tr>
@@ -273,13 +322,19 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[announcement-box-shadow-color]">
-														<?php printf( esc_html_x( '%s Shadow Color', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), $timeline_express_singular_name ); ?>
+														<?php
+															/* translators: Timeline Express singular name (eg: announcement) */
+															printf( esc_html( '%s Shadow Color', 'timeline-express' ), $timeline_express_singular_name );
+														?>
 													</label>
 												</th>
 												<td>
 													<input type="text" name="timeline_express_storage[announcement-box-shadow-color]" class="color-picker-field" value="<?php echo esc_attr( $current_options['announcement-box-shadow-color'] ); ?>" />
 													<p class="description">
-														<?php printf( esc_html_x( 'Set the shadow color for the %s container on the timeline.', 'Timeline Express singular name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ); ?>
+														<?php
+															/* translators: Timeline Express singular name (eg: announcement) */
+															printf( esc_html( 'Set the shadow color for the %s container on the timeline.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) );
+														?>
 													</p>
 												</td>
 											</tr>
@@ -303,7 +358,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[no-events-message]">
-														<?php printf( esc_html_x( 'No %s Message', 'Timeline Express plural name (eg: announcements)', 'timeline-express' ), $timeline_express_plural_name ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'No %s Message', 'timeline-express' ), $timeline_express_plural_name );
+														?>
 													</label>
 												</th>
 												<td>
@@ -313,7 +371,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 														$additional_editor_parameters
 													); ?>
 													<p class="description">
-														<?php printf( esc_html_x( 'Set the message that will display when no %s are found.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'Set the message that will display when no %s are found.', 'timeline-express' ), strtolower( $timeline_express_plural_name ) );
+														?>
 													</p>
 												</td>
 											</tr>
@@ -322,7 +383,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[delete-announcement-posts-on-uninstallation]">
-														<?php printf( esc_html_x( 'Exclude %s from Site Searches', 'Timeline Express plural name (eg: announcements)', 'timeline-express' ), $timeline_express_plural_name ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'Exclude %s from Site Searches', 'timeline-express' ), $timeline_express_plural_name );
+														?>
 													</label>
 												</th>
 												<td>
@@ -335,7 +399,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 														</option>
 													</select>
 													<p class="description">
-														<?php printf( esc_html_x( 'Set to true to exclude %1$s from site searches. False will include %1$s in site searches.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'Set to true to exclude %1$s from site searches. False will include %1$s in site searches.', 'timeline-express' ), strtolower( $timeline_express_plural_name ) );
+														?>
 													</p>
 												</td>
 											</tr>
@@ -359,14 +426,20 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 											<tr valign="top">
 												<th scope="row">
 													<label for="timeline_express_storage[delete-announcement-posts-on-uninstallation]">
-														<?php printf( esc_html_x( 'Delete %s On Uninstall', 'Timeline Express plural name (eg: announcements)', 'timeline-express' ), $timeline_express_plural_name ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'Delete %s On Uninstall', 'timeline-express' ), $timeline_express_plural_name );
+														?>
 													</label>
 												</th>
 												<td>
 													<input type="checkbox" name="timeline_express_storage[delete-announcement-posts-on-uninstallation]" onclick="toggleDeleteCheckClass();" <?php checked( $current_options['delete-announcement-posts-on-uninstallation'] , '1' ); ?> value="1" />
 													<span class="<?php if ( '0' === $current_options['delete-announcement-posts-on-uninstallation'] ) { ?> delete-no <?php } else { ?> delete-yes <?php } ?>" onclick="toggle_delete_checkbox();"></span>
 													<p class="description">
-														<?php printf( esc_html_x( 'Check this option to delete all %1$s from the database on plugin uninstall. This can not be undone. If you want to back them up, it is recommended you %2$s before uninstalling.', 'Timeline Express plural name - lowercase (eg: announcements)', 'timeline-express' ), strtolower( $timeline_express_plural_name ), '<a href="' . admin_url( 'export.php' ) . '">' . sprintf( esc_html__( 'export your %s', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ) . '</a>' ); ?>
+														<?php
+															/* translators: Timeline Express plural name (eg: announcements) */
+															printf( esc_html( 'Check this option to delete all %1$s from the database on plugin uninstall. This can not be undone. If you want to back them up, it is recommended you %2$s before uninstalling.', 'timeline-express' ), strtolower( $timeline_express_plural_name ), '<a href="' . admin_url( 'export.php' ) . '">' . sprintf( esc_html__( 'export your %s', 'timeline-express' ), strtolower( $timeline_express_plural_name ) ) . '</a>' );
+														?>
 													</p>
 												</td>
 											</tr>

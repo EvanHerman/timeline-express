@@ -46,7 +46,8 @@ function add_new_timeline_express_columns( $timeline_express_announcement_column
 
 	$timeline_express_announcement_columns['cb'] = '<input type="checkbox" />';
 
-	$timeline_express_announcement_columns['title'] = sprintf( esc_html_x( '%s Name', 'Announcement singular name eg: Announcement Name', 'timeline-express' ), $timeline_express_singular_name );
+	/* translators: %s: Announcement singular name eg: Announcement */
+	$timeline_express_announcement_columns['title'] = sprintf( esc_html( '%s Name', 'timeline-express' ), $timeline_express_singular_name );
 
 	$timeline_express_announcement_columns['color'] = esc_html__( 'Color', 'timeline-express' );
 
@@ -57,11 +58,13 @@ function add_new_timeline_express_columns( $timeline_express_announcement_column
 
 	}
 
-	$timeline_express_announcement_columns['announcement_date'] = sprintf( esc_html_x( '%s Date', 'Announcement singular name eg: Announcement Date', 'timeline-express' ), $timeline_express_singular_name );
+	/* translators: %s: Announcement singular name eg: Announcement Date */
+	$timeline_express_announcement_columns['announcement_date'] = sprintf( esc_html( '%s Date', 'timeline-express' ), $timeline_express_singular_name );
 
 	$timeline_express_announcement_columns['image'] = esc_html__( 'Image', 'timeline-express' );
 
-	$timeline_express_announcement_columns['past_announcement'] = sprintf( esc_html_x( '%s Past?', 'Announcement singular name eg: Announcement Past?', 'timeline-express' ), $timeline_express_singular_name );
+	/* translators: %s: Announcement singular name eg: Announcement Past? */
+	$timeline_express_announcement_columns['past_announcement'] = sprintf( esc_html( '%s Past?', 'timeline-express' ), $timeline_express_singular_name );
 
 	$timeline_express_announcement_columns['date'] = esc_html__( 'Published Date', 'timeline-express' );
 
@@ -130,7 +133,8 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 
 			if ( $announcment_date < $todays_date ) {
 
-				echo '<div class="dashicon-past-announcement dashicons dashicons-backup" title="' . sprintf( esc_attr_x( '%s has past.', 'Announcement singular name eg: announcement has past.', 'timeline-express' ), esc_attr__( apply_filters( 'timeline_express_singular_name', 'Announcement' ) ) ) . '" style="display:block;width:100%;"></div>';
+				/* translators: Announcement singular name eg: announcement has past. */
+				echo '<div class="dashicon-past-announcement dashicons dashicons-backup" title="' . sprintf( esc_attr__( '%s has past.', 'timeline-express' ), esc_attr__( apply_filters( 'timeline_express_singular_name', 'Announcement' ) ) ) . '" style="display:block;width:100%;"></div>';
 
 			}
 

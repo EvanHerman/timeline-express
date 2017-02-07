@@ -28,7 +28,12 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 			<img src="<?php echo esc_url( TIMELINE_EXPRESS_URL . 'lib/admin/images/timeline-express-logo-128.png' ); ?>" title="Timeline Express" />
 		</div>
 
-		<h1><?php printf( esc_html_x( 'Welcome to Timeline Express v%s', 'Integer value, representing the plugin version number.', 'timeline-express' ), esc_html( TIMELINE_EXPRESS_VERSION_CURRENT ) ); ?></h1>
+		<h1>
+			<?php
+				/* translators: Integer value, representing the plugin version number. */
+				printf( esc_html( 'Welcome to Timeline Express v%s', 'timeline-express' ), esc_html( TIMELINE_EXPRESS_VERSION_CURRENT ) );
+			?>
+		</h1>
 
 		<div class="about-text">
 			<?php esc_html_e( "Thank you for choosing Timeline Express - the most beginner friendly, attractive and powerful WordPress Timeline plugin. Here's how to get started.", 'timeline-express' ); ?>
@@ -71,9 +76,19 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 				<div class="feature-section-content">
 
-					<p><?php printf( esc_html_x( 'Timeline Express makes it easy to create and display a beautiful and animated timeline in WordPress. Feel free to read our support article, %s.', 'Anchor tag linking back to the Timeline Express documentation.', 'timeline-express' ), '<a href="https://www.wp-timelineexpress.com/documentation/creating-an-announcement/" target="_blank">How To Create Your First Announcement</a>' ); ?>
+					<p>
+						<?php
+							/* translators: Anchor tag linking back to the Timeline Express documentation. */
+							printf( esc_html( 'Timeline Express makes it easy to create and display a beautiful and animated timeline in WordPress. Feel free to read our support article, %s.', 'timeline-express' ), '<a href="https://www.wp-timelineexpress.com/documentation/creating-an-announcement/" target="_blank">How To Create Your First Announcement</a>' );
+						?>
+					</p>
 
-					<p><?php printf( esc_html_x( 'The process is so intuitive that you can jump right in by going to %s.', 'Anchor tag linking to create a new announcement.', 'timeline-express' ), '<a href="' . esc_url( admin_url( 'post-new.php?post_type=te_announcements' ) ) . '">' . esc_html__( 'Timeline Express &#8594; New Announcement', 'timeine-express-pro' ) . '</a>' ); ?>
+					<p>
+						<?php
+							/* translators: Anchor tag linking to create a new announcement. */
+							printf( esc_html( 'The process is so intuitive that you can jump right in by going to %s.', 'timeline-express' ), '<a href="' . esc_url( admin_url( 'post-new.php?post_type=te_announcements' ) ) . '">' . esc_html__( 'Timeline Express &#8594; New Announcement', 'timeine-express-pro' ) . '</a>' );
+						?>
+					</p>
 
 					<h4><?php esc_html_e( 'Announcement Images', 'timeline-express' );?></h4>
 
@@ -97,9 +112,19 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 				<div class="feature-section-content">
 
-					<p><?php printf( esc_html_x( 'Head into the %s to tweak how the Timeline is going to function and display on your site. You can tweak the visual appearance of the timeline, and the order and time period from which announcements should disdplay.', 'Anchor tag linking back to the Timeline Express settings page.', 'timeline-express' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) ) . '">' . esc_attr__( 'Settings Page', 'timeline-express' ) . '</a>' ); ?>
+					<p>
+						<?php
+							/* translators: Anchor tag linking back to the Timeline Express settings page. */
+							printf( esc_html( 'Head into the %s to tweak how the Timeline is going to function and display on your site. You can tweak the visual appearance of the timeline, and the order and time period from which announcements should disdplay.', 'timeline-express' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ) ) . '">' . esc_attr__( 'Settings Page', 'timeline-express' ) . '</a>' );
+						?>
+					</p>
 
-					<p><?php printf( esc_html_x( "%s: If you ever notice something doesn't look correct or function properly on the timeline, double check that your settings are correct.", 'HTML markup (strong tags) surrounding the words "Pro Tip"', 'timeline-express' ), '<strong>' . esc_html__( 'Pro Tip', 'timeline-express' ) . '</strong>' ); ?>
+						<p>
+						<?php
+							/* translators: HTML markup (strong tags) surrounding the words "Pro Tip" */
+							printf( esc_html( "%s: If you ever notice something doesn't look correct or function properly on the timeline, double check that your settings are correct.", 'timeline-express' ), '<strong>' . esc_html__( 'Pro Tip', 'timeline-express' ) . '</strong>' );
+						?>
+					</p>
 
 				</div>
 
