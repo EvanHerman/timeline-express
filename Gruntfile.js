@@ -364,18 +364,30 @@ module.exports = function(grunt) {
 			bump_patch: [
 				'grunt bump:patch',
 				'grunt replace',
+				'grunt cssmin',
+				'grunt uglify',
+				'grunt usebanner',
 			].join( ' && ' ),
 			bump_minor: [
 				'grunt bump:minor',
 				'grunt replace',
+				'grunt cssmin',
+				'grunt uglify',
+				'grunt usebanner',
 			].join( ' && ' ),
 			bump_major: [
 				'grunt bump:major',
 				'grunt replace',
+				'grunt cssmin',
+				'grunt uglify',
+				'grunt usebanner',
 			].join( ' && ' ),
 			bump_custom: [
 				'grunt bump --setversion=<%= bump.custom_version %>',
 				'grunt replace',
+				'grunt cssmin',
+				'grunt uglify',
+				'grunt usebanner',
 			].join( ' && ' ),
 		},
 
@@ -453,7 +465,7 @@ module.exports = function(grunt) {
 
 	// register bump-version
 	grunt.registerTask( 'Bump the version throughout from package.json.', [
-		'replace',
+		'replace'
 	] );
 
 };
