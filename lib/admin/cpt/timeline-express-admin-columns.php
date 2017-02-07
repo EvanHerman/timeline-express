@@ -46,7 +46,11 @@ function add_new_timeline_express_columns( $timeline_express_announcement_column
 
 	$timeline_express_announcement_columns['cb'] = '<input type="checkbox" />';
 
-	$timeline_express_announcement_columns['title'] = sprintf( esc_html_x( '%s Name', 'Announcement singular name eg: Announcement Name', 'timeline-express' ), $timeline_express_singular_name );
+	$timeline_express_announcement_columns['title'] = sprintf(
+		/* translators: %s: Announcement singular name eg: Announcement Name */
+		esc_html__( '%s Name', 'timeline-express' ),
+		$timeline_express_singular_name
+	);
 
 	$timeline_express_announcement_columns['color'] = esc_html__( 'Color', 'timeline-express' );
 
@@ -57,11 +61,19 @@ function add_new_timeline_express_columns( $timeline_express_announcement_column
 
 	}
 
-	$timeline_express_announcement_columns['announcement_date'] = sprintf( esc_html_x( '%s Date', 'Announcement singular name eg: Announcement Date', 'timeline-express' ), $timeline_express_singular_name );
+	$timeline_express_announcement_columns['announcement_date'] = sprintf(
+		/* translators: %s: Announcement singular name eg: Announcement Date */
+		esc_html__( '%s Date', 'timeline-express' ),
+		$timeline_express_singular_name
+	);
 
 	$timeline_express_announcement_columns['image'] = esc_html__( 'Image', 'timeline-express' );
 
-	$timeline_express_announcement_columns['past_announcement'] = sprintf( esc_html_x( '%s Past?', 'Announcement singular name eg: Announcement Past?', 'timeline-express' ), $timeline_express_singular_name );
+	$timeline_express_announcement_columns['past_announcement'] = sprintf(
+		/* translators: %s: Announcement singular name eg: Announcement Past? */
+		esc_html__( '%s Past?', 'timeline-express' ),
+		$timeline_express_singular_name
+	);
 
 	$timeline_express_announcement_columns['date'] = esc_html__( 'Published Date', 'timeline-express' );
 
