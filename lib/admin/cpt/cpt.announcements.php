@@ -40,19 +40,29 @@ $announcement_plural_text = apply_filters( 'timeline_express_plural_name', esc_h
  * Custom Post Type Label Array
  */
 $timeline_express_labels = array(
-	'name'               => sprintf( esc_html_x( 'Timeline Express %s', 'Announcement plural name eg: Timeline Express Announcements', 'timeline-express' ), $announcement_plural_text ),
+	/* translators: %s: Announcement singular name eg: Announcement Name */
+	'name'               => sprintf( esc_html( 'Timeline Express %s', 'timeline-express' ), $announcement_plural_text ),
 	'singular_name'      => $announcement_singular_text, /* Menu item at the top New > Announcement */
 	'menu_name'          => esc_html__( 'Timeline Express', 'timeline-express' ), /* Menu name */
 	'parent_item_colon'  => esc_html__( 'Timeline Express:', 'timeline-express' ),
-	'all_items'          => sprintf( esc_html_x( 'All %s', 'Announcement plural name eg: All Announcements', 'timeline-express' ), $announcement_plural_text ),
-	'view_item'          => sprintf( esc_html_x( 'View %s', 'Announcement singular name eg: View Announcement', 'timeline-express' ), $announcement_singular_text ),
-	'add_new_item'       => sprintf( esc_html_x( 'New %s', 'Announcement singular name eg: New Announcement', 'timeline-express' ), $announcement_singular_text ),
-	'add_new'            => sprintf( esc_html_x( 'New %s', 'Announcement singular name eg: New Announcement', 'timeline-express' ), $announcement_singular_text ),
-	'edit_item'          => sprintf( esc_html_x( 'Edit %s', 'Announcement singular name eg: Edit Announcement', 'timeline-express' ), $announcement_singular_text ),
-	'update_item'        => sprintf( esc_html_x( 'Update %s', 'Announcement singular name eg: Update Announcement', 'timeline-express' ), $announcement_singular_text ),
-	'search_items'       => sprintf( esc_html_x( 'Search %s', 'Announcement plural name eg: Search Announcements', 'timeline-express' ), $announcement_plural_text ),
-	'not_found'          => sprintf( esc_html_x( 'No Timeline Express %s Found', 'Announcement plural name eg: No Timeline Express Announcements Found', 'timeline-express' ), $announcement_plural_text ),
-	'not_found_in_trash' => sprintf( esc_html_x( 'No Timeline Express %s in Trash', 'Announcement plural name eg: No Timeline Express Announcements in Trash', 'timeline-express' ), $announcement_plural_text ),
+	/* translators: %s: Announcement plural name eg: All Announcements */
+	'all_items'          => sprintf( esc_html( 'All %s', 'timeline-express' ), $announcement_plural_text ),
+	/* translators: %s: Announcement singular name eg: View Announcement */
+	'view_item'          => sprintf( esc_html( 'View %s', 'timeline-express' ), $announcement_singular_text ),
+	/* translators: %s: Announcement singular name eg: New Announcement */
+	'add_new_item'       => sprintf( esc_html( 'New %s', 'timeline-express' ), $announcement_singular_text ),
+	/* translators: %s: Announcement singular name eg: New Announcement */
+	'add_new'            => sprintf( esc_html( 'New %s', 'timeline-express' ), $announcement_singular_text ),
+	/* translators: %s: Announcement singular name eg: Edit Announcement */
+	'edit_item'          => sprintf( esc_html( 'Edit %s', 'timeline-express' ), $announcement_singular_text ),
+	/* translators: %s: Announcement singular name eg: Update Announcement */
+	'update_item'        => sprintf( esc_html( 'Update %s', 'timeline-express' ), $announcement_singular_text ),
+	/* translators: %s: Announcement plural name eg: Search Announcements */
+	'search_items'       => sprintf( esc_html( 'Search %s', 'timeline-express' ), $announcement_plural_text ),
+	/* translators: %s: Announcement plural name eg: Search Announcements */
+	'not_found'          => sprintf( esc_html( 'No Timeline Express %s Found', 'timeline-express' ), $announcement_plural_text ),
+	/* translators: %s: Announcement plural name eg: Search Announcements */
+	'not_found_in_trash' => sprintf( esc_html( 'No Timeline Express %s in Trash', 'timeline-express' ), $announcement_plural_text ),
 );
 
 /**
@@ -70,7 +80,8 @@ $timeline_express_rewrite = array(
  */
 $timeline_express_args = array(
 	'label'               => 'timeline-express-announcement',
-	'description'         => sprintf( esc_html_x( 'Post type for adding timeline express %s to the site.', 'Announcement plural name eg: Post type for adding timeline express announcements to the site', 'timeline-express' ), strtolower( $announcement_plural_text ) ),
+	/* translators: %s: Announcement plural name eg: announcements */
+	'description'         => sprintf( esc_html( 'Post type for adding timeline express %s to the site.', 'timeline-express' ), strtolower( $announcement_plural_text ) ),
 	'labels'              => $timeline_express_labels,
 	'supports'            => array( 'title', 'editor' ),
 	'taxonomies'          => array(),

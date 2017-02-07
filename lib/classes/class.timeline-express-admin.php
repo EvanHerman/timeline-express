@@ -440,7 +440,8 @@ class TimelineExpressAdmin {
 	function get_announcement_date( $object, $field_name, $request ) {
 
 		return sprintf(
-			apply_filters( 'timeline_express_announcement_date_text', _x( 'Announcement Date: %s', 'The announcement date.', 'timeline-express' ) ),
+			/* translators: Announcement date format */
+			apply_filters( 'timeline_express_announcement_date_text', __( 'Announcement Date: %s', 'timeline-express' ) ),
 			wp_kses_post( timeline_express_get_announcement_date( $object['id'] ) )
 		);
 

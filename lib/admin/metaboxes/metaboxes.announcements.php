@@ -22,7 +22,8 @@ $timeline_express_singular_name = apply_filters( 'timeline_express_singular_name
  */
 $announcement_metabox = new_cmb2_box( array(
 	'id'            => 'announcement_metabox',
-	'title'         => sprintf( esc_html_x( '%s Info.', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	/* translators: Timeline Express singular post type name (eg: Announcement) */
+	'title'         => sprintf( esc_html( '%s Info.', 'timeline-express' ), $timeline_express_singular_name ),
 	'object_types'  => array( 'te_announcements' ),
 	'context'       => 'advanced',
 	'priority'      => 'high',
@@ -31,8 +32,10 @@ $announcement_metabox = new_cmb2_box( array(
 
 // Announcement Color
 $announcement_metabox->add_field( array(
-	'name'       => sprintf( esc_html_x( '%s Color', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
-	'desc'       => sprintf( esc_html_x( 'Select the color for this %s.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
+	/* translators: Timeline Express singular post type name (eg: Announcement) */
+	'name'       => sprintf( esc_html( '%s Color', 'timeline-express' ), $timeline_express_singular_name ),
+	/* translators: Timeline Express singular post type name (eg: Announcement) */
+	'desc'       => sprintf( esc_html( 'Select the color for this %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'         => $prefix . 'color',
 	'type'       => 'colorpicker',
 	'default'  => $timeline_express_options['default-announcement-color'],
@@ -40,8 +43,10 @@ $announcement_metabox->add_field( array(
 
 // Announcement Icon
 $announcement_metabox->add_field( array(
-	'name' => sprintf( esc_html_x( '%s Icon', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
-	'desc' => sprintf( esc_html_x( 'Select an icon from the drop down above. This is used for the icon associated with the %s.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
+	/* translators: Timeline Express singular post type name (eg: Announcement) */
+	'name' => sprintf( esc_html( '%s Icon', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+	/* translators: Timeline Express singular post type name (eg: announcement) */
+	'desc' => sprintf( esc_html( 'Select an icon from the drop down above. This is used for the icon associated with the %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'icon',
 	'type' => 'te_bootstrap_dropdown',
 	'default' => 'fa-' . $timeline_express_options['default-announcement-icon'],
@@ -49,8 +54,10 @@ $announcement_metabox->add_field( array(
 
 // Announcement Date
 $announcement_metabox->add_field( array(
-	'name' => sprintf( esc_html_x( '%s Date', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
-	'desc' => sprintf( esc_html_x( 'Enter the date of the %s. the announcements will appear in chronological order according to this date.', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
+	/* translators: Timeline Express singular post type name (eg: Announcement) */
+	'name' => sprintf( esc_html( '%s Date', 'timeline-express' ), $timeline_express_singular_name ),
+	/* translators: Timeline Express singular post type name (eg: announcement) */
+	'desc' => sprintf( esc_html( 'Enter the date of the %s. the announcements will appear in chronological order according to this date.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'date',
 	'type' => 'te_date_time_stamp_custom',
 	'default' => strtotime( 'now' ),
@@ -58,8 +65,10 @@ $announcement_metabox->add_field( array(
 
 // Announcement Image
 $announcement_metabox->add_field( array(
-	'name' => sprintf( esc_html_x( '%s Image', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
-	'desc' => sprintf( esc_html_x( 'Select a banner image for this %s (optional). (recommended 650px wide or larger)', 'Timeline Express singular post type name - lowercase (eg: announcement)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
+	/* translators: Timeline Express singular post type name (eg: Announcement) */
+	'name' => sprintf( esc_html( '%s Image', 'timeline-express' ), $timeline_express_singular_name ),
+	/* translators: Timeline Express singular post type name - lowercase (eg: announcement) */
+	'desc' => sprintf( esc_html( 'Select a banner image for this %s (optional). (recommended 650px wide or larger)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'image',
 	'type' => 'file',
 ) );
@@ -180,7 +189,7 @@ add_filter( 'cmb2_localized_data', 'timeline_express_internationalize_datepicker
 
 function timeline_express_internationalize_datepicker( $l10n ) {
 
-	$date_format = apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) );
+	$date_format = get_option( 'date_format' );
 
 	$l10n['defaults']['date_picker']['dateFormat'] = te_dateformat_php_to_jqueryui( $date_format );
 

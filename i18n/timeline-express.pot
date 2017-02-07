@@ -1,13 +1,13 @@
-# Copyright (c) 2016 Code Parrots. All Rights Reserved.
+# Copyright (c) 2017 Code Parrots. All Rights Reserved.
 msgid ""
 msgstr ""
-"Project-Id-Version: Timeline Express 1.3.1\n"
+"Project-Id-Version: Timeline Express 1.3.6\n"
 "Report-Msgid-Bugs-To: https://github.com/EvanHerman/Timeline-Express/issues\n"
-"POT-Creation-Date: 2016-10-11 15:48:47+00:00\n"
+"POT-Creation-Date: 2017-02-07 12:45:51+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
@@ -15,11 +15,17 @@ msgstr ""
 "__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
 "attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 
+#: lib/admin/cpt/cpt.announcements.php:25
+msgid "announcement"
+msgstr ""
+
 #: lib/admin/cpt/cpt.announcements.php:31
+#: lib/admin/metaboxes/metaboxes.announcements.php:18
+#: lib/admin/pages/page.options.php:29
 msgid "Announcement"
 msgstr ""
 
-#: lib/admin/cpt/cpt.announcements.php:37
+#: lib/admin/cpt/cpt.announcements.php:37 lib/admin/pages/page.options.php:30
 msgid "Announcements"
 msgstr ""
 
@@ -27,88 +33,56 @@ msgstr ""
 msgid "Timeline Express"
 msgstr ""
 
-#: lib/admin/cpt/cpt.announcements.php:46
+#: lib/admin/cpt/cpt.announcements.php:47
 msgid "Timeline Express:"
 msgstr ""
 
-#: lib/admin/cpt/timeline-express-admin-columns.php:51
+#: lib/admin/cpt/timeline-express-admin-columns.php:52
+#. translators: %s: Announcement singular name eg: Announcement
 msgid "Color"
 msgstr ""
 
-#: lib/admin/cpt/timeline-express-admin-columns.php:56
+#: lib/admin/cpt/timeline-express-admin-columns.php:57
 msgid "Icon"
 msgstr ""
 
-#: lib/admin/cpt/timeline-express-admin-columns.php:62
+#: lib/admin/cpt/timeline-express-admin-columns.php:64
+#. translators: %s: Announcement singular name eg: Announcement Date
 msgid "Image"
 msgstr ""
 
-#: lib/admin/cpt/timeline-express-admin-columns.php:66
+#: lib/admin/cpt/timeline-express-admin-columns.php:69
+#. translators: %s: Announcement singular name eg: Announcement Past?
 msgid "Published Date"
 msgstr ""
 
-#: lib/admin/cpt/timeline-express-admin-columns.php:119
+#: lib/admin/cpt/timeline-express-admin-columns.php:122
 msgid "not set"
 msgstr ""
 
-#: lib/admin/metaboxes/metaboxes.announcements.php:22
-msgid "Announcement Info."
+#: lib/admin/cpt/timeline-express-admin-columns.php:137
+#. translators: Announcement singular name eg: announcement has past.
+msgid "%s has past."
 msgstr ""
 
-#: lib/admin/metaboxes/metaboxes.announcements.php:31
-msgid "Announcement Color"
-msgstr ""
-
-#: lib/admin/metaboxes/metaboxes.announcements.php:32
-msgid "Select the color for this announcement."
-msgstr ""
-
-#: lib/admin/metaboxes/metaboxes.announcements.php:40
-msgid "Announcement Icon"
-msgstr ""
-
-#: lib/admin/metaboxes/metaboxes.announcements.php:41
-msgid ""
-"Select an icon from the drop down above. This is used for the icon "
-"associated with the announcement."
-msgstr ""
-
-#: lib/admin/metaboxes/metaboxes.announcements.php:49
-msgid "Announcement Date"
-msgstr ""
-
-#: lib/admin/metaboxes/metaboxes.announcements.php:50
-msgid ""
-"Enter the date of the announcement. the announcements will appear in "
-"chronological order according to this date. "
-msgstr ""
-
-#: lib/admin/metaboxes/metaboxes.announcements.php:58
-msgid "Announcement Image"
-msgstr ""
-
-#: lib/admin/metaboxes/metaboxes.announcements.php:59
-msgid ""
-"Select a banner image for this announcement (optional). (recommended 650px "
-"wide or larger)"
-msgstr ""
-
-#: lib/admin/metaboxes/metaboxes.announcements.php:75
+#: lib/admin/metaboxes/metaboxes.announcements.php:87
+#. translators: Timeline Express singular post type name - lowercase (eg:
+#. announcement)
 msgid "Announcement Container Info."
 msgstr ""
 
-#: lib/admin/metaboxes/metaboxes.announcements.php:84
+#: lib/admin/metaboxes/metaboxes.announcements.php:96
 msgid "Custom Container Class"
 msgstr ""
 
-#: lib/admin/metaboxes/metaboxes.announcements.php:85
+#: lib/admin/metaboxes/metaboxes.announcements.php:97
 msgid ""
 "Enter the class that you would like added to this announcement container on "
 "the timeline."
 msgstr ""
 
-#: lib/admin/metaboxes/metaboxes.announcements.php:99
-#: lib/admin/pages/page.options.php:430
+#: lib/admin/metaboxes/metaboxes.announcements.php:111
+#: lib/admin/pages/page.options.php:535
 msgid "Help & Documentation"
 msgstr ""
 
@@ -136,24 +110,6 @@ msgstr ""
 msgid "Timeline Express Bundle"
 msgstr ""
 
-#: lib/admin/metaboxes/partials/help-docs-metabox.php:11
-msgid ""
-"If you need help, or run into any issues, you can reach out for support in "
-"the WordPress.org support forums. Additionally, please see our "
-"documentation for how-tos, frequent issues and code snippets."
-msgstr ""
-
-#: lib/admin/metaboxes/partials/help-docs-metabox.php:18
-#: lib/admin/pages/page.options.php:440
-msgid "Support Forums"
-msgstr ""
-
-#: lib/admin/metaboxes/partials/help-docs-metabox.php:22
-#: lib/admin/pages/page.options.php:443 lib/admin/pages/page.welcome.php:189
-#: lib/classes/class.timeline-express-admin.php:348
-msgid "Documentation"
-msgstr ""
-
 #: lib/admin/pages/page.addons.php:29
 msgid "Timeline HTML Excerpts"
 msgstr ""
@@ -172,7 +128,7 @@ msgstr ""
 
 #: lib/admin/pages/page.addons.php:40
 msgid ""
-"Remove any and all references to our branding, Code Parrots. This addon "
+"Remove any and all references to our branding, Code Parrots. This add-on "
 "removes links, metaboxes, menu items and any association to Code Parrots so "
 "your clients won’t get confused with the mixed branding across the "
 "dashboard."
@@ -213,7 +169,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin/pages/page.addons.php:69
-msgid "AJAX Limits Add-On"
+msgid "AJAX Limits"
 msgstr ""
 
 #: lib/admin/pages/page.addons.php:71
@@ -224,330 +180,290 @@ msgid ""
 "display many announcements."
 msgstr ""
 
-#: lib/admin/pages/page.addons.php:81
+#: lib/admin/pages/page.addons.php:77
+msgid "Twitter Feed"
+msgstr ""
+
+#: lib/admin/pages/page.addons.php:79
+msgid ""
+"Display twitter feeds in a Timeline for users, search terms and by "
+"gelocation using our Twitter Feed Add-On. Twitter feeds can be set to live "
+"update, so every 30 seconds the feed is updated with new, fresh, tweets."
+msgstr ""
+
+#: lib/admin/pages/page.addons.php:84
+msgid "No Icons"
+msgstr ""
+
+#: lib/admin/pages/page.addons.php:86
+msgid ""
+"Remove the icon selection on the announcement creation/edit screen, and "
+"remove the icons on the timeline on the front end of the site."
+msgstr ""
+
+#: lib/admin/pages/page.addons.php:92
+msgid "Toolbox"
+msgstr ""
+
+#: lib/admin/pages/page.addons.php:94
+msgid ""
+"Customize many aspects of Timeline Express (image size, date format, "
+"announcement slug etc.) without ever writing any code, using an admin UI."
+msgstr ""
+
+#: lib/admin/pages/page.addons.php:104
 msgid "Timeline Express Product Bundle"
 msgstr ""
 
-#: lib/admin/pages/page.addons.php:91
-#: lib/classes/class.timeline-express-admin.php:146
+#: lib/admin/pages/page.addons.php:115
+#: lib/classes/class.timeline-express-admin.php:148
+#. translators: Integer value for the number of add-ons in the add-on list.
+#. (eg: 6)
 msgid "Timeline Express Add-Ons"
 msgstr ""
 
-#: lib/admin/pages/page.addons.php:95
+#: lib/admin/pages/page.addons.php:120
 msgid ""
 "Extend the base Timeline Express functionality with our powerful add-ons. "
 "We're constantly looking to build out additional add-ons. If you have a "
 "great idea for a new add-on, get in contact with us!"
 msgstr ""
 
-#: lib/admin/pages/page.addons.php:156
+#: lib/admin/pages/page.addons.php:201
 msgid "Download Now"
 msgstr ""
 
-#: lib/admin/pages/page.addons.php:156
+#: lib/admin/pages/page.addons.php:201
 msgid "Buy Now"
 msgstr ""
 
-#: lib/admin/pages/page.addons.php:166
-msgid "Add-On Installed"
+#: lib/admin/pages/page.addons.php:211
+msgid "Installed"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:33
-#: lib/classes/class.timeline-express-admin.php:136
-msgid "Timeline Express Settings"
-msgstr ""
-
-#: lib/admin/pages/page.options.php:36
-msgid ""
-"Alter your timeline settings here. You can adjust some of the visual "
-"settings as well as the display order, below."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:79
+#: lib/admin/pages/page.options.php:97
 msgid "Time Frame"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:85
-msgid "Future Events"
+#: lib/admin/pages/page.options.php:103
+msgid "Future"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:88
-msgid "All Events (past+future)"
+#: lib/admin/pages/page.options.php:106
+msgid "All (Past & Future)"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:91
-msgid "Past Events"
+#: lib/admin/pages/page.options.php:109
+msgid "Past"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:95
-msgid "Select the time frame to query events from."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:104
+#: lib/admin/pages/page.options.php:125
+#. translators: Timeline Express plural name (eg: announcements)
 msgid "Display Order"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:110
+#: lib/admin/pages/page.options.php:131
 msgid "Ascending"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:113
+#: lib/admin/pages/page.options.php:134
 msgid "Descending"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:117
-msgid ""
-"Select the order you would like the announcements to display. Ascending : "
-"Chronological order by announcement date. Descending : Reverse "
-"chronological order by announcement date."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:126
-msgid "Announcement Excerpt Length"
-msgstr ""
-
-#: lib/admin/pages/page.options.php:134
+#: lib/admin/pages/page.options.php:176
+#. translators: Timeline Express singular name (eg: Announcement)
 msgid "random length"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:138
-msgid ""
-"Set the length of the excerpt for each announcement. ( min=25; 50 = 50 "
-"characters )"
+#: lib/admin/pages/page.options.php:186
+#. translators: Timeline Express singular name (eg: announcement)
+msgid "Minimum Length: 25; 50 = 50 character excerpt length."
 msgstr ""
 
-#: lib/admin/pages/page.options.php:147
+#: lib/admin/pages/page.options.php:195
 msgid "Date Visibility"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:153 lib/admin/pages/page.options.php:175
+#: lib/admin/pages/page.options.php:201 lib/admin/pages/page.options.php:226
 msgid "Visible"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:156 lib/admin/pages/page.options.php:178
+#: lib/admin/pages/page.options.php:204 lib/admin/pages/page.options.php:229
 msgid "Hidden"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:160
-msgid "Toggle the visibility of the date next to the icon."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:169
+#: lib/admin/pages/page.options.php:220
+#. translators: Timeline Express singular name (eg: announcement)
 msgid "Read More Visibility"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:182
-msgid ""
-"Toggle the visibility of the read more button. Hide to prevent users from "
-"viewing the full announcement."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:191
+#: lib/admin/pages/page.options.php:245
+#. translators: Timeline Express singular name (eg: announcement)
 msgid "Default Icon"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:206
-msgid ""
-"Select the font-awesome icon that you would like to use as a default icon "
-"for new announcements."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:208
+#: lib/admin/pages/page.options.php:265
+#. translators: Timeline Express plural name (eg: announcements)
 msgid "cheat sheet"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:218
-msgid "Default Announcement Color"
+#: lib/admin/pages/page.options.php:346
+#. translators: Timeline Express singular name (eg: announcement)
+msgid "Timeline Background Line Color"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:224
-msgid ""
-"Select the default color for all new events. Note : this setting can be "
-"overwritten"
-msgstr ""
-
-#: lib/admin/pages/page.options.php:233
-msgid "Announcement Container Background"
-msgstr ""
-
-#: lib/admin/pages/page.options.php:239
-msgid "Select the background color of the announcement container."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:248
-msgid "Announcement Shadow Color"
-msgstr ""
-
-#: lib/admin/pages/page.options.php:254
-msgid "Select the shadow color for the announcement container."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:263
-msgid "Background Line Color"
-msgstr ""
-
-#: lib/admin/pages/page.options.php:269
+#: lib/admin/pages/page.options.php:352
 msgid "Select the color of the line in the background of the timeline."
 msgstr ""
 
-#: lib/admin/pages/page.options.php:278
-msgid "No Announcements Message"
-msgstr ""
-
-#: lib/admin/pages/page.options.php:288
-msgid "This is the message that will display when no announcements are found."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:297
-msgid "Exclude Announcements from Site Searches"
-msgstr ""
-
-#: lib/admin/pages/page.options.php:303
+#: lib/admin/pages/page.options.php:395
+#. translators: Timeline Express plural name (eg: announcements)
 msgid "True"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:306
+#: lib/admin/pages/page.options.php:398
 msgid "False"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:310
-msgid ""
-"Set to true to exclude announcements from all site searches. False will "
-"include announcements in site searches."
+#: lib/admin/pages/page.options.php:414
+#. translators: Timeline Express plural name (eg: announcements)
+msgid "Disable Timeline Animations"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:319
-msgid "Disable Timeline Animations?"
-msgstr ""
-
-#: lib/admin/pages/page.options.php:325
+#: lib/admin/pages/page.options.php:420
 msgid "Check this option off to disable the timeline animations while scrolling."
 msgstr ""
 
-#: lib/admin/pages/page.options.php:334
-msgid "Delete Announcements On Uninstall?"
+#: lib/admin/pages/page.options.php:441
+#. translators: Timeline Express plural name (eg: announcements)
+msgid "export your %s"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:341
-msgid ""
-"Check this option to delete all announcement posts from the data base on "
-"plugin uninstallation. this can not be undone, once they are deleted they "
-"are gone forever. If you want to back them up, it is recommended you export "
-"your announcements before uninstalling."
-msgstr ""
-
-#: lib/admin/pages/page.options.php:351
+#: lib/admin/pages/page.options.php:452
 msgid "Save Settings"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:401
+#: lib/admin/pages/page.options.php:506
 msgid "Support Timeline Express"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:407
+#: lib/admin/pages/page.options.php:512
 msgid "Leave A Review"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:416
+#: lib/admin/pages/page.options.php:521
 msgid "Tweet About It"
 msgstr ""
 
-#: lib/admin/pages/page.options.php:435
+#: lib/admin/pages/page.options.php:540
 msgid ""
 "If you need help, or run into any issues, you can reach out for support in "
 "the WordPress.org support forums. Additionally, please see our "
 "documentation for tutorials, frequent issues and how-tos."
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:34
+#: lib/admin/pages/page.options.php:545
+msgid "Support Forums"
+msgstr ""
+
+#: lib/admin/pages/page.options.php:548 lib/admin/pages/page.welcome.php:214
+#: lib/classes/class.timeline-express-admin.php:350
+msgid "Documentation"
+msgstr ""
+
+#: lib/admin/pages/page.welcome.php:39
+#. translators: Integer value, representing the plugin version number.
 msgid ""
 "Thank you for choosing Timeline Express - the most beginner friendly, "
 "attractive and powerful WordPress Timeline plugin. Here's how to get "
 "started."
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:42
+#: lib/admin/pages/page.welcome.php:47
 msgid "Getting Started"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:45 lib/admin/pages/page.welcome.php:229
+#: lib/admin/pages/page.welcome.php:50 lib/admin/pages/page.welcome.php:254
 msgid "About Code Parrots"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:54
+#: lib/admin/pages/page.welcome.php:59
 msgid ""
 "Use the tips below to get started using Timeline Express. You will be up "
 "and running in no time!"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:64
+#: lib/admin/pages/page.welcome.php:69
 msgid "Creating Your First Announcement"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:76
+#: lib/admin/pages/page.welcome.php:89
+#. translators: Anchor tag linking to create a new announcement.
 msgid "Timeline Express &#8594; New Announcement"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:78
+#: lib/admin/pages/page.welcome.php:93
 msgid "Announcement Images"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:80
+#: lib/admin/pages/page.welcome.php:95
 msgid ""
 "Adding images to your announcements is as easy as adding images to standard "
 "posts in WordPress. When you add images to your announcements, they will "
 "appear both on the timeline and on the single announcement templates."
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:90
+#: lib/admin/pages/page.welcome.php:105
 msgid "Setup Timeline Express"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:95
+#: lib/admin/pages/page.welcome.php:110
 msgid "Timeline Express Settings Page"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:100
+#: lib/admin/pages/page.welcome.php:118
+#. translators: Anchor tag linking back to the Timeline Express settings page.
 msgid "Settings Page"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:102
+#: lib/admin/pages/page.welcome.php:125
+#. translators: HTML markup (strong tags) surrounding the words "Pro Tip"
 msgid "Pro Tip"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:112
+#: lib/admin/pages/page.welcome.php:137
 msgid "Powerful &amp; Flexible"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:122
+#: lib/admin/pages/page.welcome.php:147
 msgid ""
 "Out of the box, Timeline Express is both attractive and powerful. However, "
 "some projects require an additional level of customization to fit the "
 "existing look and feel of the site."
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:124
+#: lib/admin/pages/page.welcome.php:149
 msgid ""
 "Users with even a little bit of knowledge customizing WordPress templates "
 "will feel right at home. In the latest release, users can now copy over any "
 "of the bundled templates and customize them as needed!."
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:128 lib/admin/pages/page.welcome.php:215
+#: lib/admin/pages/page.welcome.php:153 lib/admin/pages/page.welcome.php:240
 msgid "View Customization Articles"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:140
+#: lib/admin/pages/page.welcome.php:165
 msgid "Feature Packed"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:150
+#: lib/admin/pages/page.welcome.php:175
 msgid ""
 "Timeline Express is the number one rated Timline plugin for WordPress, and "
 "for good reason!"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:152
+#: lib/admin/pages/page.welcome.php:177
 msgid ""
 "It is both easy to use and extremely powerful. On top of the visible "
 "features, we have a ton of additional features built in under the hood - to "
@@ -555,37 +471,37 @@ msgid ""
 "heights."
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:154
+#: lib/admin/pages/page.welcome.php:179
 msgid ""
 "If you need something custom, take a look at the developer documentation. "
 "If you need help beyond that, you can always reach out to our support staff!"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:158
+#: lib/admin/pages/page.welcome.php:183
 msgid "See all Features"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:170 lib/admin/pages/page.welcome.php:180
+#: lib/admin/pages/page.welcome.php:195 lib/admin/pages/page.welcome.php:205
 msgid "Plugin Support & Documentation"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:182
+#: lib/admin/pages/page.welcome.php:207
 msgid ""
 "Got stuck on something? Run into an issue? Not to worry, our knowledgeable "
 "support staff is equipped to help resolve any issues you may encounter."
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:186
+#: lib/admin/pages/page.welcome.php:211
 msgid "Support"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:201
-#: lib/classes/class.timeline-express-admin.php:147
-#: lib/classes/class.timeline-express-admin.php:346
+#: lib/admin/pages/page.welcome.php:226
+#: lib/classes/class.timeline-express-admin.php:149
+#: lib/classes/class.timeline-express-admin.php:348
 msgid "Add-Ons"
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:211
+#: lib/admin/pages/page.welcome.php:236
 msgid ""
 "We have built out both free and premium add-ons for Timeline Express. Our "
 "add-ons extend Timeline Express beyond what it can do out of the box, and "
@@ -595,7 +511,7 @@ msgid ""
 "for additionality functionality, take a peak at our full list of add-ons."
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:242
+#: lib/admin/pages/page.welcome.php:267
 msgid ""
 "Coming together in 2015, Code Parrots is a fanatical WordPress plugin "
 "development shop. We pride ourselves on our high quality of code and our "
@@ -604,7 +520,7 @@ msgid ""
 "around."
 msgstr ""
 
-#: lib/admin/pages/page.welcome.php:244
+#: lib/admin/pages/page.welcome.php:269
 msgid ""
 "When you purchase a product from Code Parrots, you know you're getting a "
 "great product built on solid code with a knowledgable team that stands "
@@ -634,34 +550,45 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:137
-#: lib/classes/class.timeline-express-admin.php:344
+#: lib/classes/class.timeline-express-admin.php:138 lib/helpers.php:985
+msgid "Timeline Express Settings"
+msgstr ""
+
+#: lib/classes/class.timeline-express-admin.php:139
+#: lib/classes/class.timeline-express-admin.php:346
 msgid "Settings"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:156
+#: lib/classes/class.timeline-express-admin.php:158
 msgid "Timeline Express Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:157
+#: lib/classes/class.timeline-express-admin.php:159
 msgid "Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:247
+#: lib/classes/class.timeline-express-admin.php:249
 msgid "Timeline Express settings saved successfully!"
 msgstr ""
 
-#: lib/classes/class.timeline-express.php:108
+#: lib/classes/class.timeline-express-admin.php:444
+#: lib/public/partials/single-timeline-express-content.php:44
+#: templates/single-timeline-express-content.php:44
+#. translators: Announcement date format
+msgid "Announcement Date: %s"
+msgstr ""
+
+#: lib/classes/class.timeline-express.php:109
 msgid ""
 "Sorry, the nonce security check did not pass. Please go back to the "
 "settings page, refresh the page and try to save your settings again."
 msgstr ""
 
-#: lib/classes/class.timeline-express.php:108
+#: lib/classes/class.timeline-express.php:110
 msgid "Failed Nonce Security Check"
 msgstr ""
 
-#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:156
+#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:160
 msgid ""
 "Allow Timeline Express to track plugin usage? Tracking will help improve "
 "Timeline Express by allowing us to gather anonymous usage data so we know "
@@ -669,11 +596,11 @@ msgid ""
 "tracked."
 msgstr ""
 
-#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:158
+#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:162
 msgid "Allow"
 msgstr ""
 
-#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:160
+#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:164
 msgid "Do not allow"
 msgstr ""
 
@@ -681,20 +608,26 @@ msgstr ""
 msgid "No announcements found"
 msgstr ""
 
-#: lib/helpers.php:274
+#: lib/helpers.php:278
 msgid "There was an error processing the bootstrap icons."
 msgstr ""
 
-#: lib/helpers.php:728
+#: lib/helpers.php:814
 msgid "Read more"
 msgstr ""
 
-#: lib/helpers.php:761
+#: lib/helpers.php:847
 msgid "You forgot to include the announcement ID."
 msgstr ""
 
-#: lib/helpers.php:768
+#: lib/helpers.php:854
 msgid "You forgot to include the meta key."
+msgstr ""
+
+#: lib/helpers.php:989
+msgid ""
+"Alter your timeline settings here. You can adjust some of the visual "
+"settings as well as the display order using the settings below."
 msgstr ""
 
 #. Plugin URI of the plugin/theme
@@ -713,124 +646,4 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://www.codeparrots.com"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:43
-msgctxt "Announcement plural name eg: Timeline Express Announcements"
-msgid "Timeline Express %s"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:47
-msgctxt "Announcement plural name eg: All Announcements"
-msgid "All %s"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:48
-msgctxt "Announcement singular name eg: View Announcement"
-msgid "View %s"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:49
-#: lib/admin/cpt/cpt.announcements.php:50
-msgctxt "Announcement singular name eg: New Announcement"
-msgid "New %s"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:51
-msgctxt "Announcement singular name eg: Edit Announcement"
-msgid "Edit %s"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:52
-msgctxt "Announcement singular name eg: Update Announcement"
-msgid "Update %s"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:53
-msgctxt "Announcement plural name eg: Search Announcements"
-msgid "Search %s"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:54
-msgctxt "Announcement plural name eg: No Timeline Express Announcements Found"
-msgid "No Timeline Express %s Found"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:55
-msgctxt "Announcement plural name eg: No Timeline Express Announcements in Trash"
-msgid "No Timeline Express %s in Trash"
-msgstr ""
-
-#: lib/admin/cpt/cpt.announcements.php:73
-msgctxt ""
-"Announcement plural name eg: Post type for adding timeline express "
-"announcements to the site"
-msgid "Post type for adding timeline express %s to the site."
-msgstr ""
-
-#: lib/admin/cpt/timeline-express-admin-columns.php:49
-msgctxt "Announcement singular name eg: Announcement Name"
-msgid "%s Name"
-msgstr ""
-
-#: lib/admin/cpt/timeline-express-admin-columns.php:60
-msgctxt "Announcement singular name eg: Announcement Date"
-msgid "%s Date"
-msgstr ""
-
-#: lib/admin/cpt/timeline-express-admin-columns.php:64
-msgctxt "Announcement singular name eg: Announcement Past?"
-msgid "%s Past?"
-msgstr ""
-
-#: lib/admin/cpt/timeline-express-admin-columns.php:133
-msgctxt "Announcement singular name eg: announcement has past."
-msgid "%s has past."
-msgstr ""
-
-#: lib/admin/pages/page.addons.php:82
-msgctxt "Integer value for the number of add-ons in the add-on list. (eg: 6)"
-msgid ""
-"Get any and all %s of the Timeline Express add-ons, for one low price! "
-"Select a 5 or 10 site license, and receive all current and future add-ons "
-"for Timeline Express along with updates and priority product support. An "
-"amazing deal, don't miss it!"
-msgstr ""
-
-#: lib/admin/pages/page.welcome.php:31
-msgctxt "Integer value, representing the plugin version number."
-msgid "Welcome to Timeline Express v%s"
-msgstr ""
-
-#: lib/admin/pages/page.welcome.php:74
-msgctxt "Anchor tag linking back to the Timeline Express documentation."
-msgid ""
-"Timeline Express makes it easy to create and display a beautiful and "
-"animated timeline in WordPress. Feel free to read our support article, %s."
-msgstr ""
-
-#: lib/admin/pages/page.welcome.php:76
-msgctxt "Anchor tag linking to create a new announcement."
-msgid "The process is so intuitive that you can jump right in by going to %s."
-msgstr ""
-
-#: lib/admin/pages/page.welcome.php:100
-msgctxt "Anchor tag linking back to the Timeline Express settings page."
-msgid ""
-"Head into the %s to tweak how the Timeline is going to function and display "
-"on your site. You can tweak the visual appearance of the timeline, and the "
-"order and time period from which announcements should disdplay."
-msgstr ""
-
-#: lib/admin/pages/page.welcome.php:102
-msgctxt "HTML markup (strong tags) surrounding the words \"Pro Tip\""
-msgid ""
-"%s: If you ever notice something doesn't look correct or function properly "
-"on the timeline, double check that your settings are correct."
-msgstr ""
-
-#: lib/public/partials/single-timeline-express-content.php:44
-#: templates/single-timeline-express-content.php:44
-msgctxt "The announcement date."
-msgid "Announcement Date: %s"
 msgstr ""
