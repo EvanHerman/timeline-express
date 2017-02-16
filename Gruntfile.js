@@ -153,16 +153,16 @@ module.exports = function(grunt) {
 		// watch our project for changes
 		watch: {
 			admin_css: { // admin css
-				files: 'lib/admin/css/*.css',
-				tasks: [ 'cssjanus', 'cssmin', 'usebanner' ],
+				files: [ 'lib/admin/css/*.css, ! lib/admin/css/*.min.css' ],
+				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
 					event: ['all']
 				},
 			},
 			admin_js: { // admin js
-				files: 'lib/admin/js/*.js',
-				tasks: [ 'uglify', 'usebanner' ],
+				files: [ 'lib/admin/js/*.js', 'lib/admin/js/*.min.js' ],
+				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
 					event: ['all']
@@ -170,16 +170,16 @@ module.exports = function(grunt) {
 			},
 			public_css: {
 				// public css
-				files: 'lib/public/css/*.css',
-				tasks: [ 'cssjanus', 'cssmin', 'usebanner' ],
+				files: [ 'lib/public/css/*.css', '! lib/public/css/*.min.css' ],
+				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
 					event: ['all']
 				},
 			},
 			public_js: { // public js
-				files: 'lib/public/js/*.js',
-				tasks: [ 'uglify', 'usebanner' ],
+				files: [ 'lib/public/js/*.js', '! lib/public/js/*.min.js' ],
+				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
 					event: ['all']
@@ -425,6 +425,19 @@ module.exports = function(grunt) {
 		'cssmin',
 		'usebanner',
 		'copy:main'
+	] );
+
+	// watch task
+	grunt.registerTask( 'Watch files for changes.', [
+		'watch'
+	] );
+
+	grunt.registerTask( 'watch-banner', 'Run min/uglify/banner on watch changes', [
+		'uglify',
+		'postcss',
+		'cssjanus',
+		'cssmin',
+		'usebanner'
 	] );
 
 	// register increase-version
