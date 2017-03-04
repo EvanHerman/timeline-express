@@ -60,13 +60,12 @@ class WP_Plugin_Usage_Tracker {
 
 		if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
 
-			wp_die( 'test' );
 			return;
 
 		}
 
-		$this->plugin_prefix = sanitize_title( 'timeline-express' );
 		$this->plugin_name   = strip_tags( 'Timeline Express' );
+		$this->plugin_prefix = sanitize_title( $this->plugin_name );
 
 		$this->api_endpoint  = sprintf(
 			'https://api.keen.io/3.0/projects/%1$s/events/%2$s',
@@ -86,8 +85,8 @@ class WP_Plugin_Usage_Tracker {
 	public function init() {
 
 		add_action( 'admin_notices', [ $this, 'admin_notice' ] );
-		add_action( 'admin_init',    [ $this, 'approve_tracking' ], 10 );
-		add_action( 'admin_init',    [ $this, 'schedule_tracking' ], 10 );
+		add_action( 'admin_init',    [ $this, 'approve_tracking' ] );
+		add_action( 'admin_init',    [ $this, 'schedule_tracking' ] );
 
 		if ( $this->is_tracking_enabled() ) {
 
@@ -128,13 +127,12 @@ class WP_Plugin_Usage_Tracker {
 
 		if ( current_user_can( 'manage_options' ) && ! $this->is_tracking_enabled() ) {
 
-			?>
-
-			<div class="notice notice-info codeparrots-tracking-notice">
-				<p><?php echo wp_kses_post( $this->get_message() ); ?></p>
-			</div>
-
-			<?php
+			printf(
+				'<div class="notice notice-info codeparrots-tracking-notice">
+					<p>%s</p>
+				</div>',
+				wp_kses_post( $this->get_message() )
+			);
 
 		}
 
@@ -175,7 +173,7 @@ class WP_Plugin_Usage_Tracker {
 		return add_query_arg( [
 			'timeline_express_tracker' => 'approved',
 			'plugin'                   => $this->plugin_prefix,
-		], admin_url() );
+		] );
 
 	}
 
@@ -189,7 +187,7 @@ class WP_Plugin_Usage_Tracker {
 		return add_query_arg( [
 			'timeline_express_tracker' => 'denied',
 			'plugin'                   => $this->plugin_prefix,
-		], admin_url() );
+		] );
 
 	}
 
@@ -210,7 +208,7 @@ class WP_Plugin_Usage_Tracker {
 
 			update_option( $this->plugin_prefix . '_tracking', true );
 
-			wp_redirect( admin_url() );
+			wp_redirect( $_SERVER['HTTP_REFERER'], '200' );
 
 			exit;
 
@@ -263,7 +261,7 @@ class WP_Plugin_Usage_Tracker {
 	private function get_theme_name() {
 
 		$theme_data = wp_get_theme();
-		$theme      = $theme_data->Name . ' ' . $theme_data->Version;
+		$theme      = $theme_data->Name . ' v' . $theme_data->Version; // @codingStandardsIgnoreLine
 
 		return $theme;
 
@@ -276,9 +274,29 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	private function get_active_plugins() {
 
-		$active_plugins = get_option( 'active_plugins', [] );
+		$installed_plugins = get_option( 'active_plugins', [] );
 
-		return $active_plugins;
+		$plugins = [];
+
+		if ( ! empty( $installed_plugins ) ) {
+
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+
+				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+			}
+
+			foreach ( $installed_plugins as $plugin ) {
+
+				$data = get_plugin_data( trailingslashit( WP_PLUGIN_DIR ) . $plugin, false, false );
+
+				$plugins[ $data['Name'] ] = $data['Version']; // @codingStandardsIgnoreLine
+
+			} // @codingStandardsIgnoreLine
+
+		}
+
+		return json_encode( (array) $plugins );
 
 	}
 
@@ -321,6 +339,10 @@ class WP_Plugin_Usage_Tracker {
 		delete_option( $this->plugin_prefix . '_tracking' );
 		wp_clear_scheduled_hook( $this->plugin_prefix . '_usage_tracking' );
 
+		wp_redirect( $_SERVER['HTTP_REFERER'], '200' );
+
+		exit;
+
 	}
 
 	/**
@@ -339,31 +361,20 @@ class WP_Plugin_Usage_Tracker {
 	}
 
 	/**
-	 * Send the data to Keen.io
+	 * Track annonymous data
 	 *
-	 * @param  array $data the data to send.
 	 * @return void
 	 */
-	private function send_data( $data ) {
+	public function track() {
 
 		wp_remote_request( $this->api_endpoint, [
 			'headers' => [
 				'Authorization' => TIMELINE_EXPRESS_TRACKING_WRITE_KEY,
 				'Content-Type'  => 'application/json',
 			],
-			'body' => json_encode( $this->get_data() ),
+			'method'  => 'POST',
+			'body'    => json_encode( $this->get_data() ),
 		] );
-
-	}
-
-	/**
-	 * Task triggered by the cron Event.
-	 *
-	 * @return void
-	 */
-	public function track() {
-
-		$this->send_data( $this->get_data() );
 
 	}
 

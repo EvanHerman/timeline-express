@@ -2,7 +2,7 @@
 /**
  * Display an admin notice after 2 weeks of installation
  *
- * @since 1.3
+ * @since 1.3.0
  */
 class Timeline_Express_Two_Weeks_Notice {
 
@@ -31,6 +31,11 @@ class Timeline_Express_Two_Weeks_Notice {
 
 	}
 
+	/**
+	 * Display the admin notice
+	 *
+	 * @since 1.3.0
+	 */
 	public function admin_notice() {
 
 		$screen = get_current_screen();
@@ -41,8 +46,7 @@ class Timeline_Express_Two_Weeks_Notice {
 
 		}
 
-		$install_date            = get_option( 'timeline_express_install_date', strtotime( 'now' ) );
-		$two_weeks_after_install = strtotime( '+2 weeks', $install_date );
+		$two_weeks_after_install = strtotime( '+2 weeks', get_option( 'timeline_express_install_date', strtotime( 'now' ) ) );
 
 		if ( $two_weeks_after_install > strtotime( 'now' ) ) {
 
@@ -52,20 +56,22 @@ class Timeline_Express_Two_Weeks_Notice {
 
 		if ( current_user_can( 'manage_options' ) ) {
 
-			?>
-
-			<div class="notice notice-info codeparrots-tracking-notice">
-				<p><?php echo wp_kses_post( $this->get_message() ); ?></p>
-			</div>
-
-			<?php
+			printf(
+				'<div class="notice notice-info codeparrots-tracking-notice">
+					<p>%s</p>
+				</div>',
+				wp_kses_post( $this->get_message() )
+			);
 
 		}
 
-		return;
-
 	}
 
+	/**
+	 * Dismiss the two week notice
+	 *
+	 * @since 1.3.0
+	 */
 	public function dismiss_rating_notice() {
 
 		$rating_nobug = filter_input( INPUT_GET, 'timeline_express_rating_nobug', FILTER_SANITIZE_STRING );
@@ -80,12 +86,16 @@ class Timeline_Express_Two_Weeks_Notice {
 
 		wp_redirect( $_SERVER['HTTP_REFERER'], '200' );
 
+		exit;
+
 	}
 
 	/**
-	 * Retrieve the message for the admin notice.
+	 * Retrieve the message for the admin notice
 	 *
 	 * @return string
+	 *
+	 * @since 1.3.0
 	 */
 	public function get_message() {
 
@@ -117,9 +127,11 @@ class Timeline_Express_Two_Weeks_Notice {
 	}
 
 	/**
-	 * Get the URL for the admin notice dismissabl
+	 * Get the URL for the admin notice dismissible
 	 *
 	 * @return string
+	 *
+	 * @since 1.3.0
 	 */
 	public function get_dismissal_url() {
 
@@ -128,6 +140,5 @@ class Timeline_Express_Two_Weeks_Notice {
 		) );
 
 	}
-
 
 }
