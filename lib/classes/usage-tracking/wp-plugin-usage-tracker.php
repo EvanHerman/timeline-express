@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  *
  * @author     Code Parrots
- * @version    1.0.0
+ * @version    1.1.0
  * @copyright  (c) 2016 Code Parrots
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  * @package    wp-plugin-usage-tracker
@@ -27,8 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 
 }
-
-use KeenIO\Client\KeenIOClient;
 
 /**
  * WP_Plugin_Usage_Tracker class.
@@ -48,22 +46,10 @@ class WP_Plugin_Usage_Tracker {
 	private $plugin_name;
 
 	/**
-	 * Keen.io Project ID.
+	 * Keen.io API Endpoint
 	 * @var string
 	 */
-	private $project_id;
-
-	/**
-	 * Keen.io Writekey.
-	 * @var string
-	 */
-	private $write_key;
-
-	/**
-	 * Keen.io Client.
-	 * @var object
-	 */
-	public $client;
+	private $api_endpoint;
 
 	/**
 	 * Get things started.
@@ -72,19 +58,23 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function __construct() {
 
+		if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
+
+			wp_die( 'test' );
+			return;
+
+		}
+
 		$this->plugin_prefix = sanitize_title( 'timeline-express' );
 		$this->plugin_name   = strip_tags( 'Timeline Express' );
-		$this->project_id    = TIMELINE_EXPRESS_TRACKING_PROJECT_ID;
-		$this->write_key     = TIMELINE_EXPRESS_TRACKING_WRITE_KEY;
 
-		require __DIR__ . '/vendor/autoload.php';
-
-		$this->client = KeenIOClient::factory(
-			array(
-				'projectId' => $this->project_id,
-				'writeKey'  => $this->write_key,
-			)
+		$this->api_endpoint  = sprintf(
+			'https://api.keen.io/3.0/projects/%1$s/events/%2$s',
+			TIMELINE_EXPRESS_TRACKING_PROJECT_ID,
+			$this->plugin_name
 		);
+
+		$this->init();
 
 	}
 
@@ -95,15 +85,15 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function init() {
 
-		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
-		add_action( 'admin_init',    array( $this, 'approve_tracking' ), 10 );
-		add_action( 'admin_init',    array( $this, 'schedule_tracking' ), 10 );
+		add_action( 'admin_notices', [ $this, 'admin_notice' ] );
+		add_action( 'admin_init',    [ $this, 'approve_tracking' ], 10 );
+		add_action( 'admin_init',    [ $this, 'schedule_tracking' ], 10 );
 
 		if ( $this->is_tracking_enabled() ) {
 
-			add_filter( 'cron_schedules', array( $this, 'cron_schedules' ) );
+			add_filter( 'cron_schedules', [ $this, 'cron_schedules' ] );
 
-			add_action( $this->plugin_prefix . '_usage_tracking', array( $this, 'track' ) );
+			add_action( $this->plugin_prefix . '_usage_tracking', [ $this, 'track' ] );
 
 		}
 
@@ -157,13 +147,21 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function get_message() {
 
-		$message = esc_html__( 'Allow Timeline Express to track plugin usage? Tracking will help improve Timeline Express by allowing us to gather anonymous usage data so we know which configurations, plugins and themes to test with. No sensitive data is tracked.', 'timeline-express' );
-
-		$message .= ' <p><a href="' . esc_url( $this->get_tracking_approval_url() ) . '" class="button-primary">' . esc_html__( 'Allow', 'timeline-express' ) . '</a>';
-
-		$message .= ' <a href="' . esc_url( $this->get_tracking_denied_url() ) . '" class="button-secondary">' . esc_html__( 'Do not allow', 'timeline-express' ) . '</a></p>';
-
-		return $message;
+		return sprintf(
+			'%1$s
+			<p>
+				<a href="%2$s" class="button-primary">%3$s</a>
+				<a href="%4$s" class="button-secondary">%5$s</a>
+			</p>',
+			sprintf(
+				__( 'Allow %1$s to track plugin usage? Tracking will help improve %1$s by allowing us to gather anonymous usage data so we know which configurations, plugins and themes to test with. No sensitive data is tracked.', 'timeline-express' ),
+				$this->plugin_name
+			),
+			esc_url( $this->get_tracking_approval_url() ),
+			esc_html__( 'Allow', 'timeline-express' ),
+			esc_url( $this->get_tracking_denied_url() ),
+			esc_html__( 'Do not allow', 'timeline-express' )
+		);
 
 	}
 
@@ -174,7 +172,10 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	protected function get_tracking_approval_url() {
 
-		return add_query_arg( array( 'timeline_express_tracker' => 'approved', 'plugin' => $this->plugin_prefix ), admin_url() );
+		return add_query_arg( [
+			'timeline_express_tracker' => 'approved',
+			'plugin'                   => $this->plugin_prefix,
+		], admin_url() );
 
 	}
 
@@ -185,7 +186,10 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	protected function get_tracking_denied_url() {
 
-		return add_query_arg( array( 'timeline_express_tracker' => 'denied', 'plugin' => $this->plugin_prefix ), admin_url() );
+		return add_query_arg( [
+			'timeline_express_tracker' => 'denied',
+			'plugin'                   => $this->plugin_prefix,
+		], admin_url() );
 
 	}
 
@@ -207,6 +211,7 @@ class WP_Plugin_Usage_Tracker {
 			update_option( $this->plugin_prefix . '_tracking', true );
 
 			wp_redirect( admin_url() );
+
 			exit;
 
 		}
@@ -232,7 +237,7 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function get_data() {
 
-		$data = array();
+		$data = [];
 
 		$data['php_version']    = phpversion();
 		$data['wp_version']     = get_bloginfo( 'version' );
@@ -244,9 +249,9 @@ class WP_Plugin_Usage_Tracker {
 		$data['active_plugins'] = $this->get_active_plugins();
 
 		$data['timeline_express_version'] = TIMELINE_EXPRESS_VERSION_CURRENT;
-		$data['timeline_express_type'] = 'Free';
+		$data['timeline_express_type']    = 'Free';
 
-		return $data;
+		return (array) $data;
 
 	}
 
@@ -271,7 +276,7 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	private function get_active_plugins() {
 
-		$active_plugins = get_option( 'active_plugins', array() );
+		$active_plugins = get_option( 'active_plugins', [] );
 
 		return $active_plugins;
 
@@ -285,10 +290,10 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function cron_schedules( $schedules ) {
 
-		$schedules['monthly'] = array(
+		$schedules['monthly'] = [
 			'interval' => 30 * DAY_IN_SECONDS,
 			'display'  => 'Once a month',
-		);
+		];
 
 		return $schedules;
 
@@ -341,7 +346,13 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	private function send_data( $data ) {
 
-		$this->client->addEvent( $this->plugin_name, $data );
+		wp_remote_request( $this->api_endpoint, [
+			'headers' => [
+				'Authorization' => TIMELINE_EXPRESS_TRACKING_WRITE_KEY,
+				'Content-Type'  => 'application/json',
+			],
+			'body' => json_encode( $this->get_data() ),
+		] );
 
 	}
 

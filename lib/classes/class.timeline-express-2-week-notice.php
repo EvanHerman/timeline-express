@@ -6,6 +6,12 @@
  */
 class Timeline_Express_Two_Weeks_Notice {
 
+	public function __construct() {
+
+		$this->init();
+
+	}
+
 	public function init() {
 
 		if ( get_option( 'timeline-express_rating_nobug', false ) ) {
@@ -36,7 +42,6 @@ class Timeline_Express_Two_Weeks_Notice {
 		}
 
 		$install_date            = get_option( 'timeline_express_install_date', strtotime( 'now' ) );
-
 		$two_weeks_after_install = strtotime( '+2 weeks', $install_date );
 
 		if ( $two_weeks_after_install > strtotime( 'now' ) ) {
@@ -45,7 +50,7 @@ class Timeline_Express_Two_Weeks_Notice {
 
 		}
 
-		if( current_user_can( 'manage_options' ) ) {
+		if ( current_user_can( 'manage_options' ) ) {
 
 			?>
 
@@ -63,7 +68,7 @@ class Timeline_Express_Two_Weeks_Notice {
 
 	public function dismiss_rating_notice() {
 
-		$rating_nobug = ( filter_input( INPUT_GET, 'timeline_express_rating_nobug' ) ) ? filter_input( INPUT_GET, 'timeline_express_rating_nobug', FILTER_SANITIZE_STRING ) : false;
+		$rating_nobug = filter_input( INPUT_GET, 'timeline_express_rating_nobug', FILTER_SANITIZE_STRING );
 
 		if ( ! $rating_nobug || 'true' !== $rating_nobug ) {
 
@@ -72,6 +77,8 @@ class Timeline_Express_Two_Weeks_Notice {
 		}
 
 		update_option( 'timeline-express_rating_nobug', '1' );
+
+		wp_redirect( $_SERVER['HTTP_REFERER'], '200' );
 
 	}
 
@@ -82,17 +89,30 @@ class Timeline_Express_Two_Weeks_Notice {
 	 */
 	public function get_message() {
 
-		$message = esc_html__( 'It looks like you have been enjoying Timeline Express for 2 weeks now! If you are enjoying the plugin we would love it if you could leave us a 5 star review in the WordPress.org repsository!', 'timeline-express' );
-
-		$message .= ' <p><a href="https://wordpress.org/support/plugin/timeline-express/reviews/" target="_blank" class="button-primary">'. esc_html__( 'Leave a Review', 'timeline-express' ) .'</a>';
-
-		$message .= ' <a href="https://www.wp-timelineexpress.com/pricing/" target="_blank" class="button-secondary">'. esc_html__( 'Upgrade to Pro', 'timeline-express' ) .'</a>';
-
-		$message .= ' <a href="'. esc_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) ) .'" class="button-secondary">'. esc_html__( 'View Add-Ons', 'timeline-express' ) .'</a>';
-
-		$message .= ' <a href="'. esc_url( $this->get_dismissal_url() ) .'" class="button-secondary">'. esc_html__( 'Dismiss', 'timeline-express' ) .'</a></p>';
-
-		return $message;
+		return sprintf(
+			'%1$s
+			<p>
+				<a href="https://wordpress.org/support/plugin/timeline-express/reviews/" target="_blank" class="button-primary">
+					%2$s
+				</a>
+				<a href="https://www.wp-timelineexpress.com/pricing/" target="_blank" class="button-secondary">
+					%3$s
+				</a>
+				<a href="%4$s" class="button-secondary">
+					%5$s
+				</a>
+				<a href="%6$s" class="button-secondary">
+					%7$s
+				</a>
+			</p>',
+			esc_html__( 'It looks like you have been using Timeline Express for 2 weeks now. If you are enjoying the plugin we would love it if you could leave us a 5 star review in the WordPress.org repsository!', 'timeline-express' ),
+			esc_html__( 'Leave a Review', 'timeline-express' ),
+			esc_html__( 'Upgrade to Pro', 'timeline-express' ),
+			esc_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) ),
+			esc_html__( 'View Add-Ons', 'timeline-express' ),
+			esc_url( $this->get_dismissal_url() ),
+			esc_html__( 'Dismiss', 'timeline-express' )
+		);
 
 	}
 
@@ -103,10 +123,11 @@ class Timeline_Express_Two_Weeks_Notice {
 	 */
 	public function get_dismissal_url() {
 
-		return add_query_arg( array( 'timeline_express_rating_nobug' => 'true' ), admin_url() );
+		return add_query_arg( array(
+			'timeline_express_rating_nobug' => 'true',
+		) );
 
 	}
 
 
 }
-$timeline_express_two_week_notice = new Timeline_Express_Two_Weeks_Notice;
