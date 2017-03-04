@@ -1,5 +1,12 @@
-'use strict';
+/**
+ * Gruntfile.js Controls
+ *
+ * @author Code Parrots <support@codeparrots.com>
+ * @since 1.0.0
+ */
 module.exports = function(grunt) {
+
+	'use strict';
 
 	var pkg = grunt.file.readJSON( 'package.json' );
 
@@ -33,9 +40,9 @@ module.exports = function(grunt) {
 			options: {
 				map: true,
 				processors: [
-					require('autoprefixer-core') ({
+					require( 'autoprefixer-core' ) ( {
 						browsers: ['last 2 versions']
-					})
+					} )
 				]
 			},
 			dist: {
