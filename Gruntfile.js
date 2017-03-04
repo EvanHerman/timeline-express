@@ -8,9 +8,11 @@ module.exports = function( grunt ) {
 
 	'use strict';
 
+	var pkg = grunt.file.readJSON( 'package.json' );
+
 	grunt.initConfig({
 
-		pkg: grunt.file.readJSON( 'package.json' ),
+		pkg: pkg,
 
 		uglify: {
 			dist: {
