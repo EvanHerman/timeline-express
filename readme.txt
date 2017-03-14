@@ -371,7 +371,12 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.3.7 - January xx, 2017 =
+= 1.4.0 - January 25th, 2017 =
+- Introduced new hotfix for i10n month names and introduced a new filter `timeline_express_i10n_months` for adding months that are not yet supported.
+- Removed the old user tracking method and introduced our own.
+- Refactored two week admin notice.
+
+= 1.3.7 - January 25th, 2017 =
 - Added Toolbox Add-On to the add-ons page.
 
 = 1.3.6 - January 23rd, 2017 =
