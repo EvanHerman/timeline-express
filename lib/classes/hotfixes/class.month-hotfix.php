@@ -17,8 +17,6 @@ class Timeline_Express_Month_Hotfix {
 
 	public function __construct( $date ) {
 
-		wp_die( get_locale() );
-
 		$this->date        = $date;
 		$this->en_months   = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
 		$this->i10n_months = $this->get_i10n_months();
