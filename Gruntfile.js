@@ -1,5 +1,12 @@
-'use strict';
-module.exports = function(grunt) {
+/**
+ * Gruntfile.js Controls
+ *
+ * @author Code Parrots <support@codeparrots.com>
+ * @since 1.0.0
+ */
+module.exports = function( grunt ) {
+
+	'use strict';
 
 	var pkg = grunt.file.readJSON( 'package.json' );
 
@@ -7,47 +14,40 @@ module.exports = function(grunt) {
 
 		pkg: pkg,
 
-		// js minification
 		uglify: {
 			dist: {
 				files: {
-					// admin scripts
-					'lib/admin/js/min/timeline-express-admin.min.js': [ // all other admin scripts
+					'lib/admin/js/min/timeline-express-admin.min.js': [
 						'lib/admin/js/bootstrap-select.js',
 						'lib/admin/js/script.options-color-picker-custom.js',
 					],
-					// tinymce scripts
-					'lib/admin/js/min/timeline-express-tinymce.min.js': [ // tinymce button script
+					'lib/admin/js/min/timeline-express-tinymce.min.js': [
 						'lib/admin/js/timeline-express-button-script.js',
 					],
-					// public scripts
-					'lib/public/js/min/timeline-express.min.js': [ // public scripts
+					'lib/public/js/min/timeline-express.min.js': [
 						'lib/public/js/timeline-express.js',
 					],
 				}
 			}
 		},
 
-		// Autoprefixer for our CSS files
 		postcss: {
 			options: {
 				map: true,
 				processors: [
-					require('autoprefixer-core') ({
-						browsers: ['last 2 versions']
-					})
+					require( 'autoprefixer-core' ) ( {
+						browsers: [ 'last 2 versions' ]
+					} )
 				]
 			},
 			dist: {
-				src: ['lib/admin/css/*.css', 'lib/public/css/*.css']
+				src: [ 'lib/admin/css/*.css', 'lib/public/css/*.css' ]
 			}
 		},
 
-		// css minify all contents of our directory and add .min.css extension
 		cssmin: {
 			target: {
 				files: [
-					// Admin CSS files
 					{
 						'lib/admin/css/min/timeline-express-admin.min.css':
 						[
@@ -56,7 +56,6 @@ module.exports = function(grunt) {
 							'lib/admin/css/timeline-express-addons.css'
 						],
 					},
-					// Admin RTL CSS files
 					{
 						'lib/admin/css/min/timeline-express-admin-rtl.min.css':
 						[
@@ -65,7 +64,6 @@ module.exports = function(grunt) {
 							'lib/admin/css/timeline-express-addons-rtl.css'
 						],
 					},
-					// Public CSS file
 					{
 						'lib/public/css/min/timeline-express.min.css':
 						[
@@ -73,7 +71,6 @@ module.exports = function(grunt) {
 							'lib/public/css/timeline-express-single-page.css'
 						],
 					},
-					// Public RTL CSS file
 					{
 						'lib/public/css/min/timeline-express-rtl.min.css':
 						[
@@ -86,7 +83,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Generate a nice banner for our css/js files
 		usebanner: {
 			taskName: {
 				options: {
@@ -115,15 +111,13 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Copy our template files to the root /template/ directory.
 		copy: {
 			main: {
 				files: [
-					// copy over the announcement container template
 					{
 						expand: true,
 						flatten: true,
-						src: ['lib/public/partials/*.php'],
+						src: [ 'lib/public/partials/*.php' ],
 						dest: 'templates/',
 						filter: 'isFile'
 					},
@@ -131,7 +125,6 @@ module.exports = function(grunt) {
 			},
 			deploy: {
 				files: [
-					// copy over the files in preperation for a deploy to SVN
 					{
 						expand: true,
 						src: [
@@ -150,39 +143,37 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// watch our project for changes
 		watch: {
-			admin_css: { // admin css
-				files: 'lib/admin/css/*.css',
-				tasks: [ 'cssjanus', 'cssmin', 'usebanner' ],
+			admin_css: {
+				files: [ 'lib/admin/css/*.css, ! lib/admin/css/*.min.css' ],
+				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
-					event: ['all']
+					event: [ 'all' ]
 				},
 			},
-			admin_js: { // admin js
-				files: 'lib/admin/js/*.js',
-				tasks: [ 'uglify', 'usebanner' ],
+			admin_js: {
+				files: [ 'lib/admin/js/*.js', 'lib/admin/js/*.min.js' ],
+				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
-					event: ['all']
+					event: [ 'all' ]
 				},
 			},
 			public_css: {
-				// public css
-				files: 'lib/public/css/*.css',
-				tasks: [ 'cssjanus', 'cssmin', 'usebanner' ],
+				files: [ 'lib/public/css/*.css', '! lib/public/css/*.min.css' ],
+				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
-					event: ['all']
+					event: [ 'all' ]
 				},
 			},
-			public_js: { // public js
-				files: 'lib/public/js/*.js',
-				tasks: [ 'uglify', 'usebanner' ],
+			public_js: {
+				files: [ 'lib/public/js/*.js', '! lib/public/js/*.min.js' ],
+				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
-					event: ['all']
+					event: [ 'all' ]
 				},
 			},
 		},
@@ -228,7 +219,7 @@ module.exports = function(grunt) {
 						'x-poedit-keywordslist': true
 					},
 					processPot: function( pot, options ) {
-						pot.headers['report-msgid-bugs-to'] = pkg.bugs.url;
+						pot.headers[ 'report-msgid-bugs-to' ] = pkg.bugs.url;
 						return pot;
 					},
 					type: 'wp-plugin',
@@ -246,7 +237,7 @@ module.exports = function(grunt) {
 
 		bump: {
 			options: {
-				files: ['package.json'],
+				files: [ 'package.json' ],
 				updateConfigs: [],
 				commit: false,
 				createTag: false,
@@ -289,19 +280,19 @@ module.exports = function(grunt) {
 							config:   'bump.custom_version',
 							type:     'input',
 							message:  'What specific version would you like',
-							when:     function (answers) {
-								return answers['bump.increment'] === 'custom';
+							when:     function ( answers ) {
+								return answers[ 'bump.increment' ] === 'custom';
 							}
 						},
 					],
 					then: function( results ) {
-						if ( results['bump.increment'] === 'patch' ) {
+						if ( results[ 'bump.increment' ] === 'patch' ) {
 							grunt.task.run( [ 'shell:bump_patch' ] );
-						} else if( results['bump.increment'] === 'minor' ) {
+						} else if( results[ 'bump.increment' ] === 'minor' ) {
 							grunt.task.run( [ 'shell:bump_minor' ] );
-						} else if( results['bump.increment'] === 'major' ) {
+						} else if( results[ 'bump.increment' ] === 'major' ) {
 							grunt.task.run( [ 'shell:bump_major' ] );
-						} else if( results['bump.increment'] === 'custom' ) {
+						} else if( results[ 'bump.increment' ] === 'custom' ) {
 							grunt.task.run( [ 'shell:bump_custom' ] );
 						}
 						grunt.task.run( [ 'shell:bump' ] );
@@ -390,14 +381,12 @@ module.exports = function(grunt) {
 					deploy_trunk: true,
 					deploy_tag: pkg.version,
 					max_buffer: 1024*1024*2
-					// assets_dir: 'wp-assets'
 				},
 			}
 		}
 
 	});
 
-	// load tasks
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
@@ -414,10 +403,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-wp-deploy' );
 	grunt.loadNpmTasks( 'grunt-menu' );
 
-	// register task
 	grunt.registerTask( 'default', [ 'menu' ] );
 
-	// register task
 	grunt.registerTask( 'Default Grunt.js tasks for development.', [
 		'cssjanus',
 		'uglify',
@@ -427,34 +414,40 @@ module.exports = function(grunt) {
 		'copy:main'
 	] );
 
-	// register increase-version
+	grunt.registerTask( 'Watch files for changes.', [
+		'watch'
+	] );
+
+	grunt.registerTask( 'watch-banner', 'Run min/uglify/banner on watch changes', [
+		'uglify',
+		'postcss',
+		'cssjanus',
+		'cssmin',
+		'usebanner'
+	] );
+
 	grunt.registerTask( 'Bump the verison of Timeline Express to the next release.', [
 		'prompt',
 	] );
 
-	// register update-pot task
 	grunt.registerTask( 'Generate a .pot translation file.', [
 		'makepot'
 	] );
 
-	// register update-mo task
 	grunt.registerTask( 'Convert .po to .mo files.', [
 		'po2mo'
 	] );
 
-	// register update-translations
 	grunt.registerTask( 'Update the Timeline Express translation files.', [
 		'makepot',
 		'po2mo'
 	] );
 
-	// register deploy
 	grunt.registerTask( 'Deploy Timeline Express to the WordPress.org repository.', [
 		'copy:deploy',
 		'wp_deploy'
 	] );
 
-	// register bump-version
 	grunt.registerTask( 'Bump the version throughout from package.json.', [
 		'replace'
 	] );

@@ -50,7 +50,7 @@ class TE_CPT_Meta_Tests extends WP_UnitTestCase {
 		// ensure our post meta was stored properly
 		$this->assertEquals( '#FF6347', get_post_meta( $announcement_id, 'announcement_color', true ) );
 		$this->assertEquals( 'fa-bluetooth-b', get_post_meta( $announcement_id, 'announcement_icon', true ) );
-		$this->assertEquals( strtotime( 'now' ), get_post_meta( $announcement_id, 'announcement_date', true ) );
+		$this->assertLessThanOrEqual( strtotime( 'now' ), get_post_meta( $announcement_id, 'announcement_date', true ) );
 		$this->assertEquals( 'http://www.test.com', get_post_meta( $announcement_id, 'announcement_image', true ) );
 
 	}

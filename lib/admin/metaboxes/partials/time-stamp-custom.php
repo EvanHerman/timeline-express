@@ -17,13 +17,13 @@ $date_format = apply_filters( 'timeline_express_custom_date_format', get_option(
 
 if ( $meta && isset( $meta ) ) {
 
-	$value = ( '' !== $meta ) ? apply_filters( 'timeline_express_admin_render_date_format', date( $date_format, $meta ), $meta ) : $field->args['default'];
+	$value = ( '' !== $meta ) ? apply_filters( 'timeline_express_admin_render_date_format', date_i18n( $date_format, $meta ), $meta ) : $field->args['default'];
 
 	echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="' . esc_attr( $field->args['id'] ) . '" id="' . esc_attr( $field->args['id'] ) . '" value="' . esc_attr( $value ) . '" />';
 
 } else {
 
-	echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="' . esc_attr( $field->args['id'] ) . '" id="' . esc_attr( $field->args['id'] ) . '" value="' . esc_attr( apply_filters( 'timeline_express_admin_render_date_format', date( $date_format ), false ) ) . '" />';
+	echo '<input class="cmb2-text-small cmb2-datepicker" type="text" name="' . esc_attr( $field->args['id'] ) . '" id="' . esc_attr( $field->args['id'] ) . '" value="' . esc_attr( apply_filters( 'timeline_express_admin_render_date_format', date_i18n( $date_format ), false ) ) . '" />';
 
 }
 
