@@ -176,6 +176,12 @@ function cmb2_sanitize_te_date_time_stamp_custom_callback( $value, $new ) {
 
 	if ( isset( $new ) && ! empty( $new ) ) {
 
+		include_once( TIMELINE_EXPRESS_PATH . '/lib/classes/class.i10n-hotfixes.php' );
+
+		$hotfix = new Timeline_Express_i10n_Hotfixes();
+
+		$new = $hotfix->month_name( $new );
+
 		$date_object = date_create_from_format( get_option( 'date_format' ), $new );
 
 		return $date_object ? apply_filters( 'timeline_express_sanitize_date_format', $date_object->setTime( 0, 0, 0 )->getTimeStamp(), $new ) : apply_filters( 'timeline_express_sanitize_date_format', strtotime( $new ), $new );

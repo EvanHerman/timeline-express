@@ -105,7 +105,7 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 
 				$announcment_date = get_post_meta( $id, 'announcement_date', true );
 
-				echo wp_kses_post( apply_filters( 'timeline_express_admin_column_date_format', date( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), $announcment_date ), $announcment_date ) );
+				echo wp_kses_post( apply_filters( 'timeline_express_admin_column_date_format', date_i18n( apply_filters( 'timeline_express_custom_date_format', get_option( 'date_format' ) ), $announcment_date ), $announcment_date ) );
 
 			break;
 
@@ -129,7 +129,7 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 
 			$announcment_date = get_post_meta( $id, 'announcement_date', true );
 
-			$todays_date = strtotime( date( 'm/d/Y' ) );
+			$todays_date = strtotime( date_i18n( 'm/d/Y' ) );
 
 			if ( $announcment_date < $todays_date ) {
 
