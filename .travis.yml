@@ -1,3 +1,5 @@
+project_type: plugin
+
 sudo: false
 
 language: php
