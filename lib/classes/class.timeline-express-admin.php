@@ -16,10 +16,16 @@ class TimelineExpressAdmin {
 	 */
 	public function __construct() {
 
-		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/wp-plugin-usage-tracker.php' );
+		if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
+
+			include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/wp-plugin-usage-tracker.php' );
+
+			new WP_Plugin_Usage_Tracker;
+
+		}
+
 		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-2-week-notice.php' );
 
-		new WP_Plugin_Usage_Tracker;
 		new Timeline_Express_Two_Weeks_Notice;
 
 		/* Generate our announcements custom post type */

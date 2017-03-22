@@ -58,12 +58,6 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function __construct() {
 
-		if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
-
-			return;
-
-		}
-
 		$this->plugin_name   = strip_tags( 'Timeline Express' );
 		$this->plugin_prefix = sanitize_title( $this->plugin_name );
 

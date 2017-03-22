@@ -371,6 +371,9 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.4.1 - March 22nd, 2017 =
+- Shifted the PHP version check to prevent tracking file from loading on PHP versions older than version 5.6.
+
 = 1.4.0 - March 14th, 2017 =
 - Introduced new hotfix for i10n month names and introduced a new filter `timeline_express_i10n_months` for adding months that are not yet supported.
 - Removed the old user tracking method and introduced our own.
