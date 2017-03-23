@@ -60,7 +60,6 @@ class WP_Plugin_Usage_Tracker {
 
 		$this->plugin_name   = strip_tags( 'Timeline Express' );
 		$this->plugin_prefix = sanitize_title( $this->plugin_name );
-
 		$this->api_endpoint  = sprintf(
 			'https://api.keen.io/3.0/projects/%1$s/events/%2$s',
 			TIMELINE_EXPRESS_TRACKING_PROJECT_ID,

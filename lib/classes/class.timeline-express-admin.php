@@ -25,8 +25,8 @@ class TimelineExpressAdmin {
 		}
 
 		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-2-week-notice.php' );
-
-		new Timeline_Express_Two_Weeks_Notice;
+		
+    new Timeline_Express_Two_Weeks_Notice;
 
 		/* Generate our announcements custom post type */
 		add_action( 'init', array( $this, 'timeline_express_generate_announcement_post_type' ) );
