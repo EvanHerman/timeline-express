@@ -380,7 +380,7 @@ module.exports = function( grunt ) {
 					build_dir: 'build/',
 					deploy_trunk: true,
 					deploy_tag: pkg.version,
-					max_buffer: 1024*1024*2
+					max_buffer: 1024*1024*10
 				},
 			}
 		}
