@@ -373,6 +373,8 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 = 1.4.1 - March 22nd, 2017 =
 - Shifted the PHP version check to prevent tracking file from loading on PHP versions older than version 5.6.
+- Tweaked styles on the add-ons page, introduced 'Popular' & 'Free' badges.
+- Added Timeline Express - Popups Add-On to the add-ons page.
 
 = 1.4.0 - March 14th, 2017 =
 - Introduced new hotfix for i10n month names and introduced a new filter `timeline_express_i10n_months` for adding months that are not yet supported.
@@ -761,16 +763,8 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.3.6 - January 23rd, 2017 =
+= 1.4.1 - March 22nd, 2017 =
 
-- Set year icons to white.
-- Alphabetically sort the returned add-ons array.
-- Refactor many of the functions contained within.
-- Adjusted i18n strings on options page.
-- Shifted around the `timeline_express_custom_date_format` filter so it is referenced in more locations.
-- Introduced a new helper to format the jQuery UI picker for international users.
-- Update twitter feed add-on image path.
-- Tweak add-on page styles.
-- Update add-ons page layout and styles.
-- Introduced new parameter into `timeline_express_get_announcement_icon_markup()`, controlling the link wrap around the icon container. (Props @Arifi)
-- Check for `curl_exec` before loading the usage tracking class.
+- Shifted the PHP version check to prevent tracking file from loading on PHP versions older than version 5.6.
+- Tweaked styles on the add-ons page, introduced 'Popular' & 'Free' badges.
+- Added Timeline Express - Popups Add-On to the add-ons page.
