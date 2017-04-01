@@ -12,11 +12,7 @@
 **Tags:**              timeline, wordpress, plugin, vertical, animated, responsive <br />
 **Requires at least:** WordPress v4.2 <br />
 **Tested up to:**      WordPress v4.7.3 <br />
-<<<<<<< HEAD
 **Stable tag:**        1.4.2 <br />
-=======
-**Stable tag:**        1.4.1 <br />
->>>>>>> master
 **License:**           GPLv2 or later <br />
 **License URI:**       [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
 
