@@ -5,7 +5,7 @@
  *
  * @link http://www.codeparrots.com
  *
- * @package TimelineExpressBase
+ * @package Timeline_Express_Base
  * @since 1.2
  */
 
@@ -176,9 +176,9 @@ function cmb2_sanitize_te_date_time_stamp_custom_callback( $value, $new ) {
 
 	if ( isset( $new ) && ! empty( $new ) ) {
 
-		include_once( TIMELINE_EXPRESS_PATH . '/lib/classes/class.i10n-hotfixes.php' );
+		include_once( TIMELINE_EXPRESS_PATH . '/lib/classes/class-i10n-hotfixes.php' );
 
-		$hotfix = new Timeline_Express_i10n_Hotfixes();
+		$hotfix = new I10n_Hotfixes();
 
 		$new = $hotfix->month_name( $new );
 
@@ -474,7 +474,7 @@ function does_timeline_express_init_class_exist() {
 
 	}
 
-	include TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php';
+	include TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-initialize.php';
 
 }
 

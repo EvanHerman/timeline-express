@@ -20,7 +20,7 @@ class TE_Init_Tests extends WP_UnitTestCase {
 		$te_helper_tests = new TE_Helper_Tests;
 		$this->announcement_id = $te_helper_tests->test_create_announcement( '#c332d5', 'fa-cutlery', '05/18/2002' );
 		// Include the parent class so we can use it
-		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php' );
+		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-initialize.php' );
 		$this->init_class = new Timeline_Express_Initialize( array() );
 		// Setup options
 		$this->options = timeline_express_get_options();

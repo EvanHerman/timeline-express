@@ -10,7 +10,7 @@
  *
  * @since 1.2
  */
-class TimelineExpressAdmin {
+class Timeline_Express_Admin {
 	/**
 	 * Main constructor
 	 */
@@ -18,7 +18,7 @@ class TimelineExpressAdmin {
 
 		if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 
-			include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/wp-plugin-usage-tracker.php' );
+			include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/class-wp-plugin-usage-tracker.php' );
 
 			new WP_Plugin_Usage_Tracker;
 
@@ -188,7 +188,7 @@ class TimelineExpressAdmin {
 	public function timeline_express_addons_page() {
 
 		/* Include the addons class */
-		require_once TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-addons.php';
+		require_once TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-addons.php';
 
 	}
 
@@ -592,4 +592,4 @@ class TimelineExpressAdmin {
 
 }
 
-$timeline_express_admin = new TimelineExpressAdmin();
+$timeline_express_admin = new Timeline_Express_Admin();

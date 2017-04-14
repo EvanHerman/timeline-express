@@ -216,7 +216,7 @@ msgid "Timeline Express Product Bundle"
 msgstr ""
 
 #: lib/admin/pages/page.addons.php:115
-#: lib/classes/class.timeline-express-admin.php:148
+#: lib/classes/class-timeline-express-admin.php:148
 #. translators: Integer value for the number of add-ons in the add-on list.
 #. (eg: 6)
 msgid "Timeline Express Add-Ons"
@@ -367,7 +367,7 @@ msgid "Support Forums"
 msgstr ""
 
 #: lib/admin/pages/page.options.php:548 lib/admin/pages/page.welcome.php:214
-#: lib/classes/class.timeline-express-admin.php:350
+#: lib/classes/class-timeline-express-admin.php:350
 msgid "Documentation"
 msgstr ""
 
@@ -496,8 +496,8 @@ msgid "Support"
 msgstr ""
 
 #: lib/admin/pages/page.welcome.php:226
-#: lib/classes/class.timeline-express-admin.php:149
-#: lib/classes/class.timeline-express-admin.php:348
+#: lib/classes/class-timeline-express-admin.php:149
+#: lib/classes/class-timeline-express-admin.php:348
 msgid "Add-Ons"
 msgstr ""
 
@@ -550,28 +550,28 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:138 lib/helpers.php:985
+#: lib/classes/class-timeline-express-admin.php:138 lib/helpers.php:985
 msgid "Timeline Express Settings"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:139
-#: lib/classes/class.timeline-express-admin.php:346
+#: lib/classes/class-timeline-express-admin.php:139
+#: lib/classes/class-timeline-express-admin.php:346
 msgid "Settings"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:158
+#: lib/classes/class-timeline-express-admin.php:158
 msgid "Timeline Express Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:159
+#: lib/classes/class-timeline-express-admin.php:159
 msgid "Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:249
+#: lib/classes/class-timeline-express-admin.php:249
 msgid "Timeline Express settings saved successfully!"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:444
+#: lib/classes/class-timeline-express-admin.php:444
 #: lib/public/partials/single-timeline-express-content.php:44
 #: templates/single-timeline-express-content.php:44
 #. translators: Announcement date format

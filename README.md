@@ -576,7 +576,7 @@ add_filter( 'timeline_express_html_comment', 'remove_timeline_express_html_comme
 `timeline_express_menu_cap`
 
 - *Description:* Alter who can access the Timeline Express admin menu, by [capability](https://codex.wordpress.org/Roles_and_Capabilities#Capabilities).
-- *Location:* `/timeline-express/lib/classes/class.timeline-express.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-base.php`
 - *Paramaters:* `$menu_cap`
 - *Default:* 'manage_options' - Site admins only
 
@@ -595,7 +595,7 @@ add_filter( 'timeline_express_menu_cap', 'alter_timeline_express_admin_menu_cap'
 `timeline_express_tinymce_post_types`
 
 - *Description:* Alter which post types the Timeline Express tinyMCE button appears on.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-base.php`
 - *Paramaters:* `$post_types_array`
 - *Default:* `array( 'page', 'post' )`
 
@@ -614,7 +614,7 @@ add_filter( 'timeline_express_tinymce_post_types', 'alter_timeline_express_tinym
 `timeline_express_single_content`
 
 - *Description:* Adjust the content on the single announcement template page.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-base.php`
 - *Paramaters:* `$single_content`, `$post_id`
 - *Default:* Current announcement content.
 
@@ -633,7 +633,7 @@ add_filter( 'timeline_express_single_content', 'alter_timeline_express_single_te
 `timeline_express_single_page_template` or `timeline-express-single-page-template` <small>(legacy)</small>
 
 - *Description:* Set which template is used to display the single announcements. By default the plugin will look for a file called `single-announcement-template.php` located inside of a `/timeline-express/` directory in your theme root. If that is not found, it will look for a `single.php` template in the theme root. Finally if neither are found, it will use `page.php`.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-base.php`
 - *Paramaters:* `$single_template`
 - *Default:* Default template chosen to be used for single announcements. Possible: `single.php`, `page.php`, `/path/to/custom-template.php`
 

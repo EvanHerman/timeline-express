@@ -12,13 +12,13 @@
  */
 
 // If the class exists, abort
-if ( class_exists( 'TimelineExpressBase' ) ) {
+if ( class_exists( 'Timeline_Express_Base' ) ) {
 
 	return;
 
 }
 
-class TimelineExpressBase {
+class Timeline_Express_Base {
 
 	public function __construct() {
 
@@ -26,10 +26,10 @@ class TimelineExpressBase {
 		include_once TIMELINE_EXPRESS_PATH . 'lib/helpers.php';
 
 		/* Include Admin Class file */
-		include_once TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-admin.php';
+		include_once TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-admin.php';
 
 		/* Include Public Class file */
-		include_once TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-public.php';
+		include_once TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-public.php';
 
 		/* Register our custom timeline express image size (350px x 120px) */
 		add_image_size( 'timeline-express', '350', '120', true );

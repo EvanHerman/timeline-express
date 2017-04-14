@@ -4,7 +4,7 @@
  *
  * @since 1.4.0
  */
-class Timeline_Express_i10n_Hotfixes {
+class I10n_Hotfixes {
 
 	/**
 	 * Month name hotfix
@@ -17,7 +17,7 @@ class Timeline_Express_i10n_Hotfixes {
 	 */
 	public function month_name( $date ) {
 
-		include_once( TIMELINE_EXPRESS_PATH . '/lib/classes/hotfixes/class.month-hotfix.php' );
+		include_once( TIMELINE_EXPRESS_PATH . '/lib/classes/hotfixes/class-timeline-express-month-hotfix.php' );
 
 		$month_hotfix = new Timeline_Express_Month_Hotfix( $date );
 

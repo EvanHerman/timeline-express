@@ -47,10 +47,10 @@ function timeline_express_text_domain_init() {
 add_action( 'init', 'timeline_express_text_domain_init' );
 
 /* Main Timeline Express class file */
-require_once plugin_dir_path( __FILE__ ) . 'lib/classes/class.timeline-express.php';
+require_once plugin_dir_path( __FILE__ ) . 'lib/classes/class-timeline-express-base.php';
 
 /* Initialize the base class */
-$timeline_express_base = new TimelineExpressBase();
+$timeline_express_base = new Timeline_Express_Base();
 
 /* Activation Hook */
 register_activation_hook( __FILE__,

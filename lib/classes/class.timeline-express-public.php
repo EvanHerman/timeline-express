@@ -10,12 +10,12 @@
  *
  * @since 1.2
  */
-class TimelineExpressPublic {
+class Timeline_Express_Public {
 
 	public function __construct() {
 
 		/* Include the Timeline Express Init class */
-		include TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php';
+		include TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-initialize.php';
 
 		/* Define our [timeline-express] shortcode, so it's usable on the frontend */
 		add_shortcode( 'timeline-express', array( $this, 'process_timeline_express_shortcode' ) );
@@ -117,4 +117,4 @@ class TimelineExpressPublic {
 
 	}
 }
-$timeline_express_public = new TimelineExpressPublic();
+$timeline_express_public = new Timeline_Express_Public();

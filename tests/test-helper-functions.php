@@ -92,7 +92,7 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 	 */
 	public function test_included_files_exist() {
 		// Timeline Express initialization class
-		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php' );
+		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-initialize.php' );
 		// Timeline Express container template
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/public/partials/timeline-express-container.php' );
 		// Announcement metabox file

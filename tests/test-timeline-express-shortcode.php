@@ -9,7 +9,7 @@ class Tests_Shortcode extends WP_UnitTestCase {
 	public function setUp() {
 		parent::setUp();
 		// Include the base class
-		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php' );
+		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-initialize.php' );
 		$this->init_class = new Timeline_Express_Initialize( array() );
 		$this->options = timeline_express_get_options();
 	}
