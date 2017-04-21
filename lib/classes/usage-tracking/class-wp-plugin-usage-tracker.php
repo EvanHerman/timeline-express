@@ -145,6 +145,7 @@ class WP_Plugin_Usage_Tracker {
 				<a href="%4$s" class="button-secondary">%5$s</a>
 			</p>',
 			sprintf(
+				/* translators: The plugin name. */
 				__( 'Allow %1$s to track plugin usage? Tracking will help improve %1$s by allowing us to gather anonymous usage data so we know which configurations, plugins and themes to test with. No sensitive data is tracked.', 'timeline-express' ),
 				$this->plugin_name
 			),

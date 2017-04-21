@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) :
 
 endif;
 
-if ( ! isset( $_GET['page'] ) || 'timeline-express-addons' !== $_GET['page']  ) :
+if ( ! isset( $_GET['page'] ) || 'timeline-express-addons' !== $_GET['page'] ) :
 
 	return;
 
@@ -207,7 +207,7 @@ array_unshift( $addon_array, array(
 
 		$x++;
 
-	}
+	}// End foreach().
 
 	?>
 

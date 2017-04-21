@@ -405,7 +405,7 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'default', [ 'menu' ] );
 
-	grunt.registerTask( 'Default Grunt.js tasks for development.', [
+	grunt.registerTask( 'Run all development tasks.', [
 		'cssjanus',
 		'uglify',
 		'postcss',
@@ -418,12 +418,20 @@ module.exports = function( grunt ) {
 		'watch'
 	] );
 
-	grunt.registerTask( 'watch-banner', 'Run min/uglify/banner on watch changes', [
+	grunt.registerTask( 'Run minify/uglify/banner', [
 		'uglify',
 		'postcss',
 		'cssjanus',
 		'cssmin',
 		'usebanner'
+	] );
+
+	grunt.registerTask( 'Update tempalte files.', [
+		'copy:main'
+	] );
+
+	grunt.registerTask( 'Build the plugin into the /build/ directory.', [
+		'copy:build'
 	] );
 
 	grunt.registerTask( 'Bump the verison of Timeline Express to the next release.', [

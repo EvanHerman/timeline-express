@@ -32,6 +32,7 @@ class TE_Init_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test that the announcement icon returns what we expect.
+	 *
 	 * @return string The font awsome class to use as the icon.
 	 */
 	public function test_get_announcement_icon() {
@@ -41,6 +42,7 @@ class TE_Init_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test that the announcement icon color returns what we expect (hex).
+	 *
 	 * @return string The hex value to use as the icon background.
 	 */
 	public function test_get_announcement_icon_color() {
@@ -50,6 +52,7 @@ class TE_Init_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test that the announcement date returns what we expect.
+	 *
 	 * @return int The UNIX time stamp of the date to use.
 	 */
 	public function test_get_announcement_date() {
@@ -67,10 +70,11 @@ class TE_Init_Tests extends WP_UnitTestCase {
 		$announcement_excerpt = $init_class->get_announcement_excerpt( null, '200', '0', $this->announcement_id );
 		$this->assertEquals( 'test', $announcement_excerpt );
 	}
-	*/
+	 */
 
 	/**
 	 * Test that the announcement date returns what we expect.
+	 *
 	 * @return int The UNIX time stamp of the date to use.
 	 */
 	public function test_get_timeline_express_compare_sign() {
@@ -87,6 +91,7 @@ class TE_Init_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test that the announcement query args returns what we expect.
+	 *
 	 * @return array Query arguments to use on the front end queries.
 	 */
 	public function test_get_timeline_express_query_args() {
@@ -132,11 +137,12 @@ class TE_Init_Tests extends WP_UnitTestCase {
 					$this->assertEquals( $announcement_args, $query_args );
 				}
 			}
-		}
+		}// End foreach().
 	}
 
 	/**
 	 * Test that our HTML comment returns properly
+	 *
 	 * @return string HTMl helper comment generated below the timeline.
 	 */
 	public function test_timeline_express_html_comment() {

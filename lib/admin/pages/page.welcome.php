@@ -43,10 +43,14 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 	<!-- Tabs -->
 	<h2 class="nav-tab-wrapper">
-		<a class="nav-tab <?php echo 'timeline-express-getting-started' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'tab' => 'timeline-express-getting-started' ), 'admin.php?page=timeline-express-welcome' ) ) ); ?>">
+		<a class="nav-tab <?php echo 'timeline-express-getting-started' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array(
+			'tab' => 'timeline-express-getting-started',
+		), 'admin.php?page=timeline-express-welcome' ) ) ); ?>">
 			<?php esc_html_e( 'Getting Started', 'timeline-express' ); ?>
 		</a>
-		<a class="nav-tab <?php echo 'timeline-express-author' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'tab' => 'timeline-express-author' ), 'admin.php?page=timeline-express-welcome' ) ) ); ?>">
+		<a class="nav-tab <?php echo 'timeline-express-author' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array(
+			'tab' => 'timeline-express-author',
+		), 'admin.php?page=timeline-express-welcome' ) ) ); ?>">
 			<?php esc_html_e( 'About Code Parrots', 'timeline-express' ); ?>
 		</a>
 	</h2>
@@ -274,5 +278,6 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 		</div>
 
-	<?php } ?>
+	<?php }// End if().
+	?>
 </div>

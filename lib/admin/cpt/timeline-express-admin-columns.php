@@ -133,8 +133,10 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 
 			if ( $announcment_date < $todays_date ) {
 
-				/* translators: Announcement singular name eg: announcement has past. */
-				echo '<div class="dashicon-past-announcement dashicons dashicons-backup" title="' . sprintf( esc_attr__( '%s has past.', 'timeline-express' ), esc_attr__( apply_filters( 'timeline_express_singular_name', 'Announcement' ) ) ) . '" style="display:block;width:100%;"></div>';
+				// translators: Singular announcement name (ie: Announcement)
+				$title_attr = sprintf( __( '%s has past.', 'timeline-express-pro' ), apply_filters( 'timeline_express_singular_name', 'Announcement' ) );
+
+				echo '<div class="dashicon-past-announcement dashicons dashicons-backup" title="' . esc_attr( $title_attr ) . '" style="display:block;width:100%;"></div>';
 
 			}
 
@@ -143,7 +145,7 @@ function manage_timeline_express_column_content( $column_name, $id ) {
 		default:
 			break;
 
-	}
+	}// End switch().
 }
 
 /**

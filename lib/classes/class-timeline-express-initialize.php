@@ -80,18 +80,23 @@ class Timeline_Express_Initialize {
 		 */
 		static $shortcode_count = 1;
 
+		/* Setup the compare sign */
+		$compare_sign = self::timeline_express_compare_sign( $atts['display'] );
+
 		/* Setup the 'shortcode_iteration' variable for our transient */
 		$shortcode_iteration = ( $shortcode_count > 1 ) ? '-' . $shortcode_count : '';
 
-		/* Setup the compare sign */
-		$compare_sign = self::timeline_express_compare_sign( $atts['display'] );
+		/* Setup the transient suffix */
+		$transient_suffix = ( isset( $post->ID ) ? $post->ID : '' ) . $shortcode_iteration;
+
+		$announcement_query = get_transient( 'timeline-express-query-' . $transient_suffix );
 
 		/**
 		 * Check if our transient is present, and use that
 		 * if not, re-run our query and setup the transient
 		 * @since 1.2
 		 */
-		if ( false === ( $announcement_query = get_transient( 'timeline-express-query-' . ( isset( $post->ID ) ? $post->ID : '' ) . $shortcode_iteration ) ) ) {
+		if ( ! $announcement_query ) {
 
 			/* Setup the announcement args */
 			$announcement_args = apply_filters( 'timeline_express_announcement_query_args', self::timeline_express_query_args( $compare_sign, $atts['order'], $atts ), $post, $atts );
@@ -142,7 +147,7 @@ class Timeline_Express_Initialize {
 				</h3>
 			<?php
 
-		}
+		}// End if().
 
 		/* Generate About Text */
 		echo '<!-- ' . esc_html( self::timeline_express_about_comment() ) . ' -->';

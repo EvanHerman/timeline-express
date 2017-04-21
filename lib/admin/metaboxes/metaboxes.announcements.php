@@ -208,8 +208,10 @@ function timeline_express_internationalize_datepicker( $l10n ) {
  */
 function te_get_advertisment( $part = '' ) {
 
+	$advertisment = get_transient( 'timeline_express_ad_transient' );
+
 	// Check for a transient before continuing
-	if ( false === ( $advertisment = get_transient( 'timeline_express_ad_transient' ) ) ) {
+	if ( ! $advertisment ) {
 
 		$advertisment = te_get_random_ad();
 

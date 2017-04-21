@@ -526,7 +526,7 @@ class Timeline_Express_Admin {
 			// Image URL
 			$featured_image['image_url'] = $image;
 
-		}
+		}// End if().
 
 		return apply_filters( 'timeline_express_popups_addon_announcement_image', $featured_image, $image_id );
 

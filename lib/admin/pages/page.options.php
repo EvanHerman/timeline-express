@@ -69,7 +69,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 
 							<?php
 
-							if ( $active_tab !== 'base' ) {
+							if ( 'base' !== $active_tab ) {
 
 								do_action( 'timeline_express_add_on_options_page', $active_tab );
 
@@ -458,7 +458,8 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 
 								</form>
 
-							<?php } ?>
+							<?php }// End if().
+	?>
 
 						</div>
 						<!-- .inside -->

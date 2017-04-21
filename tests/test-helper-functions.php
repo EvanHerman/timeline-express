@@ -75,6 +75,7 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test our options array is not empty
+	 *
 	 * @return null
 	 */
 	public function test_timeline_express_get_options() {
@@ -133,6 +134,7 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test the saving of a date on the announcement page
+	 *
 	 * @return null
 	 */
 	public function test_announcement_date_sanitization() {
@@ -149,6 +151,7 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test the saving of an icon on the announcement page
+	 *
 	 * @return null
 	 */
 	public function test_font_awesome_dropdown_sanitization() {
