@@ -418,7 +418,7 @@ module.exports = function( grunt ) {
 		'watch'
 	] );
 
-	grunt.registerTask( 'Run minify/uglify/banner', [
+	grunt.registerTask( 'Run minify/uglify/banner.', [
 		'uglify',
 		'postcss',
 		'cssjanus',
