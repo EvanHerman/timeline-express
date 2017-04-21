@@ -17,8 +17,7 @@ ratings:
 exclude_paths:
 - bin/**/*
 - lib/admin/CMB2/**/*
-- lib/icons/css/**/*
-- lib/icons/fonts/**/*
+- lib/icons/**/*
 - tests/**/*
 - Gruntfile.js
 - templates/**/*
