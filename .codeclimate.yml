@@ -19,5 +19,4 @@ exclude_paths:
 - lib/admin/CMB2/**/*
 - lib/icons/**/*
 - tests/**/*
-- Gruntfile.js
 - templates/**/*
