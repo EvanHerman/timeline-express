@@ -1,0 +1,24 @@
+engines:
+  rubocop:
+    enabled: false
+  coffeelint:
+    enabled: false
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+ratings:
+  paths:
+  - "**.js"
+  - "**.css"
+  - "**.php"
+exclude_paths:
+- bin/**/*
+- lib/admin/CMB2/**/*
+- lib/icons/css/**/*
+- lib/icons/fonts/**/*
+- tests/**/*
+- Gruntfile.js
+- templates/**/*
