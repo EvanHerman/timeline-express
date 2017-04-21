@@ -18,7 +18,7 @@
  * @version    1.1.0
  * @copyright  (c) 2016 Code Parrots
  * @license    http://www.gnu.org/licenses/gpl-2.0.txt GNU LESSER GENERAL PUBLIC LICENSE
- * @package    wp-plugin-usage-tracker
+ * @package    class-wp-usage-tracker
 */
 
 // Exit if accessed directly.

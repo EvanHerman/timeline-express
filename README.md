@@ -265,7 +265,7 @@ add_filter( 'timeline_express_admin_render_date_format', 'alter_timeline_express
 `timeline_express_announcement_query_args`
 
 - *Description:* Alter the query arguments for the Timeline query. This will alter how the Timeline is rendered on the frontend. For help see [WP_Query](https://codex.wordpress.org/Class_Reference/WP_Query).
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$announcement_args`, `$post`, `$atts`
 - *Default:* Array of query arguments. Variable, depending on the Timeline Express settings.
 
@@ -284,7 +284,7 @@ add_filter( 'timeline_express_announcement_query_args', 'alter_timeline_express_
 `timeline_express_icon`
 
 - *Description:* Alter the icon for ALL announcements globally, or for each individual announcement <small>(using the `$post_id` variable)</small>.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$announcement_icon`, `$post_id`
 - *Default:* The icon set when you created the announcement, under the 'Announcement Icon' setting.
 
@@ -303,7 +303,7 @@ add_filter( 'timeline_express_icon', 'alter_timeline_express_icon', 10, 2 );
 `timeline_express_icon_color`
 
 - *Description:* Alter the color for ALL announcements globally, or for each individual announcement <small>(using the `$post_id` variable)</small>. **Note:** You should use a hex value.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$announcement_icon_color`, `$post_id`
 - *Default:* The color set when you created the announcement, under the 'Announcement Color' setting.
 
@@ -322,7 +322,7 @@ add_filter( 'timeline_express_icon_color', 'alter_timeline_express_icon_color', 
 `timeline_express_date`
 
 - *Description:* Alter the date for ALL announcements globally, or for each individual announcement <small>(using the `$post_id` variable)</small>. To alter the date format, see the `timeline_express_date_format` filter.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$date_text`, `$post_id`
 - *Default:* The text of the returned and formatted announcement date.
 
@@ -342,7 +342,7 @@ add_filter( 'timeline_express_date', 'alter_timeline_express_date_text', 10, 2 )
 `timeline_express_image`
 
 - *Description:* Alter the image for ALL announcements globally, or for each individual announcement <small>(using the `$post_id` variable)</small>. To alter the image **size** see the `timeline_express_announcement_img_size` filter.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$image_html`, `$post_id`
 - *Default:* The color set when you created the announcement, under the 'Announcement Color' setting.
 
@@ -361,7 +361,7 @@ add_filter( 'timeline_express_image', 'alter_timeline_express_image_html', 10, 2
 `timeline_express_announcement_img_size` or `timeline-express-announcement-img-size` <small>(legacy)</small>
 
 - *Description:* Alter the image size for ALL announcements globally, or for each individual announcement <small>(using the `$post_id` variable)</small>. You can use any defined image size, or define your own image sizes using [add_image_size()](https://developer.wordpress.org/reference/functions/add_image_size/).
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$image_html`, `$post_id`
 - *Default:* 'timeline-express' - 350x x 120px Hard Cropped - Image size defined by the plugin itself.
 
@@ -404,7 +404,7 @@ add_filter( 'timeline_express_read_more_link', 'custom_timeline_express_read_mor
 `timeline_express_read_more_class`
 
 - *Description:* Alter the Timeline Express read more link class, or add additional classes.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$read_more_classes`, `$post_id`
 - *Default:* 'timeline-express-read-more-link'
 
@@ -423,7 +423,7 @@ add_filter( 'timeline_express_read_more_class', 'add_additional_read_more_link_c
 `timeline_express_read_more_text`
 
 - *Description:* Alter the Timeline Express read more link text.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$read_more_text`, `$post_id`
 - *Default:* 'timeline-express-read-more-text'
 
@@ -442,7 +442,7 @@ add_filter( 'timeline_express_read_more_text', 'alter_timeline_express_read_more
 `timeline_express_read_more_text`
 
 - *Description:* Alter the Timeline Express read more link text.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$read_more_text`, `$post_id`
 - *Default:* 'timeline-express-read-more-text'
 
@@ -461,7 +461,7 @@ add_filter( 'timeline_express_read_more_text', 'alter_timeline_express_read_more
 `timeline_express_frontend_excerpt`
 
 - *Description:* Alter the Timeline Express excerpt text.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$announcement_excerpt`, `$post_id`
 - *Default:* The excerpt pulled from the current announcement.
 
@@ -480,7 +480,7 @@ add_filter( 'timeline_express_frontend_excerpt', 'alter_timeline_express_custom_
 `timeline_express_random_excerpt`
 
 - *Description:* Alter the Timeline Express excerpt, when your announcements are set to random length.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$announcement_random_excerpt`, `$post_id`
 - *Default:* An excerpt of random length, pulled from the current announcement.
 
@@ -499,7 +499,7 @@ add_filter( 'timeline_express_random_excerpt', 'alter_timeline_express_custom_ra
 `timeline_express_random_excerpt_min`
 
 - *Description:* Alter the minimum value of the randomly generated text. The excerpt will be generated from a random number between 50 and 200.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$announcement_random_excerpt_min`, `$post_id`
 - *Default:* 50
 
@@ -518,7 +518,7 @@ add_filter( 'timeline_express_random_excerpt_min', 'alter_timeline_express_rando
 `timeline_express_random_excerpt_max`
 
 - *Description:* Alter the maximum value of the randomly generated text. The excerpt will be generated from a random number between 50 and 200.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$announcement_random_excerpt_max`, `$post_id`
 - *Default:* 200
 
@@ -537,7 +537,7 @@ add_filter( 'timeline_express_random_excerpt_max', 'alter_timeline_express_rando
 `timeline_express_compare_sign`
 
 - *Description:* Alter the compare sign of the WP_Query object, for the timeline.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$compare_sign`, `$post_id`
 - *Default:* Variable, based on the setting assigned to the 'Announcement Time Frame' setting. Possible: '>', '', '<='
 
@@ -557,7 +557,7 @@ add_filter( 'timeline_express_compare_sign', 'alter_timeline_express_query_compa
 `timeline_express_html_comment`
 
 - *Description:* Alter the Timeline Express HTML comment generated below Timeline Express.
-- *Location:* `/timeline-express/lib/classes/class.timeline-express-intialize.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express-intialize.php`
 - *Paramaters:* `$timeline_express_comment`
 - *Default:* Current installed Timeline Express version with author attribution.
 
@@ -576,7 +576,7 @@ add_filter( 'timeline_express_html_comment', 'remove_timeline_express_html_comme
 `timeline_express_menu_cap`
 
 - *Description:* Alter who can access the Timeline Express admin menu, by [capability](https://codex.wordpress.org/Roles_and_Capabilities#Capabilities).
-- *Location:* `/timeline-express/lib/classes/class-timeline-express-base.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express.php`
 - *Paramaters:* `$menu_cap`
 - *Default:* 'manage_options' - Site admins only
 
@@ -595,7 +595,7 @@ add_filter( 'timeline_express_menu_cap', 'alter_timeline_express_admin_menu_cap'
 `timeline_express_tinymce_post_types`
 
 - *Description:* Alter which post types the Timeline Express tinyMCE button appears on.
-- *Location:* `/timeline-express/lib/classes/class-timeline-express-base.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express.php`
 - *Paramaters:* `$post_types_array`
 - *Default:* `array( 'page', 'post' )`
 
@@ -614,7 +614,7 @@ add_filter( 'timeline_express_tinymce_post_types', 'alter_timeline_express_tinym
 `timeline_express_single_content`
 
 - *Description:* Adjust the content on the single announcement template page.
-- *Location:* `/timeline-express/lib/classes/class-timeline-express-base.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express.php`
 - *Paramaters:* `$single_content`, `$post_id`
 - *Default:* Current announcement content.
 
@@ -633,7 +633,7 @@ add_filter( 'timeline_express_single_content', 'alter_timeline_express_single_te
 `timeline_express_single_page_template` or `timeline-express-single-page-template` <small>(legacy)</small>
 
 - *Description:* Set which template is used to display the single announcements. By default the plugin will look for a file called `single-announcement-template.php` located inside of a `/timeline-express/` directory in your theme root. If that is not found, it will look for a `single.php` template in the theme root. Finally if neither are found, it will use `page.php`.
-- *Location:* `/timeline-express/lib/classes/class-timeline-express-base.php`
+- *Location:* `/timeline-express/lib/classes/class-timeline-express.php`
 - *Paramaters:* `$single_template`
 - *Default:* Default template chosen to be used for single announcements. Possible: `single.php`, `page.php`, `/path/to/custom-template.php`
 
