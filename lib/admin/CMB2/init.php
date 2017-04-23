@@ -150,7 +150,7 @@ if ( ! class_exists( 'CMB2_Bootstrap_223_Trunk', false ) ) {
 			spl_autoload_register( 'cmb2_autoload_classes' );
 
 			// Kick the whole thing off
-			require_once 'bootstrap.php';
+			require_once( cmb2_dir( 'bootstrap.php' ) );
 			cmb2_bootstrap();
 		}
 
