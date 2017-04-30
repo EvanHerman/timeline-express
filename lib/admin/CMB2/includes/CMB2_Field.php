@@ -86,11 +86,13 @@ class CMB2_Field extends CMB2_Base {
 	 * @var array
 	 */
 	public static $callable_fields = array(
-		'default',
-		'row_classes',
+		'default_cb',
+		'classes_cb',
 		'options_cb',
+		'text_cb',
 		'label_cb',
 		'render_row_cb',
+		'display_cb',
 		'before_group',
 		'before_group_row',
 		'before_row',
@@ -596,7 +598,6 @@ class CMB2_Field extends CMB2_Base {
 			'file'                => 1,
 			'radio'               => 1,
 			'title'               => 1,
-			// @todo Ajax load wp_editor: http://wordpress.stackexchange.com/questions/51776/how-to-load-wp-editor-through-ajax-jquery
 			'wysiwyg'             => 1,
 			'checkbox'            => 1,
 			'radio_inline'        => 1,
@@ -797,8 +798,8 @@ class CMB2_Field extends CMB2_Base {
 
 		$this->peform_param_callback( 'before' );
 
-		$field_type = new CMB2_Types( $this );
-		$field_type->render();
+		$types = new CMB2_Types( $this );
+		$types->render();
 
 		$this->peform_param_callback( 'after' );
 
@@ -1098,6 +1099,7 @@ class CMB2_Field extends CMB2_Base {
 			'label_cb'          => 'title' != $args['type'] ? array( $this, 'label' ) : '',
 			'column'            => false,
 			'js_dependencies'   => array(),
+			'show_in_rest'      => null,
 		) );
 
 		/*
@@ -1217,9 +1219,10 @@ class CMB2_Field extends CMB2_Base {
 
 		if ( isset( $args['row_classes'] ) ) {
 
-			$this->deprecated_param( __CLASS__ . '::__construct()', '2.2.3', self::DEPRECATED_PARAM, 'row_classes', 'classes' );
+			// We'll let this one be.
+			// $this->deprecated_param( __CLASS__ . '::__construct()', '2.2.3', self::DEPRECATED_PARAM, 'row_classes', 'classes' );
 
-			// row_classes param could be a callback
+			// row_classes param could be a callback. This is definitely deprecated.
 			if ( is_callable( $args['row_classes'] ) ) {
 
 				$this->deprecated_param( __CLASS__ . '::__construct()', '2.2.3', self::DEPRECATED_CB_PARAM, 'row_classes', 'classes_cb' );
@@ -1227,7 +1230,6 @@ class CMB2_Field extends CMB2_Base {
 				$args['classes_cb'] = $args['row_classes'];
 				$args['classes'] = null;
 			} else {
-
 
 				$args['classes'] = $args['row_classes'];
 			}

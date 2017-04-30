@@ -63,6 +63,7 @@ class CMB2_JS {
 		// if file/file_list
 		if ( isset( $dependencies['media-editor'] ) ) {
 			wp_enqueue_media();
+			CMB2_Type_File_Base::output_js_underscore_templates();
 		}
 
 		// if timepicker
@@ -83,6 +84,8 @@ class CMB2_JS {
 		}
 
 		self::localize( $debug );
+
+		do_action( 'cmb2_footer_enqueue' );
 	}
 
 	/**

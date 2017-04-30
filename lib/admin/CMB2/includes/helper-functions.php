@@ -35,6 +35,10 @@ function cmb2_autoload_classes( $class_name ) {
 		$path .= '/types';
 	}
 
+	if ( 'CMB2_REST' === $class_name || 0 === strpos( $class_name, 'CMB2_REST_' ) ) {
+		$path .= '/rest-api';
+	}
+
 	include_once( cmb2_dir( "$path/{$class_name}.php" ) );
 }
 
@@ -98,7 +102,7 @@ function cmb2_get_oembed( $args = array() ) {
 	);
 
 	if ( isset( $args['wp_error'] ) && $args['wp_error'] ) {
-		return new WP_Error( 'cmb2_get_oembed_result', $wp_error, compact( 'oembed', 'args' ) );
+		return new WP_Error( 'cmb2_get_oembed_result', $error, compact( 'oembed', 'args' ) );
 	}
 
 	// Otherwise, send back error info that no oEmbeds were found
@@ -256,8 +260,7 @@ function cmb2_get_metabox_form( $meta_box, $object_id = 0, $args = array() ) {
 	ob_start();
 	// Get cmb form
 	cmb2_print_metabox_form( $cmb, $object_id, $args );
-	$form = ob_get_contents();
-	ob_end_clean();
+	$form = ob_get_clean();
 
 	return apply_filters( 'cmb2_get_metabox_form', $form, $object_id, $cmb );
 }

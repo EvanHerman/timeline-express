@@ -2,16 +2,15 @@
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com)
 [![Build Status](https://travis-ci.org/EvanHerman/timeline-express.svg?branch=master)](https://travis-ci.org/EvanHerman/timeline-express)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/quality-score.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
-[![Code Coverage](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/coverage.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/?branch=Refactor---v1.2)
-[![Build Status](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/badges/build.png?b=Refactor---v1.2)](https://scrutinizer-ci.com/g/EvanHerman/Timeline-Express/build-status/Refactor---v1.2)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
+[![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/codeclimate/coverage)
 [![Project Stats](https://www.openhub.net/p/timeline-express/widgets/project_thin_badge.gif)](https://www.openhub.net/p/timeline-express)
 
 [![Timeline Express](https://cldup.com/muOzYZg5GP.jpg)](https://www.wp-timelineexpress.com)
 
-**Tags:**              timeline, wordpress, plugin, vertical, animated, responsive <br />
+**Tags:**              timeline, responsive, time, line, vertical, animated, company, history, font awesome, events, calendar, scroll, dates, story, timeline express, milestone, stories <br />
 **Requires at least:** WordPress v4.2 <br />
-**Tested up to:**      WordPress v4.7.3 <br />
+**Tested up to:**      WordPress v4.7.4 <br />
 **Stable tag:**        1.4.2 <br />
 **License:**           GPLv2 or later <br />
 **License URI:**       [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
