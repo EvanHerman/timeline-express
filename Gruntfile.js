@@ -496,6 +496,7 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'Deploy Timeline Express to the WordPress.org repository.', [
 		'copy:deploy',
+		'shell:clean_submodules',
 		'wp_deploy'
 	] );
 
