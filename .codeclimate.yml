@@ -17,8 +17,8 @@ ratings:
   - "**.css"
   - "**.php"
 exclude_paths:
-- bin/**/*
-- lib/admin/CMB2/**/*
-- lib/icons/**/*
-- tests/**/*
-- templates/**/*
+- bin/
+- lib/admin/CMB2/
+- lib/icons/
+- tests/
+- templates/
