@@ -47,5 +47,6 @@ script:
   - source $DEV_LIB_PATH/travis.script.sh
 
 after_script:
-  - ./vendor/bin/test-reporter;
+  - if [[ $TRAVIS_PHP_VERSION = '7.1' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
+    ]]; then ./vendor/bin/test-reporter; fi
   - source $DEV_LIB_PATH/travis.after_script.sh
