@@ -43,10 +43,9 @@ before_script:
 
 script:
   - if [[ $TRAVIS_PHP_VERSION = '7.1' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
-    ]]; then phpunit --coverage-clover=coverage.clover; else phpunit; fi
+    ]]; then phpunit --coverage-clover build/logs/clover.xml; else phpunit; fi
   - source $DEV_LIB_PATH/travis.script.sh
 
 after_script:
-  - if [[ $TRAVIS_PHP_VERSION = '7.1' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
-    ]]; ./vendor/bin/test-reporter;
+  - ./vendor/bin/test-reporter;
   - source $DEV_LIB_PATH/travis.after_script.sh
