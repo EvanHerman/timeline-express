@@ -372,9 +372,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 == Changelog ==
 
 = 1.4.3 - April 30th, 2017 =
+- Enhancement: Updated bundled CMB2 to v2.2.4.
 - Enhancement: Refactored many of the class files.
-- Fixed: Timeline Express classnames.
-- Fixed: Updated 'Year' icons on the timeline, when displaying incorrectly.
+- Fixed: Timeline Express class names.
+- Fixed: Updated 'Year' icons on the timeline not displaying the proper year.
 
 = 1.4.2 - April 1st, 2017 =
 - Resolved PHP warnings thrown on add-ons page when using a PHP version older than 5.6.0.
@@ -773,6 +774,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 = 1.4.3 - April 30th, 2017 =
 
+- Enhancement: Updated bundled CMB2 to v2.2.4.
 - Enhancement: Refactored many of the class files.
-- Fixed: Timeline Express classnames.
-- Fixed: Updated 'Year' icons on the timeline, when displaying incorrectly.
+- Fixed: Timeline Express class names.
+- Fixed: Updated 'Year' icons on the timeline not displaying the proper year.
