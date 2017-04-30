@@ -46,7 +46,5 @@ script:
   - source $DEV_LIB_PATH/travis.script.sh
 
 after_script:
-  - pwd
-  - ls -la
-  - ./.codeclimate.sh
+  - ./vendor/bin/test-reporter
   - source $DEV_LIB_PATH/travis.after_script.sh
