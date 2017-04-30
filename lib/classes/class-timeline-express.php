@@ -9,7 +9,7 @@
  * @package Timeline_Express
  *
  * @since 1.2
- */
+ */ 
 
 // If the class exists, abort
 if ( class_exists( 'TimelineExpressBase' ) ) {
