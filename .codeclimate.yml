@@ -11,7 +11,7 @@ engines:
     enabled: true
     config:
       file_extensions: "php,js"
-      standard: "phpcs.ruleset.xml"
+      standard: "WordPress-Core,phpcs.ruleset.xml"
 ratings:
   paths:
   - "**.js"
