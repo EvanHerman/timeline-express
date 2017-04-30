@@ -9,6 +9,8 @@ engines:
     enabled: true
   phpcodesniffer:
     enabled: true
+    config:
+      standard: "WordPress-Core"
 ratings:
   paths:
   - "**.js"

@@ -371,6 +371,11 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.4.3 - April 30th, 2017 =
+- Enhancement: Refactored many of the class files.
+- Fixed: Timeline Express classnames.
+- Fixed: Updated 'Year' icons on the timeline, when displaying incorrectly.
+
 = 1.4.2 - April 1st, 2017 =
 - Resolved PHP warnings thrown on add-ons page when using a PHP version older than 5.6.0.
 
@@ -766,8 +771,8 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.4.1 - March 22nd, 2017 =
+= 1.4.3 - April 30th, 2017 =
 
-- Shifted the PHP version check to prevent tracking file from loading on PHP versions older than version 5.6.
-- Tweaked styles on the add-ons page, introduced 'Popular' & 'Free' badges.
-- Added Timeline Express - Popups Add-On to the add-ons page.
+- Enhancement: Refactored many of the class files.
+- Fixed: Timeline Express classnames.
+- Fixed: Updated 'Year' icons on the timeline, when displaying incorrectly.
