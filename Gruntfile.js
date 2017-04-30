@@ -137,7 +137,7 @@ module.exports = function( grunt ) {
 							'uninstall.php',
 							'wpml-config.xml'
 						],
-						dest: 'build/'
+						dest: 'build/timeline-express/'
 					}
 				]
 			}
@@ -377,12 +377,29 @@ module.exports = function( grunt ) {
 			deploy: {
 				options: {
 					plugin_slug: 'timeline-express',
-					build_dir: 'build/',
+					build_dir: 'build/timeline-express/',
 					deploy_trunk: true,
 					deploy_tag: pkg.version,
 					max_buffer: 1024*1024*10
 				}
 			}
+		},
+
+		clean: {
+			build: [ 'build/*' ]
+		},
+
+		compress: {
+				main: {
+						options: {
+								archive: 'build/timeline-express-v<%= pkg.version %>.zip'
+						},
+						files: [ {
+							cwd: 'build/timeline-express/',
+							dest: 'timeline-express',
+							src: [ '**' ]
+						} ]
+				}
 		}
 
 	} );
@@ -401,6 +418,8 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-bump' );
 	grunt.loadNpmTasks( 'grunt-text-replace' );
 	grunt.loadNpmTasks( 'grunt-wp-deploy' );
+	grunt.loadNpmTasks( 'grunt-contrib-clean' );
+	grunt.loadNpmTasks( 'grunt-contrib-compress' );
 	grunt.loadNpmTasks( 'grunt-menu' );
 
 	grunt.registerTask( 'default', [ 'menu' ] );
@@ -431,7 +450,9 @@ module.exports = function( grunt ) {
 	] );
 
 	grunt.registerTask( 'Build the plugin into the /build/ directory.', [
-		'copy:build'
+		'clean:build',
+		'copy:deploy',
+		'compress'
 	] );
 
 	grunt.registerTask( 'Bump the verison of Timeline Express to the next release.', [
