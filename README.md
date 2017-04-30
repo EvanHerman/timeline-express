@@ -2,8 +2,9 @@
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com)
 [![Build Status](https://travis-ci.org/EvanHerman/timeline-express.svg?branch=master)](https://travis-ci.org/EvanHerman/timeline-express)
-[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
-[![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/codeclimate/coverage)
+[![Code Climate](https://codeclimate.com/github/EvanHerman/timeline-express/badges/gpa.svg)](https://codeclimate.com/github/EvanHerman/timeline-express)
+[![Test Coverage](https://codeclimate.com/github/EvanHerman/timeline-express/badges/coverage.svg)](https://codeclimate.com/github/EvanHerman/timeline-express/coverage)
+[![Issue Count](https://codeclimate.com/github/EvanHerman/timeline-express/badges/issue_count.svg)](https://codeclimate.com/github/EvanHerman/timeline-express)
 [![Project Stats](https://www.openhub.net/p/timeline-express/widgets/project_thin_badge.gif)](https://www.openhub.net/p/timeline-express)
 
 [![Timeline Express](https://cldup.com/muOzYZg5GP.jpg)](https://www.wp-timelineexpress.com)
