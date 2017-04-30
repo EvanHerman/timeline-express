@@ -1,8 +1,4 @@
 engines:
-  rubocop:
-    enabled: false
-  coffeelint:
-    enabled: false
   eslint:
     enabled: true
   phpcodesniffer:
