@@ -39,7 +39,6 @@ install:
 
 before_script:
   - composer require codeclimate/php-test-reporter --dev
-  - chmod +x /.codeclimate.sh
   - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
 
 script:
@@ -47,5 +46,7 @@ script:
   - source $DEV_LIB_PATH/travis.script.sh
 
 after_script:
+  - pwd
+  - ls -la
   - ./.codeclimate.sh
   - source $DEV_LIB_PATH/travis.after_script.sh
