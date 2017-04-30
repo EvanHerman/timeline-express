@@ -372,7 +372,7 @@ module.exports = function( grunt ) {
 				'grunt usebanner'
 			].join( ' && ' ),
 			clean_submodules: [
-				'cd lib/admin/CMB2',
+				'cd build/timeline-express/lib/admin/CMB2',
 				'rm -rf .github',
 				'rm -rf tests',
 				'rm -rf .git',
