@@ -30,7 +30,7 @@
  *
  * @package Timeline Express
  * @since 1.0.0
- **/ 
+ **/
 
 /* Include project constants */
 include_once plugin_dir_path( __FILE__ ) . 'constants.php';
