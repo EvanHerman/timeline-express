@@ -5,7 +5,7 @@
  *
  * @link http://www.codeparrots.com
  *
- * @package Timeline_Express_Base
+ * @package TimelineExpressBase
  * @since 1.2
  */
 

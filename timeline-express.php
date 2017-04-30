@@ -50,7 +50,7 @@ add_action( 'init', 'timeline_express_text_domain_init' );
 require_once plugin_dir_path( __FILE__ ) . 'lib/classes/class-timeline-express.php';
 
 /* Initialize the base class */
-$timeline_express_base = new Timeline_Express_Base();
+$timeline_express_base = new TimelineExpressBase();
 
 /* Activation Hook */
 register_activation_hook( __FILE__,

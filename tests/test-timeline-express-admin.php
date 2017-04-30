@@ -18,7 +18,7 @@ class TE_Admin_Tests extends WP_UnitTestCase {
 		$this->options = timeline_express_get_options();
 		// include the base class to access funcitons
 		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express.php' );
-		$this->base_class = new Timeline_Express_Base();
+		$this->base_class = new TimelineExpressBase();
 	}
 
 	public function tearDown() {

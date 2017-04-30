@@ -18,7 +18,7 @@ class TE_Options_Test extends WP_UnitTestCase {
 		$this->options = timeline_express_get_options();
 		// Include the base class
 		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express.php' );
-		$this->base_class = new Timeline_Express_Base();
+		$this->base_class = new TimelineExpressBase();
 	}
 
 	public function setUp() {

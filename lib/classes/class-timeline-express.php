@@ -12,13 +12,13 @@
  */
 
 // If the class exists, abort
-if ( class_exists( 'Timeline_Express_Base' ) ) {
+if ( class_exists( 'TimelineExpressBase' ) ) {
 
 	return;
 
 }
 
-class Timeline_Express_Base {
+class TimelineExpressBase {
 
 	public function __construct() {
 
