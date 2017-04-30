@@ -31,7 +31,7 @@
 
 	<logging>
 		<log type="testdox-html" target="./build/logs/test-results.html" />
-		<log type="coverage-clover" target="./build/logs/logs/clover.xml"/>
+		<log type="coverage-clover" target="./build/logs/clover.xml"/>
 		<log type="coverage-html" target="./build/logs/coverage" charset="UTF-8" yui="true" highlight="true" lowUpperBound="35" highLowerBound="80" />
 	</logging>
 
