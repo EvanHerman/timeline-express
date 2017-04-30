@@ -529,7 +529,11 @@ function timeline_express_get_announcement_icon_markup( $post_id, $link = true )
 
 					<strong>
 
-						<?php echo esc_html( date( 'Y', timeline_express_get_announcement_date_timestamp( $post_id ) ) ); ?>
+						<?php
+						$date = date_i18n( 'Y', timeline_express_get_announcement_date_timestamp( $post_id ) );
+
+						echo esc_html( apply_filters( 'timeline_express_frontend_year_icons', $date, timeline_express_get_announcement_date_timestamp( $post_id ) ) );
+						?>
 
 					</strong>
 
