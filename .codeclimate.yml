@@ -10,7 +10,7 @@ engines:
   phpcodesniffer:
     enabled: true
     config:
-      standard: "WordPress-Core"
+      standard: "phpcs.ruleset.xml"
 ratings:
   paths:
   - "**.js"
