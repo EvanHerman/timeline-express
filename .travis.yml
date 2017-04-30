@@ -39,9 +39,7 @@ install:
 
 before_script:
   - composer require codeclimate/php-test-reporter --dev
-  - touch /.codeclimate.sh
   - chmod +x /.codeclimate.sh
-  - echo "curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports" >> /.codeclimate.sh
   - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
 
 script:
