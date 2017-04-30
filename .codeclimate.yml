@@ -1,11 +1,3 @@
-engines:
-  eslint:
-    enabled: true
-  phpcodesniffer:
-    enabled: true
-    config:
-      file_extensions: "php,js"
-      standard: "WordPress-Core,phpcs.ruleset.xml"
 ratings:
   paths:
   - "**.js"
