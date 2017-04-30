@@ -84,4 +84,4 @@ switch ( $template ) {
 
 		break;
 
-}
+}// End switch().

@@ -41,6 +41,7 @@ do_action( 'timeline-express-single-after-image' );
 		do_action( 'timeline-express-single-before-date' );
 
 		printf(
+			/* translators: The announcement date */
 			apply_filters( 'timeline_express_announcement_date_text', __( 'Announcement Date: %s', 'timeline-express' ) ),
 			wp_kses_post( timeline_express_get_announcement_date( get_the_ID() ) )
 		);

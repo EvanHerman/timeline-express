@@ -10,7 +10,7 @@ module.exports = function( grunt ) {
 
 	var pkg = grunt.file.readJSON( 'package.json' );
 
-	grunt.initConfig({
+	grunt.initConfig( {
 
 		pkg: pkg,
 
@@ -19,14 +19,14 @@ module.exports = function( grunt ) {
 				files: {
 					'lib/admin/js/min/timeline-express-admin.min.js': [
 						'lib/admin/js/bootstrap-select.js',
-						'lib/admin/js/script.options-color-picker-custom.js',
+						'lib/admin/js/script.options-color-picker-custom.js'
 					],
 					'lib/admin/js/min/timeline-express-tinymce.min.js': [
-						'lib/admin/js/timeline-express-button-script.js',
+						'lib/admin/js/timeline-express-button-script.js'
 					],
 					'lib/public/js/min/timeline-express.min.js': [
-						'lib/public/js/timeline-express.js',
-					],
+						'lib/public/js/timeline-express.js'
+					]
 				}
 			}
 		},
@@ -54,7 +54,7 @@ module.exports = function( grunt ) {
 							'lib/admin/css/timeline-express-settings.css',
 							'lib/admin/css/timeline-express-welcome.css',
 							'lib/admin/css/timeline-express-addons.css'
-						],
+						]
 					},
 					{
 						'lib/admin/css/min/timeline-express-admin-rtl.min.css':
@@ -62,14 +62,14 @@ module.exports = function( grunt ) {
 							'lib/admin/css/timeline-express-settings-rtl.css',
 							'lib/admin/css/timeline-express-welcome-rtl.css',
 							'lib/admin/css/timeline-express-addons-rtl.css'
-						],
+						]
 					},
 					{
 						'lib/public/css/min/timeline-express.min.css':
 						[
 							'lib/public/css/timeline-express.css',
 							'lib/public/css/timeline-express-single-page.css'
-						],
+						]
 					},
 					{
 						'lib/public/css/min/timeline-express-rtl.min.css':
@@ -77,7 +77,7 @@ module.exports = function( grunt ) {
 							'lib/public/css/timeline-express-rtl.css',
 							'lib/public/css/timeline-express-single-page.css',
 							'lib/public/css/timeline-express-single-page-rtl.css'
-						],
+						]
 					}
 				]
 			}
@@ -105,7 +105,7 @@ module.exports = function( grunt ) {
 						'lib/admin/css/min/timeline-express-admin.min.css',
 						'lib/admin/css/min/timeline-express-admin-rtl.min.css',
 						'lib/admin/js/min/timeline-express-tinymce.min.js',
-						'lib/admin/js/min/timeline-express-admin.min.js',
+						'lib/admin/js/min/timeline-express-admin.min.js'
 					]
 				}
 			}
@@ -120,8 +120,8 @@ module.exports = function( grunt ) {
 						src: [ 'lib/public/partials/*.php' ],
 						dest: 'templates/',
 						filter: 'isFile'
-					},
-				],
+					}
+				]
 			},
 			deploy: {
 				files: [
@@ -137,9 +137,9 @@ module.exports = function( grunt ) {
 							'uninstall.php',
 							'wpml-config.xml'
 						],
-						dest: 'build/'
-					},
-				],
+						dest: 'build/timeline-express/'
+					}
+				]
 			}
 		},
 
@@ -150,7 +150,7 @@ module.exports = function( grunt ) {
 				options: {
 					spawn: false,
 					event: [ 'all' ]
-				},
+				}
 			},
 			admin_js: {
 				files: [ 'lib/admin/js/*.js', 'lib/admin/js/*.min.js' ],
@@ -158,7 +158,7 @@ module.exports = function( grunt ) {
 				options: {
 					spawn: false,
 					event: [ 'all' ]
-				},
+				}
 			},
 			public_css: {
 				files: [ 'lib/public/css/*.css', '! lib/public/css/*.min.css' ],
@@ -166,7 +166,7 @@ module.exports = function( grunt ) {
 				options: {
 					spawn: false,
 					event: [ 'all' ]
-				},
+				}
 			},
 			public_js: {
 				files: [ 'lib/public/js/*.js', '! lib/public/js/*.min.js' ],
@@ -174,8 +174,8 @@ module.exports = function( grunt ) {
 				options: {
 					spawn: false,
 					event: [ 'all' ]
-				},
-			},
+				}
+			}
 		},
 
 		cssjanus: {
@@ -256,7 +256,7 @@ module.exports = function( grunt ) {
 						{
 							config:  'bump.increment',
 							type:    'list',
-							message: 'Bump version from ' + '<%= pkg.version %>' + ' to:',
+							message: 'Bump version from <%= pkg.version %> to:',
 							choices: [
 								{
 									value: 'patch',
@@ -283,7 +283,7 @@ module.exports = function( grunt ) {
 							when:     function ( answers ) {
 								return answers[ 'bump.increment' ] === 'custom';
 							}
-						},
+						}
 					],
 					then: function( results ) {
 						if ( results[ 'bump.increment' ] === 'patch' ) {
@@ -333,13 +333,13 @@ module.exports = function( grunt ) {
 						to: "# Timeline Express - <%= pkg.version %>"
 					},
 					{
-						from: /\*\*Stable tag:\*\*        (.*)/,
+						from: /\*\*Stable tag:\*\* {8}(.*)/,
 						to: "\**Stable tag:**        <%= pkg.version %> <br />"
 					},
 					{
-						from: /\*\*Tested up to:\*\*      WordPress v(.*)/,
+						from: /\*\*Tested up to:\*\* {6}WordPress v(.*)/,
 						to: "\**Tested up to:**      WordPress v<%= pkg.tested_up_to %> <br />"
-					},
+					}
 				]
 			},
 			constants: {
@@ -354,38 +354,76 @@ module.exports = function( grunt ) {
 
 		shell: {
 			bump_patch: [
-				'grunt bump:patch',
+				'grunt bump:patch'
 			].join( ' && ' ),
 			bump_minor: [
-				'grunt bump:minor',
+				'grunt bump:minor'
 			].join( ' && ' ),
 			bump_major: [
-				'grunt bump:major',
+				'grunt bump:major'
 			].join( ' && ' ),
 			bump_custom: [
-				'grunt bump --setversion=<%= bump.custom_version %>',
+				'grunt bump --setversion=<%= bump.custom_version %>'
 			].join( ' && ' ),
 			bump: [
 				'grunt replace',
 				'grunt cssmin',
 				'grunt uglify',
-				'grunt usebanner',
+				'grunt usebanner'
 			].join( ' && ' ),
+			clean_submodules: [
+				'cd build/timeline-express/lib/admin/CMB2',
+				'rm -rf .github',
+				'rm -rf tests',
+				'rm -rf .git',
+				'rm -rf .gitattributes',
+				'rm -rf .gitignore',
+				'rm -rf .scrutinizer.yml',
+				'rm -rf .travis.yml',
+				'rm -rf CHANGELOG.md',
+				'rm -rf composer.json',
+				'rm -rf CONTRIBUTING.md',
+				'rm -rf coverage.clover',
+				'rm -rf Dockunit.json',
+				'rm -rf example-functions.php',
+				'rm -rf Gruntfile.js',
+				'rm -rf package.json',
+				'rm -rf phpunit.xml.dist',
+				'rm -rf README.md',
+				'rm -rf readme.txt'
+			].join( ' && ' )
 		},
 
 		wp_deploy: {
 			deploy: {
 				options: {
 					plugin_slug: 'timeline-express',
-					build_dir: 'build/',
+					build_dir: 'build/timeline-express/',
 					deploy_trunk: true,
 					deploy_tag: pkg.version,
 					max_buffer: 1024*1024*10
-				},
+				}
 			}
+		},
+
+		clean: {
+			build: [ 'build/*' ]
+		},
+
+		compress: {
+				main: {
+						options: {
+								archive: 'build/timeline-express-v<%= pkg.version %>.zip'
+						},
+						files: [ {
+							cwd: 'build/timeline-express/',
+							dest: 'timeline-express',
+							src: [ '**' ]
+						} ]
+				}
 		}
 
-	});
+	} );
 
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
@@ -401,11 +439,13 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-bump' );
 	grunt.loadNpmTasks( 'grunt-text-replace' );
 	grunt.loadNpmTasks( 'grunt-wp-deploy' );
+	grunt.loadNpmTasks( 'grunt-contrib-clean' );
+	grunt.loadNpmTasks( 'grunt-contrib-compress' );
 	grunt.loadNpmTasks( 'grunt-menu' );
 
 	grunt.registerTask( 'default', [ 'menu' ] );
 
-	grunt.registerTask( 'Default Grunt.js tasks for development.', [
+	grunt.registerTask( 'Run all development tasks.', [
 		'cssjanus',
 		'uglify',
 		'postcss',
@@ -418,7 +458,7 @@ module.exports = function( grunt ) {
 		'watch'
 	] );
 
-	grunt.registerTask( 'watch-banner', 'Run min/uglify/banner on watch changes', [
+	grunt.registerTask( 'watch-banner', 'Run minify/uglify/banner.', [
 		'uglify',
 		'postcss',
 		'cssjanus',
@@ -426,8 +466,19 @@ module.exports = function( grunt ) {
 		'usebanner'
 	] );
 
+	grunt.registerTask( 'Update tempalte files.', [
+		'copy:main'
+	] );
+
+	grunt.registerTask( 'Build the plugin into the /build/ directory.', [
+		'clean:build',
+		'copy:deploy',
+		'shell:clean_submodules',
+		'compress'
+	] );
+
 	grunt.registerTask( 'Bump the verison of Timeline Express to the next release.', [
-		'prompt',
+		'prompt'
 	] );
 
 	grunt.registerTask( 'Generate a .pot translation file.', [

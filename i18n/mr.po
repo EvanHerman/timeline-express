@@ -219,7 +219,7 @@ msgstr ""
 #. translators: Integer value for the number of add-ons in the add-on list.
 #. (eg: 6)
 #: lib/admin/pages/page.addons.php:115
-#: lib/classes/class.timeline-express-admin.php:148
+#: lib/classes/class-timeline-express-admin.php:148
 msgid "Timeline Express Add-Ons"
 msgstr ""
 
@@ -369,7 +369,7 @@ msgid "Support Forums"
 msgstr ""
 
 #: lib/admin/pages/page.options.php:548 lib/admin/pages/page.welcome.php:214
-#: lib/classes/class.timeline-express-admin.php:350
+#: lib/classes/class-timeline-express-admin.php:350
 msgid "Documentation"
 msgstr ""
 
@@ -497,8 +497,8 @@ msgid "Support"
 msgstr ""
 
 #: lib/admin/pages/page.welcome.php:226
-#: lib/classes/class.timeline-express-admin.php:149
-#: lib/classes/class.timeline-express-admin.php:348
+#: lib/classes/class-timeline-express-admin.php:149
+#: lib/classes/class-timeline-express-admin.php:348
 msgid "Add-Ons"
 msgstr ""
 
@@ -528,68 +528,68 @@ msgid ""
 "behind it's products."
 msgstr ""
 
-#: lib/classes/class.timeline-express-2-week-notice.php:85
+#: lib/classes/class-timeline-express-2-week-notice.php:85
 msgid ""
 "It looks like you have been enjoying Timeline Express for 2 weeks now! If "
 "you are enjoying the plugin we would love it if you could leave us a 5 star "
 "review in the WordPress.org repsository!"
 msgstr ""
 
-#: lib/classes/class.timeline-express-2-week-notice.php:87
+#: lib/classes/class-timeline-express-2-week-notice.php:87
 msgid "Leave a Review"
 msgstr ""
 
-#: lib/classes/class.timeline-express-2-week-notice.php:89
+#: lib/classes/class-timeline-express-2-week-notice.php:89
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: lib/classes/class.timeline-express-2-week-notice.php:91
+#: lib/classes/class-timeline-express-2-week-notice.php:91
 msgid "View Add-Ons"
 msgstr ""
 
-#: lib/classes/class.timeline-express-2-week-notice.php:93
+#: lib/classes/class-timeline-express-2-week-notice.php:93
 msgid "Dismiss"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:138 lib/helpers.php:985
+#: lib/classes/class-timeline-express-admin.php:138 lib/helpers.php:985
 msgid "Timeline Express Settings"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:139
-#: lib/classes/class.timeline-express-admin.php:346
+#: lib/classes/class-timeline-express-admin.php:139
+#: lib/classes/class-timeline-express-admin.php:346
 msgid "Settings"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:158
+#: lib/classes/class-timeline-express-admin.php:158
 msgid "Timeline Express Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:159
+#: lib/classes/class-timeline-express-admin.php:159
 msgid "Welcome"
 msgstr ""
 
-#: lib/classes/class.timeline-express-admin.php:249
+#: lib/classes/class-timeline-express-admin.php:249
 msgid "Timeline Express settings saved successfully!"
 msgstr ""
 
 #. translators: Announcement date format
-#: lib/classes/class.timeline-express-admin.php:444
+#: lib/classes/class-timeline-express-admin.php:444
 #: lib/public/partials/single-timeline-express-content.php:44
 #: templates/single-timeline-express-content.php:44
 msgid "Announcement Date: %s"
 msgstr ""
 
-#: lib/classes/class.timeline-express.php:109
+#: lib/classes/class-timeline-express.php:109
 msgid ""
 "Sorry, the nonce security check did not pass. Please go back to the settings "
 "page, refresh the page and try to save your settings again."
 msgstr ""
 
-#: lib/classes/class.timeline-express.php:110
+#: lib/classes/class-timeline-express.php:110
 msgid "Failed Nonce Security Check"
 msgstr ""
 
-#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:160
+#: lib/classes/usage-tracking/class-wp-plugin-usage-tracker.php:160
 msgid ""
 "Allow Timeline Express to track plugin usage? Tracking will help improve "
 "Timeline Express by allowing us to gather anonymous usage data so we know "
@@ -597,11 +597,11 @@ msgid ""
 "tracked."
 msgstr ""
 
-#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:162
+#: lib/classes/usage-tracking/class-wp-plugin-usage-tracker.php:162
 msgid "Allow"
 msgstr ""
 
-#: lib/classes/usage-tracking/wp-plugin-usage-tracker.php:164
+#: lib/classes/usage-tracking/class-wp-plugin-usage-tracker.php:164
 msgid "Do not allow"
 msgstr ""
 

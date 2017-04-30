@@ -81,7 +81,7 @@ switch ( $template ) {
 
 		break;
 
-}
+}// End switch().
 
 /**
  * Twenty Fifteen Helper

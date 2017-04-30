@@ -3,7 +3,7 @@ Contributors: codeparrots, eherman24
 Tags: timeline, responsive, time, line, vertical, animated, company, history, font awesome, events, calendar, scroll, dates, story, timeline express, milestone, stories
 Requires at least: 4.0
 Tested up to: 4.7.3
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv2 or later
 
 Timeline Express creates a beautiful vertical animated and responsive timeline of posts, in chronological order.
@@ -370,6 +370,12 @@ The above example will load font awesome version 4.4.0 instead of the current st
 5. Timeline Express - Admin Settings Page
 
 == Changelog ==
+
+= 1.4.3 - April 30th, 2017 =
+- Enhancement: Updated bundled CMB2 to v2.2.4.
+- Enhancement: Refactored many of the class files.
+- Fixed: Timeline Express class names.
+- Fixed: Updated 'Year' icons on the timeline not displaying the proper year.
 
 = 1.4.2 - April 1st, 2017 =
 - Resolved PHP warnings thrown on add-ons page when using a PHP version older than 5.6.0.
@@ -766,8 +772,9 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.4.1 - March 22nd, 2017 =
+= 1.4.3 - April 30th, 2017 =
 
-- Shifted the PHP version check to prevent tracking file from loading on PHP versions older than version 5.6.
-- Tweaked styles on the add-ons page, introduced 'Popular' & 'Free' badges.
-- Added Timeline Express - Popups Add-On to the add-ons page.
+- Enhancement: Updated bundled CMB2 to v2.2.4.
+- Enhancement: Refactored many of the class files.
+- Fixed: Timeline Express class names.
+- Fixed: Updated 'Year' icons on the timeline not displaying the proper year.

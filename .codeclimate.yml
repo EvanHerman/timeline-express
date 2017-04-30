@@ -1,0 +1,23 @@
+engines:
+  eslint:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+    config:
+      file_extensions: "php,js"
+      standard: "WordPress-Core,phpcs.ruleset.xml"
+ratings:
+  paths:
+  - "**.js"
+  - "**.css"
+  - "**.php"
+exclude_paths:
+  - "Gruntfile.js"
+  - "bin/"
+  - "lib/admin/CMB2/"
+  - "lib/icons/"
+  - "tests/"
+  - "templates/"
+  - "node_modules/"
+  - "build/"
+  - "lib/admin/js/bootstrap-select.js"

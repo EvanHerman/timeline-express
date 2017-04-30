@@ -9,7 +9,7 @@ class Tests_Shortcode extends WP_UnitTestCase {
 	public function setUp() {
 		parent::setUp();
 		// Include the base class
-		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php' );
+		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-initialize.php' );
 		$this->init_class = new Timeline_Express_Initialize( array() );
 		$this->options = timeline_express_get_options();
 	}
@@ -19,8 +19,8 @@ class Tests_Shortcode extends WP_UnitTestCase {
 	}
 
 	/**
- * Test that our shortcode has been properly registered and is available
- */
+	 * Test that our shortcode has been properly registered and is available
+	 */
 	public function test_shortcodes_are_registered() {
 		global $shortcode_tags;
 		$this->assertArrayHasKey( 'timeline-express', $shortcode_tags );
@@ -50,7 +50,11 @@ class Tests_Shortcode extends WP_UnitTestCase {
 	 */
 	public static function setup_test_announcement( $post_factory ) {
 		// include the helpers class, so we can quickly create announcements for testing
-		$announcement_id = $post_factory->create( array( 'post_title' => 'Test Announcement', 'post_type' => 'te_announcements', 'post_status' => 'publish' ) );
+		$announcement_id = $post_factory->create( array(
+			'post_title' => 'Test Announcement',
+			'post_type' => 'te_announcements',
+			'post_status' => 'publish',
+		) );
 		// Setup test meta
 		$exp_values = array(
 			'announcement_color' => '#FF6347',

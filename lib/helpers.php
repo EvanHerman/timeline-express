@@ -33,8 +33,9 @@ add_filter( 'cmb2_sanitize_te_date_time_stamp_custom', 'cmb2_sanitize_te_date_ti
 /* Sanitize custom bootstrap icons dropdown field */
 add_filter( 'cmb2_sanitize_te_bootstrap_dropdown', 'cmb2_validate_te_bootstrap_dropdown_callback', 10, 2 );
 
-/*
+/**
  * Output the Start and End content wrappers on the single timeline express template
+ *
  * @since 1.2.8.5
  */
 add_action( 'timeline_express_before_main_content', 'timeline_express_generate_page_wrapper_start', 10 );
@@ -42,6 +43,7 @@ add_action( 'timeline_express_after_main_content', 'timeline_express_generate_pa
 
 /**
  * Output the Timeline Express Sidebar on the single announcement template
+ *
  * @since 1.2.8.5
  */
 add_action( 'timeline_express_sidebar', 'timeline_express_generate_sidebar', 10 );
@@ -114,15 +116,15 @@ function cmb2_render_callback_te_bootstrap_dropdown( $field, $escaped_value ) {
  * Function cmb2_render_te_date_time_stamp_custom()
  * Render the custom time stamp field
  *
- * @param   int     $field field to render.
- * @param   array   $meta stored value retreived from the database.
- * @param   string  $object_id this specific fields id.
- * @param   string  $object_type the type for this field.
- * @param   string  $field_type_object the entire field object.
+ * @param  int    $field field to render.
+ * @param  array  $meta stored value retreived from the database.
+ * @param  string $object_id this specific fields id.
+ * @param  string $object_type the type for this field.
+ * @param  string $field_type_object the entire field object.
  *
- * @since   v1.1.5.7
+ * @since  v1.1.5.7
  *
- * @change  v1.3.3  Change include_once to include to allow users to enable additional date_time_stamp_custom fields
+ * @change v1.3.3  Change include_once to include to allow users to enable additional date_time_stamp_custom fields
  */
 function cmb2_render_te_date_time_stamp_custom( $field, $meta, $object_id, $object_type, $field_type_object ) {
 
@@ -167,8 +169,8 @@ function cmb2_render_callback_te_help_docs_metabox( $field, $meta, $object_id, $
 /**
  * Custom sanitization function for our custom time stamp field.
  *
- * @param  int  $value   UNIX time stamp value stored in the database.
- * @param  int  $new     new UNIX time stamp value to store in the database.
+ * @param int $value   UNIX time stamp value stored in the database.
+ * @param int $new     new UNIX time stamp value to store in the database.
  *
  * @since @v1.1.5
  */
@@ -176,9 +178,9 @@ function cmb2_sanitize_te_date_time_stamp_custom_callback( $value, $new ) {
 
 	if ( isset( $new ) && ! empty( $new ) ) {
 
-		include_once( TIMELINE_EXPRESS_PATH . '/lib/classes/class.i10n-hotfixes.php' );
+		include_once( TIMELINE_EXPRESS_PATH . '/lib/classes/class-i10n-hotfixes.php' );
 
-		$hotfix = new Timeline_Express_i10n_Hotfixes();
+		$hotfix = new I10n_Hotfixes();
 
 		$new = $hotfix->month_name( $new );
 
@@ -196,7 +198,7 @@ function cmb2_sanitize_te_date_time_stamp_custom_callback( $value, $new ) {
 /**
  * Custom sanitization function for our custom time stamp field.
  *
- * @param  string $override_value   null
+ * @param  string $override_value   null.
  * @param  string $value new icon   Value to store in the database.
  *
  * @since @v1.1.5
@@ -245,8 +247,8 @@ function timeline_express_enqueue_font_awesome() {
 /**
  * Construct a dropdown for our bootstrap icons.
  *
- * @param string   $field   The field type being displayed.
- * @param string   $meta    The stored value in the database.
+ * @param string $field   The field type being displayed.
+ * @param string $meta    The stored value in the database.
  *
  * @since v1.1.5.7
  */
@@ -260,8 +262,10 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 
 	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.7.0' );
 
+	$response = get_transient( 'te_font_awesome_transient' );
+
 	// Store our response in a transient for faster page loading.
-	if ( false === ( $response = get_transient( 'te_font_awesome_transient' ) ) ) {
+	if ( ! $response ) {
 
 		// Retreive the icons out of the css file.
 		$response = wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' );
@@ -358,7 +362,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 /**
  * Include a specified Timeline Express template
  *
- * @param  string  $template_name  Template name to load
+ * @param  string $template_name  Template name to load
  *
  * @return null                    Include the template needed
  *
@@ -474,14 +478,14 @@ function does_timeline_express_init_class_exist() {
 
 	}
 
-	include TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php';
+	include TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-initialize.php';
 
 }
 
 /**
  * Get the full icon HTML markup
  *
- * @param  int    $post_id  The announcement ID to retreive the icon from
+ * @param  int $post_id  The announcement ID to retreive the icon from
  *
  * @return string           The HTML markup to return
  */
@@ -525,7 +529,13 @@ function timeline_express_get_announcement_icon_markup( $post_id, $link = true )
 
 					<strong>
 
-						<?php echo esc_html( date( 'Y', timeline_express_get_announcement_date_timestamp( $post_id ) ) ); ?>
+						<?php
+
+							$date = date_i18n( 'Y', timeline_express_get_announcement_date_timestamp( $post_id ) );
+
+							echo esc_html( apply_filters( 'timeline_express_frontend_year_icons', $date, timeline_express_get_announcement_date_timestamp( $post_id ) ) );
+
+						?>
 
 					</strong>
 
@@ -558,7 +568,7 @@ function timeline_express_get_announcement_icon_markup( $post_id, $link = true )
 /**
  * Get the announcement icon chosen in the dropdown
  *
- * @param  int     $post_id   The announcement ID to retreive the icon from
+ * @param  int $post_id   The announcement ID to retreive the icon from
  *
  * @return string             The announcement icon to use
  */
@@ -571,7 +581,7 @@ function timeline_express_get_announcement_icon( $post_id ) {
 /**
  * Get the announcement color chosen on the announcement edit page
  *
- * @param  int     $post_id   The announcement ID to retreive the color from
+ * @param  int $post_id   The announcement ID to retreive the color from
  *
  * @return string             The announcement color to use behind the icon
  */
@@ -584,8 +594,8 @@ function timeline_express_get_announcement_icon_color( $post_id ) {
 /**
  * Retreive the timeline express announcement image
  *
- * @param  int     $post_id     The announcement (post) ID whos image you want to retreive.
- * @param  string  $image_size  (optional) The image size to retreive.
+ * @param  int    $post_id     The announcement (post) ID whos image you want to retreive.
+ * @param  string $image_size  (optional) The image size to retreive.
  *
  * @return mixed                Announcement image markup.
  */
@@ -603,6 +613,7 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 
 	/**
 	* If on a single page announcement, return the srcset image - for proper responsive images
+	 *
 	* @since 1.2.7
 	*/
 	if ( is_single() ) {
@@ -693,7 +704,7 @@ function timeline_express_map_html_attributes( $attribute_array ) {
 /**
  * Retreive the timeline express announcement date
  *
- * @param int      $post_id   The announcement (post) ID whos image you want to retreive.
+ * @param int $post_id   The announcement (post) ID whos image you want to retreive.
  *
  * @return string             Execute the function to retreive the date.
  */
@@ -708,7 +719,7 @@ function timeline_express_get_announcement_date( $post_id ) {
 /**
  * Retreive the timeline express announcement date timestamp
  *
- * @param int       $post_id The announcement (post) ID whos image you want to retreive.
+ * @param int $post_id The announcement (post) ID whos image you want to retreive.
  *
  * @return string   The UNIX timestamp announcement_date value
  */
@@ -769,7 +780,7 @@ add_filter( 'excerpt_length', 'timeline_express_custom_excerpt_length', 999 );
 /**
  * Trim the excerpt and add ellipses to the end fo it
  *
- * @param  string  $more  The default HTML markup for the read more link.
+ * @param  string $more  The default HTML markup for the read more link.
  *
  * @since 1.2
  */
@@ -1024,7 +1035,9 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 
 		<?php
 
-		$active_add_ons = array( 'base' => __( 'Timeline Express', 'timeline-express' ) ) + $active_add_ons;
+		$active_add_ons = array(
+			'base' => __( 'Timeline Express', 'timeline-express' ),
+		) + $active_add_ons;
 
 		foreach ( $active_add_ons as $add_on_slug => $add_on_name ) {
 

@@ -9,6 +9,7 @@ class TE_Filter_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test that our font awesome version filter works properly
+	 *
 	 * @return bool PHP Unit test assertion.
 	 */
 	function test_font_awesome_version_filter() {
@@ -19,6 +20,7 @@ class TE_Filter_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test that our menu capabilities filter works properly
+	 *
 	 * @return bool PHP Unit test assertion.
 	 */
 	function test_timeline_express_menu_capability() {

@@ -75,6 +75,7 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test our options array is not empty
+	 *
 	 * @return null
 	 */
 	public function test_timeline_express_get_options() {
@@ -92,7 +93,7 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 	 */
 	public function test_included_files_exist() {
 		// Timeline Express initialization class
-		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/classes/class.timeline-express-initialize.php' );
+		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-initialize.php' );
 		// Timeline Express container template
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/public/partials/timeline-express-container.php' );
 		// Announcement metabox file
@@ -133,6 +134,7 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test the saving of a date on the announcement page
+	 *
 	 * @return null
 	 */
 	public function test_announcement_date_sanitization() {
@@ -149,6 +151,7 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 
 	/**
 	 * Test the saving of an icon on the announcement page
+	 *
 	 * @return null
 	 */
 	public function test_font_awesome_dropdown_sanitization() {
