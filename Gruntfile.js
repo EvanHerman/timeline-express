@@ -370,6 +370,27 @@ module.exports = function( grunt ) {
 				'grunt cssmin',
 				'grunt uglify',
 				'grunt usebanner'
+			].join( ' && ' ),
+			clean_submodules: [
+				'cd build/timeline-express/lib/admin/CMB2',
+				'rm -rf .github',
+				'rm -rf tests',
+				'rm -rf .git',
+				'rm -rf .gitattributes',
+				'rm -rf .gitignore',
+				'rm -rf .scrutinizer.yml',
+				'rm -rf .travis.yml',
+				'rm -rf CHANGELOG.md',
+				'rm -rf composer.json',
+				'rm -rf CONTRIBUTING.md',
+				'rm -rf coverage.clover',
+				'rm -rf Dockunit.json',
+				'rm -rf example-functions.php',
+				'rm -rf Gruntfile.js',
+				'rm -rf package.json',
+				'rm -rf phpunit.xml.dist',
+				'rm -rf README.md',
+				'rm -rf readme.txt'
 			].join( ' && ' )
 		},
 
@@ -452,6 +473,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'Build the plugin into the /build/ directory.', [
 		'clean:build',
 		'copy:deploy',
+		'shell:clean_submodules',
 		'compress'
 	] );
 
