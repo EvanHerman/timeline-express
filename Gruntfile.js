@@ -21,6 +21,9 @@ module.exports = function( grunt ) {
 						'lib/admin/js/bootstrap-select.js',
 						'lib/admin/js/script.options-color-picker-custom.js'
 					],
+					'lib/admin/js/min/timeline-express-add-ons.min.js': [
+						'lib/admin/js/timeline-express-add-ons.js'
+					],
 					'lib/admin/js/min/timeline-express-tinymce.min.js': [
 						'lib/admin/js/timeline-express-button-script.js'
 					],
