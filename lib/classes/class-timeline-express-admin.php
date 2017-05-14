@@ -75,7 +75,7 @@ class Timeline_Express_Admin {
 		 */
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_timeline_express_admin_scripts_and_styles' ) );
 
-		add_action( 'wp_ajax_timeline_express_add_on_installer', array( $this, 'timeline_express_add_on_installer' ) ); // Install add-on
+		add_action( 'wp_ajax_timeline_express_add_on_installer',  array( $this, 'timeline_express_add_on_installer' ) ); // Install add-on
 		add_action( 'wp_ajax_timeline_express_add_on_activation', array( $this, 'timeline_express_add_on_activation' ) ); // Activate add-on
 
 	}
@@ -683,6 +683,8 @@ class Timeline_Express_Admin {
 	*/
 	public function timeline_express_add_on_activation() {
 
+		wp_send_json_success( 'testing' );
+
 		if ( ! current_user_can( 'install_plugins' ) ) {
 
 			wp_die( __( 'Sorry, you are not allowed to activate plugins on this site.', 'timeline-express' ) );
@@ -702,7 +704,7 @@ class Timeline_Express_Admin {
 		require_once( ABSPATH . 'wp-admin/includes/class-plugin-upgrader.php' );
 
 		$plugin  = filter_input( INPUT_POST, 'plugin', FILTER_SANITIZE_STRING );
-		$premium = filter_input( INPUT_POST, 'plugin', FILTER_SANITIZE_NUMBER_INT );
+		$premium = filter_input( INPUT_POST, 'premium', FILTER_SANITIZE_NUMBER_INT );
 
 		if ( $premium ) {
 
@@ -711,6 +713,7 @@ class Timeline_Express_Admin {
 				wp_send_json_error( array(
 					'status' => 'error',
 					'msg'    => sprintf(
+						/* translators: The name of the plugin. */
 						__( 'Failed to activate %s.', 'timeline-express' ),
 						esc_html( $plugin )
 					),
@@ -721,6 +724,7 @@ class Timeline_Express_Admin {
 			wp_send_json( array(
 				'status' => 'success',
 				'msg'    => sprintf(
+					/* translators: The name of the plugin. */
 					__( '%s successfully activated.', 'timeline-express' ),
 					esc_html( $plugin )
 				),
@@ -765,16 +769,18 @@ class Timeline_Express_Admin {
 
 				$status = 'success';
 				$msg = sprintf(
+					/* translators: The name of the plugin. */
 					__( '%s successfully activated.', 'timeline-express' ),
 					esc_html( $api->name )
 				);
 
-			}
+			} // @codingStandardsIgnoreLine
 
 		} else {
 
 			$status = 'failed';
 			$msg = sprintf(
+				/* translators: The name of the plugin. */
 				__( 'There was an error activating %s.', 'timeline-express' ),
 				esc_html( $api->name )
 			);

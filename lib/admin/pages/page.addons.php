@@ -343,7 +343,7 @@ function timeline_express_render_addon( $addon, $free = false ) {
 				<ul class="plugin-action-buttons">
 
 					<li>
-						<a class="<?php echo esc_attr( $addon['button_class'] ); ?>" <?php if ( $addon['external_url'] ) { echo 'target="_blank"'; } ?> data-slug="<?php echo sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ); ?>" href="<?php echo esc_url( $link ); ?>" aria-label="<?php printf( __( 'Install %s now', 'timeline-express' ), $addon['name'] ); ?>" data-name="<?php echo esc_attr( $addon['name'] ); ?>">
+						<a class="<?php echo esc_attr( $addon['button_class'] ); ?>" <?php if ( $addon['external_url'] ) { echo 'target="_blank"'; } ?> data-slug="<?php echo sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ); ?>" href="<?php echo esc_url( $link ); ?>" aria-label="<?php printf( /* translators: The name of the plugin. */ __( 'Install %s now', 'timeline-express' ), $addon['name'] ); ?>" data-name="<?php echo esc_attr( $addon['name'] ); ?>">
 							<?php echo esc_html( $addon['button_text'] ); ?>
 						</a>
 					</li>
@@ -361,7 +361,10 @@ function timeline_express_render_addon( $addon, $free = false ) {
 
 				if ( ! empty( $author ) ) {
 
-					print( ' <cite>' . sprintf( __( 'By %s' ), $author ) . '</cite>' );
+					print( ' <cite>' . /* translators: The author name wrapped in <a> tags. */ sprintf(
+						__( 'By %s' ),
+						$author
+					) . '</cite>' );
 
 				}
 
@@ -451,6 +454,7 @@ function timeline_express_addon_details( $data ) {
 				<span class="screen-reader-text">
 
 					<?php sprintf(
+						/* translators: 1. Plugin rating (eg: 4.5) 2. Rating count (eg: 100) */
 						esc_html__( '%1$s rating based on %2$s ratings', 'timeline-express' ),
 						(int) $data['api_data']['rating'],
 						(int) $data['api_data']['num_ratings']
@@ -466,19 +470,23 @@ function timeline_express_addon_details( $data ) {
 			<span class="num-ratings" aria-hidden="true">(<?php echo esc_html( number_format_i18n( (int) $data['api_data']['num_ratings'] ) ); ?>)</span>
 		</div>
 		<div class="column-updated">
-			<strong>Last Updated:</strong>
-			<?php printf( __( '%s ago' ), human_time_diff( strtotime( $data['api_data']['last_updated'] ) ) ); ?>
+			<strong><?php esc_html__( 'Last Updated:' ); // core i10n ?></strong>
+			<?php printf(
+				/* translators: The last time this plugin was updated (eg: 1 week). */
+				__( '%s ago' ),
+				human_time_diff( strtotime( $data['api_data']['last_updated'] ) )
+			); ?>
 		</div>
 		<div class="column-downloaded">
 			<?php
 
 			if ( $data['api_data']['active_installs'] >= 1000000 ) {
 
-				$active_installs_text = _x( '1+ Million', 'Active plugin installs' ); // core i18n
+				$active_installs_text = /* translators: Active plugin installs */ _x( '1+ Million', 'Active plugin installs' ); // core i18n
 
 			} elseif ( 0 == $data['api_data']['active_installs'] ) {
 
-				$active_installs_text = _x( 'Less Than 10', 'Active plugin installs' ); // core i18n
+				$active_installs_text = /* translators: Active plugin installs */ _x( 'Less Than 10', 'Active plugin installs' ); // core i18n
 
 			} else {
 
@@ -486,7 +494,11 @@ function timeline_express_addon_details( $data ) {
 
 			}
 
-			printf( __( '%s Active Installs' ), $active_installs_text );
+			printf(
+				/* translators: Number of active installs (eg: 10,000). Note: Can be a string or an integer. */
+				__( '%s Active Installs' ),
+				$active_installs_text
+			);
 
 			?>
 		</div>
