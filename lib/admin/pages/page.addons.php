@@ -327,7 +327,8 @@ function timeline_express_render_addon( $addon, $free = false ) {
 		'br'     => array(),
 	);
 
-	$link = isset( $addon['purchase_url'] ) ? $addon['purchase_url'] : '#';
+	$link   = isset( $addon['purchase_url'] ) ? $addon['purchase_url'] : '#';
+	$target = $addon['external_url'] ? 'target="_blank"' : '';
 
 	?>
 
@@ -343,7 +344,7 @@ function timeline_express_render_addon( $addon, $free = false ) {
 				<ul class="plugin-action-buttons">
 
 					<li>
-						<a class="<?php echo esc_attr( $addon['button_class'] ); ?>" <?php if ( $addon['external_url'] ) { echo 'target="_blank"'; } ?> data-slug="<?php echo sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ); ?>" href="<?php echo esc_url( $link ); ?>" aria-label="<?php printf( /* translators: The name of the plugin. */ __( 'Install %s now', 'timeline-express' ), $addon['name'] ); ?>" data-name="<?php echo esc_attr( $addon['name'] ); ?>">
+						<a class="<?php echo esc_attr( $addon['button_class'] ); ?>" <?php echo esc_attr( $target ) ?> data-slug="<?php echo sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ); ?>" href="<?php echo esc_url( $link ); ?>" aria-label="<?php printf( /* translators: The name of the plugin. */ __( 'Install %s now', 'timeline-express' ), $addon['name'] ); ?>" data-name="<?php echo esc_attr( $addon['name'] ); ?>">
 							<?php echo esc_html( $addon['button_text'] ); ?>
 						</a>
 					</li>

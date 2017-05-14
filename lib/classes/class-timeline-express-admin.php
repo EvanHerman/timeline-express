@@ -683,8 +683,6 @@ class Timeline_Express_Admin {
 	*/
 	public function timeline_express_add_on_activation() {
 
-		wp_send_json_success( 'testing' );
-
 		if ( ! current_user_can( 'install_plugins' ) ) {
 
 			wp_die( __( 'Sorry, you are not allowed to activate plugins on this site.', 'timeline-express' ) );
