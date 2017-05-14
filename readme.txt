@@ -371,6 +371,11 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.4.4 - May 14th, 2017 =
+- Introduced <pre>timeline_express_animation_disabled</pre> filter to disable timeline animations on a per page basis, as needed.
+- Introduced <pre>timeline_express_scroll_to</pre> filter to disable the jQuery page scroll to when a URL hash is set (eg: http://www.example.com/#announcement-title).
+- Enhanced the add-ons page UX, allowing users to install & activate plugins directly from that page, via AJAX.
+
 = 1.4.3 - April 30th, 2017 =
 - Enhancement: Updated bundled CMB2 to v2.2.4.
 - Enhancement: Refactored many of the class files.
@@ -772,9 +777,8 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.4.3 - April 30th, 2017 =
+= 1.4.4 - May 14th, 2017 =
 
-- Enhancement: Updated bundled CMB2 to v2.2.4.
-- Enhancement: Refactored many of the class files.
-- Fixed: Timeline Express class names.
-- Fixed: Updated 'Year' icons on the timeline not displaying the proper year.
+- Introduced <pre>timeline_express_animation_disabled</pre> filter to disable timeline animations on a per page basis, as needed.
+- Introduced <pre>timeline_express_scroll_to</pre> filter to disable the jQuery page scroll to when a URL hash is set (eg: http://www.example.com/#announcement-title).
+- Enhanced the add-ons page UX, allowing users to install & activate plugins directly from that page, via AJAX.
