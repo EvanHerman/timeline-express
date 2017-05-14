@@ -73,8 +73,10 @@ class Timeline_Express_Admin {
 		 * Admin scripts and styles enqueue
 		 * @since 1.2
 		 */
-
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_timeline_express_admin_scripts_and_styles' ) );
+
+		add_action( 'wp_ajax_timeline_express_add_on_installer',  array( $this, 'timeline_express_add_on_installer' ) ); // Install add-on
+		add_action( 'wp_ajax_timeline_express_add_on_activation', array( $this, 'timeline_express_add_on_activation' ) ); // Activate add-on
 
 	}
 
@@ -589,6 +591,208 @@ class Timeline_Express_Admin {
 		}
 
 	} /* Final Function */
+
+	/**
+	 * cnkt_plugin_installer
+	 * An Ajax method for installing plugin.
+	 *
+	 * @return $json
+	 *
+	 * @since 1.0
+	*/
+	public function timeline_express_add_on_installer() {
+
+		if ( ! current_user_can( 'install_plugins' ) ) {
+
+			wp_die( __( 'Sorry, you are not allowed to install plugins on this site.', 'timeline-express' ) );
+
+		}
+
+		// Check our nonce, if they don't match then bounce!
+		if ( ! wp_verify_nonce( filter_input( INPUT_POST, 'nonce', FILTER_SANITIZE_STRING ), 'timeline_express_add_on_install_nonce' ) ) {
+
+			wp_die( __( 'Error - unable to verify nonce, please try again.', 'timeline-express' ) );
+
+		}
+
+		$plugin = filter_input( INPUT_POST, 'plugin', FILTER_SANITIZE_STRING );
+
+		if ( ! $plugin ) {
+
+			wp_send_json_error();
+
+		}
+
+		// Include required libs for installation
+		require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
+		require_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
+		require_once( ABSPATH . 'wp-admin/includes/class-wp-ajax-upgrader-skin.php' );
+		require_once( ABSPATH . 'wp-admin/includes/class-plugin-upgrader.php' );
+
+		// Get Plugin Info
+		$api = plugins_api( 'plugin_information',
+			array(
+				'slug'  => $plugin,
+				'fields' => array(
+					'short_description' => false,
+					'sections'          => false,
+					'requires'          => false,
+					'rating'            => false,
+					'ratings'           => false,
+					'downloaded'        => false,
+					'last_updated'      => false,
+					'added'             => false,
+					'tags'              => false,
+					'compatibility'     => false,
+					'homepage'          => false,
+					'donate_link'       => false,
+				),
+			)
+		);
+
+		$skin     = new WP_Ajax_Upgrader_Skin();
+		$upgrader = new Plugin_Upgrader( $skin );
+
+		$upgrader->install( $api->download_link );
+
+		$status = $api->name ? 'success' : 'failed';
+		$msg    = $api->name ? sprintf(
+			'%s successfully installed.',
+			esc_html( $api->name )
+		) : sprintf(
+			'There was an error installing %s.',
+			esc_html( $api->name )
+		);
+
+		$json = array(
+			'status' => $status,
+			'msg'    => $msg,
+		);
+
+		wp_send_json( $json );
+
+	}
+
+	/**
+	 * cnkt_plugin_activation
+	 * Activate plugin via Ajax.
+	 *
+	 * @return $json
+	 *
+	 * @since 1.0
+	*/
+	public function timeline_express_add_on_activation() {
+
+		if ( ! current_user_can( 'install_plugins' ) ) {
+
+			wp_die( __( 'Sorry, you are not allowed to activate plugins on this site.', 'timeline-express' ) );
+
+		}
+
+		// Check our nonce, if they don't match then bounce!
+		if ( ! wp_verify_nonce( filter_input( INPUT_POST, 'nonce', FILTER_SANITIZE_STRING ), 'timeline_express_add_on_install_nonce' ) ) {
+
+			wp_die( __( 'Error - unable to verify nonce, please try again.', 'timeline-express' ) );
+
+		}
+
+		// Include required libs for activation
+		require_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
+		require_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
+		require_once( ABSPATH . 'wp-admin/includes/class-plugin-upgrader.php' );
+
+		$plugin  = filter_input( INPUT_POST, 'plugin', FILTER_SANITIZE_STRING );
+		$premium = filter_input( INPUT_POST, 'premium', FILTER_SANITIZE_NUMBER_INT );
+
+		if ( $premium ) {
+
+			if ( is_wp_error( activate_plugin( $plugin . '/' . $plugin . '.php' ) ) ) {
+
+				wp_send_json_error( array(
+					'status' => 'error',
+					'msg'    => sprintf(
+						/* translators: The name of the plugin. */
+						__( 'Failed to activate %s.', 'timeline-express' ),
+						esc_html( $plugin )
+					),
+				) );
+
+			}
+
+			wp_send_json( array(
+				'status' => 'success',
+				'msg'    => sprintf(
+					/* translators: The name of the plugin. */
+					__( '%s successfully activated.', 'timeline-express' ),
+					esc_html( $plugin )
+				),
+			) );
+
+		}
+
+		// Get Plugin Info
+		$api = plugins_api( 'plugin_information',
+			array(
+				'slug'   => $plugin,
+				'fields' => array(
+					'short_description' => false,
+					'sections'          => false,
+					'requires'          => false,
+					'rating'            => false,
+					'ratings'           => false,
+					'downloaded'        => false,
+					'last_updated'      => false,
+					'added'             => false,
+					'tags'              => false,
+					'compatibility'     => false,
+					'homepage'          => false,
+					'donate_link'       => false,
+				),
+			)
+		);
+
+		if ( $api->name ) {
+
+			$main_plugin_file = $api->slug . '/' . $api->slug . '.php';
+
+			if ( 'timeline-express-html-excerpt-add-on' === $api->slug ) {
+
+				$main_plugin_file = 'timeline-express-html-excerpt-add-on/timeline-express-html-excerpts-add-on.php';
+
+			}
+
+			if ( $main_plugin_file ) {
+
+				activate_plugin( $main_plugin_file );
+
+				$status = 'success';
+				$msg = sprintf(
+					/* translators: The name of the plugin. */
+					__( '%s successfully activated.', 'timeline-express' ),
+					esc_html( $api->name )
+				);
+
+			} // @codingStandardsIgnoreLine
+
+		} else {
+
+			$status = 'failed';
+			$msg = sprintf(
+				/* translators: The name of the plugin. */
+				__( 'There was an error activating %s.', 'timeline-express' ),
+				esc_html( $api->name )
+			);
+
+		}
+
+		$json = array(
+			'status' => $status,
+			'msg'    => $msg,
+		);
+
+		wp_send_json( $json );
+
+	}
 
 }
 
