@@ -21,7 +21,21 @@ if ( ! isset( $_GET['page'] ) || 'timeline-express-addons' !== $_GET['page'] ) {
 
 $suffix = SCRIPT_DEBUG ? '' : '.min';
 
-wp_enqueue_script( 'timeline-express-add-ons-js', TIMELINE_EXPRESS_URL . "lib/admin/js/min/timeline-express-add-ons{$suffix}.js", array( 'jquery' ), TIMELINE_EXPRESS_VERSION_CURRENT, true );
+add_thickbox();
+wp_enqueue_script( 'plugin-install' );
+
+wp_enqueue_script( 'timeline-express-add-ons-js', TIMELINE_EXPRESS_URL . "lib/admin/js/min/timeline-express-add-ons{$suffix}.js", array( 'plugin-install' ), TIMELINE_EXPRESS_VERSION_CURRENT, true );
+
+wp_localize_script( 'timeline-express-add-ons-js', 'te_installer_localize', array(
+	'ajax_url'      => admin_url( 'admin-ajax.php' ),
+	'admin_nonce'   => wp_create_nonce( 'timeline_express_add_on_install_nonce' ),
+	'install_now'   => __( 'Are you sure you want to install this add-on?', 'timeline-express' ),
+	'install_btn'   => __( 'Install' ), // core i18n
+	'activate_btn'  => __( 'Activate' ), // core i18n
+	'installed_btn' => __( 'Active', 'timeline-express' ),
+) );
+
+$all_plugins = get_plugins();
 
 /**
  * Build arrays of add-ons
@@ -29,6 +43,7 @@ wp_enqueue_script( 'timeline-express-add-ons-js', TIMELINE_EXPRESS_URL . "lib/ad
 $free_addons = array(
 	array(
 		'name'    => esc_html__( 'Timeline Express - HTML Excerpts', 'timeline-express' ),
+		'slug'    => 'timeline-express-html-excerpt-add-on',
 		'popular' => true,
 	),
 	array(
@@ -46,6 +61,7 @@ $premium_addons = array(
 		'description'   => esc_html__( 'Remove any and all references to our branding, Code Parrots. This add-on removes links, metaboxes, menu items and any association to Code Parrots so your clients won’t get confused with the mixed branding across the dashboard.', 'timeline-express' ),
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/06/timeline-express-white-label-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-white-label-addon/',
+		'author'        => '<a href="http://www.codeparrots.com">Code Parrots</a>',
 	),
 	array(
 		'name'          => esc_html__( 'Timeline Express - Post Types', 'timeline-express' ),
@@ -54,6 +70,7 @@ $premium_addons = array(
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/05/timeline-express-post-types-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-post-types-add-on/',
 		'popular'       => true,
+		'author'        => '<a href="http://www.codeparrots.com">Code Parrots</a>',
 	),
 	array(
 		'name'          => esc_html__( 'Timeline Express - Historical Dates', 'timeline-express' ),
@@ -62,6 +79,7 @@ $premium_addons = array(
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/05/timeline-express-historical-dates-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-historical-dates-add-on/',
 		'popular'       => true,
+		'author'        => '<a href="http://www.codeparrots.com">Code Parrots</a>',
 	),
 	array(
 		'name'          => esc_html__( 'Timeline Express - AJAX Limits', 'timeline-express' ),
@@ -70,6 +88,7 @@ $premium_addons = array(
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/05/ajax-limits-add-on-banner-1-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-ajax-limits-add-on/',
 		'popular'       => true,
+		'author'        => '<a href="http://www.codeparrots.com">Code Parrots</a>',
 	),
 	array(
 		'name'          => esc_html__( 'Timeline Express - Twitter Feed', 'timeline-express' ),
@@ -77,6 +96,7 @@ $premium_addons = array(
 		'description'   => esc_html__( 'Display twitter feeds in a Timeline for users, search terms and by gelocation using our Twitter Feed Add-On. Twitter feeds can be set to live update, so every 30 seconds the feed is updated with new, fresh, tweets.', 'timeline-express' ),
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/10/timeline-express-twitter-feeds-addon-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-twitter-feeds-add/',
+		'author'        => '<a href="http://www.codeparrots.com">Code Parrots</a>',
 	),
 	array(
 		'name'          => esc_html__( 'Timeline Express - Toolbox', 'timeline-express' ),
@@ -85,6 +105,7 @@ $premium_addons = array(
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/edd/2017/01/timeline-express-toolbox-add-on-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-toolbox-add/',
 		'popular'       => true,
+		'author'        => '<a href="http://www.codeparrots.com">Code Parrots</a>',
 	),
 	array(
 		'name'          => esc_html__( 'Timeline Express - Popups', 'timeline-express' ),
@@ -92,15 +113,17 @@ $premium_addons = array(
 		'description'   => esc_html__( 'Display announcement content in an elegant popup, on the same page as your timeline, when a user clicks the "Read More" link.', 'timeline-express' ),
 		'thumbnail_url' => 'https://www.wp-timelineexpress.com/wp-content/uploads/edd/2017/03/timeline-express-popups-banner-150x150.jpg',
 		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-popups-add-on/',
+		'author'        => '<a href="http://www.codeparrots.com">Code Parrots</a>',
 	),
 );
 
-shuffle( $premium_addons );
+// Sort addons by name
+usort( $premium_addons, 'compare_addon_names' );
 
 array_unshift( $premium_addons, array(
-	'name'          => esc_html__( 'Timeline Express Product Bundle', 'timeline-express' ),
+	'name'          => esc_html__( 'Timeline Express - Product Bundle', 'timeline-express' ),
 	/* translators: Integer value for the number of add-ons in the add-on list. (eg: 6) */
-	'description'   => sprintf( esc_html( "Get any and all %s of the Timeline Express add-ons, for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'timeline-express' ), count( $addon_array ) ),
+	'description'   => sprintf( esc_html( "Get all %s of the Timeline Express add-ons for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'timeline-express' ), count( $premium_addons ) ),
 	'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-bundle/',
 	'popular'       => true,
 ) );
@@ -122,7 +145,9 @@ array_unshift( $premium_addons, array(
 
 	<h2 class="widefat"><?php esc_html_e( 'Free Add-Ons', 'timeline-express' ); ?></h2>
 
-	<div id="the-list">
+	<p class="description"><?php esc_html_e( 'Download and install any of our free Timeline Express add-ons from the WordPress.org plugin directory.', 'timeline-express' ); ?></p>
+
+	<div class="the-list">
 
 	<?php
 
@@ -151,7 +176,9 @@ array_unshift( $premium_addons, array(
 
 	<h2 class="widefat"><?php esc_html_e( 'Premium Add-Ons', 'timeline-express' ); ?></h2>
 
-	<div id="the-list">
+	<p class="description"><?php esc_html_e( 'Premium add-ons bring enhanced features to the Timeline Express base plugin. Browse through some of our premium add-ons below.', 'timeline-express' ); ?></p>
+
+	<div class="the-list">
 
 	<?php
 
@@ -188,9 +215,12 @@ array_unshift( $premium_addons, array(
  */
 function timeline_express_build_addon_data( $data, $free = false ) {
 
-	if ( $free ) {
+	$all_plugins = get_plugins();
 
-		$slug = sanitize_title( $data['name'] . ' Add-On' );
+	$slug        = isset( $data['slug'] ) ? $data['slug'] : sanitize_title( $data['name'] . ' Add-On' );
+	$plugin_file = $slug . '/' . $slug . '.php';
+
+	if ( $free ) {
 
 		$api = (array) plugins_api( 'plugin_information',
 			array(
@@ -198,16 +228,17 @@ function timeline_express_build_addon_data( $data, $free = false ) {
 				'fields' => array(
 					'short_description' => true,
 					'sections'          => false,
-					'requires'          => false,
+					'requires'          => true,
 					'downloaded'        => true,
-					'last_updated'      => false,
+					'active_installs'   => true,
+					'last_updated'      => true,
 					'added'             => false,
 					'tags'              => false,
 					'compatibility'     => false,
 					'homepage'          => false,
 					'donate_link'       => false,
 					'icons'             => true,
-					'banners'           => true,
+					'banners'           => false,
 				),
 			)
 		);
@@ -218,68 +249,42 @@ function timeline_express_build_addon_data( $data, $free = false ) {
 
 		}
 
-		$plugin_file = timeline_express_get_plugin_file( $slug );
+		if ( 'timeline-express-html-excerpt-add-on' === $slug ) {
 
-		$data['button_class'] = is_plugin_active( $plugin_file ) ? 'button disabled' : 'installed button';
-		$data['button_text']  = is_plugin_active( $plugin_file ) ? __( 'Activated', 'timeline-express' ) : __( 'Installed', 'timeline-express' );
+			$plugin_file = 'timeline-express-html-excerpt-add-on/timeline-express-html-excerpts-add-on.php';
+
+		}
+
+		$plugin_installed = array_key_exists( $plugin_file, $all_plugins );
+
+		$data['button_class']  = $plugin_installed ? ( is_plugin_active( $plugin_file ) ? 'button disabled' : 'activate button button-primary' ) : 'install button';
+		$data['button_text']   = $plugin_installed ? ( is_plugin_active( $plugin_file ) ? __( 'Active', 'timeline-express' ) : __( 'Activate', 'timeline-express' ) ) : __( 'Install' );
 
 		$data['description'] = $api['short_description'];
 
 		// Setup thumbnail URL with fallback
 		$data['thumbnail_url'] = isset( $api['icons']['1x'] ) ? $api['icons']['1x'] : 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/11/timeline-express-150x150.png';
 
+		$data['api_data'] = $api;
+
 		return $data;
 
 	} // End if().
 
-	$installed = ( isset( $data['class'] ) && class_exists( $data['class'] ) );
+	$installed = array_key_exists( $plugin_file, $all_plugins );
+	$active    = ( isset( $data['class'] ) && class_exists( $data['class'] ) );
 
 	// Button Text
-	$data['button_class'] = 'install button';
-	$data['button_text']  = esc_html__( 'View Add-On', 'timeline-express' );
+	$data['button_class'] = $installed ? ( $active ? 'button disabled premium' : 'activate button button-primary premium' ) : 'install button premium';
+	$data['button_text']  = $installed ? ( $active ? __( 'Active', 'timeline-express' ) : __( 'Activate', 'timeline-express' ) ) : __( 'View Add-On', 'timeline-express' );
 
 	// Setup thumbnail URL with fallback
 	$data['thumbnail_url'] = ( isset( $data['thumbnail_url'] ) ) ? $data['thumbnail_url'] : 'https://www.wp-timelineexpress.com/wp-content/uploads/2016/11/timeline-express-150x150.png';
 
 	// Use this to dictate target="_blank" or not
-	$data['external_url'] = ( strpos( $data['purchase_url'], admin_url() ) !== false ) ? false : true;
+	$data['external_url'] = isset( $data['purchase_url'] ) ? true : false;
 
 	return $data;
-
-}
-
-/*
-* get_plugin_file
-* A method to get the main plugin file.
-*
-*
-* @param  $plugin_slug    String - The slug of the plugin
-* @return $plugin_file
-*
-* @since 1.0
-*/
-function timeline_express_get_plugin_file( $plugin_slug ) {
-
-	require_once( ABSPATH . '/wp-admin/includes/plugin.php' ); // Load plugin lib
-
-	$plugins = get_plugins();
-
-	foreach ( $plugins as $plugin_file => $plugin_info ) {
-
-		// Get the basename of the plugin e.g. [askismet]/askismet.php
-		$slug = dirname( plugin_basename( $plugin_file ) );
-
-		if ( ! $slug || $slug !== $plugin_slug ) {
-
-			continue;
-
-		}
-
-		return $plugin_file; // If $slug = $plugin_name
-
-	}
-
-	return null;
 
 }
 
@@ -291,6 +296,38 @@ function timeline_express_get_plugin_file( $plugin_slug ) {
  * @return mixed        Markup for the addon container.
  */
 function timeline_express_render_addon( $addon, $free = false ) {
+
+	/**
+	 * Allowed tags for the byline - borrowed from WordPress core.
+	 *
+	 * @reference https://github.com/WordPress/WordPress/blob/b83a62217e1e3925e65fe643831fc649df55fb65/wp-admin/includes/class-wp-plugin-install-list-table.php#L394-L399
+	 *
+	 * @var array
+	 */
+	$plugins_allowedtags = array(
+		'a' => array(
+			'href'   => array(),
+			'title'  => array(),
+			'target' => array(),
+		),
+		'abbr' => array(
+			'title' => array(),
+		),
+		'acronym' => array(
+			'title' => array(),
+		),
+		'code'   => array(),
+		'pre'    => array(),
+		'em'     => array(),
+		'strong' => array(),
+		'ul'     => array(),
+		'ol'     => array(),
+		'li'     => array(),
+		'p'      => array(),
+		'br'     => array(),
+	);
+
+	$link = isset( $addon['purchase_url'] ) ? $addon['purchase_url'] : '#';
 
 	?>
 
@@ -306,18 +343,10 @@ function timeline_express_render_addon( $addon, $free = false ) {
 				<ul class="plugin-action-buttons">
 
 					<li>
-						<a class="<?php echo esc_attr( $addon['button_class'] ); ?>" data-slug="<?php echo sanitize_title( $addon['name'] ); ?>" href="http://timeline-express-i18n.dev/wp-admin/update.php?action=install-plugin&amp;plugin=wp-super-cache&amp;_wpnonce=2ed6719395" aria-label="<?php echo sprintf( __( 'Install %s now', 'timeline-express' ), $addon['name'] ); ?>" data-name="<?php echo esc_attr( $addon['name'] ); ?>">
+						<a class="<?php echo esc_attr( $addon['button_class'] ); ?>" <?php if ( $addon['external_url'] ) { echo 'target="_blank"'; } ?> data-slug="<?php echo sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ); ?>" href="<?php echo esc_url( $link ); ?>" aria-label="<?php printf( __( 'Install %s now', 'timeline-express' ), $addon['name'] ); ?>" data-name="<?php echo esc_attr( $addon['name'] ); ?>">
 							<?php echo esc_html( $addon['button_text'] ); ?>
 						</a>
 					</li>
-
-					<?php if ( $free ) { ?>
-						<li>
-							<a href="http://timeline-express-i18n.dev/wp-admin/plugin-install.php?tab=plugin-information&amp;plugin=wp-super-cache&amp;TB_iframe=true&amp;width=772&amp;height=515" class="thickbox open-plugin-details-modal" aria-label="More information about <?php echo esc_attr( $addon['name'] ); ?> 1.4.9" data-title="<?php echo esc_attr( $addon['name'] ); ?>">
-								<?php esc_html( 'More Details' ); // core i18n ?>
-							</a>
-						</li>
-					<?php } ?>
 
 				</ul>
 
@@ -326,52 +355,53 @@ function timeline_express_render_addon( $addon, $free = false ) {
 			<div class="desc column-description">
 				<p><?php echo esc_html( $addon['description'] ); ?></p>
 				<p class="authors">
-					<cite>By <a href="https://www.codeparrots.com/">Code Parrots</a></cite>
+				<?php
+
+				$author = wp_kses( ( $free ? $addon['api_data']['author'] : $addon['author'] ), $plugins_allowedtags );
+
+				if ( ! empty( $author ) ) {
+
+					print( ' <cite>' . sprintf( __( 'By %s' ), $author ) . '</cite>' );
+
+				}
+
+				?>
 				</p>
 			</div>
 		</div>
-		<div class="plugin-card-bottom">
-			<div class="vers column-rating">
-				<div class="star-rating">
-					<span class="screen-reader-text">4.5 rating based on 1,206 ratings</span>
-					<div class="star star-full" aria-hidden="true"></div>
-					<div class="star star-full" aria-hidden="true"></div>
-					<div class="star star-full" aria-hidden="true"></div>
-					<div class="star star-full" aria-hidden="true"></div>
-					<div class="star star-half" aria-hidden="true"></div>
-				</div>
-				<span class="num-ratings" aria-hidden="true">(1,206)</span>
-			</div>
-			<div class="column-updated">
-				<strong>Last Updated:</strong>
-				3 months ago
-			</div>
-			<div class="column-downloaded">
-				1+ Million Active Installs
-			</div>
-			<div class="column-compatibility">
-				<span class="compatibility-compatible">
-					<strong>Compatible</strong> with your version of WordPress
-				</span>
-			</div>
-		</div>
+
+		<?php
+		if ( $free ) {
+
+			timeline_express_addon_details( $addon );
+
+		}
+		?>
+
 	</div>
 
 	<?php
 
 }
 
+/**
+ * Build the addon info details URL.
+ *
+ * @since  1.4.4
+ *
+ * @return array
+ */
 function timeline_express_get_addon_info_url( $addon, $free = false ) {
 
 	if ( $free ) {
 
 		$plugin_info_url = add_query_arg( array(
 			'tab'       => 'plugin-information',
-			'TB_iframe' => true,
-			'width'     => '772',
-			'height'    => '515',
-			'plugin'    => urlencode( $addon['name'] ),
-		), admin_url() );
+			'plugin'    => sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ),
+			'TB_iframe' => 'true',
+			'width'     => '600',
+			'height'    => '550',
+		), admin_url( 'plugin-install.php' ) );
 
 		?>
 
@@ -390,6 +420,96 @@ function timeline_express_get_addon_info_url( $addon, $free = false ) {
 
 	<?php echo esc_html( $addon['name'] ); ?>
 	<img src='<?php echo esc_url( $addon['thumbnail_url'] ); ?>' class='plugin-icon' alt=''>
+
+	<?php
+
+}
+
+/**
+ * Sort our addons by name.
+ *
+ * @since  1.4.4
+ *
+ * @param  array   $a Addon data array.
+ * @param  array   $b Addon data array.
+ *
+ * @return boolean
+ */
+function compare_addon_names( $a, $b ) {
+
+	return strcmp( $a['name'], $b['name'] );
+
+}
+
+function timeline_express_addon_details( $data ) {
+
+	?>
+
+	<div class="plugin-card-bottom">
+		<div class="vers column-rating">
+			<div class="star-rating">
+				<span class="screen-reader-text">
+
+					<?php sprintf(
+						esc_html__( '%1$s rating based on %2$s ratings', 'timeline-express' ),
+						(int) $data['api_data']['rating'],
+						(int) $data['api_data']['num_ratings']
+					); ?></span>
+
+					<?php wp_star_rating( array(
+						'rating' => $data['api_data']['rating'],
+						'type'   => 'percent',
+						'number' => $data['api_data']['num_ratings'],
+					) ); ?>
+
+			</div>
+			<span class="num-ratings" aria-hidden="true">(<?php echo esc_html( number_format_i18n( (int) $data['api_data']['num_ratings'] ) ); ?>)</span>
+		</div>
+		<div class="column-updated">
+			<strong>Last Updated:</strong>
+			<?php printf( __( '%s ago' ), human_time_diff( strtotime( $data['api_data']['last_updated'] ) ) ); ?>
+		</div>
+		<div class="column-downloaded">
+			<?php
+
+			if ( $data['api_data']['active_installs'] >= 1000000 ) {
+
+				$active_installs_text = _x( '1+ Million', 'Active plugin installs' ); // core i18n
+
+			} elseif ( 0 == $data['api_data']['active_installs'] ) {
+
+				$active_installs_text = _x( 'Less Than 10', 'Active plugin installs' ); // core i18n
+
+			} else {
+
+				$active_installs_text = number_format_i18n( $data['api_data']['active_installs'] ) . '+';
+
+			}
+
+			printf( __( '%s Active Installs' ), $active_installs_text );
+
+			?>
+		</div>
+		<div class="column-compatibility">
+			<?php
+			$wp_version = get_bloginfo( 'version' );
+
+			if ( ! empty( $data['api_data']['tested'] ) && version_compare( substr( $wp_version, 0, strlen( $data['api_data']['tested'] ) ), $data['api_data']['tested'], '>' ) ) {
+
+				echo '<span class="compatibility-untested">' . __( 'Untested with your version of WordPress' ) . '</span>';
+
+			} elseif ( ! empty( $data['api_data']['requires'] ) && version_compare( substr( $wp_version, 0, strlen( $data['api_data']['requires'] ) ), $data['api_data']['requires'], '<' ) ) {
+
+				echo '<span class="compatibility-incompatible">' . __( '<strong>Incompatible</strong> with your version of WordPress' ) . '</span>';
+
+			} else {
+
+				echo '<span class="compatibility-compatible">' . __( '<strong>Compatible</strong> with your version of WordPress' ) . '</span>';
+
+			}
+			?>
+		</div>
+	</div>
 
 	<?php
 

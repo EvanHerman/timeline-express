@@ -149,7 +149,7 @@ module.exports = function( grunt ) {
 		watch: {
 			admin_css: {
 				files: [ 'lib/admin/css/*.css, ! lib/admin/css/*.min.css' ],
-				tasks: [ 'watch-banner' ],
+				tasks: [ 'cssmin', 'watch-banner' ],
 				options: {
 					spawn: false,
 					event: [ 'all' ]
