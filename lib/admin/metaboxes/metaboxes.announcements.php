@@ -63,10 +63,10 @@ $announcement_metabox->add_field( array(
 	'default' => strtotime( 'now' ),
 ) );
 
-// Announcement Image
+// Announcement Banner
 $announcement_metabox->add_field( array(
 	/* translators: Timeline Express singular post type name (eg: Announcement) */
-	'name' => sprintf( esc_html( '%s Image', 'timeline-express' ), $timeline_express_singular_name ),
+	'name' => sprintf( esc_html( '%s Banner', 'timeline-express' ), $timeline_express_singular_name ),
 	/* translators: Timeline Express singular post type name - lowercase (eg: announcement) */
 	'desc' => sprintf( esc_html( 'Select a banner image for this %s (optional). (recommended 650px wide or larger)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 	'id'   => $prefix . 'image',

@@ -264,6 +264,10 @@ class Timeline_Express_Admin {
 		#menu-posts-te_announcements .wp-submenu a[href="edit.php?post_type=te_announcements&page=timeline-express-welcome"] {
 			display: none !important;
 		}
+		.menu-icon-te_announcements .wp-menu-image img {
+			padding: 6px 0 0 !important;
+			width: 20px;
+		}
 		</style>
 
 		<?php
