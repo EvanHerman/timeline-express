@@ -460,81 +460,25 @@ class Timeline_Express_Admin {
 	 */
 	function get_announcement_image( $object, $field_name, $request ) {
 
-		$image = get_post_meta( $object['id'], 'announcement_image_id', true ) ? (int) get_post_meta( $object['id'], 'announcement_image_id', true ) : ( get_post_meta( $object['id'], 'announcement_image', true ) ? get_post_meta( $object['id'], 'announcement_image', true ) : false );
+		$image_id = get_post_meta( $object['id'], 'announcement_image_id', true );
 
-		if ( ! $image ) {
+		if ( ! $image_id ) {
 
-			return;
+			return false;
 
 		}
 
-		$featured_image = array();
+		$image_url = get_post_meta( $object['id'], 'announcement_image', true );
 
-		// Attached image
-		if ( is_integer( $image ) ) {
-
-			$image_obj = get_post( $image );
-
-			if ( ! $image_obj ) {
-
-				return;
-
-			}
-
-			// This is taken from WP_REST_Attachments_Controller::prepare_item_for_response().
-			$featured_image['id']            = $image;
-			$featured_image['alt_text']      = get_post_meta( $image, '_wp_attachment_image_alt', true );
-			$featured_image['caption']       = $image->post_excerpt;
-			$featured_image['description']   = $image->post_content;
-			$featured_image['media_type']    = wp_attachment_is_image( $image ) ? 'image' : 'file';
-			$featured_image['media_details'] = wp_get_attachment_metadata( $image );
-			$featured_image['post']          = ! empty( $image->post_parent ) ? (int) $image->post_parent : null;
-			$featured_image['source_url']    = wp_get_attachment_url( $image );
-
-			if ( empty( $featured_image['media_details'] ) ) {
-
-				$featured_image['media_details'] = new stdClass;
-
-			} elseif ( ! empty( $featured_image['media_details']['sizes'] ) ) {
-
-				$img_url_basename = wp_basename( $featured_image['source_url'] );
-
-				foreach ( $featured_image['media_details']['sizes'] as $size => &$size_data ) {
-
-					$image_src = wp_get_attachment_image_src( $image_id, $size );
-
-					if ( ! $image_src ) {
-
-						continue;
-
-					}
-
-					$size_data['source_url'] = $image_src[0];
-
-				} // @codingStandardsIgnoreLine
-
-			} elseif ( is_string( $featured_image['media_details'] ) ) {
-
-				// This was added to work around conflicts with plugins that cause
-				// wp_get_attachment_metadata() to return a string.
-				$featured_image['media_details'] = new stdClass();
-
-				$featured_image['media_details']->sizes = new stdClass();
-
-			} else {
-
-				$featured_image['media_details']['sizes'] = new stdClass;
-
-			} // @codingStandardsIgnoreLine
-
-		} else {
-
-			// Image URL
-			$featured_image['image_url'] = $image;
-
-		}// End if().
-
-		return apply_filters( 'timeline_express_popups_addon_announcement_image', $featured_image, $image_id );
+		/**
+		 * Filter the announcement image data in the REST response.
+		 *
+		 * @var array
+		 */
+		return (array) apply_filters( 'timeline_express_popups_addon_announcement_image', [
+			'iframe' => false,
+			'url'    => $image_url ? esc_url( $image_url ) : false,
+		], $image_id );
 
 	}
 

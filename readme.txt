@@ -374,6 +374,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 = 1.4.5 - July, 2017 =
 - New: Introduced the new menu icon, to unify branding between free/pro/website.
 - Enhancement: Tweaked the shortcode generator.
+- Enhancement: Refactored get_announcement_image() REST function, causing issues for some.
 - Update: Updated the 'Announcement Image' field label to 'Announcement Banner'.
 
 = 1.4.4 - May 14th, 2017 =
