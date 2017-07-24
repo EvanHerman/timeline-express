@@ -38,5 +38,9 @@
     "grunt-text-replace": "^0.4.0",
     "grunt-wp-deploy": "^1.2.0",
     "grunt-wp-i18n": "^0.5.4"
+  },
+  "scripts": {
+    "version": "grunt version && git add -A .",
+    "postversion": "git push && git push --tags"
   }
 }

@@ -455,7 +455,8 @@ module.exports = function( grunt ) {
 		'postcss',
 		'cssmin',
 		'usebanner',
-		'copy:main'
+		'copy:main',
+		'Build the plugin into the /build/ directory.'
 	] );
 
 	grunt.registerTask( 'Watch files for changes.', [

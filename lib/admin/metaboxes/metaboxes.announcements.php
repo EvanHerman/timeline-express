@@ -53,15 +53,25 @@ $announcement_metabox->add_field( array(
 ) );
 
 // Announcement Date
-$announcement_metabox->add_field( array(
-	/* translators: Timeline Express singular post type name (eg: Announcement) */
-	'name' => sprintf( esc_html( '%s Date', 'timeline-express' ), $timeline_express_singular_name ),
-	/* translators: Timeline Express singular post type name (eg: announcement) */
-	'desc' => sprintf( esc_html( 'Enter the date of the %s. the announcements will appear in chronological order according to this date.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
-	'id'   => $prefix . 'date',
-	'type' => 'te_date_time_stamp_custom',
-	'default' => strtotime( 'now' ),
-) );
+$announcement_metabox->add_field(
+	array(
+		'name'        => sprintf(
+			/* translators: Timeline Express singular post type name (eg: Announcement) */
+			esc_html__( '%s Date', 'timeline-express' ),
+			$timeline_express_singular_name
+		),
+		'desc'        => sprintf(
+			/* translators: Timeline Express singular post type name - lowercase (eg: announcement) */
+			esc_html__( 'Enter the date of the %s. Announcements will appear in chronological order according to this date.', 'timeline-express' ),
+			strtolower( $timeline_express_singular_name )
+		),
+		'id'          => $prefix . 'date',
+		'type'        => 'text_date_timestamp',
+		'default'     => strtotime( 'now' ),
+		'date_format' => te_dateformat_php_to_jqueryui( get_option( 'date_format' ) ),
+	)
+);
+
 
 // Announcement Banner
 $announcement_metabox->add_field( array(

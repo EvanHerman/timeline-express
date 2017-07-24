@@ -133,23 +133,6 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test the saving of a date on the announcement page
-	 *
-	 * @return null
-	 */
-	public function test_announcement_date_sanitization() {
-		/**
-		 * Test saving our font awesome icon on the announcement page
-		 *
-		 * @param string current date in the database.
-		 * @param string new date to save.
-		 */
-		$sanitize_us_date = cmb2_sanitize_te_date_time_stamp_custom_callback( null, '04/04/1989' );
-		// ensure our icon was saved properly
-		$this->assertEquals( strtotime( '04/04/1989' ), $sanitize_us_date );
-	}
-
-	/**
 	 * Test the saving of an icon on the announcement page
 	 *
 	 * @return null

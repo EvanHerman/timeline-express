@@ -15,9 +15,6 @@
  * @since 1.2
  */
 
-/* Render custom date_time_stamp field */
-add_action( 'cmb2_render_te_date_time_stamp_custom', 'cmb2_render_te_date_time_stamp_custom', 10, 5 );
-
 /* Render content in the timeline express addon advertisments metabox */
 add_action( 'cmb2_render_te_advert_metabox', 'cmb2_render_callback_te_advert_metabox', 10, 5 );
 
@@ -26,9 +23,6 @@ add_action( 'cmb2_render_te_help_docs_metabox', 'cmb2_render_callback_te_help_do
 
 /* Render custom bootstrap icons dropdown field */
 add_action( 'cmb2_render_te_bootstrap_dropdown', 'cmb2_render_callback_te_bootstrap_dropdown', 10, 5 );
-
-/* Sanitize custom date_time_stamp field */
-add_filter( 'cmb2_sanitize_te_date_time_stamp_custom', 'cmb2_sanitize_te_date_time_stamp_custom_callback', 10, 2 );
 
 /* Sanitize custom bootstrap icons dropdown field */
 add_filter( 'cmb2_sanitize_te_bootstrap_dropdown', 'cmb2_validate_te_bootstrap_dropdown_callback', 10, 2 );
@@ -113,26 +107,6 @@ function cmb2_render_callback_te_bootstrap_dropdown( $field, $escaped_value ) {
 }
 
 /**
- * Function cmb2_render_te_date_time_stamp_custom()
- * Render the custom time stamp field
- *
- * @param  int    $field field to render.
- * @param  array  $meta stored value retreived from the database.
- * @param  string $object_id this specific fields id.
- * @param  string $object_type the type for this field.
- * @param  string $field_type_object the entire field object.
- *
- * @since  v1.1.5.7
- *
- * @change v1.3.3  Change include_once to include to allow users to enable additional date_time_stamp_custom fields
- */
-function cmb2_render_te_date_time_stamp_custom( $field, $meta, $object_id, $object_type, $field_type_object ) {
-
-	include( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time-stamp-custom.php' );
-
-}
-
-/**
  * Render the custom 'Advertisment' metabox.
  *
  * @param int        $field field to render.
@@ -163,35 +137,6 @@ function cmb2_render_callback_te_advert_metabox( $field, $meta, $object_id, $obj
 function cmb2_render_callback_te_help_docs_metabox( $field, $meta, $object_id, $object_type, $field_type_object ) {
 
 	include_once( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/help-docs-metabox.php' );
-
-}
-
-/**
- * Custom sanitization function for our custom time stamp field.
- *
- * @param int $value   UNIX time stamp value stored in the database.
- * @param int $new     new UNIX time stamp value to store in the database.
- *
- * @since @v1.1.5
- */
-function cmb2_sanitize_te_date_time_stamp_custom_callback( $value, $new ) {
-
-	if ( isset( $new ) && ! empty( $new ) ) {
-
-		include_once( TIMELINE_EXPRESS_PATH . '/lib/classes/class-i10n-hotfixes.php' );
-
-		$hotfix = new I10n_Hotfixes();
-
-		$new = $hotfix->month_name( $new );
-
-		$date_object = date_create_from_format( get_option( 'date_format' ), $new );
-
-		return $date_object ? apply_filters( 'timeline_express_sanitize_date_format', $date_object->setTime( 0, 0, 0 )->getTimeStamp(), $new ) : apply_filters( 'timeline_express_sanitize_date_format', strtotime( $new ), $new );
-
-	}
-
-	/* If all else fails, return current date/time UNIX time stamp */
-	return strtotime( 'now' );
 
 }
 
@@ -1069,82 +1014,32 @@ function timeline_express_generate_options_tabs( $active_tab ) {
  */
 function te_dateformat_php_to_jqueryui( $php_format ) {
 
-	$symbols_matching = array(
-		// Day
-		'd' => 'dd',
-		'D' => 'D',
-		'j' => 'd',
-		'l' => 'DD',
-		'N' => '',
-		'S' => '',
-		'w' => '',
-		'z' => 'o',
-		// Week
-		'W' => '',
-		// Month
-		'F' => 'MM',
-		'm' => 'mm',
-		'M' => 'M',
-		'n' => 'm',
-		't' => '',
-		// Year
-		'L' => '',
-		'o' => '',
-		'Y' => 'yy',
-		'y' => 'y',
-		// Time
-		'a' => '',
-		'A' => '',
-		'B' => '',
-		'g' => '',
-		'G' => '',
-		'h' => '',
-		'H' => '',
-		'i' => '',
-		's' => '',
-		'u' => '',
+	$acceptable_formats = (array) apply_filters(
+		'timeline_express_jqueryui_acceptable_formats', [
+			'm/d/Y',
+			'd/m/Y',
+			'Y-m-d',
+			'Y-d-m',
+			'd-m-Y',
+			'm-d-Y',
+		]
 	);
 
-	$jqueryui_format = '';
+	/**
+	 * Loop over each acceptable format and add an associated . date format
+	 * eg: m/d/Y => m.d.Y, Y-d-m => Y.d.m etc.
+	 *
+	 * @var array
+	 */
+	foreach ( $acceptable_formats as $format ) {
 
-	$escaping = false;
-
-	for ( $i = 0; $i < strlen( $php_format ); $i++ ) {
-
-		$char = $php_format[ $i ];
-
-		if ( '\\' === $char ) {
-
-			$i++;
-
-			$jqueryui_format .= ( $escaping ) ? $php_format[ $i ] : '\'' . $php_format[ $i ];
-
-			$escaping = true;
-
-		} else {
-
-			if ( $escaping ) {
-
-				$jqueryui_format .= "'";
-
-				$escaping = false;
-
-			}
-
-			if ( isset( $symbols_matching[ $char ] ) ) {
-
-				$jqueryui_format .= $symbols_matching[ $char ];
-
-			} else {
-
-				$jqueryui_format .= $char;
-
-			} // @codingStandardsIgnoreLine
-
-		} // @codingStandardsIgnoreLine
+		$acceptable_formats[] = str_replace( '-', '.', str_replace( '/', '.', $format ) );
 
 	}
 
-	return $jqueryui_format;
+	$date_format = in_array( $php_format, array_unique( $acceptable_formats ), true ) ? $php_format : 'm/d/Y';
+
+	// if all else fails, return m/d/Y format (eg: 07/17/2017)
+	return (string) apply_filters( 'timeline_epxress_jqueryui_date_format', $date_format );
 
 }
