@@ -3,7 +3,7 @@
  * Test submodules exist.
  *
  * @package Timeline Express
- * @since 2.0.1
+ * @since 1.5.0
  */
 
 class Submodule_Tests extends WP_UnitTestCase {
