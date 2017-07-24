@@ -449,6 +449,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'default', [ 'menu' ] );
 
 	grunt.registerTask( 'Run all development tasks.', [
+		'replace',
 		'cssjanus',
 		'uglify',
 		'postcss',
@@ -469,7 +470,7 @@ module.exports = function( grunt ) {
 		'usebanner'
 	] );
 
-	grunt.registerTask( 'Update tempalte files.', [
+	grunt.registerTask( 'Update template files.', [
 		'copy:main'
 	] );
 
@@ -498,6 +499,7 @@ module.exports = function( grunt ) {
 	] );
 
 	grunt.registerTask( 'Deploy Timeline Express to the WordPress.org repository.', [
+		'Run all development tasks.',
 		'copy:deploy',
 		'shell:clean_submodules',
 		'wp_deploy'

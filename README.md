@@ -11,7 +11,7 @@
 
 **Tags:**              timeline, responsive, time, line, vertical, animated, company, history, font awesome, events, calendar, scroll, dates, story, timeline express, milestone, stories <br />
 **Requires at least:** WordPress v4.2 <br />
-**Tested up to:**      WordPress v4.7.3 <br />
+**Tested up to:**      WordPress v4.8 <br />
 **Stable tag:**        1.4.5 <br />
 **License:**           GPLv2 or later <br />
 **License URI:**       [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
