@@ -138,7 +138,21 @@ module.exports = function( grunt ) {
 							'readme.txt',
 							'timeline-express.php',
 							'uninstall.php',
-							'wpml-config.xml'
+							'wpml-config.xml',
+							// Exclude CMB2 files
+							'!lib/admin/CMB2/css/sass/**',
+							'!lib/admin/CMB2/languages/**',
+							'!lib/admin/CMB2/tests/**',
+							'!lib/admin/CMB2/*.md',
+							'!lib/admin/CMB2/*.json',
+							'!lib/admin/CMB2/*.clover',
+							'!lib/admin/CMB2/*.js',
+							'!lib/admin/CMB2/*.yml',
+							'!lib/admin/CMB2/example-functions.php',
+							'!lib/admin/CMB2/phpunit.xml.dist',
+							'!lib/admin/CMB2/.git',
+							'!lib/admin/CMB2/.gitattributes',
+							'!lib/admin/CMB2/.gitignore',
 						],
 						dest: 'build/timeline-express/'
 					}
