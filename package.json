@@ -6,7 +6,8 @@
   "description": "Build beautiful, animated CSS3 timelines on your WordPress site.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "version": "grunt 'Run all development tasks.' && git add -A .",
+    "postversion": "git push && git push --tags"
   },
   "bugs": {
     "url": "https://github.com/EvanHerman/Timeline-Express/issues"
@@ -38,9 +39,5 @@
     "grunt-text-replace": "^0.4.0",
     "grunt-wp-deploy": "^1.2.0",
     "grunt-wp-i18n": "^0.5.4"
-  },
-  "scripts": {
-    "version": "grunt 'Run all development tasks.' && git add -A .",
-    "postversion": "git push && git push --tags"
   }
 }
