@@ -56,7 +56,8 @@ before_deploy:
 
 deploy:
   provider: releases
-  api_key: secure:RWNGTbIEiEOZgoLn6w1ggKzHBuMCht/nhIqoqoLFMFyBAao5CQd/vdUeyuhrOTjsgu9ki4qvXenNepL+D3ylVkrBtCLGDt2nj6TpaJLIuZWMWxkwGUnGBtkUSyeVeT+o42qjPh9gtfDat432yZWLU9sXUjVQ0fDuVbOVcFn3hRE=
+  api_key:
+    secure: Z3/yLCyXNys/12ax0SHf4iQAGlq30CuybLwp5c/lglPBZIzOzQFmDh4CbaH9o2O7uKf6ZeVITBRCPFCSuhvTLpdm3e2aP01n7u5A5aPky5i5wqHG4qIFNn3nQeYZO5dF4OfMKap+Wx2dYflvumko0EhQJeZbxtnsPb9oQ1olzww=
   file: build/timeline-express-*.zip
   on:
     tags: true
