@@ -98,8 +98,6 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/public/partials/timeline-express-container.php' );
 		// Announcement metabox file
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/metaboxes.announcements.php' );
-		// Custom date timestamp file
-		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time-stamp-custom.php' );
 		// Advertisment metabox file
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/advertisment-metabox.php' );
 		// Help & Documentation metabox file
