@@ -57,7 +57,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key: secure:RWNGTbIEiEOZgoLn6w1ggKzHBuMCht/nhIqoqoLFMFyBAao5CQd/vdUeyuhrOTjsgu9ki4qvXenNepL+D3ylVkrBtCLGDt2nj6TpaJLIuZWMWxkwGUnGBtkUSyeVeT+o42qjPh9gtfDat432yZWLU9sXUjVQ0fDuVbOVcFn3hRE=
-  file: build/timeline-express.zip
+  file: build/timeline-express-*.zip
   on:
     tags: true
     repo: EvanHerman/timeline-express
