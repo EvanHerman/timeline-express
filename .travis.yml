@@ -48,3 +48,20 @@ script:
 after_script:
   - if [[ $TRAVIS_PHP_VERSION = '7.1' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0' ]]; then ./vendor/bin/test-reporter; fi
   - source $DEV_LIB_PATH/travis.after_script.sh
+
+before_deploy:
+  - git submodule update --init
+  - npm install
+  - grunt "Run all development tasks."
+
+deploy:
+  provider: releases
+  api_key: secure:RWNGTbIEiEOZgoLn6w1ggKzHBuMCht/nhIqoqoLFMFyBAao5CQd/vdUeyuhrOTjsgu9ki4qvXenNepL+D3ylVkrBtCLGDt2nj6TpaJLIuZWMWxkwGUnGBtkUSyeVeT+o42qjPh9gtfDat432yZWLU9sXUjVQ0fDuVbOVcFn3hRE=
+  file: build/timeline-express.zip
+  on:
+    tags: true
+    repo: EvanHerman/timeline-express
+    php: '7.1'
+    condition: "$WP_VERSION=trunk"
+  skip_cleanup: true
+  overwrite: true

@@ -98,8 +98,6 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/public/partials/timeline-express-container.php' );
 		// Announcement metabox file
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/metaboxes.announcements.php' );
-		// Custom date timestamp file
-		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/time-stamp-custom.php' );
 		// Advertisment metabox file
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/admin/metaboxes/partials/advertisment-metabox.php' );
 		// Help & Documentation metabox file
@@ -130,23 +128,6 @@ class TE_Helper_Tests extends WP_UnitTestCase {
 		 */
 		// Timeline Express public script
 		$this->assertFileExists( TIMELINE_EXPRESS_PATH . 'lib/public/js/min/timeline-express.min.js' );
-	}
-
-	/**
-	 * Test the saving of a date on the announcement page
-	 *
-	 * @return null
-	 */
-	public function test_announcement_date_sanitization() {
-		/**
-		 * Test saving our font awesome icon on the announcement page
-		 *
-		 * @param string current date in the database.
-		 * @param string new date to save.
-		 */
-		$sanitize_us_date = cmb2_sanitize_te_date_time_stamp_custom_callback( null, '04/04/1989' );
-		// ensure our icon was saved properly
-		$this->assertEquals( strtotime( '04/04/1989' ), $sanitize_us_date );
 	}
 
 	/**
