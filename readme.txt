@@ -371,11 +371,12 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.4.5 - July, 2017 =
+= 1.5.0 - July, 2017 =
 - New: Introduced the new menu icon, to unify branding between free/pro/website.
-- Enhancement: Tweaked the shortcode generator.
-- Enhancement: Refactored get_announcement_image() REST function, causing issues for some.
-- Update: Updated the 'Announcement Image' field label to 'Announcement Banner'.
+- Tweak: Removed old date field.
+- Tweak: Updated jQuery UI to PHP date format conversions.
+- Tweak: Refactored get_announcement_image() REST function, causing issues for some.
+- Tweak: Updated the 'Announcement Image' field label to 'Announcement Banner'.
 
 = 1.4.4 - May 14th, 2017 =
 - Introduced <pre>timeline_express_animation_disabled</pre> filter to disable timeline animations on a per page basis, as needed.
@@ -783,8 +784,9 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.4.4 - May 14th, 2017 =
-
-- Introduced <pre>timeline_express_animation_disabled</pre> filter to disable timeline animations on a per page basis, as needed.
-- Introduced <pre>timeline_express_scroll_to</pre> filter to disable the jQuery page scroll to when a URL hash is set (eg: http://www.example.com/#announcement-title).
-- Enhanced the add-ons page UX, allowing users to install & activate plugins directly from that page, via AJAX.
+= 1.5.0 - July, 2017 =
+- New: Introduced the new menu icon, to unify branding between free/pro/website.
+- Tweak: Removed old date field.
+- Tweak: Updated jQuery UI to PHP date format conversions.
+- Tweak: Refactored get_announcement_image() REST function, causing issues for some.
+- Tweak: Updated the 'Announcement Image' field label to 'Announcement Banner'.
