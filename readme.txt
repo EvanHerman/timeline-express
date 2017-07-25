@@ -371,9 +371,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.4.5 - July, 2017 =
+= 1.5.0 - July, 2017 =
 - New: Introduced the new menu icon, to unify branding between free/pro/website.
-- Enhancement: Tweaked the shortcode generator.
+- Removed old date field.
+- Updated jQuery UI to PHP date format conversions.
 - Enhancement: Refactored get_announcement_image() REST function, causing issues for some.
 - Update: Updated the 'Announcement Image' field label to 'Announcement Banner'.
 
