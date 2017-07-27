@@ -26,7 +26,7 @@ matrix:
     env: WP_VERSION=4.4 WP_MULTISITE=0
 install:
 - export DEV_LIB_PATH=.dev/dev-lib
-- export DEV_LIB_SKIP=codeception,jscs,jshint,yuicompressor,phpunit
+- export DEV_LIB_SKIP=codeception,jscs,jshint,yuicompressor,phpunit,xmllint
 - if [ ! -e "$DEV_LIB_PATH" ] && [ -L .travis.yml ]; then export DEV_LIB_PATH=$( dirname
   $( readlink .travis.yml ) ); fi
 - if [ ! -e "$DEV_LIB_PATH" ]; then git clone https://github.com/xwp/wp-dev-lib.git
