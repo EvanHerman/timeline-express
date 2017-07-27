@@ -53,7 +53,8 @@ require_once plugin_dir_path( __FILE__ ) . 'lib/classes/class-timeline-express.p
 $timeline_express_base = new TimelineExpressBase();
 
 /* Activation Hook */
-register_activation_hook( __FILE__,
+register_activation_hook(
+	__FILE__,
 	array(
 		$timeline_express_base,
 		'timeline_express_activate',
@@ -61,7 +62,8 @@ register_activation_hook( __FILE__,
 );
 
 /* Deactivation Hook */
-register_deactivation_hook( __FILE__,
+register_deactivation_hook(
+	__FILE__,
 	array(
 		$timeline_express_base,
 		'timeline_express_deactivate',

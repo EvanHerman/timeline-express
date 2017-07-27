@@ -43,14 +43,26 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 	<!-- Tabs -->
 	<h2 class="nav-tab-wrapper">
-		<a class="nav-tab <?php echo 'timeline-express-getting-started' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array(
-			'tab' => 'timeline-express-getting-started',
-		), 'admin.php?page=timeline-express-welcome' ) ) ); ?>">
+		<a class="nav-tab <?php echo 'timeline-express-getting-started' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url(
+			admin_url(
+				add_query_arg(
+					array(
+						'tab' => 'timeline-express-getting-started',
+					), 'admin.php?page=timeline-express-welcome'
+				)
+			)
+		); ?>">
 			<?php esc_html_e( 'Getting Started', 'timeline-express' ); ?>
 		</a>
-		<a class="nav-tab <?php echo 'timeline-express-author' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array(
-			'tab' => 'timeline-express-author',
-		), 'admin.php?page=timeline-express-welcome' ) ) ); ?>">
+		<a class="nav-tab <?php echo 'timeline-express-author' === $selected ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url(
+			admin_url(
+				add_query_arg(
+					array(
+						'tab' => 'timeline-express-author',
+					), 'admin.php?page=timeline-express-welcome'
+				)
+			)
+		); ?>">
 			<?php esc_html_e( 'About Code Parrots', 'timeline-express' ); ?>
 		</a>
 	</h2>
@@ -70,7 +82,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 		<div class="changelog">
 
-			<h3><?php esc_html_e( 'Creating Your First Announcement', 'timeline-express' );?></h3>
+			<h3><?php esc_html_e( 'Creating Your First Announcement', 'timeline-express' ); ?></h3>
 
 			<div class="feature-section">
 
@@ -94,7 +106,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 						?>
 					</p>
 
-					<h4><?php esc_html_e( 'Announcement Images', 'timeline-express' );?></h4>
+					<h4><?php esc_html_e( 'Announcement Images', 'timeline-express' ); ?></h4>
 
 					<p><?php esc_html_e( 'Adding images to your announcements is as easy as adding images to standard posts in WordPress. When you add images to your announcements, they will appear both on the timeline and on the single announcement templates.', 'timeline-express' ); ?></p>
 
@@ -106,7 +118,7 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 
 		<div class="changelog">
 
-			<h3><?php esc_html_e( 'Setup Timeline Express', 'easy-digital-downloads' );?></h3>
+			<h3><?php esc_html_e( 'Setup Timeline Express', 'easy-digital-downloads' ); ?></h3>
 
 			<div class="feature-section">
 

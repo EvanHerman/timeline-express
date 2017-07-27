@@ -73,7 +73,9 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 
 								do_action( 'timeline_express_add_on_options_page', $active_tab );
 
-							} else { ?>
+							} else {
+
+							?>
 
 								<form method="post" action="options.php" name="timeline-express-form" id="timeline-express-form">
 
@@ -365,11 +367,15 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 													</label>
 												</th>
 												<td>
-													<?php wp_editor(
+													<?php
+
+													wp_editor(
 														stripslashes( $current_options['no-events-message'] ),
 														'no-events-message',
 														$additional_editor_parameters
-													); ?>
+													);
+
+													?>
 													<p class="description">
 														<?php
 															/* translators: Timeline Express plural name (eg: announcements) */

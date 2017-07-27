@@ -20,37 +20,43 @@ $timeline_express_singular_name = apply_filters( 'timeline_express_singular_name
 /**
  * Initiate the metabox
  */
-$announcement_metabox = new_cmb2_box( array(
-	'id'            => 'announcement_metabox',
-	/* translators: Timeline Express singular post type name (eg: Announcement) */
-	'title'         => sprintf( esc_html( '%s Info.', 'timeline-express' ), $timeline_express_singular_name ),
-	'object_types'  => array( 'te_announcements' ),
-	'context'       => 'advanced',
-	'priority'      => 'high',
-	'show_names'    => true,
-) );
+$announcement_metabox = new_cmb2_box(
+	array(
+		'id'            => 'announcement_metabox',
+		/* translators: Timeline Express singular post type name (eg: Announcement) */
+		'title'         => sprintf( esc_html( '%s Info.', 'timeline-express' ), $timeline_express_singular_name ),
+		'object_types'  => array( 'te_announcements' ),
+		'context'       => 'advanced',
+		'priority'      => 'high',
+		'show_names'    => true,
+	)
+);
 
 // Announcement Color
-$announcement_metabox->add_field( array(
-	/* translators: Timeline Express singular post type name (eg: Announcement) */
-	'name'       => sprintf( esc_html( '%s Color', 'timeline-express' ), $timeline_express_singular_name ),
-	/* translators: Timeline Express singular post type name (eg: Announcement) */
-	'desc'       => sprintf( esc_html( 'Select the color for this %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
-	'id'         => $prefix . 'color',
-	'type'       => 'colorpicker',
-	'default'  => $timeline_express_options['default-announcement-color'],
-) );
+$announcement_metabox->add_field(
+	array(
+		/* translators: Timeline Express singular post type name (eg: Announcement) */
+		'name'       => sprintf( esc_html( '%s Color', 'timeline-express' ), $timeline_express_singular_name ),
+		/* translators: Timeline Express singular post type name (eg: Announcement) */
+		'desc'       => sprintf( esc_html( 'Select the color for this %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
+		'id'         => $prefix . 'color',
+		'type'       => 'colorpicker',
+		'default'  => $timeline_express_options['default-announcement-color'],
+	)
+);
 
 // Announcement Icon
-$announcement_metabox->add_field( array(
-	/* translators: Timeline Express singular post type name (eg: Announcement) */
-	'name' => sprintf( esc_html( '%s Icon', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
-	/* translators: Timeline Express singular post type name (eg: announcement) */
-	'desc' => sprintf( esc_html( 'Select an icon from the drop down above. This is used for the icon associated with the %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
-	'id'   => $prefix . 'icon',
-	'type' => 'te_bootstrap_dropdown',
-	'default' => 'fa-' . $timeline_express_options['default-announcement-icon'],
-) );
+$announcement_metabox->add_field(
+	array(
+		/* translators: Timeline Express singular post type name (eg: Announcement) */
+		'name' => sprintf( esc_html( '%s Icon', 'Timeline Express singular post type name (eg: Announcement)', 'timeline-express' ), $timeline_express_singular_name ),
+		/* translators: Timeline Express singular post type name (eg: announcement) */
+		'desc' => sprintf( esc_html( 'Select an icon from the drop down above. This is used for the icon associated with the %s.', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
+		'id'   => $prefix . 'icon',
+		'type' => 'te_bootstrap_dropdown',
+		'default' => 'fa-' . $timeline_express_options['default-announcement-icon'],
+	)
+);
 
 // Announcement Date
 $announcement_metabox->add_field(
@@ -74,14 +80,16 @@ $announcement_metabox->add_field(
 
 
 // Announcement Banner
-$announcement_metabox->add_field( array(
-	/* translators: Timeline Express singular post type name (eg: Announcement) */
-	'name' => sprintf( esc_html( '%s Banner', 'timeline-express' ), $timeline_express_singular_name ),
-	/* translators: Timeline Express singular post type name - lowercase (eg: announcement) */
-	'desc' => sprintf( esc_html( 'Select a banner image for this %s (optional). (recommended 650px wide or larger)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
-	'id'   => $prefix . 'image',
-	'type' => 'file',
-) );
+$announcement_metabox->add_field(
+	array(
+		/* translators: Timeline Express singular post type name (eg: Announcement) */
+		'name' => sprintf( esc_html( '%s Banner', 'timeline-express' ), $timeline_express_singular_name ),
+		/* translators: Timeline Express singular post type name - lowercase (eg: announcement) */
+		'desc' => sprintf( esc_html( 'Select a banner image for this %s (optional). (recommended 650px wide or larger)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
+		'id'   => $prefix . 'image',
+		'type' => 'file',
+	)
+);
 
 /**
  * Custom Container Classes Metabox
@@ -92,22 +100,26 @@ $announcement_metabox->add_field( array(
 if ( defined( 'TIMELINE_EXPRESS_CONTAINER_CLASSES' ) && TIMELINE_EXPRESS_CONTAINER_CLASSES ) {
 
 	// Custom Announcement Container Info. Metabox
-	$announcement_container_metabox = new_cmb2_box( array(
-		'id'            => 'announcement_container_metabox',
-		'title'         => esc_html__( 'Announcement Container Info.', 'timeline-express' ),
-		'object_types'  => array( 'te_announcements' ), // Post type
+	$announcement_container_metabox = new_cmb2_box(
+		array(
+			'id'            => 'announcement_container_metabox',
+			'title'         => esc_html__( 'Announcement Container Info.', 'timeline-express' ),
+			'object_types'  => array( 'te_announcements' ), // Post type
 		'context'       => 'advanced',
 		'priority'      => 'high',
 		'show_names'    => true, // Show field names on the left
-	) );
+		)
+	);
 
 	// Custom Container Class(es)
-	$announcement_container_metabox->add_field( array(
-		'name' => esc_html__( 'Custom Container Class', 'timeline-express' ),
-		'desc' => esc_html__( 'Enter the class that you would like added to this announcement container on the timeline.', 'timeline-express' ),
-		'id'   => $prefix . 'container_classes',
-		'type' => 'text',
-	) );
+	$announcement_container_metabox->add_field(
+		array(
+			'name' => esc_html__( 'Custom Container Class', 'timeline-express' ),
+			'desc' => esc_html__( 'Enter the class that you would like added to this announcement container on the timeline.', 'timeline-express' ),
+			'id'   => $prefix . 'container_classes',
+			'type' => 'text',
+		)
+	);
 
 }
 
@@ -116,43 +128,51 @@ if ( defined( 'TIMELINE_EXPRESS_CONTAINER_CLASSES' ) && TIMELINE_EXPRESS_CONTAIN
  */
 
 // Documentation Metabox
-$help_docs_metabox = new_cmb2_box( array(
-	'id'            => 'help_docs_metabox',
-	'title'         => esc_html__( 'Help & Documentation', 'timeline-express' ),
-	'object_types'  => array( 'te_announcements' ),
-	'context'    => 'side',
-	'priority'   => 'low',
-	'show_names'    => true,
-) );
+$help_docs_metabox = new_cmb2_box(
+	array(
+		'id'            => 'help_docs_metabox',
+		'title'         => esc_html__( 'Help & Documentation', 'timeline-express' ),
+		'object_types'  => array( 'te_announcements' ),
+		'context'    => 'side',
+		'priority'   => 'low',
+		'show_names'    => true,
+	)
+);
 
 // Support & Documentation
-$help_docs_metabox->add_field( array(
-	'name' => '',
-	'desc' => '',
-	'id'   => $prefix . 'help_docs',
-	'type' => 'te_help_docs_metabox',
-) );
+$help_docs_metabox->add_field(
+	array(
+		'name' => '',
+		'desc' => '',
+		'id'   => $prefix . 'help_docs',
+		'type' => 'te_help_docs_metabox',
+	)
+);
 
 $advertisment_data = te_get_advertisment();
 
 // Advertisement Metabox
-$advert_metabox = new_cmb2_box( array(
-	'id'           => 'advert_metabox',
-	'title'        => $advertisment_data['title'],
-	'object_types' => array( 'te_announcements' ),
-	'context'      => 'side',
-	'priority'     => 'low',
-	'show_names'   => true,
-) );
+$advert_metabox = new_cmb2_box(
+	array(
+		'id'           => 'advert_metabox',
+		'title'        => $advertisment_data['title'],
+		'object_types' => array( 'te_announcements' ),
+		'context'      => 'side',
+		'priority'     => 'low',
+		'show_names'   => true,
+	)
+);
 
 // Advertisment Field (image & content)
-$advert_metabox->add_field( array(
-	'name'    => '',
-	'desc'    => '',
-	'id'      => $prefix . 'advertisments',
-	'type'    => 'te_advert_metabox',
-	'ad_data' => $advertisment_data,
-) );
+$advert_metabox->add_field(
+	array(
+		'name'    => '',
+		'desc'    => '',
+		'id'      => $prefix . 'advertisments',
+		'type'    => 'te_advert_metabox',
+		'ad_data' => $advertisment_data,
+	)
+);
 
 // Filter here is to allow extra fields to be added
 // loop to add fields to our array
@@ -173,12 +193,14 @@ if ( ! empty( $custom_fields ) ) {
 	foreach ( $custom_fields as $user_defined_field ) {
 
 		// Email text field
-		$announcement_metabox->add_field( array(
-			'name' => $custom_fields[ $i ]['name'],
-			'desc' => $custom_fields[ $i ]['desc'],
-			'id'   => $custom_fields[ $i ]['id'],
-			'type' => $custom_fields[ $i ]['type'],
-		) );
+		$announcement_metabox->add_field(
+			array(
+				'name' => $custom_fields[ $i ]['name'],
+				'desc' => $custom_fields[ $i ]['desc'],
+				'id'   => $custom_fields[ $i ]['id'],
+				'type' => $custom_fields[ $i ]['type'],
+			)
+		);
 
 		$i++;
 

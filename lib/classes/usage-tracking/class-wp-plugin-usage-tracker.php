@@ -164,10 +164,12 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	protected function get_tracking_approval_url() {
 
-		return add_query_arg( [
-			'timeline_express_tracker' => 'approved',
-			'plugin'                   => $this->plugin_prefix,
-		] );
+		return add_query_arg(
+			[
+				'timeline_express_tracker' => 'approved',
+				'plugin'                   => $this->plugin_prefix,
+			]
+		);
 
 	}
 
@@ -178,10 +180,12 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	protected function get_tracking_denied_url() {
 
-		return add_query_arg( [
-			'timeline_express_tracker' => 'denied',
-			'plugin'                   => $this->plugin_prefix,
-		] );
+		return add_query_arg(
+			[
+				'timeline_express_tracker' => 'denied',
+				'plugin'                   => $this->plugin_prefix,
+			]
+		);
 
 	}
 
@@ -233,7 +237,7 @@ class WP_Plugin_Usage_Tracker {
 
 		$data['php_version']    = phpversion();
 		$data['wp_version']     = get_bloginfo( 'version' );
-		$data['server']         = isset( $_SERVER['SERVER_SOFTWARE'] ) ? $_SERVER['SERVER_SOFTWARE']: '';
+		$data['server']         = isset( $_SERVER['SERVER_SOFTWARE'] ) ? $_SERVER['SERVER_SOFTWARE'] : '';
 
 		$data['multisite']      = is_multisite();
 		$data['theme']          = $this->get_theme_name();
@@ -361,14 +365,16 @@ class WP_Plugin_Usage_Tracker {
 	 */
 	public function track() {
 
-		wp_remote_request( $this->api_endpoint, [
-			'headers' => [
-				'Authorization' => TIMELINE_EXPRESS_TRACKING_WRITE_KEY,
-				'Content-Type'  => 'application/json',
-			],
-			'method'  => 'POST',
-			'body'    => json_encode( $this->get_data() ),
-		] );
+		wp_remote_request(
+			$this->api_endpoint, [
+				'headers' => [
+					'Authorization' => TIMELINE_EXPRESS_TRACKING_WRITE_KEY,
+					'Content-Type'  => 'application/json',
+				],
+				'method'  => 'POST',
+				'body'    => json_encode( $this->get_data() ),
+			]
+		);
 
 	}
 

@@ -40,11 +40,13 @@ class Timeline_Express_Public {
 		$options = timeline_express_get_options();
 
 		/* Parse the shortcode attributes */
-		$atts = shortcode_atts( array(
-			'limit' => -1,
-			'order' => $options['announcement-display-order'],
-			'display' => $options['announcement-time-frame'],
-		), $atts, 'timeline-express' );
+		$atts = shortcode_atts(
+			array(
+				'limit' => -1,
+				'order' => $options['announcement-display-order'],
+				'display' => $options['announcement-time-frame'],
+			), $atts, 'timeline-express'
+		);
 
 		$timeline_express_init = new Timeline_Express_Initialize();
 
@@ -59,7 +61,7 @@ class Timeline_Express_Public {
 	 *       Next it checksf or a page.php template in the theme root
 	 *       If all else fails, it will use the default template defined by WordPress.
 	 *
-	 * @param  string 	$page_template    The page template name to be used for single announcements.
+	 * @param  string   $page_template    The page template name to be used for single announcements.
 	 * @return string                     The page template to be used for the single announcements.
 	 *
 	 * @since  1.2
