@@ -26,14 +26,16 @@ wp_enqueue_script( 'plugin-install' );
 
 wp_enqueue_script( 'timeline-express-add-ons-js', TIMELINE_EXPRESS_URL . "lib/admin/js/min/timeline-express-add-ons{$suffix}.js", array( 'plugin-install' ), TIMELINE_EXPRESS_VERSION_CURRENT, true );
 
-wp_localize_script( 'timeline-express-add-ons-js', 'te_installer_localize', array(
-	'ajax_url'      => admin_url( 'admin-ajax.php' ),
-	'admin_nonce'   => wp_create_nonce( 'timeline_express_add_on_install_nonce' ),
-	'install_now'   => __( 'Are you sure you want to install this add-on?', 'timeline-express' ),
-	'install_btn'   => __( 'Install' ), // core i18n
+wp_localize_script(
+	'timeline-express-add-ons-js', 'te_installer_localize', array(
+		'ajax_url'      => admin_url( 'admin-ajax.php' ),
+		'admin_nonce'   => wp_create_nonce( 'timeline_express_add_on_install_nonce' ),
+		'install_now'   => __( 'Are you sure you want to install this add-on?', 'timeline-express' ),
+		'install_btn'   => __( 'Install' ), // core i18n
 	'activate_btn'  => __( 'Activate' ), // core i18n
 	'installed_btn' => __( 'Active', 'timeline-express' ),
-) );
+	)
+);
 
 $all_plugins = get_plugins();
 
@@ -120,13 +122,15 @@ $premium_addons = array(
 // Sort addons by name
 usort( $premium_addons, 'compare_addon_names' );
 
-array_unshift( $premium_addons, array(
-	'name'          => esc_html__( 'Timeline Express - Product Bundle', 'timeline-express' ),
-	/* translators: Integer value for the number of add-ons in the add-on list. (eg: 6) */
-	'description'   => sprintf( esc_html( "Get all %s of the Timeline Express add-ons for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'timeline-express' ), count( $premium_addons ) ),
-	'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-bundle/',
-	'popular'       => true,
-) );
+array_unshift(
+	$premium_addons, array(
+		'name'          => esc_html__( 'Timeline Express - Product Bundle', 'timeline-express' ),
+		/* translators: Integer value for the number of add-ons in the add-on list. (eg: 6) */
+		'description'   => sprintf( esc_html( "Get all %s of the Timeline Express add-ons for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'timeline-express' ), count( $premium_addons ) ),
+		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-bundle/',
+		'popular'       => true,
+	)
+);
 
 ?>
 
@@ -222,7 +226,8 @@ function timeline_express_build_addon_data( $data, $free = false ) {
 
 	if ( $free ) {
 
-		$api = (array) plugins_api( 'plugin_information',
+		$api = (array) plugins_api(
+			'plugin_information',
 			array(
 				'slug'   => sanitize_file_name( $slug ),
 				'fields' => array(
@@ -336,7 +341,7 @@ function timeline_express_render_addon( $addon, $free = false ) {
 		<div class="plugin-card-top">
 
 			<div class="name column-name">
-				<h3><?php timeline_express_get_addon_info_url( $addon, $free ) ?></h3>
+				<h3><?php timeline_express_get_addon_info_url( $addon, $free ); ?></h3>
 			</div>
 
 			<div class="action-links">
@@ -344,7 +349,7 @@ function timeline_express_render_addon( $addon, $free = false ) {
 				<ul class="plugin-action-buttons">
 
 					<li>
-						<a class="<?php echo esc_attr( $addon['button_class'] ); ?>" <?php echo esc_attr( $target ) ?> data-slug="<?php echo sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ); ?>" href="<?php echo esc_url( $link ); ?>" aria-label="<?php printf( /* translators: The name of the plugin. */ __( 'Install %s now', 'timeline-express' ), $addon['name'] ); ?>" data-name="<?php echo esc_attr( $addon['name'] ); ?>">
+						<a class="<?php echo esc_attr( $addon['button_class'] ); ?>" <?php echo esc_attr( $target ); ?> data-slug="<?php echo sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ); ?>" href="<?php echo esc_url( $link ); ?>" aria-label="<?php printf( /* translators: The name of the plugin. */ __( 'Install %s now', 'timeline-express' ), $addon['name'] ); ?>" data-name="<?php echo esc_attr( $addon['name'] ); ?>">
 							<?php echo esc_html( $addon['button_text'] ); ?>
 						</a>
 					</li>
@@ -399,13 +404,15 @@ function timeline_express_get_addon_info_url( $addon, $free = false ) {
 
 	if ( $free ) {
 
-		$plugin_info_url = add_query_arg( array(
-			'tab'       => 'plugin-information',
-			'plugin'    => sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ),
-			'TB_iframe' => 'true',
-			'width'     => '600',
-			'height'    => '550',
-		), admin_url( 'plugin-install.php' ) );
+		$plugin_info_url = add_query_arg(
+			array(
+				'tab'       => 'plugin-information',
+				'plugin'    => sanitize_title( isset( $addon['slug'] ) ? $addon['slug'] : $addon['name'] . '-add-on' ),
+				'TB_iframe' => 'true',
+				'width'     => '600',
+				'height'    => '550',
+			), admin_url( 'plugin-install.php' )
+		);
 
 		?>
 
@@ -454,29 +461,41 @@ function timeline_express_addon_details( $data ) {
 			<div class="star-rating">
 				<span class="screen-reader-text">
 
-					<?php sprintf(
+					<?php
+					sprintf(
 						/* translators: 1. Plugin rating (eg: 4.5) 2. Rating count (eg: 100) */
 						esc_html__( '%1$s rating based on %2$s ratings', 'timeline-express' ),
 						(int) $data['api_data']['rating'],
 						(int) $data['api_data']['num_ratings']
-					); ?></span>
+					);
+					?>
 
-					<?php wp_star_rating( array(
-						'rating' => $data['api_data']['rating'],
-						'type'   => 'percent',
-						'number' => $data['api_data']['num_ratings'],
-					) ); ?>
+				</span>
+
+					<?php
+
+					wp_star_rating(
+						array(
+							'rating' => $data['api_data']['rating'],
+							'type'   => 'percent',
+							'number' => $data['api_data']['num_ratings'],
+						)
+					);
+
+					?>
 
 			</div>
 			<span class="num-ratings" aria-hidden="true">(<?php echo esc_html( number_format_i18n( (int) $data['api_data']['num_ratings'] ) ); ?>)</span>
 		</div>
 		<div class="column-updated">
-			<strong><?php esc_html__( 'Last Updated:' ); // core i10n ?></strong>
-			<?php printf(
+			<strong><?php esc_html__( 'Last Updated:' ); ?></strong>
+			<?php
+			printf(
 				/* translators: The last time this plugin was updated (eg: 1 week). */
 				__( '%s ago' ),
 				human_time_diff( strtotime( $data['api_data']['last_updated'] ) )
-			); ?>
+			);
+			?>
 		</div>
 		<div class="column-downloaded">
 			<?php

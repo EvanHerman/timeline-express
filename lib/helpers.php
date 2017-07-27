@@ -50,24 +50,28 @@ add_action( 'timeline_express_sidebar', 'timeline_express_generate_sidebar', 10 
  */
 function timeline_express_get_options() {
 
-	return apply_filters( 'timeline_express_options', get_option( TIMELINE_EXPRESS_OPTION, array(
-		'announcement-time-frame'                     => '1',
-		'announcement-display-order'                  => 'ASC',
-		'excerpt-trim-length'                         => 50,
-		'excerpt-random-length'                       => 0,
-		'date-visibility'                             => '1',
-		'read-more-visibility'                        => '1',
-		'default-announcement-icon'                   => 'exclamation-triangle',
-		'default-announcement-color'                  => '#75CE66',
-		'announcement-box-shadow-color'               => '#B9C5CD',
-		'announcement-background-line-color'          => '#D7E4ED',
-		'announcement-bg-color'                       => '#EFEFEF',
-		'no-events-message'                           => esc_html__( 'No announcements found', 'timeline-express' ),
-		'announcement-appear-in-searches'             => 'true',
-		'disable-animation'                           => 0,
-		'delete-announcement-posts-on-uninstallation' => 0,
-		'version'                                     => TIMELINE_EXPRESS_VERSION_CURRENT,
-	) ) );
+	return apply_filters(
+		'timeline_express_options', get_option(
+			TIMELINE_EXPRESS_OPTION, array(
+				'announcement-time-frame'                     => '1',
+				'announcement-display-order'                  => 'ASC',
+				'excerpt-trim-length'                         => 50,
+				'excerpt-random-length'                       => 0,
+				'date-visibility'                             => '1',
+				'read-more-visibility'                        => '1',
+				'default-announcement-icon'                   => 'exclamation-triangle',
+				'default-announcement-color'                  => '#75CE66',
+				'announcement-box-shadow-color'               => '#B9C5CD',
+				'announcement-background-line-color'          => '#D7E4ED',
+				'announcement-bg-color'                       => '#EFEFEF',
+				'no-events-message'                           => esc_html__( 'No announcements found', 'timeline-express' ),
+				'announcement-appear-in-searches'             => 'true',
+				'disable-animation'                           => 0,
+				'delete-announcement-posts-on-uninstallation' => 0,
+				'version'                                     => TIMELINE_EXPRESS_VERSION_CURRENT,
+			)
+		)
+	);
 
 }
 
@@ -234,8 +238,10 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 
 	}
 
-	// Extract the icons from the stylesheet
-	$pattern = '/\.(fa-(?:\w+(?:-)?)+):before\s+{\s*content:\s*"(.+)";\s+}/';
+	// Icons
+	$pattern = '/(\.(?:fa-(?:\w+(?:-)?)+):before(?:,\s*\.(?:fa-(?:\w+(?:-)?)+):before)*)\s*{\s*content:\s*"(.+)";\s*}/';
+
+	$sub_pattern = '/(fa-.+?):before/';
 
 	preg_match_all( $pattern, $response['body'], $matches, PREG_SET_ORDER );
 
@@ -243,9 +249,15 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 
 	foreach ( $matches as $match ) {
 
-		$icons[ str_replace( 'fa-', '', $match[1] ) ] = $match[2];
+		preg_match_all( $sub_pattern, $match[1], $sub_matches, PREG_SET_ORDER );
 
+		foreach ( $sub_matches as $sub_match ) {
+
+			$icons[ str_replace( 'fa-', '', $sub_match[1] ) ] = $match[2];
+
+		}
 	}
+
 	?>
 
 	<script>
@@ -590,15 +602,17 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 
 	}
 
-	$announcement_image = apply_filters( 'timeline_express_image', wp_get_attachment_image(
-		get_post_meta( $post_id, 'announcement_image_id', true ),
-		$image_size,
-		false,
-		array(
-			'alt'   => esc_attr( get_the_title() ),
-			'class' => 'announcement-banner-image',
-		)
-	), $post_id );
+	$announcement_image = apply_filters(
+		'timeline_express_image', wp_get_attachment_image(
+			get_post_meta( $post_id, 'announcement_image_id', true ),
+			$image_size,
+			false,
+			array(
+				'alt'   => esc_attr( get_the_title() ),
+				'class' => 'announcement-banner-image',
+			)
+		), $post_id
+	);
 
 	if ( empty( $announcement_image ) ) {
 
@@ -632,17 +646,21 @@ function timeline_express_map_html_attributes( $attribute_array ) {
 
 	}
 
-	return join( ' ', array_map( function( $key ) use ( $attribute_array ) {
+	return join(
+		' ', array_map(
+			function( $key ) use ( $attribute_array ) {
 
-		if ( is_bool( $attribute_array[ $key ] ) ) {
+				if ( is_bool( $attribute_array[ $key ] ) ) {
 
-			return $attribute_array[ $key ] ? $key:'';
+					return $attribute_array[ $key ] ? $key : '';
 
-		}
+				}
 
-		return $key . '="' . $attribute_array[ $key ] . '"';
+					return $key . '="' . $attribute_array[ $key ] . '"';
 
-	}, array_keys( $attribute_array ) ) );
+			}, array_keys( $attribute_array )
+		)
+	);
 
 }
 
@@ -1015,14 +1033,14 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 function te_dateformat_php_to_jqueryui( $php_format ) {
 
 	$acceptable_formats = (array) apply_filters(
-		'timeline_express_jqueryui_acceptable_formats', [
+		'timeline_express_jqueryui_acceptable_formats', array(
 			'm/d/Y',
 			'd/m/Y',
 			'Y-m-d',
 			'Y-d-m',
 			'd-m-Y',
 			'm-d-Y',
-		]
+		)
 	);
 
 	/**

@@ -362,11 +362,25 @@ module.exports = function( grunt ) {
 			constants: {
 				src: [ 'constants.php' ],
 				overwrite: true,
-				replacements: [{
+				replacements: [ {
 					from: /define\(\s*'TIMELINE_EXPRESS_VERSION_CURRENT',\s*'(.*)'\s*\);/,
 					to: "define( 'TIMELINE_EXPRESS_VERSION_CURRENT', '<%= pkg.version %>' );"
-				}]
-			}
+				} ]
+			},
+			php: {
+				overwrite: true,
+				replacements: [
+					{
+						from: /@since(\s+)NEXT/g,
+						to: '@since$1<%= pkg.version %>'
+					},
+					{
+						from: /@NEXT/g,
+						to: '<%= pkg.version %>'
+					},
+				],
+				src: [ '*.php', 'lib/**/*.php', 'templates/**/*.php' ]
+			},
 		},
 
 		shell: {

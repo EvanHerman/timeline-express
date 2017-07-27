@@ -4,6 +4,12 @@
 
 	<rule ref="WordPress-Core">
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace"/>
+		<exclude name="Squiz.PHP.EmbeddedPhp.ContentAfterOpen"/>
+		<exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeOpen"/>
+		<exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeEnd"/>
+		<exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeOpen"/>
+		<exclude name="PSR2.ControlStructures.SwitchDeclaration.SpaceBeforeColonCASE"/>
 	</rule>
 
 	<!-- Allow dashes in function name naming conventions. -->

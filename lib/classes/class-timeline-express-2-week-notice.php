@@ -135,9 +135,11 @@ class Timeline_Express_Two_Weeks_Notice {
 	 */
 	public function get_dismissal_url() {
 
-		return add_query_arg( array(
-			'timeline_express_rating_nobug' => 'true',
-		) );
+		return add_query_arg(
+			array(
+				'timeline_express_rating_nobug' => 'true',
+			)
+		);
 
 	}
 

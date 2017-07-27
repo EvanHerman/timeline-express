@@ -31,9 +31,11 @@ class Timeline_Express_Initialize {
 		wp_enqueue_script( 'timeline-express-js-base', TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js', array( 'jquery-masonry' ) );
 
 		/* pass the disabled state to our script */
-		wp_localize_script( 'timeline-express-js-base', 'timeline_express_data', array(
-			'animation_disabled' => $animation_disabled,
-		) );
+		wp_localize_script(
+			'timeline-express-js-base', 'timeline_express_data', array(
+				'animation_disabled' => $animation_disabled,
+			)
+		);
 
 		do_action( 'timeline-express-scripts' );
 

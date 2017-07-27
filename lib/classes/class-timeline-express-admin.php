@@ -408,7 +408,8 @@ class Timeline_Express_Admin {
 
 		}
 
-		register_rest_field( 'te_announcements',
+		register_rest_field(
+			'te_announcements',
 			'announcement_date',
 			array(
 				'get_callback' => array( $this, 'get_announcement_date' ),
@@ -416,7 +417,8 @@ class Timeline_Express_Admin {
 			)
 		);
 
-		register_rest_field( 'te_announcements',
+		register_rest_field(
+			'te_announcements',
 			'announcement_image',
 			array(
 				'get_callback' => array( $this, 'get_announcement_image' ),
@@ -475,10 +477,12 @@ class Timeline_Express_Admin {
 		 *
 		 * @var array
 		 */
-		return (array) apply_filters( 'timeline_express_popups_addon_announcement_image', [
-			'iframe' => false,
-			'url'    => $image_url ? esc_url( $image_url ) : false,
-		], $image_id );
+		return (array) apply_filters(
+			'timeline_express_popups_addon_announcement_image', [
+				'iframe' => false,
+				'url'    => $image_url ? esc_url( $image_url ) : false,
+			], $image_id
+		);
 
 	}
 
@@ -499,7 +503,8 @@ class Timeline_Express_Admin {
 
 			if ( defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) && TIMELINE_EXPRESS_YEAR_ICONS ) {
 
-				?><style>.cmb-type-te-bootstrap-dropdown{ display: none !important; }</style><?php
+				?>
+				<style>.cmb-type-te-bootstrap-dropdown{ display: none !important; }</style><?php
 
 			}
 
@@ -578,7 +583,8 @@ class Timeline_Express_Admin {
 		require_once( ABSPATH . 'wp-admin/includes/class-plugin-upgrader.php' );
 
 		// Get Plugin Info
-		$api = plugins_api( 'plugin_information',
+		$api = plugins_api(
+			'plugin_information',
 			array(
 				'slug'  => $plugin,
 				'fields' => array(
@@ -656,30 +662,35 @@ class Timeline_Express_Admin {
 
 			if ( is_wp_error( activate_plugin( $plugin . '/' . $plugin . '.php' ) ) ) {
 
-				wp_send_json_error( array(
-					'status' => 'error',
-					'msg'    => sprintf(
-						/* translators: The name of the plugin. */
-						__( 'Failed to activate %s.', 'timeline-express' ),
-						esc_html( $plugin )
-					),
-				) );
+				wp_send_json_error(
+					array(
+						'status' => 'error',
+						'msg'    => sprintf(
+							/* translators: The name of the plugin. */
+							__( 'Failed to activate %s.', 'timeline-express' ),
+							esc_html( $plugin )
+						),
+					)
+				);
 
 			}
 
-			wp_send_json( array(
-				'status' => 'success',
-				'msg'    => sprintf(
-					/* translators: The name of the plugin. */
-					__( '%s successfully activated.', 'timeline-express' ),
-					esc_html( $plugin )
-				),
-			) );
+			wp_send_json(
+				array(
+					'status' => 'success',
+					'msg'    => sprintf(
+						/* translators: The name of the plugin. */
+						__( '%s successfully activated.', 'timeline-express' ),
+						esc_html( $plugin )
+					),
+				)
+			);
 
 		}
 
 		// Get Plugin Info
-		$api = plugins_api( 'plugin_information',
+		$api = plugins_api(
+			'plugin_information',
 			array(
 				'slug'   => $plugin,
 				'fields' => array(
