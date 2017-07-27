@@ -234,8 +234,10 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 
 	}
 
-	// Extract the icons from the stylesheet
-	$pattern = '/\.(fa-(?:\w+(?:-)?)+):before\s+{\s*content:\s*"(.+)";\s+}/';
+	// Icons
+	$pattern = '/(\.(?:fa-(?:\w+(?:-)?)+):before(?:,\s*\.(?:fa-(?:\w+(?:-)?)+):before)*)\s*{\s*content:\s*"(.+)";\s*}/';
+
+	$sub_pattern = '/(fa-.+?):before/';
 
 	preg_match_all( $pattern, $response['body'], $matches, PREG_SET_ORDER );
 
@@ -243,9 +245,16 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 
 	foreach ( $matches as $match ) {
 
-		$icons[ str_replace( 'fa-', '', $match[1] ) ] = $match[2];
+		preg_match_all( $sub_pattern, $match[1], $sub_matches, PREG_SET_ORDER );
+
+		foreach( $sub_matches as $sub_match ) {
+
+			$icons[ str_replace( 'fa-', '', $sub_match[1] ) ] = $match[2];
+
+		}
 
 	}
+
 	?>
 
 	<script>
@@ -1015,14 +1024,14 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 function te_dateformat_php_to_jqueryui( $php_format ) {
 
 	$acceptable_formats = (array) apply_filters(
-		'timeline_express_jqueryui_acceptable_formats', [
+		'timeline_express_jqueryui_acceptable_formats', array(
 			'm/d/Y',
 			'd/m/Y',
 			'Y-m-d',
 			'Y-d-m',
 			'd-m-Y',
 			'm-d-Y',
-		]
+		)
 	);
 
 	/**
