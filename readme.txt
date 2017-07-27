@@ -371,6 +371,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.5.1 - July, 2017 =
+- Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.
+- Tweak: Updated regex when generating icons. Props @tkchouaki
+
 = 1.5.0 - July, 2017 =
 - New: Introduced the new menu icon, to unify branding between free/pro/website.
 - Tweak: Removed old date field.
@@ -784,9 +788,6 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Upgrade Notice ==
 
-= 1.5.0 - July, 2017 =
-- New: Introduced the new menu icon, to unify branding between free/pro/website.
-- Tweak: Removed old date field.
-- Tweak: Updated jQuery UI to PHP date format conversions.
-- Tweak: Refactored get_announcement_image() REST function, causing issues for some.
-- Tweak: Updated the 'Announcement Image' field label to 'Announcement Banner'.
+= 1.5.1 - July, 2017 =
+- Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.
+- Tweak: Updated regex when generating icons. Props @tkchouaki
