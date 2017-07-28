@@ -478,10 +478,10 @@ class Timeline_Express_Admin {
 		 * @var array
 		 */
 		return (array) apply_filters(
-			'timeline_express_popups_addon_announcement_image', [
+			'timeline_express_popups_addon_announcement_image', array(
 				'iframe' => false,
 				'url'    => $image_url ? esc_url( $image_url ) : false,
-			], $image_id
+			), $image_id
 		);
 
 	}
