@@ -372,6 +372,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 == Changelog ==
 
 = 1.5.2 - August, 2017 =
+- New: Introduced <a href="https://wordpress.org/plugins/qtranslate-x/">qtranslate-x</a> compatibility files. Timeline Express cache is cleared when using qtranslate, to ensure translations load properly.
 - Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.
 
 = 1.5.1 - July, 2017 =
@@ -792,4 +793,5 @@ The above example will load font awesome version 4.4.0 instead of the current st
 == Upgrade Notice ==
 
 = 1.5.2 - August, 2017 =
+- New: Introduced <a href="https://wordpress.org/plugins/qtranslate-x/">qtranslate-x</a> compatibility files. Timeline Express cache is cleared when using qtranslate, to ensure translations load properly.
 - Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.

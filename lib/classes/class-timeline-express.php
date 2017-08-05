@@ -31,6 +31,9 @@ class TimelineExpressBase {
 		/* Include Public Class file */
 		include_once TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-public.php';
 
+		/* Include Compatibility Class file */
+		include_once TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-compat.php';
+
 		/* Register our custom timeline express image size (350px x 120px) */
 		add_image_size( 'timeline-express', '350', '120', true );
 
@@ -121,35 +124,21 @@ class TimelineExpressBase {
 		$timeline_express_options = timeline_express_get_options();
 
 		/* Update our options */
-		$timeline_express_options['announcement-time-frame'] = sanitize_text_field( $options['announcement-time-frame'] );
-
-		$timeline_express_options['announcement-display-order'] = sanitize_text_field( $options['announcement-display-order'] );
-
-		$timeline_express_options['excerpt-trim-length'] = (int) sanitize_text_field( $options['excerpt-trim-length'] );
-
-		$timeline_express_options['excerpt-random-length'] = (int) ( isset( $options['excerpt-random-length'] ) ) ? 1 : 0;
-
-		$timeline_express_options['date-visibility'] = sanitize_text_field( $options['date-visibility'] );
-
-		$timeline_express_options['read-more-visibility'] = sanitize_text_field( $options['read-more-visibility'] );
-
-		$timeline_express_options['default-announcement-icon'] = sanitize_text_field( $options['default-announcement-icon'] );
-
-		$timeline_express_options['default-announcement-color'] = sanitize_text_field( $options['default-announcement-color'] );
-
-		$timeline_express_options['announcement-bg-color'] = sanitize_text_field( $options['announcement-bg-color'] );
-
-		$timeline_express_options['announcement-box-shadow-color'] = sanitize_text_field( $options['announcement-box-shadow-color'] );
-
-		$timeline_express_options['announcement-background-line-color'] = sanitize_text_field( $options['announcement-background-line-color'] );
-
-		$timeline_express_options['no-events-message'] = sanitize_text_field( $options['no-events-message'] );
-
-		$timeline_express_options['announcement-appear-in-searches'] = sanitize_text_field( $options['announcement-appear-in-searches'] );
-
+		$timeline_express_options['announcement-time-frame']                     = sanitize_text_field( $options['announcement-time-frame'] );
+		$timeline_express_options['announcement-display-order']                  = sanitize_text_field( $options['announcement-display-order'] );
+		$timeline_express_options['excerpt-trim-length']                         = (int) sanitize_text_field( $options['excerpt-trim-length'] );
+		$timeline_express_options['excerpt-random-length']                       = (int) ( isset( $options['excerpt-random-length'] ) ) ? 1 : 0;
+		$timeline_express_options['date-visibility']                             = sanitize_text_field( $options['date-visibility'] );
+		$timeline_express_options['read-more-visibility']                        = sanitize_text_field( $options['read-more-visibility'] );
+		$timeline_express_options['default-announcement-icon']                   = sanitize_text_field( $options['default-announcement-icon'] );
+		$timeline_express_options['default-announcement-color']                  = sanitize_text_field( $options['default-announcement-color'] );
+		$timeline_express_options['announcement-bg-color']                       = sanitize_text_field( $options['announcement-bg-color'] );
+		$timeline_express_options['announcement-box-shadow-color']               = sanitize_text_field( $options['announcement-box-shadow-color'] );
+		$timeline_express_options['announcement-background-line-color']          = sanitize_text_field( $options['announcement-background-line-color'] );
+		$timeline_express_options['no-events-message']                           = sanitize_text_field( $options['no-events-message'] );
+		$timeline_express_options['announcement-appear-in-searches']             = sanitize_text_field( $options['announcement-appear-in-searches'] );
 		$timeline_express_options['delete-announcement-posts-on-uninstallation'] = (int) ( isset( $options['delete-announcement-posts-on-uninstallation'] ) ) ? 1 : 0;
-
-		$timeline_express_options['disable-animation'] = (int) ( isset( $options['disable-animation'] ) ) ? 1 : 0;
+		$timeline_express_options['disable-animation']                           = (int) ( isset( $options['disable-animation'] ) ) ? 1 : 0;
 
 		/* Delete the transient, to refresh the frontend timeline (display order, excerpt length etc.) */
 		delete_timeline_express_transients();
