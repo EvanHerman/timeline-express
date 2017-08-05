@@ -372,7 +372,7 @@ The above example will load font awesome version 4.4.0 instead of the current st
 == Changelog ==
 
 = 1.5.2 - August, 2017 =
-- Tweak: Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.
+- Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.
 
 = 1.5.1 - July, 2017 =
 - Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.
@@ -792,4 +792,4 @@ The above example will load font awesome version 4.4.0 instead of the current st
 == Upgrade Notice ==
 
 = 1.5.2 - August, 2017 =
-- Tweak: Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.
+- Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.
