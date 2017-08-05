@@ -5,7 +5,7 @@
  * @author Code Parrots
  * @link http://www.codeparrots.com
  * @package Timeline_Express
- * @since NEXT
+ * @since 1.5.2
  */
 
 class Timeline_Express_Compat {
@@ -19,7 +19,7 @@ class Timeline_Express_Compat {
 	/**
 	 * Include our compatibility files.
 	 *
-	 * @since NEXT
+	 * @since 1.5.2
 	 */
 	public function include_compat_files() {
 

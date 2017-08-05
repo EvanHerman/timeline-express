@@ -4,14 +4,14 @@
  * @source https://wordpress.org/plugins/qtranslate-x/
  * @reference https://wordpress.org/support/topic/multilang-issue/
  *
- * @since NEXT
+ * @since 1.5.2
  */
 
 /**
  * Clear Timeline Express cache on qtranslate pages.
  * Delete the cache when qtranslate is used to translate Timeline Express.
  *
- * @since NEXT
+ * @since 1.5.2
  */
 function timeline_express_qtranslate_bust_cache() {
 
