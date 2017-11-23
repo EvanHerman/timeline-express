@@ -132,7 +132,7 @@ module.exports = function( grunt ) {
 						expand: true,
 						src: [
 							'constants.php',
-							'i18n/**',
+							'i18n/**/*.mo',
 							'lib/**',
 							'templates/**',
 							'readme.txt',
