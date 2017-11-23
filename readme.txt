@@ -371,6 +371,9 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.5.3 - November, 2017 =
+- New: Updated translation files.
+
 = 1.5.2 - August, 2017 =
 - New: Introduced <a href="https://wordpress.org/plugins/qtranslate-x/">qtranslate-x</a> compatibility files. Timeline Express cache is cleared when using qtranslate, to ensure translations load properly.
 - Tweak: Remove shorthand array syntax [] to maintain backwards compatibility with PHP < 5.6.
