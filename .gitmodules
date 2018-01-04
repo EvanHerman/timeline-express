@@ -1,3 +1,4 @@
 [submodule "lib/admin/CMB2"]
 	path = lib/admin/CMB2
 	url = https://github.com/CMB2/CMB2.git
+	branch = trunk

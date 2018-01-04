@@ -371,6 +371,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.5.4 - January, 2018 =
+- Tweak: Single templates now inherit the active theme, to prevent strange templates when a theme does not support the single timeline layout. Users can define `TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE` constant to enable legacy templates. eg: `define( 'TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE', true );`.
+- Tweak: Removed the URL field for announcement banners - caused confusion believing that external images and YouTube/Vimeo videos could be used. (this is a pro feature)
+
 = 1.5.3 - November, 2017 =
 - New: Updated translation files.
 
