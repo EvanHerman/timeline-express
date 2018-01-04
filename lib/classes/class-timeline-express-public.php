@@ -106,9 +106,6 @@ class Timeline_Express_Public {
 			// Announcement Featured Image.
 			add_filter( 'get_post_metadata', array( $this, 'timeline_express_filter_featured_image' ), 10, 4 );
 
-			// Announcement Video Featured Image.
-			add_filter( 'post_thumbnail_html', array( $this, 'timeline_express_filter_featured_image_video' ), 10, 5 );
-
 			// Announcement Categories.
 			add_filter( 'the_category_list', array( $this, 'timeline_express_filter_categories' ), 10, 2 );
 
@@ -183,39 +180,6 @@ class Timeline_Express_Public {
 		}
 
 		return (int) get_post_meta( $post_id, 'announcement_image_id', true );
-
-	}
-
-	/**
-	 * Display the YouTube/Vimeo video in the featured image location.
-	 *
-	 * @param string       $html              The post thumbnail HTML.
-	 * @param int          $post_id           The post ID.
-	 * @param string       $post_thumbnail_id The post thumbnail ID.
-	 * @param string|array $size              The post thumbnail size. Image size or array of width and height
-	 *                                        values (in that order). Default 'post-thumbnail'.
-	 * @param string       $attr              Query string of attributes.
-	 *
-	 * @return mixed Markup for the video featured image.
-	 */
-	function timeline_express_filter_featured_image_video( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-
-		/**
-		 * PHP_INT_MAX === non-image featured image
-		 * eg: YouTube/Vimeo URL
-		 */
-		if ( PHP_INT_MAX !== $post_thumbnail_id ) {
-
-			return $html;
-
-		}
-
-		ob_start();
-		timeline_express_get_announcement_image( $post_id );
-		$image = ob_get_contents();
-		ob_get_clean();
-
-		return $image;
 
 	}
 
