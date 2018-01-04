@@ -88,6 +88,9 @@ $announcement_metabox->add_field(
 		'desc' => sprintf( esc_html( 'Select a banner image for this %s (optional). (recommended 650px wide or larger)', 'timeline-express' ), strtolower( $timeline_express_singular_name ) ),
 		'id'   => $prefix . 'image',
 		'type' => 'file',
+		'options' => array(
+			'url' => false, // Hide the text input for the url
+		),
 	)
 );
 
