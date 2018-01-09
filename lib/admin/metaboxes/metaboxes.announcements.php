@@ -196,18 +196,12 @@ if ( ! empty( $custom_fields ) ) {
 	foreach ( $custom_fields as $user_defined_field ) {
 
 		// Email text field
-		$announcement_metabox->add_field(
-			array(
-				'name' => $custom_fields[ $i ]['name'],
-				'desc' => $custom_fields[ $i ]['desc'],
-				'id'   => $custom_fields[ $i ]['id'],
-				'type' => $custom_fields[ $i ]['type'],
-			)
-		);
+		$announcement_metabox->add_field( $custom_fields[ $i ] );
 
 		$i++;
 
 	}
+
 }
 
 // Action hook to allow users to hook in and define new metaboxes
