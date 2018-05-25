@@ -276,10 +276,10 @@ class Timeline_Express_Initialize {
 
 		/* Set up the announcement arguments */
 		$announcement_args = array(
-			'post_type' => 'te_announcements',
-			'meta_key'   => 'announcement_date',
-			'orderby'    => 'meta_value_num',
-			'order'      => $display_order,
+			'post_type'      => 'te_announcements',
+			'meta_key'       => 'announcement_date',
+			'orderby'        => 'meta_value_num',
+			'order'          => $display_order,
 			'posts_per_page' => $shortcode_attributes['limit'],
 		);
 
@@ -290,7 +290,7 @@ class Timeline_Express_Initialize {
 				array(
 					'key'     => 'announcement_date',
 					'value'   => strtotime( current_time( 'm/d/Y' ) ),
-					'type' => 'NUMERIC',
+					'type'    => 'NUMERIC',
 					'compare' => $compare_sign,
 				),
 			);

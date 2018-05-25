@@ -42,8 +42,8 @@ class Timeline_Express_Public {
 		/* Parse the shortcode attributes */
 		$atts = shortcode_atts(
 			array(
-				'limit' => -1,
-				'order' => $options['announcement-display-order'],
+				'limit'   => -1,
+				'order'   => $options['announcement-display-order'],
 				'display' => $options['announcement-time-frame'],
 			), $atts, 'timeline-express'
 		);

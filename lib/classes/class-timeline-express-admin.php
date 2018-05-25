@@ -70,7 +70,7 @@ class Timeline_Express_Admin {
 		 */
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_timeline_express_admin_scripts_and_styles' ) );
 
-		add_action( 'wp_ajax_timeline_express_add_on_installer',  array( $this, 'timeline_express_add_on_installer' ) ); // Install add-on
+		add_action( 'wp_ajax_timeline_express_add_on_installer', array( $this, 'timeline_express_add_on_installer' ) ); // Install add-on
 		add_action( 'wp_ajax_timeline_express_add_on_activation', array( $this, 'timeline_express_add_on_activation' ) ); // Activate add-on
 
 	}
@@ -620,7 +620,7 @@ class Timeline_Express_Admin {
 		$api = plugins_api(
 			'plugin_information',
 			array(
-				'slug'  => $plugin,
+				'slug'   => $plugin,
 				'fields' => array(
 					'short_description' => false,
 					'sections'          => false,
@@ -759,7 +759,7 @@ class Timeline_Express_Admin {
 				activate_plugin( $main_plugin_file );
 
 				$status = 'success';
-				$msg = sprintf(
+				$msg    = sprintf(
 					/* translators: The name of the plugin. */
 					__( '%s successfully activated.', 'timeline-express' ),
 					esc_html( $api->name )
@@ -770,7 +770,7 @@ class Timeline_Express_Admin {
 		} else {
 
 			$status = 'failed';
-			$msg = sprintf(
+			$msg    = sprintf(
 				/* translators: The name of the plugin. */
 				__( 'There was an error activating %s.', 'timeline-express' ),
 				esc_html( $api->name )

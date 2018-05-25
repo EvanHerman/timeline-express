@@ -27,7 +27,7 @@ class Timeline_Express_Two_Weeks_Notice {
 		}
 
 		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
-		add_action( 'admin_init',    array( $this, 'dismiss_rating_notice' ), 10 );
+		add_action( 'admin_init', array( $this, 'dismiss_rating_notice' ), 10 );
 
 	}
 
