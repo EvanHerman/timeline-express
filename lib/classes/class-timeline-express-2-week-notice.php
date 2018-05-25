@@ -27,7 +27,7 @@ class Timeline_Express_Two_Weeks_Notice {
 		}
 
 		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
-		add_action( 'admin_init',    array( $this, 'dismiss_rating_notice' ), 10 );
+		add_action( 'admin_init', array( $this, 'dismiss_rating_notice' ), 10 );
 
 	}
 
@@ -57,7 +57,7 @@ class Timeline_Express_Two_Weeks_Notice {
 		if ( current_user_can( 'manage_options' ) ) {
 
 			printf(
-				'<div class="notice notice-info codeparrots-tracking-notice">
+				'<div class="notice notice-info codeparrots-2-week-notice">
 					<p>%s</p>
 				</div>',
 				wp_kses_post( $this->get_message() )
@@ -115,7 +115,7 @@ class Timeline_Express_Two_Weeks_Notice {
 					%7$s
 				</a>
 			</p>',
-			esc_html__( 'It looks like you have been using Timeline Express for 2 weeks now. If you are enjoying the plugin we would love it if you could leave us a 5 star review in the WordPress.org repsository!', 'timeline-express' ),
+			esc_html__( 'It looks like you have been using Timeline Express for two weeks now. If you are enjoying the plugin we would love it if you could leave us a 5 star review!', 'timeline-express' ),
 			esc_html__( 'Leave a Review', 'timeline-express' ),
 			esc_html__( 'Upgrade to Pro', 'timeline-express' ),
 			esc_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-addons' ) ),

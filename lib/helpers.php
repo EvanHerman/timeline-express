@@ -53,22 +53,22 @@ function timeline_express_get_options() {
 	return apply_filters(
 		'timeline_express_options', get_option(
 			TIMELINE_EXPRESS_OPTION, array(
-				'announcement-time-frame'                     => '1',
-				'announcement-display-order'                  => 'ASC',
-				'excerpt-trim-length'                         => 50,
-				'excerpt-random-length'                       => 0,
-				'date-visibility'                             => '1',
-				'read-more-visibility'                        => '1',
-				'default-announcement-icon'                   => 'exclamation-triangle',
-				'default-announcement-color'                  => '#75CE66',
-				'announcement-box-shadow-color'               => '#B9C5CD',
-				'announcement-background-line-color'          => '#D7E4ED',
-				'announcement-bg-color'                       => '#EFEFEF',
-				'no-events-message'                           => esc_html__( 'No announcements found', 'timeline-express' ),
-				'announcement-appear-in-searches'             => 'true',
-				'disable-animation'                           => 0,
+				'announcement-time-frame'            => '1',
+				'announcement-display-order'         => 'ASC',
+				'excerpt-trim-length'                => 50,
+				'excerpt-random-length'              => 0,
+				'date-visibility'                    => '1',
+				'read-more-visibility'               => '1',
+				'default-announcement-icon'          => 'exclamation-triangle',
+				'default-announcement-color'         => '#75CE66',
+				'announcement-box-shadow-color'      => '#B9C5CD',
+				'announcement-background-line-color' => '#D7E4ED',
+				'announcement-bg-color'              => '#EFEFEF',
+				'no-events-message'                  => esc_html__( 'No announcements found', 'timeline-express' ),
+				'announcement-appear-in-searches'    => 'true',
+				'disable-animation'                  => 0,
 				'delete-announcement-posts-on-uninstallation' => 0,
-				'version'                                     => TIMELINE_EXPRESS_VERSION_CURRENT,
+				'version'                            => TIMELINE_EXPRESS_VERSION_CURRENT,
 			)
 		)
 	);
@@ -172,24 +172,23 @@ function cmb2_validate_te_bootstrap_dropdown_callback( $override_value, $value )
  */
 function timeline_express_enqueue_font_awesome() {
 
-	$local_font_awesome = ( defined( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL' ) && TIMELINE_EXPRESS_FONT_AWESOME_LOCAL ) ? true : false;
+	$local_font_awesome = ( ! defined( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL' ) || ( defined( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL' ) && TIMELINE_EXPRESS_FONT_AWESOME_LOCAL ) ) ? true : false;
+
+	if ( $local_font_awesome ) {
+
+		/* If not, load the local version */
+		wp_enqueue_style( 'font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.min.css', array(), '4.7.0' );
+
+		return;
+
+	}
 
 	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.7.0' );
 
 	$http = ( is_ssl() ) ? 'https:' : 'http:';
 
-	/* Check if CDN is reachable, if so - get em' */
-	if ( ! $local_font_awesome && wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
-
-		/* Enqueue font awesome for use in column display */
-		wp_enqueue_style( 'font-awesome', $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css', array(), $font_awesome_version );
-
-	} else {
-
-		/* If not, load the local version */
-		wp_enqueue_style( 'font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.min.css', array(), $font_awesome_version );
-
-	}
+	/* Enqueue font awesome for use in column display */
+	wp_enqueue_style( 'font-awesome', $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css', array(), $font_awesome_version );
 
 }
 
@@ -300,7 +299,7 @@ function timeline_express_build_bootstrap_icon_dropdown( $field, $meta ) {
 		/* sort the bootstrap icons alphabetically */
 		foreach ( $icons as $icon_name => $icon_content ) { ?>
 
-			<option class="fa" data-icon="fa-<?php echo esc_attr( $icon_name ); ?>" <?php selected( 'fa-' . $icon_name , $meta ); ?>><?php echo esc_html( $icon_name ); ?></option>
+			<option class="fa" data-icon="fa-<?php echo esc_attr( $icon_name ); ?>" <?php selected( 'fa-' . $icon_name, $meta ); ?>><?php echo esc_html( $icon_name ); ?></option>
 
 		<?php } ?>
 
@@ -578,10 +577,10 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 		$img_src = ( is_integer( $image ) ) ? wp_get_attachment_image_url( $image, $image_size ) : $image;
 
 		$image_attributes = array(
-			'class'  => 'announcement-banner-image',
-			'src'    => esc_url( $img_src ),
-			'sizes'  => '(max-width: 100%) 75vw, 680px',
-			'alt'    => get_the_title(),
+			'class' => 'announcement-banner-image',
+			'src'   => esc_url( $img_src ),
+			'sizes' => '(max-width: 100%) 75vw, 680px',
+			'alt'   => get_the_title(),
 		);
 
 		$img_srcset = wp_get_attachment_image_srcset( get_post_meta( $post_id, 'announcement_image_id', true ), $image_size );

@@ -26,7 +26,7 @@
 
 [Timeline Express](https://www.wp-timelineexpress.com) is a WordPress plugin that creates a vertical animated, responsive timeline of posts, in chronological order.
 
-Timeline Express has been maintained for 2+ years, and remains the #1 WordPress Timeline Plugin on WordPress.org. While there have been a few copy cat plugins popping up recently, Timeline Express remains the most feature packed, top supported and top rated plugin timeline plugin for WordPress sites.
+Timeline Express has been maintained for 3+ years, and remains the #1 WordPress Timeline Plugin on WordPress.org. While there have been a few copy cat plugins popping up recently, Timeline Express remains the most feature packed, top supported and top rated plugin timeline plugin for WordPress sites.
 
 Timeline Express has grown to be more than just a simple timeline plugin, and can be extended for different use cases. For example, our Timeline Express Twitter Feeds Add-On converts a specified timeline into a twitter feed for a given user or search term.
 

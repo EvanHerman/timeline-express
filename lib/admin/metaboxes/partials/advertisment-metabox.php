@@ -7,12 +7,11 @@
  * @since 1.2
  */
 
-$ad_data = $field->args['ad_data'];
-
-$addon_title = $ad_data['title'];
-$addon_image = $ad_data['image'];
+$ad_data       = $field->args['ad_data'];
+$addon_title   = $ad_data['title'];
+$addon_image   = $ad_data['image'];
 $addon_content = ( ! empty( $ad_data['content'] ) ) ? $ad_data['content'] : false;
-$addon_url = $ad_data['url'];
+$addon_url     = $ad_data['url'];
 
 ?>
 

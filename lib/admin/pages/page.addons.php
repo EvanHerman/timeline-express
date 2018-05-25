@@ -32,8 +32,8 @@ wp_localize_script(
 		'admin_nonce'   => wp_create_nonce( 'timeline_express_add_on_install_nonce' ),
 		'install_now'   => __( 'Are you sure you want to install this add-on?', 'timeline-express' ),
 		'install_btn'   => __( 'Install' ), // core i18n
-	'activate_btn'  => __( 'Activate' ), // core i18n
-	'installed_btn' => __( 'Active', 'timeline-express' ),
+		'activate_btn'  => __( 'Activate' ), // core i18n
+		'installed_btn' => __( 'Active', 'timeline-express' ),
 	)
 );
 
@@ -49,10 +49,10 @@ $free_addons = array(
 		'popular' => true,
 	),
 	array(
-		'name'    => esc_html__( 'Timeline Express - Single Column', 'timeline-express' ),
+		'name' => esc_html__( 'Timeline Express - Single Column', 'timeline-express' ),
 	),
 	array(
-		'name'    => esc_html__( 'Timeline Express - No Icons', 'timeline-express' ),
+		'name' => esc_html__( 'Timeline Express - No Icons', 'timeline-express' ),
 	),
 );
 
@@ -124,11 +124,11 @@ usort( $premium_addons, 'compare_addon_names' );
 
 array_unshift(
 	$premium_addons, array(
-		'name'          => esc_html__( 'Timeline Express - Product Bundle', 'timeline-express' ),
+		'name'         => esc_html__( 'Timeline Express - Product Bundle', 'timeline-express' ),
 		/* translators: Integer value for the number of add-ons in the add-on list. (eg: 6) */
-		'description'   => sprintf( esc_html( "Get all %s of the Timeline Express add-ons for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'timeline-express' ), count( $premium_addons ) ),
-		'purchase_url'  => 'https://www.wp-timelineexpress.com/products/timeline-express-bundle/',
-		'popular'       => true,
+		'description'  => sprintf( esc_html( "Get all %s of the Timeline Express add-ons for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'timeline-express' ), count( $premium_addons ) ),
+		'purchase_url' => 'https://www.wp-timelineexpress.com/products/timeline-express-bundle/',
+		'popular'      => true,
 	)
 );
 
@@ -262,8 +262,8 @@ function timeline_express_build_addon_data( $data, $free = false ) {
 
 		$plugin_installed = array_key_exists( $plugin_file, $all_plugins );
 
-		$data['button_class']  = $plugin_installed ? ( is_plugin_active( $plugin_file ) ? 'button disabled' : 'activate button button-primary' ) : 'install button';
-		$data['button_text']   = $plugin_installed ? ( is_plugin_active( $plugin_file ) ? __( 'Active', 'timeline-express' ) : __( 'Activate', 'timeline-express' ) ) : __( 'Install' );
+		$data['button_class'] = $plugin_installed ? ( is_plugin_active( $plugin_file ) ? 'button disabled' : 'activate button button-primary' ) : 'install button';
+		$data['button_text']  = $plugin_installed ? ( is_plugin_active( $plugin_file ) ? __( 'Active', 'timeline-express' ) : __( 'Activate', 'timeline-express' ) ) : __( 'Install' );
 
 		$data['description'] = $api['short_description'];
 
@@ -310,26 +310,26 @@ function timeline_express_render_addon( $addon, $free = false ) {
 	 * @var array
 	 */
 	$plugins_allowedtags = array(
-		'a' => array(
+		'a'       => array(
 			'href'   => array(),
 			'title'  => array(),
 			'target' => array(),
 		),
-		'abbr' => array(
+		'abbr'    => array(
 			'title' => array(),
 		),
 		'acronym' => array(
 			'title' => array(),
 		),
-		'code'   => array(),
-		'pre'    => array(),
-		'em'     => array(),
-		'strong' => array(),
-		'ul'     => array(),
-		'ol'     => array(),
-		'li'     => array(),
-		'p'      => array(),
-		'br'     => array(),
+		'code'    => array(),
+		'pre'     => array(),
+		'em'      => array(),
+		'strong'  => array(),
+		'ul'      => array(),
+		'ol'      => array(),
+		'li'      => array(),
+		'p'       => array(),
+		'br'      => array(),
 	);
 
 	$link   = isset( $addon['purchase_url'] ) ? $addon['purchase_url'] : '#';
