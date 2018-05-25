@@ -12,10 +12,10 @@ $current_options = timeline_express_get_options();
 
 // Setup the options for our WYSIWYG editors for the optin messages.
 $additional_editor_parameters = array(
-	'textarea_name' => 'timeline_express_storage[no-events-message]',
-	'teeny' => true,
-	'textarea_rows' => 15,
-	'tabindex' => 1,
+	'textarea_name'    => 'timeline_express_storage[no-events-message]',
+	'teeny'            => true,
+	'textarea_rows'    => 15,
+	'tabindex'         => 1,
 	'drag_drop_upload' => true,
 );
 
@@ -108,7 +108,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 															<?php esc_html_e( 'All (Past & Future)', 'timeline-express' ); ?>
 														</option>
 														<option value="2" <?php selected( $current_options['announcement-time-frame'], '2' ); ?>>
-															<?php esc_html_e( 'Past','timeline-express' ); ?>
+															<?php esc_html_e( 'Past', 'timeline-express' ); ?>
 														</option>
 													</select>
 													<p class="description">
@@ -185,7 +185,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 														?>
 													</p>
 													<p class="description">
-														 <code><?php esc_html_e( 'Minimum Length: 25; 50 = 50 character excerpt length.', 'timeline-express' ); ?></code>
+														<code><?php esc_html_e( 'Minimum Length: 25; 50 = 50 character excerpt length.', 'timeline-express' ); ?></code>
 													</p>
 												</td>
 											</tr>
@@ -224,10 +224,10 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 												</th>
 												<td>
 													<select name="timeline_express_storage[read-more-visibility]" id="read-more-visibility" class="regular-text" />
-														<option value="1" <?php selected( $current_options['read-more-visibility'] , '1' ); ?>>
+														<option value="1" <?php selected( $current_options['read-more-visibility'], '1' ); ?>>
 															<?php esc_html_e( 'Visible', 'timeline-express' ); ?>
 														</option>
-														<option value="0" <?php selected( $current_options['read-more-visibility'] , '0' ); ?>>
+														<option value="0" <?php selected( $current_options['read-more-visibility'], '0' ); ?>>
 															<?php esc_html_e( 'Hidden', 'timeline-express' ); ?>
 														</option>
 													</select>
@@ -421,7 +421,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 													</label>
 												</th>
 												<td>
-													<input type="checkbox" name="timeline_express_storage[disable-animation]" <?php if ( isset( $current_options['disable-animation'] ) ) { checked( $current_options['disable-animation'] , '1' ); } ?> value="1" />
+													<input type="checkbox" name="timeline_express_storage[disable-animation]" <?php if ( isset( $current_options['disable-animation'] ) ) { checked( $current_options['disable-animation'], '1' ); } ?> value="1" />
 													<p class="description">
 														<?php esc_html_e( 'Check this option off to disable the timeline animations while scrolling.', 'timeline-express' ); ?>
 													</p>
@@ -439,8 +439,8 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 													</label>
 												</th>
 												<td>
-													<input type="checkbox" name="timeline_express_storage[delete-announcement-posts-on-uninstallation]" onclick="toggleDeleteCheckClass();" <?php checked( $current_options['delete-announcement-posts-on-uninstallation'] , '1' ); ?> value="1" />
-													<span class="<?php if ( '0' === $current_options['delete-announcement-posts-on-uninstallation'] ) { ?> delete-no <?php } else { ?> delete-yes <?php } ?>" onclick="toggle_delete_checkbox();"></span>
+													<input type="checkbox" name="timeline_express_storage[delete-announcement-posts-on-uninstallation]" onclick="toggleDeleteCheckClass();" <?php checked( $current_options['delete-announcement-posts-on-uninstallation'], '1' ); ?> value="1" />
+													<span class="delete-yes"></span>
 													<p class="description">
 														<?php
 															/* translators: Timeline Express plural name (eg: announcements) */
@@ -449,6 +449,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 													</p>
 												</td>
 											</tr>
+
 											<!-- Submit Button -->
 											<tr>
 												<td></td>
@@ -554,6 +555,52 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 							<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank" class="button-secondary">
 								<?php esc_html_e( 'Documentation', 'timeline-express' ); ?>
 							</a>
+						</div>
+						<!-- .inside -->
+					</div>
+					<!-- .postbox -->
+
+					<!-- Documentation Metabox -->
+					<div class="postbox">
+						<h2 style="text-align:center;">
+							<span>
+								<?php esc_html_e( 'Flush Cached Data', 'timeline-express' ); ?>
+							</span>
+						</h2>
+
+						<div class="inside">
+							<p><?php esc_html_e(
+								'Flush all cached Timeline Express data. This will reset any cached data so your timelines will update on the front of site. If you notice your timelines are not up to date, try clearing the cache below.',
+								'timeline-express'
+							); ?></p>
+
+							<?php
+							global $wpdb;
+
+							// Query the database for all transients with the text 'timeline-express-query'
+							$results = $wpdb->get_results(
+								$wpdb->prepare(
+									"SELECT * from `{$wpdb->prefix}options` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( 'timeline-express-query' ) . '%'
+								)
+							);
+
+							$class = '';
+
+							if ( ! $results || empty( $results ) ) {
+
+								$class = 'disabled';
+
+							}
+
+							printf(
+								'<a href="%s" class="button button-secondary %s widefat" style="text-align: center;" name="">%s</a>',
+								wp_nonce_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ), 'flush_cache' ),
+								esc_attr( $class ),
+								esc_html__( 'Flush Cache', 'timeline-express' )
+							);
+
+							?>
+
 						</div>
 						<!-- .inside -->
 					</div>
