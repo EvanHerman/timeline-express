@@ -440,7 +440,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 												</th>
 												<td>
 													<input type="checkbox" name="timeline_express_storage[delete-announcement-posts-on-uninstallation]" onclick="toggleDeleteCheckClass();" <?php checked( $current_options['delete-announcement-posts-on-uninstallation'] , '1' ); ?> value="1" />
-													<span class="<?php if ( '0' === $current_options['delete-announcement-posts-on-uninstallation'] ) { ?> delete-no <?php } else { ?> delete-yes <?php } ?>" onclick="toggle_delete_checkbox();"></span>
+													<span class="delete-yes"></span>
 													<p class="description">
 														<?php
 															/* translators: Timeline Express plural name (eg: announcements) */
@@ -449,6 +449,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 													</p>
 												</td>
 											</tr>
+
 											<!-- Submit Button -->
 											<tr>
 												<td></td>
@@ -554,6 +555,52 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 							<a href="https://www.wp-timelineexpress.com/documentation/" target="_blank" class="button-secondary">
 								<?php esc_html_e( 'Documentation', 'timeline-express' ); ?>
 							</a>
+						</div>
+						<!-- .inside -->
+					</div>
+					<!-- .postbox -->
+
+					<!-- Documentation Metabox -->
+					<div class="postbox">
+						<h2 style="text-align:center;">
+							<span>
+								<?php esc_html_e( 'Flush Cached Data', 'timeline-express' ); ?>
+							</span>
+						</h2>
+
+						<div class="inside">
+							<p><?php esc_html_e(
+								'Flush all cached Timeline Express data. This will reset any cached data so your timelines will update on the front of site. If you notice your timelines are not up to date, try clearing the cache below.',
+								'timeline-express'
+							); ?></p>
+
+							<?php
+							global $wpdb;
+
+							// Query the database for all transients with the text 'timeline-express-query'
+							$results = $wpdb->get_results(
+								$wpdb->prepare(
+									"SELECT * from `{$wpdb->prefix}options` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( 'timeline-express-query' ) . '%'
+								)
+							);
+
+							$class = '';
+
+							if ( ! $results || empty( $results ) ) {
+
+								$class = 'disabled';
+
+							}
+
+							printf(
+								'<a href="%s" class="button button-secondary %s widefat" style="text-align: center;" name="">%s</a>',
+								wp_nonce_url( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings' ), 'flush_cache' ),
+								esc_attr( $class ),
+								esc_html__( 'Flush Cache', 'timeline-express' )
+							);
+
+							?>
+
 						</div>
 						<!-- .inside -->
 					</div>

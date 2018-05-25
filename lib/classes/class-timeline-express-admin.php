@@ -16,14 +16,6 @@ class Timeline_Express_Admin {
 	 */
 	public function __construct() {
 
-		if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
-
-			include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/usage-tracking/class-wp-plugin-usage-tracker.php' );
-
-			new WP_Plugin_Usage_Tracker;
-
-		}
-
 		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express-2-week-notice.php' );
 
 		new Timeline_Express_Two_Weeks_Notice;
@@ -54,6 +46,9 @@ class Timeline_Express_Admin {
 
 		/* Add our announcement met adata to the REST API */
 		add_action( 'rest_api_init', array( $this, 'timeline_express_rest_api' ) );
+
+		/* Flush the transients when the button is pressed */
+		add_action( 'admin_init', array( $this, 'timeline_express_flush_cache' ) );
 
 		/**
 		 * Include CMB2 - Metabox Framework
@@ -226,28 +221,44 @@ class Timeline_Express_Admin {
 
 		}
 
-		// store the current URL
-		$current_url = admin_url( add_query_arg( null, null ) );
-
-		$split_url = wp_parse_args( $current_url );
+		$settings_updated = filter_input( INPUT_GET, 'settings-updated', FILTER_SANITIZE_STRING );
 
 		// When the settings were not updated, or it isn't set to true, abort
-		if ( ! isset( $split_url['settings-updated'] ) || 'true' !== $split_url['settings-updated'] ) {
+		if ( $settings_updated && 'true' === $settings_updated ) {
 
-			return;
+			?>
+
+			<div class="notice notice-success">
+
+				<p>
+					<span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Timeline Express settings saved successfully!', 'timeline-express' ); ?>
+				</p>
+
+			</div>
+
+			<?php
 
 		}
 
-		?>
-		<div class="notice notice-success">
+		$cache_flushed = filter_input( INPUT_GET, 'cache_flushed', FILTER_SANITIZE_STRING );
 
-			<p>
-				<span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Timeline Express settings saved successfully!', 'timeline-express' ); ?>
-			</p>
+		// When the settings were not updated, or it isn't set to true, abort
+		if ( $cache_flushed && 'true' === $cache_flushed ) {
 
-		</div>
+			?>
 
-		<?php
+			<div class="notice notice-success">
+
+				<p>
+					<span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Timeline Express cache flushed.', 'timeline-express' ); ?>
+				</p>
+
+			</div>
+
+			<?php
+
+		}
+
 	}
 
 	/**
@@ -392,6 +403,29 @@ class Timeline_Express_Admin {
 
 		// delete all transients
 		delete_timeline_express_transients();
+
+	}
+
+	/**
+	 * Process the cache flush button press.
+	 *
+	 * @since 1.6.1
+	 */
+	public function timeline_express_flush_cache() {
+
+		$nonce = filter_input( INPUT_GET, '_wpnonce', FILTER_SANITIZE_STRING );
+
+		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'flush_cache' ) ) {
+
+			return;
+
+		}
+
+		delete_timeline_express_transients();
+
+		wp_safe_redirect( admin_url( 'edit.php?post_type=te_announcements&page=timeline-express-settings&cache_flushed=true' ), 200 );
+
+		exit;
 
 	}
 

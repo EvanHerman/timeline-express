@@ -172,24 +172,23 @@ function cmb2_validate_te_bootstrap_dropdown_callback( $override_value, $value )
  */
 function timeline_express_enqueue_font_awesome() {
 
-	$local_font_awesome = ( defined( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL' ) && TIMELINE_EXPRESS_FONT_AWESOME_LOCAL ) ? true : false;
+	$local_font_awesome = ( ! defined( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL' ) || ( defined( 'TIMELINE_EXPRESS_FONT_AWESOME_LOCAL' ) && TIMELINE_EXPRESS_FONT_AWESOME_LOCAL ) ) ? true : false;
+
+	if ( $local_font_awesome ) {
+
+		/* If not, load the local version */
+		wp_enqueue_style( 'font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.min.css', array(), '4.7.0' );
+
+		return;
+
+	}
 
 	$font_awesome_version = apply_filters( 'timeline_express_font_awesome_version', '4.7.0' );
 
 	$http = ( is_ssl() ) ? 'https:' : 'http:';
 
-	/* Check if CDN is reachable, if so - get em' */
-	if ( ! $local_font_awesome && wp_remote_get( $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.css' ) ) {
-
-		/* Enqueue font awesome for use in column display */
-		wp_enqueue_style( 'font-awesome', $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css', array(), $font_awesome_version );
-
-	} else {
-
-		/* If not, load the local version */
-		wp_enqueue_style( 'font-awesome', TIMELINE_EXPRESS_URL . 'lib/icons/css/font-awesome.min.css', array(), $font_awesome_version );
-
-	}
+	/* Enqueue font awesome for use in column display */
+	wp_enqueue_style( 'font-awesome', $http . '//netdna.bootstrapcdn.com/font-awesome/' . $font_awesome_version . '/css/font-awesome.min.css', array(), $font_awesome_version );
 
 }
 
