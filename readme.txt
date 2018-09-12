@@ -371,8 +371,20 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.5.4 - January, 2018 =
-- Tweak: Single templates now inherit the active theme, to prevent strange templates when a theme does not support the single timeline layout. Users can define `TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE` constant to enable legacy templates. eg: `define( 'TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE', true );`.
+= 1.7.1 - September, 2018 =
+- Tweak: Add class `year-icon` to the announcement container when `TIMELINE_EXPRESS_YEAR_ICONS` is defined and true.
+- Tweak: Tweak admin table announcement image thumbnail height.
+- Tweak: Resolve PHP warnings on add-ons page.
+
+= 1.7.0 - May, 2018 =
+- Tweak: GDPR updates.
+- Tweak: Add flush cache data button on settings page.
+- Tweak: Now font awesome is loaded locally first, users can override to load from CDN.
+- Tweak: User tracking class has been removed.
+- Tweak: Tweak 2 week admin notice.
+
+= 1.6.0 - January, 2018 =
+- New: Single templates now inherit the active theme, to prevent strange templates when a theme does not support the single timeline layout. Users can define `TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE` constant to enable legacy templates. eg: `define( 'TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE', true );`.
 - Tweak: Removed the URL field for announcement banners - caused confusion believing that external images and YouTube/Vimeo videos could be used. (this is a pro feature)
 
 = 1.5.3 - November, 2017 =
