@@ -129,6 +129,7 @@ array_unshift(
 		'description'  => sprintf( esc_html( "Get all %s of the Timeline Express add-ons for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'timeline-express' ), count( $premium_addons ) ),
 		'purchase_url' => 'https://www.wp-timelineexpress.com/products/timeline-express-bundle/',
 		'popular'      => true,
+		'author'       => '<a href="http://www.codeparrots.com">Code Parrots</a>',
 	)
 );
 
@@ -333,7 +334,7 @@ function timeline_express_render_addon( $addon, $free = false ) {
 	);
 
 	$link   = isset( $addon['purchase_url'] ) ? $addon['purchase_url'] : '#';
-	$target = $addon['external_url'] ? 'target="_blank"' : '';
+	$target = isset( $addon['external_url'] ) ? 'target="_blank"' : '';
 
 	?>
 
