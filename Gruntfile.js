@@ -162,7 +162,7 @@ module.exports = function( grunt ) {
 
 		watch: {
 			admin_css: {
-				files: [ 'lib/admin/css/*.css, ! lib/admin/css/*.min.css' ],
+				files: [ 'lib/admin/css/*.css', '!lib/admin/css/min/*.min.css' ],
 				tasks: [ 'cssmin', 'watch-banner' ],
 				options: {
 					spawn: false,
@@ -170,7 +170,7 @@ module.exports = function( grunt ) {
 				}
 			},
 			admin_js: {
-				files: [ 'lib/admin/js/*.js', 'lib/admin/js/*.min.js' ],
+				files: [ 'lib/admin/js/*.js', '!lib/admin/js/min/*.min.js' ],
 				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
@@ -178,7 +178,7 @@ module.exports = function( grunt ) {
 				}
 			},
 			public_css: {
-				files: [ 'lib/public/css/*.css', '! lib/public/css/*.min.css' ],
+				files: [ 'lib/public/css/*.css', '!lib/public/css/min/*.min.css' ],
 				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
@@ -186,7 +186,7 @@ module.exports = function( grunt ) {
 				}
 			},
 			public_js: {
-				files: [ 'lib/public/js/*.js', '! lib/public/js/*.min.js' ],
+				files: [ 'lib/public/js/*.js', '!lib/public/js/min/*.min.js' ],
 				tasks: [ 'watch-banner' ],
 				options: {
 					spawn: false,
@@ -456,23 +456,7 @@ module.exports = function( grunt ) {
 
 	} );
 
-	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
-	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
-	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-banner' );
-	grunt.loadNpmTasks( 'grunt-contrib-copy' );
-	grunt.loadNpmTasks( 'grunt-postcss' );
-	grunt.loadNpmTasks( 'grunt-cssjanus' );
-	grunt.loadNpmTasks( 'grunt-wp-i18n' );
-	grunt.loadNpmTasks( 'grunt-po2mo' );
-	grunt.loadNpmTasks( 'grunt-prompt' );
-	grunt.loadNpmTasks( 'grunt-shell' );
-	grunt.loadNpmTasks( 'grunt-bump' );
-	grunt.loadNpmTasks( 'grunt-text-replace' );
-	grunt.loadNpmTasks( 'grunt-wp-deploy' );
-	grunt.loadNpmTasks( 'grunt-contrib-clean' );
-	grunt.loadNpmTasks( 'grunt-contrib-compress' );
-	grunt.loadNpmTasks( 'grunt-menu' );
+	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
 	grunt.registerTask( 'default', [ 'menu' ] );
 

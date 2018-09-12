@@ -365,6 +365,12 @@ class Timeline_Express_Initialize {
 
 		}
 
+		if ( defined( 'TIMELINE_EXPRESS_YEAR_ICONS' ) && TIMELINE_EXPRESS_YEAR_ICONS ) {
+
+			$container_classes[] = 'year-icon';
+
+		}
+
 		// return the array
 		return implode( ' ', $container_classes );
 

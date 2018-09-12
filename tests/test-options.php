@@ -13,16 +13,13 @@ class TE_Options_Test extends WP_UnitTestCase {
 	/**
 	 * Test out our options save and return expected valies.
 	 */
-	public function __construct() {
+	public function setUp() {
+		parent::setUp();
 		// Store our options
 		$this->options = timeline_express_get_options();
 		// Include the base class
 		include_once( TIMELINE_EXPRESS_PATH . 'lib/classes/class-timeline-express.php' );
 		$this->base_class = new TimelineExpressBase();
-	}
-
-	public function setUp() {
-		parent::setUp();
 	}
 
 	public function tearDown() {
