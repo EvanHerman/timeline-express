@@ -37,7 +37,7 @@ module.exports = function( grunt ) {
 
 		postcss: {
 			options: {
-				map: true,
+				map: false,
 				processors: [
 					require( 'autoprefixer-core' ) ( {
 						browsers: [ 'last 2 versions' ]
