@@ -560,6 +560,41 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 					</div>
 					<!-- .postbox -->
 
+					<!-- Toggle built-in caching -->
+					<div class="postbox">
+						<h2 style="text-align:center;">
+							<span>
+								<?php esc_html_e( 'Toggle Built-in Caching', 'timeline-express' ); ?>
+							</span>
+						</h2>
+
+						<div class="inside">
+							<p><?php esc_html_e(
+								'Timeline Express has a number of caching mechanisms built into the plugin to lessen the impact on load times of your site. When disabled, all cached data will be ignored and fresh data will be retreived on each new page load.',
+								'timeline-express'
+							); ?></p>
+
+							<?php
+
+							$cache_enabled       = get_option( 'timeline_express_cache_enabled', 1 );
+							$cache_enabled_label = $cache_enabled ? __( 'Cache is enabled.', 'timeline-express-pro' ) : __( 'Cache is disabled.', 'timeline-express-pro' );
+							$checked_attr        = $cache_enabled ? 'checked' : '';
+
+							?>
+
+							<div class="toggle-cache">
+								<div class="pretty p-switch p-fill">
+									<input class="timeline-express-toggle-cache" type="checkbox" <?php echo esc_attr( $checked_attr ); ?> />
+									<div class="state">
+										<label><?php echo esc_html( $cache_enabled_label ); ?></label>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!-- /toggle built-in caching -->
+
 					<!-- Documentation Metabox -->
 					<div class="postbox">
 						<h2 style="text-align:center;">
