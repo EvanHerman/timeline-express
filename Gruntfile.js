@@ -18,6 +18,7 @@ module.exports = function( grunt ) {
 			dist: {
 				files: {
 					'lib/admin/js/min/timeline-express-admin.min.js': [
+						'lib/admin/js/timeline-express-settings.js',
 						'lib/admin/js/bootstrap-select.js',
 						'lib/admin/js/script.options-color-picker-custom.js'
 					],
@@ -36,7 +37,7 @@ module.exports = function( grunt ) {
 
 		postcss: {
 			options: {
-				map: true,
+				map: false,
 				processors: [
 					require( 'autoprefixer-core' ) ( {
 						browsers: [ 'last 2 versions' ]

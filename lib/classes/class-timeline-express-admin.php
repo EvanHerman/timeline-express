@@ -73,6 +73,8 @@ class Timeline_Express_Admin {
 		add_action( 'wp_ajax_timeline_express_add_on_installer', array( $this, 'timeline_express_add_on_installer' ) ); // Install add-on
 		add_action( 'wp_ajax_timeline_express_add_on_activation', array( $this, 'timeline_express_add_on_activation' ) ); // Activate add-on
 
+		add_action( 'wp_ajax_timeline_express_toggle_cache', array( $this, 'toggle_cache' ) );
+
 	}
 
 	/**
@@ -552,11 +554,30 @@ class Timeline_Express_Admin {
 
 			/*
 			 * Enqueue bootstrap select/styles
-			 * Note: Minified .js file includes -
+			 * Note: Minified .js file includes
+			 * lib/admin/js/timeline-express-settings.js
 			 * admin/js/bootstrap-select.js
 			 * admin/js/script.options-color-picker-custom.js
 			 */
 			wp_enqueue_script( 'timeline-express-admin-js', TIMELINE_EXPRESS_URL . 'lib/admin/js/min/timeline-express-admin.min.js', array( 'jquery' ), TIMELINE_EXPRESS_VERSION_CURRENT, true );
+
+			wp_localize_script(
+				'timeline-express-admin-js',
+				'timelineExpressSettings',
+				array(
+					'siwtchLabels' => array(
+						'default'     => array(
+							'enabled'  => __( 'Enabled.', 'timeline-express' ),
+							'disabled' => __( 'Disabled.', 'timeline-express' ),
+						),
+						'toggleCache' => array(
+							'enabled'  => __( 'Cache is enabled.', 'timeline-express' ),
+							'disabled' => __( 'Cache is disabled.', 'timeline-express' ),
+						),
+					),
+				)
+			);
+
 			wp_enqueue_script( 'bootstrap-min', TIMELINE_EXPRESS_URL . 'lib/admin/js/min/bootstrap.min.js' );
 			wp_enqueue_style( 'bootstrap-select-style', TIMELINE_EXPRESS_URL . 'lib/admin/css/min/bootstrap-select.min.css' );
 
@@ -784,6 +805,23 @@ class Timeline_Express_Admin {
 		);
 
 		wp_send_json( $json );
+
+	}
+
+	/**
+	 * Toggle the cache state via AJAX request.
+	 * Note: Fires when the switch in the 'Flush Cached Data' checkbox is toggled.
+	 *
+	 * @return null
+	 */
+	public function toggle_cache() {
+
+		$cache_enabled = filter_input( INPUT_POST, 'cacheEnabled', FILTER_SANITIZE_STRING );
+		$cache_enabled = ( 'true' === $cache_enabled ) ? 1 : 0;
+
+		update_option( 'timeline_express_cache_enabled', $cache_enabled );
+
+		wp_send_json_success( $cache_enabled );
 
 	}
 
