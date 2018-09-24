@@ -59,6 +59,8 @@ class Timeline_Express_Initialize {
 		/* Add Custom Classes to the announcment container */
 		add_filter( 'timeline-express-announcement-container-class', array( $this, 'timeline_express_announcement_container_classes' ), 10, 2 );
 
+		add_filter( 'timeline_express_disable_cache', array( $this, 'disable_cache' ) );
+
 	}
 
 	/**
@@ -94,11 +96,18 @@ class Timeline_Express_Initialize {
 		$announcement_query = get_transient( 'timeline-express-query-' . $transient_suffix );
 
 		/**
+		 * Allow users to bypass the Timeline caching
+		 *
+		 * @var boolean
+		 */
+		$disable_cache = (bool) apply_filters( 'timeline_express_disable_cache', false );
+
+		/**
 		 * Check if our transient is present, and use that
 		 * if not, re-run our query and setup the transient
 		 * @since 1.2
 		 */
-		if ( ! $announcement_query ) {
+		if ( false === $announcement_query || $disable_cache || WP_DEBUG ) {
 
 			/* Setup the announcement args */
 			$announcement_args = apply_filters( 'timeline_express_announcement_query_args', self::timeline_express_query_args( $compare_sign, $atts['order'], $atts ), $post, $atts );
@@ -373,6 +382,19 @@ class Timeline_Express_Initialize {
 
 		// return the array
 		return implode( ' ', $container_classes );
+
+	}
+
+	/**
+	 * Disable the cache when the option is set to 0
+	 *
+	 * @since 2.2.5
+	 *
+	 * @return boolean True when cache is disabled, else false.
+	 */
+	public function disable_cache() {
+
+		return ( '0' === get_option( 'timeline_express_cache_enabled', 1 ) );
 
 	}
 }
