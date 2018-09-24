@@ -371,7 +371,12 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
-= 1.7.1 - September, 2018 =
+= 1.7.2 - September 24th, 2018 =
+- New: Introduce a method for toggling on/off the built-in caching. This new toggle is in the sidebar on the Timeline Express settings page.
+- New: Introduce timeline_express_disable_cache filter to disable caching.
+- New: Add functionality to disable cache when timeline_express_disable_cache is true, or when WP_DEBUG is true.
+
+= 1.7.1 - September 12th, 2018 =
 - Tweak: Add class `year-icon` to the announcement container when `TIMELINE_EXPRESS_YEAR_ICONS` is defined and true.
 - Tweak: Tweak admin table announcement image thumbnail height.
 - Tweak: Resolve PHP warnings on add-ons page.
