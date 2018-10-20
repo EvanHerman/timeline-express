@@ -317,3 +317,7 @@
 	}
 
 }
+
+body.single-te_announcements .entry-meta {
+	display: inline-block;
+}
