@@ -103,7 +103,7 @@ class Timeline_Express_Initialize {
 		 *
 		 * @since 2.2.6
 		 */
-		$transient_name = (string) apply_filters( 'timeline_express_transient_name', $transient_suffix, $post->ID, $shortcode_iteration );
+		$transient_name = (string) apply_filters( 'timeline_express_transient_name', $transient_suffix, ( isset( $post->ID ) ? $post->ID : '' ), $shortcode_iteration );
 
 		$announcement_query = get_transient( 'timeline-express-query-' . $transient_name );
 
