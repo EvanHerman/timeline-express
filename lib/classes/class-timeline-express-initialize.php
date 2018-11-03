@@ -93,7 +93,19 @@ class Timeline_Express_Initialize {
 		/* Setup the transient suffix */
 		$transient_suffix = ( isset( $post->ID ) ? $post->ID : '' ) . $shortcode_iteration;
 
-		$announcement_query = get_transient( 'timeline-express-query-' . $transient_suffix );
+		/**
+		 * Filter the transient name for this page
+		 *
+		 * @param integer|string $post->ID            Post ID if found, else empy string
+		 * @param integer        $shortcode_iteration The timeline number being displayed (1, 2, 3 etc.)
+		 *
+		 * @var string Filtered Timeline Express transient name
+		 *
+		 * @since 2.2.6
+		 */
+		$transient_name = (string) apply_filters( 'timeline_express_transient_name', $transient_suffix, ( isset( $post->ID ) ? $post->ID : '' ), $shortcode_iteration );
+
+		$announcement_query = get_transient( 'timeline-express-query-' . $transient_name );
 
 		/**
 		 * Allow users to bypass the Timeline caching
