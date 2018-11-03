@@ -371,6 +371,12 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.7.3 - November 3rd, 2018 =
+- New: Introduce support for new Timeline Express - This Day in History Add-On and Timeline Express - Sliders Add-On.
+- New: Introduce timeline_express_transient_name filter to customize the transient name
+- New: Introduce JavaScript events during specific points of execution: timelineLayoutStart, timelineLayoutComplete
+- Tweak: Adjust CSS styles on certain elements on the timeline.
+
 = 1.7.2 - September 24th, 2018 =
 - New: Introduce a method for toggling on/off the built-in caching. This new toggle is in the sidebar on the Timeline Express settings page.
 - New: Introduce timeline_express_disable_cache filter to disable caching.
