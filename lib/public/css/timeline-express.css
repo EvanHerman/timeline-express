@@ -35,6 +35,7 @@
 .cd-timeline-content .timeline-express-read-more-link {
 	position: relative;
 	z-index: 10;
+	display: block;
 }
 
 .cd-timeline-content .the-excerpt p {
@@ -315,4 +316,8 @@
 		animation: te-slide-in-right .6s;
 	}
 
+}
+
+body.single-te_announcements .entry-meta {
+	display: inline-block;
 }

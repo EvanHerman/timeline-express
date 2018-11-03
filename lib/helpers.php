@@ -563,9 +563,25 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 
 	}
 
-	$image = ( get_post_meta( $post_id, 'announcement_image_id', true ) ) ? (int) get_post_meta( $post_id, 'announcement_image_id', true ) : get_post_meta( $post_id, 'announcement_image', true );
+	/**
+	 * Filter the announcement image, allow users to set this to false to short circuit the announcement image.
+	 *
+	 * @var bool|string
+	 */
+	$image = apply_filters( 'timeline-express-announcement-img', ( get_post_meta( $post_id, 'announcement_image_id', true ) ) ? (int) get_post_meta( $post_id, 'announcement_image_id', true ) : get_post_meta( $post_id, 'announcement_image', true ), $post_id );
 
-	$image_size = apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id );
+	if ( empty( $image ) ) {
+
+		return;
+
+	}
+
+	/**
+	 * Filter the announcement image size
+	 *
+	 * @var string
+	 */
+	$image_size = (string) apply_filters( 'timeline-express-announcement-img-size', $image_size, $post_id );
 
 	/**
 	* If on a single page announcement, return the srcset image - for proper responsive images
