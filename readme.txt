@@ -372,34 +372,35 @@ The above example will load font awesome version 4.4.0 instead of the current st
 == Changelog ==
 
 = 1.7.3 - November 3rd, 2018 =
-- New: Introduce support for new Timeline Express - This Day in History Add-On and Timeline Express - Sliders Add-On.
-- New: Introduce timeline_express_transient_name filter to customize the transient name
-- New: Introduce JavaScript events during specific points of execution: timelineLayoutStart, timelineLayoutComplete
-- Tweak: Adjust CSS styles on certain elements on the timeline.
+- [View Changes](https://github.com/EvanHerman/timeline-express/pull/68)
+- **New:** Introduce support for new Timeline Express - This Day in History Add-On and Timeline Express - Sliders Add-On.
+- **New:** Introduce timeline_express_transient_name filter to customize the transient name
+- **New:** Introduce JavaScript events during specific points of execution: timelineLayoutStart, timelineLayoutComplete
+- **Tweak:** Adjust CSS styles on certain elements on the timeline.
 
 = 1.7.2 - September 24th, 2018 =
-- New: Introduce a method for toggling on/off the built-in caching. This new toggle is in the sidebar on the Timeline Express settings page.
-- New: Introduce timeline_express_disable_cache filter to disable caching.
-- New: Add functionality to disable cache when timeline_express_disable_cache is true, or when WP_DEBUG is true.
+- **New:** Introduce a method for toggling on/off the built-in caching. This new toggle is in the sidebar on the Timeline Express settings page.
+- **New:** Introduce timeline_express_disable_cache filter to disable caching.
+- **New:** Add functionality to disable cache when timeline_express_disable_cache is true, or when WP_DEBUG is true.
 
 = 1.7.1 - September 12th, 2018 =
-- Tweak: Add class `year-icon` to the announcement container when `TIMELINE_EXPRESS_YEAR_ICONS` is defined and true.
-- Tweak: Tweak admin table announcement image thumbnail height.
-- Tweak: Resolve PHP warnings on add-ons page.
+- **Tweak:** Add class `year-icon` to the announcement container when `TIMELINE_EXPRESS_YEAR_ICONS` is defined and true.
+- **Tweak:** Tweak admin table announcement image thumbnail height.
+- **Tweak:** Resolve PHP warnings on add-ons page.
 
 = 1.7.0 - May, 2018 =
-- Tweak: GDPR updates.
-- Tweak: Add flush cache data button on settings page.
-- Tweak: Now font awesome is loaded locally first, users can override to load from CDN.
-- Tweak: User tracking class has been removed.
-- Tweak: Tweak 2 week admin notice.
+- **Tweak:** GDPR updates.
+- **Tweak:** Add flush cache data button on settings page.
+- **Tweak:** Now font awesome is loaded locally first, users can override to load from CDN.
+- **Tweak:** User tracking class has been removed.
+- **Tweak:** Tweak 2 week admin notice.
 
 = 1.6.0 - January, 2018 =
-- New: Single templates now inherit the active theme, to prevent strange templates when a theme does not support the single timeline layout. Users can define `TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE` constant to enable legacy templates. eg: `define( 'TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE', true );`.
-- Tweak: Removed the URL field for announcement banners - caused confusion believing that external images and YouTube/Vimeo videos could be used. (this is a pro feature)
+- **New:** Single templates now inherit the active theme, to prevent strange templates when a theme does not support the single timeline layout. Users can define `TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE` constant to enable legacy templates. eg: `define( 'TIMELINE_EXPRESS_LEGACY_SINGLE_TEMPLATE', true );`.
+- **Tweak:** Removed the URL field for announcement banners - caused confusion believing that external images and YouTube/Vimeo videos could be used. (this is a pro feature)
 
 = 1.5.3 - November, 2017 =
-- New: Updated translation files.
+- **New:** Updated translation files.
 
 = 1.5.2 - August, 2017 =
 - New: Introduced <a href="https://wordpress.org/plugins/qtranslate-x/">qtranslate-x</a> compatibility files. Timeline Express cache is cleared when using qtranslate, to ensure translations load properly.
