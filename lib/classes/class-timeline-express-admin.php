@@ -833,7 +833,7 @@ class Timeline_Express_Admin {
 	 * @param  boolean $is_enabled Whether or not the block editor is enabled.
 	 * @param  string  $post_type  Post type name.
 	 *
-	 * @since 2.3.0
+	 * @since 1.7.4
 	 *
 	 * @return boolean False to disable the block editor
 	 */
