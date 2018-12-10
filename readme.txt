@@ -2,7 +2,7 @@
 Contributors: codeparrots, eherman24
 Tags: timeline, responsive, vertical, animated, company, history, font awesome, events, calendar, scroll, dates, milestone
 Requires at least: 4.0
-Tested up to: 4.9
+Tested up to: 5.0
 Stable tag: 1.7.3
 License: GPLv2 or later
 
