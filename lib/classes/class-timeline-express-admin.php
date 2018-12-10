@@ -75,7 +75,7 @@ class Timeline_Express_Admin {
 
 		add_action( 'wp_ajax_timeline_express_toggle_cache', array( $this, 'toggle_cache' ) );
 
-		dd_filter( 'use_block_editor_for_post_type', array( $this, 'disable_block_editor' ), 10, 2 );
+		add_filter( 'use_block_editor_for_post_type', array( $this, 'disable_block_editor' ), 10, 2 );
 
 	}
 
