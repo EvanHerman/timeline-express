@@ -371,6 +371,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.7.4 - December 10th, 2018 =
+- **New:** Disable the block editor for announcements.
+- **New:** Introduce new filters for better control over caching.
+
 = 1.7.3 - November 3rd, 2018 =
 - [View Changes](https://github.com/EvanHerman/timeline-express/pull/68)
 - **New:** Introduce support for new Timeline Express - This Day in History Add-On and Timeline Express - Sliders Add-On.
