@@ -2,7 +2,7 @@
 Contributors: codeparrots, eherman24
 Tags: timeline, responsive, vertical, animated, company, history, font awesome, events, calendar, scroll, dates, milestone
 Requires at least: 4.0
-Tested up to: 4.9
+Tested up to: 5.0
 Stable tag: 1.7.3
 License: GPLv2 or later
 
@@ -370,6 +370,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 5. Timeline Express - Admin Settings Page
 
 == Changelog ==
+
+= 1.7.4 - December 10th, 2018 =
+- **New:** Disable the block editor for announcements.
+- **New:** Introduce new filters for better control over caching.
 
 = 1.7.3 - November 3rd, 2018 =
 - [View Changes](https://github.com/EvanHerman/timeline-express/pull/68)

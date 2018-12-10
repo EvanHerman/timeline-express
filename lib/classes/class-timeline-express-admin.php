@@ -75,6 +75,8 @@ class Timeline_Express_Admin {
 
 		add_action( 'wp_ajax_timeline_express_toggle_cache', array( $this, 'toggle_cache' ) );
 
+		add_filter( 'use_block_editor_for_post_type', array( $this, 'disable_block_editor' ), 10, 2 );
+
 	}
 
 	/**
@@ -822,6 +824,28 @@ class Timeline_Express_Admin {
 		update_option( 'timeline_express_cache_enabled', $cache_enabled );
 
 		wp_send_json_success( $cache_enabled );
+
+	}
+
+	/**
+	 * Disable the block editor for Announcement post types.
+	 *
+	 * @param  boolean $is_enabled Whether or not the block editor is enabled.
+	 * @param  string  $post_type  Post type name.
+	 *
+	 * @since 1.7.4
+	 *
+	 * @return boolean False to disable the block editor
+	 */
+	public function disable_block_editor( $is_enabled, $post_type ) {
+
+		if ( 'te_announcements' !== $post_type ) {
+
+			return $is_enabled;
+
+		}
+
+		return false;
 
 	}
 
