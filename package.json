@@ -2,7 +2,7 @@
   "name": "Timeline-Express",
   "title": "Timeline Express",
   "version": "1.7.3",
-  "tested_up_to": "4.9",
+  "tested_up_to": "5.0",
   "description": "Build beautiful, animated CSS3 timelines on your WordPress site.",
   "main": "index.js",
   "scripts": {
