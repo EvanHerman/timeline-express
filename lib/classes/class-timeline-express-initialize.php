@@ -22,13 +22,11 @@ class Timeline_Express_Initialize {
 
 		/**
 		 * Enqueue our scripts & styles
-		 * 1) jquery-masonry for laying out the announcements
-		 * 2) Timeline Express Base Scripts to initialize the timeline.
-		 * 3) do_action( 'timeline-express-scripts' ) for additional plugins to hook into.
+		 * 1) Timeline Express Base Scripts to initialize the timeline.
+		 * 2) do_action( 'timeline-express-scripts' ) for additional plugins to hook into.
 		 */
 		/* Scripts */
-		wp_enqueue_script( 'jquery-masonry' );
-		wp_enqueue_script( 'timeline-express-js-base', TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js', array( 'jquery-masonry' ) );
+		wp_enqueue_script( 'timeline-express-js-base', TIMELINE_EXPRESS_URL . 'lib/public/js/min/timeline-express.min.js', array( 'jquery' ) );
 
 		/* pass the disabled state to our script */
 		wp_localize_script(

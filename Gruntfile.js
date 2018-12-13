@@ -28,9 +28,12 @@ module.exports = function( grunt ) {
 					'lib/admin/js/min/timeline-express-tinymce.min.js': [
 						'lib/admin/js/timeline-express-button-script.js'
 					],
+					'lib/admin/js/min/timeline-express-blocks.min.js': [
+						'lib/admin/js/timeline-express-blocks.js'
+					],
 					'lib/public/js/min/timeline-express.min.js': [
 						'lib/public/js/timeline-express.js'
-					]
+					],
 				}
 			}
 		},
@@ -50,7 +53,12 @@ module.exports = function( grunt ) {
 		},
 
 		cssmin: {
-			target: {
+			options: {
+				processImport: false,
+				roundingPrecision: -1,
+				shorthandCompacting: false
+			},
+			all: {
 				files: [
 					{
 						'lib/admin/css/min/timeline-express-admin.min.css':
@@ -84,7 +92,14 @@ module.exports = function( grunt ) {
 						]
 					}
 				]
-			}
+			},
+			blocks: {
+				files: [
+					{
+						'lib/admin/blocks/timeline/css/timeline-block.min.css': [ 'lib/admin/blocks/timeline/css/timeline-block.css' ]
+					}
+				]
+			},
 		},
 
 		usebanner: {
@@ -193,6 +208,10 @@ module.exports = function( grunt ) {
 					spawn: false,
 					event: [ 'all' ]
 				}
+			},
+			block_js: {
+				files: [ 'lib/admin/blocks/**/*.js', '!lib/admin/js/timeline-express-blocks.js', '!lib/admin/blocks/js/**/*.min.js' ],
+				tasks: [ 'shell:blocks_dev' ]
 			}
 		},
 
@@ -423,6 +442,12 @@ module.exports = function( grunt ) {
 				'rm -rf phpunit.xml.dist',
 				'rm -rf README.md',
 				'rm -rf readme.txt'
+			].join( ' && ' ),
+			blocks_dev: [
+				'cross-env BABEL_ENV=default webpack'
+			].join( ' && ' ),
+			blocks_prod: [
+				'cross-env BABEL_ENV=default NODE_ENV=production webpack'
 			].join( ' && ' )
 		},
 
