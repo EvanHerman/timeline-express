@@ -367,9 +367,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 2. Timeline Express - Admin Announcement Management
 3. Timeline Express - Timeline Content Block
 4. Timeline Express - Timeline Content Block Controls
-5. Timeline Express - Frontend Timeline Layout
-6. Timeline Express - Responsive Layout (mobile devices)
-7. Timeline Express - Admin Settings Page
+5. Timeline Express - Timeline Content Block Demo
+6. Timeline Express - Frontend Timeline Layout
+7. Timeline Express - Responsive Layout (mobile devices)
+8. Timeline Express - Admin Settings Page
 
 == Changelog ==
 

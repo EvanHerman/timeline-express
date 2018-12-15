@@ -212,6 +212,10 @@ module.exports = function( grunt ) {
 			block_js: {
 				files: [ 'lib/admin/blocks/**/*.js', '!lib/admin/js/timeline-express-blocks.js', '!lib/admin/blocks/js/**/*.min.js' ],
 				tasks: [ 'shell:blocks_dev' ]
+			},
+			block_css: {
+				files: [ 'lib/admin/blocks/**/*.css' ],
+				tasks: [ 'cssmin:blocks' ]
 			}
 		},
 
