@@ -54,3 +54,12 @@ if ( ! defined( 'TIMELINE_EXPRESS_SITE_URL' ) ) {
 	define( 'TIMELINE_EXPRESS_SITE_URL', 'https://www.wp-timelineexpress.com' );
 
 }
+
+/**
+ * Define Timeline Express blocks path
+ */
+if ( ! defined( 'TIMELINE_EXPRESS_BLOCKS_PATH' ) ) {
+
+	define( 'TIMELINE_EXPRESS_BLOCKS_PATH', plugin_dir_path( __FILE__ ) . '/lib/admin/blocks/' );
+
+}
