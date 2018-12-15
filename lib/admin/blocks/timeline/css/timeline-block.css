@@ -1,0 +1,28 @@
+/**
+ * Timeline Express Block Editor Styles
+ *
+ * @since 1.8.0
+ */
+.timeline-block-inspector-controls .components-base-control {
+	display: block;
+	width: 100% !important;
+}
+
+	.timeline-block-inspector-controls .components-base-control {
+		margin-bottom: 3px !important;
+	}
+
+.timeline-block-inspector-controls .components-panel__row {
+	margin-top: 10px;
+}
+
+.timeline-block-inspector-controls label {
+	font-weight: 600;
+}
+
+.wp-block-timeline-express-timeline-block .te-preloader {
+	display: block;
+	padding: 5px 0;
+	margin: 0 auto;
+	max-width: 22px;
+}

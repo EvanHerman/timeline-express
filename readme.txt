@@ -365,11 +365,18 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 1. Timeline Express - Announcement Creation Screen
 2. Timeline Express - Admin Announcement Management
-3. Timeline Express - Frontend Timeline Layout
-4. Timeline Express - Responsive Layout (mobile devices)
-5. Timeline Express - Admin Settings Page
+3. Timeline Express - Timeline Content Block
+4. Timeline Express - Timeline Content Block Controls
+5. Timeline Express - Timeline Content Block Demo
+6. Timeline Express - Frontend Timeline Layout
+7. Timeline Express - Responsive Layout (mobile devices)
+8. Timeline Express - Admin Settings Page
 
 == Changelog ==
+
+= 1.8.0 - December 15th, 2018 =
+**New:** Introduce new Timeline content block (inside of the widget content blocks).
+**Tweak:** Remove unused jquery masonry script enqueue.
 
 = 1.7.4 - December 10th, 2018 =
 - **New:** Disable the block editor for announcements.
