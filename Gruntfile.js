@@ -124,7 +124,8 @@ module.exports = function( grunt ) {
 						'lib/admin/css/min/timeline-express-admin.min.css',
 						'lib/admin/css/min/timeline-express-admin-rtl.min.css',
 						'lib/admin/js/min/timeline-express-tinymce.min.js',
-						'lib/admin/js/min/timeline-express-admin.min.js'
+						'lib/admin/js/min/timeline-express-admin.min.js',
+						'lib/admin/js/min/timeline-express-blocks.min.js'
 					]
 				}
 			}
@@ -214,7 +215,7 @@ module.exports = function( grunt ) {
 				tasks: [ 'shell:blocks_dev' ]
 			},
 			block_css: {
-				files: [ 'lib/admin/blocks/**/*.css' ],
+				files: [ 'lib/admin/blocks/**/*.css', '!lib/admin/blocks/**/*.min.css' ],
 				tasks: [ 'cssmin:blocks' ]
 			}
 		},

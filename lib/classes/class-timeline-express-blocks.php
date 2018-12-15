@@ -40,11 +40,12 @@ class Timeline_Express_Content_Blocks {
 			'timeline-express-blocks',
 			'timelineBlock',
 			array(
-				'preloader'          => admin_url( 'images/wpspin_light-2x.gif' ),
-				'animation_disabled' => ( isset( $this->options['disable-animation'] ) && $this->options['disable-animation'] ) ? true : false,
-				'getTimelineError'   => __( 'There was an error generating the timeline. Please try again.', 'timeline-express' ),
-				'displayOrder'       => $this->options['announcement-display-order'],
-				'timeFrame'          => ( '0' === $this->options['announcement-time-frame'] ) ? 'future' : ( '1' === $this->options['announcement-time-frame'] ? 'all' : 'past' ),
+				'preloader'            => admin_url( 'images/wpspin_light-2x.gif' ),
+				'animation_disabled'   => ( isset( $this->options['disable-animation'] ) && $this->options['disable-animation'] ) ? true : false,
+				'getTimelineError'     => __( 'There was an error generating the timeline. Please try again.', 'timeline-express' ),
+				'displayOrder'         => $this->options['announcement-display-order'],
+				'timeFrame'            => ( '0' === $this->options['announcement-time-frame'] ) ? 'future' : ( '1' === $this->options['announcement-time-frame'] ? 'all' : 'past' ),
+				'announcementSingular' => (string) apply_filters( 'timeline_express_singular_name', esc_html__( 'Announcement', 'timeline-express' ) ),
 			)
 		);
 
