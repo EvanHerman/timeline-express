@@ -374,6 +374,10 @@ The above example will load font awesome version 4.4.0 instead of the current st
 
 == Changelog ==
 
+= 1.8.0 - December 15th, 2018 =
+**New:** Introduce new Timeline content block (inside of the widget content blocks).
+**Tweak:** Remove unused jquery masonry script enqueue.
+
 = 1.7.4 - December 10th, 2018 =
 - **New:** Disable the block editor for announcements.
 - **New:** Introduce new filters for better control over caching.
