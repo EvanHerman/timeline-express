@@ -30,7 +30,9 @@ class Timeline_Express_Initialize {
 
 		/* pass the disabled state to our script */
 		wp_localize_script(
-			'timeline-express-js-base', 'timeline_express_data', array(
+			'timeline-express-js-base',
+			'timeline_express_data',
+			array(
 				'animation_disabled' => $animation_disabled,
 			)
 		);

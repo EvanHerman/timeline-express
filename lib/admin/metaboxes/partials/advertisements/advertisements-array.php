@@ -24,8 +24,8 @@ return array(
 	array(
 		'title'      => __( 'Halloween Discount', 'timeline-express' ),
 		'image'      => TIMELINE_EXPRESS_URL . 'lib/admin/images/advertisement/halloween-discount-ad.jpg',
-		'start_date' => strtotime( '10/10/' . date( 'Y' ) ),
-		'end_date'   => strtotime( '10/31/' . date( 'Y' ) ),
+		'start_date' => strtotime( '10/10/' . gmdate( 'Y' ) ),
+		'end_date'   => strtotime( '10/31/' . gmdate( 'Y' ) ),
 		'content'    => null,
 		'url'        => 'http://wp-timelineexpress.com/pricing/?discount=halloween25&utm_source=plugin&utm_medium=banner&utm_campaign=freeplugin',
 	),

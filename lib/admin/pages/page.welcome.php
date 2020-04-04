@@ -48,7 +48,8 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 				add_query_arg(
 					array(
 						'tab' => 'timeline-express-getting-started',
-					), 'admin.php?page=timeline-express-welcome'
+					),
+					'admin.php?page=timeline-express-welcome'
 				)
 			)
 		); ?>">
@@ -59,7 +60,8 @@ $selected = isset( $_GET['tab'] ) ? $_GET['tab'] : 'timeline-express-getting-sta
 				add_query_arg(
 					array(
 						'tab' => 'timeline-express-author',
-					), 'admin.php?page=timeline-express-welcome'
+					),
+					'admin.php?page=timeline-express-welcome'
 				)
 			)
 		); ?>">

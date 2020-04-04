@@ -27,7 +27,9 @@ wp_enqueue_script( 'plugin-install' );
 wp_enqueue_script( 'timeline-express-add-ons-js', TIMELINE_EXPRESS_URL . "lib/admin/js/min/timeline-express-add-ons{$suffix}.js", array( 'plugin-install' ), TIMELINE_EXPRESS_VERSION_CURRENT, true );
 
 wp_localize_script(
-	'timeline-express-add-ons-js', 'te_installer_localize', array(
+	'timeline-express-add-ons-js',
+	'te_installer_localize',
+	array(
 		'ajax_url'      => admin_url( 'admin-ajax.php' ),
 		'admin_nonce'   => wp_create_nonce( 'timeline_express_add_on_install_nonce' ),
 		'install_now'   => __( 'Are you sure you want to install this add-on?', 'timeline-express' ),
@@ -123,7 +125,8 @@ $premium_addons = array(
 usort( $premium_addons, 'compare_addon_names' );
 
 array_unshift(
-	$premium_addons, array(
+	$premium_addons,
+	array(
 		'name'         => esc_html__( 'Timeline Express - Product Bundle', 'timeline-express' ),
 		/* translators: Integer value for the number of add-ons in the add-on list. (eg: 6) */
 		'description'  => sprintf( esc_html( "Get all %s of the Timeline Express add-ons for one low price! Select a 5 or 10 site license, and receive all current and future add-ons for Timeline Express along with updates and priority product support. An amazing deal, don't miss it!", 'timeline-express' ), count( $premium_addons ) ),
@@ -412,7 +415,8 @@ function timeline_express_get_addon_info_url( $addon, $free = false ) {
 				'TB_iframe' => 'true',
 				'width'     => '600',
 				'height'    => '550',
-			), admin_url( 'plugin-install.php' )
+			),
+			admin_url( 'plugin-install.php' )
 		);
 
 		?>
@@ -505,7 +509,7 @@ function timeline_express_addon_details( $data ) {
 
 				$active_installs_text = /* translators: Active plugin installs */ _x( '1+ Million', 'Active plugin installs' ); // core i18n
 
-			} elseif ( 0 == $data['api_data']['active_installs'] ) {
+			} elseif ( 0 === $data['api_data']['active_installs'] ) {
 
 				$active_installs_text = /* translators: Active plugin installs */ _x( 'Less Than 10', 'Active plugin installs' ); // core i18n
 

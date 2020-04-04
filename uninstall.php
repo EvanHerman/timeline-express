@@ -39,7 +39,7 @@ delete_transient( 'timeline_express_ad_transient' );
 // Query the database for all transients with the text 'timeline-express-query'
 $results = $wpdb->get_results(
 	$wpdb->prepare(
-		"SELECT * from `{$wpdb->prefix}options` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( 'timeline-express-query' ) . '%'
+		"SELECT * from `{$wpdb->prefix}options` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( 'timeline-express-query' ) . '%'  // @codingStandardsIgnoreLine
 	)
 );
 

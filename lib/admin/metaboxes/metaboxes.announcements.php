@@ -201,7 +201,6 @@ if ( ! empty( $custom_fields ) ) {
 		$i++;
 
 	}
-
 }
 
 // Action hook to allow users to hook in and define new metaboxes

@@ -48,7 +48,7 @@ do_action( 'timeline-express-single-after-image' );
 
 		/* Action hook to display content after the single announcement date */
 		do_action( 'timeline-express-single-after-date' );
-	?>
+		?>
 
 </p>
 
