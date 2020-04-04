@@ -75,7 +75,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 
 							} else {
 
-							?>
+								?>
 
 								<form method="post" action="options.php" name="timeline-express-form" id="timeline-express-form">
 
@@ -465,8 +465,8 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 
 								</form>
 
-							<?php }// End if().
-	?>
+							<?php } // End if().
+							?>
 
 						</div>
 						<!-- .inside -->
@@ -615,7 +615,7 @@ $timeline_express_plural_name   = apply_filters( 'timeline_express_plural_name',
 							// Query the database for all transients with the text 'timeline-express-query'
 							$results = $wpdb->get_results(
 								$wpdb->prepare(
-									"SELECT * from `{$wpdb->prefix}options` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( 'timeline-express-query' ) . '%'
+									"SELECT * from `{$wpdb->prefix}options` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( 'timeline-express-query' ) . '%' // @codingStandardsIgnoreLine
 								)
 							);
 

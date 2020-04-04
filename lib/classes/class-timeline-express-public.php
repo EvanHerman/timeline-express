@@ -45,7 +45,9 @@ class Timeline_Express_Public {
 				'limit'   => -1,
 				'order'   => $options['announcement-display-order'],
 				'display' => $options['announcement-time-frame'],
-			), $atts, 'timeline-express'
+			),
+			$atts,
+			'timeline-express'
 		);
 
 		$timeline_express_init = new Timeline_Express_Initialize();

@@ -51,8 +51,10 @@ add_action( 'timeline_express_sidebar', 'timeline_express_generate_sidebar', 10 
 function timeline_express_get_options() {
 
 	return apply_filters(
-		'timeline_express_options', get_option(
-			TIMELINE_EXPRESS_OPTION, array(
+		'timeline_express_options',
+		get_option(
+			TIMELINE_EXPRESS_OPTION,
+			array(
 				'announcement-time-frame'            => '1',
 				'announcement-display-order'         => 'ASC',
 				'excerpt-trim-length'                => 50,
@@ -405,7 +407,7 @@ function delete_timeline_express_transients( $page_id = false ) {
 	// Query the database for all transients with the text 'timeline-express-query'
 	$results = $wpdb->get_results(
 		$wpdb->prepare(
-			"SELECT * from `{$wpdb->prefix}options` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( $transient_name ) . '%'
+			"SELECT * from `{$wpdb->prefix}options` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( $transient_name ) . '%' // @codingStandardsIgnoreLine
 		)
 	);
 
@@ -469,7 +471,7 @@ function timeline_express_get_announcement_icon_markup( $post_id, $link = true )
 
 		<a class="cd-timeline-icon-link" href="<?php echo esc_attr( apply_filters( 'timeline_express_announcement_permalink', get_the_permalink( $post_id ), $post_id ) ); ?>">
 
-	<?php
+			<?php
 
 	}
 
@@ -511,11 +513,11 @@ function timeline_express_get_announcement_icon_markup( $post_id, $link = true )
 	/* If read more visibility is set to true, wrap the icon in a link. */
 	if ( '1' === $timeline_express_options['read-more-visibility'] && $link ) {
 
-	?>
+		?>
 
 		</a>
 
-	<?php
+		<?php
 
 	}
 
@@ -618,7 +620,8 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 	}
 
 	$announcement_image = apply_filters(
-		'timeline_express_image', wp_get_attachment_image(
+		'timeline_express_image',
+		wp_get_attachment_image(
 			get_post_meta( $post_id, 'announcement_image_id', true ),
 			$image_size,
 			false,
@@ -626,7 +629,8 @@ function timeline_express_get_announcement_image( $post_id, $image_size = 'timel
 				'alt'   => esc_attr( get_the_title() ),
 				'class' => 'announcement-banner-image',
 			)
-		), $post_id
+		),
+		$post_id
 	);
 
 	if ( empty( $announcement_image ) ) {
@@ -662,7 +666,8 @@ function timeline_express_map_html_attributes( $attribute_array ) {
 	}
 
 	return join(
-		' ', array_map(
+		' ',
+		array_map(
 			function( $key ) use ( $attribute_array ) {
 
 				if ( is_bool( $attribute_array[ $key ] ) ) {
@@ -673,7 +678,8 @@ function timeline_express_map_html_attributes( $attribute_array ) {
 
 					return $key . '="' . $attribute_array[ $key ] . '"';
 
-			}, array_keys( $attribute_array )
+			},
+			array_keys( $attribute_array )
 		)
 	);
 
@@ -1048,7 +1054,8 @@ function timeline_express_generate_options_tabs( $active_tab ) {
 function te_dateformat_php_to_jqueryui( $php_format ) {
 
 	$acceptable_formats = (array) apply_filters(
-		'timeline_express_jqueryui_acceptable_formats', array(
+		'timeline_express_jqueryui_acceptable_formats',
+		array(
 			'm/d/Y',
 			'd/m/Y',
 			'Y-m-d',

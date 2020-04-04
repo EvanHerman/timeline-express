@@ -50,13 +50,11 @@ do_action( 'timeline_express_before_main_content' );
 		<?php
 			// Include the single post content template.
 			get_timeline_express_template( 'single-announcement' );
-		?>
 
-	<?php
-	// End of the loop.
-	endwhile;
+			// End of the loop.
+			endwhile;
 
-	do_action( 'timeline_express_after_announcement_content' );
+			do_action( 'timeline_express_after_announcement_content' );
 	?>
 
 </article><!-- .content-area -->

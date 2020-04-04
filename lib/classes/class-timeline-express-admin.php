@@ -378,7 +378,7 @@ class Timeline_Express_Admin {
 	public function timeline_express_reset_transients( $post_id ) {
 
 		// When not an announcement, post or page abort
-		if ( ! in_array( get_post_type( $post_id ), array( 'te_announcements', 'post', 'page' ) ) ) {
+		if ( ! in_array( get_post_type( $post_id ), array( 'te_announcements', 'post', 'page' ), true ) ) {
 
 			return;
 
@@ -392,7 +392,7 @@ class Timeline_Express_Admin {
 		}
 
 		// If post or page, delete single transient
-		if ( in_array( get_post_type( $post_id ), array( 'post', 'page' ) ) ) {
+		if ( in_array( get_post_type( $post_id ), array( 'post', 'page' ), true ) ) {
 
 			$page_obj = get_page( $post_id );
 
@@ -518,10 +518,12 @@ class Timeline_Express_Admin {
 		 * @var array
 		 */
 		return (array) apply_filters(
-			'timeline_express_popups_addon_announcement_image', array(
+			'timeline_express_popups_addon_announcement_image',
+			array(
 				'iframe' => false,
 				'url'    => $image_url ? esc_url( $image_url ) : false,
-			), $image_id
+			),
+			$image_id
 		);
 
 	}

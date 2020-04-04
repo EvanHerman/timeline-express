@@ -10,6 +10,7 @@
 		<exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeEnd"/>
 		<exclude name="Squiz.PHP.EmbeddedPhp.ContentBeforeOpen"/>
 		<exclude name="PSR2.ControlStructures.SwitchDeclaration.SpaceBeforeColonCASE"/>
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
 	</rule>
 
 	<!-- Allow dashes in function name naming conventions. -->
