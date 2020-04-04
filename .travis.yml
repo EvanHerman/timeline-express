@@ -1,6 +1,17 @@
 sudo: false
 
-language: php
+dist: xenial
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.npm
+    - $HOME/.nvm/.cache
+    - $HOME/phpunit-bin
+
+language:
+  - php
+  - node_js
 
 notifications:
   email:
@@ -17,7 +28,7 @@ branches:
   - development
 
 php:
-  - 7.3
+  - 5.6
 
 services:
   - mysql
