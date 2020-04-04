@@ -15,7 +15,7 @@
  */
 if ( ! defined( 'TIMELINE_EXPRESS_VERSION_CURRENT' ) ) {
 
-	define( 'TIMELINE_EXPRESS_VERSION_CURRENT', '1.8.0' );
+	define( 'TIMELINE_EXPRESS_VERSION_CURRENT', '1.8.1' );
 
 }
 
