@@ -60,6 +60,7 @@ script:
 
 after_script:
   - source $DEV_LIB_PATH/travis.after_script.sh
+  - sudo service mysql stop
 
 before_deploy:
   - git submodule update --init
