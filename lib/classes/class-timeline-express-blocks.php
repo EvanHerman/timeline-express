@@ -25,7 +25,7 @@ class Timeline_Express_Content_Blocks {
 	 *
 	 * @action enqueue_block_editor_assets
 	 *
-	 * @since NEXT
+	 * @since 1.8.0
 	 */
 	public function enqueue_block_scripts() {
 
