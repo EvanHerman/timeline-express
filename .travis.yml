@@ -25,13 +25,13 @@ matrix:
   - php: 7.1
     env: WP_VERSION=4.4 WP_MULTISITE=0
 install:
-- export DEV_LIB_PATH=.dev/dev-lib
+- export DEV_LIB_PATH=.dev/dev-lib/scripts
 - export DEV_LIB_SKIP=codeception,jscs,jshint,yuicompressor,phpunit,xmllint
 - if [ ! -e "$DEV_LIB_PATH" ] && [ -L .travis.yml ]; then export DEV_LIB_PATH=$( dirname
   $( readlink .travis.yml ) ); fi
 - if [ ! -e "$DEV_LIB_PATH" ]; then git clone https://github.com/xwp/wp-dev-lib.git
   $DEV_LIB_PATH; fi
-- source $DEV_LIB_PATH/scripts/travis.install.sh
+- source $DEV_LIB_PATH/travis.install.sh
 - curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli-nightly.phar
   > /tmp/wp-cli.phar
 - chmod +x /tmp/wp-cli.phar
@@ -44,9 +44,9 @@ script:
   ]]; then phpunit --coverage-clover build/logs/clover.xml; else phpunit; fi
 - if [[ $TRAVIS_PHP_VERSION = '7.1' && $WP_VERSION = 'latest' && $WP_MULTISITE = '0'
   ]]; then ./vendor/bin/test-reporter; fi
-- source $DEV_LIB_PATH/scripts/travis.script.sh
+- source $DEV_LIB_PATH/travis.script.sh
 after_script:
-- source $DEV_LIB_PATH/scripts/travis.after_script.sh
+- source $DEV_LIB_PATH/travis.after_script.sh
 before_deploy:
 - git submodule update --init
 - npm install
