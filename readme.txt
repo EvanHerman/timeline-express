@@ -2,8 +2,8 @@
 Contributors: codeparrots, eherman24
 Tags: timeline, responsive, vertical, animated, company, history, font awesome, events, calendar, scroll, dates, milestone
 Requires at least: 4.0
-Tested up to: 5.0
-Stable tag: 1.8.0
+Tested up to: 5.4
+Stable tag: 1.8.1
 License: GPLv2 or later
 
 Timeline Express creates a beautiful vertical animated and responsive timeline of posts, in chronological order.
@@ -373,6 +373,13 @@ The above example will load font awesome version 4.4.0 instead of the current st
 8. Timeline Express - Admin Settings Page
 
 == Changelog ==
+
+= 1.8.1 - April 4th, 2020 =
+- **New:** Prevent clicking announcement container links in the editor.
+- **Fix:** Fix various block errors.
+- **Fix:** Remove reference to `$` in favor of `jQuery`.
+- **Tweak:** Adjust welcome page styles.
+- **Tweak:** Various fixes for WordPress 5.4 compatibility.
 
 = 1.8.0 - December 15th, 2018 =
 - **New:** Introduce new Timeline content block (inside of the widget content blocks).
