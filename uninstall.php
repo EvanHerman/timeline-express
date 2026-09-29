@@ -19,7 +19,7 @@ global $wpdb;
 if ( isset( $options['delete-announcement-posts-on-uninstallation'] ) && '1' === $options['delete-announcement-posts-on-uninstallation'] ) {
 
 	/* SQL query for to delete all announcement posts */
-	$sql = $wpdb->get_results( $wpdb->prepare( 'DELETE FROM %s WHERE post_type = "te_announcements"', $wpdb->posts ), ARRAY_A );
+	$sql = $wpdb->get_results( "DELETE FROM {$wpdb->posts} WHERE post_type = 'te_announcements'", ARRAY_A );
 
 }
 
